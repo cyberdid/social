@@ -1,0 +1,403 @@
+{
+  "dataset": "20261105T101013Z+20261105T102914Z",
+  "scope": "observed collected publications; not a probability sample",
+  "n_publications": 23386,
+  "n_relevant": 1438,
+  "unknown_view_counters": 0,
+  "sum_snapshot_view_counters": 119515745,
+  "large_channel_sensitivity": [
+    {
+      "threshold_subscribers": 100000,
+      "first": {
+        "url": "https://t.me/kievreal1/139976",
+        "channel": "kievreal1",
+        "t_kyiv": "2026-11-02T13:16:21+02:00",
+        "subs": 1560000
+      },
+      "lull_counterexamples": [
+        {
+          "url": "https://t.me/ukr_2025_ru/345613",
+          "channel": "ukr_2025_ru",
+          "t_kyiv": "2026-11-02T13:57:01+02:00",
+          "subs": 494000
+        },
+        {
+          "url": "https://t.me/voynareal/145799",
+          "channel": "voynareal",
+          "t_kyiv": "2026-11-02T14:00:26+02:00",
+          "subs": 1540000
+        }
+      ]
+    },
+    {
+      "threshold_subscribers": 500000,
+      "first": {
+        "url": "https://t.me/kievreal1/139976",
+        "channel": "kievreal1",
+        "t_kyiv": "2026-11-02T13:16:21+02:00",
+        "subs": 1560000
+      },
+      "lull_counterexamples": [
+        {
+          "url": "https://t.me/voynareal/145799",
+          "channel": "voynareal",
+          "t_kyiv": "2026-11-02T14:00:26+02:00",
+          "subs": 1540000
+        }
+      ]
+    },
+    {
+      "threshold_subscribers": 1000000,
+      "first": {
+        "url": "https://t.me/kievreal1/139976",
+        "channel": "kievreal1",
+        "t_kyiv": "2026-11-02T13:16:21+02:00",
+        "subs": 1560000
+      },
+      "lull_counterexamples": [
+        {
+          "url": "https://t.me/voynareal/145799",
+          "channel": "voynareal",
+          "t_kyiv": "2026-11-02T14:00:26+02:00",
+          "subs": 1540000
+        }
+      ]
+    }
+  ],
+  "narrative_mention_sensitivity": {
+    "all_labels": [
+      {
+        "label": "N1_hostages",
+        "posts": 306,
+        "sum_snapshot_views": 23160167,
+        "view_shares_by_group": {
+          "B": 0.46356617376722714,
+          "A": 0.03724670897234895,
+          "C": 0.3316366846577574,
+          "D": 0.10210850379446745,
+          "U": 0.03933978541691863,
+          "E": 0.02610214339128038
+        }
+      },
+      {
+        "label": "N2_death_torture",
+        "posts": 482,
+        "sum_snapshot_views": 31746954,
+        "view_shares_by_group": {
+          "C": 0.53082472101103,
+          "B": 0.2643225866645348,
+          "D": 0.0909463629172109,
+          "U": 0.02051913389864111,
+          "A": 0.07615404614880533,
+          "E": 0.01723314935977795
+        }
+      },
+      {
+        "label": "N3_tcc_camp",
+        "posts": 236,
+        "sum_snapshot_views": 14162854,
+        "view_shares_by_group": {
+          "B": 0.027418202574142188,
+          "C": 0.9540414665010315,
+          "U": 0.008395483000813254,
+          "A": 0.000322675076647687,
+          "E": 0.00934839828187172,
+          "D": 0.0004737745654936498
+        }
+      },
+      {
+        "label": "N4_cover_up",
+        "posts": 72,
+        "sum_snapshot_views": 4909299,
+        "view_shares_by_group": {
+          "B": 0.1410608724382035,
+          "D": 0.14305097326522584,
+          "C": 0.6422910888092169,
+          "U": 0.003943536541571414,
+          "A": 0.06965352894578228
+        }
+      },
+      {
+        "label": "N0_official",
+        "posts": 271,
+        "sum_snapshot_views": 24579410,
+        "view_shares_by_group": {
+          "D": 0.20649173434187396,
+          "A": 0.03957454633776807,
+          "U": 0.009031949912548754,
+          "B": 0.5486840408292958,
+          "C": 0.18379228793530847,
+          "E": 0.012425440643205023
+        }
+      }
+    ],
+    "without_contested_or_auto": [
+      {
+        "label": "N1_hostages",
+        "posts": 198,
+        "sum_snapshot_views": 19362604,
+        "view_shares_by_group": {
+          "B": 0.5544848203268528,
+          "A": 0.04455185883055812,
+          "C": 0.21341127464053905,
+          "D": 0.12213491532440575,
+          "U": 0.03419560716110292,
+          "E": 0.03122152371654143
+        }
+      },
+      {
+        "label": "N2_death_torture",
+        "posts": 269,
+        "sum_snapshot_views": 21816400,
+        "view_shares_by_group": {
+          "C": 0.33708247006838893,
+          "B": 0.38463894134687665,
+          "D": 0.13234401642800828,
+          "A": 0.11081842100438202,
+          "U": 0.01003868649273024,
+          "E": 0.025077464659613868
+        }
+      },
+      {
+        "label": "N3_tcc_camp",
+        "posts": 82,
+        "sum_snapshot_views": 4297622,
+        "view_shares_by_group": {
+          "B": 0.09035694623677931,
+          "C": 0.8741741363014244,
+          "U": 0.0020364750552747542,
+          "A": 0.0010633787708644454,
+          "E": 0.030807735068370368,
+          "D": 0.001561328567286746
+        }
+      },
+      {
+        "label": "N4_cover_up",
+        "posts": 47,
+        "sum_snapshot_views": 3269040,
+        "view_shares_by_group": {
+          "B": 0.21183894966106256,
+          "D": 0.21482759464552284,
+          "C": 0.46320938257103,
+          "U": 0.005521498666275115,
+          "A": 0.10460257445610945
+        }
+      },
+      {
+        "label": "N0_official",
+        "posts": 216,
+        "sum_snapshot_views": 21486239,
+        "view_shares_by_group": {
+          "D": 0.23621840006526967,
+          "A": 0.0452717201926312,
+          "U": 0.003681426051343839,
+          "B": 0.6276729026424773,
+          "C": 0.07294133701109813,
+          "E": 0.014214214037179797
+        }
+      }
+    ]
+  },
+  "c2_headline_matches": [],
+  "copy_sensitivity": [
+    {
+      "threshold": 0.6,
+      "verified_pairs": 364,
+      "connected_text_components": 123,
+      "first_group": {
+        "B": 23,
+        "A": 9,
+        "C": 53,
+        "D": 22,
+        "U": 15,
+        "E": 1
+      },
+      "directly_similar_first_B_C_families": [
+        {
+          "B_url": "https://t.me/padla_tck/38095",
+          "C_url": "https://t.me/ASupersharij/62043",
+          "delta_B_minus_C_minutes": 73.26666666666667,
+          "direct_jaccard": 1.0,
+          "any_earlier_A_D": false
+        },
+        {
+          "B_url": "https://t.me/vremya_ua/48853",
+          "C_url": "https://t.me/rezident_ua/30966",
+          "delta_B_minus_C_minutes": -19.666666666666668,
+          "direct_jaccard": 0.6693548387096774,
+          "any_earlier_A_D": false
+        },
+        {
+          "B_url": "https://t.me/vremya_ua/48918",
+          "C_url": "https://t.me/rezident_ua/30973",
+          "delta_B_minus_C_minutes": -38.333333333333336,
+          "direct_jaccard": 1.0,
+          "any_earlier_A_D": false
+        },
+        {
+          "B_url": "https://t.me/insiderUKR/137705",
+          "C_url": "https://t.me/NSDVKieve/40785",
+          "delta_B_minus_C_minutes": -286.9166666666667,
+          "direct_jaccard": 0.6307471264367817,
+          "any_earlier_A_D": false
+        },
+        {
+          "B_url": "https://t.me/insiderUKR/137711",
+          "C_url": "https://t.me/kolobok_odesa/20178",
+          "delta_B_minus_C_minutes": -64.31666666666666,
+          "direct_jaccard": 0.6944444444444444,
+          "any_earlier_A_D": false
+        },
+        {
+          "B_url": "https://t.me/padla_tck/38395",
+          "C_url": "https://t.me/ASupersharij/62149",
+          "delta_B_minus_C_minutes": 2.4833333333333334,
+          "direct_jaccard": 1.0,
+          "any_earlier_A_D": false
+        }
+      ],
+      "B_later_n": 2,
+      "B_later_median_min": 37.875,
+      "C_later_n": 4,
+      "C_later_median_min": 51.325,
+      "c2_largest_components": [
+        {
+          "channels": 2,
+          "urls": [
+            "https://t.me/dva_mjors_kOrtiZoL/6827",
+            "https://t.me/dva_majors/101423"
+          ],
+          "limitation": "connected component; all channel pairs need not exceed threshold"
+        },
+        {
+          "channels": 1,
+          "urls": [
+            "https://t.me/ASupersharij/62043"
+          ],
+          "limitation": "connected component; all channel pairs need not exceed threshold"
+        },
+        {
+          "channels": 1,
+          "urls": [
+            "https://t.me/stranaua/253573"
+          ],
+          "limitation": "connected component; all channel pairs need not exceed threshold"
+        }
+      ]
+    },
+    {
+      "threshold": 0.75,
+      "verified_pairs": 277,
+      "connected_text_components": 106,
+      "first_group": {
+        "C": 45,
+        "U": 15,
+        "D": 16,
+        "B": 20,
+        "A": 9,
+        "E": 1
+      },
+      "directly_similar_first_B_C_families": [
+        {
+          "B_url": "https://t.me/padla_tck/38095",
+          "C_url": "https://t.me/ASupersharij/62043",
+          "delta_B_minus_C_minutes": 73.26666666666667,
+          "direct_jaccard": 1.0,
+          "any_earlier_A_D": false
+        },
+        {
+          "B_url": "https://t.me/vremya_ua/48918",
+          "C_url": "https://t.me/rezident_ua/30973",
+          "delta_B_minus_C_minutes": -38.333333333333336,
+          "direct_jaccard": 1.0,
+          "any_earlier_A_D": false
+        },
+        {
+          "B_url": "https://t.me/padla_tck/38395",
+          "C_url": "https://t.me/ASupersharij/62149",
+          "delta_B_minus_C_minutes": 2.4833333333333334,
+          "direct_jaccard": 1.0,
+          "any_earlier_A_D": false
+        }
+      ],
+      "B_later_n": 2,
+      "B_later_median_min": 37.875,
+      "C_later_n": 1,
+      "C_later_median_min": 38.333333333333336,
+      "c2_largest_components": [
+        {
+          "channels": 2,
+          "urls": [
+            "https://t.me/dva_mjors_kOrtiZoL/6827",
+            "https://t.me/dva_majors/101423"
+          ],
+          "limitation": "connected component; all channel pairs need not exceed threshold"
+        },
+        {
+          "channels": 1,
+          "urls": [
+            "https://t.me/ASupersharij/62043"
+          ],
+          "limitation": "connected component; all channel pairs need not exceed threshold"
+        }
+      ]
+    },
+    {
+      "threshold": 0.9,
+      "verified_pairs": 203,
+      "connected_text_components": 84,
+      "first_group": {
+        "C": 38,
+        "U": 13,
+        "D": 13,
+        "B": 17,
+        "A": 3
+      },
+      "directly_similar_first_B_C_families": [
+        {
+          "B_url": "https://t.me/padla_tck/38095",
+          "C_url": "https://t.me/ASupersharij/62043",
+          "delta_B_minus_C_minutes": 73.26666666666667,
+          "direct_jaccard": 1.0,
+          "any_earlier_A_D": false
+        },
+        {
+          "B_url": "https://t.me/vremya_ua/48918",
+          "C_url": "https://t.me/rezident_ua/30973",
+          "delta_B_minus_C_minutes": -38.333333333333336,
+          "direct_jaccard": 1.0,
+          "any_earlier_A_D": false
+        },
+        {
+          "B_url": "https://t.me/padla_tck/38395",
+          "C_url": "https://t.me/ASupersharij/62149",
+          "delta_B_minus_C_minutes": 2.4833333333333334,
+          "direct_jaccard": 1.0,
+          "any_earlier_A_D": false
+        }
+      ],
+      "B_later_n": 2,
+      "B_later_median_min": 37.875,
+      "C_later_n": 1,
+      "C_later_median_min": 38.333333333333336,
+      "c2_largest_components": [
+        {
+          "channels": 2,
+          "urls": [
+            "https://t.me/dva_mjors_kOrtiZoL/6827",
+            "https://t.me/dva_majors/101423"
+          ],
+          "limitation": "connected component; all channel pairs need not exceed threshold"
+        },
+        {
+          "channels": 1,
+          "urls": [
+            "https://t.me/ASupersharij/62043"
+          ],
+          "limitation": "connected component; all channel pairs need not exceed threshold"
+        }
+      ]
+    }
+  ],
+  "copy_limitations": "LSH at0.5 may miss pairs; exact similarity validates retained edges only. Publication order is not causal transfer. Families are connected components; lag uses only directly similar earliest B/C pair."
+}

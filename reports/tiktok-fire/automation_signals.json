@@ -1,0 +1,99 @@
+{
+  "source": "data/raw/tiktok/20261105T105600Z-fire-7704443960013376789",
+  "comments": 883,
+  "accounts": 724,
+  "comments_per_account": {
+    "max": 13,
+    "median": 1.0,
+    "accounts_ge2": 93,
+    "accounts_ge5": 7
+  },
+  "S1_top1_share": 0.015,
+  "S1_top5_share": 0.05,
+  "S1_top10pct_accounts_share": 0.238,
+  "S1_gini": 0.165,
+  "S2_exact_copy_groups": 2,
+  "S2_exact_copy_comments": 6,
+  "S2_near_copy_pairs": 6,
+  "S2_examples": [
+    {
+      "text": "молитвамолитвамолитва",
+      "comments": 4,
+      "accounts": 4,
+      "span_min": 201.1
+    },
+    {
+      "text": "смутоксмутоксмуток",
+      "comments": 2,
+      "accounts": 2,
+      "span_min": 222.7
+    }
+  ],
+  "S3_rapid_pairs": 1,
+  "S4_synchronized_groups": 0,
+  "S5_bins": 135,
+  "S5_median_per_5min": 6,
+  "S5_burst_bins": [],
+  "time_span_utc": [
+    "2026-11-04T22:21:52+00:00",
+    "2026-11-05T10:51:15+00:00"
+  ],
+  "share_first_6h": 0.21,
+  "S6_default_handle_share": 0.326,
+  "S6_nick_eq_handle_share": 0.122,
+  "S6_nick_empty_share": 0.0,
+  "verified_accounts": 0,
+  "lang": {
+    "uk": 371,
+    "ru": 243,
+    "un": 225,
+    "bg": 22,
+    "mk": 4,
+    "be": 4
+  },
+  "accounts_any_behavioural_signal": 14,
+  "accounts_ge2_signal_types": 0,
+  "comments_from_ge2_signal_accounts": 0,
+  "by_manual_category": {
+    "coverup_affirmation": {
+      "comments": 21,
+      "accounts": 19,
+      "comments_from_flagged_accounts": 0
+    },
+    "coverup_question": {
+      "comments": 1,
+      "accounts": 1,
+      "comments_from_flagged_accounts": 0
+    },
+    "geographic_correction": {
+      "comments": 20,
+      "accounts": 18,
+      "comments_from_flagged_accounts": 0
+    },
+    "neutral_reporting_or_location_question": {
+      "comments": 3,
+      "accounts": 3,
+      "comments_from_flagged_accounts": 0
+    },
+    "not_candidate": {
+      "comments": 814,
+      "accounts": 675,
+      "comments_from_flagged_accounts": 61
+    },
+    "other_incident_claim_conditional": {
+      "comments": 1,
+      "accounts": 1,
+      "comments_from_flagged_accounts": 0
+    },
+    "rebuttal": {
+      "comments": 8,
+      "accounts": 7,
+      "comments_from_flagged_accounts": 0
+    },
+    "sarcasm_or_unclear": {
+      "comments": 15,
+      "accounts": 15,
+      "comments_from_flagged_accounts": 1
+    }
+  }
+}

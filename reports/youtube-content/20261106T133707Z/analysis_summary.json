@@ -1,0 +1,86 @@
+{
+  "snapshot": "data/raw/youtube_subtitles/20261106T133707Z",
+  "planned": 54,
+  "attempted": 54,
+  "status_counts": {
+    "ok": 50,
+    "no_original_caption_track": 4
+  },
+  "caption_count": 50,
+  "nonempty_caption_texts": 49,
+  "empty_caption_video_ids": [
+    "MY2mKu8gD1M"
+  ],
+  "kind_counts": {
+    "automatic": 45,
+    "manual": 5
+  },
+  "language_counts": {
+    "uk": 37,
+    "ru": 12,
+    "en": 1
+  },
+  "selection_day_counts": {
+    "20261103": 27,
+    "20261102": 19,
+    "20261104": 4,
+    "20261105": 3,
+    "20261106": 1
+  },
+  "caption_day_counts": {
+    "20261103": 25,
+    "20261102": 17,
+    "20261104": 4,
+    "20261105": 3,
+    "20261106": 1
+  },
+  "selected_format_counts": {
+    "short_le180": 22,
+    "long_gt180": 25,
+    "live_recording": 7
+  },
+  "caption_format_counts": {
+    "short_le180": 19,
+    "long_gt180": 25,
+    "live_recording": 6
+  },
+  "topic_candidate_video_counts": {
+    "tcc_mobilization": 29,
+    "detention_basement": 30,
+    "torture_abuse": 24,
+    "concentration_camp": 1,
+    "military_unit_official": 35,
+    "medical_witness_40": 36,
+    "disinformation_provocation": 22,
+    "investigation_accountability": 26
+  },
+  "content_coding_scope": "candidate mentions only until manual review; no population extrapolation",
+  "analysis_script_sha256": "e14379a4e79a9a4c88e58a3d1d8d2ce38dbf14867d2eb7a12f8195aaa4a2e5d6",
+  "receipts_sha256": "bde87f5c31d52823c9d1e922ba5a1e1793419331c20e1bbb500633110a703869",
+  "selection_sha256": "d7825395f2a4813409a8dfaeeacdcfe42498b4baabd64dd8a4cbb86d21baed77",
+  "review_relevance_video_counts": {
+    "incident_context_supported": 41,
+    "available_text_no_verified_incident_excerpt": 8
+  },
+  "review_relevance_passage_counts": {
+    "incident_context_supported": 48,
+    "available_text_no_verified_incident_excerpt": 8
+  },
+  "review_quote_words_max_per_video": 15,
+  "nonempty_zero_lexical_candidates": [
+    "bCLRW39XF-8",
+    "rxM0Hzzmx_E",
+    "piR5gCEePCU",
+    "ejmA1GWeoLI"
+  ],
+  "contextual_review_sha256": "7298e3947cd745e01f1d60ed824a42ea5a47e378dcb6d3a5df17aa3e00a018f3",
+  "contextually_reviewed_videos": 49,
+  "contextually_reviewed_passages": 56,
+  "reviewed_excerpt_stances": {
+    "asserts": 21,
+    "unclear": 10,
+    "attributes_claim": 18,
+    "rejects_or_corrects": 5,
+    "mixed": 2
+  }
+}

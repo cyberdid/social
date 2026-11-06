@@ -1,0 +1,27 @@
+# Seed channels for the Petropavlivska Borshchahivka incident (2026-11-02/03).
+# Source: channel names visible in CyberBoroshno post t.me/kiber_boroshno/13675 (image "Ланцюги поширення"),
+# plus Ukraina.ru named by the Center for Countering Disinformation. Usernames transcribed from images: verify on resolve.
+gnapinfo
+padla_tck
+kyiv_golovne
+ukr_2025_ru
+uaobozrevatel
+borshchagovkanews
+kievinfo_kyiv
+truexanewsua
+hraniteli_odessi
+zelyazradnik
+uniannet
+kyivregionpolice
+asupersharij
+kharkov_perviy
+antikor
+kolobok_odesa
+chistuy_kharkov
+napovestkeki
+uaonlii
+sila_go
+vremya_ua
+pod_kupolom_ua
+novinach
+ukraina_ru

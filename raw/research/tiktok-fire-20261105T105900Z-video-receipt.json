@@ -1,0 +1,29 @@
+{
+  "created_at_utc": "2026-11-05T10:58:48.336116+00:00",
+  "video_id": "7704443960013376789",
+  "canonical_video_url": "https://www.tiktok.com/@anastasiyapalivoda/video/7704443960013376789",
+  "file": "data/raw/tiktok/20261105T105600Z-fire-7704443960013376789/video.mp4",
+  "sha256": "059efb9ed6f30e86bd53b3d80a381be6d9e3e2569da3860a4293566d69e9e415",
+  "bytes": 300514,
+  "format_id": "h264_540p_234914-0",
+  "tool": "yt-dlp2026.10.26",
+  "command": [
+    "yt-dlp",
+    "--ignore-config",
+    "--no-playlist",
+    "--socket-timeout",
+    "20",
+    "--retries",
+    "0",
+    "--extractor-retries",
+    "0",
+    "--no-write-info-json",
+    "-f",
+    "h264_540p_234914-0",
+    "-o",
+    "data/raw/tiktok/20261105T105600Z-fire-7704443960013376789/video.mp4",
+    "https://www.tiktok.com/@anastasiyapalivoda/video/7704443960013376789"
+  ],
+  "authentication": "no account, user cookies or credentials; yt-dlp generated anonymous JS challenge cookie",
+  "ffprobe_error": "ffprobe executable not installed; metadata duration10seconds from initial yt-dlp response, independent decoding delegated to media review"
+}

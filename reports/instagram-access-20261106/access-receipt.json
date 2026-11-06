@@ -1,0 +1,15 @@
+{
+  "checked_at_utc": "2026-11-06T13:42:55.787449+00:00",
+  "candidate_source": "data/raw/instagram_browser/20261106T080549Z/hashtag_петропавловскаяборщаговка.txt",
+  "candidates": 199,
+  "estimated_in_window": 119,
+  "status": "browser_control_failed_before_instagram_page_was_observed",
+  "attempts": [
+    "cua.createBrowserTab",
+    "cua.getTab",
+    "documented Browser.tabs.new/get and Tab.goto"
+  ],
+  "error": "Cannot read properties of undefined (reading timeoutMs)",
+  "captions_or_metrics_obtained": 0,
+  "scope": "Technical browser control failure, not evidence of Instagram login state or platform denial. Existing Instaloader was not retried."
+}

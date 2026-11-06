@@ -1,0 +1,42 @@
+{
+  "source_path": "/home/cyberdid/Downloads/Telegram Desktop/IMG_8035.MP4",
+  "sha256": "06ce15e6eeae15d2cd32fa7430b2faba28037a328eb57d27205c67dc0dc32a09",
+  "bytes": 1935848,
+  "container_metadata": {
+    "major_brand": "mp42",
+    "minor_version": "1",
+    "compatible_brands": "isommp41mp42",
+    "creation_time": "2026-11-05T10:47:27.000000Z"
+  },
+  "duration_seconds": 14.133333,
+  "streams": [
+    {
+      "type": "video",
+      "codec": "h264",
+      "metadata": {
+        "creation_time": "2026-11-05T10:47:27.000000Z",
+        "language": "und",
+        "handler_name": "Core Media Video"
+      },
+      "duration": 14.133333333333333
+    },
+    {
+      "type": "audio",
+      "codec": "aac",
+      "metadata": {
+        "creation_time": "2026-11-05T10:47:27.000000Z",
+        "language": "und",
+        "handler_name": "Core Media Audio"
+      },
+      "duration": 14.109002267573697
+    }
+  ],
+  "source_tiktok_shortlink": "https://vt.tiktok.com/ZSpYXw2Gx",
+  "archived_file": "data/raw/video/06ce15e6eeae15d2cd32fa7430b2faba28037a328eb57d27205c67dc0dc32a09.mp4",
+  "observed_overlay_place": "Софіївська Борщагівка",
+  "observed_overlay_date": "05.11.26",
+  "observed_overlay_caption": "Боже, як це страшно",
+  "interpretation": "overlay is uploader claim, not independently established filming location/time",
+  "comment_claim": "User reports covering-tracks comments; not yet retrieved or verified",
+  "review": "12 sampled frames; full audio not transcribed"
+}

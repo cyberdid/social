@@ -1,0 +1,96 @@
+{
+  "source": "data/raw/youtube/20261106T072121Z",
+  "manifest_hash_checks": {
+    "search.jsonl": true,
+    "videos.jsonl": true,
+    "comments.jsonl": true
+  },
+  "selection": {
+    "pattern": "бор[щш]|borsh",
+    "fields": [
+      "title",
+      "description"
+    ],
+    "window": "upload_date >= 20261102; upper bound is snapshot collection",
+    "status": "lexical_metadata_selection_not_full_manual_content_validation",
+    "candidates": 617,
+    "in_window": 463,
+    "matched": 444,
+    "channels_by_id": 190,
+    "views_snapshot_sum": 34618058,
+    "was_live": 44,
+    "by_upload_date": {
+      "20261102": 70,
+      "20261103": 243,
+      "20261104": 90,
+      "20261105": 38,
+      "20261106": 3
+    },
+    "earliest_id": "piR5gCEePCU",
+    "earliest_timestamp_kyiv": "2026-11-02T17:50:15+02:00"
+  },
+  "comments_fetch_range_utc": [
+    "2026-11-06T09:08:06.482898+00:00",
+    "2026-11-06T09:18:55.212729+00:00"
+  ],
+  "all_collected_comments": {
+    "comments": 25933,
+    "unique_comment_ids": 25933,
+    "authors": 18961,
+    "videos": 30,
+    "top10_share": 0.008521960436509466,
+    "top1pct_share_floor": 0.06258435198395866,
+    "gini": 0.23245069503213012,
+    "max_comments_per_author": 38,
+    "exact_copy_groups_ge3_authors": 4,
+    "exact_copy_comments": 16,
+    "exact_copy_texts": [
+      "диму без вогню не буває",
+      "дякую вам за вашу працю",
+      "дякую вам пане віталію",
+      "не вірю жодному слову"
+    ],
+    "template_pools_ge10_phrases": 0,
+    "authors_same_text_ge3_videos": 4,
+    "time_signals": "not_assessed_approximate_timestamps",
+    "profile_signals": "not_assessed_missing_fields",
+    "composite_multisignal_bot_scores": "not_assessed_invalid_time_and_profile_inputs"
+  },
+  "metadata_matched_comments": {
+    "comments": 24121,
+    "unique_comment_ids": 24121,
+    "authors": 17459,
+    "videos": 26,
+    "top10_share": 0.00916214087309813,
+    "top1pct_share_floor": 0.06326437544048755,
+    "gini": 0.23766650495277863,
+    "max_comments_per_author": 38,
+    "exact_copy_groups_ge3_authors": 4,
+    "exact_copy_comments": 16,
+    "exact_copy_texts": [
+      "диму без вогню не буває",
+      "дякую вам за вашу працю",
+      "дякую вам пане віталію",
+      "не вірю жодному слову"
+    ],
+    "template_pools_ge10_phrases": 0,
+    "authors_same_text_ge3_videos": 4,
+    "time_signals": "not_assessed_approximate_timestamps",
+    "profile_signals": "not_assessed_missing_fields",
+    "composite_multisignal_bot_scores": "not_assessed_invalid_time_and_profile_inputs"
+  },
+  "limitations": [
+    "Selection can miss relevant videos without a place-name and include incidental mentions.",
+    "No unobserved platform-wide initiation or influence inference.",
+    "Collection cap and ranking prevent estimating all comments or bot prevalence."
+  ],
+  "telegram_campaign_denominators": {
+    "source_comments": "data/raw/telegram_comments/20261106T071956Z/comments.jsonl",
+    "source_groups": "reports/telegram-comments/20261106T071956Z/copypasta_groups.csv",
+    "phrases": 126,
+    "comments": 438,
+    "authors": 367,
+    "no_username_authors": 321,
+    "no_username_comments": 382
+  }
+}

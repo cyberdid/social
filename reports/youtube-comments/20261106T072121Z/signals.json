@@ -1,0 +1,49 @@
+{
+  "source": "data/raw/youtube/20261106T072121Z",
+  "comments": 25933,
+  "accounts": 18961,
+  "threads": 30,
+  "comments_per_account": {
+    "max": 38,
+    "median": 1,
+    "ge10": 44,
+    "ge50": 0
+  },
+  "S1_top10_share": 0.009,
+  "S1_top1pct_share": 0.063,
+  "S1_gini": 0.232,
+  "S2_copypasta_groups_ge3_accounts": 4,
+  "S2_copypasta_comments": 16,
+  "S2_near_pairs_verified": 126,
+  "S2_near_pairs_diff_accounts": 6,
+  "S7_template_pools": [],
+  "S2x_accounts_same_text_ge3_threads": 4,
+  "S3_rapid_pairs": 5314,
+  "S4_sync_groups": 0,
+  "S4_sync_comments": 0,
+  "S6": {
+    "sender_types": {
+      "user": 18961
+    },
+    "telegram_bot_flag_accounts": 0,
+    "premium_share": 0.0,
+    "no_username_share": 1.0,
+    "no_photo_share": 1.0,
+    "username_digits_tail_share": 0.0,
+    "scam_or_fake": 0,
+    "deleted_accounts": 0
+  },
+  "accounts_any_behavioural_signal": 3086,
+  "accounts_ge2_signal_types": 82,
+  "comments_from_ge2_accounts": 724,
+  "share_comments_from_ge2_accounts": 0.0279,
+  "by_parent_group": {
+    "U": {
+      "comments": 25933,
+      "threads": 30,
+      "accounts": 18961,
+      "share_from_ge2_signal_accounts": 0.0279
+    }
+  },
+  "accounts_commenting_in_both_B_and_C": 0
+}

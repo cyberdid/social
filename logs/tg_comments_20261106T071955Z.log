@@ -1,0 +1,22 @@
+[25/533] comments=16456
+[50/533] comments=23567
+[75/533] comments=27858
+[100/533] comments=30867
+[125/533] comments=33018
+[150/533] comments=34628
+[175/533] comments=35823
+[200/533] comments=36714
+[225/533] comments=37434
+[250/533] comments=37940
+[275/533] comments=38375
+[300/533] comments=38661
+[325/533] comments=38900
+[350/533] comments=39077
+[375/533] comments=39220
+[400/533] comments=39330
+[425/533] comments=39418
+[450/533] comments=39481
+[475/533] comments=39531
+[500/533] comments=39564
+[525/533] comments=39589
+{"threads": 533, "complete": 533, "capped": 0, "errors": 0, "comments": 39598} -> /home/cyberdid/Projects/Social/data/raw/telegram_comments/20261106T071956Z

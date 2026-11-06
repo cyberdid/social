@@ -1,0 +1,34 @@
+{
+  "created_at_utc": "2026-11-05T10:56:46.362226+00:00",
+  "video_id": "7704443960013376789",
+  "video_url": "https://www.tiktok.com/@anastasiyapalivoda/video/7704443960013376789",
+  "raw_manifest": "data/raw/tiktok/20261105T105600Z-fire-7704443960013376789/manifest.json",
+  "normalized_file": "data/processed/tiktok/20261105T105600Z-fire-7704443960013376789/comments.normalized.jsonl",
+  "normalized_sha256": "c543dcf5576b26e61192825085b89f1d8eb90598f184c703c7c6cd2c68970142",
+  "script": "src/tiktok_public_collect.py",
+  "script_sha256_at_collection": "bd9f01ddcaf4cea221383e9060ad1e5574fcc241ce291c4840afb5dd57b1e9d8",
+  "counts": {
+    "top_level_unique": 345,
+    "reply_unique": 538,
+    "normalized_records": 883,
+    "all_reply_threads_paginated": true,
+    "network_requests": 53,
+    "stopped_after_error": false
+  },
+  "thread_count": 56,
+  "advertised_reply_count_sum": 493,
+  "reply_count_mismatch_threads": 9,
+  "platform_totals_seen": [
+    796,
+    797,
+    797,
+    797,
+    797,
+    797,
+    798,
+    798
+  ],
+  "completeness": "API cursor exhaustion observed for top-level and all56advertised-reply threads; historical/visibility completeness not established; counters inconsistent",
+  "author_fields_in_normalized": false,
+  "no_cookies_or_login": true
+}

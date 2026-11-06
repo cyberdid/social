@@ -1,0 +1,10 @@
+# Search terms (uk + ru word forms). Telegram search matching behaviour is checked by `probe`.
+Борщагівка
+Борщагівці
+Борщагівку
+Борщагівки
+Борщаговка
+Борщаговке
+Борщаговку
+Борщаговки
+Borshchahivka

@@ -1,0 +1,54 @@
+{
+  "source": "user-provided Deep Research results; imported unchanged",
+  "files": [
+    {
+      "id": "DR1",
+      "original_path": "/home/cyberdid/Downloads/Як професіонали аналізують інформаційні хвилі в Telegram: методологія, інструменти й стандарти доказовості.md",
+      "archived_file": "raw/deep-research/DR1-2026-11-05.md",
+      "bytes": 52963,
+      "sha256": "96bb9a8a48c8661d0f676140c2989c38a740b04bb8f7e2355223f1d0b14659a9"
+    },
+    {
+      "id": "DR2",
+      "original_path": "/home/cyberdid/Downloads/Як визначають, що Telegram-канал російський або проросійський: критерії, офіційні списки, санкції та суперечки.md",
+      "archived_file": "raw/deep-research/DR2-2026-11-05.md",
+      "bytes": 46317,
+      "sha256": "7c0afb263db3f3d069674a8b615df0c80a29f5d2d68f148364045b8f82685b48"
+    },
+    {
+      "id": "DR3",
+      "original_path": "/home/cyberdid/Downloads/Аналітичні публікації.md",
+      "archived_file": "raw/deep-research/DR3-2026-11-05.md",
+      "bytes": 9608,
+      "sha256": "5017628778622976eb58bf0c9eb2d9be1d3af25d47ecfac45bc23c282b62e488"
+    },
+    {
+      "id": "DR4",
+      "original_path": "/home/cyberdid/Downloads/Виявлення скоординованої поведінки (CIB): методи і параметри.md",
+      "archived_file": "raw/deep-research/DR4-2026-11-05.md",
+      "bytes": 11960,
+      "sha256": "7799a95afd6ed7be0086354a6acd316b4734b61b84a5069e272d8c87c6d7e05e"
+    },
+    {
+      "id": "DR5",
+      "original_path": "/home/cyberdid/Downloads/Підрахунок переглядів у Telegram.md",
+      "archived_file": "raw/deep-research/DR5-2026-11-05.md",
+      "bytes": 13792,
+      "sha256": "efae4b6a0aed3dafc68b5f8bee195de68e72bd03afef6df7741390183bf434b1"
+    },
+    {
+      "id": "DR6",
+      "original_path": "/home/cyberdid/Downloads/Продовжувальний ефект впливу дезінформації та «інокуляція» (prebunking_debunking) .md",
+      "archived_file": "raw/deep-research/DR6-2026-11-05.md",
+      "bytes": 10767,
+      "sha256": "793f651475260880d6ee3c0cb307ffaf2f7dd9280db7eb4c6df5357f12fc1b46"
+    },
+    {
+      "id": "DR7",
+      "original_path": "/home/cyberdid/Downloads/Доступ дослідників до даних соцмереж.md",
+      "archived_file": "raw/deep-research/DR7-2026-11-05.md",
+      "bytes": 19258,
+      "sha256": "63573b725f1c6b0cd8d5e1cdd15e336d7370e9ccd3f4dc29704e781ccd2772f5"
+    }
+  ]
+}

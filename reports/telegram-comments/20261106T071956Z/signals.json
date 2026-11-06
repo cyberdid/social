@@ -1,0 +1,158 @@
+{
+  "source": "data/raw/telegram_comments/20261106T071956Z",
+  "comments": 39459,
+  "accounts": 12797,
+  "threads": 533,
+  "comments_per_account": {
+    "max": 209,
+    "median": 1,
+    "ge10": 662,
+    "ge50": 55
+  },
+  "S1_top10_share": 0.04,
+  "S1_top1pct_share": 0.189,
+  "S1_gini": 0.568,
+  "S2_copypasta_groups_ge3_accounts": 128,
+  "S2_copypasta_comments": 444,
+  "S2_near_pairs_verified": 1992,
+  "S2_near_pairs_diff_accounts": 475,
+  "S7_template_pools": [
+    {
+      "phrases": 39,
+      "comments": 117,
+      "accounts": 112,
+      "threads": [
+        "https://t.me/insiderukr/137695",
+        "https://t.me/truexanewsua/147862",
+        "https://t.me/uaonlii/135660"
+      ],
+      "share_of_thread_comments": {
+        "https://t.me/insiderukr/137695": 0.07,
+        "https://t.me/uaonlii/135660": 0.119,
+        "https://t.me/truexanewsua/147862": 0.082
+      },
+      "first_utc": "2026-11-03T12:18:52+00:00",
+      "last_utc": "2026-11-03T18:11:56+00:00",
+      "examples": [
+        "молодець що особисто відвідав",
+        "молодец что не остался в стороне",
+        "только ему доверяем в таких сложных ситуациях",
+        "спасибо что стабилизировали ситуацию",
+        "слава богу что он туда поехал",
+        "завдяки його візиту ситуація нормалізувалася",
+        "одразу після його візиту стало спокійно",
+        "добре що особисто проконтролював"
+      ]
+    },
+    {
+      "phrases": 60,
+      "comments": 240,
+      "accounts": 226,
+      "threads": [
+        "https://t.me/insiderukr/137695",
+        "https://t.me/truexanewsua/147862",
+        "https://t.me/uaonlii/135660",
+        "https://t.me/uaonlii/135665"
+      ],
+      "share_of_thread_comments": {
+        "https://t.me/insiderukr/137695": 0.108,
+        "https://t.me/uaonlii/135660": 0.183,
+        "https://t.me/truexanewsua/147862": 0.126,
+        "https://t.me/uaonlii/135665": 0.164
+      },
+      "first_utc": "2026-11-03T12:18:20+00:00",
+      "last_utc": "2026-11-03T22:37:18+00:00",
+      "examples": [
+        "слава богу обстановка нормализовалась",
+        "добре що він туди приїхав",
+        "стабілізував ситуацію велике дякую",
+        "одразу після його приїзду все заспокоїлось",
+        "справжній офіцер приїхав і розібрався",
+        "спасибо за то что успокоили обстановку",
+        "молодец что прибыл лично",
+        "тільки йому можна вірити в наш час"
+      ]
+    },
+    {
+      "phrases": 12,
+      "comments": 36,
+      "accounts": 36,
+      "threads": [
+        "https://t.me/truexanewsua/147862",
+        "https://t.me/uaonlii/135660",
+        "https://t.me/uaonlii/135665"
+      ],
+      "share_of_thread_comments": {
+        "https://t.me/uaonlii/135660": 0.037,
+        "https://t.me/truexanewsua/147862": 0.025,
+        "https://t.me/uaonlii/135665": 0.033
+      },
+      "first_utc": "2026-11-03T12:23:21+00:00",
+      "last_utc": "2026-11-03T22:18:23+00:00",
+      "examples": [
+        "ситуация наконецто стабилизировалась",
+        "добре що він там був",
+        "верим только буданову он молодец",
+        "єдина людина якій народ повністю довіряє",
+        "завдяки йому ситуація зараз стабільна",
+        "верим только буданову",
+        "після таких новин стало спокійніше",
+        "верим только его официальным заявлениям"
+      ]
+    }
+  ],
+  "S2x_accounts_same_text_ge3_threads": 11,
+  "S3_rapid_pairs": 218,
+  "S4_sync_groups": 0,
+  "S4_sync_comments": 0,
+  "S6": {
+    "sender_types": {
+      "user": 12765,
+      "channel": 32
+    },
+    "telegram_bot_flag_accounts": 13,
+    "premium_share": 0.073,
+    "no_username_share": 0.559,
+    "no_photo_share": 0.56,
+    "username_digits_tail_share": 0.057,
+    "scam_or_fake": 1,
+    "deleted_accounts": 22
+  },
+  "accounts_any_behavioural_signal": 1124,
+  "accounts_ge2_signal_types": 387,
+  "comments_from_ge2_accounts": 2450,
+  "share_comments_from_ge2_accounts": 0.0621,
+  "by_parent_group": {
+    "A": {
+      "comments": 1780,
+      "threads": 76,
+      "accounts": 388,
+      "share_from_ge2_signal_accounts": 0.0815
+    },
+    "B": {
+      "comments": 20694,
+      "threads": 106,
+      "accounts": 7696,
+      "share_from_ge2_signal_accounts": 0.0799
+    },
+    "C": {
+      "comments": 5858,
+      "threads": 166,
+      "accounts": 2330,
+      "share_from_ge2_signal_accounts": 0.0087
+    },
+    "D": {
+      "comments": 4726,
+      "threads": 129,
+      "accounts": 1140,
+      "share_from_ge2_signal_accounts": 0.0838
+    },
+    "U": {
+      "comments": 6401,
+      "threads": 56,
+      "accounts": 1436,
+      "share_from_ge2_signal_accounts": 0.0319
+    }
+  },
+  "accounts_commenting_in_both_B_and_C": 10
+}

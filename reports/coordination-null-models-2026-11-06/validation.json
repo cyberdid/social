@@ -1,0 +1,11 @@
+{
+  "unit_tests": 8,
+  "replicates_in_main_analysis": 9999,
+  "reported_tests": 16,
+  "main_script_and_all_input_hashes_match": true,
+  "all_holm_values_recomputed_and_checked": true,
+  "determinism_same_seed_B99_two_runs_all_six_aggregate_files_byte_identical": true,
+  "campaign_reconciliation_126_438_S7_111_checked": true,
+  "author_day_exact_dictionary_checks_per_draw_first_25": true,
+  "candidate_slots_605_fixed_author_day_316_checked": true
+}

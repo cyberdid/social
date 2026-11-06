@@ -1,0 +1,100 @@
+{
+  "created_at_utc": "2026-11-05T11:00:56.978087+00:00",
+  "purpose": "DR7 integration and targetedTikTok acquisition addendum; no source text or author profiles",
+  "sources": [
+    {
+      "id": "tiktok-commercial-query",
+      "url": "https://developers.tiktok.com/docs/en/commercial-content-api-query-commercial-content",
+      "note": "default10,max50; EEA scope excludesUK/Switzerland",
+      "accessed_at_utc": "2026-11-05T11:00:55.776149+00:00",
+      "verification": "documentation/source-only",
+      "status": 200,
+      "bytes": 257349,
+      "sha256": "c80bf2f2c4ab367fb361186e8223cd239f2f5a73bf1e045b364fc4552e404dd5",
+      "final_url": "https://developers.tiktok.com/docs/en/commercial-content-api-query-commercial-content"
+    },
+    {
+      "id": "tiktok-sdk-video",
+      "url": "https://raw.githubusercontent.com/davidteather/TikTok-Api/main/TikTokApi/api/video.py",
+      "note": "source-only public comment/list endpoint; SDK not installed or run",
+      "accessed_at_utc": "2026-11-05T11:00:55.776878+00:00",
+      "verification": "documentation/source-only",
+      "status": 200,
+      "bytes": 11711,
+      "sha256": "52d639cfae545adde4b7a64d794248367de46d8f7aa6dab7d09560cb909aef45",
+      "final_url": "https://raw.githubusercontent.com/davidteather/TikTok-Api/main/TikTokApi/api/video.py"
+    },
+    {
+      "id": "tiktok-sdk-comment",
+      "url": "https://raw.githubusercontent.com/davidteather/TikTok-Api/main/TikTokApi/api/comment.py",
+      "note": "source-only comment/list/reply endpoint; own collector request uses verified video item_id",
+      "accessed_at_utc": "2026-11-05T11:00:55.777449+00:00",
+      "verification": "documentation/source-only",
+      "status": 200,
+      "bytes": 2590,
+      "sha256": "fb5b76fb7d56e886e6336bec79f2d4cb7e036b2bcf9005f190974017a3faf1fa",
+      "final_url": "https://raw.githubusercontent.com/davidteather/TikTok-Api/main/TikTokApi/api/comment.py"
+    },
+    {
+      "id": "youtube-research",
+      "url": "https://research.youtube/",
+      "note": "Program exists; approved research scaled quota not automatic unlimited ordinarykey",
+      "accessed_at_utc": "2026-11-05T11:00:55.777933+00:00",
+      "verification": "documentation/source-only",
+      "status": 200,
+      "bytes": 113865,
+      "sha256": "7484e717e64a4376b2059bf4f46306a0db30afab5900405190febb3e204448a6",
+      "final_url": "https://research.youtube/"
+    },
+    {
+      "id": "bellingcat-autoarchiver",
+      "url": "https://raw.githubusercontent.com/bellingcat/auto-archiver/main/README.md",
+      "note": "Archives providedURL inputs, not platform-wide discovery; docs-only",
+      "accessed_at_utc": "2026-11-05T11:00:55.778440+00:00",
+      "verification": "documentation/source-only",
+      "status": 200,
+      "bytes": 2535,
+      "sha256": "a9dc3bddcb828dc6d0ad40ca822b6076bd2e0ad719d5ebc093edfcadb3df4824",
+      "final_url": "https://raw.githubusercontent.com/bellingcat/auto-archiver/main/README.md"
+    },
+    {
+      "id": "gdpr",
+      "url": "https://eur-lex.europa.eu/eli/reg/2016/679",
+      "note": "Official legal text; safeguards and data minimisation; not blanket publicdata permission",
+      "accessed_at_utc": "2026-11-05T11:00:56.090866+00:00",
+      "verification": "documentation/source-only",
+      "status": 202,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "final_url": "https://eur-lex.europa.eu/eli/reg/2016/679"
+    },
+    {
+      "id": "dsa-dataaccess",
+      "url": "https://digital-strategy.ec.europa.eu/en/library/delegated-act-data-access-under-digital-services-act-dsa",
+      "note": "Official mechanism distinct from standard publicweb/researchAPI access",
+      "accessed_at_utc": "2026-11-05T11:00:56.139320+00:00",
+      "verification": "documentation/source-only",
+      "status": 200,
+      "bytes": 49825,
+      "sha256": "165fac847dc0b79d3736e4d4057992a71f9438e0923119e068a9adc492699495",
+      "final_url": "https://digital-strategy.ec.europa.eu/en/library/delegated-act-data-access-under-digital-services-act-dsa"
+    }
+  ],
+  "dr7_input": "raw/deep-research/DR7-2026-11-05.md",
+  "target_snapshot_receipt": "raw/research/tiktok-fire-20261105T105600Z-snapshot-receipt.json",
+  "video_receipt": "raw/research/tiktok-fire-20261105T105900Z-video-receipt.json",
+  "browser_test": {
+    "iab": "unavailable",
+    "chrome_createTab": "CUA implementation error: cannot read undefined timeoutMs",
+    "user_credentials_used": false
+  },
+  "discovery_test": {
+    "queries": [
+      "site:tiktok.com \"софіївськаборщагівка\" \"пожежа\" \"2026\"",
+      "site:tiktok.com \"Борщагівка\" \"замітають сліди\"",
+      "site:tiktok.com/@anastasiyapalivoda/video/7704443960013376789"
+    ],
+    "result": "web search/open blocked TikTok byrobots and returned irrelevantpages; no verified broad TikTokkeyword discovery established",
+    "not_an_absence_claim": true
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "source": "data/raw/tiktok/20261106T075128Z-tg-link-7703976030532340998",
+  "comments": 808,
+  "accounts": 633,
+  "comments_per_account": {
+    "max": 7,
+    "median": 1,
+    "accounts_ge2": 106,
+    "accounts_ge5": 9
+  },
+  "S1_top1_share": 0.009,
+  "S1_top5_share": 0.038,
+  "S1_top10pct_accounts_share": 0.241,
+  "S1_gini": 0.191,
+  "S2_exact_copy_groups": 2,
+  "S2_exact_copy_comments": 4,
+  "S2_near_copy_pairs": 0,
+  "S2_examples": [
+    {
+      "text": "дякую за розяснення",
+      "comments": 2,
+      "accounts": 2,
+      "span_min": 1853.7
+    },
+    {
+      "text": "дякую за інформацію",
+      "comments": 2,
+      "accounts": 2,
+      "span_min": 6.5
+    }
+  ],
+  "S3_rapid_pairs": 2,
+  "S4_synchronized_groups": 0,
+  "S5_bins": 300,
+  "S5_median_per_5min": 2.0,
+  "S5_burst_bins": [
+    {
+      "bin_utc": "2026-11-03T16:40:00+00:00",
+      "comments": 20
+    },
+    {
+      "bin_utc": "2026-11-03T16:55:00+00:00",
+      "comments": 20
+    },
+    {
+      "bin_utc": "2026-11-03T16:45:00+00:00",
+      "comments": 19
+    },
+    {
+      "bin_utc": "2026-11-03T17:05:00+00:00",
+      "comments": 18
+    },
+    {
+      "bin_utc": "2026-11-03T17:00:00+00:00",
+      "comments": 18
+    },
+    {
+      "bin_utc": "2026-11-03T16:50:00+00:00",
+      "comments": 16
+    },
+    {
+      "bin_utc": "2026-11-03T17:10:00+00:00",
+      "comments": 16
+    },
+    {
+      "bin_utc": "2026-11-03T17:15:00+00:00",
+      "comments": 16
+    },
+    {
+      "bin_utc": "2026-11-03T17:20:00+00:00",
+      "comments": 14
+    },
+    {
+      "bin_utc": "2026-11-03T16:35:00+00:00",
+      "comments": 13
+    }
+  ],
+  "time_span_utc": [
+    "2026-11-03T16:08:21+00:00",
+    "2026-11-06T07:10:38+00:00"
+  ],
+  "share_first_6h": 0.537,
+  "S6_default_handle_share": 0.231,
+  "S6_nick_eq_handle_share": 0.126,
+  "S6_nick_empty_share": 0.0,
+  "verified_accounts": 0,
+  "lang": {
+    "uk": 482,
+    "un": 157,
+    "ru": 139,
+    "bg": 14,
+    "be": 4,
+    "en": 4
+  },
+  "accounts_any_behavioural_signal": 14,
+  "accounts_ge2_signal_types": 1,
+  "comments_from_ge2_signal_accounts": 7,
+  "by_manual_category": {
+    "not_candidate": {
+      "comments": 808,
+      "accounts": 633,
+      "comments_from_flagged_accounts": 59
+    }
+  }
+}

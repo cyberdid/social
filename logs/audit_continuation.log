@@ -1,0 +1,2 @@
+{"dataset": "continuation_20261105", "n_publications": 23350, "n_relevant": 1408, "unknown_view_counters": 0, "sum_snapshot_view_counters": 115931014}
+copy threshold summaries [(0.6, 367, 3, 4), (0.75, 288, 2, 1), (0.9, 213, 2, 1)]

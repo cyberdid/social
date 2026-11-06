@@ -1,0 +1,66 @@
+{
+  "nodes": 69,
+  "edges": 60,
+  "volume": 65,
+  "weak_components": 12,
+  "strong_components": 68,
+  "self_loops": 0,
+  "two_step_paths": 53,
+  "closed_two_step_paths": 2,
+  "two_step_closure_rate": 0.03773584905660377,
+  "cross_group_edges": 20,
+  "cross_group_volume": 24,
+  "relevant_posts": 1408,
+  "narrative_bins": 15,
+  "empty_bins": 2,
+  "unlabelled_posts": 557,
+  "multilabel_posts": 394,
+  "label_counts": {
+    "N0_official": 307,
+    "N1_hostages": 301,
+    "N2_death_torture": 505,
+    "N3_tcc_camp": 230,
+    "N4_cover_up": 81
+  },
+  "label_assignment_sum": 1424,
+  "window_start": "2026-11-02T00:00:00+02:00",
+  "window_end_exclusive": "2026-11-05T12:10:13+02:00",
+  "timezone": "Europe/Kyiv",
+  "final_partial_bin_hours": 0.17027777777777778,
+  "graph_scope": "Only endpoints of visible forwarded edges; excludes isolated channels.",
+  "distance": "Unweighted directed shortest paths; n used only as observed volume.",
+  "labels_scope": "Existing regex thematic labels, not stance; overlap permitted.",
+  "granger": {
+    "run": false,
+    "interpretation": "exploratory only; no p-values",
+    "reasons": [
+      "15 six-hour bins, with first empty bins and final partial bin",
+      "single shared event, nonstationarity and common shocks",
+      "weak validation of N1/N2 and other lexical labels",
+      "panel coverage, copied text and aggregate graph do not identify operators or causal influence"
+    ]
+  },
+  "validation_table": "reports/20261105T101013Z/validation/agreement_test_v2.csv",
+  "input_sha256": {
+    "reports/continuation_20261105/forwards_edges.csv": "a619bc9c9e33005b3c5259860ab5a3e863c0f15b2887e33f0212a8cb1ec3b4c0",
+    "reports/continuation_20261105/relevant_posts.csv": "8b69539801a385bee8f5ea05c5315d18a6d518f96393ff5bf5cd6f57529f8b37",
+    "reports/20261105T101013Z/validation/agreement_test_v2.csv": "07da1eb6f8d8121d02a2c9272b826c5199535df05fd6169326070c765702ed91"
+  },
+  "software": {
+    "python": "3.12.3",
+    "networkx": "3.6.1",
+    "pandas": "3.0.5",
+    "matplotlib": "3.11.1"
+  },
+  "checks": {
+    "unique_post_urls": true,
+    "positive_integer_edge_volumes": true,
+    "consistent_node_groups": true,
+    "in_out_degree_and_volume_reconcile": true,
+    "group_matrix_reconciles": true,
+    "bin_denominators_reconcile": true,
+    "label_totals_reconcile": true,
+    "empty_bin_zero_share_explicit": true,
+    "causality_or_operator_attribution_tested": false
+  }
+}

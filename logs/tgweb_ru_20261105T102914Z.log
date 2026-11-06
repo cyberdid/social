@@ -1,0 +1,151 @@
+[  1] d0 exclusive_ukraina_ru         ok             window=  102 relevant=   8 next=2
+[  2] d0 podcast_ukrainaru            unavailable    window=    0 relevant=   0 next=2
+[  3] d0 lost_armour                  ok             window=   38 relevant=   0 next=2
+[  4] d0 frontbird                    ok             window=   75 relevant=   1 next=2
+[  5] d0 izvestia_ru                  ok             window=   39 relevant=   3 next=16
+[  6] d0 maximgrigoryev               ok             window=   30 relevant=   0 next=16
+[  7] d0 segodnia_ru                  ok             window=   96 relevant=   2 next=16
+[  8] d0 front_narod                  ok             window=    5 relevant=   0 next=16
+[  9] d0 nsdvluganske                 ok             window=   73 relevant=   1 next=16
+[ 10] d0 icpbtrubicon                 ok             window=   41 relevant=   0 next=16
+[ 11] d0 ria_novosti_russiya          ok             window=   94 relevant=   2 next=17
+[ 12] d0 warhronika                   ok             window=   63 relevant=   2 next=17
+[ 13] d0 voin_dv                      ok             window=   47 relevant=   1 next=17
+[ 14] d0 belarus_vpo                  ok             window=   82 relevant=   2 next=18
+[ 15] d0 sputniklive                  ok             window=  169 relevant=   1 next=18
+[ 16] d0 retro_gradd                  ok             window=   22 relevant=   0 next=18
+[ 17] d0 mooveche                     ok             window=    4 relevant=   0 next=18
+[ 18] d0 anna_news                    ok             window=   72 relevant=   6 next=19
+[ 19] d0 brigada_varyag               ok             window=   15 relevant=   0 next=19
+[ 20] d0 rybar                        unavailable    window=    0 relevant=   0 next=19
+[ 21] d0 arx_spn                      ok             window=   44 relevant=   3 next=19
+[ 22] d0 shot_proverka                ok             window=   16 relevant=   0 next=19
+[ 23] d0 opersvodki                   ok             window=   36 relevant=   2 next=19
+[ 24] d0 frontline_pvt                ok             window=   82 relevant=   0 next=19
+[ 25] d0 z_arhiv                      ok             window=   13 relevant=   0 next=19
+[ 26] d0 stormdron                    ok             window=    5 relevant=   0 next=19
+[ 27] d0 china3army                   ok             window=   23 relevant=   0 next=19
+[ 28] d0 radio_sputnik                ok             window=  203 relevant=   3 next=19
+[ 29] d0 designersmil                 ok             window=   28 relevant=   0 next=19
+[ 30] d0 lantratovadobro              ok             window=   11 relevant=   0 next=19
+[ 31] d0 voskoboinikovaleksandr       ok             window=  124 relevant=   2 next=20
+[ 32] d0 ramzayiegokomanda            ok             window=  184 relevant=   4 next=20
+[ 33] d0 staraya                      ok             window=   25 relevant=   0 next=20
+[ 34] d0 russia_news07                ok             window=  159 relevant=   3 next=21
+[ 35] d0 mashmoneymash                ok             window=   31 relevant=   0 next=21
+[ 36] d0 vandrytsa                    ok             window=    4 relevant=   0 next=21
+[ 37] d0 zalaaero                     ok             window=   10 relevant=   0 next=21
+[ 38] d0 asgasparyan                  ok             window=   30 relevant=   1 next=21
+[ 39] d0 the_wrong_side               ok             window=   30 relevant=   0 next=21
+[ 40] d0 svoygoroddruzhkovka          ok             window=   11 relevant=   0 next=21
+[ 41] d0 belarusian_silovik           ok             window=  116 relevant=   2 next=21
+[ 42] d0 dva_mjors_kortizol           ok             window=   31 relevant=   2 next=21
+[ 43] d0 dva_majors_kortizol_chat     unavailable    window=    0 relevant=   0 next=21
+[ 44] d0 mariavladimirovnazakharova   ok             window=   11 relevant=   0 next=21
+[ 45] d0 margaritasimonyan            ok             window=   18 relevant=   0 next=21
+[ 46] d0 special_authors              ok             window=   11 relevant=   1 next=22
+[ 47] d0 tass_live                    ok             window=   26 relevant=   0 next=22
+[ 48] d0 zachistka_ua                 ok             window=  112 relevant=   6 next=24
+[ 49] d0 politnavigator               ok             window=  164 relevant=   0 next=24
+[ 50] d0 za_froht                     ok             window=   57 relevant=   7 next=24
+[ 51] d0 kornilov1968                 ok             window=   50 relevant=   2 next=24
+[ 52] d0 rashepilo                    ok             window=   76 relevant=   5 next=24
+[ 53] d0 infowar_rus                  ok             window=   14 relevant=   1 next=24
+[ 54] d0 medvedevvesti                ok             window=   30 relevant=   3 next=24
+[ 55] d0 podvignarodaussr             ok             window=   23 relevant=   0 next=24
+[ 56] d0 voiceofiran_ru               ok             window=  109 relevant=   0 next=24
+[ 57] d0 mediakiller2021              ok             window=   42 relevant=   8 next=24
+[ 58] d0 voenacher                    ok             window=   74 relevant=   1 next=24
+[ 59] d0 slutsky_l                    ok             window=    9 relevant=   0 next=24
+[ 60] d0 matveychev                   ok             window=   21 relevant=   0 next=24
+[ 61] d0 oper_goblin                  ok             window=   27 relevant=   1 next=25
+[ 62] d0 igor_korotchenko             ok             window=   78 relevant=   0 next=25
+[ 63] d0 holmogor_talks               ok             window=   36 relevant=   0 next=25
+[ 64] d0 skurlatovlive                ok             window=    4 relevant=   0 next=25
+[ 65] d0 alexandr_malkevich           ok             window=   12 relevant=   0 next=25
+[ 66] d0 oprf_official                ok             window=   30 relevant=   0 next=25
+[ 67] d0 btr80                        ok             window=   64 relevant=   4 next=25
+[ 68] d0 ukrainian_guide              ok             window=    9 relevant=   0 next=25
+[ 69] d0 armycorp44                   ok             window=    8 relevant=   1 next=25
+[ 70] d0 zov_lnr                      ok             window=    3 relevant=   0 next=25
+[ 71] d0 dimsmirnov175                ok             window=  223 relevant=   0 next=25
+[ 72] d0 trackamerc                   ok             window=    4 relevant=   0 next=25
+[ 73] d0 olegtsarov                   ok             window=   97 relevant=  12 next=28
+[ 74] d0 newmirr                      unavailable    window=    0 relevant=   0 next=28
+[ 75] d0 tgrussia                     ok             window=   34 relevant=   0 next=28
+[ 76] d0 rentv_news                   ok             window=  228 relevant=   6 next=28
+[ 77] d0 vozmezdie_2022               ok             window=   80 relevant=   4 next=28
+[ 78] d0 nsdvkharkove                 ok             window=   62 relevant=   6 next=28
+[ 79] d0 nsdvdonetske                 ok             window=   67 relevant=   4 next=30
+[ 80] d0 sever_z                      ok             window=   58 relevant=   3 next=30
+[ 81] d0 tchk14                       ok             window=   37 relevant=   1 next=30
+[ 82] d0 nsdelzap1                    ok             window=   69 relevant=   3 next=30
+[ 83] d0 readovkanews                 ok             window=   83 relevant=   2 next=30
+[ 84] d0 on_war_on_war                ok             window=   37 relevant=   1 next=30
+[ 85] d0 ntvnews                      ok             window=  144 relevant=   2 next=30
+[ 86] d0 iamhumancatcher              ok             window=   26 relevant=   0 next=30
+[ 87] d0 warfakes                     ok             window=   15 relevant=   2 next=30
+[ 88] d0 ostashkonews                 ok             window=  197 relevant=  17 next=30
+[ 89] d0 milinfolive                  ok             window=   74 relevant=   3 next=30
+[ 90] d0 talipovonlinev               ok             window=   61 relevant=   2 next=30
+[ 91] d0 cremeasmersh                 ok             window=    1 relevant=   0 next=30
+[ 92] d0 nikvanta_nikvanta            ok             window=   38 relevant=   3 next=30
+[ 93] d0 dmitri_kiselev               ok             window=    5 relevant=   0 next=30
+[ 94] d0 georgeivensiya               ok             window=  130 relevant=   8 next=30
+[ 95] d0 olgasharij                   ok             window=    3 relevant=   1 next=30
+[ 96] d0 gefestwar                    ok             window=   11 relevant=   0 next=30
+[ 97] d0 voennyotdel                  ok             window=    7 relevant=   0 next=30
+[ 98] d0 roslikovslv                  ok             window=    8 relevant=   0 next=30
+[ 99] d0 parstodayrussian             ok             window=  203 relevant=   0 next=30
+[100] d0 yzheleznyak                  ok             window=   35 relevant=   3 next=30
+[101] d0 flyvpn                       unavailable    window=    0 relevant=   0 next=30
+[102] d0 mashkomnata                  ok             window=   10 relevant=   1 next=30
+[103] d0 mashnasporte                 ok             window=   30 relevant=   0 next=30
+[104] d0 zovpobedy                    ok             window=   18 relevant=   0 next=30
+[105] d0 hackberegini                 unavailable    window=    0 relevant=   0 next=30
+[106] d0 poisk_mil                    ok             window=   15 relevant=   0 next=30
+[107] d0 mayday_7700                  ok             window=    5 relevant=   0 next=30
+[108] d0 chdambiev                    ok             window=   21 relevant=   0 next=30
+[109] d0 warinmyeyes                  ok             window=   12 relevant=   0 next=30
+[110] d0 southernrepublic             ok             window=   63 relevant=   0 next=30
+[111] d0 onf_front                    ok             window=   14 relevant=   0 next=30
+[112] d0 razvozhaev                   ok             window=   28 relevant=   0 next=30
+[113] d0 creamy_caprice               ok             window=   14 relevant=   1 next=31
+[114] d0 nm_dnr                       ok             window=   23 relevant=   0 next=31
+[115] d0 katya_valya_dnr              ok             window=    3 relevant=   0 next=31
+[116] d0 warriorofnorth               ok             window=   61 relevant=   1 next=31
+[117] d0 heroesofz                    ok             window=    5 relevant=   0 next=31
+[118] d0 dnevnikdesantnika            ok             window=   89 relevant=   2 next=31
+[119] d0 divgen                       ok             window=   56 relevant=   2 next=31
+[120] d0 divannyevoini                ok             window=   26 relevant=   3 next=31
+[121] d0 kimmarina                    ok             window=   11 relevant=   1 next=31
+[122] d0 sashakots                    ok             window=   65 relevant=   4 next=31
+[123] d0 lobushkin                    ok             window=   21 relevant=   0 next=31
+[124] d0 duhovitvoemu                 ok             window=    4 relevant=   0 next=31
+[125] d0 govoritmilonov               ok             window=   15 relevant=   0 next=31
+[126] d0 tass_povolzhye               ok             window=   47 relevant=   0 next=31
+[127] d0 putnik1lv                    ok             window=   10 relevant=   0 next=31
+[128] d0 tacticalmedicinecourses      ok             window=   36 relevant=   0 next=31
+[129] d0 den_v_kadre                  ok             window=   42 relevant=   1 next=31
+[130] d0 lunay14                      ok             window=   33 relevant=   0 next=31
+[131] d0 nsdvkhersone                 ok             window=   76 relevant=   3 next=31
+[132] d0 nsdvkieve                    ok             window=   81 relevant=  29 next=32
+[133] d0 zovgrad                      ok             window=   67 relevant=   1 next=32
+[134] d0 nsdvodesse                   ok             window=   62 relevant=   4 next=32
+[135] d1 politjoystic                 ok             window=   55 relevant=   2 next=0
+[136] d1 larshesler                   ok             window=    2 relevant=   1 next=0
+[137] d1 izvestia                     ok             window=  260 relevant=  11 next=0
+[138] d1 otherukraine                 ok             window=  144 relevant=  17 next=0
+[139] d1 zovbear0                     ok             window=  202 relevant=  12 next=4
+[140] d1 nsdvnikolaeve                ok             window=   76 relevant=   8 next=4
+[141] d1 kharkov_perviy               ok             window=  233 relevant=  23 next=4
+[142] d1 rt_russian                   ok             window=  278 relevant=   0 next=4
+[143] d1 zhizn_fm                     ok             window=   33 relevant=   1 next=4
+[144] d1 shot_shot                    ok             window=   60 relevant=   4 next=4
+[145] d1 kost1969                     ok             window=    5 relevant=   2 next=4
+[146] d1 voenkorkotenok               ok             window=  104 relevant=  12 next=4
+[147] d1 yurasumy                     ok             window=   39 relevant=   5 next=6
+[148] d1 baltnews                     ok             window=  110 relevant=   3 next=7
+[149] d1 stranaua                     ok             window=  312 relevant=  60 next=7
+[150] d1 rus_demiurge                 ok             window=   42 relevant=   3 next=7
+{"posts": 8456, "relevant": 391} -> /home/cyberdid/Projects/Social/data/raw/telegram_web/20261105T102914Z

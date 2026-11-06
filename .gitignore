@@ -1,0 +1,25 @@
+.venv/
+__pycache__/
+*.session
+*.session-journal
+data/
+.env
+*.env
+# Raw TikTok bodies contain public author fields and yt-dlp-generated headers/cookies: keep out of git (receipts are clean).
+raw/research/tiktok-fire-*
+!raw/research/tiktok-fire-*-receipt.json
+# Per-post manual TikTok reports contain row-level comment examples and local pseudonyms.
+reports/tiktok/*-manual-*/
+reports/tiktok/manual_batch_*/
+
+# Reproducible build scripts live in scripts/reports; rendering scratch stays local.
+tmp/
+# Keep pseudonymous per-account diagnostics out of version control.
+reports/**/flagged_accounts.csv
+reports/**/automation_flagged_accounts.csv
+# Full subtitle text stays in the local evidence bundle; publish aggregates and citations.
+reports/youtube-content/**/*.transcript.txt
+reports/youtube-content/**/*.transcript.json
+reports/source-watch/*.lock
+reports/source-watch/*.log
+reports/source-watch/crontab.*.txt

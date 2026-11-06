@@ -1,0 +1,612 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-11-05T10:45:53.636748+00:00",
+  "purpose": "Primary-source cross-platform public-post acquisition tool review, not an incident corpus",
+  "boundaries": {
+    "no_user_cookie_access": true,
+    "no_logins": true,
+    "no_posting": true,
+    "no_private_data": true,
+    "no_global_installs": true,
+    "no_media_downloads": true
+  },
+  "test_status_legend": {
+    "documentation-only": "Source successfully read; platform API not exercised",
+    "source-reviewed": "Implementation inspected at pinned commit",
+    "tested-local": "Installed CLI/version/help exercised without account",
+    "tested-offline": "Upstream tests with fixtures/mocks; no proof of current platform availability",
+    "tested-live-anonymous": "Small unauthenticated public endpoint call; no coverage/completeness proof"
+  },
+  "sources": [
+    {
+      "id": "x-search",
+      "url": "https://docs.x.com/x-api/posts/search/introduction",
+      "accessed_at_utc": "2026-11-05T10:45:46.608367+00:00",
+      "verification": "documentation-only",
+      "note": "recent 7 days; archive back to 2006; pay-per-use/Enterprise archive access",
+      "http_status": 200,
+      "final_url": "https://docs.x.com/x-api/posts/search/introduction",
+      "byte_length": 291667,
+      "sha256": "3c272e9c6841fe318ff94d6e4c0180c133885902ecb624e529551849448a5a24"
+    },
+    {
+      "id": "x-pricing",
+      "url": "https://docs.x.com/x-api/getting-started/pricing",
+      "accessed_at_utc": "2026-11-05T10:45:46.608970+00:00",
+      "verification": "documentation-only",
+      "note": "Current usage credits and per-resource prices; prices may change",
+      "http_status": 200,
+      "final_url": "https://docs.x.com/x-api/getting-started/pricing",
+      "byte_length": 291627,
+      "sha256": "4dd00097ba4fc487a2296d54e9dc239e7511d54c8ac32660dac653943fdd602c"
+    },
+    {
+      "id": "twitter-cli-readme",
+      "url": "https://raw.githubusercontent.com/public-clis/twitter-cli/7c634e0d396b1e7af9f63315b414925fe4f29ae7/README.md",
+      "accessed_at_utc": "2026-11-05T10:45:46.609508+00:00",
+      "verification": "source-reviewed; installation/help/offline tests only; no live authenticated X collection",
+      "note": "Read/write CLI; browser or environment cookie authentication",
+      "http_status": 200,
+      "final_url": "https://raw.githubusercontent.com/public-clis/twitter-cli/7c634e0d396b1e7af9f63315b414925fe4f29ae7/README.md",
+      "byte_length": 21809,
+      "sha256": "3f82b9d249913b961097078872b26b90a6f85bfbae542f65d7269774ed3a7773"
+    },
+    {
+      "id": "twitter-cli-client",
+      "url": "https://raw.githubusercontent.com/public-clis/twitter-cli/7c634e0d396b1e7af9f63315b414925fe4f29ae7/twitter_cli/client.py",
+      "accessed_at_utc": "2026-11-05T10:45:46.609922+00:00",
+      "verification": "source-reviewed; installation/help/offline tests only; no live authenticated X collection",
+      "note": "Web GraphQL SearchTimeline POST; internal pagination; maxCount default200 absolute500",
+      "http_status": 200,
+      "final_url": "https://raw.githubusercontent.com/public-clis/twitter-cli/7c634e0d396b1e7af9f63315b414925fe4f29ae7/twitter_cli/client.py",
+      "byte_length": 50915,
+      "sha256": "c2b35f309118550c60ccf8b309e9313e0336f790bb73db4e903a7b77e957dd95"
+    },
+    {
+      "id": "twitter-cli-parser",
+      "url": "https://raw.githubusercontent.com/public-clis/twitter-cli/7c634e0d396b1e7af9f63315b414925fe4f29ae7/twitter_cli/parser.py",
+      "accessed_at_utc": "2026-11-05T10:45:46.610469+00:00",
+      "verification": "source-reviewed; installation/help/offline tests only; no live authenticated X collection",
+      "note": "Retweets normalized to original ID/date and retweeted_by; missing views converted to0",
+      "http_status": 200,
+      "final_url": "https://raw.githubusercontent.com/public-clis/twitter-cli/7c634e0d396b1e7af9f63315b414925fe4f29ae7/twitter_cli/parser.py",
+      "byte_length": 21890,
+      "sha256": "255a3399b51a70c2940bd98636fb3e3273b13a9cd0e71a49e2b6b748b7b594e7"
+    },
+    {
+      "id": "twitter-cli-cli",
+      "url": "https://raw.githubusercontent.com/public-clis/twitter-cli/7c634e0d396b1e7af9f63315b414925fe4f29ae7/twitter_cli/cli.py",
+      "accessed_at_utc": "2026-11-05T10:45:46.610855+00:00",
+      "verification": "source-reviewed; installation/help/offline tests only; no live authenticated X collection",
+      "note": "Search supports since/until and Latest but no CLI search continuation cursor",
+      "http_status": 200,
+      "final_url": "https://raw.githubusercontent.com/public-clis/twitter-cli/7c634e0d396b1e7af9f63315b414925fe4f29ae7/twitter_cli/cli.py",
+      "byte_length": 55899,
+      "sha256": "b7b4695667cf62538e24432de2a4e889ecae98b3369e2f0bfb039fcef19aa748"
+    },
+    {
+      "id": "twitter-cli-schema",
+      "url": "https://raw.githubusercontent.com/public-clis/twitter-cli/7c634e0d396b1e7af9f63315b414925fe4f29ae7/SCHEMA.md",
+      "accessed_at_utc": "2026-11-05T10:45:46.965580+00:00",
+      "verification": "source-reviewed; installation/help/offline tests only; no live authenticated X collection",
+      "note": "Structured output envelope; stdout differs from output file",
+      "http_status": 200,
+      "final_url": "https://raw.githubusercontent.com/public-clis/twitter-cli/7c634e0d396b1e7af9f63315b414925fe4f29ae7/SCHEMA.md",
+      "byte_length": 1082,
+      "sha256": "9f1bd93a8435b8b170e02d2301aa7b2ca164f3fdfdcae1726a274df12859400a"
+    },
+    {
+      "id": "twitter-cli-auth",
+      "url": "https://raw.githubusercontent.com/public-clis/twitter-cli/7c634e0d396b1e7af9f63315b414925fe4f29ae7/twitter_cli/auth.py",
+      "accessed_at_utc": "2026-11-05T10:45:46.987170+00:00",
+      "verification": "source-reviewed; installation/help/offline tests only; no live authenticated X collection",
+      "note": "TWITTER_AUTH_TOKEN+TWITTER_CT0; fallback browser-cookie extraction",
+      "http_status": 200,
+      "final_url": "https://raw.githubusercontent.com/public-clis/twitter-cli/7c634e0d396b1e7af9f63315b414925fe4f29ae7/twitter_cli/auth.py",
+      "byte_length": 24793,
+      "sha256": "98d08b0cb76ad308c974e62cac483e5c5bcc71662b32a54e3a081d571ea4f7b9"
+    },
+    {
+      "id": "twscrape-readme",
+      "url": "https://raw.githubusercontent.com/vladkens/twscrape/e87459615053aea171178ba19608e63718a85788/readme.md",
+      "accessed_at_utc": "2026-11-05T10:45:47.027248+00:00",
+      "verification": "source-reviewed; installation/help/offline tests only; no live authenticated X collection",
+      "note": "Authorized accounts required; CLI and async API; raw mode",
+      "http_status": 200,
+      "final_url": "https://raw.githubusercontent.com/vladkens/twscrape/e87459615053aea171178ba19608e63718a85788/readme.md",
+      "byte_length": 14284,
+      "sha256": "88adb3a6bba6f2bedae55f1cc15c0504a7f4f6e8d5540a092c7b36aac587a682"
+    },
+    {
+      "id": "twscrape-model",
+      "url": "https://raw.githubusercontent.com/vladkens/twscrape/e87459615053aea171178ba19608e63718a85788/twscrape/models.py",
+      "accessed_at_utc": "2026-11-05T10:45:47.064988+00:00",
+      "verification": "source-reviewed; installation/help/offline tests only; no live authenticated X collection",
+      "note": "Event id/date retained; nested retweetedTweet; nullable viewCount",
+      "http_status": 200,
+      "final_url": "https://raw.githubusercontent.com/vladkens/twscrape/e87459615053aea171178ba19608e63718a85788/twscrape/models.py",
+      "byte_length": 45153,
+      "sha256": "151e84ba7885514a7d10764e3d17df33fe1724618a83ceee58ae002e4e9d812d"
+    },
+    {
+      "id": "twscrape-api",
+      "url": "https://raw.githubusercontent.com/vladkens/twscrape/e87459615053aea171178ba19608e63718a85788/twscrape/api.py",
+      "accessed_at_utc": "2026-11-05T10:45:47.072817+00:00",
+      "verification": "source-reviewed; installation/help/offline tests only; no live authenticated X collection",
+      "note": "Latest search default; async page iteration/search_raw",
+      "http_status": 200,
+      "final_url": "https://raw.githubusercontent.com/vladkens/twscrape/e87459615053aea171178ba19608e63718a85788/twscrape/api.py",
+      "byte_length": 32915,
+      "sha256": "752b81a9a0189a3961c8a0655b7b38a2ce22d589f2fffc7ae9c0f50824344be0"
+    },
+    {
+      "id": "mcl-access",
+      "url": "https://developers.facebook.com/docs/content-library-and-api/get-access",
+      "accessed_at_utc": "2026-11-05T10:45:47.100697+00:00",
+      "verification": "documentation-only",
+      "note": "Institutional eligibility; RTM; CASD review; Meta SRE free",
+      "http_status": 200,
+      "final_url": "https://developers.facebook.com/docs/content-library-and-api/get-access",
+      "byte_length": 174050,
+      "sha256": "71a0b8f6ff125eb06e754ea994c8bff190137aead605f95a382ce5f0397769b3"
+    },
+    {
+      "id": "mcl-ui",
+      "url": "https://developers.facebook.com/docs/content-library-and-api/content-library",
+      "accessed_at_utc": "2026-11-05T10:45:47.277431+00:00",
+      "verification": "documentation-only",
+      "note": "Current Facebook/Instagram/Threads/WhatsApp scope and downloadable subsets",
+      "http_status": 200,
+      "final_url": "https://developers.facebook.com/docs/content-library-and-api/content-library",
+      "byte_length": 231785,
+      "sha256": "6410b04a28076602691a73c9c46f218f7382aae6eec5871bd39a22dc3320ed69"
+    },
+    {
+      "id": "mcl-api",
+      "url": "https://developers.facebook.com/docs/content-library-and-api/content-library-api/overview",
+      "accessed_at_utc": "2026-11-05T10:45:47.297422+00:00",
+      "verification": "documentation-only",
+      "note": "API public FB/IG/WhatsApp; no downloading API data by any means",
+      "http_status": 200,
+      "final_url": "https://developers.facebook.com/docs/content-library-and-api/content-library-api/overview",
+      "byte_length": 173369,
+      "sha256": "1269abd6cef2ced24fcdc8b625c92efdd4430c9135f6df44f07965836377eccc"
+    },
+    {
+      "id": "mcl-somar",
+      "url": "https://www.icpsr.umich.edu/sites/somar/meta-content-library",
+      "accessed_at_utc": "2026-11-05T10:45:47.369094+00:00",
+      "verification": "documentation-only",
+      "note": "SRE or SOMAR VDE; deletion and approved research outputs",
+      "http_status": 200,
+      "final_url": "https://www.icpsr.umich.edu/sites/somar/meta-content-library",
+      "byte_length": 32542,
+      "sha256": "ba9aac77be420a9a59a78aa9ceca982bf620b8a83b535280cb40cc488bce3543"
+    },
+    {
+      "id": "mcl-somar-2026",
+      "url": "https://www.icpsr.umich.edu/sites/somar/somar-newsletter-archive/somar-newsletter-spring-2026",
+      "accessed_at_utc": "2026-11-05T10:45:47.408590+00:00",
+      "verification": "documentation-only",
+      "note": "Current SOMAR VDE fees; RTM application transition",
+      "http_status": 200,
+      "final_url": "https://www.icpsr.umich.edu/sites/somar/somar-newsletter-archive/somar-newsletter-spring-2026",
+      "byte_length": 47959,
+      "sha256": "4b812dfdbbf150c031404c419356d0603a6c5b8ab9d261b189ac11a2ab7a56d9"
+    },
+    {
+      "id": "facebook-page-access",
+      "url": "https://developers.facebook.com/docs/features-reference/page-public-content-access/",
+      "accessed_at_utc": "2026-11-05T10:45:47.428534+00:00",
+      "verification": "documentation-only",
+      "note": "Approved business-verified feature can read other public Pages; not unrestricted personal/group search",
+      "http_status": 200,
+      "final_url": "https://developers.facebook.com/docs/features-reference/page-public-content-access/",
+      "byte_length": 167674,
+      "sha256": "725a8242ab67774e082e9e2d709b6ec568464639ba4b0f99d6c6d1a29828b6da"
+    },
+    {
+      "id": "instagram-api",
+      "url": "https://developers.facebook.com/docs/instagram-platform/instagram-api-with-facebook-login/",
+      "accessed_at_utc": "2026-11-05T10:45:48.096575+00:00",
+      "verification": "documentation-only",
+      "note": "Professional accounts; cannot access consumer accounts; cursor pagination",
+      "http_status": 200,
+      "final_url": "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login",
+      "byte_length": 921760,
+      "sha256": "2e68ea818c8427a00a1955048874c8a39518d7ef0d85d8908a2b7feb61ade379"
+    },
+    {
+      "id": "instagram-business-discovery",
+      "url": "https://developers.facebook.com/docs/instagram-platform/instagram-api-with-facebook-login/business-discovery/",
+      "accessed_at_utc": "2026-11-05T10:45:48.208485+00:00",
+      "verification": "documentation-only",
+      "note": "Other professional accounts metadata/media via business_discovery",
+      "http_status": 200,
+      "final_url": "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/business-discovery",
+      "byte_length": 885777,
+      "sha256": "173f0470e45271cc72ed1f3724179b6542c151d249bc415a9bcbd23a4a7b80b9"
+    },
+    {
+      "id": "instagram-hashtags",
+      "url": "https://developers.facebook.com/docs/instagram-platform/instagram-api-with-facebook-login/hashtag-search/",
+      "accessed_at_utc": "2026-11-05T10:45:48.247196+00:00",
+      "verification": "documentation-only",
+      "note": "30 unique hashtags per7 rolling days; public content permission/app review",
+      "http_status": 200,
+      "final_url": "https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/hashtag-search",
+      "byte_length": 872982,
+      "sha256": "6a9c933cbdf95632232eceda51a4bf77df3d89c8325384a2d075627b57d3b1fb"
+    },
+    {
+      "id": "instagram-hashtag-recent",
+      "url": "https://developers.facebook.com/docs/instagram-api/reference/ig-hashtag/recent-media",
+      "accessed_at_utc": "2026-11-05T10:45:48.311014+00:00",
+      "verification": "documentation-only",
+      "note": "Only preceding24h public photos/videos; maximum50/page; not chronological; no username",
+      "http_status": 200,
+      "final_url": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-hashtag/recent-media",
+      "byte_length": 910390,
+      "sha256": "e3bd686013c33c2a7e099691b32ac5e810ba22fd3e9019bafbdbd134056a4cf8"
+    },
+    {
+      "id": "threads-search",
+      "url": "https://developers.facebook.com/docs/threads/keyword-search/",
+      "accessed_at_utc": "2026-11-05T10:45:48.356899+00:00",
+      "verification": "documentation-only",
+      "note": "Public keyword/tag search after approved permissions; since/until; RECENT; max100/page;2200 rolling24h queries",
+      "http_status": 200,
+      "final_url": "https://developers.facebook.com/documentation/threads/keyword-search",
+      "byte_length": 842362,
+      "sha256": "2fbf6406ea05f465c20ffc435f284e557d526a04274af8d4848a81914e4ae4d2"
+    },
+    {
+      "id": "threads-postman",
+      "url": "https://www.postman.com/meta/threads/request/34203612-b3b2c12a-7ce6-4d86-a3c6-6d31e3b66ea1",
+      "accessed_at_utc": "2026-11-05T10:45:48.566979+00:00",
+      "verification": "documentation-only",
+      "note": "Meta official example of keyword_search",
+      "http_status": 200,
+      "final_url": "https://www.postman.com/meta/threads/request/34203612-b3b2c12a-7ce6-4d86-a3c6-6d31e3b66ea1",
+      "byte_length": 101772,
+      "sha256": "eff3275eb9ec570fbd88402b8006785a5eac668f58b9153f563410e83cbab573"
+    },
+    {
+      "id": "meta-ad-library",
+      "url": "https://www.facebook.com/ads/library/api/",
+      "accessed_at_utc": "2026-11-05T10:45:48.756917+00:00",
+      "verification": "documentation-only",
+      "note": "Ads scope only; political/social issue7years, all ads UK/EU1year; verified identity/app",
+      "fetch_error": "HTTP Error 403: Client challenge"
+    },
+    {
+      "id": "instaloader",
+      "url": "https://instaloader.github.io/",
+      "accessed_at_utc": "2026-11-05T10:45:48.796686+00:00",
+      "verification": "documentation-only",
+      "note": "Public profiles/media and metadata; MIT; independent unofficial tool",
+      "http_status": 200,
+      "final_url": "https://instaloader.github.io/",
+      "byte_length": 17676,
+      "sha256": "f7932ded9f0d63d774f67951bbd9f52b882e20e4e902012847ffacd037165a31"
+    },
+    {
+      "id": "instaloader-options",
+      "url": "https://instaloader.github.io/cli-options.html",
+      "accessed_at_utc": "2026-11-05T10:45:49.066864+00:00",
+      "verification": "documentation-only",
+      "note": "JSON metadata; post filters; resumable iterations; login options",
+      "http_status": 200,
+      "final_url": "https://instaloader.github.io/cli-options.html",
+      "byte_length": 50418,
+      "sha256": "0489711fd15e67f9ac1d89527f56b78ab5df7ebf0ccee8d56052cf9534007b4e"
+    },
+    {
+      "id": "instaloader-dates",
+      "url": "https://instaloader.github.io/codesnippets.html#download-posts-in-a-specific-period",
+      "accessed_at_utc": "2026-11-05T10:45:49.157537+00:00",
+      "verification": "documentation-only",
+      "note": "Profile iteration date filtering is not global historical keyword search",
+      "http_status": 200,
+      "final_url": "https://instaloader.github.io/codesnippets.html#download-posts-in-a-specific-period",
+      "byte_length": 38101,
+      "sha256": "4f0055a8003f69ea6be66f845afccce514cb79cf5c22befd155ac66b0be7c7b0"
+    },
+    {
+      "id": "facebook-scraper",
+      "url": "https://raw.githubusercontent.com/kevinzg/facebook-scraper/master/README.md",
+      "accessed_at_utc": "2026-11-05T10:45:49.336664+00:00",
+      "verification": "documentation-only",
+      "note": "Public page/post crawler and CSV; optional cookies/login; docs-only candidate",
+      "http_status": 200,
+      "final_url": "https://raw.githubusercontent.com/kevinzg/facebook-scraper/master/README.md",
+      "byte_length": 15955,
+      "sha256": "c31c82fb88f1cc78135bcb4da5aa0644d39d87e1cfe8db5f7ee77c90675aa1c2"
+    },
+    {
+      "id": "gallery-dl-sites",
+      "url": "https://raw.githubusercontent.com/mikf/gallery-dl/master/docs/supportedsites.md",
+      "accessed_at_utc": "2026-11-05T10:45:49.404585+00:00",
+      "verification": "documentation-only",
+      "note": "Instagram profile/post/tag extraction and cookie requirement indicated; docs-only optional media tool",
+      "http_status": 200,
+      "final_url": "https://raw.githubusercontent.com/mikf/gallery-dl/master/docs/supportedsites.md",
+      "byte_length": 66251,
+      "sha256": "e7949703a011a4180d0a1a011614f1ebc6d26edb0f393ece68d9f7adb2af32c7"
+    },
+    {
+      "id": "yt-dlp-readme",
+      "url": "https://raw.githubusercontent.com/yt-dlp/yt-dlp/master/README.md",
+      "accessed_at_utc": "2026-11-05T10:45:49.617834+00:00",
+      "verification": "documentation-only",
+      "note": "Metadata JSON, simulate, media downloader; current extractor support not universal search",
+      "http_status": 200,
+      "final_url": "https://raw.githubusercontent.com/yt-dlp/yt-dlp/master/README.md",
+      "byte_length": 179127,
+      "sha256": "6adba80a892aee34940550ee8d7085041afca6140b7ac56d6414f1e6eb484bfe"
+    },
+    {
+      "id": "yt-dlp-sites",
+      "url": "https://raw.githubusercontent.com/yt-dlp/yt-dlp/master/supportedsites.md",
+      "accessed_at_utc": "2026-11-05T10:45:49.716665+00:00",
+      "verification": "documentation-only",
+      "note": "Site/extractor capability varies; installed extractor list used for smoke checks",
+      "http_status": 200,
+      "final_url": "https://raw.githubusercontent.com/yt-dlp/yt-dlp/master/supportedsites.md",
+      "byte_length": 55766,
+      "sha256": "cb2590beb7c81dbd607452445706615c2d8b04002045f01d9b12bedd71ca7fa4"
+    },
+    {
+      "id": "youtube-search",
+      "url": "https://developers.google.com/youtube/v3/docs/search/list",
+      "accessed_at_utc": "2026-11-05T10:45:49.907629+00:00",
+      "verification": "documentation-only",
+      "note": "q, publishedAfter/publishedBefore, order, pageToken; public search; quota",
+      "http_status": 200,
+      "final_url": "https://developers.google.com/youtube/data/reference/rest/v3/search/list",
+      "byte_length": 265215,
+      "sha256": "e07b626cb43e8656fe3a880b7627f71ef36b4fe9a083e7730ec738d32e66ce46"
+    },
+    {
+      "id": "youtube-video",
+      "url": "https://developers.google.com/youtube/v3/docs/videos/list",
+      "accessed_at_utc": "2026-11-05T10:45:49.957567+00:00",
+      "verification": "documentation-only",
+      "note": "Public video snippet/statistics/liveStreamingDetails lookup",
+      "http_status": 200,
+      "final_url": "https://developers.google.com/youtube/data/reference/rest/v3/videos/list",
+      "byte_length": 159282,
+      "sha256": "baf7a97748981d252934f075d5e175064ac4b6aba84c09a848d80fc13fdef022"
+    },
+    {
+      "id": "tiktok-eligibility",
+      "url": "https://developers.tiktok.com/products/research-api/",
+      "accessed_at_utc": "2026-11-05T10:45:50.007735+00:00",
+      "verification": "documentation-only",
+      "note": "Regional/institutional eligibility plus project approval; not universal individual access",
+      "http_status": 200,
+      "final_url": "https://developers.tiktok.com/products/research-api/",
+      "byte_length": 371684,
+      "sha256": "fc95ef55230e421318b4db4b4069ba5067fb94982b20208f65a78578fe97e9e0"
+    },
+    {
+      "id": "tiktok-query",
+      "url": "https://developers.tiktok.com/docs/en/research-api-specs-query-videos",
+      "accessed_at_utc": "2026-11-05T10:45:50.087457+00:00",
+      "verification": "documentation-only",
+      "note": "research.data.basic; dates <=30day window; cursor/search_id; max100; keyword is description",
+      "http_status": 200,
+      "final_url": "https://developers.tiktok.com/docs/en/research-api-specs-query-videos",
+      "byte_length": 280051,
+      "sha256": "c1aa27cea01a62f0cb44e0372e6c26b8ac115d07a9d61d5713d112d2cea529f5"
+    },
+    {
+      "id": "tiktok-faq",
+      "url": "https://developers.tiktok.com/docs/en/research-api-faq",
+      "accessed_at_utc": "2026-11-05T10:45:50.307398+00:00",
+      "verification": "documentation-only",
+      "note": "Up to48h indexing and10day metric lag;1000requests/100000records daily documented",
+      "http_status": 200,
+      "final_url": "https://developers.tiktok.com/docs/en/research-api-faq",
+      "byte_length": 220306,
+      "sha256": "061d93e4acee255a2d4668e2bb00e0c4a9475e8980b2bcf8f929ee5800316a26"
+    },
+    {
+      "id": "bluesky-http",
+      "url": "https://docs.bsky.app/docs/api/app-bsky-feed-get-feed",
+      "accessed_at_utc": "2026-11-05T10:45:50.437584+00:00",
+      "verification": "documentation-only",
+      "note": "Most app.bsky GET public at public.api.bsky.app; docs site now redirects API reference",
+      "http_status": 200,
+      "final_url": "https://endpoints.bsky.app/",
+      "byte_length": 12593,
+      "sha256": "411a1e0348ae61474ae83ce184ad2bee8c8e641622a11d0ead1a82dba4cc3470"
+    },
+    {
+      "id": "mastodon-search",
+      "url": "https://docs.joinmastodon.org/methods/search/",
+      "accessed_at_utc": "2026-11-05T10:45:50.777013+00:00",
+      "verification": "documentation-only",
+      "note": "Status full-text search backend+authenticated; server scope, not entire federation",
+      "http_status": 200,
+      "final_url": "https://docs.joinmastodon.org/methods/search/",
+      "byte_length": 43444,
+      "sha256": "4a27a51c454470ce85e52b6e2bb74fc0128009a38a52f024c3d791abfe4671c7"
+    },
+    {
+      "id": "mastodon-timeline",
+      "url": "https://docs.joinmastodon.org/methods/timelines/",
+      "accessed_at_utc": "2026-11-05T10:45:50.894430+00:00",
+      "verification": "documentation-only",
+      "note": "Public timeline anonymous access can be disabled by server",
+      "http_status": 200,
+      "final_url": "https://docs.joinmastodon.org/methods/timelines/",
+      "byte_length": 86751,
+      "sha256": "2e3de9429a259e549a9ee6c81f975fd732065b0dbb2bf1f5ae8bd8cf26930cec"
+    }
+  ],
+  "repository_metadata": [
+    {
+      "url": "https://api.github.com/repos/public-clis/twitter-cli",
+      "accessed_at_utc": "2026-11-05T10:45:52.468658+00:00",
+      "name": "public-clis/twitter-cli",
+      "pushed_at": "2026-05-07T15:53:22Z",
+      "archived": false,
+      "license": "Apache-2.0"
+    },
+    {
+      "url": "https://api.github.com/repos/vladkens/twscrape",
+      "accessed_at_utc": "2026-11-05T10:45:52.828416+00:00",
+      "name": "vladkens/twscrape",
+      "pushed_at": "2026-10-31T00:44:03Z",
+      "archived": false,
+      "license": "MIT"
+    },
+    {
+      "url": "https://api.github.com/repos/kevinzg/facebook-scraper",
+      "accessed_at_utc": "2026-11-05T10:45:53.283156+00:00",
+      "name": "kevinzg/facebook-scraper",
+      "pushed_at": "2024-06-22T03:47:56Z",
+      "archived": false,
+      "license": "MIT"
+    },
+    {
+      "url": "https://api.github.com/repos/mikf/gallery-dl",
+      "accessed_at_utc": "2026-11-05T10:45:53.636739+00:00",
+      "name": "mikf/gallery-dl",
+      "pushed_at": "2026-10-31T11:34:24Z",
+      "archived": false,
+      "license": "GPL-2.0"
+    }
+  ],
+  "tests": [
+    {
+      "test": "bluesky_keyword_search",
+      "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=opensource&limit=2&sort=latest",
+      "accessed_at_utc": "2026-11-05T10:40:26.377279+00:00",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "test": "bluesky_author_feed",
+      "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=bsky.app&limit=2",
+      "accessed_at_utc": "2026-11-05T10:40:26.456411+00:00",
+      "http_status": 200,
+      "items": 2,
+      "top_level": [
+        "feed",
+        "cursor"
+      ],
+      "cursor_present": true
+    },
+    {
+      "test": "mastodon_public_timeline",
+      "url": "https://mastodon.social/api/v1/timelines/public?local=true&limit=2",
+      "accessed_at_utc": "2026-11-05T10:40:26.706324+00:00",
+      "error": "HTTP Error 422: Unknown Error"
+    },
+    {
+      "test": "instaloader_public_profile_metadata",
+      "at": "2026-11-05T10:40:41.962240+00:00",
+      "success": true,
+      "username": "instagram",
+      "mediacount": null
+    },
+    {
+      "test": "yt_dlp_public_test_video",
+      "at": "2026-11-05T10:40:43.198165+00:00",
+      "url": "https://www.youtube.com/watch?v=BaW_jenozKc",
+      "exit_code": 1,
+      "stderr_tail": "WARNING: [youtube] No supported JavaScript runtime could be found. Only deno is enabled by default; to use another runtime add  --js-runtimes RUNTIME[:PATH]  to your command/config. YouTube extraction without a JS runtime has been deprecated, and some formats may be missing. See  https://github.com/yt-dlp/yt-dlp/wiki/EJS  for details on installing one\nERROR: [youtube] BaW_jenozKc: This video is unavailable\n"
+    },
+    {
+      "test": "instaloader_public_post_iteration",
+      "at": "2026-11-05T10:40:58.202554+00:00",
+      "profile_metadata_keys": [
+        "pk",
+        "username",
+        "profile_pic_url",
+        "is_private",
+        "is_unpublished",
+        "latest_reel_media",
+        "biography",
+        "full_name",
+        "is_verified",
+        "text_post_app_badge_label",
+        "show_text_post_app_badge",
+        "account_badges",
+        "bio_links",
+        "linked_fb_info",
+        "is_memorialized",
+        "pronouns",
+        "follower_count",
+        "following_count",
+        "all_media_count",
+        "id",
+        "lox_highlights_connection",
+        "is_coppa_enforced",
+        "has_any_clips",
+        "edge_owner_to_timeline_media",
+        "edge_felix_video_timeline",
+        "edge_followed_by",
+        "edge_follow",
+        "followed_by_viewer",
+        "follows_viewer",
+        "blocked_by_viewer",
+        "has_blocked_viewer",
+        "has_requested_viewer",
+        "requested_by_viewer",
+        "profile_pic_url_hd"
+      ],
+      "profile_id": 25025320,
+      "is_private": false,
+      "post_shortcode": "DfQCqMnhpsG",
+      "post_date": "2026-11-02T19:26:15",
+      "success": true
+    },
+    {
+      "test": "twitter-cli-upstream-offline-tests",
+      "command": "python -m pytest -q tests/test_search.py tests/test_parser_fixtures.py tests/test_serialization.py tests/test_output.py tests/test_client.py",
+      "cwd": "/tmp/social-twitter-cli-review",
+      "result": "143 passed in5.70s",
+      "verification": "tested-offline",
+      "live_X": false
+    },
+    {
+      "test": "installed_versions_and_help",
+      "result": {
+        "twitter-cli": "0.8.6",
+        "twscrape": "0.20.1",
+        "Instaloader": "4.16",
+        "yt-dlp": "2026.10.26"
+      },
+      "environment": "isolated /tmp/social-collection-tools-venv; no global installs",
+      "verification": "tested-local"
+    },
+    {
+      "test": "twscrape-help",
+      "result": "twscrape search --help succeeds and documents --raw/--limit; top-level --help returns unrecognized arguments",
+      "verification": "tested-local"
+    },
+    {
+      "test": "yt-dlp-extractor-list",
+      "result": "twitter,facebook,Instagram,TikTok,youtube present; instagram:user and tiktok:tag marked CURRENTLY BROKEN",
+      "verification": "tested-local; not live proof"
+    },
+    {
+      "test": "mastodon-422-body",
+      "result": "This method requires an authenticated user",
+      "verification": "tested-live-anonymous"
+    },
+    {
+      "test": "bluesky-403-body",
+      "result": "HTML403 Forbidden, not a protocol JSON error; cause unknown (service or network edge)",
+      "verification": "tested-live-anonymous"
+    }
+  ],
+  "notes": [
+    "Some Meta pages failed in web browsing with429 but direct unauthenticated HTTPS returned200. Successful direct fetches are recorded individually.",
+    "Instaloader Profile.from_username alone initially returned mediacount=null; actual public post iteration was separately tested successfully.",
+    "No authenticated collection using X, Meta Graph, Threads, Meta Content Library, TikTok Research or YouTube API was tested.",
+    "Research API raw exports may be restricted; do not infer raw repository storage is permitted from public readability."
+  ]
+}

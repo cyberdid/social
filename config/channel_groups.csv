@@ -1,0 +1,111 @@
+# Channel groups (A local publics, B Ukrainian unofficial, C Russian/pro-Russian, D official bodies & editorial media, E foreign/emigrant, U unknown).
+# Criteria (v1, 2026-11-05):
+#  D = state body / official's official channel / registered editorial outlet.
+#  C = Russian infrastructure markers in profile (Roskomnadzor registry, gosuslugi, max.ru/vk/dzen), Russian state/Z media,
+#      or channel publicly attributed by Ukrainian authorities to Russian networks (marked "attrib").
+#  A = channel scoped to one city/district/village by its own description.
+#  B = other Ukrainian national unofficial channels (anonymous, bloggers, aggregators, MPs' personal channels).
+#  E = foreign or emigrant media.  cb = label read from CyberBoroshno chart (t.me/kiber_boroshno/13675), empty if not shown.
+channel,group,cb,basis
+gnapinfo,B,B,blogger D. Gnap
+kyiv_golovne,A,A,Kyiv local
+ukr_2025_ru,C,C,RKN registry + max.ru in profile; title Украина.ру
+uaobozrevatel,D,D,editorial (Obozrevatel)
+borshchagovkanews,A,A,Borshchahivka local
+kievinfo_kyiv,B,B,national news despite name (follow cb)
+truexanewsua,B,B,anonymous national
+hraniteli_odessi,C,C,cb label
+zelyazradnik,B,B,anonymous political
+uniannet,D,D,editorial (UNIAN)
+kyivregionpolice,D,D,police Kyiv oblast
+asupersharij,C,C,A. Shariy (sanctioned; pro-Russian blogger)
+padla_tck,B,B,anti-mobilization anonymous
+kharkov_perviy,C,C,cb label
+antikor,D,D,editorial (antikor.info)
+kolobok_odesa,C,C,cb label
+chistuy_kharkov,B,B,cb label
+napovestkeki,A,A,cb label (Kyiv anti-mobilization)
+uaonlii,B,B,anonymous national
+sila_go,A,A,Odesa local (NGO)
+vremya_ua,B,B,cb label (ru-language Ukrainian)
+pod_kupolom_ua,C,C,cb label
+novinach,B,B,national unofficial
+tch_channel,D,,editorial (TSN official)
+ssternenko,B,,blogger S. Sternenko
+vanek_nikolaev,A,,Mykolaiv local by origin (national reach)
+kyrylo_budanov_official,D,,official (Head of Presidential Office)
+svoboda_radio,D,,editorial (Radio Svoboda UA)
+telelug,U,,self-described AI fake-news humor
+torontotv,B,,Ukrainian satirical/news
+zovbear0,C,,Z-channel (self-description)
+mikle1on,C,,gosuslugi + max.ru in profile
+kyivcityofficial,D,,KMDA official
+rostyslavs,U,,no description
+roganskayarespublika,A,,Kharkiv district local
+anoncinews,U,,generic aggregator
+azov_media,D,,1st Corps NGU Azov official
+kukufffka,C,,RKN registry in profile
+operationall_space,C,,max.ru/vk/dzen in profile
+mvs_ukraine,D,,MVS official
+dbrgovua,D,,DBR official
+medvidolexandr,D,,acting Borshchahivka village head (official)
+ua_national_police,D,,National Police official
+marybezuhla,B,,MP personal channel
+stopgraveua,B,,anti-mobilization (Zakarpattia)
+insiderUKR,B,,anonymous national
+rezident_ua,C,,attrib: named by SBU among Russian-run networks (verify)
+legitimniy,C,,attrib: named by SBU among Russian-run networks (verify)
+spletnicca,C,,attrib: named by SBU among Russian-run networks (verify)
+ukrpravda_news,D,,editorial (Ukrainska Pravda)
+suspilnenews,D,,public broadcaster
+operativnoZSU,B,,anonymous national
+kyivnow,A,,Kyiv local
+lachentyt,B,,blogger
+zerada1,B,,anonymous political
+stranaua,C,,contested: Strana.ua (NSDC sanctions 2021); sensitivity check excludes it
+kievreal1,B,,anonymous national (title Kyiv)
+voynareal,B,,anonymous national
+liganet,D,,editorial (LIGA.net)
+radiosvoboda,E,,RFE/RL Russian service
+hromadske_ua,D,,editorial
+censor_net,D,,editorial
+butusovplus,B,,journalist personal channel
+slidstvo_info,D,,editorial (investigations)
+ukrinform_news,D,,state news agency
+sbukr,D,,SBU official
+CenterCounteringDisinformation,D,,CCD official
+spravdi,D,,state strategic communications project
+rian_ru,C,,Russian state media
+mash,C,,Russian media
+boris_rozhin,C,,Z-blogger (Colonelcassad)
+dva_majors,C,,Z-channel
+voenkorKotenok,C,,Z-blogger
+SolovievLive,C,,Russian state TV host
+rt_russian,C,,Russian state media
+tass_agency,C,,Russian state media
+izvestia,C,,Russian media
+shot_shot,C,,Russian media
+bazabazon,C,,Russian media
+swodki,C,,Z-channel
+ukr_leaks,C,,Z-channel
+meduzalive,E,,emigrant media
+tvrain,E,,emigrant media
+bbcrussian,E,,foreign media
+currenttime,E,,RFE/RL
+kyivindependent,D,,editorial
+pravda_gerashchenko,B,,blogger
+rusnews,U,,unclear
+ateobreaking,U,,unclear
+kiev_info,A,,Kyiv local
+dnepr_live,A,,Dnipro local
+kyivvlada,A,,Kyiv local politics
+vitaliy_klitschko,D,,Kyiv mayor official
+kyivoda,D,,Kyiv OVA official
+vertolatte,A,,Kyiv local
+channel24_ua,D,,editorial (24 Kanal; media registry id in profile)
+novynylive,D,,editorial (Novyny.LIVE)
+kyivpasstrans,D,,Kyivpastrans official (transport)
+nationalguardua,D,,NGU official
+generalstaffzsu,D,,General Staff official
+dmytro_lubinetzs,D,,Ombudsman official
+pivnenko_ngu,D,,NGU commander official

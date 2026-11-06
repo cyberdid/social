@@ -1,0 +1,43 @@
+{
+ "n_relevant": 1408,
+ "n_channels_relevant": 159,
+ "first_overall": {
+  "t": "2026-11-02T12:41:03+02:00",
+  "channel": "gnapinfo",
+  "group": "B",
+  "views": 13583,
+  "subs": 20260,
+  "url": "https://t.me/gnapinfo/5679",
+  "text": "На околицях Києва у Петропавлівській Борщагівці в підвалі одного з будинків невідомі озброєні особи тримають в неволі близько сорока людей. Четверо з в'язнів перебувають у критичному стані - про це ро"
+ },
+ "peak_10min": {
+  "bin": "2026-11-02 22:30:00+02:00",
+  "posts": 32
+ },
+ "medic_claim": {
+  "posts": 69,
+  "channels": 48,
+  "views": 5907151,
+  "share_snapshot_views_on_posts_published_before_21_32": 0.746,
+  "views_accumulated_before_cutoff": null,
+  "limitation": "Counters were collected after the cutoff; historical exposure timing is not identifiable."
+ },
+ "copies": {
+  "clusters_multi_channel": 132,
+  "first_by_group": {
+   "B": 29,
+   "C": 55,
+   "U": 14,
+   "D": 25,
+   "A": 7,
+   "E": 2
+  },
+  "method": "LSH candidates verified by exact 5-character-shingle Jaccard >= 0.6; connected components",
+  "lag_limitation": "Cluster lags are exploratory: transitive membership is not pairwise similarity or proof of copying.",
+  "cross_group_clusters": 68,
+  "median_lag_min_UA_from_RU": 37.9,
+  "n_UA_from_RU": 2,
+  "median_lag_min_RU_from_UA": 51.3,
+  "n_RU_from_UA": 4
+ }
+}

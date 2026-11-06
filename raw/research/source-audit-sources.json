@@ -1,0 +1,1300 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-11-05T10:46:52.091898+00:00",
+  "scope": "DR2/DR3/DR7 public-source audit; new metadata ledger only; no existing raw data modified",
+  "limitations": [
+    "HTTP hashes cover returned bytes, not factual truth. Response bodies are not stored in this new ledger.",
+    "Some primary bodies read through web tool while direct HTTP returned 403/challenge. Search-index-only evidence explicitly marked.",
+    "Publication dates, modification dates, event dates and retrieval dates are separate.",
+    "No new Telegram API session created by this audit; existing parent receipt only read.",
+    "No GPU or local models used."
+  ],
+  "sources": [
+    {
+      "url": "https://t.me/kiber_boroshno/13675?embed=1",
+      "retrieved_at": "2026-11-05T10:38:57.549814+00:00",
+      "status": 200,
+      "final_url": "https://t.me/kiber_boroshno/13675?embed=1",
+      "sha256": "d0864535946318730959281616a05b213618cf76b3dce43770dd2ac4a4805633",
+      "title": "Telegram Widget",
+      "dates": [
+        {
+          "datetime": "2026-11-03T14:05:43+00:00",
+          "class": [
+            "datetime"
+          ]
+        }
+      ],
+      "method": "public_HTTP_GET",
+      "content_archived_in_repository": false,
+      "response_sha256_note": "Hash of returned HTTP bytes, including error pages; this ledger does not contain the response body.",
+      "observation": "Primary text and widget datetime received; full historical versions unavailable."
+    },
+    {
+      "url": "https://t.me/CenterCounteringDisinformation/19519?embed=1",
+      "retrieved_at": "2026-11-05T10:38:57.551065+00:00",
+      "status": 200,
+      "final_url": "https://t.me/CenterCounteringDisinformation/19519?embed=1",
+      "sha256": "04257f70824ab9b0e95532f14e8ba77929127f55ebe030b8d7ea28c3b28226f8",
+      "title": "Telegram Widget",
+      "dates": [
+        {
+          "datetime": "2026-11-03T17:29:26+00:00",
+          "class": [
+            "datetime"
+          ]
+        }
+      ],
+      "method": "public_HTTP_GET",
+      "content_archived_in_repository": false,
+      "response_sha256_note": "Hash of returned HTTP bytes, including error pages; this ledger does not contain the response body.",
+      "observation": "Hidden content: only shell, counters and datetime; no primary statement text."
+    },
+    {
+      "url": "https://t.me/spravdi/59490?embed=1",
+      "retrieved_at": "2026-11-05T10:38:57.551884+00:00",
+      "status": 200,
+      "final_url": "https://t.me/spravdi/59490?embed=1",
+      "sha256": "430cae6026c624e84fc1d25c4215f644a2c82cb44fd96b36b82a631246f09b13",
+      "title": "Telegram Widget",
+      "dates": [
+        {
+          "datetime": "2026-11-04T08:36:01+00:00",
+          "class": [
+            "datetime"
+          ]
+        }
+      ],
+      "method": "public_HTTP_GET",
+      "content_archived_in_repository": false,
+      "response_sha256_note": "Hash of returned HTTP bytes, including error pages; this ledger does not contain the response body.",
+      "observation": "Primary SPRAVDI text; ~1370 FIMI publications specifically for November 3."
+    },
+    {
+      "url": "https://spravdi.org/yak-rosiyany-vykorystovuyut-podiyi-u-petropavlivskij-borshhagivczi-dlya-poslablennya-ukrayiny/",
+      "retrieved_at": "2026-11-05T10:38:57.552767+00:00",
+      "status": 200,
+      "final_url": "https://spravdi.org/yak-rosiyany-vykorystovuyut-podiyi-u-petropavlivskij-borshhagivczi-dlya-poslablennya-ukrayiny/",
+      "sha256": "6a5409e16b2e01e2a9133ddb0707913bcb0e4594e2b888a7cf8e9aedf2b39091",
+      "title": "Як росіяни використовують події у Петропавлівській Борщагівці для послаблення України",
+      "dates": [
+        {
+          "property": "article:modified_time",
+          "content": "2026-11-04T11:49:04+00:00"
+        },
+        {
+          "datetime": "2026-11-03T19:01:39+02:00"
+        },
+        {
+          "datetime": "2026-11-05T10:11:00+02:00"
+        },
+        {
+          "datetime": "2026-11-05T09:14:00+02:00"
+        },
+        {
+          "datetime": "2026-11-04T21:06:00+02:00"
+        }
+      ],
+      "method": "public_HTTP_GET",
+      "content_archived_in_repository": false,
+      "response_sha256_note": "Hash of returned HTTP bytes, including error pages; this ledger does not contain the response body.",
+      "observation": "Primary full report; publication and modification dates retained; distinct sample denominators."
+    },
+    {
+      "url": "https://developers.facebook.com/docs/threads/keyword-search/",
+      "retrieved_at": "2026-11-05T10:38:57.553564+00:00",
+      "status": 200,
+      "final_url": "https://developers.facebook.com/documentation/threads/keyword-search",
+      "sha256": "dfd150626ae324933448371f3d61bdda59fa11924c25745c4e9599e07eb25935",
+      "title": "",
+      "dates": [],
+      "method": "public_HTTP_GET",
+      "content_archived_in_repository": false,
+      "response_sha256_note": "Hash of returned HTTP bytes, including error pages; this ledger does not contain the response body.",
+      "observation": "Current first-party Threads API documentation returned Markdown, not HTML; public search after permission approval."
+    },
+    {
+      "url": "https://developers.facebook.com/docs/content-library-and-api/get-access/",
+      "retrieved_at": "2026-11-05T10:38:57.554033+00:00",
+      "status": 200,
+      "final_url": "https://developers.facebook.com/docs/content-library-and-api/get-access/",
+      "sha256": "ab8555b8c8ccf732baa13d2a1984df3181d89a5505b34d57730d72d3634f5509",
+      "title": "Get access - Meta Content Library and API - Documentation - Meta for Developers",
+      "dates": [],
+      "method": "public_HTTP_GET",
+      "content_archived_in_repository": false,
+      "response_sha256_note": "Hash of returned HTTP bytes, including error pages; this ledger does not contain the response body.",
+      "observation": "Current Meta eligibility: organisational affiliation; CASD + Research Tools Manager."
+    },
+    {
+      "url": "https://www.icpsr.umich.edu/sites/somar/meta-content-library",
+      "retrieved_at": "2026-11-05T10:38:57.554360+00:00",
+      "status": 403,
+      "final_url": "https://www.icpsr.umich.edu/sites/somar/meta-content-library",
+      "sha256": "1b799c341e1f4245101659557295eee9d3ab8bad2dfc6d74cb5c418de42f4869",
+      "title": "Just a moment...",
+      "dates": [],
+      "method": "public_HTTP_GET",
+      "content_archived_in_repository": false,
+      "response_sha256_note": "Hash of returned HTTP bytes, including error pages; this ledger does not contain the response body.",
+      "observation": "HTTP challenge; web tool read first-party SOMAR content separately."
+    },
+    {
+      "url": "https://developers.google.com/youtube/v3/getting-started",
+      "retrieved_at": "2026-11-05T10:38:57.555102+00:00",
+      "status": 200,
+      "final_url": "https://developers.google.com/youtube/data/getting-started",
+      "sha256": "5731927b61e69a62c8bba728001be83441457249cb7b95919ff8d2d46bb682f3",
+      "title": "YouTube Data API Overview  |  Google for Developers",
+      "dates": [],
+      "method": "public_HTTP_GET",
+      "content_archived_in_repository": false,
+      "response_sha256_note": "Hash of returned HTTP bytes, including error pages; this ledger does not contain the response body."
+    },
+    {
+      "url": "https://developers.google.com/youtube/v3/docs/search/list",
+      "retrieved_at": "2026-11-05T10:38:57.749965+00:00",
+      "status": 200,
+      "final_url": "https://developers.google.com/youtube/data/reference/rest/v3/search/list",
+      "sha256": "762814a26e9acd1de1611aea036b1c9f730b33c65f5d5f98ad8a718cf08e943c",
+      "title": "Search: list  |  YouTube Data API  |  Google for Developers",
+      "dates": [],
+      "method": "public_HTTP_GET",
+      "content_archived_in_repository": false,
+      "response_sha256_note": "Hash of returned HTTP bytes, including error pages; this ledger does not contain the response body."
+    },
+    {
+      "url": "https://developers.google.com/youtube/v3/determine_quota_cost",
+      "retrieved_at": "2026-11-05T10:38:57.754347+00:00",
+      "status": 200,
+      "final_url": "https://developers.google.com/youtube/data/determine_quota_cost",
+      "sha256": "038d17ca7037ff2ce4f25da9a85d62bfeca322e164066b9e0a2712344daa8545",
+      "title": "Quota Calculator  |  YouTube Data API  |  Google for Developers",
+      "dates": [],
+      "method": "public_HTTP_GET",
+      "content_archived_in_repository": false,
+      "response_sha256_note": "Hash of returned HTTP bytes, including error pages; this ledger does not contain the response body.",
+      "observation": "Google quota page last updated 2026-11-03; separate search bucket."
+    },
+    {
+      "url": "https://ssu.gov.ua/novyny/sbu-vykryla-ahenturnu-merezhu-spetssluzhb-rf-yaka-destabilizuvala-sytuatsiiu-v-ukraini-cherez-telegramkanaly",
+      "retrieved_at": "2026-11-05T10:38:57.800878+00:00",
+      "status": 403,
+      "final_url": "https://ssu.gov.ua/novyny/sbu-vykryla-ahenturnu-merezhu-spetssluzhb-rf-yaka-destabilizuvala-sytuatsiiu-v-ukraini-cherez-telegramkanaly",
+      "sha256": "d9dfbc3aeb34a777ca96fa1e0e7037b155bc6682df146fedced8201b434d6dc2",
+      "title": "Access Denied",
+      "dates": [],
+      "method": "public_HTTP_GET",
+      "content_archived_in_repository": false,
+      "response_sha256_note": "Hash of returned HTTP bytes, including error pages; this ledger does not contain the response body.",
+      "observation": "HTTP denied; web tool received first-party SBU article separately."
+    },
+    {
+      "url": "https://www.president.gov.ua/documents/3762021-39745",
+      "retrieved_at": "2026-11-05T10:38:57.907888+00:00",
+      "status": 403,
+      "final_url": "https://www.president.gov.ua/documents/3762021-39745",
+      "sha256": "be3dacd44bc03c966118355cceecea51769b629c3573966127124789292faff1",
+      "title": "Access Denied",
+      "dates": [],
+      "method": "public_HTTP_GET",
+      "content_archived_in_repository": false,
+      "response_sha256_note": "Hash of returned HTTP bytes, including error pages; this ledger does not contain the response body.",
+      "observation": "HTTP denied; web tool received presidential decree separately; appendices not checked."
+    },
+    {
+      "url": "https://digital-strategy.ec.europa.eu/en/news/commission-adopts-delegated-act-data-access-under-digital-services-act",
+      "retrieved_at": "2026-11-05T10:38:58.039244+00:00",
+      "status": 200,
+      "final_url": "https://digital-strategy.ec.europa.eu/en/news/commission-adopts-delegated-act-data-access-under-digital-services-act",
+      "sha256": "b412ead640242b5e5cee73d53295fcabfad7dd3707eb42310d0323ff27019717",
+      "title": "Commission adopts delegated act on data access under the Digital Services Act | Shaping Europe’s digital future",
+      "dates": [],
+      "method": "public_HTTP_GET",
+      "content_archived_in_repository": false,
+      "response_sha256_note": "Hash of returned HTTP bytes, including error pages; this ledger does not contain the response body."
+    },
+    {
+      "url": "https://developers.tiktok.com/products/research-api/",
+      "retrieved_at": "2026-11-05T10:38:58.077363+00:00",
+      "status": 200,
+      "final_url": "https://developers.tiktok.com/products/research-api/",
+      "sha256": "43099fdbf9787c96b1a67c9e00a0a21692684962025fb2e0b8004a2f29b8c705",
+      "title": "Research API | TikTok for Developers",
+      "dates": [],
+      "method": "public_HTTP_GET",
+      "content_archived_in_repository": false,
+      "response_sha256_note": "Hash of returned HTTP bytes, including error pages; this ledger does not contain the response body.",
+      "observation": "Ukraine not in listed eligible regions; institutional affiliation required."
+    },
+    {
+      "url": "https://developers.tiktok.com/docs/en/research-api-faq",
+      "retrieved_at": "2026-11-05T10:38:58.248214+00:00",
+      "status": 200,
+      "final_url": "https://developers.tiktok.com/docs/en/research-api-faq",
+      "sha256": "b35652bda84236d87ac7d802e038b7c59800c24402c76c932a4264433c8cbf31",
+      "title": "Frequently Asked Questions | TikTok for Developers",
+      "dates": [],
+      "method": "public_HTTP_GET",
+      "content_archived_in_repository": false,
+      "response_sha256_note": "Hash of returned HTTP bytes, including error pages; this ledger does not contain the response body."
+    },
+    {
+      "url": "https://developers.tiktok.com/products/commercial-content-api/",
+      "retrieved_at": "2026-11-05T10:38:58.287185+00:00",
+      "status": 200,
+      "final_url": "https://developers.tiktok.com/products/commercial-content-api/",
+      "sha256": "5dbe43c1e2cff1113a1c145c3c74e3bd24e329520a80f4984ea7474a0bf0bc57",
+      "title": "Commercial Content API | TikTok for Developers",
+      "dates": [],
+      "method": "public_HTTP_GET",
+      "content_archived_in_repository": false,
+      "response_sha256_note": "Hash of returned HTTP bytes, including error pages; this ledger does not contain the response body.",
+      "observation": "Global applicants; EU commercial content; not general organic TikTok corpus."
+    },
+    {
+      "url": "https://detector.media/monitorynh-internetu/article/205954/2022-12-14-kremlivska-gidra-300-telegram-kanaliv-yaki-otruyuyut-ukrainskyy-infoprostir/",
+      "retrieved_at": "2026-11-05T10:38:58.537800+00:00",
+      "status": 200,
+      "final_url": "https://detector.media/monitorynh-internetu/article/205954/2022-12-14-kremlivska-gidra-300-telegram-kanaliv-yaki-otruyuyut-ukrainskyy-infoprostir/",
+      "sha256": "fb7758e5c69a37d09a62671f0b1c696b9024ab9cddd620b9a82eb745e4655818",
+      "title": "«Кремлівська гідра»: 300 телеграм-каналів, які отруюють український інфопростір - Детектор медіа.",
+      "dates": [
+        {
+          "property": "article:published_time",
+          "content": "2022-12-14T09:00:00+02:00"
+        },
+        {
+          "property": "article:modified_time",
+          "content": "2026-03-30T22:21:46+03:00"
+        }
+      ],
+      "method": "public_HTTP_GET",
+      "content_archived_in_repository": false,
+      "response_sha256_note": "Hash of returned HTTP bytes, including error pages; this ledger does not contain the response body.",
+      "observation": "Primary Detector Media study: 700 reviewed, 310 selected; content classification not legal ownership."
+    },
+    {
+      "url": "https://www.ssu.gov.ua/novyny/sbu-zatrymala-i-povidomyla-pro-pidozru-orhanizatoram-zavorushen-u-petropavlivskii-borshchahivtsi",
+      "retrieved_at": "2026-11-05T10:38:58.613483+00:00",
+      "status": 403,
+      "final_url": "https://www.ssu.gov.ua/novyny/sbu-zatrymala-i-povidomyla-pro-pidozru-orhanizatoram-zavorushen-u-petropavlivskii-borshchahivtsi",
+      "sha256": "790bc5dbb958a61f4cb09610ffe0e949e58ea7d787bc87c5ca7f2f7319691d4e",
+      "title": "Access Denied",
+      "dates": [],
+      "method": "public_HTTP_GET",
+      "content_archived_in_repository": false,
+      "response_sha256_note": "Hash of returned HTTP bytes, including error pages; this ledger does not contain the response body.",
+      "observation": "HTTP denied; web tool received first-party SBU article separately."
+    },
+    {
+      "url": "https://cpd.gov.ua/reports/spysok-instrumentiv-poshyrennya-vorozhoyi-dezinformacziyi/",
+      "retrieved_at": "2026-11-05T10:40:08.809251+00:00",
+      "status": 200,
+      "final_url": "https://cpd.gov.ua/reports/spysok-instrumentiv-poshyrennya-vorozhoyi-dezinformacziyi/",
+      "sha256": "5aa546ebac8ae5a81cf1a50702e0fdd340a77bd387ee4f3ffe597bd0c7bc4dbb",
+      "title": "Список інструментів поширення ворожої дезінформації | Центр протидії дезінформації",
+      "dates": [
+        {
+          "property": "article:published_time",
+          "content": "2024-03-11T22:14:38"
+        },
+        {
+          "class": [
+            "entry-date",
+            "published"
+          ],
+          "datetime": "2024-03-11T22:14:38+02:00",
+          "itemprop": "datePublished"
+        },
+        {
+          "class": [
+            "updated"
+          ],
+          "datetime": "2024-11-19T14:32:03+02:00",
+          "itemprop": "dateModified"
+        },
+        {
+          "class": [
+            "entry-date",
+            "published",
+            "updated"
+          ],
+          "datetime": "2026-10-15T15:16:44+03:00",
+          "itemprop": "dateModified"
+        },
+        {
+          "class": [
+            "entry-date",
+            "published"
+          ],
+          "datetime": "2026-09-28T12:54:34+03:00",
+          "itemprop": "datePublished"
+        },
+        {
+          "class": [
+            "updated"
+          ],
+          "datetime": "2026-09-28T13:10:46+03:00",
+          "itemprop": "dateModified"
+        },
+        {
+          "class": [
+            "entry-date",
+            "published"
+          ],
+          "datetime": "2026-09-01T13:41:23+03:00",
+          "itemprop": "datePublished"
+        },
+        {
+          "class": [
+            "updated"
+          ],
+          "datetime": "2026-09-01T14:08:11+03:00",
+          "itemprop": "dateModified"
+        },
+        {
+          "class": [
+            "entry-date",
+            "published"
+          ],
+          "datetime": "2026-08-24T09:52:49+03:00",
+          "itemprop": "datePublished"
+        },
+        {
+          "class": [
+            "updated"
+          ],
+          "datetime": "2026-08-24T09:54:04+03:00",
+          "itemprop": "dateModified"
+        },
+        {
+          "class": [
+            "entry-date",
+            "published",
+            "updated"
+          ],
+          "datetime": "2026-07-28T13:04:46+03:00",
+          "itemprop": "dateModified"
+        },
+        {
+          "class": [
+            "entry-date",
+            "published"
+          ],
+          "datetime": "2026-06-23T10:53:39+03:00",
+          "itemprop": "datePublished"
+        },
+        {
+          "class": [
+            "updated"
+          ],
+          "datetime": "2026-10-27T14:52:58+02:00",
+          "itemprop": "dateModified"
+        }
+      ],
+      "method": "public_HTTP_GET",
+      "content_archived_in_repository": false,
+      "response_sha256_note": "Hash of returned HTTP bytes, including error pages; this ledger does not contain the response body.",
+      "observation": "List is images, not plain text; relevant images visually read."
+    },
+    {
+      "url": "https://dbr.gov.ua/news",
+      "retrieved_at": "2026-11-05T10:40:08.811037+00:00",
+      "error": "HTTPSConnectionPool(host='dbr.gov.ua', port=443): Max retries exceeded with url: /news (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')))",
+      "method": "public_HTTP_GET",
+      "content_archived_in_repository": false,
+      "response_sha256_note": "Hash of returned HTTP bytes, including error pages; this ledger does not contain the response body.",
+      "observation": "Failed request, no content conclusion."
+    },
+    {
+      "url": "https://kyiv.news/suspilstvo-podii/stop-panika-chutky-petropavlivska-borshchahivka/",
+      "retrieved_at": "2026-11-05T10:40:08.812011+00:00",
+      "status": 200,
+      "final_url": "https://kyiv.news/suspilstvo-podii/stop-panika-chutky-petropavlivska-borshchahivka/",
+      "sha256": "dc5446b445748b4b89d286c7e528cb5e93bc71eca250a11cefd17d569b354184",
+      "title": "«Стоп паніка»: як розходилися чутки про Борщагівку",
+      "dates": [
+        {
+          "property": "article:published_time",
+          "content": "2026-11-03T08:53:33+02:00"
+        },
+        {
+          "property": "article:modified_time",
+          "content": "2026-11-03T08:56:17+02:00"
+        }
+      ],
+      "method": "public_HTTP_GET",
+      "content_archived_in_repository": false,
+      "response_sha256_note": "Hash of returned HTTP bytes, including error pages; this ledger does not contain the response body."
+    },
+    {
+      "url": "https://detector.media/infospace/article/253740/2026-11-04-borshchagivka-yak-dzerkalo-i-grabli/",
+      "retrieved_at": "2026-11-05T10:40:08.812730+00:00",
+      "status": 200,
+      "final_url": "https://detector.media/infospace/article/253740/2026-11-04-borshchagivka-yak-dzerkalo-i-grabli/",
+      "sha256": "5067148b8410954e80537382b7080f8e288066eaa58aebedfc042afed80d01af",
+      "title": "Борщагівка як дзеркало і граблі - Детектор медіа.",
+      "dates": [
+        {
+          "property": "article:published_time",
+          "content": "2026-11-04T09:00:00+02:00"
+        },
+        {
+          "property": "article:modified_time",
+          "content": "2026-11-04T09:26:21+02:00"
+        }
+      ],
+      "method": "public_HTTP_GET",
+      "content_archived_in_repository": false,
+      "response_sha256_note": "Hash of returned HTTP bytes, including error pages; this ledger does not contain the response body."
+    },
+    {
+      "url": "https://detector.media/infospace/article/253756/2026-11-04-na-rozvytok-podiy-u-petropavlivskiy-borshchagivtsi-naybilshe-vplynuv-tiktok-dmytro-lytvyn/",
+      "retrieved_at": "2026-11-05T10:40:08.812915+00:00",
+      "status": 200,
+      "final_url": "https://detector.media/infospace/article/253756/2026-11-04-na-rozvytok-podiy-u-petropavlivskiy-borshchagivtsi-naybilshe-vplynuv-tiktok-dmytro-lytvyn/",
+      "sha256": "b16c58df0744043e3a901e68aef1bba76cb111a34c10dec8c91afc2b65676791",
+      "title": "На розвиток подій у Петропавлівській Борщагівці найбільше вплинув тікток, — Дмитро Литвин - Детектор медіа.",
+      "dates": [
+        {
+          "property": "article:published_time",
+          "content": "2026-11-04T15:29:00+02:00"
+        },
+        {
+          "property": "article:modified_time",
+          "content": "2026-11-04T17:19:01+02:00"
+        }
+      ],
+      "method": "public_HTTP_GET",
+      "content_archived_in_repository": false,
+      "response_sha256_note": "Hash of returned HTTP bytes, including error pages; this ledger does not contain the response body."
+    },
+    {
+      "url": "https://eur-lex.europa.eu/eli/reg/2022/2065/oj/eng",
+      "retrieved_at": "2026-11-05T10:40:08.813873+00:00",
+      "status": 202,
+      "final_url": "https://eur-lex.europa.eu/eli/reg/2022/2065/oj/eng",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "title": "",
+      "dates": [],
+      "method": "public_HTTP_GET",
+      "content_archived_in_repository": false,
+      "response_sha256_note": "Hash of returned HTTP bytes, including error pages; this ledger does not contain the response body.",
+      "observation": "No legal text returned; not used as substantive evidence."
+    },
+    {
+      "url": "https://developers.google.com/youtube/terms/developer-policies",
+      "retrieved_at": "2026-11-05T10:40:08.814247+00:00",
+      "status": 200,
+      "final_url": "https://developers.google.com/youtube/terms/developer-policies",
+      "sha256": "ddb3d655c796ba4d14fe7b3786f8f5f7475c5cb545afa617b6cef244c88caa02",
+      "title": "YouTube API Services - Developer Policies  |  Google for Developers",
+      "dates": [],
+      "method": "public_HTTP_GET",
+      "content_archived_in_repository": false,
+      "response_sha256_note": "Hash of returned HTTP bytes, including error pages; this ledger does not contain the response body."
+    },
+    {
+      "url": "https://developers.facebook.com/docs/marketing-api/ads-library-api/",
+      "retrieved_at": "2026-11-05T10:40:08.815484+00:00",
+      "status": 404,
+      "final_url": "https://developers.facebook.com/docs/marketing-api/ads-library-api/",
+      "sha256": "057728d106e1625900c9f869ddc51ca979d4276eeb412244e958087ee2fde819",
+      "title": "Page Not Found - Meta for Developers",
+      "dates": [],
+      "method": "public_HTTP_GET",
+      "content_archived_in_repository": false,
+      "response_sha256_note": "Hash of returned HTTP bytes, including error pages; this ledger does not contain the response body.",
+      "observation": "404: no usable Ad Library API documentation at this path; do not infer current access rules."
+    },
+    {
+      "url": "https://texty.org.ua/fragments/118622/ce-bulo-ohydno-zhurnalist-rozpoviv-shcho-pobachyv-pid-chas-sutychok-na-borshchahivci-video/",
+      "retrieved_at": "2026-11-05T10:40:08.958883+00:00",
+      "status": 200,
+      "final_url": "https://texty.org.ua/fragments/118622/ce-bulo-ohydno-zhurnalist-rozpoviv-shcho-pobachyv-pid-chas-sutychok-na-borshchahivci-video/",
+      "sha256": "b618d755dfdc3fe861dfe62d67e063716b9e54f8ad2469a4d68c875eb0120311",
+      "title": "Сутички на Петропавлівській Борщагівці: журналіст розповів подробиці — Тексти.org.ua",
+      "dates": [
+        {
+          "class": [
+            "publish_date"
+          ],
+          "datetime": "03 листопада 2026 р. 12:56"
+        }
+      ],
+      "method": "public_HTTP_GET",
+      "content_archived_in_repository": false,
+      "response_sha256_note": "Hash of returned HTTP bytes, including error pages; this ledger does not contain the response body."
+    },
+    {
+      "url": "https://cpd.gov.ua/wp-content/uploads/2024/03/file_2024_03_12_003-14-02.jpg",
+      "retrieved_at": "2026-11-05T10:40:40.000610+00:00",
+      "status": 200,
+      "sha256": "7c6269325bd132c8d2a1ffcf3a25998e27930f3ca2f3d3dd1443e5db4d1f6210",
+      "method": "public_HTTP_GET_image",
+      "content_archived_in_repository": false,
+      "response_sha256_note": "Hash of returned HTTP bytes, including error pages; this ledger does not contain the response body.",
+      "visually_inspected": true,
+      "observation": "Source list card; plain page text omits names. Inspected images 0-6; remaining cards not transcribed."
+    },
+    {
+      "url": "https://cpd.gov.ua/wp-content/uploads/2024/03/file_2024_03_12_003-03.jpg",
+      "retrieved_at": "2026-11-05T10:40:40.066925+00:00",
+      "status": 200,
+      "sha256": "c2415521809051bda77da0c6c1da7f03e4c798f320098aba54a0e8e459cc98f6",
+      "method": "public_HTTP_GET_image",
+      "content_archived_in_repository": false,
+      "response_sha256_note": "Hash of returned HTTP bytes, including error pages; this ledger does not contain the response body.",
+      "visually_inspected": true,
+      "observation": "Source list card; plain page text omits names. Inspected images 0-6; remaining cards not transcribed."
+    },
+    {
+      "url": "https://cpd.gov.ua/wp-content/uploads/2024/03/file_2024_03_12_003-04.jpg",
+      "retrieved_at": "2026-11-05T10:40:40.077858+00:00",
+      "status": 200,
+      "sha256": "5935c5798daddba368785e7217278880cf0e7ea3b551446485beaeeb7364dd6c",
+      "method": "public_HTTP_GET_image",
+      "content_archived_in_repository": false,
+      "response_sha256_note": "Hash of returned HTTP bytes, including error pages; this ledger does not contain the response body.",
+      "visually_inspected": true,
+      "observation": "Source list card; plain page text omits names. Inspected images 0-6; remaining cards not transcribed."
+    },
+    {
+      "url": "https://cpd.gov.ua/wp-content/uploads/2024/03/file_2024_03_12_003-05.jpg",
+      "retrieved_at": "2026-11-05T10:40:40.063089+00:00",
+      "status": 200,
+      "sha256": "512e149c3cc0b4d1d2d866d33b2556a7606e2243b1e6fa0988d2ee4719a5ff36",
+      "method": "public_HTTP_GET_image",
+      "content_archived_in_repository": false,
+      "response_sha256_note": "Hash of returned HTTP bytes, including error pages; this ledger does not contain the response body.",
+      "visually_inspected": true,
+      "observation": "Source list card; plain page text omits names. Inspected images 0-6; remaining cards not transcribed."
+    },
+    {
+      "url": "https://cpd.gov.ua/wp-content/uploads/2024/03/file_2024_03_12_003-06.jpg",
+      "retrieved_at": "2026-11-05T10:40:40.062046+00:00",
+      "status": 200,
+      "sha256": "e19c401fa2f11eaaa5c5813a9976d95848a64bbf51ec4b9befaee6fde8f8a327",
+      "method": "public_HTTP_GET_image",
+      "content_archived_in_repository": false,
+      "response_sha256_note": "Hash of returned HTTP bytes, including error pages; this ledger does not contain the response body.",
+      "visually_inspected": true,
+      "observation": "Source list card; plain page text omits names. Inspected images 0-6; remaining cards not transcribed."
+    },
+    {
+      "url": "https://cpd.gov.ua/wp-content/uploads/2024/03/file_2024_03_12_003-14-07.jpg",
+      "retrieved_at": "2026-11-05T10:40:40.059850+00:00",
+      "status": 200,
+      "sha256": "a4a0277111e326a7c8c4a186e53195b12cb3358a70593060ab68084ddc01c269",
+      "method": "public_HTTP_GET_image",
+      "content_archived_in_repository": false,
+      "response_sha256_note": "Hash of returned HTTP bytes, including error pages; this ledger does not contain the response body.",
+      "visually_inspected": true,
+      "observation": "Source list card; plain page text omits names. Inspected images 0-6; remaining cards not transcribed."
+    },
+    {
+      "url": "https://cpd.gov.ua/wp-content/uploads/2024/03/file_2024_03_12_003-08.jpg",
+      "retrieved_at": "2026-11-05T10:40:40.141757+00:00",
+      "status": 200,
+      "sha256": "39e97b0a366702717e7b12d08fe99a0d9306f038bca0ad4cd98566cf720213f6",
+      "method": "public_HTTP_GET_image",
+      "content_archived_in_repository": false,
+      "response_sha256_note": "Hash of returned HTTP bytes, including error pages; this ledger does not contain the response body.",
+      "visually_inspected": true,
+      "observation": "Source list card; plain page text omits names. Inspected images 0-6; remaining cards not transcribed."
+    },
+    {
+      "url": "https://cpd.gov.ua/wp-content/uploads/2024/03/file_2024_03_12_003-09.jpg",
+      "retrieved_at": "2026-11-05T10:40:40.213977+00:00",
+      "status": 200,
+      "sha256": "a96c3dac705e46e24fe72280fadf21c1680e7ccccc4d87c9f46a034a7f31a10b",
+      "method": "public_HTTP_GET_image",
+      "content_archived_in_repository": false,
+      "response_sha256_note": "Hash of returned HTTP bytes, including error pages; this ledger does not contain the response body.",
+      "visually_inspected": false,
+      "observation": "Source list card; plain page text omits names. Inspected images 0-6; remaining cards not transcribed."
+    },
+    {
+      "url": "https://cpd.gov.ua/wp-content/uploads/2024/03/file_2024_03_12_003-10.jpg",
+      "retrieved_at": "2026-11-05T10:40:40.256882+00:00",
+      "status": 200,
+      "sha256": "097f738f81fd73fc3a0b33be40b3d458d59a326fa4f1a6903d4b58b8010226a7",
+      "method": "public_HTTP_GET_image",
+      "content_archived_in_repository": false,
+      "response_sha256_note": "Hash of returned HTTP bytes, including error pages; this ledger does not contain the response body.",
+      "visually_inspected": false,
+      "observation": "Source list card; plain page text omits names. Inspected images 0-6; remaining cards not transcribed."
+    },
+    {
+      "url": "https://cpd.gov.ua/wp-content/uploads/2024/03/file_2024_03_12_003-11.jpg",
+      "retrieved_at": "2026-11-05T10:40:40.254676+00:00",
+      "status": 200,
+      "sha256": "374b8e035c271bab0ca69419ebb53f29367b18e1754925ee09e12b89230706c8",
+      "method": "public_HTTP_GET_image",
+      "content_archived_in_repository": false,
+      "response_sha256_note": "Hash of returned HTTP bytes, including error pages; this ledger does not contain the response body.",
+      "visually_inspected": false,
+      "observation": "Source list card; plain page text omits names. Inspected images 0-6; remaining cards not transcribed."
+    },
+    {
+      "url": "https://cpd.gov.ua/wp-content/uploads/2024/03/file_2024_03_12_003-12.jpg",
+      "retrieved_at": "2026-11-05T10:40:40.254632+00:00",
+      "status": 200,
+      "sha256": "5ea8dcb5c2c5c5680f7c652234d9fe14f6707235b976b902530c2c27f665d9b3",
+      "method": "public_HTTP_GET_image",
+      "content_archived_in_repository": false,
+      "response_sha256_note": "Hash of returned HTTP bytes, including error pages; this ledger does not contain the response body.",
+      "visually_inspected": false,
+      "observation": "Source list card; plain page text omits names. Inspected images 0-6; remaining cards not transcribed."
+    },
+    {
+      "url": "https://cpd.gov.ua/wp-content/uploads/2024/03/file_2024_03_12_003-13.jpg",
+      "retrieved_at": "2026-11-05T10:40:40.255598+00:00",
+      "status": 200,
+      "sha256": "c3f47bd52f31467159ea9d995615b633c466680e93411081d1aab1006ce89209",
+      "method": "public_HTTP_GET_image",
+      "content_archived_in_repository": false,
+      "response_sha256_note": "Hash of returned HTTP bytes, including error pages; this ledger does not contain the response body.",
+      "visually_inspected": false,
+      "observation": "Source list card; plain page text omits names. Inspected images 0-6; remaining cards not transcribed."
+    },
+    {
+      "url": "https://cpd.gov.ua/wp-content/uploads/2024/03/file_2024_03_12_003-14.jpg",
+      "retrieved_at": "2026-11-05T10:40:40.276722+00:00",
+      "status": 200,
+      "sha256": "1f09237f742b035a64db4912a9dc414b704c27479d79301b3f1f65c9c7333752",
+      "method": "public_HTTP_GET_image",
+      "content_archived_in_repository": false,
+      "response_sha256_note": "Hash of returned HTTP bytes, including error pages; this ledger does not contain the response body.",
+      "visually_inspected": false,
+      "observation": "Source list card; plain page text omits names. Inspected images 0-6; remaining cards not transcribed."
+    },
+    {
+      "url": "https://t.me/gnapinfo/5679?embed=1",
+      "retrieved_at": "2026-11-05T10:41:12.450873+00:00",
+      "status": 200,
+      "final_url": "https://t.me/gnapinfo/5679?embed=1",
+      "sha256": "c537d341b6f340cc8867d0cf920863c3c6860bbc8780db925d89596b2f1e10e6",
+      "title": "Telegram Widget",
+      "dates": [
+        {
+          "class": [
+            "message_video_duration",
+            "js-message_video_duration"
+          ]
+        },
+        {
+          "class": [
+            "message_video_duration",
+            "js-message_video_duration"
+          ]
+        },
+        {
+          "datetime": "2026-11-02T10:41:03+00:00",
+          "class": [
+            "datetime"
+          ]
+        }
+      ],
+      "method": "public_HTTP_GET",
+      "content_archived_in_repository": false,
+      "response_sha256_note": "Hash of returned HTTP bytes, including error pages; this ledger does not contain the response body."
+    },
+    {
+      "url": "https://t.me/ukr_2025_ru/345613?embed=1",
+      "retrieved_at": "2026-11-05T10:41:12.452331+00:00",
+      "status": 200,
+      "final_url": "https://t.me/ukr_2025_ru/345613?embed=1",
+      "sha256": "fc6cc8dec14c5a903eafadcf3e2ded553a188619cbc493fd3c4c6f8373b557b1",
+      "title": "Telegram Widget",
+      "dates": [
+        {
+          "class": [
+            "message_video_duration",
+            "js-message_video_duration"
+          ]
+        },
+        {
+          "datetime": "2026-11-02T11:57:01+00:00",
+          "class": [
+            "datetime"
+          ]
+        }
+      ],
+      "method": "public_HTTP_GET",
+      "content_archived_in_repository": false,
+      "response_sha256_note": "Hash of returned HTTP bytes, including error pages; this ledger does not contain the response body."
+    },
+    {
+      "url": "https://t.me/s/ukr_2025_ru",
+      "retrieved_at": "2026-11-05T10:41:12.452782+00:00",
+      "status": 200,
+      "final_url": "https://t.me/s/ukr_2025_ru",
+      "sha256": "abc87a737e7250aed5243548dd836b0d7103822fb36eabd4764f6eccfe80bca4",
+      "title": "Украина.ру – Telegram",
+      "dates": [
+        {
+          "datetime": "2026-11-05T08:53:30+00:00",
+          "class": [
+            "time"
+          ]
+        },
+        {
+          "datetime": "2026-11-05T08:56:01+00:00",
+          "class": [
+            "time"
+          ]
+        },
+        {
+          "datetime": "2026-11-05T09:03:01+00:00",
+          "class": [
+            "time"
+          ]
+        },
+        {
+          "datetime": "2026-11-05T09:13:42+00:00",
+          "class": [
+            "time"
+          ]
+        },
+        {
+          "datetime": "2026-11-05T09:21:34+00:00",
+          "class": [
+            "time"
+          ]
+        },
+        {
+          "datetime": "2026-11-05T09:27:01+00:00",
+          "class": [
+            "time"
+          ]
+        },
+        {
+          "datetime": "2026-11-05T09:34:01+00:00",
+          "class": [
+            "time"
+          ]
+        },
+        {
+          "datetime": "2026-11-05T09:40:30+00:00",
+          "class": [
+            "time"
+          ]
+        },
+        {
+          "class": [
+            "message_video_duration",
+            "js-message_video_duration"
+          ]
+        },
+        {
+          "datetime": "2026-11-05T09:41:41+00:00",
+          "class": [
+            "time"
+          ]
+        },
+        {
+          "datetime": "2026-11-05T09:44:00+00:00",
+          "class": [
+            "time"
+          ]
+        },
+        {
+          "datetime": "2026-11-05T09:53:59+00:00",
+          "class": [
+            "time"
+          ]
+        },
+        {
+          "class": [
+            "message_video_duration",
+            "js-message_video_duration"
+          ]
+        },
+        {
+          "datetime": "2026-11-05T09:59:01+00:00",
+          "class": [
+            "time"
+          ]
+        },
+        {
+          "class": [
+            "message_video_duration",
+            "js-message_video_duration"
+          ]
+        },
+        {
+          "datetime": "2026-11-05T10:01:03+00:00",
+          "class": [
+            "time"
+          ]
+        },
+        {
+          "datetime": "2026-11-05T10:10:29+00:00",
+          "class": [
+            "time"
+          ]
+        },
+        {
+          "datetime": "2026-11-05T10:19:36+00:00",
+          "class": [
+            "time"
+          ]
+        },
+        {
+          "datetime": "2026-11-05T10:22:18+00:00",
+          "class": [
+            "time"
+          ]
+        },
+        {
+          "datetime": "2026-11-05T10:25:01+00:00",
+          "class": [
+            "time"
+          ]
+        },
+        {
+          "datetime": "2026-11-05T10:27:46+00:00",
+          "class": [
+            "time"
+          ]
+        },
+        {
+          "datetime": "2026-11-05T10:31:58+00:00",
+          "class": [
+            "time"
+          ]
+        }
+      ],
+      "method": "public_HTTP_GET",
+      "content_archived_in_repository": false,
+      "response_sha256_note": "Hash of returned HTTP bytes, including error pages; this ledger does not contain the response body."
+    },
+    {
+      "url": "https://t.me/kyivregionpolice/34800?embed=1",
+      "retrieved_at": "2026-11-05T10:41:12.453442+00:00",
+      "status": 200,
+      "final_url": "https://t.me/kyivregionpolice/34800?embed=1",
+      "sha256": "4d430fc898175bbaf5a5f81eb32c0e272e41d17bc7af30b8c0262f8ad6159d99",
+      "title": "Telegram Widget",
+      "dates": [
+        {
+          "datetime": "2026-11-02T20:16:55+00:00",
+          "class": [
+            "datetime"
+          ]
+        }
+      ],
+      "method": "public_HTTP_GET",
+      "content_archived_in_repository": false,
+      "response_sha256_note": "Hash of returned HTTP bytes, including error pages; this ledger does not contain the response body."
+    },
+    {
+      "url": "https://t.me/mvs_ukraine/69823?embed=1",
+      "retrieved_at": "2026-11-05T10:41:12.454422+00:00",
+      "status": 200,
+      "final_url": "https://t.me/mvs_ukraine/69823?embed=1",
+      "sha256": "ec71bd5fd37fb57e731dc91fcd33b7289dc9229f14c243b757e8b0fb4c8799fa",
+      "title": "Telegram Widget",
+      "dates": [
+        {
+          "datetime": "2026-11-02T20:17:54+00:00",
+          "class": [
+            "datetime"
+          ]
+        }
+      ],
+      "method": "public_HTTP_GET",
+      "content_archived_in_repository": false,
+      "response_sha256_note": "Hash of returned HTTP bytes, including error pages; this ledger does not contain the response body."
+    },
+    {
+      "url": "https://ssu.gov.ua/novyny/sbu-vykryla-ahenturnu-merezhu-spetssluzhb-rf-yaka-destabilizuvala-sytuatsiiu-v-ukraini-cherez-telegramkanaly",
+      "retrieved_at": "2026-11-05T10:45:34+00:00",
+      "timestamp_semantics": "UTC tool-batch start; completion within seconds",
+      "method": "web_tool_open_primary_source",
+      "observation": "First-party article: published 2021-02-01 12:40; names 12 channels; state attribution, no judgment independently checked.",
+      "content_archived_in_repository": false
+    },
+    {
+      "url": "https://www.ssu.gov.ua/novyny/sbu-zatrymala-i-povidomyla-pro-pidozru-orhanizatoram-zavorushen-u-petropavlivskii-borshchahivtsi",
+      "retrieved_at": "2026-11-05T10:45:34+00:00",
+      "timestamp_semantics": "UTC tool-batch start; completion within seconds",
+      "method": "web_tool_open_primary_source",
+      "observation": "First-party article: published 2026-11-04 17:50; 3 suspects; investigation ongoing.",
+      "content_archived_in_repository": false
+    },
+    {
+      "url": "https://www.president.gov.ua/documents/3762021-39745",
+      "retrieved_at": "2026-11-05T10:45:34+00:00",
+      "timestamp_semantics": "UTC tool-batch start; completion within seconds",
+      "method": "web_tool_open_primary_source",
+      "observation": "First-party decree dated 2021-08-20; sanctions appendices not inspected.",
+      "content_archived_in_repository": false
+    },
+    {
+      "url": "https://www.icpsr.umich.edu/sites/somar/meta-content-library",
+      "retrieved_at": "2026-11-05T10:45:34+00:00",
+      "timestamp_semantics": "UTC tool-batch start; completion within seconds",
+      "method": "web_tool_open_primary_source",
+      "observation": "First-party SOMAR page: Facebook/Instagram UI/API; Threads specified for UI.",
+      "content_archived_in_repository": false
+    },
+    {
+      "url": "https://dbr.gov.ua/news/dbr-rozpochalo-kriminalne-provadzhennya-za-faktom-podij-u-petropavlivskij-borshhagivci-na-kiivshhini",
+      "retrieved_at": "2026-11-05",
+      "timestamp_precision": "date; indexed search retrieval preceded 10:45 UTC, exact timestamp not captured",
+      "method": "web_tool_search_index_of_primary_source",
+      "publication_date": "2026-11-03",
+      "observation": "Article gives incident date November 2, 2026; investigation under part5 article426-1. Subsequent live open timed out. Do not present as successful live body retrieval."
+    },
+    {
+      "url": "https://ukraina.ru/20190417/1023342110.html",
+      "retrieved_at": "2026-11-05T10:46:08+00:00",
+      "timestamp_semantics": "UTC web open batch start",
+      "method": "web_tool_open_then_follow_social_link",
+      "publication_date": "2019-04-17T13:40",
+      "modification_date": "2022-07-14T11:22",
+      "observation": "Historic body points to https://t.me/ukraina_ru. Current social link labelled Telegram (link6 in extracted page) points to https://t.me/ukr_2025_ru; destination checked with click. Body and modern template are different temporal evidence."
+    },
+    {
+      "url": "https://t.me/kiber_boroshno/13675",
+      "retrieved_at": "2026-11-05T10:01:18.761421+00:00",
+      "method": "existing_repository_archive_read_only",
+      "archive_file": "raw/web/e83c1a3426f810ab.html.gz",
+      "index_sha256": "e83c1a3426f810abaa554ac6b7bbc69953380a70d14820e6813e62798a89b6e4",
+      "verified_decompressed_sha256": "e83c1a3426f810abaa554ac6b7bbc69953380a70d14820e6813e62798a89b6e4",
+      "observation": "KB plain permalink archive is Telegram embed shell, no study body."
+    },
+    {
+      "url": "https://www.radiosvoboda.org/a/news-cpd-sutychky-petropavlvska-borshchahivka-splanovana-kampania/33889946.html",
+      "retrieved_at": "2026-11-05T10:01:21.460271+00:00",
+      "method": "existing_repository_archive_read_only",
+      "archive_file": "raw/web/81e7b6373637cb57.html.gz",
+      "index_sha256": "81e7b6373637cb577ffec5fa353ecc3e50351b699baf431cc4aef21c19d973de",
+      "verified_decompressed_sha256": "81e7b6373637cb577ffec5fa353ecc3e50351b699baf431cc4aef21c19d973de",
+      "observation": "Secondary reporting of CPD; repeated reporting is not independent numerical measurement."
+    },
+    {
+      "url": "https://t.me/kiber_boroshno/13675",
+      "retrieved_at": "2026-11-05T10:40:53.668364+00:00",
+      "method": "read_only_existing_parent_collected_Telegram_API_receipt",
+      "source_file": "data/raw/telegram_api/20261105T104050Z/messages.jsonl",
+      "chat_id": -1001742466857,
+      "message_id": 13675,
+      "date": "2026-11-03T14:05:40+00:00",
+      "edit_date": "2026-11-03T19:13:10+00:00",
+      "text_length": 3522,
+      "observation": "KB API date differs by 3 seconds from widget; preserve both."
+    },
+    {
+      "url": "https://t.me/CenterCounteringDisinformation/19519",
+      "retrieved_at": "2026-11-05T10:40:54.434146+00:00",
+      "method": "read_only_existing_parent_collected_Telegram_API_receipt",
+      "source_file": "data/raw/telegram_api/20261105T104050Z/messages.jsonl",
+      "chat_id": -1001663231580,
+      "message_id": 19519,
+      "date": "2026-11-03T17:29:26+00:00",
+      "edit_date": "2026-11-03T17:29:32+00:00",
+      "text_length": 0,
+      "observation": "CPD API text empty and media null; cannot recover statement."
+    },
+    {
+      "url": "https://t.me/tkachenkotymur/3077?embed=1",
+      "retrieved_at": "2026-11-05T10:48:04.556700+00:00",
+      "method": "public_HTTP_GET",
+      "status": 200,
+      "final_url": "https://t.me/tkachenkotymur/3077?embed=1",
+      "sha256": "114f062dd6c3eb4186dfa503a7ba53c6180b189ce0910480cb29573887076df1",
+      "title": "Telegram Widget",
+      "dates": [
+        {
+          "datetime": "2026-11-04T22:03:13+00:00",
+          "class": [
+            "datetime"
+          ]
+        }
+      ],
+      "content_archived_in_repository": false
+    },
+    {
+      "url": "https://kv.dsns.gov.ua/pres-centr/news/nadzvicaini-podiyi/kiyivshhina-vnaslidok-pozezi-v-pansionati-dlia-litnix-liudei-zaginula-odna-liudina-shhe-piatero-postrazdali",
+      "retrieved_at": "2026-11-05T10:48:04.557996+00:00",
+      "method": "public_HTTP_GET",
+      "status": 403,
+      "final_url": "https://kv.dsns.gov.ua/pres-centr/news/nadzvicaini-podiyi/kiyivshhina-vnaslidok-pozezi-v-pansionati-dlia-litnix-liudei-zaginula-odna-liudina-shhe-piatero-postrazdali",
+      "sha256": "0f4ef746b47c913fbf9449651c7367104263f1ed0444558ee463c96c09860bef",
+      "title": "Attention Required! | Cloudflare",
+      "dates": [],
+      "content_archived_in_repository": false
+    },
+    {
+      "url": "https://t.me/s/dsns_telegram",
+      "retrieved_at": "2026-11-05T10:48:04.558864+00:00",
+      "method": "public_HTTP_GET",
+      "status": 200,
+      "final_url": "https://t.me/s/dsns_telegram",
+      "sha256": "2f9583a64bf33e016946bef47151b6c05cb1172a31a7f74e358bc39bd642f9a4",
+      "title": "ДСНС України – Telegram",
+      "dates": [
+        {
+          "class": [
+            "message_video_duration",
+            "js-message_video_duration"
+          ]
+        },
+        {
+          "datetime": "2026-11-05T07:20:49+00:00",
+          "class": [
+            "time"
+          ]
+        },
+        {
+          "datetime": "2026-11-05T08:20:58+00:00",
+          "class": [
+            "time"
+          ]
+        },
+        {
+          "datetime": "2026-11-05T09:01:37+00:00",
+          "class": [
+            "time"
+          ]
+        },
+        {
+          "class": [
+            "message_video_duration",
+            "js-message_video_duration"
+          ]
+        },
+        {
+          "datetime": "2026-11-05T09:34:54+00:00",
+          "class": [
+            "time"
+          ]
+        }
+      ],
+      "content_archived_in_repository": false
+    },
+    {
+      "url": "https://brada.gov.ua/",
+      "retrieved_at": "2026-11-05T10:48:04.559569+00:00",
+      "method": "public_HTTP_GET",
+      "status": 200,
+      "final_url": "https://brada.gov.ua/",
+      "sha256": "7ca65eecb84e5901171eb94d6665d08f742dbfcc803f8e164f66ebdaa125175b",
+      "title": "Борщагівська сільська рада – Київська область",
+      "dates": [
+        {
+          "class": [
+            "date",
+            "published"
+          ],
+          "datetime": "2026-11-05T09:21:25+00:00"
+        },
+        {
+          "class": [
+            "updated"
+          ],
+          "datetime": "2026-11-05T09:54:38+02:00"
+        },
+        {
+          "class": [
+            "date",
+            "published"
+          ],
+          "datetime": "2026-11-04T19:17:00+00:00"
+        },
+        {
+          "class": [
+            "updated"
+          ],
+          "datetime": "2026-11-05T09:19:43+02:00"
+        },
+        {
+          "class": [
+            "date",
+            "published"
+          ],
+          "datetime": "2026-11-04T17:25:06+00:00"
+        },
+        {
+          "class": [
+            "updated"
+          ],
+          "datetime": "2026-11-04T17:25:08+02:00"
+        },
+        {
+          "class": [
+            "date",
+            "published"
+          ],
+          "datetime": "2026-11-04T12:20:00+00:00"
+        },
+        {
+          "class": [
+            "updated"
+          ],
+          "datetime": "2026-11-05T09:21:38+02:00"
+        },
+        {
+          "class": [
+            "date",
+            "published"
+          ],
+          "datetime": "2026-11-03T17:45:00+00:00"
+        },
+        {
+          "class": [
+            "updated"
+          ],
+          "datetime": "2026-11-04T17:17:25+02:00"
+        },
+        {
+          "class": [
+            "date",
+            "published"
+          ],
+          "datetime": "2026-11-03T14:19:53+00:00"
+        },
+        {
+          "class": [
+            "updated"
+          ],
+          "datetime": "2026-11-03T14:19:54+02:00"
+        },
+        {
+          "class": [
+            "date",
+            "published"
+          ],
+          "datetime": "2026-10-30T15:16:17+00:00"
+        },
+        {
+          "class": [
+            "updated"
+          ],
+          "datetime": "2026-10-30T15:16:19+02:00"
+        },
+        {
+          "class": [
+            "date",
+            "published"
+          ],
+          "datetime": "2026-10-30T15:10:31+00:00"
+        },
+        {
+          "class": [
+            "updated"
+          ],
+          "datetime": "2026-10-30T15:17:20+02:00"
+        },
+        {
+          "class": [
+            "date",
+            "published"
+          ],
+          "datetime": "2026-10-30T13:58:10+00:00"
+        },
+        {
+          "class": [
+            "updated"
+          ],
+          "datetime": "2026-10-30T13:58:12+02:00"
+        },
+        {
+          "class": [
+            "date",
+            "published"
+          ],
+          "datetime": "2026-10-30T13:57:06+00:00"
+        },
+        {
+          "class": [
+            "updated"
+          ],
+          "datetime": "2026-10-30T13:57:08+02:00"
+        }
+      ],
+      "content_archived_in_repository": false
+    },
+    {
+      "url": "https://ua.korrespondent.net/ukraine/4926178-na-kyivschyni-spalakhnula-masshtabna-pozhezha-pislia-ataky-rf",
+      "retrieved_at": "2026-11-05T10:48:04.560296+00:00",
+      "method": "public_HTTP_GET",
+      "status": 200,
+      "final_url": "https://ua.korrespondent.net/ukraine/4926178-na-kyivschyni-spalakhnula-masshtabna-pozhezha-pislia-ataky-rf",
+      "sha256": "80724ef60bba201f06427706eb8cb43d132491efef0a4b21343271c22669fc18",
+      "title": "На Київщині спалахнула масштабна пожежа після атаки РФ - Korrespondent.net",
+      "dates": [],
+      "content_archived_in_repository": false
+    },
+    {
+      "url": "https://vechirniy.kyiv.ua/news/134888/",
+      "retrieved_at": "2026-11-05T10:48:04.560915+00:00",
+      "method": "public_HTTP_GET",
+      "status": 200,
+      "final_url": "https://vechirniy.kyiv.ua/news/134888/",
+      "sha256": "e3b4cbf2a28c16a6a5ca17ebe265ee62a96c716dfd6e614c5137cedd80cde0db",
+      "title": "Під Києвом під час пожежі в пансіонаті загинула людина: п’ятеро в лікарні - Вечірній Київ",
+      "dates": [
+        {
+          "datetime": "2026-11-02T12:36:00+02:00",
+          "class": [
+            "tblock-date",
+            "content-date"
+          ]
+        }
+      ],
+      "content_archived_in_repository": false
+    },
+    {
+      "url": "https://t.me/s/brada021",
+      "retrieved_at": "2026-11-05T10:48:18.736087+00:00",
+      "method": "public_HTTP_GET",
+      "status": 200,
+      "sha256": "391f7ba99e2827c293d30532e575c855a34384aa271c002a1f80ce76cc3f9cc7",
+      "content_archived_in_repository": false,
+      "observation": "Read only relevant fire posts: brada021/12038 at 2026-11-04T22:17:06+00:00 and /12048 at 2026-11-05T07:49:12+00:00. Unrelated posts not transcribed."
+    },
+    {
+      "url": "https://t.me/brada021/12038?embed=1",
+      "retrieved_at": "2026-11-05T10:49:23.405014+00:00",
+      "method": "public_HTTP_GET_embed",
+      "status": 200,
+      "sha256": "73be36ffa0ba5423d00195eea054e3b2e8a6f90922652ec79d80376b60f3844a",
+      "datetimes": [
+        "2026-11-04T22:17:06+00:00"
+      ],
+      "observation": "Primary community forwarded statement: Sofiivska Borshchahivka warehouse strike; not Petropavlivska incident. No precise location or private-person data reproduced."
+    },
+    {
+      "url": "https://t.me/ukr_2025_ru",
+      "retrieved_at": "2026-11-05T10:46:50+00:00",
+      "timestamp_semantics": "UTC web click batch start",
+      "method": "web_tool_follow_first_party_social_link",
+      "from_url": "https://ukraina.ru/20190417/1023342110.html",
+      "observation": "Current site social link Telegram resolves to this handle; historical article body retains old handle."
+    },
+    {
+      "url": "https://www.slovoidilo.ua/2026/11/03/novyna/bezpeka/podiyi-petropavlivskij-borshhahivczi-czpd-zayavyly-pro-skoordynovane-poshyrennya-fejkiv",
+      "retrieved_at": "2026-11-05T10:01:19.997680+00:00",
+      "method": "existing_repository_archive_read_only",
+      "archive_file": "raw/web/10c8b1d4a0b054cd.html.gz",
+      "observation": "HTML includes data-telegram-post=CenterCounteringDisinformation/19519 in article quoting CPD."
+    },
+    {
+      "url": "https://www.tiktok.com/",
+      "retrieved_at": "2026-11-05T10:47:45+00:00",
+      "timestamp_semantics": "UTC search batch start",
+      "method": "web_tool_domain_search",
+      "queries": [
+        "site.tiktok.com Борщагівка пожежа сліди",
+        "Борщагівка замітають сліди",
+        "Борщаговка заметают следы"
+      ],
+      "observation": "No matching video permalink found; web reported TikTok blocked by robots.txt. Negative result is not absence evidence."
+    }
+  ]
+}

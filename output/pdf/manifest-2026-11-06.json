@@ -1,0 +1,58 @@
+{
+  "created_at_utc": "2026-11-06T15:49:58.546515+00:00",
+  "report_version": "2.7",
+  "pdfs": [
+    {
+      "file": "petropavlivska_borshchahivka_report_2026-11-06.pdf",
+      "bytes": 567329,
+      "pages": 29,
+      "sha256": "5118bf4709a274fae2615bc01721a1750e21f16d00b543d09043ef408693d0cf",
+      "source": "reports/borshchahivka-report.md",
+      "source_sha256": "0d9fca5e686f459d2413c1fc5e0074c386f4a5d003a14daaaf3adb7eded86461",
+      "builder": "scripts/reports/build_report.py",
+      "builder_sha256": "e6bd1d42bd1a9c8a5cba9336dde367bfe52209539159658e8120a225797264c5"
+    },
+    {
+      "file": "petropavlivska_figures_and_proceedings_2026-11-06.pdf",
+      "bytes": 105086,
+      "pages": 10,
+      "sha256": "3371c5c0bc4a8d80da8326bab45f29684517eee29e68875743d6fae0771a024c",
+      "source": "reports/figures-and-proceedings-2026-11-06.md",
+      "source_sha256": "f001f75444e0403967cfb022024064d67b59ca6a6465ed4d6346fc749bdcd229",
+      "builder": "scripts/reports/build_figures_dossier.py",
+      "builder_sha256": "241ecaa81f3f5cd2bd8d48a12b2dab54623f4f06524eec4fad92cef65176d886"
+    },
+    {
+      "file": "russian_influence_attribution_early_warning_2026-11-06.pdf",
+      "bytes": 104479,
+      "pages": 10,
+      "sha256": "71b831d4997b0f257058a9ec264b933b76384e3f2ad7b726fc1d923df425b48d",
+      "source": "wiki/methods/russian-influence-attribution-early-warning.md",
+      "source_sha256": "9b4c0f012cfe5f7d76e2006b6e0b4f3cc5ec89eb3a6e97707586c2595d838a92",
+      "builder": "scripts/reports/build_figures_dossier.py",
+      "builder_sha256": "241ecaa81f3f5cd2bd8d48a12b2dab54623f4f06524eec4fad92cef65176d886"
+    }
+  ],
+  "source_watch_baseline": {
+    "snapshot_utc": "20261106T142309.123268Z",
+    "manifest": "data/raw/source_watch/20261106T142309.123268Z/manifest.json",
+    "manifest_sha256": "2277c8c316f9b8562181523a5311cbe2e341e4812989651860759da635f31477",
+    "collector": "src/source_watch_collect.py",
+    "collector_sha256": "2018210bc66b1196e34b8e076a863d4291f021fbbba8da18a9b6958d6451ca71",
+    "extractor_version": 2,
+    "targets": 12,
+    "events": {
+      "error": 2,
+      "new_baseline": 10
+    },
+    "cron_timezone": "Europe/Kyiv",
+    "cron_schedule": "0 10 * * *",
+    "first_scheduled_run": "2026-11-07 10:00 Europe/Kyiv"
+  },
+  "verification": {
+    "pdf_text": "Main report v2.7: 29 pages; text confirms 21:00 count is 114 and the 99.7% recall claim is withdrawn.",
+    "visual_review": "After v2.7, rendered and inspected main-report pages 1, 5-7, 9 and 11. Attribution PDF rebuilt (10 pages); figures/proceedings PDF unchanged (10 pages).",
+    "project_tests": "Not rerun for this document-only revision.",
+    "git_diff_check": "passed for source code and JSON; generated CSV/PDF files and preserved Markdown hard-break whitespace excluded from whitespace check"
+  }
+}

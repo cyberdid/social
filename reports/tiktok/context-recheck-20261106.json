@@ -1,0 +1,39 @@
+{
+  "version": "1.1",
+  "input_comments": 9653,
+  "old_candidates_with_context": 3,
+  "new_candidates": 166,
+  "rule_counts": {
+    "evidence_concealment": 5,
+    "implicit_cleanup_allusion": 4,
+    "medical_identity_dispute": 157,
+    "repeated_candidate_text": 2
+  },
+  "concealment_candidates": 5,
+  "concealment_posts": 3,
+  "clock_ledger_posts": 42,
+  "platform_publication_times": 21,
+  "verified_filming_times": 0,
+  "limitations": [
+    "Retrospective rules; not prevalence or validated recall.",
+    "User selection enables review; not verified parent-post relevance.",
+    "Photo captions unavailable; no event/filming timestamps established."
+  ],
+  "publication_time_comparison": {
+    "compared": 21,
+    "exact_matches": 0,
+    "min_seconds": 4.0,
+    "median_seconds": 8.0,
+    "max_seconds": 9183.0,
+    "over_one_minute": 1,
+    "outliers": [
+      {
+        "url": "https://www.tiktok.com/@belradio_1/video/7704722151990955316",
+        "id_publication_time_estimate_kyiv": "2026-11-05T18:16:57+02:00",
+        "platform_publication_timestamp_utc": "2026-11-05T18:50:00+00:00",
+        "metadata_minus_id_seconds": 9183.0
+      }
+    ],
+    "frozen_window_disagreements": 0
+  }
+}

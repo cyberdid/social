@@ -1,0 +1,61 @@
+{
+  "created_date": "2026-11-05",
+  "scope": "DR1/4/5/6 crosscheck; original raw sources unchanged",
+  "inputs_read": [
+    {
+      "path": "raw/deep-research/DR1-2026-11-05.md",
+      "sha256": "96bb9a8a48c8661d0f676140c2989c38a740b04bb8f7e2355223f1d0b14659a9"
+    },
+    {
+      "path": "raw/deep-research/DR4-2026-11-05.md",
+      "sha256": "7799a95afd6ed7be0086354a6acd316b4734b61b84a5069e272d8c87c6d7e05e"
+    },
+    {
+      "path": "raw/deep-research/DR5-2026-11-05.md",
+      "sha256": "efae4b6a0aed3dafc68b5f8bee195de68e72bd03afef6df7741390183bf434b1"
+    },
+    {
+      "path": "raw/deep-research/DR6-2026-11-05.md",
+      "sha256": "793f651475260880d6ee3c0cb307ffaf2f7dd9280db7eb4c6df5357f12fc1b46"
+    }
+  ],
+  "sources": [
+    {
+      "id": "blas-2025",
+      "title": "Large-scale detection of multilingual coordinated activity on Telegram",
+      "url": "https://www.nature.com/articles/s44260-025-00056-w",
+      "published_date": "2025-11-18",
+      "doi": "10.1038/s44260-025-00056-w",
+      "verification": "Opened full primary article and searched Methods.",
+      "supports": "Monolingual identical-message threshold .99; EN-RU .90; .7 initial tuning, .05 increments; 2-day pair-search windows distinct from posting-time constraint. DR4 .70 near-identity summary is wrong."
+    },
+    {
+      "id": "yang-2025",
+      "title": "Coordinated link sharing on Facebook",
+      "url": "https://www.nature.com/articles/s41598-025-00233-w",
+      "published_date": "2025-05-05",
+      "doi": "10.1038/s41598-025-00233-w",
+      "verification": "Opened full primary article.",
+      "supports": "Data-adaptive exponential and negative-binomial mixture thresholds;27seconds;frequency around9;do not transfer blindly across contexts. Exact frequency comparator should be checked against implementation before reuse."
+    },
+    {
+      "id": "herasimenka-2022-2023",
+      "title": "Misinformation and professional news on largely unmoderated platforms: the case of telegram",
+      "url": "https://helda.helsinki.fi/server/api/core/bitstreams/31fae1af-e153-4e68-b9be-44711aac205f/content",
+      "published_date": "2022-05-25",
+      "issue_date": "2023-04-03",
+      "doi": "10.1080/19331681.2022.2076272",
+      "verification": "Opened full primary article in Helsinki university repository; inspected abstract, Methods, limitations and results.",
+      "supports": "Selected mostly US-focused news source links 2018-2019; sharing and views are different outcomes;no overall misleading-content views superiority. Reach is views/participants, not deduplicated humans."
+    },
+    {
+      "id": "basol-2020-consulted",
+      "title": "Good News about Bad News: Gamified Inoculation Boosts Confidence and Cognitive Immunity Against Fake News",
+      "url": "https://journalofcognition.org/articles/10.5334/joc.91",
+      "doi": "10.5334/joc.91",
+      "published_date": "2020-01-10",
+      "verification": "Opened primary article page, subsequent text find calls timed out; not used for effect-size extraction.",
+      "supports": "No quantitative effect size or universal debunking comparison adopted from supplied DR6."
+    }
+  ]
+}

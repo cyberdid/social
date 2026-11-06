@@ -1,0 +1,30 @@
+{
+  "topic_regex": {
+    "tcc_mobilization": "тцк|мобіліз|мобилиз|военком",
+    "detention_basement": "підвал|подвал|заручник|заложник|утримува|удержива|полон|плен",
+    "torture_abuse": "катув|\\bпыт(?:к|оч|ок|а(?:л(?!с)|ют|ть))|тортур|знуща|издева|побит|\\bбили\\b|\\bбить\\b",
+    "concentration_camp": "концтаб|концлаг",
+    "military_unit_official": "нацгвар|військовослужб|военнослуж|військової частини|азов|офіційн|официальн",
+    "medical_witness_40": "медик|медичн|медицин|швидк|скор(?:ая|ой|ую)|сорок|\\b40\\b",
+    "disinformation_provocation": "фейк|дезінформ|дезинформ|іпсо|ипсо|провокац|російськ\\w*.{0,30}(?:операц|пропаганд)",
+    "investigation_accountability": "розсліду|расслед|слідств|следств|перевір|проверк|дбр|кримінальн|уголовн"
+  },
+  "automatic_output": "candidate mentions, not stance",
+  "stance_values": {
+    "asserts": "speaker directly advances a claim; not verified truth",
+    "attributes_claim": "speaker attributes or quotes another source",
+    "rejects_or_corrects": "excerpt rejects or corrects an earlier claim",
+    "mixed": "excerpt combines incompatible claims or qualifications",
+    "unclear": "insufficient context or interrogative/conditional form"
+  },
+  "manual_additional_topics": {
+    "incident_discussion": "explicit discussion of the event without narrower theme",
+    "scene_footage": "speech from the scene without a stable factual claim"
+  },
+  "coding_unit": "one contextually inspected passage; never equate speaker with publisher",
+  "relevance_values": {
+    "incident_context_supported": "local text supports a connection to this incident; does not establish the truth of claims",
+    "available_text_no_verified_incident_excerpt": "readable text lacks sufficient self-contained incident context; title is not content proof"
+  },
+  "limitations": "ASR cannot establish truth, speaker identity, irony, quotations or exact wording; confirm against original before publication."
+}

@@ -1,0 +1,99 @@
+{
+  "source": "data/raw/tiktok/20261106T075409Z-tg-link-7704193067435314453",
+  "comments": 765,
+  "accounts": 599,
+  "comments_per_account": {
+    "max": 20,
+    "median": 1,
+    "accounts_ge2": 84,
+    "accounts_ge5": 8
+  },
+  "S1_top1_share": 0.026,
+  "S1_top5_share": 0.082,
+  "S1_top10pct_accounts_share": 0.261,
+  "S1_gini": 0.199,
+  "S2_exact_copy_groups": 1,
+  "S2_exact_copy_comments": 2,
+  "S2_near_copy_pairs": 1,
+  "S2_examples": [
+    {
+      "text": "це не державна нагорода",
+      "comments": 2,
+      "accounts": 2,
+      "span_min": 343.2
+    }
+  ],
+  "S3_rapid_pairs": 0,
+  "S4_synchronized_groups": 0,
+  "S5_bins": 189,
+  "S5_median_per_5min": 3,
+  "S5_burst_bins": [
+    {
+      "bin_utc": "2026-11-04T09:00:00+00:00",
+      "comments": 20
+    },
+    {
+      "bin_utc": "2026-11-04T08:30:00+00:00",
+      "comments": 16
+    },
+    {
+      "bin_utc": "2026-11-04T10:25:00+00:00",
+      "comments": 16
+    },
+    {
+      "bin_utc": "2026-11-04T08:35:00+00:00",
+      "comments": 15
+    },
+    {
+      "bin_utc": "2026-11-04T08:55:00+00:00",
+      "comments": 15
+    },
+    {
+      "bin_utc": "2026-11-04T08:25:00+00:00",
+      "comments": 13
+    },
+    {
+      "bin_utc": "2026-11-04T08:50:00+00:00",
+      "comments": 13
+    },
+    {
+      "bin_utc": "2026-11-04T09:10:00+00:00",
+      "comments": 13
+    },
+    {
+      "bin_utc": "2026-11-04T09:05:00+00:00",
+      "comments": 13
+    },
+    {
+      "bin_utc": "2026-11-04T08:40:00+00:00",
+      "comments": 12
+    }
+  ],
+  "time_span_utc": [
+    "2026-11-04T06:07:38+00:00",
+    "2026-11-06T05:08:34+00:00"
+  ],
+  "share_first_6h": 0.425,
+  "S6_default_handle_share": 0.382,
+  "S6_nick_eq_handle_share": 0.119,
+  "S6_nick_empty_share": 0.0,
+  "verified_accounts": 0,
+  "lang": {
+    "uk": 383,
+    "ru": 201,
+    "un": 162,
+    "bg": 9,
+    "be": 3,
+    "tg": 2
+  },
+  "accounts_any_behavioural_signal": 10,
+  "accounts_ge2_signal_types": 0,
+  "comments_from_ge2_signal_accounts": 0,
+  "by_manual_category": {
+    "not_candidate": {
+      "comments": 765,
+      "accounts": 599,
+      "comments_from_flagged_accounts": 80
+    }
+  }
+}
