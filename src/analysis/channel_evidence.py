@@ -1,8 +1,8 @@
-"""Evidence-separated channel classification candidate records.
+"""Формує записи-кандидати доказового профілю каналів.
 
-Infrastructure markers are observations for review. They never imply channel
-origin, political orientation, ownership, state control, or participation in an
-operation.
+Маркери інфраструктури є спостереженнями для перевірки. Вони не встановлюють
+походження каналу, політичну орієнтацію, власність, державний контроль чи
+участь в операції.
 """
 from __future__ import annotations
 
@@ -32,13 +32,13 @@ PROFILE_MARKERS = {
 KNOWN_DOMAINS = {"vk.com", "max.ru", "dzen.ru", "rutube.ru", "ok.ru"}
 
 
-def _aware_iso(value: str) -> str:
+def _aware_iso(value: str, field_name: str = "as_of") -> str:
     try:
         parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
     except (TypeError, ValueError) as exc:
-        raise ValueError("as_of must be an ISO-8601 timestamp") from exc
+        raise ValueError(f"{field_name} must be an ISO-8601 timestamp") from exc
     if parsed.tzinfo is None or parsed.utcoffset() is None:
-        raise ValueError("as_of must include a timezone")
+        raise ValueError(f"{field_name} must include a timezone")
     return parsed.isoformat().replace("+00:00", "Z")
 
 
@@ -94,8 +94,24 @@ def extract_infrastructure_features(profile_text: str, links: list[str]) -> list
 def _validate_attribution_axis(axis: dict | None, name: str) -> dict:
     value = dict(axis or {"value": "unknown", "status": "unknown", "evidence_ids": []})
     evidence_ids = list(value.get("evidence_ids") or [])
-    if value.get("value") not in (None, "unknown") and not evidence_ids:
-        raise ValueError(f"non-unknown {name} requires evidence IDs")
+    if value.get("value") not in (None, "unknown"):
+        if not evidence_ids:
+            raise ValueError(f"non-unknown {name} requires evidence IDs")
+        scope = value.get("scope")
+        if not isinstance(scope, str) or not scope.strip():
+            raise ValueError(f"non-unknown {name} requires a non-empty scope")
+        interval = value.get("validity_interval")
+        if not isinstance(interval, dict) or "start" not in interval or "end" not in interval:
+            raise ValueError(f"non-unknown {name} requires a validity_interval with start and end")
+        start = _aware_iso(interval["start"], f"{name} validity_interval.start")
+        end = (_aware_iso(interval["end"], f"{name} validity_interval.end")
+               if interval["end"] is not None else None)
+        if end is not None:
+            start_datetime = datetime.fromisoformat(start.replace("Z", "+00:00"))
+            end_datetime = datetime.fromisoformat(end.replace("Z", "+00:00"))
+            if end_datetime <= start_datetime:
+                raise ValueError(f"{name} validity_interval.end must be later than start")
+        value["validity_interval"] = {"start": start, "end": end}
     value["evidence_ids"] = evidence_ids
     return value
 
@@ -115,8 +131,10 @@ def build_channel_evidence(
 ) -> dict:
     """Create a conservative, versioned channel evidence record.
 
-    Manually supplied positive attributions require evidence receipts. Automatic
-    infrastructure observations only set `infrastructure_candidate`.
+    Manually supplied positive attributions require evidence receipts, a scope,
+    and a validity interval. `as_of` records generation time and is not the
+    validity interval. Automatic infrastructure observations only set
+    `infrastructure_candidate`.
     """
     handle = str(channel).strip().lstrip("@").lower()
     if not handle:
@@ -158,8 +176,8 @@ def build_channel_evidence(
         "contrary_evidence": [],
         "legacy_group": legacy_group,
         "limitations": [
-            "Infrastructure markers do not establish origin, ownership, orientation, state control, or operational participation.",
-            "This record is a candidate feature set, not a calibrated probability or an attribution finding.",
+            "Інфраструктурні маркери не встановлюють походження, власність, орієнтацію, державний контроль чи участь в операції.",
+            "Цей запис містить набір кандидатних ознак, а не калібровану ймовірність чи висновок атрибуції.",
         ],
     }
 
@@ -185,23 +203,54 @@ def _sha256_path(path: Path) -> str:
     return digest.hexdigest()
 
 
-def _legacy_group_map(paths: list[Path]) -> dict[str, str]:
+def _read_group_mapping(path: Path) -> dict[str, str]:
     groups = {}
-    for path in paths:
-        if not path or not path.is_file():
-            continue
-        with path.open(encoding="utf-8", newline="") as stream:
-            reader = csv.DictReader(line for line in stream if not line.lstrip().startswith("#"))
-            for row in reader:
-                channel, group = row.get("channel"), row.get("group")
-                if channel and group:
-                    groups.setdefault(channel.lower().lstrip("@"), group)
+    if not path or not path.is_file():
+        return groups
+    with path.open(encoding="utf-8", newline="") as stream:
+        reader = csv.DictReader(line for line in stream if not line.lstrip().startswith("#"))
+        for row in reader:
+            channel, group = row.get("channel"), row.get("group")
+            if channel and group:
+                groups.setdefault(channel.lower().lstrip("@"), group)
     return groups
+
+
+def _legacy_group_map(manual_paths: list[Path], auto_paths: list[Path]) -> dict[str, str]:
+    """Merge mapping roles with manual values overriding automatic values."""
+    groups = {}
+    for path in auto_paths:
+        for channel, group in _read_group_mapping(path).items():
+            groups.setdefault(channel, group)
+    manual_channels = set()
+    for path in manual_paths:
+        for channel, group in _read_group_mapping(path).items():
+            if channel not in manual_channels:
+                groups[channel] = group
+                manual_channels.add(channel)
+    return groups
+
+
+def _group_mapping_refs(manual_paths: list[Path], auto_paths: list[Path]) -> list[str]:
+    refs = []
+    root = Path.cwd().resolve()
+    for role, paths in (("manual", manual_paths), ("auto", auto_paths)):
+        for path in paths:
+            if not path or not path.is_file():
+                continue
+            resolved = path.resolve()
+            try:
+                label = resolved.relative_to(root).as_posix()
+            except ValueError:
+                label = resolved.name
+            refs.append(f"group_mapping:{role}:{label}:sha256:{_sha256_path(resolved)}")
+    return refs
 
 
 def build_channel_records(channels: list[dict], posts: list[dict], *, as_of: str,
                           channel_snapshot_ref: str, posts_snapshot_ref: str,
-                          legacy_groups: dict[str, str] | None = None) -> list[dict]:
+                          legacy_groups: dict[str, str] | None = None,
+                          provenance_refs: list[str] | None = None) -> list[dict]:
     links_by_channel: dict[str, list[str]] = {}
     for post in posts:
         channel = str(post.get("channel") or "").strip().lower().lstrip("@")
@@ -216,7 +265,7 @@ def build_channel_records(channels: list[dict], posts: list[dict], *, as_of: str
         if not handle:
             continue
         source_refs = [channel_snapshot_ref, posts_snapshot_ref,
-                       f"channel:{handle}:profile_snapshot"]
+                       f"channel:{handle}:profile_snapshot", *(provenance_refs or [])]
         profile = " ".join(str(item.get(key) or "") for key in ("title", "description"))
         result.append(build_channel_evidence(
             handle, profile, links_by_channel.get(handle, []), source_refs, as_of,
@@ -226,10 +275,14 @@ def build_channel_records(channels: list[dict], posts: list[dict], *, as_of: str
 
 
 def export_channel_evidence(channels_path: Path, posts_path: Path, output_path: Path,
-                            groups_paths: list[Path] | None = None, as_of: str | None = None) -> int:
+                            groups_paths: list[Path] | None = None, as_of: str | None = None,
+                            *, manual_groups_paths: list[Path] | None = None,
+                            auto_groups_paths: list[Path] | None = None) -> int:
+    # `groups_paths` remains a compatibility alias for manual mappings.
+    manual_paths = [*(groups_paths or []), *(manual_groups_paths or [])]
+    auto_paths = list(auto_groups_paths or [])
     input_paths = [channels_path.resolve(), posts_path.resolve()]
-    if groups_paths:
-        input_paths.extend(p.resolve() for p in groups_paths if p and p.exists())
+    input_paths.extend(p.resolve() for p in [*manual_paths, *auto_paths] if p and p.exists())
     output_resolved = output_path.resolve()
     if output_resolved in input_paths:
         raise ValueError("output path must not overwrite an input file")
@@ -240,7 +293,8 @@ def export_channel_evidence(channels_path: Path, posts_path: Path, output_path: 
     records = build_channel_records(channels, posts, as_of=timestamp,
                                     channel_snapshot_ref=f"channel_snapshot:{source_refs[0]}",
                                     posts_snapshot_ref=f"posts_snapshot:{source_refs[1]}",
-                                    legacy_groups=_legacy_group_map(groups_paths or []))
+                                    legacy_groups=_legacy_group_map(manual_paths, auto_paths),
+                                    provenance_refs=_group_mapping_refs(manual_paths, auto_paths))
     output_path.parent.mkdir(parents=True, exist_ok=True)
     fd, temp_name = tempfile.mkstemp(prefix=f".{output_path.name}.", suffix=".tmp",
                                      dir=output_path.parent, text=True)
@@ -258,15 +312,22 @@ def export_channel_evidence(channels_path: Path, posts_path: Path, output_path: 
 
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--channels", required=True, type=Path, help="Telegram channels.jsonl")
-    parser.add_argument("--posts", required=True, type=Path, help="Telegram posts.jsonl")
-    parser.add_argument("--output", required=True, type=Path, help="ChannelEvidence JSONL output")
-    parser.add_argument("--as-of", help="Timezone-aware ISO timestamp; defaults to current UTC")
+    parser.add_argument("--channels", required=True, type=Path, help="Вхідний знімок каналів Telegram у JSONL")
+    parser.add_argument("--posts", required=True, type=Path, help="Вхідний знімок дописів Telegram у JSONL")
+    parser.add_argument("--output", required=True, type=Path, help="Шлях до вихідних записів ChannelEvidence у JSONL")
+    parser.add_argument("--as-of", help="Час створення запису в ISO 8601 із часовим поясом; типово — поточний UTC")
+    parser.add_argument("--manual-groups", type=Path, action="append", default=[],
+                        help="CSV із ручними мітками груп; має пріоритет над автоматичними")
+    parser.add_argument("--auto-groups", type=Path, action="append", default=[],
+                        help="CSV із автоматично визначеними мітками груп")
     parser.add_argument("--groups", type=Path, action="append", default=[],
-                        help="Legacy manual/auto CSV group mapping; manual file should be listed first")
+                        help="Застарілий сумісний параметр; трактує файл як ручну мапу груп")
     args = parser.parse_args(argv)
-    count = export_channel_evidence(args.channels, args.posts, args.output, args.groups, args.as_of)
-    print(f"exported {count} candidate-only channel evidence records to {args.output}")
+    count = export_channel_evidence(
+        args.channels, args.posts, args.output, args.groups, args.as_of,
+        manual_groups_paths=args.manual_groups, auto_groups_paths=args.auto_groups,
+    )
+    print(f"Експортовано записів-кандидатів: {count}; файл: {args.output}")
     return 0
 
 

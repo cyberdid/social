@@ -1,33 +1,56 @@
-# Channel Evidence v2: Candidate Export
+# Channel Evidence v2: експорт кандидатних ознак
 
-`src/analysis/channel_evidence.py` exports per-channel observation records from a Telegram `channels.jsonl` snapshot and its posts snapshot. It is a candidate-feature exporter; it does not decide whether a channel is Russian, pro-Russian, state-controlled, or part of an operation.
+`src/analysis/channel_evidence.py` експортує записи спостережень для кожного каналу зі знімка Telegram `channels.jsonl` і відповідного знімка дописів. Експорт містить кандидатні ознаки; він не визначає, чи є канал російським, проросійським, контрольованим державою або частиною операції.
 
-## Independent axes
+## Незалежні осі
 
-- `origin`, `entity_type`, `operator`, and `content_orientation` default to `unknown`.
-- `infrastructure_features` records observed public-profile markers and counts of outbound domains.
-- `infrastructure_candidate` is a routing flag only. A profile marker or a minimum-volume domain share can prompt review; neither is an attribution.
-- `operational_attribution.status` remains `unverified` unless a separately sourced analysis writes a later assessment.
-- `legacy_group` preserves an old A–U category as a distinct compatibility field; it does not fill the new axes.
-- `source_refs` includes SHA-256 receipts for the input snapshots and a channel profile locator.
+- `origin`, `entity_type`, `operator` і `content_orientation` за замовчуванням мають значення `unknown`.
+- `infrastructure_features` містить спостережені маркери відкритого профілю та кількість зовнішніх доменів у посиланнях.
+- `infrastructure_candidate` — лише прапорець для маршрутизації перевірки. Маркер профілю або достатня частка доменів можуть бути підставою для перевірки, але самі по собі не є атрибуцією.
+- `operational_attribution.status` залишається `unverified`, доки окремий аналіз на основі джерел не зафіксує оцінку.
+- `legacy_group` зберігає стару категорію A–U в окремому полі сумісності й не заповнює нові осі.
+- `source_refs` містить SHA-256-квитанції для знімків каналів і дописів, ідентифікатор знімка профілю каналу та квитанції мап груп із зазначенням ролі й SHA-256.
+- `record_id` залежить від назви каналу, часу створення запису та всіх `source_refs`, зокрема квитанцій мап груп. Зміна файла мапи змінює квитанцію та ідентифікатор запису.
 
-## Interpretation rules
+## Атрибуції та часовий інтервал
 
-1. Language, political content, copied narratives, and links do not establish operator identity.
-2. Russian domains and Russian-platform markers remain infrastructure observations.
-3. A non-unknown value for an attribution axis requires at least one evidence ID.
-4. Absence of a marker is not evidence that a source is independent or non-state.
-5. The export's counts describe the supplied panel and snapshot only.
+`as_of` — це час створення запису. Він не визначає, коли була чинною атрибуція.
 
-## CLI
+Невідомі значення можуть залишатися неоціненими без поля `scope` і без `validity_interval`. Кожне не-`unknown` значення осей `origin`, `entity_type`, `operator` і `content_orientation` мусить містити:
+
+- щонайменше один ідентифікатор у `evidence_ids`;
+- непорожній рядок `scope`, що описує межі твердження;
+- `validity_interval` з часовими мітками ISO 8601 із часовим поясом: `start` — обов'язковий початок, `end` — кінець або `null`, якщо дату завершення не встановлено.
+
+Початок інтервалу включено, кінець не включено; якщо кінець задано, він має бути пізнішим за початок. Експортер зберігає `scope`, перевіряє та нормалізує часові мітки інтервалу.
+
+## Правила інтерпретації
+
+1. Мова, політичний зміст, скопійовані наративи й посилання не встановлюють особу оператора.
+2. Російські домени та маркери платформ фіксуються як спостереження інфраструктури.
+3. Не-`unknown` значення осі потребує квитанції доказу, меж твердження та інтервалу чинності.
+4. Відсутність маркера не доводить незалежність джерела чи відсутність державного зв'язку.
+5. Кількісні показники описують лише надану панель і конкретні знімки.
+
+## Пріоритет мап груп
+
+Для ручних мап використовуйте `--manual-groups`, для автоматичних — `--auto-groups`. Ручні значення мають пріоритет над автоматичними незалежно від порядку аргументів командного рядка. Якщо в межах однієї ролі вказано кілька файлів, перший файл у цій ролі має пріоритет. Для кожного наявного файла запис містить квитанцію з його роллю, шляхом і SHA-256.
+
+Параметр `--groups` збережено для сумісності й трактують як ручну мапу. Нові виклики мають явно задавати ролі через `--manual-groups` і `--auto-groups`.
+
+## Командний рядок
 
 ```bash
 python src/analysis/channel_evidence.py \
   --channels data/raw/telegram_web/SNAPSHOT/channels.jsonl \
   --posts data/raw/telegram_web/SNAPSHOT/posts.jsonl \
-  --groups config/channel_groups.csv \
-  --groups config/channel_groups_auto.csv \
-  --output reports/channel_evidence/SNAPSHOT/channel_evidence.jsonl
+  --manual-groups config/channel_groups.csv \
+  --auto-groups config/channel_groups_auto.csv \
+  --output reports/channel-evidence/SNAPSHOT/channel_evidence.jsonl
 ```
 
-The manual group file should be passed first. The output path must differ from every input path. Export is atomic; raw snapshots and legacy config files are not modified.
+Шлях виводу має відрізнятися від усіх вхідних файлів. Експорт виконується атомарно; сирі знімки та файли конфігурації не змінюються.
+
+## Підсумок знімків
+
+`src/analysis/channel_evidence_summary.py` створює підсумок у JSON і Markdown. Після розв'язання шляхів ці два вихідні файли мають бути різними; у разі колізії скрипт завершується до запису будь-якого з них. Підсумок містить кількість записів, SHA-256-квитанції експортів і застереження щодо інтерпретації.
