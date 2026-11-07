@@ -12,6 +12,7 @@ Each manifest row keeps source observation state in `source_status` (also mirror
 - Manifest and summary checkpoints are atomically replaced. `source_posts` and source-status counts describe post rows; unique file-ID and verified-media counts describe assets.
 - A cached channel ID is resolved to its current entity before use. The entity must still have the exact expected public username and be a broadcast channel. A rejected cache entry may fall back to resolving the expected public username, which receives the same validation. Private channels and groups are rejected; the collector does not bypass restrictions.
 - Every run writes `collection_receipts/<run-id>.json` beside the manifest. The receipt records the collector version and method, parameters, run timestamps, access policy, channel snapshot source and SHA-256, orphan partial-file count, and per-post attempt/status/error-type records. It stores exception class names only, never exception messages or credentials.
+- The receipt's top-level `status` is run-level: `complete` means the collector finished its run, even if individual posts have source or asset errors. Per-post outcomes are recorded separately in each `posts[]` entry's `source_status` and `asset_status`.
 - Telegram credentials are loaded through the existing `~/.config/social/telegram.env` configuration and are never copied into the repository or output manifest.
 - Downloaded binaries are stored outside the Git repository; the repository contains code, tests, and procedures only.
 
