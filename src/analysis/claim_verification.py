@@ -14,6 +14,7 @@ import re
 import unicodedata
 from collections import Counter
 from datetime import datetime, timezone
+from decimal import Decimal, InvalidOperation
 from pathlib import Path
 from typing import Any
 
@@ -39,6 +40,62 @@ _COUNTER_CUES = (
     "correction", "corrected", "retraction", "retracted", "disputed", "denied", "refuted", "debunked",
     "помилково", "фейк", "спростовали", "опровержение", "опроверг", "опровергла", "не было",
     "не подтвердил", "не подтвердила", "уточнение", "исправление", "отозвал", "ложно",
+)
+_NUMBER_WORDS = {
+    "нуль": 0, "ноль": 0, "zero": 0,
+    "один": 1, "одна": 1, "одне": 1, "одного": 1, "одну": 1, "одна": 1, "one": 1,
+    "два": 2, "дві": 2, "двое": 2, "двух": 2, "two": 2,
+    "три": 3, "трьох": 3, "three": 3,
+    "четыре": 4, "чотири": 4, "four": 4,
+    "пять": 5, "п'ять": 5, "пятьох": 5, "five": 5,
+    "шесть": 6, "шість": 6, "six": 6,
+    "семь": 7, "сім": 7, "seven": 7,
+    "восемь": 8, "вісім": 8, "eight": 8,
+    "девять": 9, "дев'ять": 9, "девятьох": 9, "nine": 9,
+    "десять": 10, "ten": 10,
+    "одиннадцать": 11, "одинадцять": 11, "eleven": 11,
+    "двенадцать": 12, "дванадцять": 12, "twelve": 12,
+    "тринадцать": 13, "тринадцять": 13, "thirteen": 13,
+    "четырнадцать": 14, "чотирнадцять": 14, "fourteen": 14,
+    "пятнадцать": 15, "п'ятнадцять": 15, "fifteen": 15,
+    "шестнадцать": 16, "шістнадцять": 16, "sixteen": 16,
+    "семнадцать": 17, "сімнадцять": 17, "seventeen": 17,
+    "восемнадцать": 18, "вісімнадцять": 18, "eighteen": 18,
+    "девятнадцать": 19, "дев'ятнадцять": 19, "nineteen": 19,
+    "двадцать": 20, "двадцять": 20, "twenty": 20,
+    "тридцать": 30, "тридцять": 30, "thirty": 30,
+    "сорок": 40, "forty": 40,
+    "пятьдесят": 50, "п'ятдесят": 50, "п'ятдесять": 50, "fifty": 50,
+    "шестьдесят": 60, "шістдесят": 60, "sixty": 60,
+    "семьдесят": 70, "сімдесят": 70, "seventy": 70,
+    "восемьдесят": 80, "вісімдесят": 80, "eighty": 80,
+    "девяносто": 90, "дев'яносто": 90, "ninety": 90,
+    "сто": 100, "hundred": 100,
+    "тысяча": 1000, "тисяча": 1000, "thousand": 1000,
+}
+_NUMERIC_LITERAL = re.compile(r"(?<![\w])[+-]?\d+(?:(?:[.,]\d{3})+|[.,]\d+)?(?![\w])", re.UNICODE)
+_NUMBER_WORD_TOKEN = re.compile(r"[^\W_]+(?:['’][^\W_]+)?", re.UNICODE)
+_NUMBER_JOINERS = frozenset({"і", "и", "and"})
+_NUMERIC_VALUE_KEY_HINTS = (
+    "count", "number", "quantity", "qty", "total", "amount", "age", "year", "date", "time",
+    "duration", "percent", "percentage", "rate", "distance", "length", "height", "weight",
+    "mass", "price", "cost", "currency", "money", "кільк", "числ", "сума", "вік", "рок",
+    "дат", "час", "тривал", "відсот", "відстан", "довжин", "висот", "ваг", "ціна", "варт",
+    "число", "колич", "возраст", "год", "дата", "время", "длитель", "процент", "расстояни",
+    "длина", "высота", "цена", "стоим", "сумм",
+)
+_COUNT_VALUE_KEY_HINTS = (
+    "count", "number", "quantity", "qty", "total", "participant", "person", "people", "individual",
+    "victim", "casualt", "detainee", "injured", "dead", "death", "comment", "post", "channel",
+    "account", "item", "кільк", "числ", "учасник", "особ", "люд", "потерп", "жертв", "поран",
+    "загиб", "заручник", "військов", "коментар", "допис", "канал", "акаунт", "человек", "людей",
+    "граждан", "пострадав", "ранен", "погиб", "заложник", "военнослуж", "комментар", "канал",
+)
+_COUNT_SURFACE_HINTS = (
+    "person", "people", "individual", "human", "men", "women", "child", "soldier", "troop", "detainee",
+    "victim", "casualt", "injur", "comment", "post", "channel", "account", "люд", "особ", "человек",
+    "граждан", "військов", "военнослуж", "пострадав", "ранен", "погиб", "заручник", "коментар",
+    "допис", "канал", "акаунт", "жертв", "потерп", "загиб",
 )
 
 
@@ -369,20 +426,13 @@ def create_evidence_assessment(
     final_relation = relation
     final_decision = decision
     reasons = []
-    expected_values = claim.get("key_values") or {}
     asserted_values = asserted_values or {}
     if final_relation == "supports":
-        for key, expected in expected_values.items():
-            if key not in asserted_values:
-                final_relation = "ambiguous"
-                final_decision = "candidate"
-                reasons.append(f"missing_asserted_value:{key}")
-                continue
-            actual = asserted_values[key]
-            if _canonical(actual) != _canonical(expected):
-                final_relation = "ambiguous"
-                final_decision = "candidate"
-                reasons.append(f"value_mismatch:{key}")
+        value_problem = _support_value_problem(claim, {"asserted_values": asserted_values})
+        if value_problem:
+            final_relation = "ambiguous"
+            final_decision = "candidate"
+            reasons.append(value_problem)
     scope_matches = _canonical(scope) == _canonical(claim.get("scope"))
     if not scope_matches and final_decision == "accepted":
         final_decision = "candidate"
@@ -665,12 +715,160 @@ def _support_value_problem(claim: dict, assessment: dict) -> str | None:
     """Return why an asserted support relation fails exact claim value checks."""
     expected_values = claim.get("key_values") or {}
     asserted_values = assessment.get("asserted_values") or {}
+
+    # Natural-language quantities are evidence-relevant claim arguments. They
+    # must first be represented in the structured claim, otherwise an empty or
+    # unrelated key_values object could silently bypass numeric validation.
+    statement = str(claim.get("statement") or "")
+    structured = _structured_numeric_values(expected_values)
+    for value, is_count in _statement_numeric_values(statement):
+        matching_keys = (
+            _COUNT_VALUE_KEY_HINTS if is_count else _NUMERIC_VALUE_KEY_HINTS
+        )
+        found = any(
+            value == structured_value and any(hint in key_path for hint in matching_keys)
+            for key_path, structured_value in structured
+        )
+        if not found:
+            return f"missing_structured_value:{value}"
+
     for key, expected in expected_values.items():
         if key not in asserted_values:
             return f"missing_asserted_value:{key}"
         if _canonical(asserted_values[key]) != _canonical(expected):
             return f"value_mismatch:{key}"
     return None
+
+
+def _number_key(value: Any) -> str | None:
+    """Normalize a structured scalar to a stable decimal key when possible."""
+    if isinstance(value, bool) or value is None:
+        return None
+    if isinstance(value, (int, float, Decimal)):
+        raw = str(value)
+    elif isinstance(value, str) and re.fullmatch(r"\s*[+-]?\d+(?:[.,]\d+)*\s*", value):
+        raw = value.strip()
+    else:
+        return None
+    sign = ""
+    if raw[:1] in {"+", "-"}:
+        sign, raw = raw[0], raw[1:]
+    separators = [character for character in raw if character in {",", "."}]
+    if "," in raw and "." in raw:
+        decimal_separator = "," if raw.rfind(",") > raw.rfind(".") else "."
+        grouping_separator = "." if decimal_separator == "," else ","
+        raw = raw.replace(grouping_separator, "").replace(decimal_separator, ".")
+    elif separators:
+        separator = separators[0]
+        groups = raw.split(separator)
+        if len(groups) > 2:
+            if not (1 <= len(groups[0]) <= 3 and all(len(group) == 3 for group in groups[1:])):
+                return None
+            raw = "".join(groups)
+        elif len(groups) == 2 and len(groups[1]) == 3 and 1 <= len(groups[0]) <= 3:
+            # A three-digit group is treated as a thousands separator to avoid
+            # interpreting 40,000 as the value 40.
+            raw = "".join(groups)
+        else:
+            raw = ".".join(groups)
+    raw = sign + raw
+    try:
+        number = Decimal(raw)
+    except InvalidOperation:
+        return None
+    if not number.is_finite():
+        return None
+    normalized = number.normalize()
+    return format(normalized, "f")
+
+
+def _numeric_word_phrases(text: str) -> list[tuple[str, int, int]]:
+    """Return simple Ukrainian/Russian/English cardinal phrases and spans."""
+    tokens = []
+    for match in _NUMBER_WORD_TOKEN.finditer(unicodedata.normalize("NFKC", text).casefold()):
+        word = match.group(0).replace("’", "'").replace("'", "")
+        tokens.append((word, match.start(), match.end()))
+    phrases: list[tuple[str, int, int]] = []
+    index = 0
+    while index < len(tokens):
+        word, start, end = tokens[index]
+        if word not in _NUMBER_WORDS:
+            index += 1
+            continue
+        total = 0
+        current = 0
+        phrase_end = end
+        cursor = index
+        consumed = False
+        while cursor < len(tokens):
+            token, _token_start, token_end = tokens[cursor]
+            if token in _NUMBER_JOINERS and cursor + 1 < len(tokens) and tokens[cursor + 1][0] in _NUMBER_WORDS:
+                phrase_end = token_end
+                cursor += 1
+                continue
+            if token not in _NUMBER_WORDS:
+                break
+            value = _NUMBER_WORDS[token]
+            if value == 100:
+                current = max(current, 1) * 100
+            elif value == 1000:
+                total += max(current, 1) * 1000
+                current = 0
+            elif value >= 20:
+                current += value
+            elif current >= 20:
+                current += value
+            elif current == 0:
+                current = value
+            else:
+                break
+            phrase_end = token_end
+            cursor += 1
+            consumed = True
+        if consumed:
+            phrases.append((_number_key(total + current) or "0", start, phrase_end))
+            index = max(index + 1, cursor)
+        else:
+            index += 1
+    return phrases
+
+
+def _statement_numeric_values(statement: str) -> list[tuple[str, bool]]:
+    """Extract explicit numerals and common number words from a claim."""
+    matches: list[tuple[str, int, int]] = []
+    for match in _NUMERIC_LITERAL.finditer(statement):
+        key = _number_key(match.group(0))
+        if key is not None:
+            matches.append((key, match.start(), match.end()))
+    matches.extend(_numeric_word_phrases(statement))
+    matches.sort(key=lambda item: (item[1], item[2]))
+    result = []
+    seen = set()
+    for value, start, end in matches:
+        window = statement[end:end + 80].casefold()
+        is_count = any(hint in window for hint in _COUNT_SURFACE_HINTS)
+        pair = (value, is_count)
+        if pair not in seen:
+            seen.add(pair)
+            result.append(pair)
+    return result
+
+
+def _structured_numeric_values(values: Any, path: str = "") -> list[tuple[str, str]]:
+    """Flatten numeric leaves while retaining their semantic key path."""
+    output: list[tuple[str, str]] = []
+    if isinstance(values, dict):
+        for key, value in values.items():
+            child_path = f"{path}.{key}" if path else str(key)
+            output.extend(_structured_numeric_values(value, child_path))
+    elif isinstance(values, list):
+        for index, value in enumerate(values):
+            output.extend(_structured_numeric_values(value, f"{path}.{index}"))
+    else:
+        key = _number_key(values)
+        if key is not None:
+            output.append((path.casefold(), key))
+    return output
 
 
 def _assessment_audit_record(assessment: dict, included: bool, exclusion_reason: str | None) -> dict:
@@ -754,9 +952,38 @@ def export_verification_package(
 
     directory = Path(output_dir)
     directory.mkdir(parents=True, exist_ok=True)
+    audit_by_id = {
+        row.get("assessment_id"): row
+        for row in verification_result.get("assessment_provenance", [])
+        if row.get("assessment_id")
+    }
+    excluded_by_id = {
+        row.get("assessment_id"): row.get("reason")
+        for row in verification_result.get("excluded_assessments", [])
+        if row.get("assessment_id")
+    }
+    exported_assessments = []
+    as_of_utc = verification_result.get("as_of_utc")
+    for assessment in sorted(assessments, key=lambda row: (str(row.get("assessment_id") or ""), _canonical(row))):
+        assessment_id = assessment.get("assessment_id")
+        audit = audit_by_id.get(assessment_id)
+        included = bool(audit and audit.get("included_in_verification"))
+        exported_assessments.append({
+            **assessment,
+            "as_of_projection": {
+                "as_of_utc": as_of_utc,
+                "verification_result_id": verification_result.get("result_id"),
+                "included_in_verification": included,
+                "exclusion_reason": None if included else (
+                    audit.get("exclusion_reason") if audit else
+                    excluded_by_id.get(assessment_id, "assessment_not_in_projection")
+                ),
+            },
+        })
+
     payloads = {
         "candidates": _jsonl(candidates),
-        "assessments": _jsonl(assessments),
+        "assessments": _jsonl(exported_assessments),
         "results": _jsonl([verification_result]),
         "search_receipt": json.dumps(search_result["search_receipt"], ensure_ascii=False,
                                       sort_keys=True, separators=(",", ":")) + "\n",

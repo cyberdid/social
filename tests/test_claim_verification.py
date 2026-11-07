@@ -160,6 +160,74 @@ def test_accepted_support_requires_every_numeric_claim_value():
     assert "missing_asserted_value:count" in assessment["reasons"]
 
 
+def test_natural_language_numeric_claim_without_structured_values_cannot_be_accepted():
+    c = claim(key_values={})
+    p = passage("p1", "Officials held 40 people in the building.")
+    hit = next(hit for hit in retrieve(c, [p])["candidates"] if hit["passage_id"] == "p1")
+    assessment = create_evidence_assessment(
+        c, hit, p, relation="supports", decision="accepted", scope=c["scope"],
+        assessed_at_utc="2026-11-03T00:00:00Z", assessor_id="reviewer:test",
+        acceptance_basis="human_adjudication",
+    )
+    assert assessment["relation"] == "ambiguous"
+    assert assessment["decision"] == "candidate"
+    assert "missing_structured_value:40" in assessment["reasons"]
+
+
+def test_spelled_out_numeric_claim_without_structured_values_cannot_be_accepted():
+    c = claim(statement="Сорок людей утримували в будівлі", key_values={})
+    p = passage("p1", "Сорок людей утримували в будівлі.")
+    hit = next(hit for hit in retrieve(c, [p])["candidates"] if hit["passage_id"] == "p1")
+    assessment = create_evidence_assessment(
+        c, hit, p, relation="supports", decision="accepted", scope=c["scope"],
+        assessed_at_utc="2026-11-03T00:00:00Z", assessor_id="reviewer:test",
+        acceptance_basis="human_adjudication",
+    )
+    assert assessment["relation"] == "ambiguous"
+    assert assessment["decision"] == "candidate"
+    assert "missing_structured_value:40" in assessment["reasons"]
+
+
+def test_numeric_count_cannot_be_structured_as_an_unrelated_numeric_field():
+    c = claim(key_values={"year": 40})
+    p = passage("p1", "Officials held 40 people in the building.")
+    hit = next(hit for hit in retrieve(c, [p])["candidates"] if hit["passage_id"] == "p1")
+    assessment = create_evidence_assessment(
+        c, hit, p, relation="supports", decision="accepted", scope=c["scope"],
+        assessed_at_utc="2026-11-03T00:00:00Z", assessor_id="reviewer:test",
+        acceptance_basis="human_adjudication", asserted_values=c["key_values"],
+    )
+    assert assessment["relation"] == "ambiguous"
+    assert assessment["decision"] == "candidate"
+    assert "missing_structured_value:40" in assessment["reasons"]
+
+
+def test_thousands_separator_is_not_misread_as_decimal_precision():
+    c = claim(
+        statement="40,000 people were held in the building",
+        key_values={"count": {"value": 40, "operator": "eq"}},
+    )
+    p = passage("p1", "Officials held 40,000 people in the building.")
+    hit = next(hit for hit in retrieve(c, [p])["candidates"] if hit["passage_id"] == "p1")
+    assessment = create_evidence_assessment(
+        c, hit, p, relation="supports", decision="accepted", scope=c["scope"],
+        assessed_at_utc="2026-11-03T00:00:00Z", assessor_id="reviewer:test",
+        acceptance_basis="human_adjudication", asserted_values=c["key_values"],
+    )
+    assert assessment["relation"] == "ambiguous"
+    assert assessment["decision"] == "candidate"
+    assert "missing_structured_value:40000" in assessment["reasons"]
+
+
+def test_aggregate_rechecks_natural_language_numeric_claim_values():
+    c = claim(key_values={})
+    assessment = accepted("a1", "supports", "p1", "root_1", "2026-11-03T00:00:00Z", c=c)
+    result = aggregate_verification(c, [assessment], as_of_utc="2026-11-05T00:00:00Z",
+                                    search_complete=True, minimum_independent_roots=1)
+    assert result["status"] == "insufficient_evidence"
+    assert result["excluded_assessments"] == [{"assessment_id": "a1", "reason": "missing_structured_value:40"}]
+
+
 def test_assessment_id_captures_provenance_and_root_changes():
     c = claim()
     p = passage("p1", "Officials held 40 people in the building.")
@@ -405,3 +473,24 @@ def test_export_queue_keeps_assessments_excluded_by_as_of(tmp_path):
     paths = export_verification_package(search, [assessment], result, tmp_path)
     queue = json.loads(paths["unresolved_queue"].read_text())
     assert queue["candidate_ids_to_review_or_retrieve"] == [candidate["candidate_id"]]
+    exported_assessment = json.loads(paths["assessments"].read_text())
+    assert exported_assessment["as_of_projection"]["included_in_verification"] is False
+    assert exported_assessment["as_of_projection"]["exclusion_reason"] == "assessment_after_as_of"
+    assert exported_assessment["as_of_projection"]["as_of_utc"] == "2026-11-05T00:00:00Z"
+
+
+def test_export_marks_assessments_included_in_the_as_of_projection(tmp_path):
+    c = claim()
+    search = retrieve(c, [passage("p1", "Officials held 40 people in the building.")])
+    candidate = search["candidates"][0]
+    assessment = accepted("timely", "supports", "p1", "root_1", "2026-11-04T00:00:00Z")
+    assessment["candidate_id"] = candidate["candidate_id"]
+    result = aggregate_verification(c, [assessment], as_of_utc="2026-11-05T00:00:00Z", search_complete=True)
+    paths = export_verification_package(search, [assessment], result, tmp_path)
+    row = json.loads(paths["assessments"].read_text())
+    assert row["as_of_projection"] == {
+        "as_of_utc": "2026-11-05T00:00:00Z",
+        "verification_result_id": result["result_id"],
+        "included_in_verification": True,
+        "exclusion_reason": None,
+    }

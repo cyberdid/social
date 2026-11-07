@@ -22,7 +22,7 @@
 
 ## Оцінка evidence та статус
 
-`decision=candidate` є типовим. `decision=accepted` вимагає `acceptance_basis=human_adjudication` або `validated_rule` із `validated_rule_id`; моделі без окремої валідованої процедури не можуть самостійно прийняти оцінку. Якщо claim має `key_values`, accepted `supports` потребує точного значення для **кожного** ключа. Пропуск переводить оцінку в `ambiguous/candidate`, а mismatch її блокує. `aggregate_verification` повторно перевіряє всі serialized accepted support records, тому пряме формування JSON не обходить перевірку.
+`decision=candidate` є типовим. `decision=accepted` вимагає `acceptance_basis=human_adjudication` або `validated_rule` із `validated_rule_id`; моделі без окремої валідованої процедури не можуть самостійно прийняти оцінку. Для `supports` усі значення з `claim.key_values` мають бути точно повторені в `asserted_values`. Додатково система витягає цифри й підтримувані словесні кількісні форми з тексту claim: кожне таке значення має бути присутнє в семантично відповідному структурованому полі. Наприклад, `40 people` потребує count/person field; `year=40` не замінює `count=40`. Якщо структура порожня, числове значення не знайдене або ключ семантично не відповідає кількісному твердженню, оцінка переходить у `ambiguous/candidate` з причиною `missing_structured_value:<value>`. `aggregate_verification` повторно виконує ту саму перевірку для serialized accepted records, тому пряме формування JSON не обходить guard. Ця перевірка покриває Arabic digits і базові українські, російські та англійські cardinal words, але не є повним морфологічним парсером числівників.
 
 `assessment_id` хешує повний структурований assessment payload, включно з assessor/rule/root/citation, тому зміна provenance створює окремий record ID.
 Агрегатор вимагає унікальний непорожній assessment ID; записи без нього виключаються з вердикту, а повторне використання ID блокується.
@@ -31,7 +31,7 @@
 
 ID результату змінюється разом із scope, key values, cutoff, повним assessment/exclusion provenance, порогом root count, станом завершення пошуку та supersedes-зв'язком. Ledger adapter зберігає в полі `rationale` структурований JSON із assessment IDs, точними цитатами, датами, assessor/rule ID, root IDs, причинами виключення та параметрами агрегації, щоб не губити provenance у поточному контракті SQLite.
 
-`export_verification_package` створює: `evidence_candidates.jsonl`, `evidence_assessments.jsonl`, `verification_results.jsonl`, `search_receipt.json`, `claim_matrix.md`, `unresolved_retrieval_queue.jsonl`. Queue бере лише assessments, включені у відповідну as-of проєкцію; оцінка, відхилена через час/scope/value, не закриває retrieval-задачу.
+`export_verification_package` створює: `evidence_candidates.jsonl`, `evidence_assessments.jsonl`, `verification_results.jsonl`, `search_receipt.json`, `claim_matrix.md`, `unresolved_retrieval_queue.jsonl`. Кожен рядок `evidence_assessments.jsonl` зберігає assessment payload та має `as_of_projection` із `as_of_utc`, `verification_result_id`, `included_in_verification` і `exclusion_reason`. Отже, пізніші сирі оцінки залишаються в архівному експорті, але їх виключення з конкретного зрізу позначене явно. Queue бере лише assessments, включені у відповідну as-of проєкцію; оцінка, відхилена через час/scope/value, не закриває retrieval-задачу.
 
 - `unverified`: пошук не завершено.
 - `insufficient_evidence`: завершений пошук не дав достатньої прийнятої evidence.

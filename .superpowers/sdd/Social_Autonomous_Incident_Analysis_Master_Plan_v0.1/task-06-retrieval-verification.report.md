@@ -43,6 +43,24 @@ exit 0
 
 Закрито п'ять re-review findings: support більше не обходить numeric `key_values`; counter-search вимагає і claim-token, і correction-cue overlap; shared support/contradiction roots дають `conflicting_evidence` та збережені per-side counts; result ID включає scope, decision parameters і навіть виключені assessment provenance; EvidenceLedger rationale зберігає повний assessment provenance. Додано експорти assessment/result/search receipt, claim matrix і unresolved retrieval queue, із тестом, що assessment поза `as_of` лишає retrieval відкритим. Повний assessment payload тепер впливає на `assessment_id`, а незадокументовані чи дубльовані assessment IDs блокуються.
 
+Другий re-review закрив дві додаткові прогалини. Тепер `supports` fail-closed перевіряє числа й базові українські/російські/англійські числівники у формулюванні claim: кількість людей без `key_values.count` не приймається; несемантичний `year=40` не задовольняє count assertion. Агрегатор повторює цю перевірку для serialized assessments. Експорт `evidence_assessments.jsonl` додає для кожного рядка явну `as_of_projection` із cutoff, result ID, прапорцем включення та кодом виключення, зберігаючи assessment payload для аудиту.
+
+Перевірки другого re-review:
+
+```text
+PYTHONPATH=. pytest -q tests/test_claim_verification.py
+35 passed
+
+PYTHONPATH=. pytest -q tests/test_claim_verification.py tests/test_evidence_ledger.py
+51 passed
+
+python -m py_compile src/analysis/claim_verification.py
+exit 0
+
+git diff --check
+exit 0
+```
+
 ## Що не доведено / подальша межа
 
 BM25 — retrieval baseline, а не семантичний claim verifier; його recall/precision не вимірювалися на незалежному retrieval gold set. Двомовні cue-слова можуть пропускати інші форми спростування. Жодного LLM/API виклику або мережевого збору не було. Автоматичний NLI/LLM relation classifier, dense retrieval, correction lineage extraction і end-to-end integration з case reports лишаються окремою роботою. Цей модуль не доводить upstream незалежність коренів; він лише не дозволяє вважати невідомі зв'язки незалежними.
