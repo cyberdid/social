@@ -235,7 +235,7 @@ def _group_mapping_refs(manual_paths: list[Path], auto_paths: list[Path]) -> lis
     refs = []
     root = Path.cwd().resolve()
     for role, paths in (("manual", manual_paths), ("auto", auto_paths)):
-        for path in paths:
+        for priority, path in enumerate(paths, start=1):
             if not path or not path.is_file():
                 continue
             resolved = path.resolve()
@@ -243,7 +243,9 @@ def _group_mapping_refs(manual_paths: list[Path], auto_paths: list[Path]) -> lis
                 label = resolved.relative_to(root).as_posix()
             except ValueError:
                 label = resolved.name
-            refs.append(f"group_mapping:{role}:{label}:sha256:{_sha256_path(resolved)}")
+            refs.append(
+                f"group_mapping:{role}:priority:{priority}:{label}:sha256:{_sha256_path(resolved)}"
+            )
     return refs
 
 

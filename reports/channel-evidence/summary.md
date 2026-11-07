@@ -22,9 +22,9 @@
 
 | Експорт кандидатних ознак | SHA-256 |
 |---|---|
-| `reports/channel-evidence/20261105T100537Z/channel_evidence.jsonl` | `53b812815730179a7764cae1ca9092cc1a3964c83d3ae2f6565ecfd978658d73` |
-| `reports/channel-evidence/20261105T101013Z/channel_evidence.jsonl` | `9f4a233c29b44f6ff672ce4298df1095fa9ef5dc76ca05a4c62b5973d08ae252` |
-| `reports/channel-evidence/20261105T102914Z/channel_evidence.jsonl` | `0073fba2ad7c50278e31a47ed143afd913cb1b40230676ec195e8f27ce5bc2be` |
+| `reports/channel-evidence/20261105T100537Z/channel_evidence.jsonl` | `0be2db91c9d6281b96c11929824f24e715fc8de46a049d9784d740f7b370ffd7` |
+| `reports/channel-evidence/20261105T101013Z/channel_evidence.jsonl` | `a4cbe6e7a131ae4c17444af2f7b2e11098a2b6f1915469a5f8eb375302fcfba5` |
+| `reports/channel-evidence/20261105T102914Z/channel_evidence.jsonl` | `bcd60a2cc85c933689858fe682c41d7c2c3897bf32cd3ede7c3e172e28306465` |
 
 ## Межі інтерпретації
 

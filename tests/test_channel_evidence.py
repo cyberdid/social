@@ -121,8 +121,8 @@ def test_exporter_preserves_legacy_group_as_separate_axis_and_hashes_inputs(tmp_
     assert record["origin"]["value"] == "unknown"
     assert all(ref.startswith(("channel_snapshot:sha256:", "posts_snapshot:sha256:", "channel:"))
                or ref.startswith("group_mapping:") for ref in record["source_refs"])
-    expected_manual_receipt = f"group_mapping:manual:groups.csv:sha256:{hashlib.sha256(groups.read_bytes()).hexdigest()}"
-    expected_auto_receipt = f"group_mapping:auto:auto.csv:sha256:{hashlib.sha256(automatic.read_bytes()).hexdigest()}"
+    expected_manual_receipt = f"group_mapping:manual:priority:1:groups.csv:sha256:{hashlib.sha256(groups.read_bytes()).hexdigest()}"
+    expected_auto_receipt = f"group_mapping:auto:priority:1:auto.csv:sha256:{hashlib.sha256(automatic.read_bytes()).hexdigest()}"
     assert expected_manual_receipt in record["source_refs"]
     assert expected_auto_receipt in record["source_refs"]
 
@@ -165,6 +165,40 @@ def test_changing_group_mapping_changes_record_id_and_receipt(tmp_path):
     second = json.loads(output.read_text(encoding="utf-8"))
     assert first["record_id"] != second["record_id"]
     assert first["source_refs"] != second["source_refs"]
+
+
+@pytest.mark.parametrize("role", ["manual", "auto"])
+def test_group_mapping_receipts_encode_precedence_order(role, tmp_path):
+    channels = tmp_path / "channels.jsonl"
+    posts = tmp_path / "posts.jsonl"
+    higher_priority = tmp_path / "first.csv"
+    lower_priority = tmp_path / "second.csv"
+    output = tmp_path / "channel_evidence.jsonl"
+    channels.write_text('{"channel":"example"}\n', encoding="utf-8")
+    posts.write_text("", encoding="utf-8")
+    higher_priority.write_text("channel,group\nexample,A\n", encoding="utf-8")
+    lower_priority.write_text("channel,group\nexample,B\n", encoding="utf-8")
+    path_arg = f"{role}_groups_paths"
+
+    export_channel_evidence(
+        channels, posts, output, as_of="2026-11-07T12:00:00Z",
+        **{path_arg: [higher_priority, lower_priority]},
+    )
+    first_order = json.loads(output.read_text(encoding="utf-8"))
+    export_channel_evidence(
+        channels, posts, output, as_of="2026-11-07T12:00:00Z",
+        **{path_arg: [lower_priority, higher_priority]},
+    )
+    reversed_order = json.loads(output.read_text(encoding="utf-8"))
+
+    assert first_order["legacy_group"] == "A"
+    assert reversed_order["legacy_group"] == "B"
+    assert first_order["record_id"] != reversed_order["record_id"]
+    assert first_order["source_refs"] != reversed_order["source_refs"]
+    assert any(f"group_mapping:{role}:priority:1:first.csv:sha256:" in ref
+               for ref in first_order["source_refs"])
+    assert any(f"group_mapping:{role}:priority:2:first.csv:sha256:" in ref
+               for ref in reversed_order["source_refs"])
 
 
 def test_exporter_rejects_overwriting_an_input(tmp_path):
