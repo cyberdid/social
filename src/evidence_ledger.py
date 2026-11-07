@@ -40,8 +40,28 @@ _RECORD_FIELDS = {
     "EvidenceAssessment": {
         "claim_id", "status", "evidence_refs", "rationale", "assessor", "supersedes"
     },
+    "VerificationResult": {
+        "claim_id", "scope", "as_of", "status", "supporting_evidence_ids",
+        "contradicting_evidence_ids", "rationale", "supersedes"
+    },
 }
 _COMMON_FIELDS = {"record_type", "schema_version", "record_id", "created_at"}
+_PROVENANCE_FIELDS = {"producer", "run_id", "limitations"}
+_DERIVED_RECORD_TYPES = {
+    "Artifact", "Passage", "ClaimMention", "EvidenceAssessment", "VerificationResult"
+}
+_REQUIRED_FIELDS = {
+    "Source": {"uri", "title"},
+    "Artifact": {"source_id", "path", "sha256", "media_type", "captured_at"},
+    "Passage": {"artifact_id", "text"},
+    "Claim": {"statement", "claim_type"},
+    "ClaimMention": {"claim_id", "passage_id"},
+    "EvidenceAssessment": {"claim_id", "status", "evidence_refs"},
+    "VerificationResult": {
+        "claim_id", "scope", "as_of", "status", "supporting_evidence_ids",
+        "contradicting_evidence_ids"
+    },
+}
 
 
 class LedgerError(Exception):
@@ -94,6 +114,8 @@ class EvidenceLedger:
     def add_source(
         self, record_id: str, *, uri: str, title: str,
         publisher: str | None = None, published_at: str | datetime | None = None,
+        producer: str | None = None, run_id: str | None = None,
+        limitations: Iterable[str] | None = None,
         created_at: str | datetime | None = None,
     ) -> dict[str, Any]:
         data: dict[str, Any] = {"uri": uri, "title": title}
@@ -101,33 +123,43 @@ class EvidenceLedger:
             data["publisher"] = publisher
         if published_at is not None:
             data["published_at"] = _timestamp(published_at, "published_at")
+        data.update(_provenance_data(producer, run_id, limitations))
         return self._add("Source", record_id, data, created_at)
 
     def add_artifact(
         self, record_id: str, *, source_id: str, path: str, sha256: str,
         media_type: str, captured_at: str | datetime,
+        producer: str | None = None, run_id: str | None = None,
+        limitations: Iterable[str] | None = None,
         created_at: str | datetime | None = None,
     ) -> dict[str, Any]:
-        return self._add("Artifact", record_id, {
+        data = {
             "source_id": source_id,
             "path": path,
             "sha256": sha256,
             "media_type": media_type,
             "captured_at": _timestamp(captured_at, "captured_at"),
-        }, created_at)
+        }
+        data.update(_provenance_data(producer, run_id, limitations))
+        return self._add("Artifact", record_id, data, created_at)
 
     def add_passage(
         self, record_id: str, *, artifact_id: str, text: str,
-        locator: Any = None, created_at: str | datetime | None = None,
+        locator: Any = None, producer: str | None = None, run_id: str | None = None,
+        limitations: Iterable[str] | None = None,
+        created_at: str | datetime | None = None,
     ) -> dict[str, Any]:
         data: dict[str, Any] = {"artifact_id": artifact_id, "text": text}
         if locator is not None:
             data["locator"] = locator
+        data.update(_provenance_data(producer, run_id, limitations))
         return self._add("Passage", record_id, data, created_at)
 
     def add_claim(
         self, record_id: str, *, statement: str, claim_type: str,
         source_id: str | None = None, evidence_refs: Iterable[str] = (),
+        producer: str | None = None, run_id: str | None = None,
+        limitations: Iterable[str] | None = None,
         created_at: str | datetime | None = None,
     ) -> dict[str, Any]:
         data: dict[str, Any] = {"statement": statement, "claim_type": claim_type}
@@ -136,21 +168,27 @@ class EvidenceLedger:
         refs = _collect_references(evidence_refs, "evidence_refs")
         if refs:
             data["evidence_refs"] = refs
+        data.update(_provenance_data(producer, run_id, limitations))
         return self._add("Claim", record_id, data, created_at)
 
     def add_claim_mention(
         self, record_id: str, *, claim_id: str, passage_id: str,
-        text: str | None = None, created_at: str | datetime | None = None,
+        text: str | None = None, producer: str | None = None, run_id: str | None = None,
+        limitations: Iterable[str] | None = None,
+        created_at: str | datetime | None = None,
     ) -> dict[str, Any]:
         data: dict[str, Any] = {"claim_id": claim_id, "passage_id": passage_id}
         if text is not None:
             data["text"] = text
+        data.update(_provenance_data(producer, run_id, limitations))
         return self._add("ClaimMention", record_id, data, created_at)
 
     def add_assessment(
         self, record_id: str, *, claim_id: str, status: str,
         evidence_refs: Iterable[str] = (), rationale: str | None = None,
         assessor: str | None = None, supersedes: str | None = None,
+        producer: str | None = None, run_id: str | None = None,
+        limitations: Iterable[str] | None = None,
         created_at: str | datetime | None = None,
     ) -> dict[str, Any]:
         data: dict[str, Any] = {
@@ -164,7 +202,37 @@ class EvidenceLedger:
             data["assessor"] = assessor
         if supersedes is not None:
             data["supersedes"] = supersedes
+        data.update(_provenance_data(producer, run_id, limitations))
         return self._add("EvidenceAssessment", record_id, data, created_at)
+
+    def add_verification_result(
+        self, record_id: str, *, claim_id: str, scope: str,
+        as_of: str | datetime, status: str,
+        supporting_evidence_ids: Iterable[str] = (),
+        contradicting_evidence_ids: Iterable[str] = (),
+        rationale: str | None = None, supersedes: str | None = None,
+        producer: str | None = None, run_id: str | None = None,
+        limitations: Iterable[str] | None = None,
+        created_at: str | datetime | None = None,
+    ) -> dict[str, Any]:
+        data: dict[str, Any] = {
+            "claim_id": claim_id,
+            "scope": scope,
+            "as_of": _timestamp(as_of, "as_of"),
+            "status": status,
+            "supporting_evidence_ids": _collect_references(
+                supporting_evidence_ids, "supporting_evidence_ids"
+            ),
+            "contradicting_evidence_ids": _collect_references(
+                contradicting_evidence_ids, "contradicting_evidence_ids"
+            ),
+        }
+        if rationale is not None:
+            data["rationale"] = rationale
+        if supersedes is not None:
+            data["supersedes"] = supersedes
+        data.update(_provenance_data(producer, run_id, limitations))
+        return self._add("VerificationResult", record_id, data, created_at)
 
     def _add(
         self, record_type: str, record_id: str, data: Mapping[str, Any],
@@ -174,7 +242,7 @@ class EvidenceLedger:
             "record_type": record_type,
             "schema_version": SCHEMA_VERSION,
             "record_id": record_id,
-            "created_at": _timestamp(created_at, "created_at"),
+            "created_at": _timestamp(created_at, "created_at", default_now=True),
             **data,
         }
         with self._connection:
@@ -204,15 +272,10 @@ class EvidenceLedger:
         record_type = raw.get("record_type")
         if not isinstance(record_type, str) or record_type not in _RECORD_FIELDS:
             raise LedgerValidationError(f"unknown record_type: {record_type!r}")
-        allowed = _COMMON_FIELDS | _RECORD_FIELDS[record_type]
+        allowed = _COMMON_FIELDS | _PROVENANCE_FIELDS | _RECORD_FIELDS[record_type]
         unknown = set(raw) - allowed
         missing = _COMMON_FIELDS - set(raw)
-        missing_data = {"Source": {"uri", "title"},
-                        "Artifact": {"source_id", "path", "sha256", "media_type", "captured_at"},
-                        "Passage": {"artifact_id", "text"},
-                        "Claim": {"statement", "claim_type"},
-                        "ClaimMention": {"claim_id", "passage_id"},
-                        "EvidenceAssessment": {"claim_id", "status", "evidence_refs"}}[record_type]
+        missing_data = _REQUIRED_FIELDS[record_type]
         missing |= missing_data - set(raw)
         if missing:
             raise LedgerValidationError(f"missing fields for {record_type}: {', '.join(sorted(missing))}")
@@ -258,7 +321,7 @@ class EvidenceLedger:
             if claim_type == "published_claim" and "source_id" not in record:
                 raise LedgerValidationError("published_claim requires source_id")
             if claim_type == "research_finding" and not refs:
-                raise LedgerValidationError("finding requires at least one evidence reference")
+                raise LedgerValidationError("research_finding requires at least one evidence reference")
             self._require_evidence(refs)
             if "evidence_refs" in record:
                 record["evidence_refs"] = refs
@@ -300,12 +363,54 @@ class EvidenceLedger:
                 if previous["claim_id"] != record["claim_id"]:
                     raise LedgerValidationError("superseded assessment must target the same claim")
                 child = self._connection.execute(
-                    "SELECT 1 FROM records WHERE record_type = 'EvidenceAssessment' "
+                    "SELECT record_id FROM records WHERE record_type = 'EvidenceAssessment' "
                     "AND json_extract(payload, '$.supersedes') = ? LIMIT 1", (supersedes_id,)
                 ).fetchone()
-                if child:
+                if child and child["record_id"] != record["record_id"]:
                     raise LedgerValidationError("assessment supersedes chain cannot branch")
                 record["supersedes"] = supersedes_id
+
+        elif record_type == "VerificationResult":
+            record["claim_id"] = _identifier(record["claim_id"], "claim_id")
+            claim = self._get_record(record["claim_id"])
+            if claim is None or claim["record_type"] != "Claim":
+                raise LedgerValidationError("VerificationResult claim_id must reference a Claim")
+            record["scope"] = _nonempty(record["scope"], "scope")
+            record["as_of"] = _timestamp(record["as_of"], "as_of")
+            if not isinstance(record["status"], str) or record["status"] not in ASSESSMENT_STATUSES:
+                raise LedgerValidationError(f"unsupported verification status: {record['status']!r}")
+            supporting = _references(record["supporting_evidence_ids"], "supporting_evidence_ids")
+            contradicting = _references(record["contradicting_evidence_ids"], "contradicting_evidence_ids")
+            overlap = set(supporting) & set(contradicting)
+            if overlap:
+                raise LedgerValidationError("supporting and contradicting evidence ids must be distinct")
+            self._require_evidence(supporting)
+            self._require_evidence(contradicting)
+            if record["status"] == "supported_within_scope" and not supporting:
+                raise LedgerValidationError("supported_within_scope requires supporting evidence")
+            if record["status"] == "refuted_within_scope" and not contradicting:
+                raise LedgerValidationError("refuted_within_scope requires contradicting evidence")
+            if record["status"] == "conflicting_evidence" and (not supporting or not contradicting):
+                raise LedgerValidationError("conflicting_evidence requires both supporting and contradicting evidence")
+            record["supporting_evidence_ids"] = supporting
+            record["contradicting_evidence_ids"] = contradicting
+            _optional_nonempty(record, "rationale")
+            if "supersedes" in record:
+                supersedes_id = _identifier(record["supersedes"], "supersedes")
+                previous = self._get_record(supersedes_id)
+                if previous is None or previous["record_type"] != "VerificationResult":
+                    raise LedgerValidationError("supersedes must reference a VerificationResult")
+                if previous["claim_id"] != record["claim_id"]:
+                    raise LedgerValidationError("superseded VerificationResult must target the same claim")
+                child = self._connection.execute(
+                    "SELECT record_id FROM records WHERE record_type = 'VerificationResult' "
+                    "AND json_extract(payload, '$.supersedes') = ? LIMIT 1", (supersedes_id,)
+                ).fetchone()
+                if child and child["record_id"] != record["record_id"]:
+                    raise LedgerValidationError("VerificationResult supersedes chain cannot branch")
+                record["supersedes"] = supersedes_id
+
+        _validate_provenance(record, record_type)
 
         return record
 
@@ -370,8 +475,10 @@ class EvidenceLedger:
         return inserted
 
 
-def _timestamp(value: str | datetime | None, field: str) -> str:
+def _timestamp(value: str | datetime | None, field: str, *, default_now: bool = False) -> str:
     if value is None:
+        if not default_now:
+            raise LedgerValidationError(f"{field} must include a timezone-aware timestamp")
         parsed = datetime.now(timezone.utc)
     elif isinstance(value, datetime):
         parsed = value
@@ -421,6 +528,46 @@ def _collect_references(value: Iterable[str], field: str) -> list[str]:
     except TypeError as exc:
         raise LedgerValidationError(f"{field} must be a sequence of record ids") from exc
     return [_identifier(item, field) for item in refs]
+
+
+def _collect_strings(value: Iterable[str], field: str) -> list[str]:
+    if isinstance(value, (str, bytes)):
+        raise LedgerValidationError(f"{field} must be a sequence of strings, not a string")
+    try:
+        items = list(value)
+    except TypeError as exc:
+        raise LedgerValidationError(f"{field} must be a sequence of strings") from exc
+    return [_nonempty(item, field) for item in items]
+
+
+def _provenance_data(
+    producer: str | None, run_id: str | None, limitations: Iterable[str] | None,
+) -> dict[str, Any]:
+    data: dict[str, Any] = {}
+    if producer is not None:
+        data["producer"] = producer
+    if run_id is not None:
+        data["run_id"] = run_id
+    if limitations is not None:
+        data["limitations"] = _collect_strings(limitations, "limitations")
+    return data
+
+
+def _validate_provenance(record: dict[str, Any], record_type: str) -> None:
+    if "producer" in record:
+        record["producer"] = _nonempty(record["producer"], "producer")
+    if "run_id" in record:
+        record["run_id"] = _identifier(record["run_id"], "run_id")
+    if "limitations" in record:
+        record["limitations"] = _collect_strings(record["limitations"], "limitations")
+
+    is_finding = record_type == "Claim" and record.get("claim_type") == "research_finding"
+    if record_type in _DERIVED_RECORD_TYPES or is_finding:
+        missing = _PROVENANCE_FIELDS - set(record)
+        if missing:
+            raise LedgerValidationError(
+                f"{record_type} requires provenance fields: {', '.join(sorted(missing))}"
+            )
 
 
 def _ensure_json_value(value: Any, field: str) -> None:
