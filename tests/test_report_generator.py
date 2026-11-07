@@ -4,8 +4,9 @@ import json
 from pathlib import Path
 
 import pytest
-from jsonschema import Draft202012Validator
+from jsonschema import Draft202012Validator, ValidationError as JSONSchemaValidationError
 
+from src.analysis import report_generator
 from src.analysis.report_generator import ReportValidationError, build_report_bundle
 
 
@@ -88,7 +89,7 @@ def test_supported_finding_renders_only_with_matching_bounded_verification_and_e
     assert "роль: supporting" in markdown
     assert "artifact-1" in markdown
     assert "a" * 64 in markdown
-    assert "[e1]" in markdown
+    assert "\\[e1\\]" in markdown
     assert result["quality"]["unsupported_assertion_count"] is None
     assert result["quality"]["assertion_check_status"] == "not_evaluated_semantic"
 
@@ -120,6 +121,18 @@ def test_numbers_in_supported_proposition_must_appear_in_cited_evidence(tmp_path
         build(tmp_path, [finding(statement="Підтверджено 40 людей у приміщенні.")])
 
 
+def test_number_outside_exact_cited_locator_does_not_support_proposition(tmp_path):
+    text = "У повідомленні йдеться про 40 людей. Окрема фраза без числа."
+    quote = "Окрема фраза без числа."
+    start = text.index(quote)
+    record = evidence(text=text, locator={
+        "kind": "text_span", "start_offset": start, "end_offset": start + len(quote),
+        "offset_unit": "unicode_codepoint",
+    })
+    with pytest.raises(ReportValidationError, match="numeric token"):
+        build(tmp_path, [finding(statement="Підтверджено 40 людей у приміщенні.")], evidence_records=[record])
+
+
 def test_conflicting_finding_displays_both_sides_and_does_not_choose_a_winner(tmp_path):
     positive = evidence("e1", "У повідомленні сказано: людей утримували у приміщенні.")
     negative = evidence("e2", "Уточнення: людей у приміщенні не утримували.")
@@ -131,7 +144,7 @@ def test_conflicting_finding_displays_both_sides_and_does_not_choose_a_winner(tm
     build(tmp_path, [item], evidence_records=[positive, negative], results=[result])
     markdown = (tmp_path / "report" / "incident_report.md").read_text(encoding="utf-8")
     assert "суперечливі" in markdown.lower() or "суперечать" in markdown.lower()
-    assert "[e1]" in markdown and "[e2]" in markdown
+    assert "\\[e1\\]" in markdown and "\\[e2\\]" in markdown
     assert "роль: supporting" in markdown and "роль: contradicting" in markdown
     assert "перемог" not in markdown.lower()
 
@@ -145,15 +158,25 @@ def test_refuted_finding_needs_matching_bounded_verification_and_contradicting_e
     build(tmp_path, [item], evidence_records=[negative], results=[result])
     markdown = (tmp_path / "report" / "incident_report.md").read_text(encoding="utf-8").lower()
     assert "у визначених межах доказів" in markdown
-    assert "[e2]" in markdown
+    assert "\\[e2\\]" in markdown
 
 
 def test_source_attributed_statement_must_be_an_exact_quote(tmp_path):
     item = finding("source_attributed", statement="Поліція заявила, що постраждалих не було.", refs=[
         {"evidence_id": "e1", "role": "source_attributed"},
     ])
-    with pytest.raises(ReportValidationError, match="exact cited quote"):
+    with pytest.raises(ReportValidationError, match="exact .* quote"):
         build(tmp_path, [item])
+
+
+def test_source_attribution_requires_each_named_source_to_have_exact_quote(tmp_path):
+    item = finding("source_attributed", statement="Поліція оприлюднила заяву 2 листопада.", refs=[
+        {"evidence_id": "e1", "role": "source_attributed"},
+        {"evidence_id": "e2", "role": "source_attributed"},
+    ])
+    other = evidence("e2", "В іншому документі цитати немає.")
+    with pytest.raises(ReportValidationError, match="every exact source-attributed quote"):
+        build(tmp_path, [item], evidence_records=[evidence(), other])
 
 
 def test_source_attributed_quote_is_rendered_as_source_statement(tmp_path):
@@ -166,6 +189,14 @@ def test_source_attributed_quote_is_rendered_as_source_statement(tmp_path):
     assert "«Поліція оприлюднила заяву 2 листопада.»" in markdown
 
 
+def test_non_verification_finding_cannot_emit_a_dangling_verification_id(tmp_path):
+    item = finding("source_attributed", statement="Поліція оприлюднила заяву 2 листопада.", refs=[
+        {"evidence_id": "e1", "role": "source_attributed"},
+    ], verification_result_id="missing-vr")
+    with pytest.raises(ReportValidationError, match="not valid for kind"):
+        build(tmp_path, [item])
+
+
 def test_documented_fact_is_rendered_as_artifact_content_not_world_truth(tmp_path):
     item = finding("documented_fact", statement="Поліція оприлюднила заяву 2 листопада.", refs=[
         {"evidence_id": "e1", "role": "source_attributed"},
@@ -173,7 +204,7 @@ def test_documented_fact_is_rendered_as_artifact_content_not_world_truth(tmp_pat
     build(tmp_path, [item])
     markdown = (tmp_path / "report" / "incident_report.md").read_text(encoding="utf-8")
     assert "зафіксовано фрагмент" in markdown
-    assert "[e1]" in markdown
+    assert "\\[e1\\]" in markdown
 
 
 def test_claim_scope_can_be_narrower_than_report_scope(tmp_path):
@@ -223,7 +254,7 @@ def test_unresolved_report_requires_matching_verification_and_displays_partial_e
     result = verification("insufficient_evidence", support=("e1",), contradict=())
     build(tmp_path, [item], results=[result])
     markdown = (tmp_path / "report" / "incident_report.md").read_text(encoding="utf-8")
-    assert "[e1]" in markdown
+    assert "\\[e1\\]" in markdown
     item["verification_result_id"] = None
     with pytest.raises(ReportValidationError, match="matching bounded VerificationResult"):
         build(tmp_path / "second", [item], results=[result])
@@ -253,6 +284,35 @@ def test_report_package_has_deterministic_hashes_and_refuses_silent_overwrite(tm
         build_report_bundle([finding()], [evidence()], [verification()], context(), tmp_path / "one")
 
 
+def test_explicit_overwrite_publishes_replacement_bundle(tmp_path):
+    output = tmp_path / "overwrite"
+    build_report_bundle([finding()], [evidence()], [verification()], context(), output)
+    replacement_context = context(working_title="Replacement report")
+    build_report_bundle([finding()], [evidence()], [verification()], replacement_context, output, overwrite=True)
+    assert "Replacement report" in (output / "incident_report.md").read_text(encoding="utf-8")
+    assert not list(tmp_path.glob(".overwrite.staging-*"))
+
+
+def test_failed_atomic_exchange_preserves_prior_bundle(tmp_path, monkeypatch):
+    output = tmp_path / "preserve"
+    build_report_bundle([finding()], [evidence()], [verification()], context(), output)
+    previous = (output / "incident_report.md").read_bytes()
+
+    def fail_exchange(_left, _right):
+        raise OSError("simulated atomic exchange failure")
+
+    monkeypatch.setattr(report_generator, "_rename_exchange", fail_exchange)
+    with pytest.raises(OSError, match="simulated atomic exchange failure"):
+        build_report_bundle([finding()], [evidence()], [verification()], context(working_title="Next"), output, overwrite=True)
+    assert (output / "incident_report.md").read_bytes() == previous
+    assert not list(tmp_path.glob(".preserve.staging-*"))
+
+
+def test_overwrite_flag_must_be_boolean(tmp_path):
+    with pytest.raises(ReportValidationError, match="overwrite must be boolean"):
+        build_report_bundle([finding()], [evidence()], [verification()], context(), tmp_path / "report", overwrite="false")
+
+
 def test_output_contains_machine_readable_findings_and_quality_metrics(tmp_path):
     result = build(tmp_path, [finding()])
     finding_rows = [json.loads(line) for line in (tmp_path / "report" / "findings.jsonl").read_text(encoding="utf-8").splitlines()]
@@ -280,11 +340,25 @@ def test_json_embedded_in_markdown_cannot_close_its_fence(tmp_path):
     assert r"\u0060\u0060\u0060" in markdown
 
 
+def test_untrusted_finding_text_cannot_inject_markdown_link(tmp_path):
+    item = finding(statement="Цитата [перейти](https://bad.example) та *виділити* 2 листопада.")
+    build(tmp_path, [item])
+    markdown = (tmp_path / "report" / "incident_report.md").read_text(encoding="utf-8")
+    assert "[перейти](https://bad.example)" not in markdown
+    assert "\\[перейти\\]" in markdown
+
+
 def test_analytical_finding_schema_matches_supported_contract():
     schema_path = Path(__file__).parents[1] / "schemas" / "analytical_finding.schema.json"
     schema = json.loads(schema_path.read_text(encoding="utf-8"))
     Draft202012Validator.check_schema(schema)
-    Draft202012Validator(schema).validate(finding())
+    validator = Draft202012Validator(schema)
+    validator.validate(finding())
     malformed = finding()
     malformed["unexpected_narrative"] = "free prose"
-    assert list(Draft202012Validator(schema).iter_errors(malformed))
+    assert list(validator.iter_errors(malformed))
+    with pytest.raises(JSONSchemaValidationError):
+        validator.validate(finding(refs=[]))
+    conflict_missing_side = finding("conflicting", refs=[{"evidence_id": "e1", "role": "supporting"}])
+    with pytest.raises(JSONSchemaValidationError):
+        validator.validate(conflict_missing_side)

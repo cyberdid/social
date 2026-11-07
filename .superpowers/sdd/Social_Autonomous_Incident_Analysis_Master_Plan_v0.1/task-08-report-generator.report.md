@@ -13,13 +13,13 @@
 
 ## Перевірки, які тепер блокують звіт
 
-1. Dangling/duplicate IDs, неправильний SHA-256, timezone, cutoff, locator або quote/offset mismatch.
+1. Dangling/duplicate IDs, включно з недозволеним dangling VerificationResult ID на типі finding, неправильний SHA-256, timezone, cutoff, locator або quote/offset mismatch.
 2. VerificationResult із невідомими evidence refs, несумісними claim/scope/status/root counts або evidence IDs, які у finding приховано чи подано лише частково.
 3. `supported_within_scope` і `refuted_within_scope` без root threshold та точного підходящого verification status; conflict без повних evidence refs з обох боків.
 4. Source-attributed/documented assertions, які не збігаються з точним cited quote. `documented_fact` рендерить факт про вміст архівного матеріалу; `source_attributed` зберігає атрибуцію твердження джерелу.
-5. Числові tokens у supported/refuted/hypothesis propositions, яких немає у відповідному тексті evidence, а також прості причинні й часові-order cues без окремих causal/temporal contracts.
+5. Числові tokens у supported/refuted/conflicting/hypothesis propositions, яких немає саме у процитованих locator quotes, а також прості причинні й часові-order cues без окремих causal/temporal contracts.
 6. Довільні невідомі поля, багатореченнєві/складені propositions і вільний текст альтернатив/обмежень; дозволені лише фіксовані коди.
-7. Silent overwrite або заміна каталогу, де є невідомі файли.
+7. Silent overwrite або заміна каталогу, де є невідомі файли. Для наявного bundle використовується атомарний Linux `renameat2(RENAME_EXCHANGE)`; коли він недоступний, попередній шлях не відсувається.
 
 Unresolved findings потребують bounded VerificationResult, показують усі refs з його обох сторін і прямо формулюють, що недостатність доказів не є спростуванням.
 
@@ -31,7 +31,7 @@ Unresolved findings потребують bounded VerificationResult, показ�
 
 ```text
 uv run --with pytest --with jsonschema -- python -m pytest -q tests/test_report_generator.py
-24 passed
+31 passed
 
 python -m py_compile src/analysis/report_generator.py
 exit 0
@@ -40,7 +40,7 @@ git diff --check
 exit 0
 ```
 
-Тести включають dangling IDs, locator, unsupported verification status, непідтверджені числа, обидва боки конфлікту, bounded refutation, лише-unresolved звіт, точний source quote, narrower claim scope, майбутні evidence records, детерміновані hashes, overwrite safety, markdown fence escaping і JSON Schema.
+Тести включають dangling evidence/verification IDs, locator, unsupported verification status, число за межами exact citation, обидва боки конфлікту, bounded refutation, лише-unresolved звіт, source quote для кожного процитованого джерела, narrower claim scope, майбутні evidence records, детерміновані hashes, успішний і зірваний atomic overwrite, не-boolean overwrite, Markdown link/fence escaping і JSON Schema.
 
 ## Відомі межі
 

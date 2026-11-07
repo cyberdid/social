@@ -17,7 +17,7 @@
     "claim_id": {"type": "string", "minLength": 1},
     "statement": {"type": "string", "minLength": 1},
     "scope": {"type": "object", "minProperties": 1},
-    "verification_result_id": {"type": "string", "minLength": 1},
+    "verification_result_id": {"type": ["string", "null"], "minLength": 1},
     "evidence_refs": {
       "type": "array",
       "items": {
@@ -72,19 +72,73 @@
     },
     {
       "if": {"properties": {"kind": {"enum": ["supported_within_scope", "refuted_within_scope", "conflicting"]}}, "required": ["kind"]},
-      "then": {"required": ["claim_id", "statement", "scope", "verification_result_id"]}
+      "then": {
+        "required": ["claim_id", "statement", "scope", "verification_result_id"],
+        "properties": {
+          "verification_result_id": {"type": "string", "minLength": 1},
+          "evidence_refs": {"items": {"properties": {"role": {"enum": ["supporting", "contradicting"]}}}}
+        },
+        "allOf": [
+          {
+            "if": {"properties": {"kind": {"const": "supported_within_scope"}}, "required": ["kind"]},
+            "then": {"properties": {"evidence_refs": {"contains": {"properties": {"role": {"const": "supporting"}}, "required": ["role"]}, "minContains": 1}}}
+          },
+          {
+            "if": {"properties": {"kind": {"const": "refuted_within_scope"}}, "required": ["kind"]},
+            "then": {"properties": {"evidence_refs": {"contains": {"properties": {"role": {"const": "contradicting"}}, "required": ["role"]}, "minContains": 1}}}
+          },
+          {
+            "if": {"properties": {"kind": {"const": "conflicting"}}, "required": ["kind"]},
+            "then": {
+              "properties": {
+                "evidence_refs": {
+                  "minItems": 2,
+                  "allOf": [
+                    {"contains": {"properties": {"role": {"const": "supporting"}}, "required": ["role"]}, "minContains": 1},
+                    {"contains": {"properties": {"role": {"const": "contradicting"}}, "required": ["role"]}, "minContains": 1}
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
     },
     {
       "if": {"properties": {"kind": {"const": "hypothesis"}}, "required": ["kind"]},
       "then": {"required": ["claim_id", "statement", "scope"], "properties": {"evidence_refs": {"minItems": 1}}}
     },
     {
+      "if": {"properties": {"kind": {"enum": ["documented_fact", "source_attributed", "hypothesis", "methodological_limit"]}}, "required": ["kind"]},
+      "then": {
+        "not": {
+          "properties": {"verification_result_id": {"type": "string"}},
+          "required": ["verification_result_id"]
+        }
+      }
+    },
+    {
       "if": {"properties": {"kind": {"const": "unresolved"}}, "required": ["kind"]},
-      "then": {"required": ["claim_id", "statement", "scope", "verification_result_id", "reason_code"]}
+      "then": {
+        "required": ["claim_id", "statement", "scope", "verification_result_id", "reason_code"],
+        "properties": {
+          "verification_result_id": {"type": "string", "minLength": 1},
+          "evidence_refs": {"items": {"properties": {"role": {"enum": ["supporting", "contradicting"]}}}}
+        }
+      }
     },
     {
       "if": {"properties": {"kind": {"const": "methodological_limit"}}, "required": ["kind"]},
-      "then": {"required": ["limitation_code"], "not": {"required": ["statement"]}}
+      "then": {
+        "required": ["limitation_code"],
+        "not": {
+          "anyOf": [
+            {"required": ["claim_id"]}, {"required": ["statement"]}, {"required": ["scope"]},
+            {"required": ["verification_result_id"]}, {"required": ["reason_code"]},
+            {"required": ["alternatives"]}, {"required": ["limitations"]}, {"required": ["limitation_codes"]}
+          ]
+        }
+      }
     }
   ]
 }

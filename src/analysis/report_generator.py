@@ -5,12 +5,15 @@ whether cited material semantically entails a finding.
 """
 from __future__ import annotations
 
+import ctypes
+import errno
 import hashlib
 import html
 import json
 import os
 import re
 import shutil
+import sys
 import tempfile
 from datetime import datetime, timezone
 from pathlib import Path
@@ -71,6 +74,7 @@ _TEMPORAL_ORDER_CUE = re.compile(
     re.IGNORECASE,
 )
 _SHA256 = re.compile(r"^[0-9a-f]{64}$")
+_MARKDOWN_ESCAPE = frozenset("\\`*_{}[]()!|>~")
 
 
 def _canonical(value: Any) -> str:
@@ -97,7 +101,8 @@ def _utc(value: Any, field: str) -> str:
 def _md(value: str) -> str:
     """Escape untrusted strings before placing them in Markdown prose/code."""
     safe_lines = value.replace("\r\n", " ↵ ").replace("\r", " ↵ ").replace("\n", " ↵ ")
-    return html.escape(safe_lines, quote=True).replace("`", "&#96;").replace("|", "&#124;")
+    markdown_escaped = "".join("\\" + char if char in _MARKDOWN_ESCAPE else char for char in safe_lines)
+    return html.escape(markdown_escaped, quote=True)
 
 
 def _scope_key(scope: Any) -> str:
@@ -249,6 +254,14 @@ def _numeric_tokens(text: str) -> set[str]:
     return {match.group(0).replace(",", ".") for match in _NUMERIC_TOKEN.finditer(text)}
 
 
+def _cited_text(evidence_index: dict[str, dict], evidence_ids: set[str]) -> str:
+    """Only text inside the validated exact locator can satisfy a text check."""
+    return " ".join(
+        evidence_index[evidence_id]["citation"].get("quote", "")
+        for evidence_id in sorted(evidence_ids)
+    )
+
+
 def _validate_single_proposition(finding_id: str, statement: str) -> None:
     if "\n" in statement or ";" in statement or re.search(r"[.!?]\s+\S", statement.strip()):
         raise ReportValidationError(f"{finding_id} must contain one proposition per finding")
@@ -293,6 +306,9 @@ def _prepare_findings(findings: list[dict], evidence_index: dict[str, dict], ver
             raise ReportValidationError(f"{finding_id}.alternatives are only valid for hypothesis findings")
         if kind != "methodological_limit" and item.get("limitation_code"):
             raise ReportValidationError(f"{finding_id}.limitation_code is only valid for methodological_limit")
+        verification_id = item.get("verification_result_id")
+        if kind not in {"supported_within_scope", "refuted_within_scope", "conflicting", "unresolved"} and verification_id is not None:
+            raise ReportValidationError(f"{finding_id}.verification_result_id is not valid for kind {kind}")
         if "evidence_refs" not in item:
             raise ReportValidationError(f"{finding_id}.evidence_refs is required; use an empty list when none apply")
         evidence_refs = item.get("evidence_refs")
@@ -344,10 +360,10 @@ def _prepare_findings(findings: list[dict], evidence_index: dict[str, dict], ver
             if (not normalized_refs or not refs_by_role["source_attributed"]
                     or refs_by_role["supporting"] or refs_by_role["contradicting"] or refs_by_role["context"]):
                 raise ReportValidationError(f"{finding_id} requires source-attributed evidence")
-            if not any(
+            if not all(
                 evidence_index[eid]["citation"].get("quote") == statement for eid in refs_by_role["source_attributed"]
             ):
-                raise ReportValidationError(f"{finding_id} statement must equal an exact cited quote")
+                raise ReportValidationError(f"{finding_id} statement must equal every exact source-attributed quote")
             source_ids = sorted({evidence_index[eid]["source_id"] for eid in refs_by_role["source_attributed"]})
             if kind == "documented_fact":
                 item["rendered_text"] = (
@@ -379,7 +395,7 @@ def _prepare_findings(findings: list[dict], evidence_index: dict[str, dict], ver
                 if _independent_roots(vr, "supporting") < _minimum_roots(vr):
                     raise ReportValidationError(f"{finding_id} VerificationResult lacks its required independent support roots")
                 _validate_claim_language(finding_id, statement)
-                citation_text = " ".join(evidence_index[eid].get("text", "") for eid in cited)
+                citation_text = _cited_text(evidence_index, cited)
                 missing_numbers = sorted(_numeric_tokens(statement) - _numeric_tokens(citation_text))
                 if missing_numbers:
                     raise ReportValidationError(f"{finding_id} numeric token(s) absent from supporting evidence: {', '.join(missing_numbers)}")
@@ -396,7 +412,7 @@ def _prepare_findings(findings: list[dict], evidence_index: dict[str, dict], ver
                 if _independent_roots(vr, "contradicting") < _minimum_roots(vr):
                     raise ReportValidationError(f"{finding_id} VerificationResult lacks its required independent contradiction roots")
                 _validate_claim_language(finding_id, statement)
-                citation_text = " ".join(evidence_index[eid].get("text", "") for eid in cited)
+                citation_text = _cited_text(evidence_index, cited)
                 missing_numbers = sorted(_numeric_tokens(statement) - _numeric_tokens(citation_text))
                 if missing_numbers:
                     raise ReportValidationError(f"{finding_id} numeric token(s) absent from contradicting evidence: {', '.join(missing_numbers)}")
@@ -414,13 +430,16 @@ def _prepare_findings(findings: list[dict], evidence_index: dict[str, dict], ver
                     raise ReportValidationError(f"{finding_id} conflicting citations must exactly match VerificationResult")
                 if not _independent_roots(vr, "supporting") or not _independent_roots(vr, "contradicting"):
                     raise ReportValidationError(f"{finding_id} conflict VerificationResult must retain evidence on both sides")
+                missing_numbers = sorted(_numeric_tokens(statement) - _numeric_tokens(_cited_text(evidence_index, supports | contradicts)))
+                if missing_numbers:
+                    raise ReportValidationError(f"{finding_id} numeric token(s) absent from conflict citations: {', '.join(missing_numbers)}")
                 item["rendered_text"] = f"Суперечливі матеріали щодо твердження «{statement.strip()}» залишають оцінку нерозв'язаною; звіт не обирає переможну версію."
             item["verification"] = vr
         elif kind == "hypothesis":
             if not normalized_refs:
                 raise ReportValidationError(f"{finding_id} hypothesis requires cited evidence")
             cited = {ref["evidence_id"] for ref in normalized_refs}
-            citation_text = " ".join(evidence_index[eid].get("text", "") for eid in cited)
+            citation_text = _cited_text(evidence_index, cited)
             missing_numbers = sorted(_numeric_tokens(statement) - _numeric_tokens(citation_text))
             if missing_numbers:
                 raise ReportValidationError(f"{finding_id} numeric token(s) absent from contextual evidence: {', '.join(missing_numbers)}")
@@ -492,10 +511,11 @@ def _citation_line(evidence: dict, role: str) -> str:
         end = citation["end_ms"] / 1000
         locator_text = f"original PTS {start:.3f}s–{end:.3f}s"
         quote_part = ""
+    evidence_label = _md(f"[{evidence['evidence_id']}]")
     return (
-        f"- [{_md(evidence['evidence_id'])}] {source_title} (source ID `{_md(evidence['source_id'])}`; {uri}); "
-        f"роль: {_md(role)}; captured `{_md(evidence['captured_at_utc'])}`; artifact `{artifact}` "
-        f"SHA-256 `{sha}`; {locator_text}{quote_part}"
+        f"- {evidence_label} {source_title} (source ID {_md(evidence['source_id'])}; {uri}); "
+        f"роль: {_md(role)}; captured {_md(evidence['captured_at_utc'])}; artifact {artifact} "
+        f"SHA-256 {sha}; {locator_text}{quote_part}"
     )
 
 
@@ -503,9 +523,9 @@ def _render_markdown(context: dict, findings: list[dict]) -> str:
     lines = [
         f"# { _md(context['working_title']) } — аналітичний звіт",
         "",
-        f"- Incident ID: `{_md(context['incident_id'])}`",
-        f"- Run ID: `{_md(context['run_id'])}`",
-        f"- Зріз `as_of`: `{_md(context['as_of_utc'])}`",
+        f"- Incident ID: {_md(context['incident_id'])}",
+        f"- Run ID: {_md(context['run_id'])}",
+        f"- Зріз as_of: {_md(context['as_of_utc'])}",
         f"- Сфера: {_md(str(context['scope'].get('description', 'визначена у run context'))) }",
         "",
         "Цей звіт формується з типізованих записів. Наявність посилання підтверджує лише можливість перевірити процитований фрагмент; вона не гарантує семантичної правильності оцінки.",
@@ -533,7 +553,7 @@ def _render_markdown(context: dict, findings: list[dict]) -> str:
             continue
         lines.extend([f"## {section_titles[kind]}", ""])
         for item in selected:
-            lines.append(f"### `{_md(item['finding_id'])}`")
+            lines.append(f"### {_md(item['finding_id'])}")
             lines.append("")
             lines.append(_md(item["rendered_text"]))
             if item.get("alternative_texts"):
@@ -594,20 +614,30 @@ def _atomic_bundle(output_dir: Path, outputs: dict[str, str], *, overwrite: bool
         for name, content in outputs.items():
             (staging / name).write_text(content, encoding="utf-8")
         if output_dir.exists():
-            backup = Path(tempfile.mkdtemp(prefix=f".{output_dir.name}.backup-", dir=output_dir.parent))
-            backup.rmdir()
-            os.replace(output_dir, backup)
-            try:
-                os.replace(staging, output_dir)
-            except Exception:
-                os.replace(backup, output_dir)
-                raise
-            shutil.rmtree(backup)
+            _rename_exchange(staging, output_dir)
+            shutil.rmtree(staging, ignore_errors=True)
         else:
             os.replace(staging, output_dir)
     finally:
         if staging.exists():
-            shutil.rmtree(staging)
+            shutil.rmtree(staging, ignore_errors=True)
+
+
+def _rename_exchange(left: Path, right: Path) -> None:
+    """Atomically exchange two directories on Linux (renameat2 RENAME_EXCHANGE)."""
+    if not sys.platform.startswith("linux"):
+        raise OSError(errno.ENOTSUP, "atomic report replacement requires Linux renameat2")
+    libc = ctypes.CDLL(None, use_errno=True)
+    try:
+        renameat2 = libc.renameat2
+    except AttributeError as exc:
+        raise OSError(errno.ENOTSUP, "libc does not expose renameat2 for atomic report replacement") from exc
+    renameat2.argtypes = [ctypes.c_int, ctypes.c_char_p, ctypes.c_int, ctypes.c_char_p, ctypes.c_uint]
+    renameat2.restype = ctypes.c_int
+    result = renameat2(-100, os.fsencode(left), -100, os.fsencode(right), 2)
+    if result != 0:
+        error_number = ctypes.get_errno()
+        raise OSError(error_number, os.strerror(error_number), str(right))
 
 
 def build_report_bundle(
@@ -620,6 +650,8 @@ def build_report_bundle(
     overwrite: bool = False,
 ) -> dict:
     """Validate typed findings and write a deterministic evidence-linked report bundle."""
+    if type(overwrite) is not bool:
+        raise ReportValidationError("overwrite must be boolean")
     normalized_context = _validate_context(context)
     evidence_index = _make_evidence_index(evidence_records, normalized_context["as_of_utc"])
     verification_index = _verification_index(verification_results, evidence_index, normalized_context)
