@@ -19,15 +19,31 @@ Commitment = Literal[
     "quoted",
     "denial",
     "debunk",
+    "reports",
     "unclear",
 ]
-Stance = Literal["support", "oppose", "unclear", "not_applicable"]
+Stance = Literal[
+    "support", "oppose", "unclear", "not_applicable", "reports_no_stance"
+]
+LIMITATION_CODES = (
+    "deterministic_rules_only",
+    "narrow_uk_ru_vocabulary",
+    "candidate_only",
+    "no_independent_gold_set_validation",
+    "truth_unverified",
+)
+_TORTURE_FORMS = r"(?:пытк\w*|пыта(?:ть|л[аои]?|ли|ет|ют|ю|ем|ете|в|вш\w*|н\w*))"
 
 
 @dataclass(frozen=True)
 class Annotation:
     """A text-level candidate annotation, never a fact verification result."""
 
+    source_text: str
+    evidence_text: str
+    evidence_start: int
+    evidence_end: int
+    limitations: tuple[str, ...]
     mentions: tuple[str, ...]
     claim: str | None
     speaker: str | None
@@ -51,7 +67,7 @@ _MENTION = re.compile(
 # Unknown topics, verbs, and languages remain outside this MVP's coverage.
 _CLAIM_PREDICATE = re.compile(
     r"\b(?:трим\w*|утрим\w*|держ\w*|удерж\w*|пуска\w*|впуска\w*|"
-    r"допуска\w*|кату\w*|пыт\w*|побил\w*|избива\w*|загин\w*|"
+    rf"допуска\w*|кату\w*|{_TORTURE_FORMS}|побил\w*|избива\w*|загин\w*|"
     r"помер\w*|погиб\w*|убил\w*|убит\w*|прихов\w*|скрыва\w*|"
     r"замовчу\w*|замалчива\w*)\b",
     re.IGNORECASE,
@@ -68,7 +84,7 @@ _NEGATED_DEBUNK = re.compile(
 )
 _EXPLICIT_DENIAL = re.compile(
     r"\bне\s+(?P<verb>трим\w*|утрим\w*|держ\w*|удерж\w*|пуска\w*|впуска\w*|"
-    r"допуска\w*|кату\w*|пыт\w*|побил\w*|избива\w*|прихов\w*|скрыва\w*)\b",
+    rf"допуска\w*|кату\w*|{_TORTURE_FORMS}|побил\w*|избива\w*|прихов\w*|скрыва\w*)\b",
     re.IGNORECASE,
 )
 _ANY_NEGATION = re.compile(
@@ -78,6 +94,15 @@ _ATTRIBUTION = re.compile(
     r"\b(?:за\s+словами|по\s+словам|зі\s+слів|со\s+слов|"
     r"як\s+стверджують|как\s+утверждают|кажуть|говорят|"
     r"за\s+даними|по\s+данным)\b",
+    re.IGNORECASE,
+)
+_REPORTING_FORMS = (
+    r"сообщает|сообщают|сообщил|сообщила|сообщили|сообщало|"
+    r"повідомляє|повідомляють|повідомляв|повідомляла|повідомляли|"
+    r"повідомив|повідомила|повідомили"
+)
+_REPORTING = re.compile(
+    rf"\b(?:{_REPORTING_FORMS})\b",
     re.IGNORECASE,
 )
 _SPEAKER = re.compile(
@@ -96,6 +121,10 @@ _QUESTION = re.compile(r"[?？]")
 _ATTRIBUTED_CLAIM = re.compile(
     r"^\s*(?:за\s+словами|по\s+словам|зі\s+слів|со\s+слов|"
     r"за\s+даними|по\s+данным)\s+[^,;:!?]+[,;:]\s*(.+)$",
+    re.IGNORECASE | re.DOTALL,
+)
+_REPORTED_CLAIM = re.compile(
+    rf"^\s*(?:{_REPORTING_FORMS})\s*[,;:]?\s*(?:что|що)\s+(.+)$",
     re.IGNORECASE | re.DOTALL,
 )
 _DEBUNKED_CLAIM = re.compile(
@@ -126,6 +155,10 @@ def _candidate_claim(text: str) -> str:
         if debunked:
             return debunked.group(1).strip(" \t\r\n.,;:—–-")
 
+    reported = _REPORTED_CLAIM.search(text)
+    if reported:
+        return reported.group(1).strip()
+
     attributed = _ATTRIBUTED_CLAIM.search(text)
     if attributed:
         return attributed.group(1).strip()
@@ -142,43 +175,87 @@ def _has_multiple_sentences(text: str) -> bool:
     return sum(bool(part.strip()) for part in parts) > 1
 
 
+def _annotation(
+    source_text: str,
+    mentions: tuple[str, ...],
+    claim: str | None,
+    speaker: str | None,
+    commitment: Commitment,
+    stance_to_claim: Stance,
+) -> Annotation:
+    """Build an annotation whose evidence span points into exact input text."""
+
+    return Annotation(
+        source_text=source_text,
+        evidence_text=source_text,
+        evidence_start=0,
+        evidence_end=len(source_text),
+        limitations=LIMITATION_CODES,
+        mentions=mentions,
+        claim=claim,
+        speaker=speaker,
+        commitment=commitment,
+        stance_to_claim=stance_to_claim,
+    )
+
+
 def classify(text: str | None) -> Annotation:
     """Return conservative mention, claim, attribution, and stance candidates.
 
     A ``support`` result means only that the text directly asserts a recognized
-    candidate proposition. Quotes, attribution, negation, debunking, and
-    hedging cannot produce ``support``. ``truth_state`` is always ``unverified``.
+    candidate proposition. Quotes, attribution, reporting, negation, debunking,
+    and hedging cannot produce ``support``. ``truth_state`` is always
+    ``unverified``.
     """
 
-    value = text if isinstance(text, str) else ""
-    value = value.strip()
+    source_text = text if isinstance(text, str) else ""
+    value = source_text.strip()
     mentions = tuple(match.group(0) for match in _MENTION.finditer(value))
-    has_candidate_claim = bool(mentions and _CLAIM_PREDICATE.search(value))
-    claim = _candidate_claim(value) if has_candidate_claim else None
+    predicate_matches = tuple(_CLAIM_PREDICATE.finditer(value))
+    has_candidate_claim = bool(mentions and predicate_matches)
+    has_multiple_predicates = has_candidate_claim and len(predicate_matches) > 1
+    if not has_candidate_claim:
+        claim = None
+    elif has_multiple_predicates:
+        claim = value
+    else:
+        claim = _candidate_claim(value)
     speaker = _speaker(value)
 
     if not claim:
-        return Annotation(mentions, None, speaker, "none", "not_applicable")
+        return _annotation(
+            source_text, mentions, None, speaker, "none", "not_applicable"
+        )
 
-    if _QUESTION.search(value) or _has_multiple_sentences(value):
-        return Annotation(mentions, claim, speaker, "unclear", "unclear")
+    if (
+        has_multiple_predicates
+        or _QUESTION.search(value)
+        or _has_multiple_sentences(value)
+    ):
+        return _annotation(source_text, mentions, claim, speaker, "unclear", "unclear")
 
     if any(mark in value for mark in _QUOTE_MARKS):
-        return Annotation(mentions, claim, speaker, "quoted", "unclear")
+        return _annotation(source_text, mentions, claim, speaker, "quoted", "unclear")
 
     # A reported or hedged proposition does not show the author's stance.
+    if _REPORTING.search(value):
+        return _annotation(
+            source_text, mentions, claim, speaker, "reports", "reports_no_stance"
+        )
     if _ATTRIBUTION.search(value):
-        return Annotation(mentions, claim, speaker, "attributed", "unclear")
+        return _annotation(source_text, mentions, claim, speaker, "attributed", "unclear")
     if _HEDGE.search(value):
-        return Annotation(mentions, claim, speaker, "unclear", "unclear")
+        return _annotation(source_text, mentions, claim, speaker, "unclear", "unclear")
 
     if _NEGATED_DEBUNK.search(value):
-        return Annotation(mentions, claim, speaker, "unclear", "unclear")
+        return _annotation(source_text, mentions, claim, speaker, "unclear", "unclear")
     if _DEBUNK.search(value):
-        return Annotation(mentions, claim, speaker, "debunk", "oppose")
+        return _annotation(source_text, mentions, claim, speaker, "debunk", "oppose")
     if _EXPLICIT_DENIAL.search(value):
-        return Annotation(mentions, claim, speaker, "denial", "oppose")
+        return _annotation(source_text, mentions, claim, speaker, "denial", "oppose")
     if _ANY_NEGATION.search(value):
-        return Annotation(mentions, claim, speaker, "unclear", "unclear")
+        return _annotation(source_text, mentions, claim, speaker, "unclear", "unclear")
 
-    return Annotation(mentions, claim, speaker, "direct_assertion", "support")
+    return _annotation(
+        source_text, mentions, claim, speaker, "direct_assertion", "support"
+    )
