@@ -9,7 +9,9 @@ input contains one object per local file:
 ```
 
 `local_path` is resolved relative to the input manifest when it is not
-absolute. URL and FFmpeg protocol paths are rejected. `source_locator`,
+absolute. URL and FFmpeg protocol paths are rejected. The output manifest is
+checked against every source path before it is created or changed; equal paths,
+symlinks, and hardlinks are rejected. `source_locator`,
 `fetched_at`, `provenance`, and any caller supplied `model_observations` are
 preserved unchanged under output `source`. Verified facts are separate under
 `media_index.verified_media_facts`: SHA-256, byte size, a deterministic
@@ -17,8 +19,10 @@ magic/suffix media type, and raw ffprobe JSON when available. Probe and decode
 results have their own status objects.
 
 Run `python src/media_pipeline.py INPUT.jsonl OUTPUT.jsonl`; add
-`--strict-decode` to decode the entire file with FFmpeg's `-xerror` flag to a
-null sink. Missing tools, invalid probe JSON, probe/decode failures, missing
+`--strict-decode` to decode all audio and video streams with FFmpeg's `-xerror`
+flag to a null sink. ffprobe and FFmpeg input protocol whitelists allow only
+`file`, so a local playlist cannot make them fetch remote segments. Missing
+tools, invalid probe JSON, probe/decode failures, missing
 files, changed files, and malformed input rows receive explicit statuses.
 Successful unchanged rows are reused by record identity, content digest, and
 decode mode. Each completed row is checkpointed; successful completion

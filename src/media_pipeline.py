@@ -80,7 +80,8 @@ def probe_media(path: str | os.PathLike[str], ffprobe: str | os.PathLike[str] | 
     local_path = _resolved_local_path(path)
     if local_path is None:
         return {'status': 'invalid_input', 'error': 'The local file path cannot be resolved.'}
-    command = _command(ffprobe, ['-v', 'error', '-show_format', '-show_streams', '-of', 'json', local_path])
+    command = _command(ffprobe, ['-v', 'error', '-protocol_whitelist', 'file',
+                                 '-show_format', '-show_streams', '-of', 'json', local_path])
     try:
         completed = subprocess.run(command, capture_output=True, text=True, timeout=timeout, check=False)
     except FileNotFoundError as exc:
@@ -109,7 +110,9 @@ def decode_media(path: str | os.PathLike[str], ffmpeg: str | os.PathLike[str] | 
     local_path = _resolved_local_path(path)
     if local_path is None:
         return {'status': 'invalid_input', 'error': 'The local file path cannot be resolved.'}
-    command = _command(ffmpeg, ['-v', 'error', '-xerror', '-i', local_path, '-f', 'null', '-'])
+    command = _command(ffmpeg, ['-v', 'error', '-xerror', '-protocol_whitelist', 'file',
+                                '-i', local_path, '-map', '0:v?', '-map', '0:a?',
+                                '-f', 'null', '-'])
     try:
         completed = subprocess.run(command, capture_output=True, text=True, timeout=timeout, check=False)
     except FileNotFoundError as exc:
@@ -189,6 +192,51 @@ def _read_existing(path: Path) -> dict[str, dict[str, Any]]:
         if isinstance(row, dict) and row.get('record_id'):
             latest[row['record_id']] = row
     return latest
+
+
+def _same_path_or_file(left: Path, right: Path) -> bool:
+    try:
+        if left.resolve(strict=False) == right.resolve(strict=False):
+            return True
+    except (OSError, RuntimeError):
+        pass
+    try:
+        return os.path.samefile(left, right)
+    except OSError:
+        return False
+
+
+def _load_input_rows(path: Path) -> list[tuple[int, Any, str | None, str]]:
+    rows: list[tuple[int, Any, str | None, str]] = []
+    with path.open('r', encoding='utf-8') as handle:
+        for line_number, raw_line in enumerate(handle, 1):
+            if not raw_line.strip():
+                continue
+            try:
+                source = json.loads(raw_line)
+                input_error = None
+            except json.JSONDecodeError as exc:
+                source = {'raw_line': raw_line.rstrip('\r\n')}
+                input_error = f'Invalid input JSON at line {line_number}: {exc}'
+            rows.append((line_number, source, input_error, _input_identity(line_number, source)))
+    return rows
+
+
+def _validate_output_destination(input_path: Path, output_path: Path,
+                                 input_rows: Sequence[tuple[int, Any, str | None, str]]) -> None:
+    if _same_path_or_file(input_path, output_path):
+        raise ValueError('Input and output manifests must be different files.')
+    for _, source, input_error, _ in input_rows:
+        if input_error is not None or not isinstance(source, dict):
+            continue
+        local = source.get('local_path')
+        if not isinstance(local, str) or not local.strip() or not _is_local_path(local):
+            continue
+        media_path = Path(local).expanduser()
+        if not media_path.is_absolute():
+            media_path = input_path.parent / media_path
+        if _same_path_or_file(output_path, media_path):
+            raise ValueError('output manifest must not alias a source media file.')
 
 
 def _atomic_write_jsonl(path: Path, rows: Sequence[dict[str, Any]]) -> None:
@@ -336,49 +384,39 @@ def index_manifest(input_path: str | os.PathLike[str], output_path: str | os.Pat
     row per current input line in original order.
     """
     source_path, target_path = Path(input_path), Path(output_path)
-    if source_path.resolve() == target_path.resolve():
-        raise ValueError('Input and output manifests must be different files.')
+    input_rows = _load_input_rows(source_path)
+    _validate_output_destination(source_path, target_path, input_rows)
     target_path.parent.mkdir(parents=True, exist_ok=True)
     existing = _read_existing(target_path)
     current_rows: list[dict[str, Any]] = []
-    with source_path.open('r', encoding='utf-8') as handle:
-        for line_number, raw_line in enumerate(handle, 1):
-            if not raw_line.strip():
-                continue
-            try:
-                source = json.loads(raw_line)
-                input_error = None
-            except json.JSONDecodeError as exc:
-                source = {'raw_line': raw_line.rstrip('\r\n')}
-                input_error = f'Invalid input JSON at line {line_number}: {exc}'
-            record_id = _input_identity(line_number, source)
-            previous = existing.get(record_id)
-            row: dict[str, Any] | None = None
-            file_details = None
-            if previous and input_error is None and isinstance(source, dict):
-                local = source.get('local_path')
-                if isinstance(local, str) and local.strip() and _is_local_path(local):
-                    path = Path(local).expanduser()
-                    if not path.is_absolute():
-                        path = source_path.parent / path
-                    try:
-                        file_details = _hash_details(path)
-                        digest, size, _ = file_details
-                        if _same_file_status(previous, source, digest, size, strict_decode):
-                            row = previous
-                    except (OSError, RuntimeError):
-                        file_details = None
-            if row is None:
-                row = _index_one(source, record_id, line_number, input_error=input_error,
-                                 input_root=source_path.parent, ffprobe=ffprobe, ffmpeg=ffmpeg,
-                                 strict_decode=strict_decode, file_details=file_details)
-                with target_path.open('a', encoding='utf-8') as journal:
-                    journal.write(json.dumps(row, ensure_ascii=False, sort_keys=True,
-                                             separators=(',', ':')) + '\n')
-                    journal.flush()
-                    os.fsync(journal.fileno())
-                existing[record_id] = row
-            current_rows.append(row)
+    for line_number, source, input_error, record_id in input_rows:
+        previous = existing.get(record_id)
+        row: dict[str, Any] | None = None
+        file_details = None
+        if previous and input_error is None and isinstance(source, dict):
+            local = source.get('local_path')
+            if isinstance(local, str) and local.strip() and _is_local_path(local):
+                path = Path(local).expanduser()
+                if not path.is_absolute():
+                    path = source_path.parent / path
+                try:
+                    file_details = _hash_details(path)
+                    digest, size, _ = file_details
+                    if _same_file_status(previous, source, digest, size, strict_decode):
+                        row = previous
+                except (OSError, RuntimeError):
+                    file_details = None
+        if row is None:
+            row = _index_one(source, record_id, line_number, input_error=input_error,
+                             input_root=source_path.parent, ffprobe=ffprobe, ffmpeg=ffmpeg,
+                             strict_decode=strict_decode, file_details=file_details)
+            with target_path.open('a', encoding='utf-8') as journal:
+                journal.write(json.dumps(row, ensure_ascii=False, sort_keys=True,
+                                         separators=(',', ':')) + '\n')
+                journal.flush()
+                os.fsync(journal.fileno())
+            existing[record_id] = row
+        current_rows.append(row)
     _atomic_write_jsonl(target_path, current_rows)
     status_counts = Counter(row['media_index']['status'] for row in current_rows)
     return {'input': str(source_path), 'output': str(target_path), 'records': len(current_rows),

@@ -1,6 +1,7 @@
 """Contracts for read-only, resumable local media indexing."""
 import hashlib
 import json
+import os
 import sys
 import tempfile
 import unittest
@@ -199,6 +200,67 @@ class MediaPipelineTests(unittest.TestCase):
         self.assertEqual(summary['status_counts'], {'ok': 1})
         rows = [json.loads(line) for line in output_manifest.read_text(encoding='utf-8').splitlines()]
         self.assertEqual(len(rows), 1)
+
+    def test_output_manifest_rejects_same_symlink_and_hardlink_as_media(self):
+        import media_pipeline as media
+        media_path = self.root / 'clip.mp4'
+        media_path.write_bytes(b'{"record_id":"existing"}\n')
+        input_manifest = self.root / 'input.jsonl'
+        source = {'source_locator': 'fixture:clip', 'local_path': str(media_path),
+                  'fetched_at': None, 'provenance': {}}
+        input_manifest.write_text(json.dumps(source) + '\n', encoding='utf-8')
+        hardlink = self.root / 'hardlink-output.jsonl'
+        symlink = self.root / 'symlink-output.jsonl'
+        os.link(media_path, hardlink)
+        symlink.symlink_to(media_path)
+
+        for label, output in [('same_path', media_path), ('hardlink', hardlink), ('symlink', symlink)]:
+            with self.subTest(alias=label):
+                before = media_path.read_bytes()
+                with self.assertRaisesRegex(ValueError, 'output manifest must not alias'):
+                    media.index_manifest(input_manifest, output, ffprobe=str(self.root / 'missing-ffprobe'))
+                self.assertEqual(media_path.read_bytes(), before)
+
+    def test_local_playlist_probe_and_decode_only_allow_file_protocol(self):
+        import media_pipeline as media
+        playlist = self.root / 'playlist.m3u8'
+        playlist.write_text('#EXTM3U\nhttps://example.invalid/segment.ts\n', encoding='utf-8')
+        probe_args, ffmpeg_args = self.root / 'probe-args.json', self.root / 'ffmpeg-args.json'
+        fake_probe = self.executable('capture-ffprobe',
+            f"from pathlib import Path\nimport json, sys\nPath({str(probe_args)!r}).write_text(json.dumps(sys.argv[1:]))\n"
+            "print(json.dumps({'streams': []}))\n")
+        fake_ffmpeg = self.executable('capture-ffmpeg',
+            f"from pathlib import Path\nimport json, sys\nPath({str(ffmpeg_args)!r}).write_text(json.dumps(sys.argv[1:]))\n")
+        source = {'source_locator': 'fixture:playlist', 'local_path': str(playlist),
+                  'fetched_at': None, 'provenance': {}}
+        input_manifest, output_manifest = self.root / 'in.jsonl', self.root / 'out.jsonl'
+        input_manifest.write_text(json.dumps(source) + '\n', encoding='utf-8')
+
+        media.index_manifest(input_manifest, output_manifest, ffprobe=str(fake_probe),
+                             ffmpeg=str(fake_ffmpeg), strict_decode=True)
+        probe_command = json.loads(probe_args.read_text(encoding='utf-8'))
+        ffmpeg_command = json.loads(ffmpeg_args.read_text(encoding='utf-8'))
+
+        for command in (probe_command, ffmpeg_command):
+            with self.subTest(command=command[0]):
+                whitelist_index = command.index('-protocol_whitelist')
+                self.assertEqual(command[whitelist_index + 1], 'file')
+                self.assertNotIn('https://example.invalid/segment.ts', command)
+
+    def test_strict_decode_maps_all_video_and_audio_streams(self):
+        import media_pipeline as media
+        path = self.root / 'multi-track.mkv'
+        path.write_bytes(b'fixture')
+        args_file = self.root / 'ffmpeg-args.json'
+        fake_ffmpeg = self.executable('capture-ffmpeg',
+            f"from pathlib import Path\nimport json, sys\nPath({str(args_file)!r}).write_text(json.dumps(sys.argv[1:]))\n")
+
+        result = media.decode_media(path, ffmpeg=str(fake_ffmpeg))
+        command = json.loads(args_file.read_text(encoding='utf-8'))
+        mappings = [command[index + 1] for index, value in enumerate(command[:-1]) if value == '-map']
+
+        self.assertEqual(result, {'status': 'passed'})
+        self.assertEqual(mappings, ['0:v?', '0:a?'])
 
 
 if __name__ == '__main__':
