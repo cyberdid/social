@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import pytest
+
 from src.analysis.conflict_analysis import analyze_conflict_episode
 
 
@@ -133,5 +135,27 @@ def test_information_attention_requires_source_receipt():
         "interval_end_utc": "2026-11-02T17:00:00Z",
         "metrics": {"posts": 12},
     }
-    with __import__("pytest").raises(ValueError, match="source_refs"):
+    with pytest.raises(ValueError, match="source_refs"):
         analyze_conflict_episode("episode_1", [], [], [row])
+
+
+@pytest.mark.parametrize("value", [float("nan"), float("inf"), float("-inf")])
+def test_information_attention_rejects_non_finite_metrics(value: float):
+    row = {
+        "interval_start_utc": "2026-11-02T16:00:00Z",
+        "interval_end_utc": "2026-11-02T17:00:00Z",
+        "source_refs": ["snapshot_1"],
+        "metrics": {"view_counters": value},
+    }
+    with pytest.raises(ValueError, match="finite"):
+        analyze_conflict_episode("episode_1", [], [], [row])
+
+
+def test_physical_and_observable_action_lists_do_not_alias_mutable_records():
+    result = analyze_conflict_episode("episode_1", [event("one")], [], [])
+
+    assert result["physical_event_series"] is not result["observable_actions"]
+    result["observable_actions"].append({"event_id": "extra"})
+    assert len(result["physical_event_series"]) == 1
+    result["physical_event_series"][0]["status"] = "changed"
+    assert result["observable_actions"][0]["status"] == "reported"

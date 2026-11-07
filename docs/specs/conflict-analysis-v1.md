@@ -16,13 +16,13 @@
 
 Для `trigger`, `public_demand`, `stated_grievance`, `institutional_context`, `structural_hypothesis`, `information_interpretation`, `participant_role`, `institutional_response` та `alternative_explanation` потрібні `statement_id`, `episode_id`, текст і `evidence_ids`. Такі записи залишаються висловлюваннями джерела з полями `speaker_entity_id`, `speaker_role`, `source_id`, `status` і `alternatives`.
 
-`represented_group_id` сам по собі не означає, що мовець представляє групу. Якщо є `representation_evidence_ids`, вони зберігаються окремо й статус стає `evidence_recorded_not_independently_validated`; автоматичної перевірки представництва немає. За відсутності таких доказів статус — `unestablished`. Невідома роль зберігається як `unknown`.
+`represented_group_id` сам по собі не означає, що мовець представляє групу. Якщо є `representation_evidence_ids`, вони зберігаються окремо й статус стає `evidence_recorded_not_independently_validated`; автоматичної перевірки представництва немає. Цей модуль ніколи не використовує ці посилання, щоб узагальнити вимогу одного мовця до позиції групи. За відсутності таких доказів статус — `unestablished`. Невідома роль зберігається як `unknown`.
 
 `structural_hypothesis` завжди має `epistemic_status=hypothesis`, навіть якщо збережено як джерельну заяву.
 
 ### Інформаційна увага
 
-Кожен часовий агрегат має UTC-інтервал, `metrics` і щонайменше один `source_refs`. Метрики — невід'ємні числа. Лічильники переглядів позначаються як snapshot counters, а не унікальні люди. Інформаційна серія зберігається окремо від фізичних дій.
+Кожен часовий агрегат має UTC-інтервал, `metrics` і щонайменше один `source_refs`. Метрики — скінченні невід'ємні числа; `NaN` і нескінченності відхиляються. Лічильники переглядів позначаються як snapshot counters, а не унікальні люди. Інформаційна серія зберігається окремо від фізичних дій.
 
 ## Вихід
 

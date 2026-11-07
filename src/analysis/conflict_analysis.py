@@ -5,7 +5,9 @@ does not identify motives, infer causality, or estimate the views of a group.
 """
 from __future__ import annotations
 
+from copy import deepcopy
 from datetime import datetime
+from math import isfinite
 from typing import Any
 
 
@@ -172,8 +174,12 @@ def _information_row(record: dict, episode_id: str) -> dict:
     if not isinstance(metrics, dict):
         raise ValueError("information metrics must be an object")
     for name, value in metrics.items():
-        if isinstance(value, bool) or not isinstance(value, (int, float)) or value < 0:
+        if isinstance(value, bool) or not isinstance(value, (int, float)):
             raise ValueError(f"information metric {name} must be a non-negative number")
+        if not isfinite(value):
+            raise ValueError(f"information metric {name} must be finite")
+        if value < 0:
+            raise ValueError(f"information metric {name} must be non-negative")
     return {
         "episode_id": episode_id,
         "interval_start_utc": start,
@@ -280,14 +286,14 @@ def analyze_conflict_episode(
         "participants_and_roles": grouped["participant_role"],
         "institutional_response": grouped["institutional_response"],
         "alternative_explanations": grouped["alternative_explanation"],
-        "observable_actions": events,
+        "observable_actions": deepcopy(events),
         "escalation_indicators": indicator_vector,
-        "physical_event_series": events,
+        "physical_event_series": deepcopy(events),
         "information_attention_series": attention,
         "unresolved": sorted(unresolved, key=lambda row: (row["record_id"], row["reason"])),
         "limitations": [
             "The output is bounded by supplied, evidence-linked records and their coverage.",
-            "A source-attributed statement is not a position of a group without separate representation evidence; recorded representation evidence is not independently validated here.",
+            "A source-attributed statement is never generalized to a group position by this module; representation evidence is only recorded and is not independently validated here.",
             "A reported event is not promoted to a verified real-world event by this aggregation.",
             "Information activity and view counters do not change physical-action indicators.",
             "No hidden motive or causal relationship is inferred.",
