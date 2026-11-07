@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "snapshot_count": 3,
+  "snapshot_records": 290,
+  "unique_channels": 240,
+  "infrastructure_candidate_records": 143,
+  "origin_unknown_records": 290,
+  "content_orientation_unknown_records": 290,
+  "legacy_group_records": {
+    "A": 17,
+    "B": 31,
+    "C": 156,
+    "D": 46,
+    "E": 5,
+    "U": 35
+  },
+  "per_snapshot": {
+    "reports/channel-evidence/20261105T100537Z/channel_evidence.jsonl": {
+      "records": 44,
+      "unique_channels": 44,
+      "infrastructure_candidate_records": 6
+    },
+    "reports/channel-evidence/20261105T101013Z/channel_evidence.jsonl": {
+      "records": 102,
+      "unique_channels": 102,
+      "infrastructure_candidate_records": 19
+    },
+    "reports/channel-evidence/20261105T102914Z/channel_evidence.jsonl": {
+      "records": 144,
+      "unique_channels": 144,
+      "infrastructure_candidate_records": 118
+    }
+  },
+  "interpretation": "Infrastructure candidate counts are review-routing features, not origin, political orientation, state-control, or operation findings."
+}
