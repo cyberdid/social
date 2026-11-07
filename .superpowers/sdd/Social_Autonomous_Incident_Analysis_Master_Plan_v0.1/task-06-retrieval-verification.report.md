@@ -6,8 +6,8 @@
 
 ## Зміни
 
-- `src/analysis/claim_verification.py`: детермінований multilingual lexical BM25, два маршрути пошуку (`claim_terms`, `counterevidence_terms`), exact offsets, hash/queries/parameters у search receipt, дедуплікація кандидатів тільки за явним lineage family, typed passage relations, scope/value checks, status aggregation та adapter до append-only `EvidenceLedger`.
-- `tests/test_claim_verification.py`: перевірки двох напрямів пошуку, `as_of`, цитатних offsets, duplicate roots, numeric mismatch, exact scope, correction history, missingness, citations, provenance й ledger append idempotence.
+- `src/analysis/claim_verification.py`: детермінований multilingual lexical BM25, два маршрути пошуку (`claim_terms`, `counterevidence_terms`), exact offsets, hash/queries/parameters у search receipt, дедуплікація кандидатів тільки за явним lineage family, typed passage relations, scope/value checks, status aggregation, append-only `EvidenceLedger` adapter й package exports.
+- `tests/test_claim_verification.py`: перевірки двох напрямів пошуку та claim-token overlap, `as_of`, цитатних offsets, duplicate roots, numeric omissions/mismatch, exact scope, correction history, missingness, provenance, ledger append idempotence, package exports і unresolved queue.
 - `docs/specs/claim-verification-v1.md`: український контракт і межі застосування.
 
 ## Захисні правила
@@ -17,17 +17,20 @@
 3. У статуси входять тільки assessments того самого claim і точного scope, записані станом на `as_of`.
 4. Для `supported_within_scope` / `refuted_within_scope` рахуються лише явно задані, upstream підтверджені independent roots; копії одного root лічаться один раз.
 5. Якщо фактів немає, статус буде `unverified` або `insufficient_evidence`, не `refuted`.
-6. Числова невідповідність не може автоматично лишитися `supports`.
-7. Correction/retraction не видаляє попередній результат; новий as-of projection посилається через `supersedes`.
+6. Кожне `claim.key_values` має бути присутнє у accepted `supports`; serialized assessment проходить повторну перевірку.
+7. Одна коренева сім'я на обох сторонах лишається conflict; перетин і per-side counts явно записані.
+8. Assessment ID враховує весь запис і змінюється при зміні його provenance.
+9. Correction/retraction не видаляє попередній результат; новий as-of projection посилається через `supersedes`.
+10. Ledger rationale зберігає assessments, citations, assessor/rule/time/root provenance та exclusions.
 
 ## Перевірки
 
 ```text
 PYTHONPATH=. pytest -q tests/test_claim_verification.py
-14 passed
+29 passed
 
 PYTHONPATH=. pytest -q tests/test_claim_verification.py tests/test_evidence_ledger.py
-30 passed
+45 passed
 
 python -m py_compile src/analysis/claim_verification.py
 exit 0
@@ -35,6 +38,10 @@ exit 0
 git diff --check
 exit 0
 ```
+
+## Review follow-up
+
+Закрито п'ять re-review findings: support більше не обходить numeric `key_values`; counter-search вимагає і claim-token, і correction-cue overlap; shared support/contradiction roots дають `conflicting_evidence` та збережені per-side counts; result ID включає scope, decision parameters і навіть виключені assessment provenance; EvidenceLedger rationale зберігає повний assessment provenance. Додано експорти assessment/result/search receipt, claim matrix і unresolved retrieval queue, із тестом, що assessment поза `as_of` лишає retrieval відкритим. Повний assessment payload тепер впливає на `assessment_id`, а незадокументовані чи дубльовані assessment IDs блокуються.
 
 ## Що не доведено / подальша межа
 

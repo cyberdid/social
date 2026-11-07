@@ -10,6 +10,7 @@
 - `create_evidence_assessment(...)` — створює оцінку passage–claim з відношенням `supports`, `contradicts`, `mentions`, `quotes`, `contextualizes`, `rebuts`, `ambiguous` або `insufficient_context`. Цитату перевірено порівнянням `passage.text[start:end]` із записаним уривком.
 - `aggregate_verification(...)` — створює `VerificationResult` із `as_of`, точним scope, supporting/contradicting evidence IDs та причиною статусу.
 - `append_verification_result(ledger, result, producer, run_id)` — передає результат в наявний append-only `EvidenceLedger`. Перевірки існування Claim і evidence виконуються самим ledger.
+- `export_verification_package(...)` — створює JSONL кандидатів/оцінок/результатів, JSON search receipt, `claim_matrix.md` та `unresolved_retrieval_queue.jsonl`.
 
 ## Retrieval і часовий зріз
 
@@ -21,9 +22,16 @@
 
 ## Оцінка evidence та статус
 
-`decision=candidate` є типовим. `decision=accepted` вимагає `acceptance_basis=human_adjudication` або `validated_rule` із `validated_rule_id`; моделі без окремої валідованої процедури не можуть самостійно прийняти оцінку. Заявлені `asserted_values` перевіряються проти `claim.key_values`: різне точне значення не може пройти як `supports`, воно стає `ambiguous/candidate`.
+`decision=candidate` є типовим. `decision=accepted` вимагає `acceptance_basis=human_adjudication` або `validated_rule` із `validated_rule_id`; моделі без окремої валідованої процедури не можуть самостійно прийняти оцінку. Якщо claim має `key_values`, accepted `supports` потребує точного значення для **кожного** ключа. Пропуск переводить оцінку в `ambiguous/candidate`, а mismatch її блокує. `aggregate_verification` повторно перевіряє всі serialized accepted support records, тому пряме формування JSON не обходить перевірку.
 
-Підсумок використовує лише accepted assessment з тим самим claim ID і точно таким самим JSON scope. `supported_within_scope` або `refuted_within_scope` вимагає заданої кількості `independent_root_id` з `independence_status=confirmed_independent`. Цей модуль не встановлює незалежність: такі ID мають бути верифіковані upstream. Одна сім'я, що одночасно підтримує та заперечує, не рахується як два незалежні корені.
+`assessment_id` хешує повний структурований assessment payload, включно з assessor/rule/root/citation, тому зміна provenance створює окремий record ID.
+Агрегатор вимагає унікальний непорожній assessment ID; записи без нього виключаються з вердикту, а повторне використання ID блокується.
+
+Підсумок використовує лише accepted assessment з тим самим claim ID і точно таким самим JSON scope. `supported_within_scope` або `refuted_within_scope` вимагає заданої кількості `independent_root_id` з `independence_status=confirmed_independent`. Цей модуль не встановлює незалежність: такі ID мають бути верифіковані upstream. Якщо той самий корінь має accepted support і contradiction, результат зберігає `conflicting_evidence`; per-side root counts включають цей корінь, а `shared_root_ids` явно показує перетин. Таке внутрішнє протиріччя не подається як дві незалежні підтверджувальні сім'ї.
+
+ID результату змінюється разом із scope, key values, cutoff, повним assessment/exclusion provenance, порогом root count, станом завершення пошуку та supersedes-зв'язком. Ledger adapter зберігає в полі `rationale` структурований JSON із assessment IDs, точними цитатами, датами, assessor/rule ID, root IDs, причинами виключення та параметрами агрегації, щоб не губити provenance у поточному контракті SQLite.
+
+`export_verification_package` створює: `evidence_candidates.jsonl`, `evidence_assessments.jsonl`, `verification_results.jsonl`, `search_receipt.json`, `claim_matrix.md`, `unresolved_retrieval_queue.jsonl`. Queue бере лише assessments, включені у відповідну as-of проєкцію; оцінка, відхилена через час/scope/value, не закриває retrieval-задачу.
 
 - `unverified`: пошук не завершено.
 - `insufficient_evidence`: завершений пошук не дав достатньої прийнятої evidence.

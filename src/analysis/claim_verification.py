@@ -14,6 +14,7 @@ import re
 import unicodedata
 from collections import Counter
 from datetime import datetime, timezone
+from pathlib import Path
 from typing import Any
 
 
@@ -178,14 +179,23 @@ def retrieve_evidence_candidates(
         "counterevidence_terms": [_terms(variant + " " + " ".join(counterevidence_terms)) for variant in variants],
     }
     counter_cue_tokens = set(term for cue in counterevidence_terms for term in _terms(cue))
+    claim_query_tokens = set(term for variant in variants for term in _terms(variant))
     scores_by_direction: dict[str, list[tuple[float, dict, set[str]]]] = {}
     unique_roots_skipped = Counter()
+    counter_no_claim_overlap_count = 0
+    counter_no_cue_count = 0
     for direction, queries in direction_queries.items():
         ranked = []
         all_query_terms = set(term for query in queries for term in query)
         for row in eligible:
-            if direction == "counterevidence_terms" and not (counter_cue_tokens & set(row["_token_values"])):
-                continue
+            if direction == "counterevidence_terms":
+                document_terms = set(row["_token_values"])
+                if not counter_cue_tokens & document_terms:
+                    counter_no_cue_count += 1
+                    continue
+                if not claim_query_tokens & document_terms:
+                    counter_no_claim_overlap_count += 1
+                    continue
             score = max((_bm25(query, row["_token_values"], document_frequency, total, average_length) for query in queries), default=0.0)
             if score <= 0:
                 continue
@@ -279,6 +289,8 @@ def retrieve_evidence_candidates(
             "input_passage_count": len(passages),
             "eligible_passage_count": total,
             "excluded_future_count": future_count,
+            "counterevidence_no_claim_overlap_count": counter_no_claim_overlap_count,
+            "counterevidence_no_cue_count": counter_no_cue_count,
             "candidate_count": len(candidates),
             "input_snapshot_sha256": input_snapshot_sha256,
             "known_dependency_family_count": len(known_families),
@@ -361,8 +373,13 @@ def create_evidence_assessment(
     asserted_values = asserted_values or {}
     if final_relation == "supports":
         for key, expected in expected_values.items():
-            actual = asserted_values.get(key)
-            if actual is not None and _canonical(actual) != _canonical(expected):
+            if key not in asserted_values:
+                final_relation = "ambiguous"
+                final_decision = "candidate"
+                reasons.append(f"missing_asserted_value:{key}")
+                continue
+            actual = asserted_values[key]
+            if _canonical(actual) != _canonical(expected):
                 final_relation = "ambiguous"
                 final_decision = "candidate"
                 reasons.append(f"value_mismatch:{key}")
@@ -371,10 +388,8 @@ def create_evidence_assessment(
         final_decision = "candidate"
         reasons.append("scope_mismatch")
     root_id = independent_root_id or passage.get("independent_root_id")
-    return {
+    assessment = {
         "schema_version": "1.0",
-        "assessment_id": _digest(claim_id, candidate["candidate_id"], assessed_at,
-                                  _canonical(scope), final_relation, final_decision, prefix="assessment:"),
         "claim_id": claim_id,
         "candidate_id": candidate["candidate_id"],
         "evidence_id": candidate["passage_id"],
@@ -403,6 +418,10 @@ def create_evidence_assessment(
             "A declared root ID is provenance input; this function does not establish the root's independence.",
         ],
     }
+    assessment["assessment_id"] = _digest(
+        claim_id, candidate["candidate_id"], _canonical(assessment), prefix="assessment:"
+    )
+    return assessment
 
 
 def aggregate_verification(
@@ -423,17 +442,29 @@ def aggregate_verification(
     claim_id = str(claim.get("claim_id") or "").strip()
     if not claim_id or not isinstance(claim.get("scope"), dict) or not claim["scope"]:
         raise ValueError("claim_id and non-empty claim scope are required")
+    if type(search_complete) is not bool:
+        raise ValueError("search_complete must be boolean")
     if type(minimum_independent_roots) is not int or minimum_independent_roots < 1:
         raise ValueError("minimum_independent_roots must be a positive integer")
+    assessment_ids = [row.get("assessment_id") for row in assessments
+                      if isinstance(row.get("assessment_id"), str) and row["assessment_id"].strip()]
+    if len(assessment_ids) != len(set(assessment_ids)):
+        raise ValueError("duplicate assessment_id")
     as_of, as_of_text = _parse_utc(as_of_utc, "as_of_utc")
     if claim.get("observability") == "not_verifiable":
         status = "not_verifiable"
         usable = []
-        excluded = []
+        excluded = [
+            {"assessment_id": row.get("assessment_id"), "reason": "claim_not_verifiable"}
+            for row in assessments
+        ]
     else:
         usable = []
         excluded = []
         for assessment in assessments:
+            if not isinstance(assessment.get("assessment_id"), str) or not assessment["assessment_id"].strip():
+                excluded.append({"assessment_id": assessment.get("assessment_id"), "reason": "missing_assessment_id"})
+                continue
             try:
                 assessed, _ = _parse_utc(assessment.get("assessed_at_utc"), "assessment.assessed_at_utc")
             except ValueError:
@@ -454,6 +485,8 @@ def aggregate_verification(
                 reason = "missing_validated_rule_id"
             elif assessment.get("relation") not in {"supports", "contradicts"}:
                 reason = "non_verdict_relation"
+            elif assessment.get("relation") == "supports" and _support_value_problem(claim, assessment):
+                reason = _support_value_problem(claim, assessment)
             elif _canonical(assessment.get("scope")) != _canonical(claim["scope"]):
                 reason = "scope_mismatch"
             elif assessment.get("scope_matches_claim") is False:
@@ -473,13 +506,11 @@ def aggregate_verification(
         contradict_roots = {row["independent_root_id"] for row in contradict
                             if row.get("independence_status") == "confirmed_independent" and row.get("independent_root_id")}
         shared_roots = support_roots & contradict_roots
-        independent_support = support_roots - shared_roots
-        independent_contradict = contradict_roots - shared_roots
-        if independent_support and independent_contradict:
+        if support_roots and contradict_roots:
             status = "conflicting_evidence"
-        elif len(independent_support) >= minimum_independent_roots:
+        elif len(support_roots) >= minimum_independent_roots:
             status = "supported_within_scope"
-        elif len(independent_contradict) >= minimum_independent_roots:
+        elif len(contradict_roots) >= minimum_independent_roots:
             status = "refuted_within_scope"
         elif not search_complete:
             status = "unverified"
@@ -495,7 +526,31 @@ def aggregate_verification(
     contradict_roots = sorted({row["independent_root_id"] for row in contradict_rows
                                if row.get("independence_status") == "confirmed_independent" and row.get("independent_root_id")})
     assessments_used = sorted(row["assessment_id"] for row in usable if row.get("assessment_id"))
-    material = _canonical([claim_id, as_of_text, status, sorted(assessments_used), supersedes_result_id or ""])
+    exclusion_by_id = {row.get("assessment_id"): row["reason"] for row in excluded}
+    used_id_set = set(assessments_used)
+    assessment_provenance = [
+        _assessment_audit_record(
+            row,
+            row.get("assessment_id") in used_id_set,
+            exclusion_by_id.get(row.get("assessment_id")),
+        )
+        for row in sorted(assessments, key=lambda item: (str(item.get("assessment_id") or ""), _canonical(item)))
+    ]
+    material = _canonical({
+        "claim_id": claim_id,
+        "claim_statement": claim.get("statement"),
+        "scope": claim["scope"],
+        "key_values": claim.get("key_values", {}),
+        "as_of_utc": as_of_text,
+        "status": status,
+        "assessment_ids": sorted(assessments_used),
+        "assessment_provenance": assessment_provenance,
+        "excluded_assessment_ids": sorted(row["assessment_id"] for row in excluded if row.get("assessment_id")),
+        "minimum_independent_roots": minimum_independent_roots,
+        "search_complete": bool(search_complete),
+        "observability": claim.get("observability"),
+        "supersedes": supersedes_result_id,
+    })
     result_id = "verification:" + hashlib.sha256(material.encode("utf-8")).hexdigest()[:24]
     return {
         "schema_version": "1.0",
@@ -509,14 +564,19 @@ def aggregate_verification(
         "contradicting_evidence_ids": contradict_ids,
         "supporting_root_count": len(support_roots),
         "contradicting_root_count": len(contradict_roots),
+        "shared_root_ids": sorted(set(support_roots) & set(contradict_roots)),
         "independent_support_roots": len(support_roots),
         "independent_contradiction_roots": len(contradict_roots),
         "minimum_independent_roots": minimum_independent_roots,
         "assessment_ids": assessments_used,
+        "assessment_provenance": assessment_provenance,
         "excluded_assessments": excluded,
         "excluded_assessment_ids": sorted(row["assessment_id"] for row in excluded if row.get("assessment_id")),
         "supersedes": supersedes_result_id,
-        "rationale": _status_rationale(status, len(support_roots), len(contradict_roots), minimum_independent_roots, search_complete),
+        "rationale": _status_rationale(
+            status, len(support_roots), len(contradict_roots), minimum_independent_roots,
+            search_complete, len(set(support_roots) & set(contradict_roots)),
+        ),
         "limitations": [
             "This result is limited to the exact claim scope and supplied evidence corpus.",
             "Retrieval rank, publication volume, and model agreement are not evidence of truth.",
@@ -543,6 +603,22 @@ def append_verification_result(
         raise ValueError("unsupported verification result status")
     if not result.get("result_id") or not result.get("claim_id"):
         raise ValueError("verification result requires result_id and claim_id")
+    rationale_payload = {
+        "summary": result.get("rationale"),
+        "assessment_ids": result.get("assessment_ids", []),
+        "assessment_provenance": result.get("assessment_provenance", []),
+        "excluded_assessment_ids": result.get("excluded_assessment_ids", []),
+        "excluded_assessments": result.get("excluded_assessments", []),
+        "verification_parameters": {
+            "as_of_utc": result.get("as_of_utc"),
+            "search_complete": result.get("search_complete"),
+            "minimum_independent_roots": result.get("minimum_independent_roots"),
+            "status": result.get("status"),
+            "supporting_root_count": result.get("supporting_root_count"),
+            "contradicting_root_count": result.get("contradicting_root_count"),
+            "shared_root_ids": result.get("shared_root_ids", []),
+        },
+    }
     existing = ledger.get_record(result["result_id"])
     return ledger.add_verification_result(
         result["result_id"],
@@ -552,7 +628,7 @@ def append_verification_result(
         status=result["status"],
         supporting_evidence_ids=result.get("supporting_evidence_ids", []),
         contradicting_evidence_ids=result.get("contradicting_evidence_ids", []),
-        rationale=result.get("rationale"),
+        rationale=json.dumps(rationale_payload, ensure_ascii=False, sort_keys=True, separators=(",", ":")),
         supersedes=result.get("supersedes"),
         producer=producer,
         run_id=run_id,
@@ -561,18 +637,171 @@ def append_verification_result(
     )
 
 
-def _status_rationale(status: str, support_count: int, contradict_count: int, minimum: int, search_complete: bool) -> str:
+def _status_rationale(
+    status: str,
+    support_count: int,
+    contradict_count: int,
+    minimum: int,
+    search_complete: bool,
+    shared_root_count: int = 0,
+) -> str:
     if status == "supported_within_scope":
         return f"Accepted, scope-matched support from {support_count} explicit roots meets threshold {minimum}; no independent contradiction root was accepted."
     if status == "refuted_within_scope":
         return f"Accepted, scope-matched contradictory evidence from {contradict_count} explicit roots meets threshold {minimum}; no independent support root was accepted."
     if status == "conflicting_evidence":
-        return f"Accepted, scope-matched support and contradiction both have distinct explicit roots ({support_count} and {contradict_count})."
+        return (
+            f"Accepted, scope-matched support and contradiction have explicit roots "
+            f"({support_count} and {contradict_count}); {shared_root_count} root(s) occur on both sides."
+        )
     if status == "not_verifiable":
         return "The claim is explicitly marked outside the observable scope of this workflow."
     if not search_complete:
         return "Evidence search is incomplete; no final truth assessment is available."
     return "The supplied evidence does not meet the explicit independent-root threshold; absence of evidence is not refutation."
+
+
+def _support_value_problem(claim: dict, assessment: dict) -> str | None:
+    """Return why an asserted support relation fails exact claim value checks."""
+    expected_values = claim.get("key_values") or {}
+    asserted_values = assessment.get("asserted_values") or {}
+    for key, expected in expected_values.items():
+        if key not in asserted_values:
+            return f"missing_asserted_value:{key}"
+        if _canonical(asserted_values[key]) != _canonical(expected):
+            return f"value_mismatch:{key}"
+    return None
+
+
+def _assessment_audit_record(assessment: dict, included: bool, exclusion_reason: str | None) -> dict:
+    fields = (
+        "assessment_id", "claim_id", "candidate_id", "evidence_id", "source_id", "relation", "decision",
+        "scope", "scope_matches_claim", "asserted_values", "independent_root_id", "independence_status",
+        "assessment_source", "assessor_id", "validated_rule_id", "assessed_at_utc", "citation", "reasons",
+    )
+    record = {field: assessment[field] for field in fields if field in assessment}
+    record["included_in_verification"] = included
+    record["exclusion_reason"] = exclusion_reason
+    return record
+
+
+def export_verification_package(
+    search_result: dict,
+    assessments: list[dict],
+    verification_result: dict,
+    output_dir: str | Path,
+) -> dict[str, Path]:
+    """Write deterministic JSONL exports, claim matrix, and unresolved queue."""
+    claim_id = str(verification_result.get("claim_id") or "")
+    if not claim_id or search_result.get("claim_id") != claim_id:
+        raise ValueError("search result and verification result must share a claim_id")
+    if not isinstance(search_result.get("candidates"), list):
+        raise ValueError("search_result.candidates must be a list")
+    if not isinstance(search_result.get("search_receipt"), dict):
+        raise ValueError("search_result.search_receipt must be an object")
+    candidates = search_result["candidates"]
+    candidate_ids = {row.get("candidate_id") for row in candidates}
+    included_candidate_ids = {
+        row.get("candidate_id") for row in verification_result.get("assessment_provenance", [])
+        if row.get("included_in_verification") and row.get("candidate_id")
+    }
+    unassessed_candidate_ids = sorted(candidate_ids - included_candidate_ids)
+    unresolved_statuses = {
+        "unverified", "insufficient_evidence", "conflicting_evidence", "not_verifiable", "superseded",
+    }
+    queue_rows = []
+    if verification_result.get("status") in unresolved_statuses or unassessed_candidate_ids:
+        reasons = []
+        if verification_result.get("status") in unresolved_statuses:
+            reasons.append(f"verification_status:{verification_result.get('status')}")
+        if unassessed_candidate_ids:
+            reasons.append("candidate_passages_without_accepted_assessment")
+        queue_rows.append({
+            "schema_version": "1.0",
+            "claim_id": claim_id,
+            "as_of_utc": verification_result.get("as_of_utc"),
+            "verification_status": verification_result.get("status"),
+            "candidate_ids_to_review_or_retrieve": unassessed_candidate_ids,
+            "reason_codes": reasons,
+            "targeted_next_steps": _unresolved_next_steps(verification_result),
+            "search_snapshot_sha256": (search_result.get("search_receipt") or {}).get("input_snapshot_sha256"),
+        })
+
+    scope_text = _markdown_cell(_canonical(verification_result.get("scope")))
+    support_text = _markdown_cell(", ".join(verification_result.get("supporting_evidence_ids", [])) or "—")
+    contradict_text = _markdown_cell(", ".join(verification_result.get("contradicting_evidence_ids", [])) or "—")
+    assessment_text = _markdown_cell(", ".join(verification_result.get("assessment_ids", [])) or "—")
+    matrix = "\n".join([
+        "# Матриця перевірки тверджень",
+        "",
+        "Експорт містить статус у межах заданого scope та доступного корпусу; це не оцінка всіх можливих джерел.",
+        "",
+        "| Claim ID | Статус | Scope | As of (UTC) | Докази за | Докази проти | Assessments | Пояснення |",
+        "|---|---|---|---|---|---|---|---|",
+        "| " + " | ".join([
+            _markdown_cell(claim_id),
+            _markdown_cell(str(verification_result.get("status", "unknown"))),
+            scope_text,
+            _markdown_cell(str(verification_result.get("as_of_utc", ""))),
+            support_text,
+            contradict_text,
+            assessment_text,
+            _markdown_cell(str(verification_result.get("rationale", ""))),
+        ]) + " |",
+        "",
+        f"Пошукових кандидатів: {len(candidates)}. Прийнятих assessment: {len(verification_result.get('assessment_ids', []))}. Відкритих retrieval-запитів: {len(queue_rows)}.",
+    ]) + "\n"
+
+    directory = Path(output_dir)
+    directory.mkdir(parents=True, exist_ok=True)
+    payloads = {
+        "candidates": _jsonl(candidates),
+        "assessments": _jsonl(assessments),
+        "results": _jsonl([verification_result]),
+        "search_receipt": json.dumps(search_result["search_receipt"], ensure_ascii=False,
+                                      sort_keys=True, separators=(",", ":")) + "\n",
+        "claim_matrix": matrix,
+        "unresolved_queue": _jsonl(queue_rows),
+    }
+    filenames = {
+        "candidates": "evidence_candidates.jsonl",
+        "assessments": "evidence_assessments.jsonl",
+        "results": "verification_results.jsonl",
+        "search_receipt": "search_receipt.json",
+        "claim_matrix": "claim_matrix.md",
+        "unresolved_queue": "unresolved_retrieval_queue.jsonl",
+    }
+    paths = {name: directory / filename for name, filename in filenames.items()}
+    if len({path.resolve() for path in paths.values()}) != len(paths):
+        raise ValueError("verification package output paths collide")
+    for name, path in paths.items():
+        _write_text_atomic(path, payloads[name])
+    return paths
+
+
+def _jsonl(rows: list[dict]) -> str:
+    return "".join(json.dumps(row, ensure_ascii=False, sort_keys=True, separators=(",", ":")) + "\n" for row in rows)
+
+
+def _markdown_cell(value: str) -> str:
+    return str(value).replace("|", "\\|").replace("\n", " ").replace("\r", " ")
+
+
+def _write_text_atomic(path: Path, text: str) -> None:
+    temporary = path.with_name(path.name + ".tmp")
+    temporary.write_text(text, encoding="utf-8")
+    temporary.replace(path)
+
+
+def _unresolved_next_steps(result: dict) -> list[str]:
+    status = result.get("status")
+    if status == "conflicting_evidence":
+        return ["Знайти незалежні першоджерела для протилежних версій.", "Перевірити чи одна з версій була уточнена або відкликана."]
+    if status in {"unverified", "insufficient_evidence"}:
+        return ["Розширити пошук на первинні документи, офіційні уточнення та незалежні повідомлення.", "Перевірити пропущені джерельні сім'ї та часові зрізи."]
+    if status == "not_verifiable":
+        return ["Зафіксувати, які додаткові непублічні або поза корпусом докази були б потрібні; не трактувати відсутність даних як спростування."]
+    return ["Повторно оцінити нові матеріали окремим версійованим запуском."]
 
 
 def _valid_citation(assessment: dict) -> bool:
