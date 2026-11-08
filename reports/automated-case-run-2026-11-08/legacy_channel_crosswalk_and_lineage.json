@@ -1,0 +1,58 @@
+{
+  "all_observed_channels": {
+    "A": 9,
+    "B": 19,
+    "C": 139,
+    "D": 31,
+    "E": 5,
+    "U": 32,
+    "total": 235
+  },
+  "current_positive_relevant_panel_channels": {
+    "A": 8,
+    "B": 19,
+    "C": 87,
+    "D": 26,
+    "E": 5,
+    "U": 13,
+    "total": 158
+  },
+  "current_relevant_channel_denominator": 158,
+  "denominator_difference": 1,
+  "difference_status": "reconciled_as_snapshot_membership_difference_reason_unknown",
+  "group_C_breakdown": {
+    "auto_only": 61,
+    "manual": 26
+  },
+  "historical_relevant_channel_denominator": 159,
+  "new_origin_orientation_operational_attribution": "unknown_unverified",
+  "schema_version": "1.0",
+  "scope": "legacy_group_crosswalk_only_not_source_attribution",
+  "snapshot_set_comparison": {
+    "current_merged_posts_clean_sha256": "d229d8618021cf285f24c712eb9cd37ca85eb0e8bee2d8a7f74b6e7c574cda3f",
+    "current_only_channels": 0,
+    "current_positive_relevant_channels": 158,
+    "current_positive_relevant_posts": 1438,
+    "current_total_posts": 23386,
+    "historical_only_channel_present_in_current_dataset": false,
+    "historical_only_channels": 1,
+    "historical_only_positive_posts": 1,
+    "historical_positive_relevant_channels": 159,
+    "historical_positive_relevant_posts": 1408,
+    "historical_posts_clean_sha256": "4e859d407aef52c72a8e690dc5716d7d92d11ff7d7a164760db5a4c0ad334350",
+    "historical_total_posts": 23350,
+    "overlap_channels": 158,
+    "reason_for_absence": "unknown"
+  },
+  "source_lineage_whole_merged_corpus": {
+    "candidate_edges": 2823,
+    "independent_root_count_established": false,
+    "input_records": 23386,
+    "invalid_references": 0,
+    "records_with_nonblank_text_and_valid_time": 22942,
+    "resolved_but_different_exact_text": 29,
+    "same_text_platform_forward_resolutions": 348,
+    "unresolved_forward_references": 498
+  },
+  "warning": "Forward/lineage records are candidate relations and do not establish common control, coordination, or independent corroboration."
+}

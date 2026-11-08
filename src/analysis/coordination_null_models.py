@@ -315,31 +315,43 @@ def temporal_analysis(B, seed, out):
 
 
 def main():
+    global EDGES
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--replicates', type=int, default=9999)
     parser.add_argument('--seed', type=int, default=20261106)
-    parser.add_argument('--out', type=Path, default=ROOT / 'reports/coordination-null-models-2026-11-06')
+    default_out = ROOT / 'reports/coordination-null-models-2026-11-06'
+    parser.add_argument('--out', type=Path, default=default_out)
+    parser.add_argument('--edges', type=Path, default=EDGES,
+                        help='copy-edge CSV; alternate graphs require an explicit --out directory')
     args = parser.parse_args()
     if args.replicates < 1:
         parser.error('--replicates must be positive')
+    if args.edges.resolve() != EDGES.resolve() and args.out.resolve() == default_out.resolve():
+        parser.error('--out is required when --edges selects an alternate graph')
     args.out.mkdir(parents=True, exist_ok=True)
-    s7, comment_controls = comment_analysis(args.replicates, args.seed, args.out)
-    temporal, temporal_controls = temporal_analysis(args.replicates, args.seed, args.out)
-    tests = s7 + temporal
-    for row, adjusted in zip(tests, holm_adjust([r['p_raw'] for r in tests])):
-        row['p_holm_16'] = adjusted
-    files = [COMMENTS, COPIES, SIGNALS, EDGES, RELEVANT, POSTS]
-    result = {'seed': args.seed, 'B': args.replicates, 'python': platform.python_version(),
-              'numpy': np.__version__, 'rng': 'numpy PCG64; independent SeedSequence [seed,family,model]',
-              'exploratory': True, 'test_family_size': len(tests),
-              'tail': 'upper inclusive; p=(k+1)/(B+1)', 'comments': comment_controls,
-              'copies': temporal_controls, 'tests': tests,
-              'inputs_sha256': {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest() for p in files},
-              'script_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}
-    (args.out / 'results.json').write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n')
-    fields = sorted({key for r in tests for key in r})
-    csv_write(args.out / 'test_summary.csv', [{key: r.get(key) for key in fields} for r in tests])
-    print(json.dumps({'output': str(args.out), 'B': args.replicates, 'tests': tests}, ensure_ascii=False, indent=2))
+    original_edges = EDGES
+    EDGES = args.edges
+    try:
+        s7, comment_controls = comment_analysis(args.replicates, args.seed, args.out)
+        temporal, temporal_controls = temporal_analysis(args.replicates, args.seed, args.out)
+        tests = s7 + temporal
+        for row, adjusted in zip(tests, holm_adjust([r['p_raw'] for r in tests])):
+            row['p_holm_16'] = adjusted
+        files = [COMMENTS, COPIES, SIGNALS, EDGES, RELEVANT, POSTS]
+        result = {'seed': args.seed, 'B': args.replicates, 'python': platform.python_version(),
+                  'numpy': np.__version__, 'rng': 'numpy PCG64; independent SeedSequence [seed,family,model]',
+                  'exploratory': True, 'test_family_size': len(tests),
+                  'tail': 'upper inclusive; p=(k+1)/(B+1)', 'comments': comment_controls,
+                  'copies': temporal_controls, 'tests': tests,
+                  'inputs_sha256': {str(p.relative_to(ROOT)) if p.is_relative_to(ROOT) else str(p):
+                                    hashlib.sha256(p.read_bytes()).hexdigest() for p in files},
+                  'script_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}
+        (args.out / 'results.json').write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n')
+        fields = sorted({key for r in tests for key in r})
+        csv_write(args.out / 'test_summary.csv', [{key: r.get(key) for key in fields} for r in tests])
+        print(json.dumps({'output': str(args.out), 'B': args.replicates, 'tests': tests}, ensure_ascii=False, indent=2))
+    finally:
+        EDGES = original_edges
 
 
 if __name__ == '__main__':

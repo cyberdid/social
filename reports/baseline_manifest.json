@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "baseline_commit": "fc7e58d",
+  "generated_at_utc": "2026-11-07T20:13:19.438740+00:00",
+  "files": [
+    {
+      "path": "reports/continuation_20261105/results.json",
+      "scope": "repository",
+      "status": "present",
+      "size_bytes": 15030,
+      "sha256": "2255092f6a205346dfcafd3474a6c7c814ee563622ba284ecb692f8b40376ea5"
+    },
+    {
+      "path": "reports/coordination-null-models-2026-11-06/results.json",
+      "scope": "repository",
+      "status": "present",
+      "size_bytes": 11782,
+      "sha256": "9fd8eaa2a0aac2a461e8ca6044081bb99151b75dfd5166ad5e6b045819f0e07a"
+    },
+    {
+      "path": "reports/youtube-content-2026-11-06.md",
+      "scope": "repository",
+      "status": "present",
+      "size_bytes": 13603,
+      "sha256": "4a491a90bd138844120f17968c29a7bb0ee68129fe89c3460c6bf7ac8383f251"
+    },
+    {
+      "path": "/home/cyberdid/Projects/Social/data/processed/20261105T101013Z+20261105T102914Z/posts_clean.jsonl",
+      "scope": "external_local_input",
+      "status": "present",
+      "size_bytes": 55105209,
+      "sha256": "d229d8618021cf285f24c712eb9cd37ca85eb0e8bee2d8a7f74b6e7c574cda3f"
+    },
+    {
+      "path": "/home/cyberdid/Projects/Social/data/raw/telegram_api/20261105T104252Z/channels.jsonl",
+      "scope": "external_local_input",
+      "status": "present",
+      "size_bytes": 125339,
+      "sha256": "908b935406e11da8d8c39f94b37ac4285a8b2ff14c57315d3722a09fd215f548"
+    },
+    {
+      "path": "/home/cyberdid/Projects/Social/data/raw/telegram_web/20261105T101013Z/posts.jsonl",
+      "scope": "external_local_input",
+      "status": "present",
+      "size_bytes": 20390628,
+      "sha256": "88948a1b593b2024ffff079585d37eee74948b79b869eab237e1a970b22bb85d"
+    },
+    {
+      "path": "/home/cyberdid/Downloads/SocialIncidentVideos/pilot/pilot_manifest.jsonl",
+      "scope": "external_local_input",
+      "status": "present",
+      "size_bytes": 13897,
+      "sha256": "8a097869353a726d06533fe11c23d945b92171c4e4b0bd802e9f7d239e4d8150"
+    }
+  ],
+  "interpretation": "SHA-256 and file size identify the bytes available at baseline; they do not verify semantic correctness or completeness.",
+  "raw_data_policy": "Only paths, availability, sizes, and digests are recorded; file contents are not copied."
+}

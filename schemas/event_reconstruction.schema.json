@@ -71,7 +71,7 @@
         "publication_time_utc": {"anyOf": [{"type": "null"}, {"type": "string", "format": "date-time", "pattern": "(Z|[+]00:00)$"}]},
         "timeline_time_kind": {"enum": ["event_time", "publication_time", null]},
         "evidence_ids": {"type": "array", "items": {"type": "string", "minLength": 1}, "minItems": 1, "uniqueItems": true},
-        "source_refs": {"type": "array", "items": {"type": "string", "minLength": 1}, "minItems": 1, "uniqueItems": true},
+        "source_refs": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
         "cannot_link_event_mention_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
         "attributed_relations": {"type": "array"},
         "merge_status": {"const": "unresolved_event_mention"},

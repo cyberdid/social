@@ -1,0 +1,24 @@
+{
+  "captured_at_utc": "2026-11-07T20:07:09.151583+00:00",
+  "ffprobe": {
+    "path": "/tmp/social_ffmpeg_deb/root/usr/bin/ffprobe",
+    "version": "ffprobe version 6.1.1-3ubuntu5 Copyright (c) 2007-2023 the FFmpeg developers",
+    "sha256": "272f6ebc634a63d9c8b4ca68e964119d980f25154e5aa2c35e5487da48e9a58f",
+    "package": "Ubuntu ffmpeg 7:6.1.1-3ubuntu5 extracted under /tmp; not system-installed"
+  },
+  "ffmpeg": {
+    "path": "/tmp/social-ffmpeg/ffmpeg",
+    "version": "ffmpeg version n9.0.2-17-g2a571b6068-20260930 Copyright (c) 2000-2026 the FFmpeg developers",
+    "sha256": "0d709a0bed1a43f24cd2c420878c63afea4580671b6949ad19ed124572f3bc3d",
+    "package": "imageio-ffmpeg binary n9.0.2-17-g2a571b6068-20260930"
+  },
+  "pipeline_options": {
+    "strict_decode": true,
+    "protocol_whitelist": "file",
+    "stream_map": [
+      "0:v?",
+      "0:a?"
+    ]
+  },
+  "pilot_index": "reports/video-pipeline/pilot/media_index.jsonl"
+}

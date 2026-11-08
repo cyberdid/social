@@ -94,6 +94,16 @@ def test_supported_finding_renders_only_with_matching_bounded_verification_and_e
     assert result["quality"]["assertion_check_status"] == "not_evaluated_semantic"
 
 
+def test_report_rejects_evidence_captured_after_verification_cutoff(tmp_path):
+    late = evidence()
+    late["captured_at_utc"] = "2026-11-06T00:00:00Z"
+    old_result = verification()
+    old_result["as_of_utc"] = "2026-11-03T00:00:00Z"
+
+    with pytest.raises(ReportValidationError, match="newer than verification as_of_utc"):
+        build(tmp_path, [finding()], evidence_records=[late], results=[old_result])
+
+
 def test_dangling_evidence_reference_blocks_report(tmp_path):
     with pytest.raises(ReportValidationError, match="unknown evidence_id"):
         build(tmp_path, [finding(refs=[{"evidence_id": "missing", "role": "supporting"}])])
@@ -187,6 +197,50 @@ def test_source_attributed_quote_is_rendered_as_source_statement(tmp_path):
     markdown = (tmp_path / "report" / "incident_report.md").read_text(encoding="utf-8")
     assert "Джерело source-1 повідомляє" in markdown
     assert "«Поліція оприлюднила заяву 2 листопада.»" in markdown
+
+
+def test_source_attributed_finding_can_preserve_exact_same_source_attribution_context(tmp_path):
+    full_text = (
+        "Командувач Національної гвардії України Олександр Півненко пояснив, що будівля була орендована. "
+        "Загалом у приміщенні перебували 26 осіб."
+    )
+    context_quote = "Командувач Національної гвардії України Олександр Півненко пояснив"
+    statement = "Загалом у приміщенні перебували 26 осіб."
+    context_record = evidence("e-context", full_text, locator={
+        "kind": "text_span", "start_offset": 0, "end_offset": len(context_quote),
+        "offset_unit": "unicode_codepoint",
+    })
+    statement_start = full_text.index(statement)
+    statement_record = evidence("e-statement", full_text, locator={
+        "kind": "text_span", "start_offset": statement_start,
+        "end_offset": statement_start + len(statement), "offset_unit": "unicode_codepoint",
+    })
+    item = finding("source_attributed", statement=statement, refs=[
+        {"evidence_id": "e-statement", "role": "source_attributed"},
+        {"evidence_id": "e-context", "role": "context"},
+    ])
+
+    build(tmp_path, [item], evidence_records=[context_record, statement_record], results=[])
+    markdown = (tmp_path / "report" / "incident_report.md").read_text(encoding="utf-8")
+
+    assert "Контекст у джерелі: «Командувач Національної гвардії України Олександр Півненко пояснив»" in markdown
+    assert "Джерело source-1 повідомляє: «Загалом у приміщенні перебували 26 осіб.»" in markdown
+    assert "роль: context" in markdown
+
+
+def test_source_attributed_context_must_come_from_the_cited_source(tmp_path):
+    quote = "Загалом у приміщенні перебували 26 осіб."
+    context_text = "Командувач Олександр Півненко пояснив"
+    context_record = evidence("e-context", context_text)
+    quote_record = evidence("e-statement", quote)
+    context_record["source_id"] = "different-source"
+    item = finding("source_attributed", statement=quote, refs=[
+        {"evidence_id": "e-statement", "role": "source_attributed"},
+        {"evidence_id": "e-context", "role": "context"},
+    ])
+
+    with pytest.raises(ReportValidationError, match="context must come from the same source"):
+        build(tmp_path, [item], evidence_records=[context_record, quote_record], results=[])
 
 
 def test_non_verification_finding_cannot_emit_a_dangling_verification_id(tmp_path):
@@ -324,6 +378,21 @@ def test_output_contains_machine_readable_findings_and_quality_metrics(tmp_path)
     assert citation["locator"]["start_offset"] == 0
     assert quality["validated_finding_count"] == 1
     assert result["receipt"]["run_id"] == "run-demo"
+
+
+def test_methodological_limit_accepts_generated_citations(tmp_path):
+    limit = {
+        "finding_id": "limit-coverage",
+        "kind": "methodological_limit",
+        "evidence_refs": [{"evidence_id": "e1", "role": "context"}],
+        "limitation_code": "incomplete_source_coverage",
+    }
+    build_report_bundle([limit], [evidence()], [], context(), tmp_path / "methodological-limit")
+
+    markdown = (tmp_path / "methodological-limit" / "incident_report.md").read_text(encoding="utf-8")
+    rows = [json.loads(line) for line in (tmp_path / "methodological-limit" / "findings.jsonl").read_text(encoding="utf-8").splitlines()]
+    assert "Покриття джерел неповне" in markdown
+    assert rows[0]["citation_ids"] == ["e1"]
 
 
 def test_evidence_captured_after_report_cutoff_is_rejected(tmp_path):

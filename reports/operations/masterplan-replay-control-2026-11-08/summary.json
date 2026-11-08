@@ -1,0 +1,46 @@
+{
+  "as_of_snapshots": [
+    {
+      "as_of_utc": "2026-11-03T18:00:00Z",
+      "run_id": "run-e75156b9b37666b16e501af1"
+    },
+    {
+      "as_of_utc": "2026-11-04T18:00:00Z",
+      "run_id": "run-24adc5f5df2ba1df58bd86dc"
+    }
+  ],
+  "correction_supersession": [
+    {
+      "correction_record_id": "assessment-v2",
+      "known_at_utc": "2026-11-04T12:00:00Z",
+      "supersedes_record_id": "assessment-v1"
+    }
+  ],
+  "downstream_invalidation": {
+    "changed_node_count": 2,
+    "invalidated_node_ids": [
+      "c-demo",
+      "finding-demo"
+    ],
+    "status": "planned_not_executed"
+  },
+  "limitations": [
+    "synthetic fixture demonstrates code path, not evidentiary correctness on the real case",
+    "invalidation is a planned candidate set, not recomputation",
+    "source-attributed statements are fabricated solely as software test data"
+  ],
+  "report_diff": {
+    "change_reasons": [
+      "evidence_refs_changed",
+      "statement_changed"
+    ],
+    "summary": {
+      "added": 0,
+      "changed": 1,
+      "removed": 0,
+      "unchanged": 0
+    }
+  },
+  "scope": "synthetic software control only; no incident facts",
+  "snapshot_count": 2
+}

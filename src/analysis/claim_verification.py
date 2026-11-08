@@ -84,19 +84,42 @@ _NUMERIC_VALUE_KEY_HINTS = (
     "число", "колич", "возраст", "год", "дата", "время", "длитель", "процент", "расстояни",
     "длина", "высота", "цена", "стоим", "сумм",
 )
-_COUNT_VALUE_KEY_HINTS = (
-    "count", "number", "quantity", "qty", "total", "participant", "person", "people", "individual",
-    "victim", "casualt", "detainee", "injured", "dead", "death", "comment", "post", "channel",
-    "account", "item", "кільк", "числ", "учасник", "особ", "люд", "потерп", "жертв", "поран",
-    "загиб", "заручник", "військов", "коментар", "допис", "канал", "акаунт", "человек", "людей",
-    "граждан", "пострадав", "ранен", "погиб", "заложник", "военнослуж", "комментар", "канал",
+_COUNT_ROLE_HINTS = {
+    "people": (
+        "person", "people", "individual", "human", "male", "man", "women", "child", "soldier", "troop",
+        "participant", "attendee", "member", "men", "detainee", "victim", "casualt", "injur", "dead", "death",
+        "hostage", "citizen", "учасник", "участник", "люд", "особ", "человек", "граждан", "військов",
+        "военнослуж", "пострадав", "ранен", "погиб", "заложник", "заручник", "жертв", "потерп", "загиб",
+    ),
+    "comments": ("comment", "коментар", "комментар"),
+    "posts": ("post", "допис", "публікац"),
+    "channels": ("channel", "канал"),
+    "accounts": ("account", "акаунт"),
+}
+_GENERIC_COUNT_KEY_HINTS = (
+    "count", "number", "quantity", "qty", "total", "кільк", "числ", "число", "колич",
 )
-_COUNT_SURFACE_HINTS = (
-    "person", "people", "individual", "human", "men", "women", "child", "soldier", "troop", "detainee",
-    "victim", "casualt", "injur", "comment", "post", "channel", "account", "люд", "особ", "человек",
-    "граждан", "військов", "военнослуж", "пострадав", "ранен", "погиб", "заручник", "коментар",
-    "допис", "канал", "акаунт", "жертв", "потерп", "загиб",
+_COUNT_OPERATOR_PATTERNS = (
+    ("lte", re.compile(r"(?:<=|≤)\s*$|(?:^|\b)(?:до|не\s+більше(?:\s+ніж)?|не\s+більш\s+як|не\s+более(?:\s+чем)?|не\s+больше(?:\s+чем)?|not\s+more\s+than|not\s+over|up\s+to|at\s+most|no\s+more\s+than)\s*$")),
+    ("gte", re.compile(r"(?:>=|≥)\s*$|(?:^|\b)(?:не\s+менше(?:\s+ніж)?|не\s+менее(?:\s+чем)?|не\s+меньше(?:\s+чем)?|not\s+less\s+than|not\s+under|at\s+least|no\s+fewer\s+than|no\s+less\s+than)\s*$")),
+    ("gt", re.compile(r"(?<!<)>(?!=)\s*$|(?:^|\b)(?:понад|більше\s+ніж|более\s+чем|свыше|больше\s+чем|more\s+than|over)\s*$")),
+    ("lt", re.compile(r"(?<!<)<(?![=>])\s*$|(?:^|\b)(?:менше\s+ніж|менше|менее\s+чем|меньше\s+чем|меньше|less\s+than|fewer\s+than|under|below)\s*$")),
+    ("approx", re.compile(r"≈\s*$|(?:^|\b)(?:приблизно|приблизительно|около|близько|близко|орієнтовно|примерно|approximately|approx|about|around|roughly|circa|nearly|almost|~)\s*$")),
 )
+_COUNT_UNKNOWN_NEGATION_PREFIX = re.compile(
+    r"(?:^|\b)(?:not\s+(?:up\s+to|at\s+most|<=|≤|<|>=|≥|>|≈)|не\s+(?:до|<=|≤|<|>=|≥|>|≈))\s*$"
+)
+_COUNT_QUALIFIER_MARKERS = re.compile(
+    r"(?:<=|>=|≤|≥|(?<!<)<(?![=>])|(?<!>)>(?!=)|≈|\b(?:about|around|roughly|approximately|approx|circa|nearly|almost|at|no|not|up|under|below|less|fewer|more|over|above|between|до|менше|менее|меньше|більше|более|больше|понад|приблизно|приблизительно|около|близько|близко|орієнтовно|примерно)\b)"
+)
+_NUMERIC_OPERATOR_ALIASES = {
+    "eq": "eq", "exact": "eq", "exactly": "eq", "равно": "eq", "рівно": "eq",
+    "lte": "lte", "at_most": "lte", "up_to": "lte", "до": "lte",
+    "gte": "gte", "at_least": "gte", "не_менше": "gte",
+    "gt": "gt", "greater_than": "gt", "more_than": "gt", "понад": "gt",
+    "lt": "lt", "less_than": "lt", "fewer_than": "lt", "under": "lt", "below": "lt",
+    "approx": "approx", "approximately": "approx", "about": "approx", "приблизно": "approx",
+}
 
 
 def _parse_utc(value: Any, field: str) -> tuple[datetime, str]:
@@ -170,6 +193,7 @@ def retrieve_evidence_candidates(
     as_of_utc: str,
     top_k: int = 20,
     counterevidence_terms: tuple[str, ...] = _COUNTER_CUES,
+    max_queries: int | None = None,
 ) -> dict:
     """Search claim and rebuttal/correction directions using local BM25.
 
@@ -177,12 +201,17 @@ def retrieve_evidence_candidates(
     candidates are never labeled as supporting or contradicting evidence.
     At most one candidate per explicitly supplied lineage family is retained
     per search direction; unlinked candidates remain separate and unknown.
+    ``max_queries`` bounds variant/direction searches before scoring. The stable
+    schedule visits each deduplicated variant (statement first), claim direction
+    then counterevidence direction. None preserves the full search schedule.
     """
     claim_id = str(claim.get("claim_id") or "").strip()
     if not claim_id or not str(claim.get("statement") or "").strip():
         raise ValueError("claim_id and non-empty statement are required")
     if type(top_k) is not int or top_k < 1:
         raise ValueError("top_k must be a positive integer")
+    if max_queries is not None and (type(max_queries) is not int or max_queries < 0):
+        raise ValueError("max_queries must be a non-negative integer or None")
     as_of, as_of_text = _parse_utc(as_of_utc, "as_of_utc")
     variants = _claim_query_variants(claim)
     if not variants:
@@ -200,9 +229,9 @@ def retrieve_evidence_candidates(
             raise ValueError("each passage requires passage_id, source_id, and non-empty text")
         if passage_id in passages_by_id:
             raise ValueError(f"duplicate passage_id: {passage_id}")
-        artifact_offset = raw.get("artifact_start_offset", 0)
-        if type(artifact_offset) is not int or artifact_offset < 0:
-            raise ValueError(f"{passage_id}.artifact_start_offset must be a non-negative integer")
+        artifact_offset = raw.get("artifact_start_offset")
+        if artifact_offset is not None and (type(artifact_offset) is not int or artifact_offset < 0):
+            raise ValueError(f"{passage_id}.artifact_start_offset must be null or a non-negative integer")
         captured, captured_text = _parse_utc(raw.get("captured_at_utc"), f"{passage_id}.captured_at_utc")
         passages_by_id[passage_id] = raw
         snapshot_rows.append({
@@ -212,6 +241,7 @@ def retrieve_evidence_candidates(
             "captured_at_utc": captured_text,
             "text_sha256": hashlib.sha256(text.encode("utf-8")).hexdigest(),
             "artifact_start_offset": artifact_offset,
+            "locator": raw.get("locator"),
             "lineage_family_id": raw.get("lineage_family_id"),
             "independent_root_id": raw.get("independent_root_id"),
         })
@@ -231,12 +261,21 @@ def retrieve_evidence_candidates(
         document_frequency.update(set(row["_token_values"]))
     average_length = sum(len(row["_token_values"]) for row in eligible) / total if total else 0.0
 
-    direction_queries = {
-        "claim_terms": [_terms(variant) for variant in variants],
-        "counterevidence_terms": [_terms(variant + " " + " ".join(counterevidence_terms)) for variant in variants],
-    }
+    planned_queries = [
+        (direction, variant, _terms(query))
+        for variant in variants
+        for direction, query in (
+            ("claim_terms", variant),
+            ("counterevidence_terms", variant + " " + " ".join(counterevidence_terms)),
+        )
+    ]
+    executed_queries = planned_queries if max_queries is None else planned_queries[:max_queries]
+    direction_queries: dict[str, list[list[str]]] = {}
+    for direction, _, query in executed_queries:
+        direction_queries.setdefault(direction, []).append(query)
     counter_cue_tokens = set(term for cue in counterevidence_terms for term in _terms(cue))
-    claim_query_tokens = set(term for variant in variants for term in _terms(variant))
+    claim_query_tokens = {term for direction, variant, _ in executed_queries
+                          if direction == "counterevidence_terms" for term in _terms(variant)}
     scores_by_direction: dict[str, list[tuple[float, dict, set[str]]]] = {}
     unique_roots_skipped = Counter()
     counter_no_claim_overlap_count = 0
@@ -283,14 +322,14 @@ def retrieve_evidence_candidates(
                 continue
             start = min(a for a, _ in matching)
             end = max(b for _, b in matching)
-            # Keep citations concise while preserving exact source offsets.
+            # These quote offsets are always relative to the supplied passage text.
             if end - start > 500:
                 first_start, first_end = matching[0]
                 start, end = max(0, first_start - 120), min(len(row["text"]), first_end + 240)
             quote = row["text"][start:end]
             passage_text_hash = hashlib.sha256(row["text"].encode("utf-8")).hexdigest()
             candidate_id = _digest(
-                claim_id, passage_id, passage_text_hash, str(row.get("artifact_start_offset", 0)),
+                claim_id, passage_id, passage_text_hash, str(row.get("artifact_start_offset")),
                 prefix="candidate:",
             )
             candidate = merged.setdefault(passage_id, {
@@ -308,7 +347,14 @@ def retrieve_evidence_candidates(
                 "quote": quote,
                 "start_offset": start,
                 "end_offset": end,
-                "artifact_start_offset": row.get("artifact_start_offset", 0) + start,
+                "passage_start_offset": start,
+                "passage_end_offset": end,
+                "passage_offset_unit": "unicode_codepoint",
+                "artifact_start_offset": (row["artifact_start_offset"] + start
+                                           if row.get("artifact_start_offset") is not None else None),
+                "artifact_offset_status": ("available" if row.get("artifact_start_offset") is not None
+                                           else "unavailable"),
+                "locator": row.get("locator"),
                 "offset_unit": "unicode_codepoint",
                 "relation": "unassessed",
                 "verification_status": "unverified",
@@ -326,7 +372,13 @@ def retrieve_evidence_candidates(
                 candidate["quote"] = quote
                 candidate["start_offset"] = start
                 candidate["end_offset"] = end
-                candidate["artifact_start_offset"] = row.get("artifact_start_offset", 0) + start
+                candidate["passage_start_offset"] = start
+                candidate["passage_end_offset"] = end
+                candidate["artifact_start_offset"] = (row["artifact_start_offset"] + start
+                                                       if row.get("artifact_start_offset") is not None else None)
+                candidate["artifact_offset_status"] = ("available" if row.get("artifact_start_offset") is not None
+                                                       else "unavailable")
+                candidate["locator"] = row.get("locator")
 
     candidates = sorted(merged.values(), key=lambda row: (-max(row["direction_scores"].values()), row["passage_id"]))
     for candidate in candidates:
@@ -343,6 +395,12 @@ def retrieve_evidence_candidates(
             "query_terms": {direction: [sorted(set(query)) for query in queries]
                             for direction, queries in direction_queries.items()},
             "query_variant_count": len(variants),
+            "planned_query_count": len(planned_queries),
+            "executed_query_count": len(executed_queries),
+            "omitted_query_count": len(planned_queries) - len(executed_queries),
+            "search_truncated": len(executed_queries) < len(planned_queries),
+            "max_queries": max_queries,
+            "query_schedule_order": "variant_input_order_then_claim_and_counterevidence",
             "input_passage_count": len(passages),
             "eligible_passage_count": total,
             "excluded_future_count": future_count,
@@ -721,16 +779,24 @@ def _support_value_problem(claim: dict, assessment: dict) -> str | None:
     # unrelated key_values object could silently bypass numeric validation.
     statement = str(claim.get("statement") or "")
     structured = _structured_numeric_values(expected_values)
-    for value, is_count in _statement_numeric_values(statement):
-        matching_keys = (
-            _COUNT_VALUE_KEY_HINTS if is_count else _NUMERIC_VALUE_KEY_HINTS
-        )
-        found = any(
-            value == structured_value and any(hint in key_path for hint in matching_keys)
-            for key_path, structured_value in structured
-        )
-        if not found:
-            return f"missing_structured_value:{value}"
+    for value, is_count, count_role, start, end in _statement_numeric_values(statement):
+        if is_count:
+            matching = [row for row in structured
+                        if value == row[1] and _compatible_count_key(row[0], count_role)]
+            if not matching:
+                return f"missing_structured_value:{value}"
+            required_operator = _statement_count_operator(statement, start, end)
+            actual_operators = {row[2] for row in matching}
+            if required_operator not in actual_operators:
+                operator_path = matching[0][0] or "count"
+                return f"numeric_operator_mismatch:{operator_path}:{required_operator}:{sorted(actual_operators)[0]}"
+        else:
+            found = any(
+                value == structured_value and any(hint in key_path for hint in _NUMERIC_VALUE_KEY_HINTS)
+                for key_path, structured_value, _operator in structured
+            )
+            if not found:
+                return f"missing_structured_value:{value}"
 
     for key, expected in expected_values.items():
         if key not in asserted_values:
@@ -833,7 +899,7 @@ def _numeric_word_phrases(text: str) -> list[tuple[str, int, int]]:
     return phrases
 
 
-def _statement_numeric_values(statement: str) -> list[tuple[str, bool]]:
+def _statement_numeric_values(statement: str) -> list[tuple[str, bool, str | None, int, int]]:
     """Extract explicit numerals and common number words from a claim."""
     matches: list[tuple[str, int, int]] = []
     for match in _NUMERIC_LITERAL.finditer(statement):
@@ -845,20 +911,26 @@ def _statement_numeric_values(statement: str) -> list[tuple[str, bool]]:
     result = []
     seen = set()
     for value, start, end in matches:
-        window = statement[end:end + 80].casefold()
-        is_count = any(hint in window for hint in _COUNT_SURFACE_HINTS)
-        pair = (value, is_count)
+        count_role = _surface_count_role(statement, start, end)
+        is_count = count_role is not None
+        pair = (value, is_count, count_role, start, end)
         if pair not in seen:
             seen.add(pair)
-            result.append(pair)
+            result.append((value, is_count, count_role, start, end))
     return result
 
 
-def _structured_numeric_values(values: Any, path: str = "") -> list[tuple[str, str]]:
-    """Flatten numeric leaves while retaining their semantic key path."""
-    output: list[tuple[str, str]] = []
+def _structured_numeric_values(values: Any, path: str = "") -> list[tuple[str, str, str]]:
+    """Flatten numeric values while retaining semantic key path and operator."""
+    output: list[tuple[str, str, str]] = []
     if isinstance(values, dict):
+        if "value" in values and _number_key(values.get("value")) is not None:
+            operator = _normalize_numeric_operator(values.get("operator", "eq"))
+            output.append((path.casefold(), _number_key(values["value"]), operator))
+            return output
         for key, value in values.items():
+            if str(key).casefold() == "operator":
+                continue
             child_path = f"{path}.{key}" if path else str(key)
             output.extend(_structured_numeric_values(value, child_path))
     elif isinstance(values, list):
@@ -867,8 +939,88 @@ def _structured_numeric_values(values: Any, path: str = "") -> list[tuple[str, s
     else:
         key = _number_key(values)
         if key is not None:
-            output.append((path.casefold(), key))
+            output.append((path.casefold(), key, "eq"))
     return output
+
+
+def _normalize_numeric_operator(value: Any) -> str:
+    if not isinstance(value, str):
+        return "unknown"
+    return _NUMERIC_OPERATOR_ALIASES.get(value.strip().casefold().replace(" ", "_"), "unknown")
+
+
+def _statement_count_operator(statement: str, start: int, end: int) -> str:
+    """Recognize explicit count qualifiers and abstain on an unparsed nearby cue."""
+    prefix = unicodedata.normalize("NFKC", statement[max(0, start - 64):start]).casefold()
+    prefix = re.sub(r"\s+", " ", prefix)
+    if _COUNT_UNKNOWN_NEGATION_PREFIX.search(prefix):
+        return "unknown"
+    for operator, pattern in _COUNT_OPERATOR_PATTERNS:
+        match = pattern.search(prefix)
+        if match:
+            preceding_qualifier = " ".join(prefix[:match.start()].split()[-3:])
+            if _COUNT_QUALIFIER_MARKERS.search(preceding_qualifier):
+                return "unknown"
+            return operator
+    suffix = unicodedata.normalize("NFKC", statement[end:min(len(statement), end + 40)]).casefold()
+    # Keep the fallback marker window local to the number. A later clause such
+    # as "40 comments were posted about the incident" must not reinterpret
+    # the count as approximate merely because "about" occurs several words
+    # after the counted noun.
+    local_context = " ".join(prefix.split()[-4:]) + " " + " ".join(suffix.split()[:2])
+    if _COUNT_QUALIFIER_MARKERS.search(local_context):
+        return "unknown"
+    return "eq"
+
+
+def _count_key_role(key_path: str) -> str | None:
+    normalized_path = re.sub(r"[_\.]+", " ", key_path.casefold())
+    roles = [
+        role for role, hints in _COUNT_ROLE_HINTS.items()
+        if any(_count_role_hint_matches(normalized_path, hint) for hint in hints)
+    ]
+    if len(roles) == 1:
+        return roles[0]
+    if roles:
+        return "ambiguous"
+    if any(hint in key_path for hint in _GENERIC_COUNT_KEY_HINTS):
+        return "generic"
+    return None
+
+
+def _compatible_count_key(key_path: str, claim_role: str | None) -> bool:
+    key_role = _count_key_role(key_path)
+    if key_role == "generic":
+        return True
+    return bool(claim_role and key_role == claim_role)
+
+
+def _surface_count_role(text: str, start: int, end: int) -> str | None:
+    lower = text.casefold()
+    left = max(0, start - 64)
+    right = min(len(text), end + 64)
+    matches = []
+    for role, hints in _COUNT_ROLE_HINTS.items():
+        for hint in hints:
+            if hint == "men":
+                men_match = re.search(r"(?<!\w)men(?!\w)", lower[left:right])
+                if men_match:
+                    cursor = left + men_match.start()
+                    distance = start - (cursor + len(hint)) if cursor + len(hint) <= start else cursor - end
+                    matches.append((abs(distance), role))
+                continue
+            cursor = lower.find(hint, left, right)
+            while cursor >= 0:
+                distance = start - (cursor + len(hint)) if cursor + len(hint) <= start else cursor - end
+                matches.append((abs(distance), role))
+                cursor = lower.find(hint, cursor + 1, right)
+    return min(matches, default=(0, None), key=lambda row: (row[0], row[1] or ""))[1]
+
+
+def _count_role_hint_matches(value: str, hint: str) -> bool:
+    if hint == "men":
+        return bool(re.search(r"(?<!\w)men(?!\w)", value))
+    return hint in value
 
 
 def _assessment_audit_record(assessment: dict, included: bool, exclusion_reason: str | None) -> dict:
@@ -881,6 +1033,14 @@ def _assessment_audit_record(assessment: dict, included: bool, exclusion_reason:
     record["included_in_verification"] = included
     record["exclusion_reason"] = exclusion_reason
     return record
+
+
+def _assessment_matches_projection(assessment: dict, audit: dict) -> bool:
+    projection_fields = {"included_in_verification", "exclusion_reason"}
+    current = _assessment_audit_record(assessment, False, None)
+    current_payload = {key: value for key, value in current.items() if key not in projection_fields}
+    audit_payload = {key: value for key, value in audit.items() if key not in projection_fields}
+    return _canonical(current_payload) == _canonical(audit_payload)
 
 
 def export_verification_package(
@@ -967,17 +1127,20 @@ def export_verification_package(
     for assessment in sorted(assessments, key=lambda row: (str(row.get("assessment_id") or ""), _canonical(row))):
         assessment_id = assessment.get("assessment_id")
         audit = audit_by_id.get(assessment_id)
-        included = bool(audit and audit.get("included_in_verification"))
+        payload_matches = bool(audit and _assessment_matches_projection(assessment, audit))
+        included = bool(payload_matches and audit.get("included_in_verification"))
+        exclusion_reason = None if included else (
+            "assessment_payload_mismatch" if audit and not payload_matches else
+            audit.get("exclusion_reason") if audit else
+            excluded_by_id.get(assessment_id, "assessment_not_in_projection")
+        )
         exported_assessments.append({
             **assessment,
             "as_of_projection": {
                 "as_of_utc": as_of_utc,
                 "verification_result_id": verification_result.get("result_id"),
                 "included_in_verification": included,
-                "exclusion_reason": None if included else (
-                    audit.get("exclusion_reason") if audit else
-                    excluded_by_id.get(assessment_id, "assessment_not_in_projection")
-                ),
+                "exclusion_reason": exclusion_reason,
             },
         })
 

@@ -1,0 +1,41 @@
+{
+  "as_of_utc": "2026-11-08T17:58:00Z",
+  "counts": {
+    "event_candidates": 2,
+    "possible_same_links": 0,
+    "temporal_relations": 0,
+    "unresolved": 2,
+    "unresolved_constraints": 0
+  },
+  "git_commit": null,
+  "incident_id": "petropavlivska-borshchahivka-2026-11",
+  "input_event_mention_count": 2,
+  "input_path": "/home/cyberdid/Projects/Social/.worktrees/social-master-plan/reports/automated-case-run-2026-11-08/source-reported-event-input-2026-11-08.jsonl",
+  "input_sha256": "2ea6052f5ace348928726541ec2ab37c28fec590f52ccdb9bc3403fcfa4b3596",
+  "limitations": [
+    "This deterministic module organizes supplied event mentions; it does not extract events from raw text.",
+    "Exact entity identifiers, not names or fuzzy similarity, are required for candidate matching.",
+    "No causal relation is inferred from temporal order."
+  ],
+  "method": "deterministic_event_mention_timeline_v1",
+  "output_sha256": {
+    "event_links.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "events.jsonl": "5b264515252353a297e418129420fe9685e2fb63e56e8bb5683fbe319ee4a380",
+    "temporal_relations.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "timeline.json": "f5d6250b73b307c9aabbdbbc43496d9255123a4297ddd0d31475bfe6eebaaf65",
+    "timeline.md": "490e9e6debe818b99fcc154d8fc8e74f0c5f13cf47a72b0f14679e0d43532cb2",
+    "unresolved.jsonl": "7df7c93a52edfcdf27177c28a6afcde9be95dbb618dc04fff96443f48389d1fb",
+    "unresolved_constraints.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "parameters_sha256": "165476d1286bf364f3af0764377620df9101cb675a0cb4d33a1d98efb003c424",
+  "producer": "social.event_reconstruction_cli",
+  "provenance": {
+    "git_commit": null,
+    "incident_id": "petropavlivska-borshchahivka-2026-11",
+    "parameters_sha256": "165476d1286bf364f3af0764377620df9101cb675a0cb4d33a1d98efb003c424",
+    "producer": "social.analysis.event_reconstruction@1.0",
+    "run_id": "reported-event-reconstruction-2026-11-08"
+  },
+  "run_id": "reported-event-reconstruction-2026-11-08",
+  "schema_version": "1.0"
+}

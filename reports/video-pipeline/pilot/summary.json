@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "record_count": 12,
+  "status_counts": {
+    "ok": 12
+  },
+  "platform_record_counts": {
+    "local_user_provided": 1,
+    "telegram": 6,
+    "tiktok": 5
+  },
+  "role_record_counts": {
+    "BBC News Ukrainian report": 1,
+    "Crowd and ambulance scene": 1,
+    "Doctor and police reportedly enter the building": 1,
+    "Independent creator video": 1,
+    "Initial report; long source clip": 1,
+    "Investigative media report": 1,
+    "Local Kyiv newsroom report": 1,
+    "Medical worker statement / alleged injuries": 1,
+    "Police response to a reported death claim": 1,
+    "Short early claim; exact-copy lineage test": 1,
+    "Sofiyivska fire footage; distinguish event time/place from Petropavlivka incident": 1,
+    "TikTok counterpart for cross-platform near-duplicate test": 1
+  },
+  "unique_asset_count": 12,
+  "unique_asset_bytes": 128500059,
+  "decode_status_counts_by_unique_asset": {
+    "passed": 12
+  },
+  "probe_status_counts_by_unique_asset": {
+    "ok": 12
+  },
+  "stream_type_counts_by_unique_asset": {
+    "audio": 12,
+    "video": 12
+  },
+  "model_observation_count_in_source_records": 0,
+  "verification_claims_added": 0,
+  "interpretation": "Technical file and stream checks do not establish event truth, recording time, location, identity, or caption accuracy."
+}

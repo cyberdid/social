@@ -1,0 +1,53 @@
+{
+  "schema_version": "coordination_null_model_exact_replay_v1",
+  "replayed_at_utc": "2026-11-08T18:23:46.914987+00:00",
+  "command": "python -m src.analysis.coordination_null_models --replicates 9999 --seed 20261106 --edges reports/coordination-null-models-2026-11-08-lsh-audit/exact_cross_channel_edges_ge_0.6.csv --out <fresh-temporary-directory>",
+  "seed": 20261106,
+  "replicates": 9999,
+  "rng": "numpy PCG64; independent SeedSequence [seed,family,model]",
+  "test_family_size": 16,
+  "edge_graph_sha256": "9e1d07c77cba556d1da414ab1d7a8952f09f220c29a71a33066b5f3ccf340e2b",
+  "script_sha256": "1fc68af8f45c83f54ba6de705c13de5cf35b3da774bbc7a9386db513120d4f8e",
+  "input_sha256": {
+    "data/raw/telegram_comments/20261106T071956Z/comments.jsonl": "a481d50305e50639c555b7a5866045c9b3d8156a5cf9b8cc16b313b2de1e6fb6",
+    "reports/telegram-comments/20261106T071956Z/copypasta_groups.csv": "ee692e523200a4422a7ae31eebde2718dbd23b0693dc6f0e2c04024e977187bc",
+    "reports/telegram-comments/20261106T071956Z/signals.json": "5f361a3affb47bb92a7f27880489fe020b1fb78828a5715068dd7d99aa4b4d77",
+    "reports/coordination-null-models-2026-11-08-lsh-audit/exact_cross_channel_edges_ge_0.6.csv": "9e1d07c77cba556d1da414ab1d7a8952f09f220c29a71a33066b5f3ccf340e2b",
+    "reports/continuation_20261105/relevant_posts.csv": "8b69539801a385bee8f5ea05c5315d18a6d518f96393ff5bf5cd6f57529f8b37",
+    "data/processed/continuation_20261105/posts_clean.jsonl": "4e859d407aef52c72a8e690dc5716d7d92d11ff7d7a164760db5a4c0ad334350"
+  },
+  "outputs": {
+    "phrase_reconciliation.csv": {
+      "expected_sha256": "eaf10b67fcac57c685d34b42c1d51314cdd62c0a38c51d1594105bbb8527eaef",
+      "replay_sha256": "eaf10b67fcac57c685d34b42c1d51314cdd62c0a38c51d1594105bbb8527eaef",
+      "byte_identical": true
+    },
+    "results.json": {
+      "expected_sha256": "5d6cd59bd5c31239eff595317a17ec4fd67f6a6329b1475cc10b9557e97a5d74",
+      "replay_sha256": "5d6cd59bd5c31239eff595317a17ec4fd67f6a6329b1475cc10b9557e97a5d74",
+      "byte_identical": true
+    },
+    "s7_null_draws.csv": {
+      "expected_sha256": "a024fd2f234b3a6c77f3abfa65bbb2b9bcdb333b30779f711a5d89f0892b4b26",
+      "replay_sha256": "a024fd2f234b3a6c77f3abfa65bbb2b9bcdb333b30779f711a5d89f0892b4b26",
+      "byte_identical": true
+    },
+    "temporal_blocks.csv": {
+      "expected_sha256": "2633cd539940598817f5b57c3d56a4db5304cb2251cbf5c9f8bb09190ff656c0",
+      "replay_sha256": "2633cd539940598817f5b57c3d56a4db5304cb2251cbf5c9f8bb09190ff656c0",
+      "byte_identical": true
+    },
+    "temporal_null_draws.csv": {
+      "expected_sha256": "fb7234792d3a743212fe091fcf5aaaa52223c1c25a4c070e7999a6bc05847af6",
+      "replay_sha256": "fb7234792d3a743212fe091fcf5aaaa52223c1c25a4c070e7999a6bc05847af6",
+      "byte_identical": true
+    },
+    "test_summary.csv": {
+      "expected_sha256": "5ee2eed22e257a10fafba3e6bee7b0ebae1bf01a006f6fe68226b451be35a59b",
+      "replay_sha256": "5ee2eed22e257a10fafba3e6bee7b0ebae1bf01a006f6fe68226b451be35a59b",
+      "byte_identical": true
+    }
+  },
+  "all_generated_outputs_byte_identical": true,
+  "scope": "Exact rerun of the declared conditional randomization analysis on the saved finite corpus and exact cross-channel graph; does not validate source collection, model assumptions, campaign intent, or attribution."
+}

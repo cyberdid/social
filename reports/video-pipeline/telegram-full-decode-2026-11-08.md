@@ -1,0 +1,32 @@
+# Повне технічне декодування Telegram-медіа — 8 листопада 2026
+
+## Результат
+
+Виконано локальне full decode кожного унікального медіафайла Telegram-архіву один раз за SHA-256. Декодер прочитав відео- та аудіопотоки повністю до null sink з `ffmpeg -xerror`; нових завантажень не було.
+
+| Перевірка | Результат |
+|---|---:|
+| Рядки Telegram archive manifest | 806 |
+| Архівні відеозаписи зі статусом `downloaded_verified` | 775 |
+| Унікальні assets за SHA-256 | 607 |
+| Унікальний обсяг файлів | 9,472,884,834 bytes |
+| Унікальні рядки в строгому технічному індексі | 607 |
+| `media_index.status=ok` | 607/607 |
+| `decode_check.status=passed` | 607/607 |
+| Збіг фактичних SHA-256 і розмірів із вхідним manifest | 607/607 |
+| Повторні asset IDs у фінальному індексі | 0 |
+
+Це закриває технічне декодування локальних Telegram-відео. Це не встановлює, що файли стосуються досліджуваного інциденту, і не перевіряє зміст сцен, дату/місце зйомки, осіб, слова у відео або правдивість підписів.
+
+## Відтворюваність
+
+- Джерельний manifest: `/home/cyberdid/Downloads/SocialIncidentVideos/telegram/manifest.jsonl`, 806 рядків, SHA-256 `50ef4d23b5c5c064c62cbc9ffd82fdc44feeb7a2f459cd7d1bafae992769057f`.
+- Вхідний manifest одного запису на унікальний hash: `/home/cyberdid/Downloads/SocialIncidentVideos/runs/telegram-full-decode-2026-11-08/unique_index_input.jsonl`, 607 рядків, SHA-256 `bcb90a9e996e9a3c077a92f303625ff8f347027820bdda3fa9d5fffeb04e9c66`.
+- Фінальний технічний індекс: `/home/cyberdid/Downloads/SocialIncidentVideos/runs/telegram-full-decode-2026-11-08/media_index_full_decode.jsonl`, 607 рядків, 2,046,616 bytes, SHA-256 `ae431061fac9b7f7e6ecf3012cd90273e751af0ca3fb01fa02157452b841c43a`.
+- Вихідний каталог має режим `0700`, індекс — `0600`; файли й похідні лишилися поза Git.
+- Використано `src/media_pipeline.py` у strict-decode режимі, ffprobe 6.1.1 і ffmpeg 9.0.2. Раніше зафіксований toolchain receipt: [`pilot/toolchain.json`](pilot/toolchain.json). Поточні тимчасові executable-файли з `/tmp` згодом прибрані середовищем; для окремого повного повторного запуску треба відновити той самий зафіксований toolchain.
+- Під час запуску зупинено надлишковий конкурентний процес; після завершення залишено канонічний індекс із 607 різними записами. Фінальні counts, хеші та розміри перевірено після завершення.
+
+## Межі
+
+Декодування доводить тільки технічну читабельність потоків цими версіями інструментів. OCR/ASR результати залишаються текстовими кандидатами: повний decode не є оцінкою WER/CER, перевіркою цитат, подієвою верифікацією чи media-to-claim match. Незалежний reference transcript, перевірка мови/спікера, time/place validation і case relevance залишаються відкритими.

@@ -1,0 +1,46 @@
+{
+  "computed_frame_sha256": "02ab555b74196500bfee5cc5eb07d972498c1110a1354161f2de35508f886cdc",
+  "expected_frame_sha256": "70155a5510fe4467ada895bcc68ef337ab5596e2e56e99f1f63646cc50472256",
+  "expected_source_sha256": "d229d8618021cf285f24c712eb9cd37ca85eb0e8bee2d8a7f74b6e7c574cda3f",
+  "frame_digest_match": false,
+  "in_scope_record_count": 21383,
+  "interpretation": "This replay checks the in-scope panel frame and sample selection only. It does not adjudicate relevance, estimate recall, or establish platform-wide coverage.",
+  "reference_manifest_sha256": "cff6468fef57f080fac2a892051f06bdec309dc0a6bf814c385d55d675379adc",
+  "rejected_record_count": 19945,
+  "replay_implementation_sha256": "0e038e7a0a0740b9f97f1eedd26fe404a83c17008b53943208da1c272f713429",
+  "sample_membership_match": true,
+  "sample_record_count": 378,
+  "schema_version": "relevance_sampling_replay_receipt_v1",
+  "selected_record_count": 1438,
+  "source_record_count": 23386,
+  "source_sha256": "d229d8618021cf285f24c712eb9cd37ca85eb0e8bee2d8a7f74b6e7c574cda3f",
+  "source_sha256_matches_reference": true,
+  "strata": [
+    {
+      "inclusion_probability": 0.01884399347707918,
+      "population_count": 5519,
+      "sample_count": 104,
+      "stratum_id": "rejected__candidate_no_toponym_context"
+    },
+    {
+      "inclusion_probability": 0.03225806451612903,
+      "population_count": 124,
+      "sample_count": 4,
+      "stratum_id": "rejected__candidate_place_only"
+    },
+    {
+      "inclusion_probability": 0.018814139110604332,
+      "population_count": 8770,
+      "sample_count": 165,
+      "stratum_id": "rejected__candidate_reference_context"
+    },
+    {
+      "inclusion_probability": 0.01898047722342733,
+      "population_count": 5532,
+      "sample_count": 105,
+      "stratum_id": "rejected__random_remainder"
+    }
+  ],
+  "strata_match": true,
+  "time_window_excluded_count": 2003
+}

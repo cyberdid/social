@@ -1,0 +1,108 @@
+{
+  "analysis_status": "partial",
+  "as_of_utc": "2026-11-08T01:14:07Z",
+  "external_source_artifact_hashes": {
+    "asr_pilot_report_sha256": "bcf98e33008bcdf5371888b3fb09a14500f56845a6979690a1d481a67fb540ba",
+    "channel_evidence_summary_sha256": "73a542d047c779b62bd303d1c5006be7a2ede9e0781d95a8c5a30006cf8b9428",
+    "current_merged_posts_clean_sha256": "d229d8618021cf285f24c712eb9cd37ca85eb0e8bee2d8a7f74b6e7c574cda3f",
+    "current_telegram_group_crosswalk_sha256": "0cca1606c9b74e8818681e460659d76bba3d53dc3939814709a56559269cafd7",
+    "gemini_keyframe_pilot_report_sha256": "325e728f42c390992a85a8d494a64a26e0e41b6a7f08d11968de7632cf4e3976",
+    "historical_continuation_posts_clean_sha256": "4e859d407aef52c72a8e690dc5716d7d92d11ff7d7a164760db5a4c0ad334350",
+    "legacy_crosswalk_report_sha256": "1b11d3b4255bae6ecaffe277c4d4b7f0d06bb199577e01ac3e36594452904807",
+    "media_index_jsonl_sha256": "69806df497625bbfde18bc0ffc55b8dad52c44f62427984fdbd773042bde6125",
+    "narrative_candidate_aggregate_report_sha256": "27652bd83a747287696a46e641d65986e619804b93471e0754a0c5d6120f32f1",
+    "narrative_candidate_input_sha256": "d229d8618021cf285f24c712eb9cd37ca85eb0e8bee2d8a7f74b6e7c574cda3f",
+    "narrative_candidate_jsonl_sha256": "0f936c498b8e985a3f48660bbc2626c3f535bc19fbd9b16bdfbeba6d93bb4267",
+    "orchestrator_receipt_summary_sha256": null,
+    "processed_telegram_snapshot_sha256": "d229d8618021cf285f24c712eb9cd37ca85eb0e8bee2d8a7f74b6e7c574cda3f",
+    "replay_control_summary_sha256": "487202094a1d5e58785650e0e34400647a6f4982f05f4ed4287040d3fa84cb52",
+    "source_lineage_manifest_sha256": "e7be6b5107789ca43bab0fa9e1412065fe8f17e5881c6d1af551be0c7566dcca",
+    "source_lineage_sha256": "366546a8aeca3c301fc094b9143a2f0b0bcd297d437bc155e822baf60600a7fe",
+    "source_watch_latest_json_sha256": "0530f038cbfbac6a6e8a29cdb57c4e93bf2577c235b6e7dd10319953755ccc7a",
+    "tiktok_metadata_csv_sha256": "219295ade4430ef804e7f0b4c93141a8112706a85353420bfb96f83bfcbe6f8d",
+    "video_archive_report_sha256": "206b95031af5fde4efd1da4bbc9893da60e4b0f56cbc49c4d95a370ba885fa1d"
+  },
+  "incident_id": "petropavlivska-borshchahivka-2026-11",
+  "privacy": "Aggregate-only exports; no source text, post IDs, account/channel names, URLs, transcripts, or raw media are included.",
+  "private_input_hashes": {
+    "claims": {
+      "byte_size": 981069,
+      "record_count": 555,
+      "sha256": "8af288f2363853f41ecd046b54c2293bcf2b42f7e20ff634d24bbfb45d7bfa61"
+    },
+    "conflict_input": {
+      "byte_size": 7112,
+      "record_count": null,
+      "sha256": "0aef252b983080a19128bf7ab147ab62fa173a7eb5e86ec8e3511a1ea82a5711"
+    },
+    "coverage": {
+      "byte_size": 1406,
+      "record_count": null,
+      "sha256": "2d77cb652e4db9ca0760fb39f396fca6bfc905a3397967a6940cf0ae36f46ed5"
+    },
+    "event_mentions": {
+      "byte_size": 250264,
+      "record_count": 574,
+      "sha256": "c74195ca46d2e5636d5e6a8a1e43e8bf3dcc442dfb9857f4927b09dba63d5971"
+    },
+    "information_posts": {
+      "byte_size": 451327,
+      "record_count": 1438,
+      "sha256": "a1240963e20691743d72efcb3a0446c777c60c3e4ec162adaf4f4c0a9c0cf95c"
+    },
+    "passages": {
+      "byte_size": 218169,
+      "record_count": 23,
+      "sha256": "586bf63e2f32fbfcf0b7ac500fcf99bf8312095b984a38566834ab895f4fbf60"
+    },
+    "report_bundle": {
+      "byte_size": 1830069,
+      "record_count": null,
+      "sha256": "0308da3e91ad234152be6ddba7f904813194451fea810e9fb09135823aa6b376"
+    },
+    "uncertainty_records": {
+      "byte_size": 369361,
+      "record_count": 1438,
+      "sha256": "b4bdfa2e6ee937011f9e922fb78c99472c6c6828505aaa6c5801704565e8d506"
+    }
+  },
+  "private_input_manifest_sha256": "a412331b4ab3ec4d84ba357354824f5708b3f7c9103b5ab84c852e2bb53450ff",
+  "private_run_manifest_sha256": "d0459a7ac9b581db99e96399bae51445f6bdc3f6a3d2581d35067b6174f4af1a",
+  "run_id": "run-post-fix",
+  "runner_git_commit": "bb8e019c69597448428bfd0fb2c313c66f4cea31",
+  "sanitized_outputs": {
+    "case_summary.json": "f95058cb0fbdaad60dc7a1fb48cfbf809da4ad0449d21e43839d83f70adcd02b",
+    "claim_retrieval_summary.json": "69827dbe4aff455ea3771ddf1974d6414b7fa4897c5917bf19c24fb4a9252ab9",
+    "conflict_analysis_summary.json": "5d19856440dae64133c0ffe3efef221c826475555905ee8fb830ae81a96142bb",
+    "evaluation_summary.json": "1b44edc9b66ad90370505adac5897d7ddc4a800ef312d339dbfa9328d47f1143",
+    "event_reconstruction_summary.json": "e32bdcbd22536254123453989c8d7a6af05519cb976ca2bbfe251867ef07f5e5",
+    "information_dynamics_summary.json": "7c16448cb20041361faf347ffe2abf6f6e0e00bbae8199f1c97d154facf7b866",
+    "legacy_channel_crosswalk_and_lineage.json": "5dbd4c45f59f759b88ae9f3a32ea7d7aaac4865c374c599a1a442f0b44e4230c",
+    "media_index_summary.json": "499598935c34a859ccdd0dbbb33ce73aad11195d1d1c7397431f2e5356cb17ba",
+    "media_index_summary.md": "40a3390c653927b9cac4242e134af48808fe7c77c1a4c9a4e10afe5055aaabe9",
+    "source_coverage_summary.json": "35956c900ccb965255e01cfad4c02aab1033ecf5cff87eecff7124159dbd0239",
+    "source_watch_summary.json": "b78ba070ccf0690cb828051e73379582e02b69718022745bea26229f46f92735",
+    "summary.md": "959834ba2d2900ce4d136d81418ff71c987e8dd8708bc241054711fbda885d2b",
+    "uncertainty_summary.json": "0874c9218fddf4db65b14d5e31deced6436b9eaae5d931f188f4e7da08716b3a",
+    "video_runtime_summary.json": "60c1178563c2c5bc6bf68455afa92b59f905fe1a1304974f32a6c9bc49a7a5be"
+  },
+  "schema_version": "1.0",
+  "validation": {
+    "evaluation_status": "passed",
+    "frozen_control_suite": {
+      "failed": 0,
+      "passed": 6,
+      "status": "passed"
+    },
+    "hard_gate_failures": 0,
+    "hard_gate_status": "passed",
+    "manifest_output_count": 16,
+    "manifest_outputs_bytes_verified": 16,
+    "manifest_schema": "passed",
+    "real_report_diff": "not_run_no_prior_machine_readable_receipt_bundle",
+    "report_bundle": "passed",
+    "report_bundle_files_verified": 3,
+    "semantic_accuracy": "not_evaluated"
+  },
+  "worktree_dirty_at_execution": true
+}

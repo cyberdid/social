@@ -19,6 +19,11 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+from src.analysis.audience_response_reporting import (
+    render_audience_response_markdown,
+    validate_audience_aggregate,
+)
+
 
 class ReportValidationError(ValueError):
     """A finding, locator, verification result, or report context is invalid."""
@@ -229,6 +234,15 @@ def _verification_index(results: list[dict], evidence_index: dict[str, dict], co
             if missing:
                 raise ReportValidationError(f"{result_id} has unknown evidence IDs: {', '.join(missing)}")
             result[field] = sorted(set(refs))
+            result_cutoff = datetime.fromisoformat(result["as_of_utc"].replace("Z", "+00:00"))
+            for evidence_id in result[field]:
+                captured_at = datetime.fromisoformat(
+                    evidence_index[evidence_id]["captured_at_utc"].replace("Z", "+00:00")
+                )
+                if captured_at > result_cutoff:
+                    raise ReportValidationError(
+                        f"{evidence_id} is newer than verification as_of_utc for {result_id}"
+                    )
         minimum = result.get("minimum_independent_roots", 1)
         if type(minimum) is not int or minimum < 1:
             raise ReportValidationError(f"{result_id}.minimum_independent_roots must be a positive integer")
@@ -300,6 +314,10 @@ def _prepare_findings(findings: list[dict], evidence_index: dict[str, dict], ver
         unknown = sorted(set(item) - allowed_fields)
         if unknown:
             raise ReportValidationError(f"{finding_id} contains unsupported free-form fields: {', '.join(unknown)}")
+        if kind == "methodological_limit" and set(item) - {
+            "finding_id", "kind", "evidence_refs", "limitation_code",
+        }:
+            raise ReportValidationError(f"{finding_id} methodological_limit accepts only its code and evidence references")
         if item.get("limitations"):
             raise ReportValidationError(f"{finding_id} free-text limitations are not allowed; use limitation_codes")
         if kind != "hypothesis" and item.get("alternatives"):
@@ -333,8 +351,6 @@ def _prepare_findings(findings: list[dict], evidence_index: dict[str, dict], ver
         ]
 
         if kind == "methodological_limit":
-            if set(item) - {"finding_id", "kind", "evidence_refs", "limitation_code"}:
-                raise ReportValidationError(f"{finding_id} methodological_limit accepts only its code and evidence references")
             code = item.get("limitation_code")
             if not isinstance(code, str) or code not in LIMITATION_TEXT:
                 raise ReportValidationError(f"{finding_id} has unsupported limitation_code")
@@ -358,19 +374,36 @@ def _prepare_findings(findings: list[dict], evidence_index: dict[str, dict], ver
 
         if kind in {"documented_fact", "source_attributed"}:
             if (not normalized_refs or not refs_by_role["source_attributed"]
-                    or refs_by_role["supporting"] or refs_by_role["contradicting"] or refs_by_role["context"]):
+                    or refs_by_role["supporting"] or refs_by_role["contradicting"]):
                 raise ReportValidationError(f"{finding_id} requires source-attributed evidence")
+            if kind == "documented_fact" and refs_by_role["context"]:
+                raise ReportValidationError(f"{finding_id} documented_fact does not accept context citations")
             if not all(
                 evidence_index[eid]["citation"].get("quote") == statement for eid in refs_by_role["source_attributed"]
             ):
                 raise ReportValidationError(f"{finding_id} statement must equal every exact source-attributed quote")
             source_ids = sorted({evidence_index[eid]["source_id"] for eid in refs_by_role["source_attributed"]})
+            context_source_ids = {
+                evidence_index[eid]["source_id"] for eid in refs_by_role["context"]
+            }
+            if not context_source_ids.issubset(source_ids):
+                raise ReportValidationError(f"{finding_id} context must come from the same source as its attributed quote")
             if kind == "documented_fact":
                 item["rendered_text"] = (
                     f"У збереженому матеріалі джерела {', '.join(source_ids)} зафіксовано фрагмент: «{statement.strip()}»"
                 )
             else:
-                item["rendered_text"] = f"Джерело {', '.join(source_ids)} повідомляє: «{statement.strip()}»"
+                context_quotes = [
+                    evidence_index[eid]["citation"].get("quote", "")
+                    for eid in refs_by_role["context"]
+                ]
+                context_sentence = (
+                    f"Контекст у джерелі: «{'»; «'.join(context_quotes)}». "
+                    if context_quotes else ""
+                )
+                item["rendered_text"] = (
+                    f"{context_sentence}Джерело {', '.join(source_ids)} повідомляє: «{statement.strip()}»"
+                )
             item["verification"] = None
         elif kind in {"supported_within_scope", "refuted_within_scope", "conflicting"}:
             verification_id = item.get("verification_result_id")
@@ -648,6 +681,7 @@ def build_report_bundle(
     output_dir: str | Path,
     *,
     overwrite: bool = False,
+    audience_aggregate: dict | None = None,
 ) -> dict:
     """Validate typed findings and write a deterministic evidence-linked report bundle."""
     if type(overwrite) is not bool:
@@ -656,6 +690,8 @@ def build_report_bundle(
     evidence_index = _make_evidence_index(evidence_records, normalized_context["as_of_utc"])
     verification_index = _verification_index(verification_results, evidence_index, normalized_context)
     prepared = _prepare_findings(findings, evidence_index, verification_index, normalized_context)
+    if audience_aggregate is not None:
+        validate_audience_aggregate(audience_aggregate)
     citation_count = sum(len(item["citations"]) for item in prepared)
     quality = {
         "schema_version": "1.0",
@@ -665,6 +701,11 @@ def build_report_bundle(
         "unsupported_assertion_count": None,
         "assertion_check_status": "not_evaluated_semantic",
         "quality_scope": "structural citation and status checks only; not semantic entailment or truth",
+        "audience_response_status": "included" if audience_aggregate is not None else "not_provided",
+        "audience_semantic_status": (
+            audience_aggregate["semantic_quality_status"] if audience_aggregate is not None else None
+        ),
+        "audience_group_count": len(audience_aggregate["groups"]) if audience_aggregate is not None else 0,
         "limitations": [
             "This quality report does not measure whether a source semantically entails a proposition.",
             "Finding completeness is limited by the supplied evidence corpus and upstream retrieval coverage.",
@@ -703,6 +744,7 @@ def build_report_bundle(
         "findings": findings,
         "evidence": evidence_records,
         "verification_results": verification_results,
+        "audience_aggregate": audience_aggregate,
     }
     input_sha256 = hashlib.sha256(_canonical(input_payload).encode("utf-8")).hexdigest()
     outputs = {
@@ -710,6 +752,11 @@ def build_report_bundle(
         "findings.jsonl": _jsonl(normalized_findings),
         "report_quality.json": json.dumps(quality, ensure_ascii=False, sort_keys=True, indent=2, allow_nan=False) + "\n",
     }
+    if audience_aggregate is not None:
+        outputs["audience_response.md"] = render_audience_response_markdown(audience_aggregate)
+        outputs["audience_response.json"] = json.dumps(
+            audience_aggregate, ensure_ascii=False, sort_keys=True, indent=2, allow_nan=False
+        ) + "\n"
     receipt = {
         "schema_version": "1.0",
         "incident_id": normalized_context["incident_id"],
@@ -720,6 +767,7 @@ def build_report_bundle(
         "output_sha256": {name: hashlib.sha256(value.encode("utf-8")).hexdigest() for name, value in sorted(outputs.items())},
         "finding_count": len(prepared),
         "citation_count": citation_count,
+        "audience_group_count": len(audience_aggregate["groups"]) if audience_aggregate is not None else 0,
         "producer": "social.analysis.report_generator@1.0",
         "limitations": quality["limitations"],
     }

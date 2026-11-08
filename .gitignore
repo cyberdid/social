@@ -22,6 +22,11 @@ reports/**/automation_flagged_accounts.csv
 # Full subtitle text stays in the local evidence bundle; publish aggregates and citations.
 reports/youtube-content/**/*.transcript.txt
 reports/youtube-content/**/*.transcript.json
+# Row-level OCR/ASR output stays with the protected local media bundle; only aggregate results enter git.
+reports/video-pipeline/**/text_observations*.jsonl*
+# Row-level media indexes and extraction records contain source identifiers/paths and remain local.
+reports/video-pipeline/**/local_extraction.jsonl*
+reports/video-pipeline/**/media_index.jsonl*
 reports/source-watch/*.lock
 reports/source-watch/*.log
 reports/source-watch/crontab.*.txt

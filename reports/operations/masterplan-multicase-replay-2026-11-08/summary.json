@@ -1,0 +1,39 @@
+{
+  "as_of_cutoffs_per_case": 2,
+  "backup_restore": {
+    "registry_listing_after_restore": 4,
+    "snapshot_count_after": 4,
+    "snapshot_count_before": 4,
+    "snapshot_sha256": {
+      "synthetic_replay_control_2026/snapshots/run-24adc5f5df2ba1df58bd86dc/snapshot.json": "3428eb5dd0d995a3e11aceee66ddf85e874e86e3b1a47882301633828c4775ac",
+      "synthetic_replay_control_2026/snapshots/run-e75156b9b37666b16e501af1/snapshot.json": "3657c1f988e040a43da590cd32af40eade8dd313df3dd9a0aee9dcd7a9dc57f8",
+      "synthetic_replay_control_case_b_2026/snapshots/run-601a6fba1eea15fdc494439d/snapshot.json": "168ac8ba093d65638de1f42bd751322de3357a0f741baf00cc3168e8a056198e",
+      "synthetic_replay_control_case_b_2026/snapshots/run-c87d7404bc5842823540e23b/snapshot.json": "66a7d047b8f38f309ca73a3001b278b2c547161029727acdcebf645bc99f6c38"
+    },
+    "snapshot_sha256_identical": true
+  },
+  "case_b_invalidation": {
+    "changed_node_count": 2,
+    "downstream_recomputation_executed": false,
+    "invalidated_node_ids": [
+      "b-c-demo",
+      "b-finding-demo"
+    ],
+    "status": "planned_not_executed"
+  },
+  "identical_replay_reused": true,
+  "implementation": {
+    "module": "src/analysis/incident_ops.py",
+    "sha256": "f45a2d2cf8f58a84ff6f2482cf60b28dfba6175efaff699957e0a8b936543971"
+  },
+  "incident_ids": [
+    "synthetic_replay_control_2026",
+    "synthetic_replay_control_case_b_2026"
+  ],
+  "limitations": [
+    "invalidations are dependency-graph candidates; this snapshot tool does not execute downstream analytical jobs",
+    "synthetic software controls do not validate semantic truth, source authenticity, or real-case completeness"
+  ],
+  "scope": "synthetic software-control only; no real incident evidence",
+  "snapshot_count": 4
+}

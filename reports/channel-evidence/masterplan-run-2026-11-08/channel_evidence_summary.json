@@ -1,0 +1,30 @@
+{
+  "content_orientation_unknown_records": 246,
+  "infrastructure_candidate_records": 137,
+  "interpretation": "Кількість кандидатів інфраструктури використовується для маршрутизації перевірки й не є висновком про походження, політичну орієнтацію, державний контроль або участь в операції.",
+  "legacy_group_records": {
+    "A": 11,
+    "B": 19,
+    "C": 146,
+    "D": 33,
+    "E": 5,
+    "U": 32
+  },
+  "origin_unknown_records": 246,
+  "per_snapshot": {
+    "reports/channel-evidence/masterplan-run-2026-11-08/channel_evidence_20261105T101013Z.jsonl": {
+      "infrastructure_candidate_records": 19,
+      "records": 102,
+      "unique_channels": 102
+    },
+    "reports/channel-evidence/masterplan-run-2026-11-08/channel_evidence_20261105T102914Z.jsonl": {
+      "infrastructure_candidate_records": 118,
+      "records": 144,
+      "unique_channels": 144
+    }
+  },
+  "schema_version": "1.0",
+  "snapshot_count": 2,
+  "snapshot_records": 246,
+  "unique_channels": 239
+}

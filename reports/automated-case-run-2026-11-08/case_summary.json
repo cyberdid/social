@@ -1,0 +1,32 @@
+{
+  "analysis_status": "partial",
+  "as_of_utc": "2026-11-08T01:14:07Z",
+  "code_commit_recorded": "bb8e019c69597448428bfd0fb2c313c66f4cea31",
+  "evaluation_status": "passed",
+  "incident_id": "petropavlivska-borshchahivka-2026-11",
+  "incident_window_utc": {
+    "end": "2026-11-05T10:31:42.738963Z",
+    "start": "2026-11-02T09:00:00Z"
+  },
+  "limitations": [
+    "Offline deterministic processing of supplied snapshots only; no new platform collection.",
+    "No semantic ground truth or external expert adjudication was available.",
+    "No real-world event-time, filming-time, physical-action, identity, or causal claim was verified."
+  ],
+  "run_finished_at_utc": "2026-11-08T01:38:42.249581Z",
+  "run_id": "run-post-fix",
+  "run_started_at_utc": "2026-11-08T01:38:22.942607Z",
+  "schema_version": "1.0",
+  "semantic_accuracy": "not_evaluated",
+  "stage_status": {
+    "claim_retrieval": "partial",
+    "conflict_analysis": "complete",
+    "evaluation": "complete",
+    "event_reconstruction": "complete",
+    "information_dynamics": "complete",
+    "report_generation": "complete",
+    "source_lineage": "not_run",
+    "uncertainty_scenarios": "complete"
+  },
+  "worktree_state": "dirty_at_execution; recorded commit is base revision"
+}

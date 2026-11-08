@@ -1,0 +1,103 @@
+{
+  "channels_in_observed_relevant_panel": 158,
+  "limitations": [
+    "Purposive panel; not a platform-wide probability sample.",
+    "Counters are a snapshot sum and may include repeat views or overlapping audiences.",
+    "No semantic narrative or channel-group attribution used in this run.",
+    "Post publication volume is not physical-event intensity or causal effect."
+  ],
+  "peak_bin_post_count": 511,
+  "platform": "Telegram",
+  "posts_with_snapshot_view_counter": 1438,
+  "publication_bins_utc": [
+    {
+      "channel_count": 58,
+      "end_utc": "2026-11-02T16:00:00+00:00",
+      "post_count": 155,
+      "start_utc": "2026-11-02T10:00:00+00:00"
+    },
+    {
+      "channel_count": 98,
+      "end_utc": "2026-11-02T22:00:00+00:00",
+      "post_count": 511,
+      "start_utc": "2026-11-02T16:00:00+00:00"
+    },
+    {
+      "channel_count": 26,
+      "end_utc": "2026-11-03T04:00:00+00:00",
+      "post_count": 37,
+      "start_utc": "2026-11-02T22:00:00+00:00"
+    },
+    {
+      "channel_count": 77,
+      "end_utc": "2026-11-03T10:00:00+00:00",
+      "post_count": 128,
+      "start_utc": "2026-11-03T04:00:00+00:00"
+    },
+    {
+      "channel_count": 92,
+      "end_utc": "2026-11-03T16:00:00+00:00",
+      "post_count": 270,
+      "start_utc": "2026-11-03T10:00:00+00:00"
+    },
+    {
+      "channel_count": 58,
+      "end_utc": "2026-11-03T22:00:00+00:00",
+      "post_count": 84,
+      "start_utc": "2026-11-03T16:00:00+00:00"
+    },
+    {
+      "channel_count": 2,
+      "end_utc": "2026-11-04T04:00:00+00:00",
+      "post_count": 2,
+      "start_utc": "2026-11-03T22:00:00+00:00"
+    },
+    {
+      "channel_count": 31,
+      "end_utc": "2026-11-04T10:00:00+00:00",
+      "post_count": 37,
+      "start_utc": "2026-11-04T04:00:00+00:00"
+    },
+    {
+      "channel_count": 57,
+      "end_utc": "2026-11-04T16:00:00+00:00",
+      "post_count": 107,
+      "start_utc": "2026-11-04T10:00:00+00:00"
+    },
+    {
+      "channel_count": 52,
+      "end_utc": "2026-11-04T22:00:00+00:00",
+      "post_count": 71,
+      "start_utc": "2026-11-04T16:00:00+00:00"
+    },
+    {
+      "channel_count": 4,
+      "end_utc": "2026-11-05T04:00:00+00:00",
+      "post_count": 4,
+      "start_utc": "2026-11-04T22:00:00+00:00"
+    },
+    {
+      "channel_count": 22,
+      "end_utc": "2026-11-05T10:00:00+00:00",
+      "post_count": 29,
+      "start_utc": "2026-11-05T04:00:00+00:00"
+    },
+    {
+      "channel_count": 3,
+      "end_utc": "2026-11-05T16:00:00+00:00",
+      "post_count": 3,
+      "start_utc": "2026-11-05T10:00:00+00:00"
+    }
+  ],
+  "schema_version": "1.0",
+  "snapshot_view_counter_sum": 119515745,
+  "source_lineage_case_run": {
+    "candidate_dependency_edges": 0,
+    "independent_roots_lower_bound": 0,
+    "status": "not_run",
+    "unlinked_posts": 1438
+  },
+  "time_bin_hours": 6,
+  "unique_posts": 1438,
+  "view_counter_semantics": "sum of observed counters at collection snapshot; not unique reach, users, or impressions"
+}

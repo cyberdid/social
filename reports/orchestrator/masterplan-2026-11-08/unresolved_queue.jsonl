@@ -1,0 +1,7 @@
+{"reason": "unsupported_adapter", "status": "not_run", "task_id": "coverage:telegram"}
+{"reason": "web_not_requested", "status": "not_run", "task_id": "source_watch"}
+{"reason": "stage_not_implemented", "status": "not_run", "task_id": "normalized"}
+{"reason": "stage_not_implemented", "status": "not_run", "task_id": "extracting"}
+{"reason": "stage_not_implemented", "status": "not_run", "task_id": "verifying"}
+{"reason": "stage_not_implemented", "status": "not_run", "task_id": "reconstructing"}
+{"reason": "stage_not_implemented", "status": "not_run", "task_id": "reporting"}

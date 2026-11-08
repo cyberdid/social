@@ -1,0 +1,93 @@
+{
+  "finished_at_utc": "2026-11-08T01:20:31.452342Z",
+  "git_commit": "bb8e019c69597448428bfd0fb2c313c66f4cea31",
+  "incident_id": "petropavlivska-borshchahivka-2026-11",
+  "limitations": [
+    "Only the fixed source_watch public watchlist is integrated; other platforms are not run.",
+    "Watchlist targets are not inferred from incident seed URLs or filtered by incident dates or relevance.",
+    "Normalization, extraction, verification, reconstruction and incident reporting are not implemented.",
+    "Detailed planned/not_run receipts project to blocked in RunManifest v1; consult detail_ref.",
+    "completed_bounded means controller processing finished; it does not establish incident completeness.",
+    "Collection observes present availability; as_of_utc does not reconstruct historical web content."
+  ],
+  "model_config": {
+    "enabled": false
+  },
+  "outputs": [
+    {
+      "path": "coverage_plan.json",
+      "sha256": "9602dc31851913b3f4b4981f623ee9e64b9a8b5d0cb6fc08429637e6931a65ed"
+    },
+    {
+      "path": "task_receipts.jsonl",
+      "sha256": "68855f540f54523425a68a97c183716320e18a841372074807f498788c04aac5"
+    },
+    {
+      "path": "unresolved_queue.jsonl",
+      "sha256": "297e413f08838f6d0aff1d4b791557ee86e5b918bf4956ad957df05a32ae6f43"
+    }
+  ],
+  "policy_version": "source-watch-only-v1",
+  "producer": "social.incident_orchestrator/1.0",
+  "run_id": "masterplan-2026-11-08",
+  "schema_version": "1.0",
+  "source_snapshots": [],
+  "started_at_utc": "2026-11-08T01:20:31.444276Z",
+  "state": "completed_bounded",
+  "task_receipts": [
+    {
+      "attempted_at_utc": "2026-11-08T01:20:31.444337Z",
+      "detail_ref": "task_receipts.jsonl#run_created",
+      "status": "complete",
+      "task_id": "run_created"
+    },
+    {
+      "attempted_at_utc": "2026-11-08T01:20:31.445108Z",
+      "detail_ref": "task_receipts.jsonl#coverage:telegram",
+      "status": "blocked",
+      "task_id": "coverage:telegram"
+    },
+    {
+      "attempted_at_utc": "2026-11-08T01:20:31.445748Z",
+      "detail_ref": "task_receipts.jsonl#source_watch",
+      "status": "blocked",
+      "task_id": "source_watch"
+    },
+    {
+      "attempted_at_utc": "2026-11-08T01:20:31.448501Z",
+      "detail_ref": "task_receipts.jsonl#normalized",
+      "status": "blocked",
+      "task_id": "normalized"
+    },
+    {
+      "attempted_at_utc": "2026-11-08T01:20:31.449240Z",
+      "detail_ref": "task_receipts.jsonl#extracting",
+      "status": "blocked",
+      "task_id": "extracting"
+    },
+    {
+      "attempted_at_utc": "2026-11-08T01:20:31.449882Z",
+      "detail_ref": "task_receipts.jsonl#verifying",
+      "status": "blocked",
+      "task_id": "verifying"
+    },
+    {
+      "attempted_at_utc": "2026-11-08T01:20:31.451311Z",
+      "detail_ref": "task_receipts.jsonl#reconstructing",
+      "status": "blocked",
+      "task_id": "reconstructing"
+    },
+    {
+      "attempted_at_utc": "2026-11-08T01:20:31.452278Z",
+      "detail_ref": "task_receipts.jsonl#reporting",
+      "status": "blocked",
+      "task_id": "reporting"
+    },
+    {
+      "attempted_at_utc": "2026-11-08T01:20:31.452325Z",
+      "detail_ref": "task_receipts.jsonl#run_finished",
+      "status": "complete",
+      "task_id": "run_finished"
+    }
+  ]
+}

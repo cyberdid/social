@@ -19,11 +19,11 @@ from pathlib import Path
 
 import av
 import numpy as np
-from PIL import Image
+from PIL import Image, ImageOps
 from scipy.fft import dctn
 
 ROOT = Path(__file__).resolve().parents[2]
-ALGORITHM = 'sampled-phash63-dhash64-crops-v1'
+ALGORITHM = 'sampled-phash63-dhash64-crops-mirror-h-v2'
 
 
 def sha256(path):
@@ -69,8 +69,13 @@ def frame_variants(image):
     dx, dy = max(0, (x1-x0)//10), max(0, (y1-y0)//10)
     boxes = {'full': (0, 0, width, height), 'border_crop': box,
              'center_80': (x0+dx, y0+dy, x1-dx, y1-dy)}
-    return {name: {'bbox_xyxy': list(bbox), **image_signature(image.crop(bbox))}
-            for name, bbox in boxes.items()}
+    variants = {}
+    for name, bbox in boxes.items():
+        crop = image.crop(bbox)
+        variants[name] = {'bbox_xyxy': list(bbox), **image_signature(crop)}
+        variants[f'{name}_mirror_h'] = {'bbox_xyxy': list(bbox),
+                                        **image_signature(ImageOps.mirror(crop))}
+    return variants
 
 
 def fingerprint(path, interval_seconds=1.0, max_frames=180, trim_start_seconds=0.0,
@@ -137,7 +142,8 @@ def fingerprint(path, interval_seconds=1.0, max_frames=180, trim_start_seconds=0
             'hashes': {'phash_bits': 63, 'dhash_bits': 64,
                        'phash': '32x32 grayscale DCT-II, 8x8 low-frequency block excluding DC, median bits',
                        'dhash': '9x8 grayscale horizontal adjacent-pixel comparisons',
-                       'variants': ['full', 'border_crop', 'center_80'],
+                       'variants': ['full', 'border_crop', 'center_80',
+                                    'full_mirror_h', 'border_crop_mirror_h', 'center_80_mirror_h'],
                        'black_border_threshold': 12, 'bright_fraction_for_row_column': 0.025,
                        'minimum_gray_stddev': 5, 'minimum_mean_edge_difference': 0.5},
             'frames': frames,

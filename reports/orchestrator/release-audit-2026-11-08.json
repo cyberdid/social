@@ -1,0 +1,760 @@
+{
+  "schema_version": "social_release_audit_receipt_v1",
+  "audit_id": "release-audit-2026-11-08",
+  "generated_at_utc": "2026-11-08T19:25:00Z",
+  "incident_id": "petropavlivska-borshchahivka-2026-11",
+  "auditor": "Worker M1 (Replay and Release Auditor)",
+  "classification": "sanitized_release_audit_receipt",
+  "privacy_statement": "Content-free and sanitized. Omits raw source corpora, media, private filesystem paths, credentials, tokens, session strings, pseudonym salts, and reactor/user identities.",
+  "target_release_manifest": {
+    "path": "reports/case-release-manifest-2026-11-08.json",
+    "sha256": "219bb362eafa6c726bb7e6729b5de16bf5793d85a4d5cfe391711131b1830fdf",
+    "size_bytes": 36869,
+    "schema_version": "social_case_release_manifest_v1",
+    "manifest_id": "petropavlivska-borshchahivka-2026-11-08-case-package",
+    "total_artifacts_declared": 65
+  },
+  "upstream_replay_audit": {
+    "path": "reports/automated-case-run-2026-11-08/replay-audit-2026-11-08.json",
+    "sha256": "5212b18bb38b39114f6887dc922a2c7966a318da404a02d2f2efd9e14cb6f736",
+    "size_bytes": 71907,
+    "schema_version": "social_case_replay_audit_v1",
+    "historical_run_id": "run-post-fix",
+    "current_replay_run_id": "replay-current-code-20261108T2035Z"
+  },
+  "residual_gate_status": {
+    "gate": "P0.1 Baseline/replay",
+    "status": "partial_open",
+    "rationale": [
+      "Unrecorded execution-time dirty worktree diff: the replay was conducted in a modified workspace (git commit bb8e019c69597448428bfd0fb2c313c66f4cea31 with uncommitted changes); the post-replay code snapshot does not reconstruct the exact execution-time diff.",
+      "Missing dependency lockfile: the runtime environment lacked a frozen deterministic lockfile (e.g. poetry.lock or requirements.lock), recording only an installed package count and hash, preventing hermetic reproduction.",
+      "Historic mutable source-watch input: the original run referenced a mutable crawler output (reports/source-watch/latest.*) rather than the immutable dated snapshot (reports/source-watch/20261108/), so input equivalence cannot be cryptographically proven.",
+      "Incomplete end-to-end reader package replay: offline runner replay covers bounded analytical pipeline outputs, not the complete reproduction of all 65 reader-facing release artifacts.",
+      "Absence of ground-truth semantic verification: bounded offline run produced 0 accepted claim verifications and 0 physical event timeline rows; byte hashes prove identity, not semantic truth or completeness."
+    ]
+  },
+  "artifact_verification": {
+    "total_declared": 65,
+    "total_verified_on_disk": 65,
+    "missing_on_disk": 0,
+    "hash_or_size_mismatches": 0,
+    "total_bytes": 1408889,
+    "artifacts": [
+      {
+        "path": "docs/source-watch.md",
+        "role": "cited_report_support",
+        "size_bytes": 15322,
+        "sha256": "ba78ac650b48d7eeef5170324bb0aaea239b644e6e0f79e38d9599f0bd7281b3",
+        "verified_on_disk": true
+      },
+      {
+        "path": "output/pdf/manifest-2026-11-08.json",
+        "role": "pdf_build_manifest",
+        "size_bytes": 2862,
+        "sha256": "63bcdebb034281de87e24c393bb23245067f000d8abf14ab1f46cb5f80e39acd",
+        "verified_on_disk": true
+      },
+      {
+        "path": "output/pdf/petropavlivska_borshchahivka_report_2026-11-08.pdf",
+        "role": "reader_facing_pdf",
+        "size_bytes": 147124,
+        "sha256": "736a8fb43980a8fc7b670122bbf2adb4254e667841111e5e64aeddc85382501c",
+        "verified_on_disk": true
+      },
+      {
+        "path": "output/pdf/petropavlivska_figures_and_proceedings_2026-11-08.pdf",
+        "role": "reader_facing_pdf",
+        "size_bytes": 111573,
+        "sha256": "8efc33b2497be571e58c2bdccb1b9c0322aa276b82cab614d456738151dcc7b6",
+        "verified_on_disk": true
+      },
+      {
+        "path": "output/pdf/russian_influence_attribution_early_warning_2026-11-08.pdf",
+        "role": "declared_methodology_appendix",
+        "size_bytes": 109577,
+        "sha256": "02bd6c4626bf4b1dfed83e7f3f3be0ed7704a1387b340adc773636a8f0494482",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/automated-case-run-2026-11-08/bounded-source-statement-assessment-2026-11-08.md",
+        "role": "cited_case_analysis_support",
+        "size_bytes": 5448,
+        "sha256": "cdd7a9deaa26ac2f45e355b5e3038875a4899993e03b1104965fcc504e85be4f",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/automated-case-run-2026-11-08/claim_matrix.md",
+        "role": "cited_case_analysis_support",
+        "size_bytes": 3122,
+        "sha256": "06605f42e079149b8943c8ba09e26aeed338ccc9348da6a6df06b480a00c9fb2",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/automated-case-run-2026-11-08/conflict_map.md",
+        "role": "cited_case_analysis_support",
+        "size_bytes": 9303,
+        "sha256": "7ce3d3e5add454a1d6521dd62de8243ed74f4ff3540ce36aea3d89f840487495",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/automated-case-run-2026-11-08/official-source-statements-2026-11-08/findings.jsonl",
+        "role": "supplemental_case_evidence_bundle",
+        "size_bytes": 10296,
+        "sha256": "1a3b8d70755d817e783ca30e4a780fa190cfa1d170ef18f6e46afbfb62404be4",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/automated-case-run-2026-11-08/official-source-statements-2026-11-08/incident_report.md",
+        "role": "supplemental_case_evidence_bundle",
+        "size_bytes": 9948,
+        "sha256": "f96a3f85198e6e41a1c2816fb3369b58030e9ede0ee7a6d3caf782341431827f",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/automated-case-run-2026-11-08/official-source-statements-2026-11-08/report_quality.json",
+        "role": "supplemental_case_evidence_bundle",
+        "size_bytes": 853,
+        "sha256": "1d69593f87586e606756551f58ab88688de91bcdb22daca0b6dc592d17f3b1fd",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/automated-case-run-2026-11-08/official-source-statements-2026-11-08/run_receipt.json",
+        "role": "supplemental_case_evidence_bundle",
+        "size_bytes": 943,
+        "sha256": "8d805adcb7c4c5e2838b9295b087bef2ba63b0463a44d33201511374ba62b8e9",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/automated-case-run-2026-11-08/primary-source-communication-chronology.md",
+        "role": "cited_case_analysis_support",
+        "size_bytes": 16619,
+        "sha256": "ff0dc482d88280ca7c1f4b6f0fa01c4dba24225b1b95ecb665362db3d2df52c7",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/automated-case-run-2026-11-08/real-replay-receipt-2026-11-08.md",
+        "role": "case_run_receipt",
+        "size_bytes": 2703,
+        "sha256": "e1dd2d5d74f2ba46b1db796a8d50c86cb7a9ca1a6a52cc527b68dd834ba34bd2",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/automated-case-run-2026-11-08/replay-audit-2026-11-08.json",
+        "role": "content_free_case_run_replay_receipt",
+        "size_bytes": 71907,
+        "sha256": "5212b18bb38b39114f6887dc922a2c7966a318da404a02d2f2efd9e14cb6f736",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/automated-case-run-2026-11-08/replay-audit-2026-11-08.md",
+        "role": "case_run_replay_audit_summary",
+        "size_bytes": 5307,
+        "sha256": "714f9e18ea396a0f69b0de30310f4fd648e2003b5c123759a7e42e6b3848ae6c",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/automated-case-run-2026-11-08/report-citation-audit-2026-11-08.md",
+        "role": "cited_case_analysis_support",
+        "size_bytes": 19440,
+        "sha256": "0c9825d0146f776d0a359fe90256f57a4f42e5a8bffcb495a66ff7df3db7461a",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/automated-case-run-2026-11-08/reported-event-reconstruction-2026-11-08/event_links.jsonl",
+        "role": "supplemental_case_evidence_bundle",
+        "size_bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/automated-case-run-2026-11-08/reported-event-reconstruction-2026-11-08/events.jsonl",
+        "role": "supplemental_case_evidence_bundle",
+        "size_bytes": 2927,
+        "sha256": "5b264515252353a297e418129420fe9685e2fb63e56e8bb5683fbe319ee4a380",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/automated-case-run-2026-11-08/reported-event-reconstruction-2026-11-08/run_receipt.json",
+        "role": "supplemental_case_evidence_bundle",
+        "size_bytes": 2127,
+        "sha256": "451b3f2865ed46c43d6683b01e7aec63a2c80e936bf3e5e7a26e94edde9c6359",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/automated-case-run-2026-11-08/reported-event-reconstruction-2026-11-08/temporal_relations.jsonl",
+        "role": "supplemental_case_evidence_bundle",
+        "size_bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/automated-case-run-2026-11-08/reported-event-reconstruction-2026-11-08/timeline.json",
+        "role": "supplemental_case_evidence_bundle",
+        "size_bytes": 861,
+        "sha256": "f5d6250b73b307c9aabbdbbc43496d9255123a4297ddd0d31475bfe6eebaaf65",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/automated-case-run-2026-11-08/reported-event-reconstruction-2026-11-08/timeline.md",
+        "role": "supplemental_case_evidence_bundle",
+        "size_bytes": 1203,
+        "sha256": "490e9e6debe818b99fcc154d8fc8e74f0c5f13cf47a72b0f14679e0d43532cb2",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/automated-case-run-2026-11-08/reported-event-reconstruction-2026-11-08/unresolved.jsonl",
+        "role": "supplemental_case_evidence_bundle",
+        "size_bytes": 299,
+        "sha256": "7df7c93a52edfcdf27177c28a6afcde9be95dbb618dc04fff96443f48389d1fb",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/automated-case-run-2026-11-08/reported-event-reconstruction-2026-11-08/unresolved_constraints.jsonl",
+        "role": "supplemental_case_evidence_bundle",
+        "size_bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/automated-case-run-2026-11-08/retrieval-validity-addendum-2026-11-08.md",
+        "role": "cited_case_analysis_support",
+        "size_bytes": 2439,
+        "sha256": "b70017db857f90372791dca3d3f2d4aa1346b2ba81352245d54435ac38beb95c",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/automated-case-run-2026-11-08/run_receipt.json",
+        "role": "case_run_receipt",
+        "size_bytes": 5991,
+        "sha256": "29cae1e3e34144fcbedd191a9f337d739b5af0d2f017e94a9d25c1e853f30d33",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/automated-case-run-2026-11-08/source-attributed-mvs-quote-2026-11-08/findings.jsonl",
+        "role": "supplemental_case_evidence_bundle",
+        "size_bytes": 2968,
+        "sha256": "c08388ce358faa0b081bcce064b900333c62f1c0efded758e505a63c8aaec128",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/automated-case-run-2026-11-08/source-attributed-mvs-quote-2026-11-08/incident_report.md",
+        "role": "supplemental_case_evidence_bundle",
+        "size_bytes": 3844,
+        "sha256": "609aab35da114063558ebb0722a84adc204ba7826eb415b4851680e07eb5f5d0",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/automated-case-run-2026-11-08/source-attributed-mvs-quote-2026-11-08/report_quality.json",
+        "role": "supplemental_case_evidence_bundle",
+        "size_bytes": 853,
+        "sha256": "6898087539352596a3439e209e833a7873299cc154a8489b32271ab135d45ecf",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/automated-case-run-2026-11-08/source-attributed-mvs-quote-2026-11-08/run_receipt.json",
+        "role": "supplemental_case_evidence_bundle",
+        "size_bytes": 944,
+        "sha256": "b68f34a4e8eb2a7501ea3f8381cc13322337bd99b7030834606f38a73397ff51",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/automated-case-run-2026-11-08/source-linked-case-run-2026-11-08.md",
+        "role": "cited_case_analysis_support",
+        "size_bytes": 5150,
+        "sha256": "1bd65b87ca0f17fd8024659095cba4bdd1704c1f205fc6a0b61625dc6b17c5c1",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/automated-case-run-2026-11-08/summary.md",
+        "role": "cited_case_analysis_support",
+        "size_bytes": 9335,
+        "sha256": "fdb39b68a1a4bff15f79226b0c87cdcd80a979e27c895e9cbc3551786800754c",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/automated-case-run-2026-11-08/uncertainty_scenarios.csv",
+        "role": "cited_case_analysis_support",
+        "size_bytes": 2662,
+        "sha256": "16ddcb7c243cb48b59729d0572f0befdb4998512ab921af8db0cd6673d71e870",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/borshchahivka-report.md",
+        "role": "reader_facing_report_source",
+        "size_bytes": 86261,
+        "sha256": "f6e1268583ab6954f8294dbe06cb2a4a8b2e7ca89de39b6a4a3c4d0fec511df0",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/channel-evidence/masterplan-run-2026-11-08.md",
+        "role": "cited_report_support",
+        "size_bytes": 17033,
+        "sha256": "f2f0a5beb924c0b83ec8596861e2daeb699fef4e647fd4da645ee5304c2fc7c6",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/coordination-null-models-2026-11-06.md",
+        "role": "cited_report_support",
+        "size_bytes": 23137,
+        "sha256": "df38e1b814e78c635c46914d0551c0781ef20b3c9b41b261ee4e80e8cdc1510d",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/cross-platform-publication-candidates-2026-11-08.md",
+        "role": "cited_report_support",
+        "size_bytes": 7806,
+        "sha256": "d83f1cf0747d6ceb60a91d79eb91c3a5e4c92e5df6d4bfb41b5e8d1db60b934f",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/figures-and-proceedings-2026-11-06.md",
+        "role": "reader_facing_report_source",
+        "size_bytes": 70438,
+        "sha256": "95d3ba72ba10007f76246926ed7a5da94a7edd3aac9d8c058d374275260816dd",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/instagram-access-20261106/README.md",
+        "role": "cited_report_support",
+        "size_bytes": 1686,
+        "sha256": "56e7dba0f786de13fe96028fccb8e9687d88f3632260e2a739140ef31b141087",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/operations/frozen-suite-coverage-2026-11-08.md",
+        "role": "cited_report_support",
+        "size_bytes": 8072,
+        "sha256": "d133ceee125690b4b6a0df35d6f669bcde800aa50e618a2c864eb62267461f8a",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/operations/masterplan-replay-control-2026-11-08/summary.md",
+        "role": "cited_report_support",
+        "size_bytes": 843,
+        "sha256": "807e49d408fc61536e44af3dab4299b0079b703bee561569acbf77b7359e7acf",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/orchestrator/masterplan-2026-11-08/run_manifest.json",
+        "role": "cited_report_support",
+        "size_bytes": 3236,
+        "sha256": "3c596c136e3fcf515c10fc411f087ad996d7523818d2051834f6cfea80b976a7",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/orchestrator/w00-integration-receipt-2026-11-08.md",
+        "role": "cited_report_support",
+        "size_bytes": 2774,
+        "sha256": "fc1f62703ea0a918941e50bd78e1ebd407b983ec22ba0e03f80ae3d186266ff9",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/source-refresh-2026-11-06.md",
+        "role": "cited_report_support",
+        "size_bytes": 11235,
+        "sha256": "f3b237165ae1d51d96a30b66a7d1e4696dd4062a177c2dc4682ad22d6c218ab7",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/source-watch/20261108/latest.json",
+        "role": "frozen_dated_source_watch_snapshot",
+        "size_bytes": 123200,
+        "sha256": "aa3acaafaaadf532c0f58ef537f938d63bab420527e8ccd63c8412909c0389f6",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/source-watch/20261108/latest.md",
+        "role": "frozen_dated_source_watch_snapshot",
+        "size_bytes": 5319,
+        "sha256": "7f14f59f66cfeef3e760714ab64a6e5121bbab80e04e7c9ead8f093d114abb5f",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/source-watch/20261108/official-primary-source-review-2026-11-08.md",
+        "role": "frozen_dated_source_watch_snapshot",
+        "size_bytes": 8605,
+        "sha256": "319971aae088778e5057ff16d5726367703bf6692344e5c88e3df76dbc41244d",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/source-watch/20261108/official-web-check.md",
+        "role": "frozen_dated_source_watch_snapshot",
+        "size_bytes": 5336,
+        "sha256": "6e3374426fed34c85fb65b3720051dc74bb52bb56c9c0d9e63d2325a4e8b5faf",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/telegram-network-dynamics-2026-11-06.md",
+        "role": "cited_report_support",
+        "size_bytes": 12995,
+        "sha256": "5d95292fb033823498d22928a5d3c227df3edf854c472dfd16a02ee4e8f446f9",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/telegram_network_dynamics_20261106/forward_bridges.png",
+        "role": "cited_report_support",
+        "size_bytes": 113992,
+        "sha256": "acdc013fb44e90941a4703045298f96e1f76416b45af2fa565283a0c86f36ef5",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/telegram_network_dynamics_20261106/narrative_shares_6h.png",
+        "role": "cited_report_support",
+        "size_bytes": 171664,
+        "sha256": "1b915b2a3d9be3bc1cb34cd3b3a45d6c203fab782d24e616f6136e48e3c4364e",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/tiktok/context-recheck-20261106.md",
+        "role": "cited_report_support",
+        "size_bytes": 8387,
+        "sha256": "d7003859b87d69310943fbab29d13b7a2ef964bf04fb3000a5b6e7864ee015b4",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/tiktok/manual-batch-20261106.md",
+        "role": "cited_report_support",
+        "size_bytes": 10421,
+        "sha256": "d9f19a13d2a1dc1c1ef5aea74cdc7707324befe4dc6d9fe5bbabef3828dd31a2",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/tiktok/publication-event-filming-times-20261106.csv",
+        "role": "cited_report_support",
+        "size_bytes": 15362,
+        "sha256": "219295ade4430ef804e7f0b4c93141a8112706a85353420bfb96f83bfcbe6f8d",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/video-pipeline/asr-correction-review-2026-11-08.md",
+        "role": "cited_report_support",
+        "size_bytes": 5349,
+        "sha256": "d959ed2219d96d353796da73e37fd76c109d8c57fdba0421e1da84a2cabc01cd",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/video-pipeline/gemini-keyframe-pilot-2026-11-08.md",
+        "role": "cited_report_support",
+        "size_bytes": 3443,
+        "sha256": "325e728f42c390992a85a8d494a64a26e0e41b6a7f08d11968de7632cf4e3976",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/video-pipeline/telegram-asr-bulk-2026-11-08.md",
+        "role": "cited_report_support",
+        "size_bytes": 2547,
+        "sha256": "2f229551e61c716044c32a7d5a5f341061f2942dadee4c222735c37945d6dc70",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/video-pipeline/telegram-asr-pilot-2026-11-08.md",
+        "role": "cited_report_support",
+        "size_bytes": 2248,
+        "sha256": "bcf98e33008bcdf5371888b3fb09a14500f56845a6979690a1d481a67fb540ba",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/video-pipeline/telegram-full-decode-2026-11-08.md",
+        "role": "cited_report_support",
+        "size_bytes": 3899,
+        "sha256": "6e6977eb373158f7e9618d362cf9a77930174c4c99d9adca40e60390496b91c3",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/youtube-comments/youtube-summary-2026-11-06.md",
+        "role": "cited_report_support",
+        "size_bytes": 7111,
+        "sha256": "0a963ce4cf59695801531f75a0afa02b49d9fe2fabf39556af118101526ccf6d",
+        "verified_on_disk": true
+      },
+      {
+        "path": "reports/youtube-content-2026-11-06.md",
+        "role": "cited_report_support",
+        "size_bytes": 13603,
+        "sha256": "4a491a90bd138844120f17968c29a7bb0ee68129fe89c3460c6bf7ac8383f251",
+        "verified_on_disk": true
+      },
+      {
+        "path": "wiki/borshchahivka-facts-timeline.md",
+        "role": "cited_report_support",
+        "size_bytes": 7788,
+        "sha256": "637c92ca7c9b00fb9dd54ebcc91e3b0f3593f86d64b6cee0d3dd8e118fe5b1b9",
+        "verified_on_disk": true
+      },
+      {
+        "path": "wiki/methods/media-matching.md",
+        "role": "cited_report_support",
+        "size_bytes": 11143,
+        "sha256": "55e014892b25a1295bd51a592ae484bc1a1d60cb39cfe88b56ff6b325304f483",
+        "verified_on_disk": true
+      },
+      {
+        "path": "wiki/methods/russian-influence-attribution-early-warning.md",
+        "role": "cited_report_support",
+        "size_bytes": 60006,
+        "sha256": "beadf800fcf2da6638f1e1fd6355d0f69fa31e3f79d0b064db189fa9fd42413d",
+        "verified_on_disk": true
+      }
+    ]
+  },
+  "dual_run_crosswalk": {
+    "historical_run": {
+      "run_id": "run-post-fix",
+      "state": "completed_bounded",
+      "started_at_utc": "2026-11-08T01:38:22.942607Z",
+      "finished_at_utc": "2026-11-08T01:38:42.249581Z",
+      "git_commit": "bb8e019c69597448428bfd0fb2c313c66f4cea31",
+      "input_manifest_sha256": "a412331b4ab3ec4d84ba357354824f5708b3f7c9103b5ab84c852e2bb53450ff",
+      "run_manifest_sha256": "d0459a7ac9b581db99e96399bae51445f6bdc3f6a3d2581d35067b6174f4af1a"
+    },
+    "current_replay_run": {
+      "run_id": "replay-current-code-20261108T2035Z",
+      "state": "completed_bounded",
+      "started_at_utc": "2026-11-08T18:34:27.806320Z",
+      "finished_at_utc": "2026-11-08T18:34:32.239487Z",
+      "git_commit": "bb8e019c69597448428bfd0fb2c313c66f4cea31",
+      "input_manifest_sha256": "39e6b2e664a43ca03d45c831a6bfb2447c72cc6ec6c0d2771dcc5159ef8390d4"
+    },
+    "inputs": {
+      "declared_count": 8,
+      "rechecked_count": 8,
+      "all_roles_match": true,
+      "roles": {
+        "claims": {
+          "byte_size": 981069,
+          "record_count": 555,
+          "sha256": "8af288f2363853f41ecd046b54c2293bcf2b42f7e20ff634d24bbfb45d7bfa61",
+          "historical_matches_replay": true
+        },
+        "conflict_input": {
+          "byte_size": 7112,
+          "record_count": null,
+          "sha256": "0aef252b983080a19128bf7ab147ab62fa173a7eb5e86ec8e3511a1ea82a5711",
+          "historical_matches_replay": true
+        },
+        "coverage": {
+          "byte_size": 1406,
+          "record_count": null,
+          "sha256": "2d77cb652e4db9ca0760fb39f396fca6bfc905a3397967a6940cf0ae36f46ed5",
+          "historical_matches_replay": true
+        },
+        "event_mentions": {
+          "byte_size": 250264,
+          "record_count": 574,
+          "sha256": "c74195ca46d2e5636d5e6a8a1e43e8bf3dcc442dfb9857f4927b09dba63d5971",
+          "historical_matches_replay": true
+        },
+        "information_posts": {
+          "byte_size": 451327,
+          "record_count": 1438,
+          "sha256": "a1240963e20691743d72efcb3a0446c777c60c3e4ec162adaf4f4c0a9c0cf95c",
+          "historical_matches_replay": true
+        },
+        "passages": {
+          "byte_size": 218169,
+          "record_count": 23,
+          "sha256": "586bf63e2f32fbfcf0b7ac500fcf99bf8312095b984a38566834ab895f4fbf60",
+          "historical_matches_replay": true
+        },
+        "report_bundle": {
+          "byte_size": 1830069,
+          "record_count": null,
+          "sha256": "0308da3e91ad234152be6ddba7f904813194451fea810e9fb09135823aa6b376",
+          "historical_matches_replay": true
+        },
+        "uncertainty_records": {
+          "byte_size": 369361,
+          "record_count": 1438,
+          "sha256": "b4bdfa2e6ee937011f9e922fb78c99472c6c6828505aaa6c5801704565e8d506",
+          "historical_matches_replay": true
+        }
+      }
+    },
+    "outputs": {
+      "historical_declared_count": 16,
+      "historical_byte_verified_count": 16,
+      "current_declared_count": 16,
+      "current_byte_verified_count": 16,
+      "common_output_paths_count": 16,
+      "byte_identical_count": 5,
+      "byte_different_count": 11,
+      "byte_identical_paths": [
+        "information_dynamics.json",
+        "report/findings.jsonl",
+        "report_integrity.json",
+        "uncertainty_scenarios.json",
+        "verification_results.jsonl"
+      ],
+      "byte_different_paths": [
+        "case_summary.json",
+        "conflict_analysis.json",
+        "evaluation.json",
+        "event_reconstruction.json",
+        "evidence_candidates.jsonl",
+        "input_manifest.json",
+        "report/incident_report.md",
+        "report/report_quality.json",
+        "report/run_receipt.json",
+        "task_receipts.jsonl",
+        "unresolved_queue.jsonl"
+      ],
+      "detailed_comparison": [
+        {
+          "path": "case_summary.json",
+          "historical_byte_size": 1060,
+          "historical_sha256": "4f86897d6a428f54e796bb2bb79bea48b5f11687093ae198f5dbf41fde09839b",
+          "current_byte_size": 1082,
+          "current_sha256": "07e66d5706e4b2b9dc8ae92fb27f57245d8a50d2c05a38accc6e9df892d74067",
+          "byte_identical": false
+        },
+        {
+          "path": "conflict_analysis.json",
+          "historical_byte_size": 13104,
+          "historical_sha256": "e3cd1efb998b4d72d325f4bf2a032b08ab0b7cff161e090e8b6a3b40f7e869d4",
+          "current_byte_size": 13126,
+          "current_sha256": "146743c1abb24e8bbd990e4527741187f77800a53e578de3ac1eb07da5c83106",
+          "byte_identical": false
+        },
+        {
+          "path": "evaluation.json",
+          "historical_byte_size": 850,
+          "historical_sha256": "120b88768ebe7a74e0dcbf7e4bd5f9c19c449db90cdcddcb4ab02d7f85e3aaec",
+          "current_byte_size": 924,
+          "current_sha256": "50faae83328fc0b57d55a74f171c08b486cf1cdd75da158843575a4cb4e79bbd",
+          "byte_identical": false
+        },
+        {
+          "path": "event_reconstruction.json",
+          "historical_byte_size": 49721847,
+          "historical_sha256": "a70bee82c7980479545410e473af0c667cb71f47d534e33057bacb3bd566a84f",
+          "current_byte_size": 49697761,
+          "current_sha256": "6e3bcdb73997184955e476eb66238a718ad951c0083e06646463180e95186cf0",
+          "byte_identical": false
+        },
+        {
+          "path": "evidence_candidates.jsonl",
+          "historical_byte_size": 17776943,
+          "historical_sha256": "d6fd57b0a397630e505023f00a30fda035915fecd9a313f4d7124594af857f4b",
+          "current_byte_size": 0,
+          "current_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "byte_identical": false
+        },
+        {
+          "path": "information_dynamics.json",
+          "historical_byte_size": 138942,
+          "historical_sha256": "07c0cacb5e44585e1c63d67420b826676b5f3893cdb14fda05a4b3c4ebce12c3",
+          "current_byte_size": 138942,
+          "current_sha256": "07c0cacb5e44585e1c63d67420b826676b5f3893cdb14fda05a4b3c4ebce12c3",
+          "byte_identical": true
+        },
+        {
+          "path": "input_manifest.json",
+          "historical_byte_size": 2051,
+          "historical_sha256": "a412331b4ab3ec4d84ba357354824f5708b3f7c9103b5ab84c852e2bb53450ff",
+          "current_byte_size": 2073,
+          "current_sha256": "39e6b2e664a43ca03d45c831a6bfb2447c72cc6ec6c0d2771dcc5159ef8390d4",
+          "byte_identical": false
+        },
+        {
+          "path": "report/findings.jsonl",
+          "historical_byte_size": 1238,
+          "historical_sha256": "3221e0abbdc8a3394e7e10c3b386c1f5046ff9632a8d967ddf6335103ef5008e",
+          "current_byte_size": 1238,
+          "current_sha256": "3221e0abbdc8a3394e7e10c3b386c1f5046ff9632a8d967ddf6335103ef5008e",
+          "byte_identical": true
+        },
+        {
+          "path": "report/incident_report.md",
+          "historical_byte_size": 3584,
+          "historical_sha256": "8f80759cedbf1746cf94ce6d90eb00fb3530ea0a2bc58fd5065109ed66cb0b7a",
+          "current_byte_size": 3606,
+          "current_sha256": "f424a24ebdb00cb612f755c252c623e0fd61c80a8de734169e594dcb07b2b114",
+          "byte_identical": false
+        },
+        {
+          "path": "report/report_quality.json",
+          "historical_byte_size": 742,
+          "historical_sha256": "0e9c6feb49631bf966201dc7f365546c154ac96b70909923bcfe5479717ee6d6",
+          "current_byte_size": 853,
+          "current_sha256": "97396c943ab44cea792e7949cb422b415d340476c22e2c1132eb8b7de3f961d7",
+          "byte_identical": false
+        },
+        {
+          "path": "report/run_receipt.json",
+          "historical_byte_size": 927,
+          "historical_sha256": "fef077e5037a245c9e8c7d206b302a2701ae5686117fea6faab38f3701355098",
+          "current_byte_size": 978,
+          "current_sha256": "e577cc6fb1f9651f478aaa63b5caafcfd17cb6d28850228713754f07cb81cb0c",
+          "byte_identical": false
+        },
+        {
+          "path": "report_integrity.json",
+          "historical_byte_size": 64,
+          "historical_sha256": "97526d63b9b4de7cb851d60405bc287263bc5c5654a08dcbaa7ccb4536506662",
+          "current_byte_size": 64,
+          "current_sha256": "97526d63b9b4de7cb851d60405bc287263bc5c5654a08dcbaa7ccb4536506662",
+          "byte_identical": true
+        },
+        {
+          "path": "task_receipts.jsonl",
+          "historical_byte_size": 2081,
+          "historical_sha256": "22bc2d88c25324731b589685ce73823344021993bce07e0f43c29af2808f1835",
+          "current_byte_size": 2060,
+          "current_sha256": "726e545389e0e759345da5dee15cab53583b658274a5df44c56b64e148ab7412",
+          "byte_identical": false
+        },
+        {
+          "path": "uncertainty_scenarios.json",
+          "historical_byte_size": 8297,
+          "historical_sha256": "598a47986e1b2f6d6b3e04ad4f634d0da12ef6d43e50b78755935519a045e577",
+          "current_byte_size": 8297,
+          "current_sha256": "598a47986e1b2f6d6b3e04ad4f634d0da12ef6d43e50b78755935519a045e577",
+          "byte_identical": true
+        },
+        {
+          "path": "unresolved_queue.jsonl",
+          "historical_byte_size": 213959,
+          "historical_sha256": "7cd763e0f1b32bc206ca3009174b76a6ac0572c67cd8dfb3ddf311dbb0c06015",
+          "current_byte_size": 92525,
+          "current_sha256": "5b7a3f31dfa073bcec0ade5bb6c3acd5fe9a0ab86486e5623637dc7a0313b558",
+          "byte_identical": false
+        },
+        {
+          "path": "verification_results.jsonl",
+          "historical_byte_size": 0,
+          "historical_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "current_byte_size": 0,
+          "current_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "byte_identical": true
+        }
+      ]
+    }
+  },
+  "source_watch_discrimination": {
+    "frozen_snapshot_directory": "reports/source-watch/20261108/",
+    "frozen_files_included": [
+      "reports/source-watch/20261108/latest.json",
+      "reports/source-watch/20261108/latest.md",
+      "reports/source-watch/20261108/official-primary-source-review-2026-11-08.md",
+      "reports/source-watch/20261108/official-web-check.md"
+    ],
+    "mutable_crawler_outside_snapshot_excluded": true,
+    "exclusion_pattern": "reports/source-watch/latest.* outside reports/source-watch/20261108/"
+  },
+  "privacy_and_security_compliance": {
+    "zero_raw_corpora": true,
+    "zero_private_media": true,
+    "zero_credentials_or_sessions": true,
+    "zero_reactor_user_ids": true,
+    "zero_pseudonym_salts": true,
+    "zero_private_local_paths": true
+  },
+  "test_suite_verification": {
+    "runner": "pytest",
+    "environment": "Python 3.12.3 / 3.13.14 (.venv)",
+    "command": "PYTHONPATH=. /home/cyberdid/Projects/Social/.venv/bin/pytest",
+    "passed": 671,
+    "subtests_passed": 16,
+    "status": "passed"
+  }
+}

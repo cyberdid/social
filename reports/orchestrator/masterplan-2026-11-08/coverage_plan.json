@@ -1,0 +1,23 @@
+{
+  "deferred_target_count": 0,
+  "limits": {
+    "incident_source_budget": 0,
+    "max_bytes_per_target": 2000000,
+    "max_targets": 25,
+    "pause_seconds": 1,
+    "timeout_seconds": 20
+  },
+  "mode": "dry_run",
+  "platforms": [
+    {
+      "adapter": null,
+      "platform": "telegram",
+      "reason": "unsupported_adapter",
+      "status": "not_run"
+    }
+  ],
+  "run_id": "masterplan-2026-11-08",
+  "schema_version": "1.0",
+  "seed_urls_not_dispatched": 0,
+  "targets": []
+}

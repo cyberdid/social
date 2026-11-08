@@ -1,0 +1,9 @@
+{"attempted_at_utc": "2026-11-08T01:20:31.444337Z", "executed": false, "reason": "new_run_directory", "stage": "created", "status": "complete", "task_id": "run_created"}
+{"attempted_at_utc": "2026-11-08T01:20:31.445108Z", "executed": false, "platform": "telegram", "reason": "unsupported_adapter", "stage": "collecting", "status": "not_run", "task_id": "coverage:telegram"}
+{"attempted_at_utc": "2026-11-08T01:20:31.445748Z", "executed": false, "reason": "web_not_requested", "stage": "collecting", "status": "not_run", "task_id": "source_watch"}
+{"attempted_at_utc": "2026-11-08T01:20:31.448501Z", "executed": false, "reason": "stage_not_implemented", "stage": "normalized", "status": "not_run", "task_id": "normalized"}
+{"attempted_at_utc": "2026-11-08T01:20:31.449240Z", "executed": false, "reason": "stage_not_implemented", "stage": "extracting", "status": "not_run", "task_id": "extracting"}
+{"attempted_at_utc": "2026-11-08T01:20:31.449882Z", "executed": false, "reason": "stage_not_implemented", "stage": "verifying", "status": "not_run", "task_id": "verifying"}
+{"attempted_at_utc": "2026-11-08T01:20:31.451311Z", "executed": false, "reason": "stage_not_implemented", "stage": "reconstructing", "status": "not_run", "task_id": "reconstructing"}
+{"attempted_at_utc": "2026-11-08T01:20:31.452278Z", "executed": false, "reason": "stage_not_implemented", "stage": "reporting", "status": "not_run", "task_id": "reporting"}
+{"attempted_at_utc": "2026-11-08T01:20:31.452325Z", "executed": false, "reason": "bounded_controller_finished", "stage": "completed_bounded", "status": "complete", "task_id": "run_finished"}

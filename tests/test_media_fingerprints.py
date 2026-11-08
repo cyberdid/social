@@ -7,7 +7,7 @@ import wave
 from pathlib import Path
 
 import av
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageOps
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'src/analysis'))
 
@@ -74,6 +74,61 @@ class MediaFingerprintTests(unittest.TestCase):
         self.assertAlmostEqual(statistics.median(p['time_a_seconds'] - p['time_b_seconds']
                                                 for p in reverse_matches), 1.0, delta=0.5)
         self.assertEqual(len(fa['source']['sha256']), 64)
+
+    def test_horizontally_mirrored_sequence_matches_as_candidate_with_frame_evidence(self):
+        import media_fingerprints as media
+        original, mirrored = self.folder / 'original.mp4', self.folder / 'mirrored.mp4'
+        images = [scene(i) for i in range(16)]
+        video(original, images)
+        video(mirrored, [ImageOps.mirror(image) for image in images])
+
+        result = media.compare_fingerprints(
+            media.fingerprint(original, interval_seconds=0.5),
+            media.fingerprint(mirrored, interval_seconds=0.5),
+        )
+
+        self.assertFalse(result['exact_file_match'])
+        self.assertTrue(result['perceptual_candidate'], result['directions'])
+        self.assertGreaterEqual(result['directions']['a_to_b']['temporally_consistent_frames'], 3)
+        self.assertIn('candidate_shared_visual_sequence', result['decision'])
+
+    def test_embedded_segment_in_multiscene_montage_is_a_partial_candidate_only(self):
+        import media_fingerprints as media
+        original, montage = self.folder / 'original_segment.mp4', self.folder / 'montage.mp4'
+        shared = [scene(i) for i in range(16)]
+        video(original, shared)
+        video(montage, [scene(i, different=True) for i in range(8)] + shared
+              + [scene(i + 20, different=True) for i in range(8)])
+
+        result = media.compare_fingerprints(
+            media.fingerprint(original, interval_seconds=0.5),
+            media.fingerprint(montage, interval_seconds=0.5),
+        )
+
+        self.assertTrue(result['perceptual_candidate'], result['directions'])
+        self.assertGreaterEqual(result['directions']['a_to_b']['distinct_target_frames'], 3)
+        self.assertAlmostEqual(result['directions']['a_to_b']['median_offset_seconds_target_minus_source'], 2.0, delta=0.5)
+
+    def test_title_card_prelude_does_not_hide_a_shared_clip(self):
+        import media_fingerprints as media
+        original, published = self.folder / 'original.mp4', self.folder / 'title_card_prelude.mp4'
+        shared = [scene(i) for i in range(16)]
+        title = Image.new('RGB', (320, 180), 'white')
+        ImageDraw.Draw(title).text((30, 70), 'BREAKING NEWS', fill='black', stroke_width=2)
+        video(original, shared)
+        video(published, [title] * 8 + shared)
+
+        result = media.compare_fingerprints(
+            media.fingerprint(original, interval_seconds=0.5),
+            media.fingerprint(published, interval_seconds=0.5),
+        )
+
+        self.assertTrue(result['perceptual_candidate'], result['directions'])
+        self.assertAlmostEqual(
+            result['directions']['a_to_b']['median_offset_seconds_target_minus_source'],
+            2.0,
+            delta=0.5,
+        )
 
     def test_clearly_different_visual_sequences_do_not_match(self):
         import media_fingerprints as media

@@ -1,0 +1,8 @@
+{
+  "access_errors": 3,
+  "event_or_update_established": false,
+  "interpretation": "A first baseline is not evidence of a new event or changed source statement; individual page errors limit coverage.",
+  "new_first_baseline_pages": 9,
+  "schema_version": "1.0",
+  "snapshot_status": "first_baseline_only"
+}

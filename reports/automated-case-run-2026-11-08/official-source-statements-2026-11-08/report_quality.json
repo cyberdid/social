@@ -1,0 +1,25 @@
+{
+  "assertion_check_status": "not_evaluated_semantic",
+  "audience_group_count": 0,
+  "audience_response_status": "not_provided",
+  "audience_semantic_status": null,
+  "citation_count": 6,
+  "findings_by_kind": {
+    "conflicting": 0,
+    "documented_fact": 0,
+    "hypothesis": 0,
+    "methodological_limit": 0,
+    "refuted_within_scope": 0,
+    "source_attributed": 5,
+    "supported_within_scope": 0,
+    "unresolved": 0
+  },
+  "limitations": [
+    "This quality report does not measure whether a source semantically entails a proposition.",
+    "Finding completeness is limited by the supplied evidence corpus and upstream retrieval coverage."
+  ],
+  "quality_scope": "structural citation and status checks only; not semantic entailment or truth",
+  "schema_version": "1.0",
+  "unsupported_assertion_count": null,
+  "validated_finding_count": 5
+}

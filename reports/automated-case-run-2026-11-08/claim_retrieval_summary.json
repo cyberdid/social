@@ -1,0 +1,13 @@
+{
+  "archived_passage_records": 23,
+  "candidate_passage_hits_total": 9769,
+  "claim_spans_independently_validated": false,
+  "claims_as_queries": 555,
+  "classification_accuracy": "not_evaluated",
+  "interpretation": "Retrieval hits are leads for review, not support, contradiction, verification, or independent corroboration. Whole-post query text and unvalidated candidate scopes can over-retrieve.",
+  "queries_with_at_least_one_candidate": 555,
+  "retrieval_method": "deterministic_local_BM25_candidate_retrieval",
+  "schema_version": "1.0",
+  "status": "partial_candidate_retrieval_only",
+  "verification_results": 0
+}

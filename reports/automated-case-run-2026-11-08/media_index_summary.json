@@ -1,0 +1,23 @@
+{
+  "evidence_verification_claims_added": 0,
+  "ffprobe_status_counts": {
+    "ok": 12
+  },
+  "full_decode_status_counts": {
+    "passed": 12
+  },
+  "interpretation": "Technical asset/probe/decode checks do not establish recording date/location, event identity, truth of captions or claims, or authenticity.",
+  "platform_record_counts": {
+    "local_user_provided": 1,
+    "telegram": 6,
+    "tiktok": 5
+  },
+  "record_status_counts": {
+    "ok": 12
+  },
+  "schema_version": "1.0",
+  "source_index_rows": 12,
+  "summed_local_asset_bytes": 128500059,
+  "transcript_or_ocr_observations_in_index": 0,
+  "unique_assets_by_hash": 12
+}

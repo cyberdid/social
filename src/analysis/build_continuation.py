@@ -213,8 +213,7 @@ def annotate(p, boiler):
     p['t_kyiv'] = timestamp(p['date']).astimezone(prep.KYIV).isoformat()
     tc = p['text_clean']
     p['place'] = bool(prep.PLACE.search(prep.KYIV_PLACES.sub(' ', tc)))
-    p['relevant'] = timestamp(p['date']) >= timestamp(prep.INCIDENT_FROM) and (
-        bool(prep.VILLAGE.search(tc)) or (p['place'] and bool(prep.LEX.search(tc))))
+    p['relevant'], p['relevance_reason_code'] = prep.relevance_decision(tc, p['t_kyiv'])
     p['lang'] = prep.lang_of(tc)
     p['fwd_channel'] = None
     match = re.match(r'https?://t\.me/([A-Za-z0-9_]+)/(\d+)', p.get('fwd_from_url') or '')

@@ -1,0 +1,35 @@
+{
+  "asr_pilot": {
+    "candidate_segments": 93,
+    "current_12_asset_index_asr": "not_run",
+    "language_detection_counts": {
+      "ko": 1,
+      "ru": 2,
+      "uk": 3
+    },
+    "manual_adjudication": false,
+    "reference_transcripts": 0,
+    "unique_assets": 6,
+    "word_error_rate": "not_evaluated"
+  },
+  "gemini_keyframe_pilot": {
+    "accuracy_benchmark": false,
+    "clips": 1,
+    "continuous_video_review": false,
+    "duration_seconds": 15.278005,
+    "mode": "candidate_visual_observation",
+    "sampled_keyframes": 3
+  },
+  "gpu_runtime_check": {
+    "compute_capability": "8.9",
+    "ctranslate2_installed": false,
+    "current_gpu_asr_status": "blocked_by_runtime_dependency_mismatch",
+    "driver": "610.57.04",
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "previous_large_v3_attempt": "failed_missing_libcublas.so.12",
+    "resolved_cublas_library": "libcublas.so.13",
+    "system_python": "/usr/bin/python"
+  },
+  "interpretation": "The ASR and Gemini outputs are unverified candidate observations. Segment count or visual agreement on sampled frames does not establish transcription or event accuracy.",
+  "schema_version": "1.0"
+}

@@ -1,0 +1,79 @@
+{
+  "archive": {
+    "adapter_input_sha256": "50ef4d23b5c5c064c62cbc9ffd82fdc44feeb7a2f459cd7d1bafae992769057f",
+    "downloaded_verified_rows": 775,
+    "downloaded_verified_unique_assets": 607,
+    "manifest_sha256": "50ef4d23b5c5c064c62cbc9ffd82fdc44feeb7a2f459cd7d1bafae992769057f",
+    "rows": 806,
+    "status_counts": {
+      "downloaded_verified": 775,
+      "metadata_ok": 2,
+      "not_video": 29
+    },
+    "unique_asset_bytes_claimed": 9472884834
+  },
+  "controlled_pilot": {
+    "asr_status": "not_run_in_current_12_asset_pipeline_pilot",
+    "fire_video_asset_sha256": "06ce15e6eeae15d2cd32fa7430b2faba28037a328eb57d27205c67dc0dc32a09",
+    "local_extraction_complete": 12,
+    "media_count": 12,
+    "ocr_candidate_word_spans": 3661,
+    "ocr_frames_considered": 117,
+    "ocr_manifest_sha256": "408529941962d79e840ba120118395b977b2751d266afbd508843bfff6988f91",
+    "ocr_receipt_sha256": "3e418cf9c942e8e735eef9d8bd9ca33c1cb12a8b43004f228726769e0756edde",
+    "ocr_status_counts": {
+      "complete": 12
+    },
+    "semantic_model_status": "one prior Gemini 3.8 Flash High candidate-only observation exists in pilot artifact; provider is not yet integrated",
+    "strict_full_decode_status_counts": {
+      "passed": 12
+    },
+    "visible_overlay_candidates": [
+      "05.11.26",
+      "Борщагівка",
+      "Софіївська"
+    ]
+  },
+  "interpretation_limits": [
+    "Archive rows describe the collected targeted Telegram panel, not all Telegram content.",
+    "A current view counter, if present upstream, is not unique reach.",
+    "SHA-256, ffprobe and frame/audio extraction establish technical byte/stream properties only.",
+    "Sampled PTS offsets are positions within media, not wall-clock or event times.",
+    "OCR strings, including visible place/date labels, are candidate observations and do not independently verify scene location or recording date.",
+    "No ASR output is accepted as a quotation; the current pilot leaves ASR disabled after earlier unreliable small-model output and a large-v3 GPU dependency failure.",
+    "A semantic Gemini provider remains outside the reusable runner; the prior single clip test is not an accuracy benchmark.",
+    "Video understanding pipeline is operational for archive-to-technical-index-to-frame/audio extraction and small-sample OCR, not yet complete for ASR/VAD/provider-based claim assessment."
+  ],
+  "local_derivatives": {
+    "audio_status_counts": {
+      "extracted": 602,
+      "not_present": 5
+    },
+    "manifest_sha256": "9d988e67b1ee0d92afdc884aee0c6ae7e68342f8a287cdf2c0e41f202feefb4d",
+    "receipt_sha256": "03ea28e26f296e6cba0dcb0e167f139c513a00c8c810fa30c22045dc60d8d800",
+    "rows": 775,
+    "sampled_frame_count": 8679,
+    "status_counts": {
+      "complete": 775
+    },
+    "unique_asset_count": 607,
+    "unique_media_duration_seconds": 43352.633
+  },
+  "run_id": "telegram-archive-20261107T2130Z",
+  "schema_version": "1.0",
+  "technical_index": {
+    "full_decode_status_counts": {
+      "not_requested": 607
+    },
+    "manifest_sha256": "09493c32cd040d3c0b1e37b63787bbf30c56661cd1a7f4ff726825f8756274b6",
+    "probe_status_counts": {
+      "ok": 607
+    },
+    "rows": 775,
+    "status_counts": {
+      "ok": 775
+    },
+    "unique_asset_bytes": 9472884834,
+    "unique_asset_count": 607
+  }
+}

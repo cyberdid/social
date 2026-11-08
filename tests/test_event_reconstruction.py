@@ -60,6 +60,20 @@ def test_separates_physical_and_communication_times_and_never_inferrs_physical_t
     assert len(result["timelines"]["communication"]) == 1
 
 
+def test_source_references_are_not_copied_from_passage_evidence_ids():
+    row = mention("source-linked")
+    row["source_refs"] = ["source_official_1"]
+    without_source = mention("evidence-only")
+
+    result = reconstruct_timeline([row, without_source])
+    linked = next(event for event in result["events"] if event["event_mention_id"] == "source-linked")
+    evidence_only = next(event for event in result["events"] if event["event_mention_id"] == "evidence-only")
+
+    assert linked["evidence_ids"] == ["evidence_source-linked"]
+    assert linked["source_refs"] == ["source_official_1"]
+    assert evidence_only["source_refs"] == []
+
+
 def test_communication_timeline_uses_publication_timestamp_and_preserves_claimed_time():
     result = reconstruct_timeline([
         mention(

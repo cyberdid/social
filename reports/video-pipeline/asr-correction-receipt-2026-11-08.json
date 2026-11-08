@@ -1,0 +1,132 @@
+{
+  "$schema": "https://cyberdid.github.io/social/schemas/common.schema.json",
+  "receipt_id": "asr-correction-receipt-2026-11-08",
+  "schema_version": "1.0",
+  "created_at_utc": "2026-11-08T19:30:00Z",
+  "queue_scope": {
+    "total_unique_media_assets": 607,
+    "second_pass_reviewed_assets": 7,
+    "first_pass_model": {
+      "model_name": "Systran/faster-whisper-small",
+      "model_revision": "536b0662742c02347bc0e980a01041f333bce120",
+      "device": "cpu",
+      "compute_type": "int8"
+    },
+    "second_pass_model": {
+      "model_name": "mobiuslabsgmbh/faster-whisper-large-v3-turbo",
+      "model_revision": "0a363e9161cbc7ed1431c9597a8ceaf0c4f78fcf",
+      "device": "cpu",
+      "compute_type": "int8"
+    },
+    "first_pass_segments_compared": 407,
+    "second_pass_segments_compared": 344,
+    "alignment_candidates": {
+      "needs_review": 333,
+      "lexical_candidates": 10,
+      "punctuation_only": 1
+    }
+  },
+  "candidate_sidecar": {
+    "path": "private:/home/cyberdid/Downloads/SocialIncidentVideos/telegram/analysis/asr-correction-second-pass-20261108/correction_candidates.jsonl",
+    "sha256": "cfcf8ec7bffc2585ff3545141c8d34b12ba7ef71b9709b2b0b6b66060594cad3",
+    "file_mode": "0600",
+    "total_records": 10,
+    "quote_safe_distribution": {
+      "true": 0,
+      "false": 10
+    },
+    "status_distribution": {
+      "candidate_contextual": 4,
+      "needs_audio_review": 6,
+      "verified_from_audio": 0,
+      "formatting_only": 0,
+      "rejected": 0
+    },
+    "interval_semantic_validation": {
+      "total_records_checked": 10,
+      "passed_end_ms_greater_than_start_ms": 10,
+      "interval_violations": 0
+    },
+    "sensitive_terms_flagged": [
+      {
+        "correction_id": "corr-3c5-spinal-fracture",
+        "category": "medical_claim",
+        "raw_text": "перелуманим грифтом дати",
+        "status": "needs_audio_review",
+        "quote_safe": false,
+        "limitation": "Medical injury claim; hypotheses disagree; requires acoustic audio review and independent factual verification."
+      },
+      {
+        "correction_id": "corr-3c5-szch-label",
+        "category": "legal_status",
+        "raw_text": "ці сазачешники",
+        "status": "needs_audio_review",
+        "quote_safe": false,
+        "limitation": "Legally consequential status label; requires acoustic audio review and independent legal/factual verification."
+      },
+      {
+        "correction_id": "corr-ece68-medical-wording",
+        "category": "medical_claim",
+        "raw_text": "15 фонів; три сича/свища; некротизована тканина",
+        "status": "needs_audio_review",
+        "quote_safe": false,
+        "limitation": "Medical injury description; raw ASR gives inconsistent words; candidate_text is None."
+      },
+      {
+        "correction_id": "corr-ece68-quantity-allegations",
+        "category": "allegations_quantities",
+        "raw_text": "Уривок із сумами, строками перебування та медичними твердженнями; гіпотези ASR різняться.",
+        "status": "needs_audio_review",
+        "quote_safe": false,
+        "limitation": "Numbers, amounts, and medical allegations not altered from context; candidate_text is None."
+      },
+      {
+        "correction_id": "corr-3c5-unit-cohesion",
+        "category": "military_terminology",
+        "raw_text": "злагочення підрозділ",
+        "status": "needs_audio_review",
+        "quote_safe": false,
+        "limitation": "Term plausible but grammatical case and number require audio listening."
+      },
+      {
+        "correction_id": "corr-3c5-pd-location",
+        "category": "military_terminology",
+        "raw_text": "офіційні пути постійно десь локація",
+        "status": "needs_audio_review",
+        "quote_safe": false,
+        "limitation": "PPD context suggests term but exact phrasing requires acoustic audio listening."
+      }
+    ]
+  },
+  "raw_asr_preservation": {
+    "raw_asr_modified": false,
+    "path": "private:/home/cyberdid/Downloads/SocialIncidentVideos/telegram/analysis/asr-bulk-20261108/telegram_text_observations.jsonl",
+    "sha256": "987ee53ff56a477e86347509786ed5d1bc7f5e908bb18037c202bb023ff43912",
+    "byte_size": 10462222,
+    "total_unique_assets_covered": 607,
+    "status_counts": {
+      "complete": 558,
+      "no_segments_returned": 44,
+      "audio_not_available": 5
+    },
+    "total_candidate_segments": 10872
+  },
+  "cloud_provider_fallback_audit": {
+    "gemini_3_8_flash_high": {
+      "status": "blocked_by_safety_filter",
+      "words_contributed_to_transcript": 0
+    },
+    "gemini_4_argon_high": {
+      "status": "quota_exhausted",
+      "words_contributed_to_transcript": 0
+    }
+  },
+  "interpretation_limits": [
+    "Raw ASR outputs are immutable search locators and must not be treated as verbatim transcripts or factual evidence.",
+    "Editorial candidate repairs in the sidecar are hypotheses with quote_safe=false, not verified speech.",
+    "No candidate record has received human audio-listening review; quote_safe remains strictly false for all 10 records.",
+    "Sensitive medical claims (spinal fracture) and legal statuses ('СЗЧ-шники') cannot be established or repaired from audio hypotheses without acoustic verification and separate factual investigation.",
+    "WER and CER metrics cannot be computed due to the lack of an independently prepared reference transcript.",
+    "The remaining 600 Telegram video assets remain at unverified first-pass ASR status."
+  ]
+}

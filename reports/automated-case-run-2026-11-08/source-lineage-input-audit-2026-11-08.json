@@ -1,0 +1,97 @@
+{
+  "schema_version": "social_source_lineage_input_audit_v1",
+  "generated_at_utc": "2026-11-08T18:52:37.755166+00:00",
+  "classification": "content_free_bounded_lineage_input_audit",
+  "scope": "30 archived source passages plus the source evidence records present in the private report bundle; no source text or identifiers disclosed",
+  "inputs": {
+    "passages": {
+      "byte_size": 304082,
+      "sha256": "e0d03b457cf3d962e75296c19e41dd815941cb08056e94412b8eb05c32cba401",
+      "record_count": 30,
+      "claim_id_field_present": false
+    },
+    "report_bundle_evidence_records": {
+      "byte_size": 1830069,
+      "sha256": "0308da3e91ad234152be6ddba7f904813194451fea810e9fb09135823aa6b376",
+      "record_count": 574,
+      "claim_id_field_present": false
+    }
+  },
+  "passage_input_summary": {
+    "source_id": {
+      "records_with_value": 30,
+      "unique_values": 30,
+      "duplicate_groups": 0,
+      "records_in_duplicate_groups": 0,
+      "largest_group": 0
+    },
+    "artifact_id": {
+      "records_with_value": 30,
+      "unique_values": 30,
+      "duplicate_groups": 0,
+      "records_in_duplicate_groups": 0,
+      "largest_group": 0
+    },
+    "lineage_family_id": {
+      "records_with_value": 30,
+      "unique_values": 30,
+      "duplicate_groups": 0,
+      "records_in_duplicate_groups": 0,
+      "largest_group": 0
+    },
+    "media_sha256_field_present": false,
+    "explicit_dependency_reference_fields_present": {
+      "derived_from_evidence_ids": 0,
+      "forwarded_from_evidence_id": 0,
+      "quoted_evidence_ids": 0,
+      "syndicated_from_evidence_id": 0,
+      "translation_of_evidence_id": 0
+    },
+    "normalized_nonempty_text_records": 30,
+    "exact_normalized_text_groups_repeated_across_distinct_source_ids": 0,
+    "source_id_memberships_in_repeated_groups": 0
+  },
+  "report_bundle_evidence_summary": {
+    "source_id": {
+      "records_with_value": 574,
+      "unique_values": 2,
+      "duplicate_groups": 2,
+      "records_in_duplicate_groups": 574,
+      "largest_group": 555
+    },
+    "artifact_id": {
+      "records_with_value": 574,
+      "unique_values": 2,
+      "duplicate_groups": 2,
+      "records_in_duplicate_groups": 574,
+      "largest_group": 555
+    },
+    "artifact_sha256": {
+      "records_with_value": 574,
+      "unique_values": 2,
+      "duplicate_groups": 2,
+      "records_in_duplicate_groups": 574,
+      "largest_group": 555
+    },
+    "locator_values_present": 574,
+    "explicit_dependency_reference_fields_present": {
+      "derived_from_evidence_ids": 0,
+      "forwarded_from_evidence_id": 0,
+      "quoted_evidence_ids": 0,
+      "syndicated_from_evidence_id": 0,
+      "translation_of_evidence_id": 0
+    }
+  },
+  "interpretation": {
+    "claim_scoped_lineage_executable_from_these_two_records_alone": false,
+    "confirmed_source_dependency_edges_emitted": 0,
+    "independent_source_roots_asserted": 0,
+    "reason": "Neither input has claim_id fields or explicit dependency references; passage exact-text repetition was not observed. Unique source/family identifiers and absence of detected duplicates do not establish independent roots."
+  },
+  "limitations": [
+    "Exact normalized text is only an exact-copy signal; paraphrases and external sources not in this bounded input are not covered.",
+    "The report bundle artifact/source repeats are evidence-record associations, not 574 independent sources.",
+    "No URLs, IDs, text, or media hashes are disclosed in this receipt.",
+    "The source_lineage stage remains blocked for this case-run until typed claim-scoped lineage records with validated references are supplied."
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "run_type": "synthetic_correction_dispatch_control",
+  "run_date_utc": "2026-11-08",
+  "dispatch_plan_sha256": "b3ea7c5a9e41b8054492456393a01ef8334d5c698d77915a036510d512b38adb",
+  "generated_result_content_persisted": false,
+  "task_count": 2,
+  "completed_task_count": 1,
+  "not_dispatched_task_count": 1,
+  "tasks": [
+    {
+      "task_id": "dispatch:99db0c64e9538d1959c6b3fe",
+      "node_id": "claim:synthetic-1",
+      "adapter_id": "claim_verification.aggregate.v1",
+      "status": "complete",
+      "input_sha256": "a005f478c1fdb77fdff3dff184ea9d9f633b37575f19c8d82c9f120e1fbda0db",
+      "output_sha256": "e2e147511197d33d60cb3964c9dc398c0af8275c0232a23607f0e899fc12e559",
+      "verification_status": "supported_within_scope",
+      "supersedes": "verification-result-before-correction"
+    },
+    {
+      "task_id": "dispatch:d1dcf75acf71892a8310b749",
+      "node_id": "report:synthetic-1",
+      "adapter_id": null,
+      "status": "not_dispatched",
+      "reason": "no_allowlisted_binding"
+    }
+  ],
+  "limitations": [
+    "Synthetic software control only; no real case inputs were recomputed.",
+    "The supported result applies only to synthetic inputs and is not evidence about the incident.",
+    "Report generation is not a registered dispatch adapter.",
+    "The receipt omits claim and evidence text."
+  ]
+}

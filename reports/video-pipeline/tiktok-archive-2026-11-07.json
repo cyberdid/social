@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "record_count": 20,
+  "status_counts": {
+    "ok": 20
+  },
+  "platform_record_counts": {
+    "tiktok": 20
+  },
+  "role_record_counts": {
+    "unknown": 20
+  },
+  "unique_asset_count": 20,
+  "unique_asset_bytes": 116656202,
+  "decode_status_counts_by_unique_asset": {
+    "passed": 20
+  },
+  "probe_status_counts_by_unique_asset": {
+    "ok": 20
+  },
+  "stream_type_counts_by_unique_asset": {
+    "audio": 20,
+    "video": 20
+  },
+  "model_observation_count_in_source_records": 0,
+  "verification_claims_added": 0,
+  "interpretation": "Technical file and stream checks do not establish event truth, recording time, location, identity, or caption accuracy."
+}

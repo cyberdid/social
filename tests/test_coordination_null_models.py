@@ -1,7 +1,9 @@
 """Synthetic falsification and exact-margin tests for coordination null models."""
 import sys
+import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 import numpy as np
 
@@ -106,6 +108,38 @@ class CoordinationNullTests(unittest.TestCase):
         self.assertEqual(result['p_raw'], .2)
         self.assertEqual(nm.empirical_summary(5, [5, 5])['p_raw'], 1.)
         self.assertEqual(nm.holm_adjust([.01, .04, .03]), [.03, .06, .06])
+
+    def test_cli_accepts_alternate_edge_graph_without_overwriting_default_report(self):
+        with tempfile.TemporaryDirectory() as temp:
+            temp = Path(temp)
+            edge_path = temp / 'exact_edges.csv'
+            edge_path.write_text('earlier_url,later_url\na,b\n', encoding='utf-8')
+            out = temp / 'run'
+            seen = {}
+
+            def fake_temporal_analysis(B, seed, out):
+                seen['edges'] = nm.EDGES
+                return ([{'family': 'copy_timing', 'model': 'fake', 'statistic': 'x',
+                          'observed': 1, 'null_mean': 0.0, 'null_q025': 0.0, 'null_q975': 0.0,
+                          'null_min': 0, 'null_max': 0, 'excess': 1.0, 'ratio': None,
+                          'tail_count': 0, 'B': B, 'p_raw': 1/(B+1)}], {'fixture': True})
+
+            args = ['coordination_null_models.py', '--replicates', '9', '--seed', '12',
+                    '--edges', str(edge_path), '--out', str(out)]
+            fake_s7 = [
+                {'family': 'S7', 'model': 'fake', 'statistic': str(index), 'p_raw': 0.2}
+                for index in range(4)
+            ]
+            with patch.object(sys, 'argv', args), \
+                    patch.object(nm, 'comment_analysis', return_value=(fake_s7, {'fixture': True})), \
+                    patch.object(nm, 'temporal_analysis', side_effect=fake_temporal_analysis):
+                nm.main()
+
+            self.assertEqual(seen['edges'], edge_path)
+            self.assertEqual(nm.EDGES, nm.ROOT / 'reports/continuation_20261105/verified_similarity_edges.csv')
+            result = __import__('json').loads((out / 'results.json').read_text())
+            self.assertEqual(result['test_family_size'], 5)
+            self.assertTrue(result['copies']['fixture'])
 
 
 if __name__ == '__main__':

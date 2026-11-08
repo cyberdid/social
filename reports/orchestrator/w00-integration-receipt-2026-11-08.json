@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0",
+  "receipt_kind": "sanitized_run_summary",
+  "privacy": "Aggregate-only. This file contains no source text, URLs, platform identifiers, account/channel names, or local private paths.",
+  "incident_id": "petropavlivska-borshchahivka-2026-11",
+  "run_id": "w00-integration-run-codex-20261108",
+  "producer": "social.incident_orchestrator/1.0",
+  "git_commit": "bb8e019c69597448428bfd0fb2c313c66f4cea31",
+  "working_tree_state_at_execution": "dirty; commit is a base revision, not a complete code fingerprint",
+  "started_at_utc": "2026-11-08T07:07:54.531267Z",
+  "finished_at_utc": "2026-11-08T07:08:00.145170Z",
+  "controller": {
+    "state": "completed_bounded",
+    "coverage_mode": "dry_run",
+    "targets_dispatched": 0,
+    "source_snapshots": 0,
+    "model_inference_enabled": false,
+    "limitations": [
+      "No external collection was executed.",
+      "completed_bounded means orchestration processing finished; it does not mean the incident was completely analyzed."
+    ]
+  },
+  "supplied_typed_inputs": {
+    "artifact_count": 8,
+    "combined_bytes": 4108777,
+    "aggregate_record_counts": {
+      "claim_candidates": 555,
+      "event_mentions": 574,
+      "information_posts": 1438,
+      "passages": 23,
+      "uncertainty_records": 1438
+    }
+  },
+  "local_analysis": {
+    "state": "completed_bounded",
+    "analysis_status": "partial",
+    "stage_status": {
+      "source_lineage": "not_run",
+      "claim_retrieval": "not_run",
+      "event_reconstruction": "complete",
+      "conflict_analysis": "complete",
+      "information_dynamics": "complete",
+      "uncertainty_scenarios": "complete",
+      "report_generation": "complete",
+      "evaluation": "complete"
+    },
+    "not_run_reasons": {
+      "source_lineage": "lineage_records_not_supplied",
+      "claim_retrieval": "query_budget_zero"
+    },
+    "evaluation": {
+      "structural_status": "passed",
+      "hard_gate_failures": 0,
+      "report_bundle_files_verified": 3,
+      "report_integrity_files_verified": 3,
+      "semantic_accuracy": "not_evaluated",
+      "citation_entailment": "not_evaluated",
+      "source_authenticity": "not_evaluated"
+    },
+    "verification_results": 0
+  },
+  "output_integrity": {
+    "controller_manifest_output_count": 20,
+    "controller_manifest_hash_failures": 0,
+    "local_analysis_manifest_output_count": 16,
+    "local_analysis_manifest_hash_failures": 0,
+    "note": "The inner output set is nested within the controller output set; these are manifest receipt counts, not 36 distinct files."
+  },
+  "source_manifest_sha256": {
+    "controller_run_manifest": "41727e4874175d1ce36155d27a17674db6ee73210aae015326a56e0108e4069e",
+    "local_analysis_run_manifest": "4a567e3d7bc8bbc7a69775b85a934b2872b7077db334901f8e29a4b8e239f1f9",
+    "coverage_plan": "465ffed6612485b5cf17685fee8d1a5e1332759e0fa9bd088aaf9ee0ae27e70d",
+    "private_input_manifest": "8eb4f624604f10fa5fdca66b3ecc7f7247eb5237db1cd7c1a83eaf83e89c39bf",
+    "report_integrity": "97526d63b9b4de7cb851d60405bc287263bc5c5654a08dcbaa7ccb4536506662"
+  },
+  "interpretation_limits": [
+    "Retrieval candidates are not claim verification.",
+    "No semantic truth, source authenticity, source independence, or incident completeness was established.",
+    "No external collection means this run is not a monitoring run or a factual update to the case."
+  ]
+}

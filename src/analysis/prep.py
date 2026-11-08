@@ -71,6 +71,28 @@ def lang_of(text: str) -> str:
     return "uk" if uk > ru else "ru"
 
 
+def relevance_decision(text_clean: str, t_kyiv: str) -> tuple[bool, str]:
+    """Return the legacy relevance decision and a stable reason code.
+
+    Keep the branch order aligned with the historical selection rule: first the
+    incident cutoff, then the explicit village name, then place plus topic cues.
+    """
+    place = bool(PLACE.search(KYIV_PLACES.sub(" ", text_clean)))
+    village = bool(VILLAGE.search(text_clean))
+    topic = bool(LEX.search(text_clean))
+    if t_kyiv < INCIDENT_FROM:
+        return False, "outside_time_window"
+    if village:
+        return True, "explicit_village_name"
+    if place and topic:
+        return True, "place_plus_topic"
+    if place:
+        return False, "place_without_topic"
+    if topic:
+        return False, "topic_without_place"
+    return False, "neither"
+
+
 def main(snapshot: str | None = None):
     """`snapshot` may be one name or several joined by '+' (merged; a channel is taken from the first snapshot
     that contains it, so the same channel is never counted twice)."""
@@ -102,7 +124,7 @@ def main(snapshot: str | None = None):
         p["t_kyiv"] = dt.astimezone(KYIV).isoformat()
         tc = p["text_clean"]
         p["place"] = bool(PLACE.search(KYIV_PLACES.sub(" ", tc)))
-        p["relevant"] = p["t_kyiv"] >= INCIDENT_FROM and (bool(VILLAGE.search(tc)) or (p["place"] and bool(LEX.search(tc))))
+        p["relevant"], p["relevance_reason_code"] = relevance_decision(tc, p["t_kyiv"])
         p["lang"] = lang_of(p["text_clean"])
         p["fwd_channel"] = None
         m = re.match(r"https?://t\.me/([A-Za-z0-9_]+)/(\d+)", p.get("fwd_from_url") or "")

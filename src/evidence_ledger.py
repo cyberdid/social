@@ -82,25 +82,62 @@ class EvidenceLedger:
     def __init__(self, database: str | Path = ":memory:"):
         self._connection = sqlite3.connect(str(database))
         self._connection.row_factory = sqlite3.Row
-        self._connection.execute("PRAGMA foreign_keys = ON")
-        self._connection.executescript("""
-            CREATE TABLE IF NOT EXISTS records (
-                sequence INTEGER PRIMARY KEY AUTOINCREMENT,
-                record_id TEXT NOT NULL UNIQUE,
-                record_type TEXT NOT NULL,
-                schema_version INTEGER NOT NULL,
-                created_at TEXT NOT NULL,
-                payload TEXT NOT NULL
-            );
-            CREATE TRIGGER IF NOT EXISTS records_no_update
-            BEFORE UPDATE ON records BEGIN
-                SELECT RAISE(ABORT, 'evidence ledger records are append-only');
-            END;
-            CREATE TRIGGER IF NOT EXISTS records_no_delete
-            BEFORE DELETE ON records BEGIN
-                SELECT RAISE(ABORT, 'evidence ledger records are append-only');
-            END;
-        """)
+        try:
+            self._connection.execute("PRAGMA foreign_keys = ON")
+            self._migrate_schema()
+        except Exception:
+            self._connection.close()
+            raise
+
+    def _migrate_schema(self) -> None:
+        connection = self._connection
+        version = connection.execute("PRAGMA user_version").fetchone()[0]
+        if version not in (0, SCHEMA_VERSION):
+            raise LedgerValidationError("unsupported database schema version")
+        objects = connection.execute(
+            "SELECT type, name, sql FROM sqlite_master WHERE name NOT LIKE 'sqlite_%'"
+        ).fetchall()
+        if not objects:
+            if version != 0:
+                raise LedgerValidationError("missing ledger schema")
+            with connection:
+                connection.execute("""CREATE TABLE records (
+                    sequence INTEGER PRIMARY KEY AUTOINCREMENT,
+                    record_id TEXT NOT NULL UNIQUE,
+                    record_type TEXT NOT NULL,
+                    schema_version INTEGER NOT NULL,
+                    created_at TEXT NOT NULL,
+                    payload TEXT NOT NULL
+                )""")
+                for action in ("UPDATE", "DELETE"):
+                    connection.execute(f"""CREATE TRIGGER records_no_{action.lower()}
+                        BEFORE {action} ON records BEGIN
+                        SELECT RAISE(ABORT, 'evidence ledger records are append-only'); END""")
+                connection.execute(f"PRAGMA user_version = {SCHEMA_VERSION}")
+            return
+        # Accept only the v1 layout and its append-only protections. Inspect before
+        # writing anything so a malformed legacy database is left untouched.
+        columns = connection.execute("PRAGMA table_info(records)").fetchall()
+        actual = [(r[1], r[2].upper(), r[3], r[5]) for r in columns]
+        expected = [("sequence", "INTEGER", 0, 1), ("record_id", "TEXT", 1, 0),
+                    ("record_type", "TEXT", 1, 0), ("schema_version", "INTEGER", 1, 0),
+                    ("created_at", "TEXT", 1, 0), ("payload", "TEXT", 1, 0)]
+        entries = {(r[0], r[1]): r[2] for r in objects}
+        indexes = connection.execute("PRAGMA index_list(records)").fetchall()
+        unique_id = any(r[2] and [i[2] for i in connection.execute(
+            'PRAGMA index_info("' + r[1].replace('"', '""') + '")')] == ["record_id"]
+                        for r in indexes)
+        table_sql = entries.get(("table", "records"), "") or ""
+        triggers_ok = all(re.sub(r"\s+", " ", (entries.get(("trigger", "records_no_" + action.lower()), "") or "").strip()).lower()
+                          == f"create trigger records_no_{action.lower()} before {action.lower()} on records begin select raise(abort, 'evidence ledger records are append-only'); end"
+                          for action in ("UPDATE", "DELETE"))
+        if (actual != expected or not unique_id or "AUTOINCREMENT" not in table_sql.upper()
+                or not triggers_ok or set(entries) != {("table", "records"),
+                    ("trigger", "records_no_update"), ("trigger", "records_no_delete")}):
+            raise LedgerValidationError("invalid ledger schema")
+        if version == 0:
+            with connection:
+                connection.execute(f"PRAGMA user_version = {SCHEMA_VERSION}")
 
     def close(self) -> None:
         self._connection.close()

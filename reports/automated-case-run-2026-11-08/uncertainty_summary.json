@@ -1,0 +1,22 @@
+{
+  "interpretation": "Bounds [0,1] are scenario bounds within this observed corpus because labels/groups are unknown; they are not confidence intervals and do not resolve selection bias.",
+  "observed_channel_group_counts": {
+    "unknown": 1438
+  },
+  "observed_corpus_scenario_bounds": {
+    "interval_type": "unknown_label_scenario_bounds_within_observed_corpus_not_confidence_interval",
+    "target_channel_share_lower": 0.0,
+    "target_channel_share_upper": 1.0,
+    "target_post_share_lower": 0.0,
+    "target_post_share_upper": 1.0,
+    "target_snapshot_view_counter_share_lower": 0.0,
+    "target_snapshot_view_counter_share_upper": 1.0
+  },
+  "observed_label_state_counts": {
+    "unknown": 1438
+  },
+  "record_count": 1438,
+  "schema_version": "1.0",
+  "target_group": null,
+  "target_label": "target"
+}

@@ -1,0 +1,26 @@
+{
+  "communication": [
+    {
+      "earliest_utc": "2026-11-04T10:35:00Z",
+      "event_id": "event:mention_mvs_publication_date_statement_20261104",
+      "event_mention_id": "mention_mvs_publication_date_statement_20261104",
+      "evidence_ids": [
+        "passage_78ef18c56c48abeed87014bae6c0b802886ac86e1d708398ae719d9141243896"
+      ],
+      "latest_utc": "2026-11-04T10:35:00Z",
+      "time_kind": "publication_time"
+    }
+  ],
+  "physical": [
+    {
+      "earliest_utc": "2026-11-01T22:00:00Z",
+      "event_id": "event:mention_mvs_reported_situation_date_20261104",
+      "event_mention_id": "mention_mvs_reported_situation_date_20261104",
+      "evidence_ids": [
+        "passage_78ef18c56c48abeed87014bae6c0b802886ac86e1d708398ae719d9141243896"
+      ],
+      "latest_utc": "2026-11-02T21:59:59.999999Z",
+      "time_kind": "event_time"
+    }
+  ]
+}

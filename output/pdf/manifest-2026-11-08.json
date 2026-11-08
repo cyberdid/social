@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0",
+  "edition_date": "08.11.2026",
+  "generated_at_utc": "2026-11-08T17:34:24Z",
+  "builder": "scripts/reports/build_figures_dossier.py",
+  "builder_sha256": "37ea664c1a98a5f6235870d9b11777adfdbc11be4f409afde042ba7bde6ebaf9",
+  "renderer": "ReportLab",
+  "renderer_version": "5.1.0",
+  "visual_review": {
+    "status": "passed",
+    "page_sampling": "Main report pages 1, 15, and 16 rendered and visually reviewed after version 2.12 regeneration; pages are A4; text extraction contains the new 607/607 strict technical decode statement and zero U+FFFD replacement characters. Other PDFs remain unchanged from their recorded review.",
+    "additional_check": "Main PDF page count, A4 dimensions, source/PDF SHA-256, byte count, and extracted text were refreshed; figures/proceedings and attribution PDFs were unchanged."
+  },
+  "artifacts": [
+    {
+      "name": "main",
+      "source_markdown": "reports/borshchahivka-report.md",
+      "source_sha256": "f6e1268583ab6954f8294dbe06cb2a4a8b2e7ca89de39b6a4a3c4d0fec511df0",
+      "pdf": "output/pdf/petropavlivska_borshchahivka_report_2026-11-08.pdf",
+      "pdf_sha256": "736a8fb43980a8fc7b670122bbf2adb4254e667841111e5e64aeddc85382501c",
+      "pdf_bytes": 147124,
+      "pages": 16,
+      "page_size": "595.276 x 841.89 pts (A4)",
+      "visual_sample_pages": [
+        1,
+        15,
+        16
+      ],
+      "extracted_text_characters": 69957,
+      "replacement_characters": 0,
+      "text_extraction": "passed"
+    },
+    {
+      "name": "figures_and_proceedings",
+      "source_markdown": "reports/figures-and-proceedings-2026-11-06.md",
+      "source_sha256": "95d3ba72ba10007f76246926ed7a5da94a7edd3aac9d8c058d374275260816dd",
+      "pdf": "output/pdf/petropavlivska_figures_and_proceedings_2026-11-08.pdf",
+      "pdf_sha256": "8efc33b2497be571e58c2bdccb1b9c0322aa276b82cab614d456738151dcc7b6",
+      "pdf_bytes": 111573,
+      "pages": 11,
+      "page_size": "595.276 x 841.89 pts (A4)",
+      "visual_sample_pages": [
+        1,
+        10,
+        11
+      ],
+      "extracted_text_characters": 39402,
+      "replacement_characters": 0,
+      "text_extraction": "passed"
+    },
+    {
+      "name": "russian_influence_attribution",
+      "source_markdown": "wiki/methods/russian-influence-attribution-early-warning.md",
+      "source_sha256": "beadf800fcf2da6638f1e1fd6355d0f69fa31e3f79d0b064db189fa9fd42413d",
+      "pdf": "output/pdf/russian_influence_attribution_early_warning_2026-11-08.pdf",
+      "pdf_sha256": "02bd6c4626bf4b1dfed83e7f3f3be0ed7704a1387b340adc773636a8f0494482",
+      "pdf_bytes": 109577,
+      "pages": 11,
+      "page_size": "595.276 x 841.89 pts (A4)",
+      "visual_sample_pages": [
+        1,
+        6,
+        11
+      ],
+      "extracted_text_characters": 34246,
+      "replacement_characters": 0,
+      "text_extraction": "passed"
+    }
+  ]
+}

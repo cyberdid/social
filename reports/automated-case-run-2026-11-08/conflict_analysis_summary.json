@@ -1,0 +1,8 @@
+{
+  "information_attention_bins": 13,
+  "interpretation": "Empty physical-event records describe input coverage only; they do not establish that no physical action occurred.",
+  "physical_conflict_inference": "not_available_no_typed_physical_event_records_supplied",
+  "schema_version": "1.0",
+  "typed_physical_event_records": 0,
+  "typed_position_records": 0
+}

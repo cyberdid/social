@@ -1,0 +1,21 @@
+{
+  "candidate_event_mentions": 574,
+  "candidate_links": 0,
+  "communication_timeline_rows": 574,
+  "event_time_established": false,
+  "filming_time_established": false,
+  "interpretation": "All timeline rows are communication/event-mention candidates preserved without real-world event verification or merge. Publication timestamps do not establish when or where an event occurred.",
+  "merge_status_counts": {
+    "unresolved_event_mention": 574
+  },
+  "physical_timeline_rows": 0,
+  "publication_time_bounds_utc": {
+    "max": "2026-11-05T10:18:17Z",
+    "min": "2026-11-02T10:41:03Z"
+  },
+  "schema_version": "1.0",
+  "timeline_time_kind_counts": {
+    "publication_time": 574
+  },
+  "unresolved_mentions": 574
+}

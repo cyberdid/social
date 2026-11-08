@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "input_source": "/home/cyberdid/Projects/Social/data/processed/20261105T101013Z+20261105T102914Z/posts_clean.jsonl",
+  "input_source_sha256": "d229d8618021cf285f24c712eb9cd37ca85eb0e8bee2d8a7f74b6e7c574cda3f",
+  "input_records": 23386,
+  "input_records_with_nonblank_text_and_valid_time": 22942,
+  "input_records_excluded_blank_text": 444,
+  "input_records_excluded_invalid_or_missing_time": 0,
+  "input_records_with_platform_forward_reference_resolved_same_exact_text": 348,
+  "input_records_with_forward_reference_unresolved_in_snapshot": 498,
+  "input_records_with_forward_reference_resolved_but_different_exact_text": 29,
+  "forward_metadata_interpretation": "A matching fwd_from_url is retained as an explicit-reference edge only when both posts are in this snapshot and their NFKC/casefold/whitespace-normalized text is identical; other references remain unknown for this text-equivalence scope.",
+  "text_handling": "The source_lineage text field stores SHA-256 of NFKC/casefold/whitespace-normalized post text, not the post text. This permits equality grouping while avoiding publication of message text. Hashes are pseudonymous fingerprints, not guaranteed anonymous data.",
+  "claim_scope": "Each claim_id represents one exact normalized-text equivalence class, not an independently adjudicated semantic proposition or truth claim.",
+  "source_id_handling": "source_id is a SHA-256 fingerprint of the normalized Telegram channel handle; original handles are omitted from the lineage input.",
+  "media_sha256_available": false,
+  "independent_root_count_established": false,
+  "lineage_input_path": "reports/channel-evidence/masterplan-run-2026-11-08/source_lineage_input.jsonl",
+  "lineage_input_sha256": "2c3a8485a303d51d34746298108d349b400ca367eb931fd3c52a7b55aba348b8"
+}

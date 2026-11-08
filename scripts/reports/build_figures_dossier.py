@@ -32,10 +32,13 @@ DEFAULT_OUTPUT = ROOT / "output/pdf/petropavlivska_figures_and_proceedings_2026-
 parser = argparse.ArgumentParser()
 parser.add_argument("--source", type=Path, default=DEFAULT_SOURCE)
 parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
+parser.add_argument("--edition-date", default="06.11.2026",
+                    help="date shown in PDF page chrome (DD.MM.YYYY)")
 args = parser.parse_args()
 SOURCE = args.source if args.source.is_absolute() else ROOT / args.source
 OUTPUT = args.output if args.output.is_absolute() else ROOT / args.output
 IS_ATTRIBUTION_REPORT = "russian-influence-attribution" in SOURCE.name
+IS_MAIN_REPORT = SOURCE.name == "borshchahivka-report.md"
 
 FONT_DIR = Path("/usr/share/fonts/truetype/dejavu")
 ITALIC_FONT_DIR = Path("/usr/share/fonts/truetype/liberation")
@@ -94,7 +97,7 @@ styles.add(ParagraphStyle(
 styles.add(ParagraphStyle(
     name="ReportCallout", fontName="DejaVu", fontSize=9.0, leading=13.2,
     textColor=NAVY, borderColor=TEAL, borderWidth=0.8, borderPadding=9,
-    backColor=PALE, spaceBefore=3, spaceAfter=9,
+    backColor=PALE, spaceBefore=14, spaceAfter=14,
 ))
 styles.add(ParagraphStyle(
     name="ReportTableHead", fontName="DejaVu-Bold", fontSize=7.8, leading=10,
@@ -165,12 +168,22 @@ class ReportDoc(BaseDocTemplate):
         canvas.setFillColor(MUTED)
         canvas.drawString(18 * mm, height - 10.5 * mm, "ПЕТРОПАВЛІВСЬКА БОРЩАГІВКА")
         canvas.setFont("DejaVu", 7)
-        header = "РАННЄ ПОПЕРЕДЖЕННЯ Й АТРИБУЦІЯ · 06.11.2026" if IS_ATTRIBUTION_REPORT else "ОГЛЯД ВІДКРИТИХ ДЖЕРЕЛ · 06.11.2026"
+        if IS_ATTRIBUTION_REPORT:
+            header = f"РАННЄ ПОПЕРЕДЖЕННЯ Й АТРИБУЦІЯ · {args.edition_date}"
+        elif IS_MAIN_REPORT:
+            header = f"НЕЗАЛЕЖНИЙ АНАЛІТИЧНИЙ ЗВІТ · {args.edition_date}"
+        else:
+            header = f"ОГЛЯД ВІДКРИТИХ ДЖЕРЕЛ · {args.edition_date}"
         canvas.drawRightString(width - 18 * mm, height - 10.5 * mm, header)
         canvas.line(18 * mm, 12 * mm, width - 18 * mm, 12 * mm)
         canvas.setFont("DejaVu", 7)
         canvas.setFillColor(MUTED)
-        footer = "Методичний OSINT-протокол; не офіційна атрибуція" if IS_ATTRIBUTION_REPORT else "Самостійна аналітична довідка; не документ державного органу"
+        if IS_ATTRIBUTION_REPORT:
+            footer = "Методичний OSINT-протокол; не офіційна атрибуція"
+        elif IS_MAIN_REPORT:
+            footer = "Аналітичний звіт на основі відкритих цифрових слідів; обмеження наведено в тексті"
+        else:
+            footer = "Самостійна аналітична довідка; не документ державного органу"
         canvas.drawString(18 * mm, 8 * mm, footer)
         canvas.drawRightString(width - 18 * mm, 8 * mm, f"{doc.page}")
         canvas.restoreState()
@@ -219,7 +232,12 @@ def make_story() -> list:
 
         if line.startswith("# "):
             if not seen_title:
-                kicker = "РАННЄ ПОПЕРЕДЖЕННЯ Й АТРИБУЦІЯ ІНОЗЕМНОГО ВПЛИВУ" if IS_ATTRIBUTION_REPORT else "ОГЛЯД ФІГУРАНТІВ ТА ПРОЦЕСУАЛЬНОГО КОНТЕКСТУ"
+                if IS_ATTRIBUTION_REPORT:
+                    kicker = "РАННЄ ПОПЕРЕДЖЕННЯ Й АТРИБУЦІЯ ІНОЗЕМНОГО ВПЛИВУ"
+                elif IS_MAIN_REPORT:
+                    kicker = "ІНФОРМАЦІЙНА ХВИЛЯ · ДОКАЗИ · МЕЖІ ВИСНОВКІВ"
+                else:
+                    kicker = "ОГЛЯД ФІГУРАНТІВ ТА ПРОЦЕСУАЛЬНОГО КОНТЕКСТУ"
                 story.append(Paragraph(kicker, styles["ReportKicker"]))
                 story.append(Paragraph(inline_markup(line[2:]), styles["ReportTitle"]))
                 story.append(Spacer(1, 2))
@@ -229,6 +247,13 @@ def make_story() -> list:
 
         if line.startswith("**Аналітична довідка"):
             story.append(Paragraph("Аналітична довідка для подальшої перевірки", styles["ReportMeta"]))
+            i += 1
+            continue
+        if line.startswith("**Доповнення 8 листопада"):
+            # This date-stamped context line precedes the actual short conclusion.
+            # Keep it in the metadata flow; treating it as the first conclusion
+            # callout lets it collide with the source/status metadata above.
+            story.append(Paragraph(inline_markup(line), styles["ReportMeta"]))
             i += 1
             continue
         if line.startswith("**Зріз джерел:") or line.startswith("**Статус документа:"):
@@ -317,9 +342,13 @@ def main() -> None:
         str(OUTPUT), pagesize=A4,
         leftMargin=18 * mm, rightMargin=18 * mm,
         topMargin=19 * mm, bottomMargin=17 * mm,
-        title=("Раннє попередження й атрибуція можливого російського впливу" if IS_ATTRIBUTION_REPORT else "Петропавлівська Борщагівка: публічно названі фігуранти та процесуальний статус"),
+        title=("Раннє попередження й атрибуція можливого російського впливу" if IS_ATTRIBUTION_REPORT
+               else "Інформаційна хвиля довкола Петропавлівської Борщагівки" if IS_MAIN_REPORT
+               else "Петропавлівська Борщагівка: публічно названі фігуранти та процесуальний статус"),
         author="Самостійний OSINT-огляд відкритих джерел",
-        subject=("Методичний протокол і застосування до інформаційної хвилі 2 листопада 2026 року" if IS_ATTRIBUTION_REPORT else "Публічно названі фігуранти, процесуальні статуси та відкриті питання станом на 6 листопада 2026 року"),
+        subject=("Методичний протокол і застосування до інформаційної хвилі 2 листопада 2026 року" if IS_ATTRIBUTION_REPORT
+                 else "Цільовий аналіз цифрових слідів та меж доказовості" if IS_MAIN_REPORT
+                 else "Публічно названі фігуранти, процесуальні статуси та відкриті питання станом на 6 листопада 2026 року"),
     )
     doc.build(make_story())
     print(OUTPUT)

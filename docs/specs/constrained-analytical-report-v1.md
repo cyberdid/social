@@ -24,6 +24,8 @@ build_report_bundle(
 
 VerificationResult приймає ідентифікатор `verification_result_id` або W06 `result_id`, `claim_id`, об'єкт `scope`, UTC `as_of_utc`, status та списки `supporting_evidence_ids` і `contradicting_evidence_ids`. Список evidence IDs у finding має точно відповідати обом відповідним спискам результату; додати лише зручну частину доказів або приховати протилежний бік не можна. W06 root counters та `minimum_independent_roots` перевіряються для status `supported_within_scope` / `refuted_within_scope`; суперечливий результат має зберігати обидва боки. Статуси, оцінки, корені чи незалежність не виводяться повторно цим renderer-ом.
 
+Для кожного evidence ID, на який посилається VerificationResult, `captured_at_utc` мусить бути не пізніше за `VerificationResult.as_of_utc`; окрема перевірка також вимагає, щоб час доказу та зріз результату не були пізнішими за `context.as_of_utc`. У release evaluator той самий зв'язок перевіряється навіть без report context. Відсутній або некоректний час є hard-gate помилкою, а не підставою припускати, що доказ був доступний раніше.
+
 ## Типи findings
 
 Спільні поля звичайного finding: `finding_id`, `kind`, `claim_id`, proposition `statement`, об'єкт `scope`, `evidence_refs` зі значеннями ролі та, коли потрібно, VerificationResult ID. Формальна JSON Schema: `schemas/analytical_finding.schema.json`. Невідомі поля відхиляються — так довільна model rationale не просочується до звіту. Одне finding має містити одну коротку proposition; складений абзац, кілька речень або `;` треба розбити на окремі записи.
@@ -31,7 +33,7 @@ VerificationResult приймає ідентифікатор `verification_resul
 | `kind` | Умови | Шаблонний зміст |
 |---|---|---|
 | `documented_fact` | `statement` — точний фрагмент із locator; тільки роль `source_attributed` | У збереженому матеріалі зазначеного джерела зафіксовано quote. Це твердження про вміст артефакту. |
-| `source_attributed` | `statement` — точний fragment; тільки роль `source_attributed` | Джерело повідомляє процитоване твердження; воно не подається як встановлений зовнішній факт. |
+| `source_attributed` | `statement` — точний fragment; обов'язкова роль `source_attributed`; необов'язкова роль `context` лише з того самого джерела | Джерело повідомляє процитоване твердження; точний контекстний фрагмент показується окремо й не вважається незалежною підтримкою або підтвердженням. |
 | `supported_within_scope` | Точне claim/scope/status match; всі support і contradiction IDs із VerificationResult; мінімум незалежних support roots | У заданих межах матеріали підтримують proposition. Якщо існують contradiction records, їх також показано. |
 | `refuted_within_scope` | Точне claim/scope/status match; всі support і contradiction IDs; мінімум незалежних contradiction roots | Лише у межах визначеного scope proposition спростована; збережені support records також показуються. |
 | `conflicting` | Status `conflicting_evidence`; обидва набори evidence IDs повні | Окремо показуються supporting і contradicting цитати; winner не обирається. |

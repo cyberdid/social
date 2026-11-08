@@ -158,6 +158,7 @@ def reconstruct_timeline(event_mentions: list[dict], *, run_context: dict | None
         evidence_ids = _string_list(raw.get("evidence_ids"), f"{mention_id}.evidence_ids", required=True)
         if not evidence_ids:
             raise ValueError(f"at least one evidence_id is required for {mention_id}")
+        source_refs = _string_list(raw.get("source_refs"), f"{mention_id}.source_refs")
         actors = _string_list(raw.get("actor_entity_ids"), f"{mention_id}.actor_entity_ids")
         objects = _string_list(raw.get("object_entity_ids"), f"{mention_id}.object_entity_ids")
         place_id = raw.get("place_id")
@@ -189,7 +190,7 @@ def reconstruct_timeline(event_mentions: list[dict], *, run_context: dict | None
             "publication_time_utc": publication_text,
             "timeline_time_kind": None,
             "evidence_ids": sorted(set(evidence_ids)),
-            "source_refs": sorted(set(evidence_ids)),
+            "source_refs": source_refs,
             "cannot_link_event_mention_ids": cannot_link,
             "attributed_relations": attributed_relations,
             "merge_status": "unresolved_event_mention",

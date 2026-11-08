@@ -1,0 +1,31 @@
+{
+  "archived_web_passages": {
+    "count": 23,
+    "origin": "locally archived source-page passages; retrieval only"
+  },
+  "instagram": "no usable typed receipt supplied to this case run",
+  "limitations": "Coverage is platform- and access-limited; counts do not represent all platform content.",
+  "schema_version": "1.0",
+  "source_watch": {
+    "access_errors": 3,
+    "event_or_update_established": false,
+    "interpretation": "A first baseline is not evidence of a new event or changed source statement; individual page errors limit coverage.",
+    "new_first_baseline_pages": 9,
+    "schema_version": "1.0",
+    "snapshot_status": "first_baseline_only"
+  },
+  "telegram_snapshot": {
+    "post_count": 1438,
+    "relevant_channel_count": 158,
+    "source_sha256": "a1240963e20691743d72efcb3a0446c777c60c3e4ec162adaf4f4c0a9c0cf95c"
+  },
+  "tiktok_link_metadata": {
+    "candidate_link_count": 42,
+    "csv_sha256": "219295ade4430ef804e7f0b4c93141a8112706a85353420bfb96f83bfcbe6f8d",
+    "in_window_publication_metadata_count": 19,
+    "missing_or_invalid_publication_metadata_count": 21,
+    "out_of_window_count": 2,
+    "recording_time_verified_count": 0
+  },
+  "youtube": "separate collection receipt exists; not supplied as typed evidence in this case run"
+}

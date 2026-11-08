@@ -4,6 +4,11 @@
 
 `src/analysis/event_reconstruction.py` будує впорядковану модель із уже вилучених згадок подій. Модуль не витягує події з довільного тексту та не доводить, що повідомлена подія справді сталася. Кожна згадка залишається окремим `event` із `merge_status=unresolved_event_mention`.
 
+`evidence_ids` identify the exact evidence passages supporting a mention;
+`source_refs` identify source records and are supplied separately. If the source
+record ID is unavailable, the output keeps `source_refs` empty rather than
+copying passage IDs into that field.
+
 Запуск із JSONL:
 
 ```bash

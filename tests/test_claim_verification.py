@@ -64,6 +64,45 @@ def accepted(assessment_id, relation, evidence_id, root_id, assessed_at, *, c=No
     }
 
 
+@pytest.mark.parametrize("budget,executed", [(0, 0), (1, 1), (2, 2), (3, 3), (8, 4), (None, 4)])
+def test_retrieval_caps_actual_bm25_queries_before_scoring(monkeypatch, budget, executed):
+    import src.analysis.claim_verification as verification
+
+    bm25_calls = []
+    bm25 = verification._bm25
+
+    def track_bm25(query, *args):
+        bm25_calls.append(query)
+        return bm25(query, *args)
+
+    monkeypatch.setattr(verification, "_bm25", track_bm25)
+    c = {"claim_id": "budget-claim", "statement": "alpha", "query_variants": ["beta", "alpha"],
+         "scope": {"event": "x"}}
+    kwargs = {} if budget is None else {"max_queries": budget}
+    result = retrieve_evidence_candidates(
+        c, [passage("p1", "alpha beta correction")], as_of_utc="2026-11-05T00:00:00Z",
+        counterevidence_terms=("correction",), **kwargs,
+    )
+    receipt = result["search_receipt"]
+    assert len(bm25_calls) == executed
+    assert receipt["planned_query_count"] == 4
+    assert receipt["executed_query_count"] == executed
+    assert receipt["omitted_query_count"] == 4 - executed
+    assert receipt["search_truncated"] is (executed < 4)
+    # Stable schedule: statement claim, statement counter, variant claim, variant counter.
+    schedule = [("claim_terms", ["alpha"]), ("counterevidence_terms", ["alpha", "correction"]),
+                ("claim_terms", ["beta"]), ("counterevidence_terms", ["beta", "correction"])]
+    expected_terms = {}
+    for direction, terms in schedule[:executed]:
+        expected_terms.setdefault(direction, []).append(terms)
+    assert receipt["query_terms"] == expected_terms
+    assert receipt["directions"] == list(expected_terms)
+    assert sorted(sorted(set(query)) for query in bm25_calls) == sorted(
+        terms for _, terms in schedule[:executed])
+    if executed == 0:
+        assert result["candidates"] == []
+
+
 def test_retrieval_runs_claim_and_correction_queries_and_keeps_candidates_unassessed():
     exact = passage("p1", "Officials held 40 people in the building.")
     correction = passage("p2", "Correction: officials said no people were held in the building.", source="source_2")
@@ -94,6 +133,27 @@ def test_candidate_citation_offsets_point_to_exact_original_text():
     hit = next(hit for hit in retrieve(claim(), [p])["candidates"] if hit["passage_id"] == "p1")
     assert p["text"][hit["start_offset"]:hit["end_offset"]] == hit["quote"]
     assert hit["artifact_start_offset"] == 125 + hit["start_offset"]
+    assert hit["passage_start_offset"] == hit["start_offset"]
+    assert hit["passage_end_offset"] == hit["end_offset"]
+    assert hit["artifact_offset_status"] == "available"
+
+
+@pytest.mark.parametrize("explicit_null", [True, False])
+def test_candidate_without_verified_artifact_offset_keeps_only_passage_relative_offsets(explicit_null):
+    locator = {"kind": "source_watch_filtered_article_text", "manifest_path": "raw/source_watch/snapshot/manifest.json",
+               "row_index": 0, "text_sha256": "a" * 64}
+    p = passage("filtered-passage", "Officials held 40 people in the building.", offset=None)
+    if not explicit_null:
+        p.pop("artifact_start_offset")
+    p["locator"] = locator
+
+    hit = next(hit for hit in retrieve(claim(), [p])["candidates"] if hit["passage_id"] == p["passage_id"])
+
+    assert p["text"][hit["passage_start_offset"]:hit["passage_end_offset"]] == hit["quote"]
+    assert hit["artifact_start_offset"] is None
+    assert hit["artifact_offset_status"] == "unavailable"
+    assert hit["passage_offset_unit"] == "unicode_codepoint"
+    assert hit["locator"] == locator
 
 
 def test_future_only_material_is_not_used_in_as_of_retrieval():
@@ -200,6 +260,214 @@ def test_numeric_count_cannot_be_structured_as_an_unrelated_numeric_field():
     assert assessment["relation"] == "ambiguous"
     assert assessment["decision"] == "candidate"
     assert "missing_structured_value:40" in assessment["reasons"]
+
+
+def test_people_count_cannot_be_satisfied_by_a_comment_count_key():
+    c = claim(key_values={"comment_count": {"value": 40, "operator": "eq"}})
+    assessment = accepted("a1", "supports", "p1", "root_1", "2026-11-03T00:00:00Z", c=c)
+    result = aggregate_verification(c, [assessment], as_of_utc="2026-11-05T00:00:00Z",
+                                    search_complete=True, minimum_independent_roots=1)
+    assert result["status"] == "insufficient_evidence"
+    assert result["excluded_assessments"] == [{"assessment_id": "a1", "reason": "missing_structured_value:40"}]
+
+
+def test_comment_count_matches_the_claimed_counted_entity():
+    c = claim(statement="40 comments were posted about the incident",
+              key_values={"comment_count": {"value": 40, "operator": "eq"}})
+    assessment = accepted("a1", "supports", "p1", "root_1", "2026-11-03T00:00:00Z", c=c)
+    result = aggregate_verification(c, [assessment], as_of_utc="2026-11-05T00:00:00Z",
+                                    search_complete=True, minimum_independent_roots=1)
+    assert result["status"] == "supported_within_scope"
+
+
+@pytest.mark.parametrize(
+    ("statement", "expected_operator"),
+    [
+        ("До 40 людей утримували в будівлі", "lte"),
+        ("Не менше 40 людей утримували в будівлі", "gte"),
+        ("Не меньше 40 человек находились в здании", "gte"),
+        ("Понад 40 людей утримували в будівлі", "gt"),
+        ("Менше ніж 40 людей утримували в будівлі", "lt"),
+        ("<40 people were held in the building", "lt"),
+        ("≤40 people were held in the building", "lte"),
+        ("<=40 people were held in the building", "lte"),
+        (">=40 people were held in the building", "gte"),
+        (">40 people were held in the building", "gt"),
+        ("≥40 people were held in the building", "gte"),
+        ("≈40 people were held in the building", "approx"),
+        ("Under 40 people were held in the building", "lt"),
+        ("Приблизно 40 людей утримували в будівлі", "approx"),
+    ],
+)
+def test_count_qualifier_must_match_structured_claim_operator(statement, expected_operator):
+    structured = {"count": {"value": 40, "operator": "eq"}}
+    c = claim(statement=statement, key_values=structured)
+    assessment = accepted("a1", "supports", "p1", "root_1", "2026-11-03T00:00:00Z", c=c)
+
+    result = aggregate_verification(c, [assessment], as_of_utc="2026-11-05T00:00:00Z",
+                                    search_complete=True, minimum_independent_roots=1)
+
+    assert result["status"] == "insufficient_evidence"
+    assert result["excluded_assessments"] == [{
+        "assessment_id": "a1", "reason": f"numeric_operator_mismatch:count:{expected_operator}:eq",
+    }]
+
+
+@pytest.mark.parametrize(
+    ("statement", "operator"),
+    [
+        ("До 40 людей утримували в будівлі", "lte"),
+        ("Не менше 40 людей утримували в будівлі", "gte"),
+        ("Не меньше 40 человек находились в здании", "gte"),
+        ("Понад 40 людей утримували в будівлі", "gt"),
+        ("Менше ніж 40 людей утримували в будівлі", "lt"),
+        ("<40 people were held in the building", "lt"),
+        ("≤40 people were held in the building", "lte"),
+        ("<=40 people were held in the building", "lte"),
+        (">=40 people were held in the building", "gte"),
+        (">40 people were held in the building", "gt"),
+        ("≥40 people were held in the building", "gte"),
+        ("≈40 people were held in the building", "approx"),
+        ("Under 40 people were held in the building", "lt"),
+        ("Приблизно 40 людей утримували в будівлі", "approx"),
+    ],
+)
+def test_count_qualifier_accepts_matching_structured_operator(statement, operator):
+    c = claim(statement=statement, key_values={"count": {"value": 40, "operator": operator}})
+    assessment = accepted("a1", "supports", "p1", "root_1", "2026-11-03T00:00:00Z", c=c)
+
+    result = aggregate_verification(c, [assessment], as_of_utc="2026-11-05T00:00:00Z",
+                                    search_complete=True, minimum_independent_roots=1)
+
+    assert result["status"] == "supported_within_scope"
+
+
+@pytest.mark.parametrize("statement", [
+    "Not up to 40 people were held in the building",
+    "Not ≤40 people were held in the building",
+])
+def test_negated_bound_is_not_silently_treated_as_exact_count(statement):
+    c = claim(statement=statement,
+              key_values={"count": {"value": 40, "operator": "eq"}})
+    assessment = accepted("a1", "supports", "p1", "root_1", "2026-11-03T00:00:00Z", c=c)
+
+    result = aggregate_verification(c, [assessment], as_of_utc="2026-11-05T00:00:00Z",
+                                    search_complete=True, minimum_independent_roots=1)
+
+    assert result["status"] == "insufficient_evidence"
+    assert result["excluded_assessments"] == [{
+        "assessment_id": "a1", "reason": "numeric_operator_mismatch:count:unknown:eq",
+    }]
+
+
+def test_combined_different_count_qualifiers_are_not_silently_interpreted():
+    c = claim(statement="More than approximately 40 people were held in the building",
+              key_values={"count": {"value": 40, "operator": "eq"}})
+    assessment = accepted("a1", "supports", "p1", "root_1", "2026-11-03T00:00:00Z", c=c)
+
+    result = aggregate_verification(c, [assessment], as_of_utc="2026-11-05T00:00:00Z",
+                                    search_complete=True, minimum_independent_roots=1)
+
+    assert result["status"] == "insufficient_evidence"
+    assert result["excluded_assessments"] == [{
+        "assessment_id": "a1", "reason": "numeric_operator_mismatch:count:unknown:eq",
+    }]
+
+
+def test_participant_count_cannot_be_satisfied_by_comment_count():
+    c = claim(statement="40 participants were present",
+              key_values={"comment_count": {"value": 40, "operator": "eq"}})
+    assessment = accepted("a1", "supports", "p1", "root_1", "2026-11-03T00:00:00Z", c=c)
+
+    result = aggregate_verification(c, [assessment], as_of_utc="2026-11-05T00:00:00Z",
+                                    search_complete=True, minimum_independent_roots=1)
+
+    assert result["status"] == "insufficient_evidence"
+    assert result["excluded_assessments"] == [{
+        "assessment_id": "a1", "reason": "missing_structured_value:40",
+    }]
+
+
+def test_participant_count_matches_a_participant_count_field():
+    c = claim(statement="40 participants were present",
+              key_values={"participant_count": {"value": 40, "operator": "eq"}})
+    assessment = accepted("a1", "supports", "p1", "root_1", "2026-11-03T00:00:00Z", c=c)
+
+    result = aggregate_verification(c, [assessment], as_of_utc="2026-11-05T00:00:00Z",
+                                    search_complete=True, minimum_independent_roots=1)
+
+    assert result["status"] == "supported_within_scope"
+
+
+def test_men_count_cannot_be_satisfied_by_comment_count():
+    c = claim(statement="40 men were present",
+              key_values={"comment_count": {"value": 40, "operator": "eq"}})
+    assessment = accepted("a1", "supports", "p1", "root_1", "2026-11-03T00:00:00Z", c=c)
+
+    result = aggregate_verification(c, [assessment], as_of_utc="2026-11-05T00:00:00Z",
+                                    search_complete=True, minimum_independent_roots=1)
+
+    assert result["status"] == "insufficient_evidence"
+    assert result["excluded_assessments"] == [{
+        "assessment_id": "a1", "reason": "missing_structured_value:40",
+    }]
+
+
+def test_men_count_matches_a_men_count_field():
+    c = claim(statement="40 men were present",
+              key_values={"men_count": {"value": 40, "operator": "eq"}})
+    assessment = accepted("a1", "supports", "p1", "root_1", "2026-11-03T00:00:00Z", c=c)
+
+    result = aggregate_verification(c, [assessment], as_of_utc="2026-11-05T00:00:00Z",
+                                    search_complete=True, minimum_independent_roots=1)
+
+    assert result["status"] == "supported_within_scope"
+
+
+@pytest.mark.parametrize(
+    ("missing_fraction", "retained_count", "expected_status"),
+    [
+        (0.2, 8, "supported_within_scope"),  # 20% loss from ten source families.
+        (0.5, 5, "supported_within_scope"),  # 50% loss from ten source families.
+        (0.8, 2, "supported_within_scope"),  # 80% loss; two roots remain at threshold.
+    ],
+)
+def test_incomplete_corpus_sensitivity_lowers_support_without_inventing_refutation(
+    missing_fraction, retained_count, expected_status,
+):
+    total_source_families = 10
+    missing_count = total_source_families - retained_count
+    assert missing_count / total_source_families == missing_fraction
+    c = claim()
+    assessments = [
+        accepted(f"a{i}", "supports", f"p{i}", f"root_{i}", "2026-11-03T00:00:00Z", c=c)
+        for i in range(retained_count)
+    ]
+
+    result = aggregate_verification(c, assessments, as_of_utc="2026-11-05T00:00:00Z",
+                                    search_complete=False, minimum_independent_roots=2)
+
+    assert result["status"] == expected_status
+    assert result["supporting_root_count"] == retained_count
+    assert result["status"] != "refuted_within_scope"
+
+
+def test_one_remaining_root_after_eighty_percent_loss_abstains():
+    total_source_families = 5
+    retained_count = 1
+    missing_count = total_source_families - retained_count
+    assert missing_count / total_source_families == 0.8
+    c = claim()
+    assessments = [
+        accepted(f"a{i}", "supports", f"p{i}", f"root_{i}", "2026-11-03T00:00:00Z", c=c)
+        for i in range(retained_count)
+    ]
+
+    result = aggregate_verification(c, assessments, as_of_utc="2026-11-05T00:00:00Z",
+                                    search_complete=False, minimum_independent_roots=2)
+
+    assert result["supporting_root_count"] == 1
+    assert result["status"] == "unverified"
 
 
 def test_thousands_separator_is_not_misread_as_decimal_precision():
@@ -494,3 +762,18 @@ def test_export_marks_assessments_included_in_the_as_of_projection(tmp_path):
         "included_in_verification": True,
         "exclusion_reason": None,
     }
+
+
+def test_export_marks_changed_assessment_payload_excluded_from_as_of_projection(tmp_path):
+    c = claim()
+    search = retrieve(c, [passage("p1", "Officials held 40 people in the building.")])
+    candidate = search["candidates"][0]
+    assessment = accepted("timely", "supports", "p1", "root_1", "2026-11-04T00:00:00Z")
+    assessment["candidate_id"] = candidate["candidate_id"]
+    result = aggregate_verification(c, [assessment], as_of_utc="2026-11-05T00:00:00Z", search_complete=True)
+    assessment["assessed_at_utc"] = "2026-11-06T00:00:00Z"
+
+    paths = export_verification_package(search, [assessment], result, tmp_path)
+    row = json.loads(paths["assessments"].read_text())
+    assert row["as_of_projection"]["included_in_verification"] is False
+    assert row["as_of_projection"]["exclusion_reason"] == "assessment_payload_mismatch"

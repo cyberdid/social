@@ -1,0 +1,21 @@
+{
+  "as_of_utc": "2026-11-08T17:50:00Z",
+  "audience_group_count": 0,
+  "citation_count": 2,
+  "finding_count": 1,
+  "git_commit": null,
+  "incident_id": "petropavlivska-borshchahivka-2026-11",
+  "input_sha256": "f34153c06d7309ab0cce6c0ee361b4e73764cabca0aa77896230a7a3cf16e1ec",
+  "limitations": [
+    "This quality report does not measure whether a source semantically entails a proposition.",
+    "Finding completeness is limited by the supplied evidence corpus and upstream retrieval coverage."
+  ],
+  "output_sha256": {
+    "findings.jsonl": "c08388ce358faa0b081bcce064b900333c62f1c0efded758e505a63c8aaec128",
+    "incident_report.md": "609aab35da114063558ebb0722a84adc204ba7826eb415b4851680e07eb5f5d0",
+    "report_quality.json": "6898087539352596a3439e209e833a7873299cc154a8489b32271ab135d45ecf"
+  },
+  "producer": "social.analysis.report_generator@1.0",
+  "run_id": "source-attributed-mvs-quote-2026-11-08",
+  "schema_version": "1.0"
+}

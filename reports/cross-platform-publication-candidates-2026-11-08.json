@@ -1,0 +1,282 @@
+{
+  "schema_version": "1.0",
+  "analysis_as_of_utc": "2026-11-08T06:34:57Z",
+  "incident_id": "petropavlivska-borshchahivka-2026-11",
+  "window_start_utc": "2026-11-02T09:00:00Z",
+  "window_end_utc": "2026-11-05T10:31:42.738963Z",
+  "timezone": "Europe/Kyiv",
+  "bin_hours": 6,
+  "platforms": {
+    "telegram": {
+      "publication_records": 1438,
+      "channels": 158,
+      "selection": "1,438 relevant posts in the targeted Telegram panel from the case-run input",
+      "first_observed_publication_time_utc": "2026-11-02T10:41:03Z",
+      "publication_time_semantics": "collected Telegram message publication timestamps"
+    },
+    "youtube": {
+      "publication_records": 408,
+      "channels": 180,
+      "selection": "lexical metadata selection (toponym in title/description): 444 candidates, then exact IncidentSpec window intersection",
+      "candidates_before_window_intersection": 444,
+      "excluded_outside_window": 36,
+      "first_observed_publication_time_utc": "2026-11-02T15:50:15Z",
+      "publication_time_semantics": "yt-dlp timestamp field recorded by collector; not independently adjudicated"
+    },
+    "tiktok": {
+      "publication_records": 19,
+      "channels": 18,
+      "candidate_links_total": 42,
+      "video_posts_with_platform_timestamp": 21,
+      "photo_posts_without_platform_timestamp": 21,
+      "timestamped_posts_outside_window": 2,
+      "selection": "42 user-supplied direct links; 21 video records had yt-dlp create_time/createTime metadata and 21 photo records had no platform timestamp; 19 timestamped videos fall within the IncidentSpec window",
+      "first_observed_publication_time_utc": "2026-11-02T17:29:41+00:00",
+      "publication_time_semantics": "yt-dlp TikTok create_time/createTime metadata recorded as platform publication timestamp; not filming time and not independently adjudicated",
+      "metadata_source_file": "reports/tiktok/publication-event-filming-times-20261106.csv"
+    }
+  },
+  "publication_bins": [
+    {
+      "bin_start_utc": "2026-11-02T10:00:00Z",
+      "bin_end_utc": "2026-11-02T16:00:00Z",
+      "telegram": {
+        "posts": 155,
+        "channels": 58
+      },
+      "youtube": {
+        "posts": 1,
+        "channels": 1
+      },
+      "tiktok": {
+        "posts": 0,
+        "channels": 0
+      }
+    },
+    {
+      "bin_start_utc": "2026-11-02T16:00:00Z",
+      "bin_end_utc": "2026-11-02T22:00:00Z",
+      "telegram": {
+        "posts": 511,
+        "channels": 98
+      },
+      "youtube": {
+        "posts": 60,
+        "channels": 34
+      },
+      "tiktok": {
+        "posts": 5,
+        "channels": 5
+      }
+    },
+    {
+      "bin_start_utc": "2026-11-02T22:00:00Z",
+      "bin_end_utc": "2026-11-03T04:00:00Z",
+      "telegram": {
+        "posts": 37,
+        "channels": 26
+      },
+      "youtube": {
+        "posts": 15,
+        "channels": 13
+      },
+      "tiktok": {
+        "posts": 2,
+        "channels": 2
+      }
+    },
+    {
+      "bin_start_utc": "2026-11-03T04:00:00Z",
+      "bin_end_utc": "2026-11-03T10:00:00Z",
+      "telegram": {
+        "posts": 128,
+        "channels": 77
+      },
+      "youtube": {
+        "posts": 54,
+        "channels": 40
+      },
+      "tiktok": {
+        "posts": 1,
+        "channels": 1
+      }
+    },
+    {
+      "bin_start_utc": "2026-11-03T10:00:00Z",
+      "bin_end_utc": "2026-11-03T16:00:00Z",
+      "telegram": {
+        "posts": 270,
+        "channels": 92
+      },
+      "youtube": {
+        "posts": 99,
+        "channels": 66
+      },
+      "tiktok": {
+        "posts": 2,
+        "channels": 2
+      }
+    },
+    {
+      "bin_start_utc": "2026-11-03T16:00:00Z",
+      "bin_end_utc": "2026-11-03T22:00:00Z",
+      "telegram": {
+        "posts": 84,
+        "channels": 58
+      },
+      "youtube": {
+        "posts": 82,
+        "channels": 64
+      },
+      "tiktok": {
+        "posts": 5,
+        "channels": 5
+      }
+    },
+    {
+      "bin_start_utc": "2026-11-03T22:00:00Z",
+      "bin_end_utc": "2026-11-04T04:00:00Z",
+      "telegram": {
+        "posts": 2,
+        "channels": 2
+      },
+      "youtube": {
+        "posts": 5,
+        "channels": 5
+      },
+      "tiktok": {
+        "posts": 0,
+        "channels": 0
+      }
+    },
+    {
+      "bin_start_utc": "2026-11-04T04:00:00Z",
+      "bin_end_utc": "2026-11-04T10:00:00Z",
+      "telegram": {
+        "posts": 37,
+        "channels": 31
+      },
+      "youtube": {
+        "posts": 19,
+        "channels": 16
+      },
+      "tiktok": {
+        "posts": 0,
+        "channels": 0
+      }
+    },
+    {
+      "bin_start_utc": "2026-11-04T10:00:00Z",
+      "bin_end_utc": "2026-11-04T16:00:00Z",
+      "telegram": {
+        "posts": 107,
+        "channels": 57
+      },
+      "youtube": {
+        "posts": 30,
+        "channels": 24
+      },
+      "tiktok": {
+        "posts": 3,
+        "channels": 3
+      }
+    },
+    {
+      "bin_start_utc": "2026-11-04T16:00:00Z",
+      "bin_end_utc": "2026-11-04T22:00:00Z",
+      "telegram": {
+        "posts": 71,
+        "channels": 52
+      },
+      "youtube": {
+        "posts": 38,
+        "channels": 29
+      },
+      "tiktok": {
+        "posts": 1,
+        "channels": 1
+      }
+    },
+    {
+      "bin_start_utc": "2026-11-04T22:00:00Z",
+      "bin_end_utc": "2026-11-05T04:00:00Z",
+      "telegram": {
+        "posts": 4,
+        "channels": 4
+      },
+      "youtube": {
+        "posts": 0,
+        "channels": 0
+      },
+      "tiktok": {
+        "posts": 0,
+        "channels": 0
+      }
+    },
+    {
+      "bin_start_utc": "2026-11-05T04:00:00Z",
+      "bin_end_utc": "2026-11-05T10:00:00Z",
+      "telegram": {
+        "posts": 29,
+        "channels": 22
+      },
+      "youtube": {
+        "posts": 5,
+        "channels": 5
+      },
+      "tiktok": {
+        "posts": 0,
+        "channels": 0
+      }
+    },
+    {
+      "bin_start_utc": "2026-11-05T10:00:00Z",
+      "bin_end_utc": "2026-11-05T16:00:00Z",
+      "telegram": {
+        "posts": 3,
+        "channels": 3
+      },
+      "youtube": {
+        "posts": 0,
+        "channels": 0
+      },
+      "tiktok": {
+        "posts": 0,
+        "channels": 0
+      }
+    }
+  ],
+  "excluded_temporal_indicators": {
+    "instagram": {
+      "shortcodes": 199,
+      "inside_window_by_id_estimate": 119,
+      "platform_timestamps_obtained": 0,
+      "reason_excluded": "ID-derived estimates only; no captions or metrics were obtained"
+    }
+  },
+  "lineage": {
+    "cross_platform_source_edges_supplied": 0,
+    "inferred_edges": 0
+  },
+  "interpretation_limits": [
+    "Counts describe platform-specific candidate panels, not full platform activity or public attention.",
+    "Selection methods differ by platform; volumes and channel counts are not directly comparable as coverage or prevalence.",
+    "Publication timestamps do not establish event time, filming time, causation, or which platform initiated the wave.",
+    "TikTok and YouTube timestamps are extractor metadata; their provenance is recorded, but the timestamps were not independently adjudicated.",
+    "No source-lineage edges were supplied across platforms.",
+    "View counters, comments, audience size, and unique reach are not compared.",
+    "YouTube inclusion is lexical metadata selection, not manual video-content validation; TikTok uses a user-supplied candidate-link set."
+  ],
+  "inputs": {
+    "telegram_information_posts_sha256": "a1240963e20691743d72efcb3a0446c777c60c3e4ec162adaf4f4c0a9c0cf95c",
+    "youtube_videos_jsonl_sha256": "271252858438010c604ff24b506b0bf40c4525ecc7577b9a249f85b38cb383aa",
+    "youtube_selection_csv_sha256": "d368bcb3c8ead8ccaac215a8b7ee594dc6a86916f0bf240939f4af36eb3bbdd6",
+    "analysis_module_sha256": "0378ad15cbc432e29f1a24c9b0c18ecc649fed472dfd42aae3fe14125d92d2ad",
+    "tiktok_publication_times_csv_sha256": "219295ade4430ef804e7f0b4c93141a8112706a85353420bfb96f83bfcbe6f8d",
+    "tiktok_publication_times_csv_path": "reports/tiktok/publication-event-filming-times-20261106.csv",
+    "tiktok_source_metadata_response_bundle_sha256": "c453f9ffd5bcba0a938e2ff7e9f2611aa5e445e941bc05daac1388d44041046f",
+    "tiktok_timestamp_extraction_module_sha256": "9a0af5bbba52f4d396fe897230585e92107e99c0f6068f20408a7855920abeac",
+    "tiktok_timestamp_source_files_exactly_matched": 21
+  },
+  "window_boundary_note": "Displayed bins are local-time-aligned six-hour intervals serialized in UTC. The first displayed non-empty bin begins at 2026-11-02T10:00:00Z; the window begins at 09:00Z with no selected records in the preceding hour. The final bin ends at 16:00Z but is truncated by the IncidentSpec window at 2026-11-05T10:31:42.738963Z."
+}

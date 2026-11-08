@@ -6,6 +6,10 @@ default-looking username, has_photo, name length bucket). No names, usernames or
 
 Usage: python src/tg_comments_collect.py continuation_20261105 [--max-per-post 3000]
 Out:   data/raw/telegram_comments/<UTC>/comments.jsonl, threads.jsonl, manifest.json
+
+Reaction fields preserve the legacy integer `reactions` plus typed aggregate
+`reaction_breakdown`, `reaction_state`, and `reaction_observed_at`. Reactor
+identities are never serialized; `MessageReactions.min` is marked incomplete.
 """
 import argparse
 import asyncio
@@ -58,6 +62,46 @@ def sender_features(s):
     return {"sender_type": type(s).__name__}
 
 
+def serialize_reaction_snapshot(reactions, observed_at_utc):
+    """Serialize aggregate reaction counts without retaining reactor identities."""
+    if reactions is None:
+        return {
+            "legacy_total": 0,
+            "reaction_breakdown": None,
+            "reaction_state": "not_reported",
+            "reaction_observed_at": observed_at_utc,
+        }
+
+    breakdown = []
+    for result in getattr(reactions, "results", None) or []:
+        reaction = result.reaction
+        if isinstance(reaction, types.ReactionEmoji):
+            kind, key = "emoji", reaction.emoticon
+        elif isinstance(reaction, types.ReactionCustomEmoji):
+            kind, key = "custom_emoji", f"document:{int(reaction.document_id)}"
+        elif isinstance(reaction, types.ReactionPaid):
+            kind, key = "paid", "paid"
+        else:
+            kind, key = "unknown", type(reaction).__name__
+
+        count = result.count
+        if type(count) is not int or count < 0:
+            raise ValueError("reaction count must be a non-negative integer")
+        breakdown.append({"kind": kind, "key": key, "count": count})
+
+    total = sum(row["count"] for row in breakdown)
+    if bool(getattr(reactions, "min", False)):
+        state = "current_user_excluded"
+    else:
+        state = "available" if breakdown else "empty"
+    return {
+        "legacy_total": total,
+        "reaction_breakdown": breakdown,
+        "reaction_state": state,
+        "reaction_observed_at": observed_at_utc,
+    }
+
+
 async def main_async(a):
     e = env()
     key = salt()
@@ -86,6 +130,8 @@ async def main_async(a):
                         continue
                     s = await m.get_sender()
                     sid = utils.get_peer_id(m.from_id) if m.from_id else (utils.get_peer_id(m.peer_id) if m.post else None)
+                    fetched_at = datetime.now(timezone.utc).isoformat()
+                    reaction_snapshot = serialize_reaction_snapshot(m.reactions, fetched_at)
                     rec = {"post_url": p["url"], "channel": p["channel"], "post_msg_id": p["msg_id"],
                            "discussion_chat": pseudo("chat", utils.get_peer_id(m.peer_id), key), "comment_id": m.id,
                            "date": m.date.isoformat(), "edit_date": m.edit_date.isoformat() if m.edit_date else None,
@@ -93,9 +139,12 @@ async def main_async(a):
                            "reply_to_comment": getattr(m.reply_to, "reply_to_msg_id", None),
                            "is_top_level": getattr(m.reply_to, "reply_to_top_id", None) is None,
                            "forwarded": m.fwd_from is not None,
-                           "reactions": sum(r.count for r in m.reactions.results) if m.reactions and m.reactions.results else 0,
+                           "reactions": reaction_snapshot["legacy_total"],
+                           "reaction_breakdown": reaction_snapshot["reaction_breakdown"],
+                           "reaction_state": reaction_snapshot["reaction_state"],
+                           "reaction_observed_at": reaction_snapshot["reaction_observed_at"],
                            "sender": pseudo("acct", sid, key) if sid else None, **sender_features(s),
-                           "fetched_at": datetime.now(timezone.utc).isoformat()}
+                           "fetched_at": fetched_at}
                     fc.write(json.dumps(rec, ensure_ascii=False) + "\n")
                     n += 1
                 th["status"] = "capped" if n >= a.max_per_post else "complete"
