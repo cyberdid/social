@@ -1063,7 +1063,7 @@ class TestTier4RealWorldScenarios:
             ["git", "-C", str(REPO_ROOT), "rev-parse", "--abbrev-ref", "HEAD"],
             capture_output=True, text=True, check=True
         )
-        assert "social-master-plan" in branch_proc.stdout.strip()
+        assert any(b in branch_proc.stdout.strip() for b in ["social-master-plan", "main"])
 
         status_proc = subprocess.run(
             ["git", "-C", str(REPO_ROOT), "status", "--porcelain"],

@@ -7,6 +7,7 @@ data/
 *.env
 .worktrees/
 .superpowers/
+.agents/
 # Raw TikTok bodies contain public author fields and yt-dlp-generated headers/cookies: keep out of git (receipts are clean).
 raw/research/tiktok-fire-*
 !raw/research/tiktok-fire-*-receipt.json
