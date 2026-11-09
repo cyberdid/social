@@ -14,24 +14,25 @@
 
 У попередньому автоматизованому звіті від 8 листопада 2026 року (`reports/automated-case-run-2026-11-08/event_reconstruction_summary.json`) було зафіксовано **0 фізичних подій** при наявності 574 комунікаційних згадок. Це було прямим наслідком відсутності структурованих часових меж інциденту (`earliest_utc` / `latest_utc`) та суворої архітектурної заборони підміняти час фізичної події часом публікації допису.
 
-У цьому звіті реалізовано повноцінну реконструкцію **5 послідовних фізичних епізодів конфлікту**, чітко розмежованих із комунікаційним шаром повідомлень.
+Цей звіт упорядковує **5 фізичних згадок про епізоди конфлікту**, які аналітик вручну відібрав і сформулював за переліченими повідомленнями джерел. Скрипт детерміновано структурує ці задані згадки; цей результат не є результатом автоматичного виявлення подій із первинних текстів, дописів або медіа. Часові інтервали можуть перетинатися й не означають, що кожен епізод був окремою послідовною дією.
 
 ### Ключові архітектурні принципи:
-1. **Суворе онтологічне розділення:** Фізичний шар (`timelines.physical`) будується виключно на подіях із типом `event_kind: physical` та верифікованими часовими інтервалами. Комунікаційний шар (`timelines.communication`) базується на часі публікації (`publication_time_utc`). Час публікацій ні за яких умов не підставляється замість фізичного часу.
+1. **Суворе онтологічне розділення:** Фізичний шар (`timelines.physical`) містить лише задані аналітиком згадки `event_kind: physical` з наведеними у джерелах часовими межами. Межі є кураторською нормалізацією тверджень джерел, а не незалежним підтвердженням фактичного часу. Комунікаційний шар (`timelines.communication`) базується на часі публікації (`publication_time_utc`), який не підставляється замість часу фізичної події.
 2. **Дескриптивний некаузальний порядок:** Відношення `before` або `overlaps` відображають виключно взаємне розташування часових інтервалів і маркуються як `causal: false`. Часова послідовність не є доказом причинно-наслідкового зв'язку.
-3. **Ізоляція сторонньої пожежі через негативні обмеження (`cannot_link`):** Окрема пожежа складського приміщення в Бучанському районі в ніч на 5 листопада 2026 року (внаслідок ворожої дронової атаки) жорстко відокремлена від подій 2 листопада у Петропавлівській Борщагівці через відношення `cannot_link`. Спроби дезінформаційних каналів поєднати ці локації унеможливлені на рівні онтології.
+3. **Межі корпусу через негативні обмеження (`cannot_link`):** Згадка про окрему пожежу складського приміщення у Бучанському районі внесена до кураторського переліку як інший інцидент і відокремлена від фізичних згадок про події 2 листопада. Обмеження зберігають це задане розділення, але не є автоматичним виявленням помилкових тверджень чи мотивів їх поширення.
+4. **Якісні evidence tiers:** `corroborated_multi_source` означає сумісну підтримку кількома згадками джерел; `official_proceedings` означає, що опис є в офіційних або судових матеріалах. Це категорії виду підстави, а не ранжування істинності чи калібровані ймовірності.
 
 ---
 
 ## 2. Структурована хронологія фізичних подій (`timelines.physical`)
 
-| № | Ідентифікатор | Часовий інтервал (UTC) | Київський час | Локація | Рівень впевненості |
+| № | Ідентифікатор | Часовий інтервал (UTC) | Київський час | Локація | Якісний рівень доказової підтримки |
 |---|---|---|---|---|---|
-| **Епізод 1** | `phys_ev_01_ambulance_arrival_street` | `2026-11-02T09:00:00Z` … `2026-11-02T10:40:00Z` | Ранок 2 листопада 2026 року, орієнтовно 11:00–12:40 за київським часом (до появи перших повідомлень у соцмережах) | `place:petropavlivska_borshchahivka_street` | **corroborated_multi_source (0.8)** |
-| **Епізод 2** | `phys_ev_02_building_perimeter_clash` | `2026-11-02T11:00:00Z` … `2026-11-02T15:30:00Z` | День 2 листопада 2026 року, 13:00–17:30 за київським часом | `place:petropavlivska_borshchahivka_building` | **corroborated_multi_source (0.8)** |
-| **Епізод 3** | `phys_ev_03_law_enforcement_arrival_bus_block` | `2026-11-02T14:30:00Z` … `2026-11-02T18:00:00Z` | Друга половина дня 2 листопада 2026 року, 16:30–20:00 за київським часом | `place:petropavlivska_borshchahivka_building` | **official_proceedings (0.9)** |
-| **Епізод 4** | `phys_ev_04_pyrotechnics_and_flares_escalation` | `2026-11-02T18:00:00Z` … `2026-11-02T20:30:00Z` | Вечір 2 листопада 2026 року, 20:00–22:30 за київським часом | `place:petropavlivska_borshchahivka_building` | **corroborated_multi_source (0.8)** |
-| **Епізод 5** | `phys_ev_05_containment_and_detention` | `2026-11-02T20:30:00Z` … `2026-11-03T00:30:00Z` | Ніч з 2 на 3 листопада 2026 року, 22:30–02:30 за київським часом (приблизне часове вікно) | `place:petropavlivska_borshchahivka_building` | **official_proceedings (0.9)** |
+| **Згадка 1** | `phys_ev_01_ambulance_arrival_street` | `2026-11-02T09:00:00Z` … `2026-11-02T10:40:00Z` | Ранок 2 листопада 2026 року, орієнтовно 11:00–12:40 за київським часом (до появи перших повідомлень у соцмережах) | `place:petropavlivska_borshchahivka_street` | **corroborated_multi_source** |
+| **Згадка 2** | `phys_ev_02_building_perimeter_clash` | `2026-11-02T11:00:00Z` … `2026-11-02T15:30:00Z` | День 2 листопада 2026 року, 13:00–17:30 за київським часом | `place:petropavlivska_borshchahivka_building` | **corroborated_multi_source** |
+| **Згадка 3** | `phys_ev_03_law_enforcement_arrival_bus_block` | `2026-11-02T14:30:00Z` … `2026-11-02T18:00:00Z` | Друга половина дня 2 листопада 2026 року, 16:30–20:00 за київським часом | `place:petropavlivska_borshchahivka_building` | **official_proceedings** |
+| **Згадка 4** | `phys_ev_04_pyrotechnics_and_flares_escalation` | `2026-11-02T18:00:00Z` … `2026-11-02T20:30:00Z` | Вечір 2 листопада 2026 року, 20:00–22:30 за київським часом | `place:petropavlivska_borshchahivka_building` | **corroborated_multi_source** |
+| **Згадка 5** | `phys_ev_05_containment_and_detention` | `2026-11-02T20:30:00Z` … `2026-11-03T00:30:00Z` | Ніч з 2 на 3 листопада 2026 року, 22:30–02:30 за київським часом (приблизне часове вікно) | `place:petropavlivska_borshchahivka_building` | **official_proceedings** |
 
 ---
 
@@ -50,10 +51,10 @@
 - **Першоджерела:**
   - [https://kv.npu.gov.ua/news/shchodo-podii-u-seli-petropavlivska-borshchahivka-na-kyivshchyni](https://kv.npu.gov.ua/news/shchodo-podii-u-seli-petropavlivska-borshchahivka-na-kyivshchyni)
   - [https://suspilne.media/kyiv/1446145-suticki-v-borsanivci-sud-obirae-zapobiznij-cetvertij-pidozruvanij/](https://suspilne.media/kyiv/1446145-suticki-v-borsanivci-sud-obirae-zapobiznij-cetvertij-pidozruvanij/)
-- **Просторові позиції учасників (Participant Positions):**
-  - *Зона `outside_street`:* `person:valentyna_moloda`, `person:viktor_yena`, `vehicle:ambulance_med_prestige` (впевненість: `high`)
-  - *Зона `inside_building`:* `group:ngu_servicemembers_26` (впевненість: `high`)
-- **Оцінка достовірності:** `corroborated_multi_source` (бал: `0.8`) — *Офіційне повідомлення ГУНП в Київській області (дзвінок медиків приватної швидкої) та судові матеріали*
+- **Просторові позиції учасників за згаданими джерелами (Participant Positions):**
+  - *Зона `outside_street`:* `person:valentyna_moloda`, `person:viktor_yena`, `vehicle:ambulance_med_prestige`
+  - *Зона `inside_building`:* `group:ngu_servicemembers_26`
+- **Якісний рівень доказової підтримки:** `corroborated_multi_source` — *Офіційне повідомлення ГУНП про виклик приватної швидкої та судові матеріали, описані Суспільним, узгоджуються щодо учасників і первинного прибуття; час тут є інтервалом із формулювання джерел, а не окремим вимірюванням.*
 - **Негативні обмеження (`cannot_link`):** `phys_ev_05_containment_and_detention`, `phys_ev_bucha_warehouse_fire_0511`
 
 ### 3.2. Епізод 2: Сутички біля огорожі та приміщення тимчасового пункту розміщення НГУ, спроби силового проникнення та пошкодження майна
@@ -69,10 +70,10 @@
 - **Першоджерела:**
   - [https://mvs.gov.ua/news/u-ministerstvi-vnutrisnix-sprav-ukrayini-vidbuvsia-brifing-shhodo-podii-na-kiyivshhini](https://mvs.gov.ua/news/u-ministerstvi-vnutrisnix-sprav-ukrayini-vidbuvsia-brifing-shhodo-podii-na-kiyivshhini)
   - [https://suspilne.media/kyiv/1446145-suticki-v-borsanivci-sud-obirae-zapobiznij-cetvertij-pidozruvanij/](https://suspilne.media/kyiv/1446145-suticki-v-borsanivci-sud-obirae-zapobiznij-cetvertij-pidozruvanij/)
-- **Просторові позиції учасників (Participant Positions):**
-  - *Зона `perimeter_fence`:* `group:protesters_crowd`, `person:ivan_parshonkov` (впевненість: `high`)
-  - *Зона `inside_building`:* `group:ngu_servicemembers_26` (впевненість: `high`)
-- **Оцінка достовірності:** `corroborated_multi_source` (бал: `0.8`) — *Брифінг керівництва МВС / командувача НГУ Півненка та матеріали судового засідання щодо Паршонкова*
+- **Просторові позиції учасників за згаданими джерелами (Participant Positions):**
+  - *Зона `perimeter_fence`:* `group:protesters_crowd`, `person:ivan_parshonkov`
+  - *Зона `inside_building`:* `group:ngu_servicemembers_26`
+- **Якісний рівень доказової підтримки:** `corroborated_multi_source` — *Брифінг МВС і командувача НГУ описує сутички біля будівлі; судові матеріали щодо Паршонкова стосуються пошкодження майна. Підстава підтримує згадку про зіткнення, але не встановлює кожну дію кожної присутньої особи.*
 - **Негативні обмеження (`cannot_link`):** `phys_ev_bucha_warehouse_fire_0511`
 
 ### 3.3. Епізод 3: Прибуття підрозділів поліції та Нацгвардії на місце події, оточення території та блокування натовпом службового автобуса з військовослужбовцями
@@ -88,11 +89,11 @@
 - **Першоджерела:**
   - [https://hromadske.ua/kryminal/273906-sud-obyraye-zapobiznyy-zakhid-22-richniy-zintsi-iaka-brala-uchast-u-sutychkakh-u-sofiyivskiy-borshchahivtsi](https://hromadske.ua/kryminal/273906-sud-obyraye-zapobiznyy-zakhid-22-richniy-zintsi-iaka-brala-uchast-u-sutychkakh-u-sofiyivskiy-borshchahivtsi)
   - [https://kv.npu.gov.ua/news/politseiski-kyivshchyny-vstanovyly-ponad-130-osib](https://kv.npu.gov.ua/news/politseiski-kyivshchyny-vstanovyly-ponad-130-osib)
-- **Просторові позиції учасників (Participant Positions):**
-  - *Зона `street_cordon`:* `org:national_police_kyiv`, `org:national_guard_ukraine` (впевненість: `high`)
-  - *Зона `around_service_bus`:* `person:valeria_ladyka`, `group:protesters_crowd` (впевненість: `high`)
-  - *Зона `inside_bus`:* `group:ngu_servicemembers_26` (впевненість: `high`)
-- **Оцінка достовірності:** `official_proceedings` (бал: `0.9`) — *Судова ухвала Солом'янського райсуду м. Києва щодо Ладики (ч. 1 ст. 114-1 ККУ), трансляція 24 каналу*
+- **Просторові позиції учасників за згаданими джерелами (Participant Positions):**
+  - *Зона `street_cordon`:* `org:national_police_kyiv`, `org:national_guard_ukraine`
+  - *Зона `around_service_bus`:* `person:valeria_ladyka`, `group:protesters_crowd`
+  - *Зона `inside_bus`:* `group:ngu_servicemembers_26`
+- **Якісний рівень доказової підтримки:** `official_proceedings` — *Судова ухвала Солом'янського райсуду щодо Ладики описує обставини затримання; повідомлення Нацполіції про понад 130 осіб і відеоматеріал 24 каналу дають окремі згадки про присутність поліції та службового автобуса.*
 - **Негативні обмеження (`cannot_link`):** `phys_ev_bucha_warehouse_fire_0511`
 
 ### 3.4. Епізод 4: Застосування піротехнічних засобів, запалювання фаєрів та задимлення біля будівлі під час вечірньої ескалації конфлікту
@@ -108,11 +109,11 @@
 - **Першоджерела:**
   - [https://ngu.gov.ua/shturm-kativni-pid-vybuhy-shahediv-yak-fejk-pro-40-zaruchnykiv-pereris-u-zavorushennya-v-petropavlivskij-borshhagivczi/](https://ngu.gov.ua/shturm-kativni-pid-vybuhy-shahediv-yak-fejk-pro-40-zaruchnykiv-pereris-u-zavorushennya-v-petropavlivskij-borshhagivczi/)
   - [https://t.me/BorshchagovkaNews/21859](https://t.me/BorshchagovkaNews/21859)
-- **Просторові позиції учасників (Participant Positions):**
-  - *Зона `perimeter_and_street`:* `group:protesters_crowd` (впевненість: `high`)
-  - *Зона `defensive_line`:* `org:national_police_kyiv`, `org:national_guard_ukraine` (впевненість: `high`)
-  - *Зона `inside_building`:* `group:ngu_servicemembers_26` (впевненість: `high`)
-- **Оцінка достовірності:** `corroborated_multi_source` (бал: `0.8`) — *Синхронізовані Telegram-відеозаписи фаєрів о 18:08 UTC та офіційне повідомлення НГУ про отруєння чадним димом 4 бійців*
+- **Просторові позиції учасників за згаданими джерелами (Participant Positions):**
+  - *Зона `perimeter_and_street`:* `group:protesters_crowd`
+  - *Зона `defensive_line`:* `org:national_police_kyiv`, `org:national_guard_ukraine`
+  - *Зона `inside_building`:* `group:ngu_servicemembers_26`
+- **Якісний рівень доказової підтримки:** `corroborated_multi_source` — *Відео BorshchagovkaNews, опубліковане о 18:08 UTC, показує фаєри й дим; повідомлення НГУ стосується отруєння димом чотирьох бійців, але не ідентифікує того, хто запалив фаєри.*
 - **Негативні обмеження (`cannot_link`):** `phys_ev_bucha_warehouse_fire_0511`
 
 ### 3.5. Епізод 5: Локалізація конфлікту зведеними силами правоохоронців, розблокування проїзду, евакуація військовослужбовців та затримання активних правопорушників
@@ -128,10 +129,10 @@
 - **Першоджерела:**
   - [https://mvs.gov.ua/news/u-ministerstvi-vnutrisnix-sprav-ukrayini-vidbuvsia-brifing-shhodo-podii-na-kiyivshhini](https://mvs.gov.ua/news/u-ministerstvi-vnutrisnix-sprav-ukrayini-vidbuvsia-brifing-shhodo-podii-na-kiyivshhini)
   - [https://ngu.gov.ua/shturm-kativni-pid-vybuhy-shahediv-yak-fejk-pro-40-zaruchnykiv-pereris-u-zavorushennya-v-petropavlivskij-borshhagivczi/](https://ngu.gov.ua/shturm-kativni-pid-vybuhy-shahediv-yak-fejk-pro-40-zaruchnykiv-pereris-u-zavorushennya-v-petropavlivskij-borshhagivczi/)
-- **Просторові позиції учасників (Participant Positions):**
-  - *Зона `building_exit_corridor`:* `group:ngu_servicemembers_26`, `org:national_guard_ukraine` (впевненість: `high`)
-  - *Зона `street_detention_sector`:* `org:national_police_kyiv`, `person:valentyna_moloda` (впевненість: `high`)
-- **Оцінка достовірності:** `official_proceedings` (бал: `0.9`) — *Офіційний пресреліз НГУ, брифінг МВС та судові рішення про затримання*
+- **Просторові позиції учасників за згаданими джерелами (Participant Positions):**
+  - *Зона `building_exit_corridor`:* `group:ngu_servicemembers_26`, `org:national_guard_ukraine`
+  - *Зона `street_detention_sector`:* `org:national_police_kyiv`, `person:valentyna_moloda`
+- **Якісний рівень доказової підтримки:** `official_proceedings` — *Пресреліз НГУ та брифінг МВС описують локалізацію конфлікту й евакуацію; судові рішення стосуються затримань. Часова межа залишається широким нічним інтервалом.*
 - **Негативні обмеження (`cannot_link`):** `phys_ev_01_ambulance_arrival_street`, `phys_ev_bucha_warehouse_fire_0511`
 
 ---
@@ -160,7 +161,7 @@
 2. **Об'єкт 2 (Складська пожежа 4–5 листопада):** Бучанський район (Софіївська Борщагівка). Складське приміщення, загоряння якого сталося внаслідок ворожої атаки ударними БПЛА Shahed у ніч на 5 листопада (зафіксовано у повідомленнях начальника Київської ОВА о 00:03 та Борщагівської сільради о 00:17 05.11).
 
 ### 5.2. Негативні обмеження (`cannot_link`)
-Для запобігання будь-якому алгоритмічному або аналітичному об'єднанню цих подій для всіх 5 фізичних епізодів інциденту сформульовано жорсткі негативні обмеження:
+Щоб зберегти задані аналітиком межі інциденту, для фізичних згадок сформульовано негативні обмеження:
 
 ```json
 [
@@ -223,6 +224,8 @@
 
 ## 7. Обмеження та методологічні застереження
 
+- This is an analyst-curated reconstruction from the companion source-event mention list; the script organizes supplied mentions and does not discover events in source material.
+- Evidence tiers are qualitative analyst judgments grounded in each listed basis; they are not calibrated probabilities or truth scores.
 - This deterministic module organizes supplied event mentions; it does not extract events from raw text.
 - Exact entity identifiers, not names or fuzzy similarity, are required for candidate matching.
 - No causal relation is inferred from temporal order.
@@ -231,8 +234,9 @@
 
 ## 8. Верифікаційний висновок
 
-- [x] Створено структурований фізичний таймлайн із **5 послідовних фізичних подій**.
-- [x] Кожна фізична подія має валідовані часові інтервали (`earliest_utc` / `latest_utc`), рівень впевненості та геопросторові позиції учасників.
+- [x] Структуровано **5 фізичних згадок, кураторськи відібраних аналітиком із повідомлень джерел**; скрипт не виконує автоматичного виявлення подій.
+- [x] Часові інтервали пройшли перевірку формату; вони передають нормалізовані межі, наведені у джерелах, і можуть перетинатися.
+- [x] Для фізичних згадок наведено якісний рівень доказової підтримки з описом його підстави; це не калібровані ймовірності.
 - [x] Забезпечено математичну незалежність фізичного часу від часу публікацій.
-- [x] Сформульовано 5 негативних обмежень (`cannot_link`), що надійно ізолюють складську пожежу в Бучанському районі.
+- [x] Сформульовано 5 явних обмежень (`cannot_link`), що зберігають складську пожежу в Бучанському районі як окрему кураторську згадку.
 - [x] Результуючий JSON успішно пройшов валідацію за схемою `schemas/event_reconstruction.schema.json` v1.0.

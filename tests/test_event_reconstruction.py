@@ -347,8 +347,8 @@ def test_physical_event_timeline_2026_11_09_artifact_verification():
         relations = ev.get("attributed_relations", [])
         position_relations = [r for r in relations if r.get("type") == "participant_position"]
         assert len(position_relations) >= 1, f"Missing participant positions for {cid}"
-        confidence_relations = [r for r in relations if r.get("type") == "confidence_assessment"]
-        assert len(confidence_relations) >= 1, f"Missing confidence assessment for {cid}"
+        evidence_assessments = [r for r in relations if r.get("type") == "evidence_assessment"]
+        assert len(evidence_assessments) >= 1, f"Missing evidence assessment for {cid}"
 
     # Negative constraints (cannot_link) isolating Bucha warehouse fire
     unresolved_constraints = data["unresolved_constraints"]
@@ -375,3 +375,47 @@ def test_physical_event_timeline_2026_11_09_artifact_verification():
     assert "phys_ev_01_ambulance_arrival_street" in md_text
     assert "phys_ev_bucha_warehouse_fire_0511" in md_text
     assert "cannot_link" in md_text
+
+
+def test_physical_timeline_uses_analyst_curated_qualitative_evidence_tiers():
+    root = Path(__file__).resolve().parents[1]
+    source_path = root / "reports/event-reconstruction/source_event_mentions_2026-11-09.jsonl"
+    result_path = root / "reports/event-reconstruction/physical_event_timeline_2026-11-09.json"
+    report_path = root / "reports/event-reconstruction/physical_event_timeline_2026-11-09.md"
+
+    source_mentions = [
+        json.loads(line)
+        for line in source_path.read_text(encoding="utf-8").splitlines()
+        if line.strip()
+    ]
+    result = json.loads(result_path.read_text(encoding="utf-8"))
+
+    physical_mentions = [mention for mention in source_mentions if mention["event_kind"] == "physical"]
+    assert len(physical_mentions) == 5
+    for mention in physical_mentions:
+        assessments = [
+            relation
+            for relation in mention.get("attributed_relations", [])
+            if relation.get("type") == "evidence_assessment"
+        ]
+        assert len(assessments) == 1
+        assessment = assessments[0]
+        assert "confidence_score" not in assessment
+        assert "confidence_level" not in assessment
+        assert assessment.get("evidence_tier") in {
+            "corroborated_multi_source",
+            "official_proceedings",
+        }
+        assert len(assessment.get("basis", "").strip()) >= 30
+
+    for event in result["events"]:
+        for relation in event.get("attributed_relations", []):
+            assert "confidence_score" not in relation
+            assert "confidence_level" not in relation
+            assert "confidence" not in relation
+
+    assert any("analyst-curated reconstruction" in item for item in result["limitations"])
+    report = report_path.read_text(encoding="utf-8").lower()
+    assert "аналітик вручну" in report
+    assert "не є результатом автоматичного виявлення подій" in report
+    assert "калібровані ймовірності" in report

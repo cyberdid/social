@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
-"""Build structured Physical Event Timeline strictly decoupled from communication timeline.
+"""Render an analyst-curated physical event timeline from supplied source mentions.
 
+This script organizes a fixed, analyst-curated list of event mentions. It does
+not discover events from raw reports, posts, or media.
 Milestone M2 / Track 2 (GATE-02) of Social Master Plan v2.0.
 """
 from __future__ import annotations
@@ -22,7 +24,7 @@ SOURCE_MENTIONS_PATH = OUTPUT_DIR / "source_event_mentions_2026-11-09.jsonl"
 
 
 def get_raw_event_mentions() -> list[dict]:
-    """Define the structured event mentions for Petropavlivska Borshchahivka incident reconstruction."""
+    """Return analyst-curated event mentions and their source-based evidence notes."""
     return [
         {
             "event_mention_id": "phys_ev_01_ambulance_arrival_street",
@@ -55,20 +57,16 @@ def get_raw_event_mentions() -> list[dict]:
                     "type": "participant_position",
                     "spatial_zone": "outside_street",
                     "entity_ids": ["person:valentyna_moloda", "person:viktor_yena", "vehicle:ambulance_med_prestige"],
-                    "confidence": "high",
                 },
                 {
                     "type": "participant_position",
                     "spatial_zone": "inside_building",
                     "entity_ids": ["group:ngu_servicemembers_26"],
-                    "confidence": "high",
                 },
                 {
-                    "type": "confidence_assessment",
-                    "confidence_tier": "corroborated_multi_source",
-                    "confidence_level": "corroborated_multi_source",
-                    "confidence_score": 0.80,
-                    "basis": "Офіційне повідомлення ГУНП в Київській області (дзвінок медиків приватної швидкої) та судові матеріали",
+                    "type": "evidence_assessment",
+                    "evidence_tier": "corroborated_multi_source",
+                    "basis": "Офіційне повідомлення ГУНП про виклик приватної швидкої та судові матеріали, описані Суспільним, узгоджуються щодо учасників і первинного прибуття; час тут є інтервалом із формулювання джерел, а не окремим вимірюванням.",
                 },
             ],
         },
@@ -105,20 +103,16 @@ def get_raw_event_mentions() -> list[dict]:
                     "type": "participant_position",
                     "spatial_zone": "perimeter_fence",
                     "entity_ids": ["group:protesters_crowd", "person:ivan_parshonkov"],
-                    "confidence": "high",
                 },
                 {
                     "type": "participant_position",
                     "spatial_zone": "inside_building",
                     "entity_ids": ["group:ngu_servicemembers_26"],
-                    "confidence": "high",
                 },
                 {
-                    "type": "confidence_assessment",
-                    "confidence_tier": "corroborated_multi_source",
-                    "confidence_level": "corroborated_multi_source",
-                    "confidence_score": 0.80,
-                    "basis": "Брифінг керівництва МВС / командувача НГУ Півненка та матеріали судового засідання щодо Паршонкова",
+                    "type": "evidence_assessment",
+                    "evidence_tier": "corroborated_multi_source",
+                    "basis": "Брифінг МВС і командувача НГУ описує сутички біля будівлі; судові матеріали щодо Паршонкова стосуються пошкодження майна. Підстава підтримує згадку про зіткнення, але не встановлює кожну дію кожної присутньої особи.",
                 },
             ],
         },
@@ -156,26 +150,21 @@ def get_raw_event_mentions() -> list[dict]:
                     "type": "participant_position",
                     "spatial_zone": "street_cordon",
                     "entity_ids": ["org:national_police_kyiv", "org:national_guard_ukraine"],
-                    "confidence": "high",
                 },
                 {
                     "type": "participant_position",
                     "spatial_zone": "around_service_bus",
                     "entity_ids": ["person:valeria_ladyka", "group:protesters_crowd"],
-                    "confidence": "high",
                 },
                 {
                     "type": "participant_position",
                     "spatial_zone": "inside_bus",
                     "entity_ids": ["group:ngu_servicemembers_26"],
-                    "confidence": "high",
                 },
                 {
-                    "type": "confidence_assessment",
-                    "confidence_tier": "official_proceedings",
-                    "confidence_level": "official_proceedings",
-                    "confidence_score": 0.90,
-                    "basis": "Судова ухвала Солом'янського райсуду м. Києва щодо Ладики (ч. 1 ст. 114-1 ККУ), трансляція 24 каналу",
+                    "type": "evidence_assessment",
+                    "evidence_tier": "official_proceedings",
+                    "basis": "Судова ухвала Солом'янського райсуду щодо Ладики описує обставини затримання; повідомлення Нацполіції про понад 130 осіб і відеоматеріал 24 каналу дають окремі згадки про присутність поліції та службового автобуса.",
                 },
             ],
         },
@@ -212,26 +201,21 @@ def get_raw_event_mentions() -> list[dict]:
                     "type": "participant_position",
                     "spatial_zone": "perimeter_and_street",
                     "entity_ids": ["group:protesters_crowd"],
-                    "confidence": "high",
                 },
                 {
                     "type": "participant_position",
                     "spatial_zone": "defensive_line",
                     "entity_ids": ["org:national_police_kyiv", "org:national_guard_ukraine"],
-                    "confidence": "high",
                 },
                 {
                     "type": "participant_position",
                     "spatial_zone": "inside_building",
                     "entity_ids": ["group:ngu_servicemembers_26"],
-                    "confidence": "high",
                 },
                 {
-                    "type": "confidence_assessment",
-                    "confidence_tier": "corroborated_multi_source",
-                    "confidence_level": "corroborated_multi_source",
-                    "confidence_score": 0.80,
-                    "basis": "Синхронізовані Telegram-відеозаписи фаєрів о 18:08 UTC та офіційне повідомлення НГУ про отруєння чадним димом 4 бійців",
+                    "type": "evidence_assessment",
+                    "evidence_tier": "corroborated_multi_source",
+                    "basis": "Відео BorshchagovkaNews, опубліковане о 18:08 UTC, показує фаєри й дим; повідомлення НГУ стосується отруєння димом чотирьох бійців, але не ідентифікує того, хто запалив фаєри.",
                 },
             ],
         },
@@ -269,20 +253,16 @@ def get_raw_event_mentions() -> list[dict]:
                     "type": "participant_position",
                     "spatial_zone": "building_exit_corridor",
                     "entity_ids": ["group:ngu_servicemembers_26", "org:national_guard_ukraine"],
-                    "confidence": "high",
                 },
                 {
                     "type": "participant_position",
                     "spatial_zone": "street_detention_sector",
                     "entity_ids": ["org:national_police_kyiv", "person:valentyna_moloda"],
-                    "confidence": "high",
                 },
                 {
-                    "type": "confidence_assessment",
-                    "confidence_tier": "official_proceedings",
-                    "confidence_level": "official_proceedings",
-                    "confidence_score": 0.90,
-                    "basis": "Офіційний пресреліз НГУ, брифінг МВС та судові рішення про затримання",
+                    "type": "evidence_assessment",
+                    "evidence_tier": "official_proceedings",
+                    "basis": "Пресреліз НГУ та брифінг МВС описують локалізацію конфлікту й евакуацію; судові рішення стосуються затримань. Часова межа залишається широким нічним інтервалом.",
                 },
             ],
         },
@@ -381,7 +361,7 @@ def get_raw_event_mentions() -> list[dict]:
 
 
 def generate_markdown_report(result: dict) -> str:
-    """Generate comprehensive analytical markdown report from reconstruction result."""
+    """Generate a report that distinguishes curated mentions from source findings."""
     lines = [
         "# Реконструкція фізичного інциденту: с. Петропавлівська Борщагівка (2 листопада 2026 року)",
         "## Структурована хронологія фізичних подій, делімітація та аналіз обмежень",
@@ -399,18 +379,19 @@ def generate_markdown_report(result: dict) -> str:
         "",
         "У попередньому автоматизованому звіті від 8 листопада 2026 року (`reports/automated-case-run-2026-11-08/event_reconstruction_summary.json`) було зафіксовано **0 фізичних подій** при наявності 574 комунікаційних згадок. Це було прямим наслідком відсутності структурованих часових меж інциденту (`earliest_utc` / `latest_utc`) та суворої архітектурної заборони підміняти час фізичної події часом публікації допису.",
         "",
-        "У цьому звіті реалізовано повноцінну реконструкцію **5 послідовних фізичних епізодів конфлікту**, чітко розмежованих із комунікаційним шаром повідомлень.",
+        "Цей звіт упорядковує **5 фізичних згадок про епізоди конфлікту**, які аналітик вручну відібрав і сформулював за переліченими повідомленнями джерел. Скрипт детерміновано структурує ці задані згадки; цей результат не є результатом автоматичного виявлення подій із первинних текстів, дописів або медіа. Часові інтервали можуть перетинатися й не означають, що кожен епізод був окремою послідовною дією.",
         "",
         "### Ключові архітектурні принципи:",
-        "1. **Суворе онтологічне розділення:** Фізичний шар (`timelines.physical`) будується виключно на подіях із типом `event_kind: physical` та верифікованими часовими інтервалами. Комунікаційний шар (`timelines.communication`) базується на часі публікації (`publication_time_utc`). Час публікацій ні за яких умов не підставляється замість фізичного часу.",
+        "1. **Суворе онтологічне розділення:** Фізичний шар (`timelines.physical`) містить лише задані аналітиком згадки `event_kind: physical` з наведеними у джерелах часовими межами. Межі є кураторською нормалізацією тверджень джерел, а не незалежним підтвердженням фактичного часу. Комунікаційний шар (`timelines.communication`) базується на часі публікації (`publication_time_utc`), який не підставляється замість часу фізичної події.",
         "2. **Дескриптивний некаузальний порядок:** Відношення `before` або `overlaps` відображають виключно взаємне розташування часових інтервалів і маркуються як `causal: false`. Часова послідовність не є доказом причинно-наслідкового зв'язку.",
-        "3. **Ізоляція сторонньої пожежі через негативні обмеження (`cannot_link`):** Окрема пожежа складського приміщення в Бучанському районі в ніч на 5 листопада 2026 року (внаслідок ворожої дронової атаки) жорстко відокремлена від подій 2 листопада у Петропавлівській Борщагівці через відношення `cannot_link`. Спроби дезінформаційних каналів поєднати ці локації унеможливлені на рівні онтології.",
+        "3. **Межі корпусу через негативні обмеження (`cannot_link`):** Згадка про окрему пожежу складського приміщення у Бучанському районі внесена до кураторського переліку як інший інцидент і відокремлена від фізичних згадок про події 2 листопада. Обмеження зберігають це задане розділення, але не є автоматичним виявленням помилкових тверджень чи мотивів їх поширення.",
+        "4. **Якісні evidence tiers:** `corroborated_multi_source` означає сумісну підтримку кількома згадками джерел; `official_proceedings` означає, що опис є в офіційних або судових матеріалах. Це категорії виду підстави, а не ранжування істинності чи калібровані ймовірності.",
         "",
         "---",
         "",
         "## 2. Структурована хронологія фізичних подій (`timelines.physical`)",
         "",
-        "| № | Ідентифікатор | Часовий інтервал (UTC) | Київський час | Локація | Рівень впевненості |",
+        "| № | Ідентифікатор | Часовий інтервал (UTC) | Київський час | Локація | Якісний рівень доказової підтримки |",
         "|---|---|---|---|---|---|",
     ]
 
@@ -418,12 +399,12 @@ def generate_markdown_report(result: dict) -> str:
     for idx, row in enumerate(result["timelines"]["physical"], start=1):
         ev = physical_events_map[row["event_id"]]
         time_info = ev["event_time"]
-        conf = "high (0.90+)"
+        tier = "не зазначено"
         for rel in ev.get("attributed_relations", []):
-            if rel.get("type") == "confidence_assessment":
-                conf = f"{rel.get('confidence_tier', rel.get('confidence_level'))} ({rel.get('confidence_score')})"
+            if rel.get("type") == "evidence_assessment":
+                tier = rel.get("evidence_tier", tier)
         lines.append(
-            f"| **Епізод {idx}** | `{row['event_mention_id']}` | `{row['earliest_utc']}` … `{row['latest_utc']}` | {time_info.get('raw_value')} | `{ev.get('place_id')}` | **{conf}** |"
+            f"| **Згадка {idx}** | `{row['event_mention_id']}` | `{row['earliest_utc']}` … `{row['latest_utc']}` | {time_info.get('raw_value')} | `{ev.get('place_id')}` | **{tier}** |"
         )
 
     lines.extend([
@@ -453,16 +434,16 @@ def generate_markdown_report(result: dict) -> str:
         for src in ev.get("source_refs", []):
             lines.append(f"  - [{src}]({src})")
 
-        lines.append("- **Просторові позиції учасників (Participant Positions):**")
+        lines.append("- **Просторові позиції учасників за згаданими джерелами (Participant Positions):**")
         for rel in ev.get("attributed_relations", []):
             if rel.get("type") == "participant_position":
                 actors_str = ", ".join(f"`{x}`" for x in rel.get("entity_ids", []))
-                lines.append(f"  - *Зона `{rel.get('spatial_zone')}`:* {actors_str} (впевненість: `{rel.get('confidence')}`)")
+                lines.append(f"  - *Зона `{rel.get('spatial_zone')}`:* {actors_str}")
 
         for rel in ev.get("attributed_relations", []):
-            if rel.get("type") == "confidence_assessment":
-                tier_str = rel.get("confidence_tier", rel.get("confidence_level"))
-                lines.append(f"- **Оцінка достовірності:** `{tier_str}` (бал: `{rel.get('confidence_score')}`) — *{rel.get('basis')}*")
+            if rel.get("type") == "evidence_assessment":
+                tier = rel.get("evidence_tier", "не зазначено")
+                lines.append(f"- **Якісний рівень доказової підтримки:** `{tier}` — *{rel.get('basis')}*")
 
         lines.append(f"- **Негативні обмеження (`cannot_link`):** {', '.join(f'`{c}`' for c in ev['cannot_link_event_mention_ids'])}")
         lines.append("")
@@ -499,7 +480,7 @@ def generate_markdown_report(result: dict) -> str:
         "2. **Об'єкт 2 (Складська пожежа 4–5 листопада):** Бучанський район (Софіївська Борщагівка). Складське приміщення, загоряння якого сталося внаслідок ворожої атаки ударними БПЛА Shahed у ніч на 5 листопада (зафіксовано у повідомленнях начальника Київської ОВА о 00:03 та Борщагівської сільради о 00:17 05.11).",
         "",
         "### 5.2. Негативні обмеження (`cannot_link`)",
-        "Для запобігання будь-якому алгоритмічному або аналітичному об'єднанню цих подій для всіх 5 фізичних епізодів інциденту сформульовано жорсткі негативні обмеження:",
+        "Щоб зберегти задані аналітиком межі інциденту, для фізичних згадок сформульовано негативні обмеження:",
         "",
         "```json",
         json.dumps(result["unresolved_constraints"], ensure_ascii=False, indent=2),
@@ -540,10 +521,11 @@ def generate_markdown_report(result: dict) -> str:
         "",
         "## 8. Верифікаційний висновок",
         "",
-        "- [x] Створено структурований фізичний таймлайн із **5 послідовних фізичних подій**.",
-        "- [x] Кожна фізична подія має валідовані часові інтервали (`earliest_utc` / `latest_utc`), рівень впевненості та геопросторові позиції учасників.",
+        "- [x] Структуровано **5 фізичних згадок, кураторськи відібраних аналітиком із повідомлень джерел**; скрипт не виконує автоматичного виявлення подій.",
+        "- [x] Часові інтервали пройшли перевірку формату; вони передають нормалізовані межі, наведені у джерелах, і можуть перетинатися.",
+        "- [x] Для фізичних згадок наведено якісний рівень доказової підтримки з описом його підстави; це не калібровані ймовірності.",
         "- [x] Забезпечено математичну незалежність фізичного часу від часу публікацій.",
-        "- [x] Сформульовано 5 негативних обмежень (`cannot_link`), що надійно ізолюють складську пожежу в Бучанському районі.",
+        "- [x] Сформульовано 5 явних обмежень (`cannot_link`), що зберігають складську пожежу в Бучанському районі як окрему кураторську згадку.",
         "- [x] Результуючий JSON успішно пройшов валідацію за схемою `schemas/event_reconstruction.schema.json` v1.0.",
         "",
     ])
@@ -572,6 +554,11 @@ def main() -> None:
         "git_commit": "9019afd896e57729acf5f20e07151b4e1437ad0a",
     }
     result = reconstruct_timeline(raw_mentions, run_context=run_context)
+    result["limitations"] = [
+        "This is an analyst-curated reconstruction from the companion source-event mention list; the script organizes supplied mentions and does not discover events in source material.",
+        "Evidence tiers are qualitative analyst judgments grounded in each listed basis; they are not calibrated probabilities or truth scores.",
+        *result["limitations"],
+    ]
 
     # Validate against JSON schema
     validate_document(result, "event_reconstruction.schema.json")
