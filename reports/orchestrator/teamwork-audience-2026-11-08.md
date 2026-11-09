@@ -3,7 +3,7 @@
 **Date:** 8 November 2026  
 **Author:** Worker M4 (Audience and W14 Analyst), Social Master Plan Closeout  
 **Component:** W14 — Audience Response Intelligence Engine  
-**Working Directory:** `/home/cyberdid/Projects/Social/.worktrees/social-master-plan`  
+**Working Directory:** `$SOCIAL_REPO_ROOT`<br>
 **Reference Specs & Reviews:**
 - Specification: `docs/specs/audience-response-v1.md`
 - Core Modules: `src/analysis/audience_aggregation.py`, `src/analysis/audience_response_contracts.py`, `src/analysis/audience_response_reporting.py`, `src/analysis/telegram_reaction_snapshots.py`
@@ -94,7 +94,7 @@ The live parity check conducted on 8 November 2026 through the authorized user s
 - **Sample:** 10 public comments across 3 linked discussion threads.
 - **Collector vs API:** 10/10 collector-serialized rows matched the live `messages.getMessagesReactions` vector byte-for-byte in canonical ordering.
 - **State Observed:** 10/10 observed in `available` state.
-- **Private Receipt:** Maintained at `/home/cyberdid/Downloads/SocialIncidentAnalysis/audience-response/telegram-reaction-parity-10-2026-11-08/private_snapshots.jsonl` (file mode `0600`, dir mode `0700`, SHA-256 `aca8d40e9e6fc306ee7f9830ac937b0d81916b3acf157cf0a5051b14e42945df`).
+- **Private Receipt:** Maintained at `$SOCIAL_ANALYSIS_ROOT/audience-response/telegram-reaction-parity-10-2026-11-08/private_snapshots.jsonl` (file mode `0600`, dir mode `0700`, SHA-256 `aca8d40e9e6fc306ee7f9830ac937b0d81916b3acf157cf0a5051b14e42945df`).
 - **Scope Limit:** This convenience sample verified live parity for `available` states in 3 threads. It does NOT establish empirical parity for `empty`, `current_user_excluded`, or rate-limited states across the remaining 530 threads.
 
 ### 3.4. Repeat-Snapshot Feasibility & Quota Analysis

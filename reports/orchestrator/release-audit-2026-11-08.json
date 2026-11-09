@@ -752,7 +752,7 @@
   "test_suite_verification": {
     "runner": "pytest",
     "environment": "Python 3.12.3 / 3.13.14 (.venv)",
-    "command": "PYTHONPATH=. /home/cyberdid/Projects/Social/.venv/bin/pytest",
+    "command": "PYTHONPATH=. $SOCIAL_REPO_ROOT/.venv/bin/pytest",
     "passed": 671,
     "subtests_passed": 16,
     "status": "passed"

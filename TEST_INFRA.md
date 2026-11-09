@@ -118,29 +118,29 @@ Verifies system-level operational integrity in production-like contexts:
 
 1. **Run the Full E2E Test Suite**:
    ```bash
-   cd /home/cyberdid/Projects/Social/.worktrees/social-master-plan
-   PYTHONPATH=. /home/cyberdid/Projects/Social/.venv/bin/pytest tests/e2e/ -v
+   cd $SOCIAL_REPO_ROOT
+   PYTHONPATH=. $SOCIAL_REPO_ROOT/.venv/bin/pytest tests/e2e/ -v
    ```
 
 2. **Run by Specific Tier**:
    ```bash
    # Tier 1 (Feature Coverage)
-   PYTHONPATH=. /home/cyberdid/Projects/Social/.venv/bin/pytest tests/e2e/ -k "TestTier1FeatureCoverage"
+   PYTHONPATH=. $SOCIAL_REPO_ROOT/.venv/bin/pytest tests/e2e/ -k "TestTier1FeatureCoverage"
 
    # Tier 2 (Boundary & Corner Cases)
-   PYTHONPATH=. /home/cyberdid/Projects/Social/.venv/bin/pytest tests/e2e/ -k "TestTier2BoundaryAndCornerCases"
+   PYTHONPATH=. $SOCIAL_REPO_ROOT/.venv/bin/pytest tests/e2e/ -k "TestTier2BoundaryAndCornerCases"
 
    # Tier 3 (Cross-Feature Combinations)
-   PYTHONPATH=. /home/cyberdid/Projects/Social/.venv/bin/pytest tests/e2e/ -k "TestTier3CrossFeatureCombinations"
+   PYTHONPATH=. $SOCIAL_REPO_ROOT/.venv/bin/pytest tests/e2e/ -k "TestTier3CrossFeatureCombinations"
 
    # Tier 4 (Real-World Scenarios)
-   PYTHONPATH=. /home/cyberdid/Projects/Social/.venv/bin/pytest tests/e2e/ -k "TestTier4RealWorldScenarios"
+   PYTHONPATH=. $SOCIAL_REPO_ROOT/.venv/bin/pytest tests/e2e/ -k "TestTier4RealWorldScenarios"
    ```
 
 3. **Run Full Repository Test Suite (Unit, Integration, and E2E)**:
    ```bash
-   cd /home/cyberdid/Projects/Social/.worktrees/social-master-plan
-   PYTHONPATH=. /home/cyberdid/Projects/Social/.venv/bin/pytest
+   cd $SOCIAL_REPO_ROOT
+   PYTHONPATH=. $SOCIAL_REPO_ROOT/.venv/bin/pytest
    ```
 
 ---

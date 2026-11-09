@@ -3,7 +3,7 @@
 **Milestone:** M6 (Integration, Master Plan Update, and Final Closeout) / Requirement R6  
 **Lead Closeout Agent:** Worker M6 (Integrator and Lead Closeout Agent)  
 **Date:** 2026-11-08  
-**Working Directory:** `/home/cyberdid/Projects/Social/.worktrees/social-master-plan`  
+**Working Directory:** `$SOCIAL_REPO_ROOT`<br>
 **Git Branch:** `codex/social-master-plan` (Commit `bb8e019c...` baseline)  
 **Final Closeout Verdict:** **NOT COMPLETE — НЕ ЗАВЕРШЕНО (Locally Verified & Hardened / Empirically Open Bounded Case)**  
 **Integrity Mandate Compliance:** 100% Genuine Implementation. Zero hardcoding of test assertions, zero facade implementations, zero simulated verifications.
@@ -156,10 +156,10 @@ The following matrix provides the definitive, evidence-backed status for all pro
   7. `reports/automated-case-run-2026-11-08/claim_retrieval_summary.json`: `625` bytes, SHA-256 `69827dbe4aff455ea3771ddf1974d6414b7fa4897c5917bf19c24fb4a9252ab9`
 
 ### 5.3. Raw ASR Immutability & Sidecar Receipts
-- **Raw ASR Path:** `/home/cyberdid/Downloads/SocialIncidentVideos/telegram/analysis/asr-bulk-20261108/telegram_text_observations.jsonl`
+- **Raw ASR Path:** `$SOCIAL_MEDIA_ROOT/telegram/analysis/asr-bulk-20261108/telegram_text_observations.jsonl`
 - **File Size & SHA-256:** `10,462,222` bytes, `987ee53ff56a477e86347509786ed5d1bc7f5e908bb18037c202bb023ff43912`, mode `0600`.
 - **Directory Mode:** Hardened to `0700` (`drwx------`).
-- **Correction Sidecar Path:** `/home/cyberdid/Downloads/SocialIncidentVideos/telegram/analysis/asr-correction-second-pass-20261108/correction_candidates.jsonl`
+- **Correction Sidecar Path:** `$SOCIAL_MEDIA_ROOT/telegram/analysis/asr-correction-second-pass-20261108/correction_candidates.jsonl`
 - **Sidecar Size & SHA-256:** `9,634` bytes, `cfcf8ec7bffc2585ff3545141c8d34b12ba7ef71b9709b2b0b6b66060594cad3`, mode `0600`.
 
 ---
@@ -168,8 +168,8 @@ The following matrix provides the definitive, evidence-backed status for all pro
 
 ### 6.1. E2E Test Suite Execution
 ```bash
-cd /home/cyberdid/Projects/Social/.worktrees/social-master-plan
-PYTHONPATH=. /home/cyberdid/Projects/Social/.venv/bin/pytest tests/e2e/ -q
+cd $SOCIAL_REPO_ROOT
+PYTHONPATH=. $SOCIAL_REPO_ROOT/.venv/bin/pytest tests/e2e/ -q
 ```
 **Output:**
 ```
@@ -179,8 +179,8 @@ PYTHONPATH=. /home/cyberdid/Projects/Social/.venv/bin/pytest tests/e2e/ -q
 
 ### 6.2. Full Repository Test Suite Execution
 ```bash
-cd /home/cyberdid/Projects/Social/.worktrees/social-master-plan
-PYTHONPATH=. /home/cyberdid/Projects/Social/.venv/bin/pytest tests/ -q
+cd $SOCIAL_REPO_ROOT
+PYTHONPATH=. $SOCIAL_REPO_ROOT/.venv/bin/pytest tests/ -q
 ```
 **Output:**
 ```

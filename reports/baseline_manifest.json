@@ -25,28 +25,28 @@
       "sha256": "4a491a90bd138844120f17968c29a7bb0ee68129fe89c3460c6bf7ac8383f251"
     },
     {
-      "path": "/home/cyberdid/Projects/Social/data/processed/20261105T101013Z+20261105T102914Z/posts_clean.jsonl",
+      "path": "$SOCIAL_REPO_ROOT/data/processed/20261105T101013Z+20261105T102914Z/posts_clean.jsonl",
       "scope": "external_local_input",
       "status": "present",
       "size_bytes": 55105209,
       "sha256": "d229d8618021cf285f24c712eb9cd37ca85eb0e8bee2d8a7f74b6e7c574cda3f"
     },
     {
-      "path": "/home/cyberdid/Projects/Social/data/raw/telegram_api/20261105T104252Z/channels.jsonl",
+      "path": "$SOCIAL_REPO_ROOT/data/raw/telegram_api/20261105T104252Z/channels.jsonl",
       "scope": "external_local_input",
       "status": "present",
       "size_bytes": 125339,
       "sha256": "908b935406e11da8d8c39f94b37ac4285a8b2ff14c57315d3722a09fd215f548"
     },
     {
-      "path": "/home/cyberdid/Projects/Social/data/raw/telegram_web/20261105T101013Z/posts.jsonl",
+      "path": "$SOCIAL_REPO_ROOT/data/raw/telegram_web/20261105T101013Z/posts.jsonl",
       "scope": "external_local_input",
       "status": "present",
       "size_bytes": 20390628,
       "sha256": "88948a1b593b2024ffff079585d37eee74948b79b869eab237e1a970b22bb85d"
     },
     {
-      "path": "/home/cyberdid/Downloads/SocialIncidentVideos/pilot/pilot_manifest.jsonl",
+      "path": "$SOCIAL_MEDIA_ROOT/pilot/pilot_manifest.jsonl",
       "scope": "external_local_input",
       "status": "present",
       "size_bytes": 13897,

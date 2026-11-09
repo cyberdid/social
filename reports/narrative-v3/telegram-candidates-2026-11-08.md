@@ -17,9 +17,9 @@ These are candidate counts from an intentionally narrow Ukrainian/Russian vocabu
 
 ## Reproducibility and limitations
 
-- Input: `/home/cyberdid/Projects/Social/data/processed/20261105T101013Z+20261105T102914Z/posts_clean.jsonl`; SHA-256 `d229d8618021cf285f24c712eb9cd37ca85eb0e8bee2d8a7f74b6e7c574cda3f`.
+- Input: `$SOCIAL_REPO_ROOT/data/processed/20261105T101013Z+20261105T102914Z/posts_clean.jsonl`; SHA-256 `d229d8618021cf285f24c712eb9cd37ca85eb0e8bee2d8a7f74b6e7c574cda3f`.
 - Classifier: `src/analysis/narrative_v3.py`; SHA-256 `70eb8db12f3ee0a9d11bc519d712e44e20dfb584681eb692d54b9f9e02112757`.
-- Candidate JSONL remains outside Git at `/home/cyberdid/Downloads/SocialIncidentAnalysis/narrative-v3-2026-11-08/narrative_candidates.jsonl`; SHA-256 `0f936c498b8e985a3f48660bbc2626c3f535bc19fbd9b16bdfbeba6d93bb4267`.
+- Candidate JSONL remains outside Git at `$SOCIAL_ANALYSIS_ROOT/narrative-v3-2026-11-08/narrative_candidates.jsonl`; SHA-256 `0f936c498b8e985a3f48660bbc2626c3f535bc19fbd9b16bdfbeba6d93bb4267`.
 - Only posts marked relevant in the existing snapshot were counted. This does not validate that relevance label.
 - One source row contributes at most one post-level classification. Multi-label topic mentions are not independent observations.
 - `message_span` points to the full source message. The extracted proposition does not yet have a separately validated character-level offset.

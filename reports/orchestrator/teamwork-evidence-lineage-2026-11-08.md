@@ -3,7 +3,7 @@
 **Author:** Worker M2 (Evidence, Claims, and Lineage Reviewer)  
 **Date:** 2026-11-08  
 **Scope:** Read-only empirical audit of Acceptance Gates **P0.2** (Source-to-Finding Trace & Lineage), **P0.3** (Relevance Sampling Audit & Coverage), and **P0.6** (Physical Event Reconstruction & Chronology Bounds).  
-**Repository Working Directory:** `/home/cyberdid/Projects/Social/.worktrees/social-master-plan`  
+**Repository Working Directory:** `$SOCIAL_REPO_ROOT`<br>
 **Compliance Mandate:** Zero fabrication, strict ontological separation of reported claims from physical ground truth, default to `unknown` on absent evidence.
 
 ---
@@ -218,7 +218,7 @@ In accordance with the Integrity Mandate, all unverified empirical questions are
 The domain test suite for M2 modules was executed and confirmed 100% passing:
 
 ```bash
-PYTHONPATH=. /home/cyberdid/Projects/Social/.venv/bin/pytest \
+PYTHONPATH=. $SOCIAL_REPO_ROOT/.venv/bin/pytest \
   tests/test_claim_verification.py \
   tests/test_source_lineage.py \
   tests/test_relevance_sampling_audit_v1.py \
@@ -229,7 +229,7 @@ PYTHONPATH=. /home/cyberdid/Projects/Social/.venv/bin/pytest \
 
 The full repository test suite was executed:
 ```bash
-PYTHONPATH=. /home/cyberdid/Projects/Social/.venv/bin/pytest -q
+PYTHONPATH=. $SOCIAL_REPO_ROOT/.venv/bin/pytest -q
 ```
 **Output:** `671 passed, 16 subtests passed in 5.21s`.
 

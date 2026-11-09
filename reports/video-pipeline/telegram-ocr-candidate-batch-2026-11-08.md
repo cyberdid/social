@@ -14,7 +14,7 @@ These counts describe processing coverage. They do not mean that every frame or 
 | Local frame/audio extraction | `local_extraction.jsonl` | `9d988e67b1ee0d92afdc884aee0c6ae7e68342f8a287cdf2c0e41f202feefb4d` |
 | OCR candidate output | `ocr_candidates.jsonl` | `50f8db18d2b6c5fb124bc4d2396532d25ff5ecddd959d11ffe8724f98df6dfec` |
 
-The OCR producer was `social.analysis.video_text_extract@1.0`. It used Tesseract 5.3.4 with `ukr+rus+eng`, CPU mode, and `int8` compute configuration. The archived input was processed from `/home/cyberdid/Downloads/SocialIncidentVideos/telegram/analysis/20261107T2130Z/local_extraction.jsonl`; the candidate output and receipt are under `/home/cyberdid/Downloads/SocialIncidentVideos/telegram/analysis/20261108T0000Z/`. The raw videos and derived OCR records remain outside the repository.
+The OCR producer was `social.analysis.video_text_extract@1.0`. It used Tesseract 5.3.4 with `ukr+rus+eng`, CPU mode, and `int8` compute configuration. The archived input was processed from `$SOCIAL_MEDIA_ROOT/telegram/analysis/20261107T2130Z/local_extraction.jsonl`; the candidate output and receipt are under `$SOCIAL_MEDIA_ROOT/telegram/analysis/20261108T0000Z/`. The raw videos and derived OCR records remain outside the repository.
 
 The output file's hash is recorded here without copying or quoting recognized text. The external receipt records the same input/output hashes and the software configuration.
 

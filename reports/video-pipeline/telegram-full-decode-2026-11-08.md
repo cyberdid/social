@@ -20,9 +20,9 @@
 
 ## Відтворюваність
 
-- Джерельний manifest: `/home/cyberdid/Downloads/SocialIncidentVideos/telegram/manifest.jsonl`, 806 рядків, SHA-256 `50ef4d23b5c5c064c62cbc9ffd82fdc44feeb7a2f459cd7d1bafae992769057f`.
-- Вхідний manifest одного запису на унікальний hash: `/home/cyberdid/Downloads/SocialIncidentVideos/runs/telegram-full-decode-2026-11-08/unique_index_input.jsonl`, 607 рядків, SHA-256 `bcb90a9e996e9a3c077a92f303625ff8f347027820bdda3fa9d5fffeb04e9c66`.
-- Фінальний технічний індекс: `/home/cyberdid/Downloads/SocialIncidentVideos/runs/telegram-full-decode-2026-11-08/media_index_full_decode.jsonl`, 607 рядків, 2,046,616 bytes, SHA-256 `ae431061fac9b7f7e6ecf3012cd90273e751af0ca3fb01fa02157452b841c43a`.
+- Джерельний manifest: `$SOCIAL_MEDIA_ROOT/telegram/manifest.jsonl`, 806 рядків, SHA-256 `50ef4d23b5c5c064c62cbc9ffd82fdc44feeb7a2f459cd7d1bafae992769057f`.
+- Вхідний manifest одного запису на унікальний hash: `$SOCIAL_MEDIA_ROOT/runs/telegram-full-decode-2026-11-08/unique_index_input.jsonl`, 607 рядків, SHA-256 `bcb90a9e996e9a3c077a92f303625ff8f347027820bdda3fa9d5fffeb04e9c66`.
+- Фінальний технічний індекс: `$SOCIAL_MEDIA_ROOT/runs/telegram-full-decode-2026-11-08/media_index_full_decode.jsonl`, 607 рядків, 2,046,616 bytes, SHA-256 `ae431061fac9b7f7e6ecf3012cd90273e751af0ca3fb01fa02157452b841c43a`.
 - Вихідний каталог має режим `0700`, індекс — `0600`; файли й похідні лишилися поза Git.
 - Використано `src/media_pipeline.py` у strict-decode режимі, ffprobe 6.1.1 і ffmpeg 9.0.2. Раніше зафіксований toolchain receipt: [`pilot/toolchain.json`](pilot/toolchain.json). Поточні тимчасові executable-файли з `/tmp` згодом прибрані середовищем; для окремого повного повторного запуску треба відновити той самий зафіксований toolchain.
 - Під час запуску зупинено надлишковий конкурентний процес; після завершення залишено канонічний індекс із 607 різними записами. Фінальні counts, хеші та розміри перевірено після завершення.

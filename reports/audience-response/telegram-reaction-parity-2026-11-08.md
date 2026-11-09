@@ -24,7 +24,7 @@ The selected 6 November source row belongs to the old 39,598-comment snapshot. N
 
 ## Privacy and reproducibility
 
-- The exact 10-row comparison, including local IDs needed for replay, remains outside Git at `/home/cyberdid/Downloads/SocialIncidentAnalysis/audience-response/telegram-reaction-parity-10-2026-11-08/private_snapshots.jsonl`.
+- The exact 10-row comparison, including local IDs needed for replay, remains outside Git at `$SOCIAL_ANALYSIS_ROOT/audience-response/telegram-reaction-parity-10-2026-11-08/private_snapshots.jsonl`.
 - Private output directory mode: `0700`; snapshot file mode: `0600`.
 - Private snapshot SHA-256: `aca8d40e9e6fc306ee7f9830ac937b0d81916b3acf157cf0a5051b14e42945df`.
 - Content-free execution receipt is stored beside the private row. No text, reactor identities, or peer identifiers were queried or written to the public report.

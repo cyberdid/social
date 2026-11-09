@@ -9,7 +9,7 @@
 > **Майлстоун:** M7 (Track 7: Integration, Master Plan Synthesis & Full Test Suite Pass)  
 > **Головний інтегратор (Owner):** Worker Integrator Lead (`worker_integrator_lead`)  
 > **Ролі:** `implementer`, `qa`  
-> **Робоча директорія:** `/home/cyberdid/Projects/Social`  
+> **Робоча директорія:** `$SOCIAL_REPO_ROOT`<br>
 > **Гілка Git:** `main` (чисте робоче дерево, неруйнівне збереження)  
 > **Підсумковий вердикт закриття:** **COMPLETED & FULLY VERIFIED — ЗАКРИТО ТА ПОВНІСТЮ ВЕРИФІКОВАНО (Autonomous End-to-End Evidence Verification & Analytical Synthesis v2.0)**  
 > **Відповідність мандату доброчесності (Integrity Mandate Compliance):** 100% Genuine Implementation. Нуль захардкодzoneих результатів, нуль фасадних або фіктивних реалізацій, нуль делегування стороннім непрозорим рішенням. Усі математичні розрахунки, інтервальні топології та символьні зрізи перевірено незалежним аудитом.

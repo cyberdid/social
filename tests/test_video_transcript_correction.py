@@ -1,16 +1,22 @@
 import hashlib
 import json
+import os
 from pathlib import Path
 import pytest
 
 from src.contracts import ContractValidationError, validate_document
 
-CANDIDATES_PATH = Path(
-    "/home/cyberdid/Downloads/SocialIncidentVideos/telegram/analysis/asr-correction-second-pass-20261108/correction_candidates.jsonl"
-)
-RAW_ASR_PATH = Path(
-    "/home/cyberdid/Downloads/SocialIncidentVideos/telegram/analysis/asr-bulk-20261108/telegram_text_observations.jsonl"
-)
+SOCIAL_MEDIA_ROOT = Path(
+    os.environ.get("SOCIAL_MEDIA_ROOT", Path.home() / "Downloads" / "SocialIncidentVideos")
+).expanduser()
+CANDIDATES_PATH = Path(os.environ.get(
+    "SOCIAL_ASR_SECOND_PASS_PATH",
+    SOCIAL_MEDIA_ROOT / "telegram/analysis/asr-correction-second-pass-20261108/correction_candidates.jsonl",
+)).expanduser()
+RAW_ASR_PATH = Path(os.environ.get(
+    "SOCIAL_ASR_RAW_PATH",
+    SOCIAL_MEDIA_ROOT / "telegram/analysis/asr-bulk-20261108/telegram_text_observations.jsonl",
+)).expanduser()
 RECEIPT_PATH = Path("reports/video-pipeline/asr-correction-receipt-2026-11-08.json")
 
 EXPECTED_SIDECAR_SHA256 = "cfcf8ec7bffc2585ff3545141c8d34b12ba7ef71b9709b2b0b6b66060594cad3"

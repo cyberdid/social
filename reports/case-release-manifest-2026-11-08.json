@@ -5,7 +5,7 @@
   "release_scope": {
     "incident_id": "petropavlivska-borshchahivka-2026-11",
     "snapshot_date": "2026-11-08",
-    "status": "artifact_inventory_frozen; complete source-to-output replay not established",
+    "status": "historical artifact inventory; path portability normalized 2026-11-09; complete source-to-output replay not established",
     "purpose": "Reader-facing case report and its cited local support, dated source-watch snapshot, and explicit declared methodology appendix.",
     "reader_outputs": [
       "reports/borshchahivka-report.md",
@@ -19,8 +19,8 @@
     {
       "path": "docs/source-watch.md",
       "role": "cited_report_support",
-      "size_bytes": 15322,
-      "sha256": "ba78ac650b48d7eeef5170324bb0aaea239b644e6e0f79e38d9599f0bd7281b3"
+      "size_bytes": 15814,
+      "sha256": "9d8e7718f060916067f6bfe4cbf675d80068dd6d2dd73abcdcd902e6dd3d7b71"
     },
     {
       "path": "output/pdf/manifest-2026-11-08.json",
@@ -133,8 +133,8 @@
     {
       "path": "reports/automated-case-run-2026-11-08/reported-event-reconstruction-2026-11-08/run_receipt.json",
       "role": "supplemental_case_evidence_bundle",
-      "size_bytes": 2127,
-      "sha256": "451b3f2865ed46c43d6683b01e7aec63a2c80e936bf3e5e7a26e94edde9c6359"
+      "size_bytes": 2084,
+      "sha256": "d24a63b5612b1d32c76ed194737200e832cc1dbfd5d6b57490d4957178008557"
     },
     {
       "path": "reports/automated-case-run-2026-11-08/reported-event-reconstruction-2026-11-08/temporal_relations.jsonl",
@@ -229,8 +229,8 @@
     {
       "path": "reports/channel-evidence/masterplan-run-2026-11-08.md",
       "role": "cited_report_support",
-      "size_bytes": 17033,
-      "sha256": "f2f0a5beb924c0b83ec8596861e2daeb699fef4e647fd4da645ee5304c2fc7c6"
+      "size_bytes": 16981,
+      "sha256": "86c3b8bd351242243ee93fe125ffb315e01be3b89d78730394e2c7176fcd7bbf"
     },
     {
       "path": "reports/coordination-null-models-2026-11-06.md",
@@ -265,8 +265,8 @@
     {
       "path": "reports/operations/masterplan-replay-control-2026-11-08/summary.md",
       "role": "cited_report_support",
-      "size_bytes": 843,
-      "sha256": "807e49d408fc61536e44af3dab4299b0079b703bee561569acbf77b7359e7acf"
+      "size_bytes": 817,
+      "sha256": "5c467542ce000eeca846485a01d57698284d1bfb62d5910e651a07fa89b1ce09"
     },
     {
       "path": "reports/orchestrator/masterplan-2026-11-08/run_manifest.json",
@@ -289,8 +289,8 @@
     {
       "path": "reports/source-watch/20261108/latest.json",
       "role": "frozen_dated_source_watch_snapshot",
-      "size_bytes": 123200,
-      "sha256": "aa3acaafaaadf532c0f58ef537f938d63bab420527e8ccd63c8412909c0389f6"
+      "size_bytes": 122856,
+      "sha256": "e0c6ff00ead682aee8c00a9fd477b23a70c17f0272ae33180b9e0d4990978cc3"
     },
     {
       "path": "reports/source-watch/20261108/latest.md",
@@ -349,14 +349,14 @@
     {
       "path": "reports/video-pipeline/asr-correction-review-2026-11-08.md",
       "role": "cited_report_support",
-      "size_bytes": 5349,
-      "sha256": "d959ed2219d96d353796da73e37fd76c109d8c57fdba0421e1da84a2cabc01cd"
+      "size_bytes": 5322,
+      "sha256": "96001173ed8d5edb1e341e0b8a7fa5c34c93bd3d1e74e4448a51dd777c7d94c3"
     },
     {
       "path": "reports/video-pipeline/gemini-keyframe-pilot-2026-11-08.md",
       "role": "cited_report_support",
-      "size_bytes": 3443,
-      "sha256": "325e728f42c390992a85a8d494a64a26e0e41b6a7f08d11968de7632cf4e3976"
+      "size_bytes": 3389,
+      "sha256": "318fb958303d95dece692f2a2a5e1a51c95666acb3b212b8b0cc8407af61d0e6"
     },
     {
       "path": "reports/video-pipeline/telegram-asr-bulk-2026-11-08.md",
@@ -367,14 +367,14 @@
     {
       "path": "reports/video-pipeline/telegram-asr-pilot-2026-11-08.md",
       "role": "cited_report_support",
-      "size_bytes": 2248,
-      "sha256": "bcf98e33008bcdf5371888b3fb09a14500f56845a6979690a1d481a67fb540ba"
+      "size_bytes": 2221,
+      "sha256": "cb2c42a8d42c3cfec0e6dbf8be6415e8cd41aae9185f070474e42d1dc474c4c8"
     },
     {
       "path": "reports/video-pipeline/telegram-full-decode-2026-11-08.md",
       "role": "cited_report_support",
-      "size_bytes": 3899,
-      "sha256": "6e6977eb373158f7e9618d362cf9a77930174c4c99d9adca40e60390496b91c3"
+      "size_bytes": 3818,
+      "sha256": "65f272343fbf8abf732a93899fbb6bc87e78929f747f72f7a3f03be715e6e4b4"
     },
     {
       "path": "reports/youtube-comments/youtube-summary-2026-11-06.md",
@@ -397,8 +397,8 @@
     {
       "path": "wiki/methods/media-matching.md",
       "role": "cited_report_support",
-      "size_bytes": 11143,
-      "sha256": "55e014892b25a1295bd51a592ae484bc1a1d60cb39cfe88b56ff6b325304f483"
+      "size_bytes": 11116,
+      "sha256": "0ccdafd4cc7772702ae552cd2dcabeddde394aefa9b3b4e88aa5ce667aff9d84"
     },
     {
       "path": "wiki/methods/russian-influence-attribution-early-warning.md",
@@ -794,5 +794,11 @@
   "closeout_assessment": {
     "p0_1_baseline_replay": "partial_open",
     "reason": "The package inventory and content-free audit now recheck all 8 historical inputs and all 16 outputs in both the historical and current bounded runs. Full release replay is still open because the execution-time dirty diff and locked dependency environment are unavailable, the historic mutable source-watch input is not equivalent to the frozen snapshot, and the run does not establish semantic truth or complete source-to-report reproduction."
+  },
+  "integrity_refresh": {
+    "refreshed_at_utc": "2026-11-09T12:06:49.678038+00:00",
+    "reason": "Machine-specific absolute paths were normalized to repository-relative locators or documented root placeholders. Checksums and sizes for included artifacts currently present in this checkout were refreshed; original source content and independent replay status were not upgraded.",
+    "updated_artifact_count": 0,
+    "updated_artifacts": []
   }
 }

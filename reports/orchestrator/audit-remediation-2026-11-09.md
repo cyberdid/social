@@ -15,7 +15,7 @@
 | Fire source was mislabeled as a raw official bulletin | Quarantined the manually composed legacy text and replaced the verification passage with a source-attributed Interfax report. | Interfax reported the OVA-head statement and explicitly said the local Sofia location was not officially confirmed at that time. A later village-council post named Sofiaivska. Neither source independently geolocates the supplied TikTok video. See [fire source review](../source-watch/fire-source-review-2026-11-09.md). |
 | Physical timeline had hand-entered decimal confidence scores | Timeline source and report identify it as analyst-curated reconstruction; confidence is expressed as qualitative evidence tiers. | These tiers are not calibrated probabilities and do not make the episode sequence automatically discovered. See [timeline JSON](../event-reconstruction/physical_event_timeline_2026-11-09.json) and its builder. |
 | Master-plan closeout repeated stale results | Marked the original closeout as historical and linked this remediation report. | Old counts and integrity digests describe the earlier snapshot only; use the regenerated matrix and PDF manifest for current outputs. |
-| Absolute local paths reduced portability | Replaced machine-specific ASR and lineage inputs with repository-relative defaults plus `SOCIAL_ASR_RAW_PATH` / `SOCIAL_ASR_SECOND_PASS_PATH`. | Private input files remain outside the repository; builders report when a local checksum comparison cannot be performed. |
+| Absolute local paths reduced portability | Replaced machine-specific home/worktree paths throughout tracked files with repository-relative locators or documented root placeholders. ASR builders and the transcript-integrity tests accept `SOCIAL_ASR_RAW_PATH` / `SOCIAL_ASR_SECOND_PASS_PATH`, with `SOCIAL_MEDIA_ROOT` as the test default. | Private input files remain outside the repository; builders report when a local checksum comparison cannot be performed. Historical reports use placeholders only to retain the source-relative location. See [local path conventions](../../docs/local-path-conventions.md). |
 
 ## Fire-source provenance
 
@@ -23,9 +23,9 @@ The former `data/raw/official_bulletins/kyiv_ova_fire_20261105.txt` was not a ca
 
 ## Scope of the regenerated case report
 
-The 9 November report is generated from `scripts/reports/build_report.py` and JSON/CSV/PNG inputs. Its manifest records the builder and hashes of key inputs; it does not misidentify the separate `reports/borshchahivka-report.md` as the source of the PDF. The generated manifest starts with visual review marked pending; that status is changed only after pages are actually rendered and inspected.
+The 9 November report is generated from `scripts/reports/build_report.py` and JSON/CSV/PNG inputs. Its manifest records the builder and hashes of key inputs; it does not misidentify the separate `reports/borshchahivka-report.md` as the source of the PDF. The builder marks visual review pending; the current manifest was updated only after pages were actually rendered and inspected.
 
-The 6 and 8 November PDFs are preserved as dated historical editions. They are not silently rewritten. The 9 November edition is the corrected current artifact. Its page count, SHA-256, text-extraction result, and visual-review status are recorded in `output/pdf/manifest-2026-11-09.json`.
+The 6 and 8 November PDFs are preserved as dated historical editions. They are not silently rewritten. The corrected 9 November edition has 29 A4 pages, zero text-replacement characters, and SHA-256 `ebc41af9a18eb2b9414149c66523204a4ad4d6b4deb046647797f2a0534bc3d4`. Its input hashes, page count, text-extraction result, and completed visual-review status are recorded in `output/pdf/manifest-2026-11-09.json`.
 
 ## Current verification boundary
 

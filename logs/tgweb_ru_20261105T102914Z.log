@@ -148,4 +148,4 @@
 [148] d1 baltnews                     ok             window=  110 relevant=   3 next=7
 [149] d1 stranaua                     ok             window=  312 relevant=  60 next=7
 [150] d1 rus_demiurge                 ok             window=   42 relevant=   3 next=7
-{"posts": 8456, "relevant": 391} -> /home/cyberdid/Projects/Social/data/raw/telegram_web/20261105T102914Z
+{"posts": 8456, "relevant": 391} -> $SOCIAL_REPO_ROOT/data/raw/telegram_web/20261105T102914Z

@@ -2,7 +2,7 @@
 
 **Document ID:** `reports/orchestrator/teamwork-video-2026-11-08.md`  
 **Milestone:** M3 (Video and Transcript Engineering) / Requirement R3  
-**Working Directory:** `/home/cyberdid/Projects/Social/.worktrees/social-master-plan`  
+**Working Directory:** `$SOCIAL_REPO_ROOT`<br>
 **Execution Timestamp:** 2026-11-08T19:35:00Z  
 **Branch:** `codex/social-master-plan`  
 **Status:** COMPLETE (Technical decode & candidate sidecar verified; Quote safety strictly blocked pending acoustic listening)
@@ -29,7 +29,7 @@ Milestone M3 (Requirement R3) of the Social Master Plan v1.1 closeout establishe
 The local video evidence corpus consists of two authorized collections: Telegram source archives and TikTok public platform downloads.
 
 ### 2.1. Telegram Video Corpus
-- **Manifest Source:** `/home/cyberdid/Downloads/SocialIncidentVideos/telegram/manifest.jsonl` (806 rows, SHA-256 `50ef4d23b5c5c064c62cbc9ffd82fdc44feeb7a2f459cd7d1bafae992769057f`).
+- **Manifest Source:** `$SOCIAL_MEDIA_ROOT/telegram/manifest.jsonl` (806 rows, SHA-256 `50ef4d23b5c5c064c62cbc9ffd82fdc44feeb7a2f459cd7d1bafae992769057f`).
 - **Archive Categorization:** 775 publication records with verified local files, 29 non-video attachments, and 2 metadata-only rows.
 - **Deduplication:** The 775 publication rows resolve to **607 unique media assets** by byte SHA-256, totaling 9,472,884,834 bytes.
 - **Strict Full Decode:** `reports/video-pipeline/telegram-full-decode-2026-11-08.md` documents complete stream decoding of all 607 unique assets:
@@ -66,7 +66,7 @@ The first-pass baseline ASR extraction ran locally on CPU using int8 quantizatio
 
 ### 3.2. Absolute Raw Immutability Guarantee
 In accordance with Rule R3 and PROJECT.md Feature 16:
-- **File Location:** `/home/cyberdid/Downloads/SocialIncidentVideos/telegram/analysis/asr-bulk-20261108/telegram_text_observations.jsonl`.
+- **File Location:** `$SOCIAL_MEDIA_ROOT/telegram/analysis/asr-bulk-20261108/telegram_text_observations.jsonl`.
 - **File Permissions:** `0600` (directory `0700`).
 - **File Byte Size:** `10,462,222 bytes`.
 - **SHA-256 Digest:** `987ee53ff56a477e86347509786ed5d1bc7f5e908bb18037c202bb023ff43912`.
@@ -83,7 +83,7 @@ To evaluate low-confidence incident-related terms without modifying baseline fil
 
 ### 4.1. Correction Candidate Queue Invariants
 The sidecar contains 10 structured correction records stored at:
-- **Sidecar Path:** `/home/cyberdid/Downloads/SocialIncidentVideos/telegram/analysis/asr-correction-second-pass-20261108/correction_candidates.jsonl`
+- **Sidecar Path:** `$SOCIAL_MEDIA_ROOT/telegram/analysis/asr-correction-second-pass-20261108/correction_candidates.jsonl`
 - **Sidecar SHA-256:** `cfcf8ec7bffc2585ff3545141c8d34b12ba7ef71b9709b2b0b6b66060594cad3`
 - **File Mode:** `0600`
 
@@ -147,12 +147,12 @@ A dedicated test suite was implemented in `tests/test_video_transcript_correctio
 
 ### Verification Command & Output
 ```bash
-PYTHONPATH=. /home/cyberdid/Projects/Social/.venv/bin/pytest tests/test_video_*.py tests/test_contracts.py
+PYTHONPATH=. $SOCIAL_REPO_ROOT/.venv/bin/pytest tests/test_video_*.py tests/test_contracts.py
 ```
 ```
 ============================= test session starts ==============================
 platform linux -- Python 3.13.14, pytest-9.2.0, pluggy-1.7.0
-rootdir: /home/cyberdid/Projects/Social/.worktrees/social-master-plan
+rootdir: $SOCIAL_REPO_ROOT
 collected 77 items
 
 tests/test_video_archive_adapter.py .....                                [  6%]

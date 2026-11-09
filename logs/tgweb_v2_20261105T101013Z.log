@@ -103,4 +103,4 @@
 [103] d2 i_vyhivskyi                  ok             window=    1 relevant=   0 next=0
 [104] d2 kyivpasstrans                ok             window=   60 relevant=  12 next=0
 [105] d2 dtek_ua                      ok             window=   32 relevant=   0 next=0
-{"posts": 16379, "relevant": 1353} -> /home/cyberdid/Projects/Social/data/raw/telegram_web/20261105T101013Z
+{"posts": 16379, "relevant": 1353} -> $SOCIAL_REPO_ROOT/data/raw/telegram_web/20261105T101013Z

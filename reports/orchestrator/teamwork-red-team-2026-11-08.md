@@ -4,7 +4,7 @@
 **Milestone:** M5 (Independent Red-Team Review) / Requirement R5  
 **Reviewer Role:** Worker M5 (Independent Adversarial Red-Team Reviewer)  
 **Date:** 2026-11-08  
-**Working Directory:** `/home/cyberdid/Projects/Social/.worktrees/social-master-plan`  
+**Working Directory:** `$SOCIAL_REPO_ROOT`<br>
 **Review Mode:** Strictly READ-ONLY adversarial audit across all project deliverables, receipts, test suites, and documentation.  
 **Integrity Mandate:** Zero simulation, zero fabrication, objective evidence-backed findings with exact file paths and line numbers.
 
@@ -38,7 +38,7 @@ This independent adversarial red-team review provides an unsparing, evidence-dri
 | **RT-FINDING-04** | **MEDIUM** | Evidence vs Claims | `reports/automated-case-run-2026-11-08/event_reconstruction_summary.json:1-20`, `claim_retrieval_summary.json:1-13` | 0 accepted verification results, 0 independent roots, and 0 physical timeline rows (574 unresolved event mentions). |
 | **RT-FINDING-05** | **MEDIUM** | Denominators & Bias | `reports/borshchahivka-report.md:25`, `docs/research/DR2-coordination-statistics-sampling-2026-11-08.md:11,28` | Potential confusion from dual occurrence of integer "367" (367 campaign accounts vs 367 legacy LSH edges revised to 369). |
 | **RT-FINDING-06** | **LOW** | Video & Transcripts | `reports/video-pipeline/asr-correction-receipt-2026-11-08.json:30-45`, `correction_candidates.jsonl:1-10` | 10/10 candidates lack human acoustic review (`quote_safe: false`); 600/607 Telegram video assets remain at unverified first-pass ASR. |
-| **RT-FINDING-07** | **LOW** | Privacy & Permissions | `/home/cyberdid/Downloads/SocialIncidentVideos/telegram/analysis/asr-bulk-20261108` | Directory permissions on raw ASR folder are `0775` rather than `0700`, although internal JSONL file is correctly restricted to `0600`. |
+| **RT-FINDING-07** | **LOW** | Privacy & Permissions | `$SOCIAL_MEDIA_ROOT/telegram/analysis/asr-bulk-20261108` | Directory permissions on raw ASR folder are `0775` rather than `0700`, although internal JSONL file is correctly restricted to `0600`. |
 | **RT-FINDING-08** | **INFORMATIONAL** | Test Suite Counts | `TEST_READY.md:8`, `worker_m1_release/handoff.md:55`, `worker_m2_lineage/handoff.md:52` | Evolution of repository test counts (683 -> 687 -> 745) across milestones must be recorded to explain report variances. |
 
 ---
@@ -137,7 +137,7 @@ This independent adversarial red-team review provides an unsparing, evidence-dri
 ### 3.4. Transcript Quote-Safety & Video Evidence Bounds
 
 #### 3.4.1. Invariant Compliance in Candidate Queue
-- **Locator:** `/home/cyberdid/Downloads/SocialIncidentVideos/telegram/analysis/asr-correction-second-pass-20261108/correction_candidates.jsonl`, `reports/video-pipeline/asr-correction-receipt-2026-11-08.json`.
+- **Locator:** `$SOCIAL_MEDIA_ROOT/telegram/analysis/asr-correction-second-pass-20261108/correction_candidates.jsonl`, `reports/video-pipeline/asr-correction-receipt-2026-11-08.json`.
 - **Audit Verification:**
   - *Sidecar Hash:* SHA-256 `cfcf8ec7bffc2585ff3545141c8d34b12ba7ef71b9709b2b0b6b66060594cad3`, size 9,634 bytes, mode `0600`.
   - *Quote Safety Distribution:* Exactly **10/10 records have `quote_safe: false`** (100%).
@@ -189,9 +189,9 @@ This independent adversarial red-team review provides an unsparing, evidence-dri
 
 #### 3.6.2. Finding RT-FINDING-07 (LOW): File Permissions on Bulk ASR Folder
 - **Observation:**
-  - Raw ASR file `/home/cyberdid/Downloads/SocialIncidentVideos/telegram/analysis/asr-bulk-20261108/telegram_text_observations.jsonl` has correct mode `0600`.
-  - However, the parent directory `/home/cyberdid/Downloads/SocialIncidentVideos/telegram/analysis/asr-bulk-20261108` has directory mode `0775` (group-readable/writable), unlike other private directories which have `0700`.
-- **Remediation:** Enforce `chmod 0700` on `/home/cyberdid/Downloads/SocialIncidentVideos/telegram/analysis/asr-bulk-20261108`.
+  - Raw ASR file `$SOCIAL_MEDIA_ROOT/telegram/analysis/asr-bulk-20261108/telegram_text_observations.jsonl` has correct mode `0600`.
+  - However, the parent directory `$SOCIAL_MEDIA_ROOT/telegram/analysis/asr-bulk-20261108` has directory mode `0775` (group-readable/writable), unlike other private directories which have `0700`.
+- **Remediation:** Enforce `chmod 0700` on `$SOCIAL_MEDIA_ROOT/telegram/analysis/asr-bulk-20261108`.
 
 ---
 
@@ -227,7 +227,7 @@ This independent adversarial red-team review provides an unsparing, evidence-dri
 1. **Reconcile Table 8.2 in Evidence Report:** Update Table 8.2 in `teamwork-evidence-lineage-2026-11-08.md` with the verified on-disk byte sizes and SHA-256 digests identified in `RT-FINDING-01`.
 2. **Preserve Objective Gate Accounting:** Maintain P0.1 as `partial_open`, P0.2 as `partial_open`, P0.3 as `open`, and P0.6 as `open` in `docs/plans/social-master-plan-v1.2.md` and `reports/orchestrator/masterplan-closeout-2026-11-08-final.md`. Do not self-certify unverified gates as closed.
 3. **Disambiguate Integer "367":** Clearly state in Master Plan v1.2 that the 367 user accounts in the Budanov praise comment campaign are distinct from the 367 legacy MinHash-LSH coordination edges (which expanded to 369 in exact sweep).
-4. **Harden Bulk ASR Directory Permissions:** Execute `chmod 0700 /home/cyberdid/Downloads/SocialIncidentVideos/telegram/analysis/asr-bulk-20261108` to align directory permissions with file permissions.
+4. **Harden Bulk ASR Directory Permissions:** Execute `chmod 0700 $SOCIAL_MEDIA_ROOT/telegram/analysis/asr-bulk-20261108` to align directory permissions with file permissions.
 5. **Synchronize Final Test Count:** Document the final test baseline as **745 passed, 16 subtests passed** in `log.md` and closeout documentation.
 
 ---
@@ -236,21 +236,21 @@ This independent adversarial red-team review provides an unsparing, evidence-dri
 
 ### 6.1. Full Repository Test Suite Verification
 ```bash
-cd /home/cyberdid/Projects/Social/.worktrees/social-master-plan
-PYTHONPATH=. /home/cyberdid/Projects/Social/.venv/bin/pytest -q
+cd $SOCIAL_REPO_ROOT
+PYTHONPATH=. $SOCIAL_REPO_ROOT/.venv/bin/pytest -q
 ```
 **Output:** `745 passed, 16 subtests passed in 5.47s` (100% pass rate).
 
 ### 6.2. 4-Tier E2E Test Suite Verification
 ```bash
-cd /home/cyberdid/Projects/Social/.worktrees/social-master-plan
-PYTHONPATH=. /home/cyberdid/Projects/Social/.venv/bin/pytest tests/e2e/ -q
+cd $SOCIAL_REPO_ROOT
+PYTHONPATH=. $SOCIAL_REPO_ROOT/.venv/bin/pytest tests/e2e/ -q
 ```
 **Output:** `58 passed in 0.17s` (100% pass rate).
 
 ### 6.3. Release Manifest On-Disk Verification
 ```bash
-cd /home/cyberdid/Projects/Social/.worktrees/social-master-plan
+cd $SOCIAL_REPO_ROOT
 python3 -c '
 import json, hashlib, os
 with open("reports/case-release-manifest-2026-11-08.json") as f:
@@ -269,6 +269,6 @@ print("All 65 artifacts verified successfully on disk!")
 
 ### 6.4. Raw ASR Immutability Verification
 ```bash
-sha256sum /home/cyberdid/Downloads/SocialIncidentVideos/telegram/analysis/asr-bulk-20261108/telegram_text_observations.jsonl
+sha256sum $SOCIAL_MEDIA_ROOT/telegram/analysis/asr-bulk-20261108/telegram_text_observations.jsonl
 ```
 **Output:** `987ee53ff56a477e86347509786ed5d1bc7f5e908bb18037c202bb023ff43912` (size: `10462222` bytes, mode: `0600`).

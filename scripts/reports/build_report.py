@@ -161,6 +161,11 @@ def table(rows, widths, small=False, repeat=1, header=True, row_heights=None):
     t.setStyle(TableStyle(cmds))
     return t
 
+def fit_image(path, max_width=470):
+    source = Image(str(path))
+    max_height = max_width * source.imageHeight / source.imageWidth
+    return Image(str(path), width=max_width, height=max_height)
+
 class HBars(Flowable):
     def __init__(self, data, width=500, row_h=23, maxval=None, title=None, paired=False):
         Flowable.__init__(self)
@@ -368,7 +373,7 @@ P("Суспільне з посиланням на речницю прокура
 P("Аудит 25 HTTP-спроб виправив помилки адрес МВС, НГУ й Уповноваженого ВРУ; доступні відповіді збережені з хешами. Правильна адреса ДБР мала TLS-помилку: індексований офіційний текст не прирівнюється до прямого завантаження. Реєстр судових рішень не надав потрібних ухвал. Підсумкових актів перевірок МВС/НГУ/омбудсмана не отримано; це стан пошуку. "+cite("D10"))]
 
 story += [H("4. Хронологія події та перевірок",1),
-P("Час нижче київський (UTC+2). Час публікації не тотожний часу події чи зйомки; для соцмережевих даних першенство обмежене корпусом.")]
+P("Час нижче київський (UTC+2). Час публікації не тотожний часу події чи зйомки; для соцмережевих даних першенство обмежене корпусом. П'ять фізичних епізодів у пов'язаному артефакті M2 — аналітично відібрані та сформульовані згадки з указаних джерел. Скрипт структурує ці задані згадки, а не автоматично знаходить повну фізичну хронологію; часові вікна можуть перетинатися, якісні рівні не є каліброваними ймовірностями, а послідовність не доводить причинність. "+cite("M2"))]
 timeline=[
 ["Час","Подія / публікація","Джерело і межа"],
 ["02.11 11:34","ЦПД ретроспективно називає цей час першим прямим публічним закликом приїхати до будинку в Threads. Окремо НГУ/АрміяInform описує допис про побитих чоловіків і тяжко травмованих, а згодом — інший допис із цифрою 40. Оригінали відсутні; тотожність записів і точний порядок незалежно не перевірено.","Атрибутована ретроспектива ЦПД та окремий переказ НГУ/АрміяInform. "+cite("O40","O11")],
@@ -524,8 +529,8 @@ P("Поправка не покриває попередній вибір кей
 
 fig3_p = ROOT / "reports/audience-response/reaction_distribution.png"
 if fig3_p.exists():
-    story.append(Spacer(1, 2*mm))
-    story.append(Image(str(fig3_p), width=498))
+    story.append(PageBreak())
+    story.append(fit_image(fig3_p))
     story.append(P("Рис. 3. Обмежена перевірка паритету реакцій: 10 коментарів у 3 гілках; цей знімок не оцінює весь корпус. Джерело: reports/audience-response/reaction_distribution.png.", "Captionx"))
     story.append(P("Перевірка зіставила доступний розподіл реакцій у знімку з відповіддю Telegram MTProto: 10 із 10 векторів збіглися. Це підтверджує паритет лише перевірених записів, а не повноту чи розподіл реакцій у всіх 533 гілках. Історичних часових рядів реакцій немає; реакції на пости не слід змішувати з реакціями на коментарі. "+cite("D1","M4"), "BodyTight"))
 
@@ -544,12 +549,13 @@ frows=[["Категорія","Коментарі","Автори","Мінімум
 for k,l in [("coverup_affirmation","Підтримка «замітають сліди»"),("geographic_correction","Виправляє географію"),("coverup_question","Питання про приховування"),("rebuttal","Заперечення/спростування"),("sarcasm_or_unclear","Сарказм/неясно"),("neutral_reporting_or_location_question","Нейтральне питання"),("other_incident_claim_conditional","Інше умовне твердження")]:
  d=fc[k]; frows.append([l,fmtint(d["comments"]),fmtint(d["accounts"]),pctstr(d["comments"],883,2),pctstr(d["comments"],FIRE_REVIEW["candidates"],1)])
 story.append(table(frows,[158,58,58,92,114],small=True))
+story.append(Spacer(1, 5*mm))
 story.append(HBars([("Підтримка «замітають»",21,"21"),("Географічне виправлення",20,"20"),("Спростування",8,"8"),("Сарказм / неясно",15,"15")],width=500,row_h=24,title="Ручно класифіковані кандидати",maxval=22))
 story.append(P("Зі 883 записів 69 автоматично відібрали й прочитали вручну; решта 814 не класифікована вручну. Стовпець «Мінімум / 883» показує лише спостережену нижню межу. Частки серед 69 кандидатів описують цільово відібрану підмножину й не є оцінкою поширеності серед усіх коментарів. Розмітку виконав один кодувальник, міжкодувальної перевірки не було.", "Captionx"))
 fig4_p = ROOT / "reports/event-reconstruction/geospatial_map.png"
 if fig4_p.exists():
-    story.append(Spacer(1, 2*mm))
-    story.append(Image(str(fig4_p), width=498))
+    story.append(PageBreak())
+    story.append(fit_image(fig4_p))
     story.append(P("Рис. 4. Немасштабне зіставлення двох окремо описаних випадків; це не карта й не геолокація відео. Джерело: reports/event-reconstruction/geospatial_map.png.", "Captionx"))
     story.append(P("<b>Межа зіставлення:</b> доступні джерела описують інцидент біля об'єкта НГУ та окреме займання складського об'єкта в Бучанському районі; пізніше сільрада назвала Софіївську Борщагівку. У репозиторії немає перевірених координат, які обґрунтовували б відстань між об'єктами. Саме TikTok-відео не геолоковане, тому його не можна категорично прив'язати до будь-якого з цих місць. "+cite("M2","O8","O9","O10","O46"), "BodyTight"))
 
@@ -935,6 +941,10 @@ if not ARGS.no_manifest:
                     for p in [
                         "reports/continuation_20261105/results.json",
                         "reports/continuation_20261105/audit_results.json",
+                        "data/raw/youtube/20261106T072121Z/manifest.json",
+                        "data/raw/telegram_comments/20261106T071956Z/manifest.json",
+                        "reports/telegram-comments/20261106T071956Z/signals.json",
+                        "reports/tiktok/manual-batch-20261106-posts.csv",
                         "reports/evidence-verification/core_claims_verification_2026-11-09.json",
                         "reports/event-reconstruction/physical_event_timeline_2026-11-09.json",
                         "reports/video-pipeline/asr_calibration_benchmark_2026-11-09.json",

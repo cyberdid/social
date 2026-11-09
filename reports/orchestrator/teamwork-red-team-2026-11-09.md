@@ -210,22 +210,22 @@
 
 ```bash
 # 1. Повний запуск репозиторного набору тестів (включно з новими тестами верифікації)
-PYTHONPATH=. /home/cyberdid/Projects/Social/.venv/bin/pytest tests/ -q
+PYTHONPATH=. $SOCIAL_REPO_ROOT/.venv/bin/pytest tests/ -q
 
 # 2. Перевірка символьних зміщень ядерних тверджень
-PYTHONPATH=. /home/cyberdid/Projects/Social/.venv/bin/pytest tests/test_core_claims_verification.py -v
+PYTHONPATH=. $SOCIAL_REPO_ROOT/.venv/bin/pytest tests/test_core_claims_verification.py -v
 
 # 3. Перевірка фізичної хронології та ізоляції пожежі в Бучі
-PYTHONPATH=. /home/cyberdid/Projects/Social/.venv/bin/pytest tests/test_event_reconstruction.py -v
+PYTHONPATH=. $SOCIAL_REPO_ROOT/.venv/bin/pytest tests/test_event_reconstruction.py -v
 
 # 4. Перевірка розрахунку WER/CER та шлюзування quote-safety
-PYTHONPATH=. /home/cyberdid/Projects/Social/.venv/bin/pytest tests/test_video_asr_calibration.py -v
+PYTHONPATH=. $SOCIAL_REPO_ROOT/.venv/bin/pytest tests/test_video_asr_calibration.py -v
 
 # 5. Перевірка узгодження корпусів і матриці лінійності
-PYTHONPATH=. /home/cyberdid/Projects/Social/.venv/bin/pytest tests/test_provenance_lineage.py -v
+PYTHONPATH=. $SOCIAL_REPO_ROOT/.venv/bin/pytest tests/test_provenance_lineage.py -v
 
 # 6. Перевірка PDF-досьє (28 сторінок A4, 0 битих символів)
-PYTHONPATH=. /home/cyberdid/Projects/Social/.venv/bin/pytest tests/test_report_publisher.py -v
+PYTHONPATH=. $SOCIAL_REPO_ROOT/.venv/bin/pytest tests/test_report_publisher.py -v
 pdfinfo output/pdf/petropavlivska_borshchahivka_report_2026-11-09.pdf | grep -E "Pages|Page size"
 ```
 

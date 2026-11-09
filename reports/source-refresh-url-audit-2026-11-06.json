@@ -1,7 +1,7 @@
 {
   "scope": "HTTP availability and page titles, not adjudication of factual claims",
   "receipt_dir": "data/raw/source_refresh/20261106T133534Z",
-  "script": "/home/cyberdid/Projects/Social/src/analysis/audit_source_refresh.py",
+  "script": "$SOCIAL_REPO_ROOT/src/analysis/audit_source_refresh.py",
   "rows": [
     {
       "url": "https://kv.npu.gov.ua/news/shchodo-podii-u-seli-petropavlivska-borshchahivka-na-kyivshchyni",

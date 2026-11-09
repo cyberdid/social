@@ -562,7 +562,7 @@ def generate_markdown_report(manifest: Dict[str, Any]) -> str:
 
 **Milestone:** M4 (Corpus & Source-Watch Provenance Harmonization)  
 **Document ID:** `corpus_and_sourcewatch_lineage_matrix_2026-11-09`  
-**Generated At (UTC):** {manifest['generated_at_utc']}  
+**Generated At (UTC):** {manifest['generated_at_utc']}<br>
 **Owner:** `worker_corpus_provenance`  
 **Schema Version:** `{manifest['schema_version']}`  
 **Machine-Readable Manifest:** `reports/provenance/lineage_manifest_2026-11-09.json`  

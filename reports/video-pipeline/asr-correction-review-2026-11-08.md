@@ -53,7 +53,7 @@ not evidence that the people had that status.
 ## Correction record and reproducibility
 
 - Detailed correction candidates: private
-  `/home/cyberdid/Downloads/SocialIncidentVideos/telegram/analysis/asr-correction-second-pass-20261108/correction_candidates.jsonl`
+  `$SOCIAL_MEDIA_ROOT/telegram/analysis/asr-correction-second-pass-20261108/correction_candidates.jsonl`
 - File mode: `0600`; parent directory: `0700`.
 - Correction records were schema-validated against
   `schemas/transcript_correction.schema.json`.

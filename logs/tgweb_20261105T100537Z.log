@@ -44,4 +44,4 @@
 [ 44] d2 tch_channel                  ok             window=  223 relevant=  29 next=0
 [ 45] d2 ua_national_police           ok             window=   64 relevant=   2 next=0
 [ 46] d2 kyivcityofficial             ok             window=   88 relevant=   5 next=1
-{"posts": 7830, "relevant": 731} -> /home/cyberdid/Projects/Social/data/raw/telegram_web/20261105T100537Z
+{"posts": 7830, "relevant": 731} -> $SOCIAL_REPO_ROOT/data/raw/telegram_web/20261105T100537Z

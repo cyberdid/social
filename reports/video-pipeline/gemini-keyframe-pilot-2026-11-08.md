@@ -17,8 +17,8 @@ The output remains a **candidate visual observation**, not a verified fact or pr
 - Frame at 5,000 ms SHA-256: `fba7c72db30e8e35945c515ccc4070316a9c8dc854be364080cc0cb9b89a4c82`
 - Frame at 10,000 ms SHA-256: `a105db529da0ff6669bfc6dba9084e491b33af89d4ccf043f56500165b59a8bd`
 - Pipeline run manifest SHA-256: `b85fdba10d4ebf9ad8f80c901eee909d3b85a21b0c9cff82c5e875e06a2c30ec`
-- Private local model response: `/home/cyberdid/Downloads/SocialIncidentVideos/semantic-pilot/gemini-3.8-flash-high-keyframes-7704350612959317255.json`
-- Private local run receipt: `/home/cyberdid/Downloads/SocialIncidentVideos/runs/tiktok-video-pipeline-2026-11-08/run_manifest.json`
+- Private local model response: `$SOCIAL_MEDIA_ROOT/semantic-pilot/gemini-3.8-flash-high-keyframes-7704350612959317255.json`
+- Private local run receipt: `$SOCIAL_MEDIA_ROOT/runs/tiktok-video-pipeline-2026-11-08/run_manifest.json`
 
 ## Token use and permission boundary
 

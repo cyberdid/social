@@ -3,4 +3,4 @@
 {'tag': 'петропавлівськаборщагівка', 'posts_in_window': 0, 'scanned': 0, 'status': 'error:ConnectionException:JSON Query to api/v1/tags/web_info/: 403 Forbidden - "fail" status, message "login_required" when accessing https://i.instagram.com/api/v1/tags/web_info/?__a=1&'}
 {'tag': 'петропавловскаяборщаговка', 'posts_in_window': 0, 'scanned': 0, 'status': 'error:ConnectionException:JSON Query to api/v1/tags/web_info/: 403 Forbidden - "fail" status, message "login_required" when accessing https://i.instagram.com/api/v1/tags/web_info/?__a=1&'}
 {'tag': 'борщагівкатцк', 'posts_in_window': 0, 'scanned': 0, 'status': 'error:ConnectionException:JSON Query to api/v1/tags/web_info/: 403 Forbidden - "fail" status, message "login_required" when accessing https://i.instagram.com/api/v1/tags/web_info/?__a=1&'}
-{"posts": 0, "comments": 0} -> /home/cyberdid/Projects/Social/data/raw/instagram/20261106T075715Z
+{"posts": 0, "comments": 0} -> $SOCIAL_REPO_ROOT/data/raw/instagram/20261106T075715Z

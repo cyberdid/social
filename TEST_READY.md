@@ -26,15 +26,15 @@
 
 ### Command
 ```bash
-cd /home/cyberdid/Projects/Social/.worktrees/social-master-plan
-PYTHONPATH=. /home/cyberdid/Projects/Social/.venv/bin/pytest tests/e2e/
+cd $SOCIAL_REPO_ROOT
+PYTHONPATH=. $SOCIAL_REPO_ROOT/.venv/bin/pytest tests/e2e/
 ```
 
 ### Verbatim Output Receipt
 ```
 ============================= test session starts ==============================
 platform linux -- Python 3.13.14, pytest-9.2.0, pluggy-1.7.0
-rootdir: /home/cyberdid/Projects/Social/.worktrees/social-master-plan
+rootdir: $SOCIAL_REPO_ROOT
 collecting ... collected 58 items
 
 tests/e2e/test_social_masterplan_e2e.py ................................ [ 55%]

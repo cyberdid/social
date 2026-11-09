@@ -1,6 +1,6 @@
 # Social Audit Remediation Implementation Plan
 
-> **For agentic workers:** This plan is executed in the isolated worktree `/home/cyberdid/Projects/Social/.worktrees/audit-remediation`.
+> **For agentic workers:** This plan is executed in the isolated worktree `$SOCIAL_REPO_ROOT`.
 
 **Goal:** Remove unsupported quantitative and geographic claims, correct evidentiary scope and provenance, validate autonomous retrieval on held-out claims, and synchronize the published report artifacts.
 

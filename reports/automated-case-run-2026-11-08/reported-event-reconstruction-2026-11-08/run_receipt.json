@@ -10,7 +10,7 @@
   "git_commit": null,
   "incident_id": "petropavlivska-borshchahivka-2026-11",
   "input_event_mention_count": 2,
-  "input_path": "/home/cyberdid/Projects/Social/.worktrees/social-master-plan/reports/automated-case-run-2026-11-08/source-reported-event-input-2026-11-08.jsonl",
+  "input_path": "$SOCIAL_REPO_ROOT/reports/automated-case-run-2026-11-08/source-reported-event-input-2026-11-08.jsonl",
   "input_sha256": "2ea6052f5ace348928726541ec2ab37c28fec590f52ccdb9bc3403fcfa4b3596",
   "limitations": [
     "This deterministic module organizes supplied event mentions; it does not extract events from raw text.",

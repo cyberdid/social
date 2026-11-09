@@ -45,9 +45,9 @@ W05 використав `fwd_from_url` зі зведеного processed-зні
 Команди компонентів виконано з кореня worktree. Точний heredoc, який побудував W05-вхід, збережено в `lineage_input_preparation.exact_command` файлу `run_manifest.json`; опис перетворення й квитанція результату — у `source_lineage_manifest.json`. Збережений вхід із SHA-256 дає змогу повторно виконати сам модуль без повторної підготовки.
 
 ```bash
-python src/analysis/channel_evidence.py --channels /home/cyberdid/Projects/Social/data/raw/telegram_web/20261105T101013Z/channels.jsonl --posts /home/cyberdid/Projects/Social/data/raw/telegram_web/20261105T101013Z/posts.jsonl --as-of 2026-11-08T00:00:00Z --output reports/channel-evidence/masterplan-run-2026-11-08/channel_evidence_20261105T101013Z.jsonl
+python src/analysis/channel_evidence.py --channels $SOCIAL_REPO_ROOT/data/raw/telegram_web/20261105T101013Z/channels.jsonl --posts $SOCIAL_REPO_ROOT/data/raw/telegram_web/20261105T101013Z/posts.jsonl --as-of 2026-11-08T00:00:00Z --output reports/channel-evidence/masterplan-run-2026-11-08/channel_evidence_20261105T101013Z.jsonl
 
-python src/analysis/channel_evidence.py --channels /home/cyberdid/Projects/Social/data/raw/telegram_web/20261105T102914Z/channels.jsonl --posts /home/cyberdid/Projects/Social/data/raw/telegram_web/20261105T102914Z/posts.jsonl --as-of 2026-11-08T00:00:00Z --output reports/channel-evidence/masterplan-run-2026-11-08/channel_evidence_20261105T102914Z.jsonl
+python src/analysis/channel_evidence.py --channels $SOCIAL_REPO_ROOT/data/raw/telegram_web/20261105T102914Z/channels.jsonl --posts $SOCIAL_REPO_ROOT/data/raw/telegram_web/20261105T102914Z/posts.jsonl --as-of 2026-11-08T00:00:00Z --output reports/channel-evidence/masterplan-run-2026-11-08/channel_evidence_20261105T102914Z.jsonl
 
 python src/analysis/channel_evidence_summary.py reports/channel-evidence/masterplan-run-2026-11-08/channel_evidence_20261105T101013Z.jsonl reports/channel-evidence/masterplan-run-2026-11-08/channel_evidence_20261105T102914Z.jsonl --json reports/channel-evidence/masterplan-run-2026-11-08/channel_evidence_summary.json --markdown reports/channel-evidence/masterplan-run-2026-11-08/channel_evidence_summary.md
 

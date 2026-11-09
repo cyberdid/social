@@ -8,4 +8,4 @@ This is a synthetic software acceptance run. It contains no evidence about the r
 - A synthetic correction seeded two changed nodes and the explicit dependency graph identified `b-c-demo` and `b-finding-demo` as downstream candidates.
 - Downstream analytical recomputation remains `not executed`; the snapshot module records an invalidation plan and does not dispatch analysis jobs.
 
-The machine-readable aggregate is `acceptance-summary.json`. Full synthetic fixtures and snapshot bytes remain outside Git at `/home/cyberdid/Downloads/SocialIncidentAnalysis/multicase-replay-control-2026-11-08/`.
+The machine-readable aggregate is `acceptance-summary.json`. Full synthetic fixtures and snapshot bytes remain outside Git at `$SOCIAL_ANALYSIS_ROOT/multicase-replay-control-2026-11-08/`.

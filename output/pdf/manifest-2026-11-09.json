@@ -1,34 +1,89 @@
 {
   "schema_version": "1.0",
   "edition_date": "09.11.2026",
-  "generated_at_utc": "2026-11-09T10:07:52.287979+00:00",
+  "generated_at_utc": "2026-11-09T12:06:55.617382+00:00",
   "builder": "scripts/reports/build_report.py",
-  "builder_sha256": "e16219a416ec112b31db57acce7b7b3e33597ddd47820e346b797f9fab645bfb",
+  "builder_sha256": "6fa80f7a645b8e720d7f64fb09d50d1dc35252712ac5ea16403ac560d6ae56b3",
   "renderer": "ReportLab",
   "renderer_version": "5.1.0",
   "visual_review": {
     "status": "passed",
-    "page_sampling": "Pages 1, 7, 14, 21, and 28 rendered and visually reviewed; pages are A4 (595.276 x 841.89 pts); extracted text contains 0 replacement characters (U+FFFD).",
-    "additional_check": "Main PDF page count is 28 pages (strictly within A4 dossier budget 25-30 pages); all 4 raster figures (temporal wave, coordination graph, reaction distribution, geospatial map) embedded with 0 clipping."
+    "page_sampling": "All 29 A4 pages rendered at 45 dpi and inspected in a contact sheet. Pages 1, 2, 14, 15, 16, and 29 were additionally rendered at 110 dpi and inspected.",
+    "additional_check": "The reaction-parity figure and non-scale event comparison are legible and unclipped. Tables, headings, page transitions, and the final bibliography page were checked. PDF text extraction reports 0 replacement characters."
   },
   "artifacts": [
     {
       "name": "main",
-      "source_markdown": "reports/borshchahivka-report.md",
-      "source_sha256": "f6e1268583ab6954f8294dbe06cb2a4a8b2e7ca89de39b6a4a3c4d0fec511df0",
+      "generation_source": "scripts/reports/build_report.py",
+      "source_markdown": null,
+      "input_artifacts": [
+        {
+          "path": "reports/continuation_20261105/results.json",
+          "sha256": "2255092f6a205346dfcafd3474a6c7c814ee563622ba284ecb692f8b40376ea5"
+        },
+        {
+          "path": "reports/continuation_20261105/audit_results.json",
+          "sha256": "e9051b3ba98e3676f0589d33eae99e12ea4241e7e94cf9dd1dfc91c649975f8c"
+        },
+        {
+          "path": "data/raw/youtube/20261106T072121Z/manifest.json",
+          "sha256": "84ef68964bcd45bf53953c058e05ef06d8be9f920c2be8aa1a4874c2b64ec546"
+        },
+        {
+          "path": "data/raw/telegram_comments/20261106T071956Z/manifest.json",
+          "sha256": "4d60854dd81d327debfddecf1103dd51266db516555df48b8a1ff08725488be9"
+        },
+        {
+          "path": "reports/telegram-comments/20261106T071956Z/signals.json",
+          "sha256": "5f361a3affb47bb92a7f27880489fe020b1fb78828a5715068dd7d99aa4b4d77"
+        },
+        {
+          "path": "reports/tiktok/manual-batch-20261106-posts.csv",
+          "sha256": "592461d45136ff08672d4ae80c2725f3dcf0790146213f097d989621a1f2415e"
+        },
+        {
+          "path": "reports/evidence-verification/core_claims_verification_2026-11-09.json",
+          "sha256": "2181929db4ff06fea2df0a4d4d250f6d1457faa36cff8d92753353fa4b2dd491"
+        },
+        {
+          "path": "reports/event-reconstruction/physical_event_timeline_2026-11-09.json",
+          "sha256": "32831a565beadfe483d31adb739680b1af19bba3475a1504c85da33d607523ab"
+        },
+        {
+          "path": "reports/video-pipeline/asr_calibration_benchmark_2026-11-09.json",
+          "sha256": "fa61cd600333010045e11b93aa950e06eebbe88b6f20a362bae882f6f9495838"
+        },
+        {
+          "path": "reports/provenance/lineage_manifest_2026-11-09.json",
+          "sha256": "dbbdb93c389453fa25f191a2944ad8f230eccf2bbb3250395e43b2e7f4e33a61"
+        },
+        {
+          "path": "reports/audience-response/reaction_distribution.png",
+          "sha256": "74f20191d758ee4a0dd415f9ba041a07a7b784e1b829530e39d647ff7abcaff6"
+        },
+        {
+          "path": "reports/event-reconstruction/geospatial_map.png",
+          "sha256": "f2e35917317e809ac1e2da24e4e3231442d51055032e19c840cd9cd9b5fe86d6"
+        },
+        {
+          "path": "scripts/reports/build_report.py",
+          "sha256": "6fa80f7a645b8e720d7f64fb09d50d1dc35252712ac5ea16403ac560d6ae56b3"
+        }
+      ],
       "pdf": "output/pdf/petropavlivska_borshchahivka_report_2026-11-09.pdf",
-      "pdf_sha256": "bcc8ac7b3e00029c508a808240720113b0163197954161b9660691015b19440c",
-      "pdf_bytes": 1088561,
-      "pages": 28,
+      "pdf_sha256": "ebc41af9a18eb2b9414149c66523204a4ad4d6b4deb046647797f2a0534bc3d4",
+      "pdf_bytes": 950248,
+      "pages": 29,
       "page_size": "595.276 x 841.89 pts (A4)",
       "visual_sample_pages": [
         1,
-        7,
+        2,
         14,
-        21,
-        28
+        15,
+        16,
+        29
       ],
-      "extracted_text_characters": 97003,
+      "extracted_text_characters": 98086,
       "replacement_characters": 0,
       "text_extraction": "passed"
     },

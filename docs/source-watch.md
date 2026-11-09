@@ -2,12 +2,18 @@
 
 `src/source_watch_collect.py` формує чергу ручної перевірки доступних сторінок і новинних посилань. Він не визначає правовий статус людини, достовірність заяви, винуватість чи завершення провадження. Нова HTTP-відповідь або зміна HTML не дорівнює новині.
 
+У прикладах `SOCIAL_REPO_ROOT` означає шлях до локального clone. Із каталогу репозиторію його можна задати так:
+
+```bash
+export SOCIAL_REPO_ROOT="$(git rev-parse --show-toplevel)"
+```
+
 ## Що перевіряємо
 
 План містить **12 адрес**: вісім відомих статей та чотири офіційні стрічки. Перелік можна побачити без мережі:
 
 ```bash
-cd /home/cyberdid/Projects/Social
+cd "$SOCIAL_REPO_ROOT"
 /usr/bin/python3 src/source_watch_collect.py --dry-run
 ```
 
@@ -29,7 +35,7 @@ cd /home/cyberdid/Projects/Social
 Залежності — уже використовувані в проєкті `requests` та `beautifulsoup4`. Ручний запуск:
 
 ```bash
-cd /home/cyberdid/Projects/Social
+cd "$SOCIAL_REPO_ROOT"
 /usr/bin/python3 src/source_watch_collect.py --timeout 20 --pause 1
 ```
 
@@ -89,9 +95,10 @@ data/raw/source_watch/<YYYYMMDDTHHMMSS.microsecondsZ>/
 Рядок користувацького crontab:
 
 ```cron
-0 10 * * * /usr/bin/flock -n /home/cyberdid/Projects/Social/reports/source-watch/collector.lock /usr/bin/python3 /home/cyberdid/Projects/Social/src/source_watch_collect.py --timeout 20 --pause 1 >> /home/cyberdid/Projects/Social/reports/source-watch/cron.log 2>&1
+SOCIAL_REPO_ROOT=/path/to/social
+0 10 * * * /usr/bin/flock -n "$SOCIAL_REPO_ROOT/reports/source-watch/collector.lock" /usr/bin/python3 "$SOCIAL_REPO_ROOT/src/source_watch_collect.py" --timeout 20 --pause 1 >> "$SOCIAL_REPO_ROOT/reports/source-watch/cron.log" 2>&1
 ```
 
-Розклад фактично встановлено 06.11.2026 після перевірки `Europe/Kyiv` і активного сервісу cron. Існуючий запис NVIDIA збережено; копія попереднього crontab лежить у `reports/source-watch/crontab.before-install.20261106.txt` (SHA-256 `ed6be3f3b139a930115eeec2baa21198702b88d73078de994835447967392858`). Перевірено наявність рівно одного маркерного блоку й точного рядка вище. За графіком перший запуск очікується 07.11.2026 о 10:00 за Києвом; машина має бути увімкнена й мати мережу.
+Замініть `/path/to/social` на каталог свого clone перед встановленням рядка. На дослідницькій машині розклад було встановлено 06.11.2026 після перевірки `Europe/Kyiv` і активного сервісу cron. Існуючий запис NVIDIA збережено; копія попереднього crontab лежить у `reports/source-watch/crontab.before-install.20261106.txt` (SHA-256 `ed6be3f3b139a930115eeec2baa21198702b88d73078de994835447967392858`). Перевірено наявність рівно одного маркерного блоку та відповідність фактично встановленого рядка конфігурації тієї машини. За графіком перший запуск очікувався 07.11.2026 о 10:00 за Києвом; машина мала бути увімкнена й мати мережу.
 
 Початковий стабільний baseline extractor v2 знімка `20261106T142309.123268Z` завершився для 12 адрес: 10 відповідей HTTP 200 дали `new_baseline`; сторінка повідомлення ДБР та стрічка ДБР дали помилку перевірки TLS-сертифіката. Це не порівняння новизни й не висновок про відсутність матеріалів. Попередні технічні знімки з іншою/невідомою версією extractor не порівнюються з v2. Стан звітної черги: `reports/source-watch/latest.md`; записи запусків cron: `reports/source-watch/cron.log`.

@@ -200,7 +200,7 @@ The release package and audit receipt enforce zero-leakage constraints across al
 | **Credentials & Sessions** | Zero Telegram session files, API keys, Google credentials, access tokens | 100% Compliant |
 | **User & Reactor Privacy** | Zero reacting user IDs, personal account IDs, or commenter identities; no deanonymization | 100% Compliant |
 | **Pseudonymization Secrets** | HMAC salts, pepper keys, and private hash seeds remain local and uncommitted | 100% Compliant |
-| **Local Path Disclosure** | Absolute local filesystem paths (e.g. `/home/cyberdid/...`) omitted from public receipts | 100% Compliant |
+| **Local Path Disclosure** | Absolute local filesystem paths (e.g. `$USER_HOME/...`) omitted from public receipts | 100% Compliant |
 
 ---
 
@@ -233,7 +233,7 @@ Gate P0.1 cannot be classified as `closed` despite 100% on-disk artifact verific
 To independently reproduce this release audit and verify that all 65 artifacts match disk bytes and SHA-256 digests, execute the following Python command in the worktree:
 
 ```bash
-cd /home/cyberdid/Projects/Social/.worktrees/social-master-plan
+cd $SOCIAL_REPO_ROOT
 python3 -c """
 import json, hashlib, os
 
@@ -259,7 +259,7 @@ print("All 65 release artifacts verified successfully against disk!")
 Run the full automated test suite using the configured virtual environment:
 
 ```bash
-PYTHONPATH=. /home/cyberdid/Projects/Social/.venv/bin/pytest -v
+PYTHONPATH=. $SOCIAL_REPO_ROOT/.venv/bin/pytest -v
 ```
 
 **Result:** 671 passed, 16 subtests passed in 5.32 seconds.

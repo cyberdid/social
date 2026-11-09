@@ -35,4 +35,4 @@ search Концлагерь на Борщаговке PremiumAccountRequiredErro
 [32/241] @dbrgovua: 8 complete
 [33/241] @den_v_kadre: 45 complete
 [34/241] @designersmil: FloodWaitError
-SNAPSHOT /home/cyberdid/Projects/Social/data/raw/telegram_api/20261105T104050Z
+SNAPSHOT $SOCIAL_REPO_ROOT/data/raw/telegram_api/20261105T104050Z

@@ -1,7 +1,7 @@
 {
   "schema_version": "social_lineage_manifest_v1",
   "manifest_id": "corpus_and_sourcewatch_lineage_2026-11-09",
-  "generated_at_utc": "2026-11-09T07:52:20Z",
+  "generated_at_utc": "2026-11-09T12:06:50Z",
   "milestone": "M4",
   "provenance_rule": {
     "rule_statement": "Every quantitative metric, denominator, channel panel count, view total, and factual assertion reported across Social analyses must explicitly bind to an exact tuple (corpus_version, run_id, timestamp) accompanied by the cryptographic SHA-256 digest of the underlying source artifact.",
@@ -124,7 +124,7 @@
         "run_id": "20261108T080550.329799Z",
         "as_of_utc": "2026-11-08T08:05:50Z",
         "artifact_path": "reports/source-watch/20261108/latest.json",
-        "sha256": "aa3acaafaaadf532c0f58ef537f938d63bab420527e8ccd63c8412909c0389f6",
+        "sha256": "e0c6ff00ead682aee8c00a9fd477b23a70c17f0272ae33180b9e0d4990978cc3",
         "reported_success": 10,
         "reported_errors": 2,
         "ratio": "10/12",
@@ -279,7 +279,7 @@
       "run_id": "20261108T080550.329799Z",
       "timestamp_utc": "2026-11-08T08:05:50Z",
       "source_locator": "reports/source-watch/20261108/latest.json",
-      "sha256": "aa3acaafaaadf532c0f58ef537f938d63bab420527e8ccd63c8412909c0389f6",
+      "sha256": "e0c6ff00ead682aee8c00a9fd477b23a70c17f0272ae33180b9e0d4990978cc3",
       "notes": "10 HTTP 200 pages + 2 errors (2 DBR TLS cert errors only)"
     },
     {
@@ -290,7 +290,7 @@
       "run_id": "asr-bulk-20261108",
       "timestamp_utc": "2026-11-08T08:00:00Z",
       "source_locator": "reports/video-pipeline/telegram-full-decode-2026-11-08.md",
-      "sha256": "6e6977eb373158f7e9618d362cf9a77930174c4c99d9adca40e60390496b91c3",
+      "sha256": "65f272343fbf8abf732a93899fbb6bc87e78929f747f72f7a3f03be715e6e4b4",
       "notes": "607 unique video files deduplicated by byte SHA-256 (from 724 downloaded media MP4s)"
     },
     {
@@ -312,7 +312,7 @@
       "run_id": "tiktok-runner-2026-11-08",
       "timestamp_utc": "2026-11-08T09:00:00Z",
       "source_locator": "reports/video-pipeline/tiktok-runner-2026-11-08.md",
-      "sha256": "bd7752226eae60a87f1f94708e6b8b546b0d10bae8559a460a5436890618cb3f",
+      "sha256": "676db31aabe18362b0cb4ecb108c197e8876a959a8812ffb824ac87c1d2724a9",
       "notes": "20 locally downloaded TikTok video assets"
     },
     {
@@ -323,7 +323,7 @@
       "run_id": "case-release-2026-11-08",
       "timestamp_utc": "2026-11-08T22:06:20Z",
       "source_locator": "reports/case-release-manifest-2026-11-08.json",
-      "sha256": "219bb362eafa6c726bb7e6729b5de16bf5793d85a4d5cfe391711131b1830fdf",
+      "sha256": "88876f13eb7cf638a2fbef7b27b7f81db3f9cb8292bc01bf1f4f9f366735f3a4",
       "notes": "Inventory of frozen release artifacts in case-release-manifest-2026-11-08"
     }
   ],
@@ -333,12 +333,12 @@
     "reports/continuation_20261105/audit_results.json": "e9051b3ba98e3676f0589d33eae99e12ea4241e7e94cf9dd1dfc91c649975f8c",
     "reports/20261105T101013Z+20261105T102914Z/audit_results.json": "cea8ea91b856fc68a19ca9f3bd4a45bac1d89de0d0121eb327e641014afa476f",
     "reports/automated-case-run-2026-11-08/source_watch_summary.json": "b78ba070ccf0690cb828051e73379582e02b69718022745bea26229f46f92735",
-    "reports/source-watch/20261108/latest.json": "aa3acaafaaadf532c0f58ef537f938d63bab420527e8ccd63c8412909c0389f6",
+    "reports/source-watch/20261108/latest.json": "e0c6ff00ead682aee8c00a9fd477b23a70c17f0272ae33180b9e0d4990978cc3",
     "reports/continuation_20261105/verified_similarity_edges.csv": "6d559f3a1d553c6015e30e664f53d0d0d623fa88b6c72808d020908303578a58",
     "reports/coordination-null-models-2026-11-08-lsh-audit/exact_cross_channel_edges_ge_0.6.csv": "9e1d07c77cba556d1da414ab1d7a8952f09f220c29a71a33066b5f3ccf340e2b",
-    "reports/case-release-manifest-2026-11-08.json": "219bb362eafa6c726bb7e6729b5de16bf5793d85a4d5cfe391711131b1830fdf",
-    "reports/video-pipeline/telegram-full-decode-2026-11-08.md": "6e6977eb373158f7e9618d362cf9a77930174c4c99d9adca40e60390496b91c3",
-    "reports/video-pipeline/tiktok-runner-2026-11-08.md": "bd7752226eae60a87f1f94708e6b8b546b0d10bae8559a460a5436890618cb3f",
+    "reports/case-release-manifest-2026-11-08.json": "88876f13eb7cf638a2fbef7b27b7f81db3f9cb8292bc01bf1f4f9f366735f3a4",
+    "reports/video-pipeline/telegram-full-decode-2026-11-08.md": "65f272343fbf8abf732a93899fbb6bc87e78929f747f72f7a3f03be715e6e4b4",
+    "reports/video-pipeline/tiktok-runner-2026-11-08.md": "676db31aabe18362b0cb4ecb108c197e8876a959a8812ffb824ac87c1d2724a9",
     "external/asr-bulk-20261108/telegram_text_observations.jsonl": "987ee53ff56a477e86347509786ed5d1bc7f5e908bb18037c202bb023ff43912"
   }
 }

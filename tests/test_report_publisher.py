@@ -55,7 +55,7 @@ def test_four_figures_exist_and_dimensions():
         ("Figure 1: Temporal wave", REPO_ROOT / "reports/continuation_20261105/timeseries.png", 1900, 700),
         ("Figure 2: Forward bridges", REPO_ROOT / "reports/telegram_network_dynamics_20261106/forward_bridges.png", 2000, 1000),
         ("Figure 3: Reaction distribution", REPO_ROOT / "reports/audience-response/reaction_distribution.png", 1900, 900),
-        ("Figure 4: Geospatial map", REPO_ROOT / "reports/event-reconstruction/geospatial_map.png", 1900, 1000),
+        ("Figure 4: Non-scale event comparison", REPO_ROOT / "reports/event-reconstruction/geospatial_map.png", 1900, 1000),
     ]
 
     for name, path, min_w, min_h in figures:
@@ -96,6 +96,7 @@ def test_synthesis_of_m1_to_m4_in_narrative():
     pdf_path = REPO_ROOT / "output/pdf/petropavlivska_borshchahivka_report_2026-11-09.pdf"
     res = subprocess.run(["pdftotext", str(pdf_path), "-"], capture_output=True, text=True, check=True)
     text = res.stdout
+    normalized_text = " ".join(text.split())
 
     # M1 synthesis
     assert "claim_01" in text or "40" in text
@@ -105,7 +106,15 @@ def test_synthesis_of_m1_to_m4_in_narrative():
 
     # M2 synthesis & cannot_link
     assert "cannot_link" in text or "Софіївська Борщагівка" in text
-    assert "4,2 км" in text
+    assert "Немасштабне зіставлення" in text
+    assert "немає перевірених координат" in normalized_text
+    assert "4,2 км" not in normalized_text
+
+    # Audit-corrected M1 and bounded reaction-parity reporting
+    assert "19 підтримано" in normalized_text
+    assert "6 мають статус" in normalized_text
+    assert "10 із 10 векторів збіглися" in normalized_text
+    assert "всіх 533 гілках" in normalized_text
 
     # M3 synthesis & ASR benchmark
     assert "Whisper-large-v3" in text

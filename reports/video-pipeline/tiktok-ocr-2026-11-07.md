@@ -12,7 +12,7 @@ OCR output is noisy and is a candidate transcription only. Every span must be ch
 
 ## Reproducibility
 
-- Source manifest: `/home/cyberdid/Downloads/SocialIncidentVideos/public-platforms-manifest.jsonl`.
+- Source manifest: `$SOCIAL_MEDIA_ROOT/public-platforms-manifest.jsonl`.
 - Technical index SHA-256: `93dda8e8e9a33c5396b3acb04e5997ced237696de6f0c319943bfb08142913b1`.
 - Local extraction SHA-256: `52250aa5f77c4944dca29b1a4f6ebd0bf7af49182feeb13919618d3deb64ba52`.
 - OCR candidates SHA-256: `08e5085ceb144fa310afc139ab3f5b0ed93acda61f9cb0667813c3d869f278ac`.

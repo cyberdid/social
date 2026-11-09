@@ -13,7 +13,7 @@
 ```markdown
 Autonomous execution of Social Master Plan v2.0 in the local repository, closing the five critical gaps identified in the external review of November 8, 2026: Evidence Verification (20–30 core claims), Physical Incident Reconstruction, Video/ASR Calibration, Corpus Versioning Lineage, and Full Analytical A4 PDF Dossier Restoration.
 
-Working directory: /home/cyberdid/Projects/Social
+Working directory: $SOCIAL_REPO_ROOT
 Integrity mode: development
 
 ## Reference Material

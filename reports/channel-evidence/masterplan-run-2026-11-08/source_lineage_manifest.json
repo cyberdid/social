@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "input_source": "/home/cyberdid/Projects/Social/data/processed/20261105T101013Z+20261105T102914Z/posts_clean.jsonl",
+  "input_source": "$SOCIAL_REPO_ROOT/data/processed/20261105T101013Z+20261105T102914Z/posts_clean.jsonl",
   "input_source_sha256": "d229d8618021cf285f24c712eb9cd37ca85eb0e8bee2d8a7f74b6e7c574cda3f",
   "input_records": 23386,
   "input_records_with_nonblank_text_and_valid_time": 22942,

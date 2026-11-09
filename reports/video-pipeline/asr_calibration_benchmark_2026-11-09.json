@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "benchmark_id": "asr-calibration-benchmark-2026-11-09",
-  "created_at_utc": "2026-11-09T10:02:06.847038+00:00",
+  "created_at_utc": "2026-11-09T12:06:29.375730+00:00",
   "task_milestone": "Social Master Plan v2.0 - Milestone M3 (Track 3 / GATE-03)",
   "owner": "worker_video_semantics",
   "sampling_design": {

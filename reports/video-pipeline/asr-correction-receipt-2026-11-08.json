@@ -27,7 +27,7 @@
     }
   },
   "candidate_sidecar": {
-    "path": "private:/home/cyberdid/Downloads/SocialIncidentVideos/telegram/analysis/asr-correction-second-pass-20261108/correction_candidates.jsonl",
+    "path": "private:$SOCIAL_MEDIA_ROOT/telegram/analysis/asr-correction-second-pass-20261108/correction_candidates.jsonl",
     "sha256": "cfcf8ec7bffc2585ff3545141c8d34b12ba7ef71b9709b2b0b6b66060594cad3",
     "file_mode": "0600",
     "total_records": 10,
@@ -100,7 +100,7 @@
   },
   "raw_asr_preservation": {
     "raw_asr_modified": false,
-    "path": "private:/home/cyberdid/Downloads/SocialIncidentVideos/telegram/analysis/asr-bulk-20261108/telegram_text_observations.jsonl",
+    "path": "private:$SOCIAL_MEDIA_ROOT/telegram/analysis/asr-bulk-20261108/telegram_text_observations.jsonl",
     "sha256": "987ee53ff56a477e86347509786ed5d1bc7f5e908bb18037c202bb023ff43912",
     "byte_size": 10462222,
     "total_unique_assets_covered": 607,

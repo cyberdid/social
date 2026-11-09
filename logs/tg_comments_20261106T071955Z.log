@@ -19,4 +19,4 @@
 [475/533] comments=39531
 [500/533] comments=39564
 [525/533] comments=39589
-{"threads": 533, "complete": 533, "capped": 0, "errors": 0, "comments": 39598} -> /home/cyberdid/Projects/Social/data/raw/telegram_comments/20261106T071956Z
+{"threads": 533, "complete": 533, "capped": 0, "errors": 0, "comments": 39598} -> $SOCIAL_REPO_ROOT/data/raw/telegram_comments/20261106T071956Z

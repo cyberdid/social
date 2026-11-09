@@ -2,7 +2,7 @@
 
 **Milestone:** M4 (Corpus & Source-Watch Provenance Harmonization)  
 **Document ID:** `corpus_and_sourcewatch_lineage_matrix_2026-11-09`  
-**Generated At (UTC):** 2026-11-09T07:52:20Z  
+**Generated At (UTC):** 2026-11-09T12:06:50Z<br>
 **Owner:** `worker_corpus_provenance`  
 **Schema Version:** `social_lineage_manifest_v1`  
 **Machine-Readable Manifest:** `reports/provenance/lineage_manifest_2026-11-09.json`  
@@ -134,7 +134,7 @@ The Source Watch crawler (`src/source_watch_collect.py:build_plan()`) monitors e
 | **Run ID** | `automated-case-run-2026-11-08` | `20261108T080550.329799Z` |
 | **Timestamp (UTC)** | `2026-11-08T01:14:07Z` | `2026-11-08T08:05:50Z` |
 | **Report Locator** | `reports/automated-case-run-2026-11-08/source_watch_summary.json` | `reports/source-watch/20261108/latest.json` |
-| **Artifact SHA-256** | `b78ba070ccf0690cb828051e73379582e02b69718022745bea26229f46f92735` | `aa3acaafaaadf532c0f58ef537f938d63bab420527e8ccd63c8412909c0389f6` |
+| **Artifact SHA-256** | `b78ba070ccf0690cb828051e73379582e02b69718022745bea26229f46f92735` | `e0c6ff00ead682aee8c00a9fd477b23a70c17f0272ae33180b9e0d4990978cc3` |
 | **HTTP 200 Baselines** | **9** | **10** |
 | **Access Errors** | **3** | **2** |
 | **Ratio Reported** | **9/12** | **10/12** |
@@ -197,11 +197,11 @@ The following master matrix links every published metric and empirical finding a
 | **Merged View Counter Sum** | `119515745` | `telegram_merged_v2` | `masterplan-run-2026-11-08` | `2026-11-08T01:14:07Z` | `reports/20261105T101013Z+20261105T102914Z/audit_results.json` | `cea8ea91b856fc68...` |
 | **Exact Cross-Channel Jaccard Pairs (Threshold >= 0.6)** | `369` | `telegram_merged_v2` | `lsh-audit-20261108` | `2026-11-08T18:00:00Z` | `reports/coordination-null-models-2026-11-08-lsh-audit/exact_cross_channel_edges_ge_0.6.csv` | `9e1d07c77cba556d...` |
 | **Source Watch Automated Case Run** | `9/12 OK (3 errors)` | `source_watch_v1` | `automated-case-run-2026-11-08` | `2026-11-08T01:14:07Z` | `reports/automated-case-run-2026-11-08/source_watch_summary.json` | `b78ba070ccf0690c...` |
-| **Source Watch Dedicated Snapshot Run** | `10/12 OK (2 errors)` | `source_watch_v2` | `20261108T080550.329799Z` | `2026-11-08T08:05:50Z` | `reports/source-watch/20261108/latest.json` | `aa3acaafaaadf532...` |
-| **Telegram Video Assets** | `607` | `telegram_video_v1` | `asr-bulk-20261108` | `2026-11-08T08:00:00Z` | `reports/video-pipeline/telegram-full-decode-2026-11-08.md` | `6e6977eb373158f7...` |
+| **Source Watch Dedicated Snapshot Run** | `10/12 OK (2 errors)` | `source_watch_v2` | `20261108T080550.329799Z` | `2026-11-08T08:05:50Z` | `reports/source-watch/20261108/latest.json` | `e0c6ff00ead682ae...` |
+| **Telegram Video Assets** | `607` | `telegram_video_v1` | `asr-bulk-20261108` | `2026-11-08T08:00:00Z` | `reports/video-pipeline/telegram-full-decode-2026-11-08.md` | `65f272343fbf8abf...` |
 | **Telegram Candidate ASR Segments** | `10872` | `telegram_video_v1` | `asr-bulk-20261108` | `2026-11-08T08:00:00Z` | `external/asr-bulk-20261108/telegram_text_observations.jsonl` | `987ee53ff56a477e...` |
-| **TikTok Video Assets** | `20` | `tiktok_video_v1` | `tiktok-runner-2026-11-08` | `2026-11-08T09:00:00Z` | `reports/video-pipeline/tiktok-runner-2026-11-08.md` | `bd7752226eae60a8...` |
-| **Release Package Frozen Artifacts** | `65` | `release_package_v1` | `case-release-2026-11-08` | `2026-11-08T22:06:20Z` | `reports/case-release-manifest-2026-11-08.json` | `219bb362eafa6c72...` |
+| **TikTok Video Assets** | `20` | `tiktok_video_v1` | `tiktok-runner-2026-11-08` | `2026-11-08T09:00:00Z` | `reports/video-pipeline/tiktok-runner-2026-11-08.md` | `676db31aabe18362...` |
+| **Release Package Frozen Artifacts** | `65` | `release_package_v1` | `case-release-2026-11-08` | `2026-11-08T22:06:20Z` | `reports/case-release-manifest-2026-11-08.json` | `88876f13eb7cf638...` |
 
 ---
 
