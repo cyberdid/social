@@ -32,7 +32,7 @@ GRAY = "#888888"
 
 plt.rcParams.update(
     {
-        "font.family": "Noto Sans",
+        "font.family": "DejaVu Sans",
         "font.size": 9,
         "axes.titlesize": 9.5,
         "axes.titleweight": "normal",

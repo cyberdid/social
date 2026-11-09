@@ -1,62 +1,36 @@
-\documentclass[10pt,a4paper]{article}
+\documentclass[11pt,a4paper]{article}
 \usepackage{fontspec}
 \usepackage{polyglossia}
 \setmainlanguage{ukrainian}
 \setotherlanguage{english}
-\setmainfont{Noto Serif}
-\setsansfont{Noto Sans}
-\newfontfamily\cyrillicfont[Script=Cyrillic]{Noto Serif}
-\newfontfamily\cyrillicfontsf[Script=Cyrillic]{Noto Sans}
-\usepackage[a4paper,margin=23mm,footskip=10mm]{geometry}
+\setmainfont{cmunrm.otf}[Path=fonts/,BoldFont=cmunbx.otf,ItalicFont=cmunti.otf,BoldItalicFont=cmunbi.otf]
+\setsansfont{cmunss.otf}[Path=fonts/,BoldFont=cmunsx.otf,ItalicFont=cmunsi.otf,BoldItalicFont=cmunso.otf]
+\setmonofont{cmuntt.otf}[Path=fonts/,ItalicFont=cmunit.otf]
+\newfontfamily\cyrillicfont{cmunrm.otf}[Path=fonts/,BoldFont=cmunbx.otf,ItalicFont=cmunti.otf,BoldItalicFont=cmunbi.otf,Script=Cyrillic]
+\newfontfamily\cyrillicfontsf{cmunss.otf}[Path=fonts/,BoldFont=cmunsx.otf,ItalicFont=cmunsi.otf,BoldItalicFont=cmunso.otf,Script=Cyrillic]
+\newfontfamily\cyrillicfonttt{cmuntt.otf}[Path=fonts/,ItalicFont=cmunit.otf,Script=Cyrillic]
+\usepackage[a4paper,margin=25mm]{geometry}
 \usepackage{microtype}
 \usepackage{booktabs,longtable,tabularx,array,multirow}
 \usepackage{graphicx}
 \graphicspath{{figures/}}
 \usepackage{caption}
-\captionsetup{font=small,labelfont=bf,labelsep=colon,justification=justified,singlelinecheck=false,skip=4pt}
-\captionsetup[table]{position=top,skip=5pt}
+\captionsetup{font=small,labelfont=bf,labelsep=colon,justification=justified,singlelinecheck=false}
+\captionsetup[table]{position=top}
 \usepackage{enumitem}
 \usepackage{amsmath}
-\usepackage{setspace}
 \usepackage{float}
-\usepackage{placeins}
-\usepackage{titlesec}
-\usepackage{titling}
+\usepackage[section]{placeins}
 \usepackage[numbers,sort&compress]{natbib}
 \usepackage{xurl}
 \usepackage{hyperref}
 \urlstyle{same}
-\hypersetup{hidelinks,pdfencoding=auto,unicode=true,pdftitle={Від локального інциденту до інформаційної хвилі: цифрові сліди Петропавлівської Борщагівки},pdfauthor={Олександр Пилипенко}}
-
-\pretitle{\begin{center}\large\bfseries}
-\posttitle{\par\end{center}\vspace{0.5em}}
-\preauthor{\begin{center}\small}
-\postauthor{\par\end{center}\vspace{0.35em}}
-\predate{\begin{center}\small}
-\postdate{\par\end{center}\vspace{0.35em}}
-
-\titleformat{\section}{\normalsize\bfseries}{\thesection}{0.65em}{}
-\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.65em}{}
-\titleformat{\subsubsection}{\normalsize\bfseries}{\thesubsubsection}{0.65em}{}
-\titlespacing*{\section}{0pt}{1.7ex plus 0.5ex minus 0.2ex}{0.7ex}
-\titlespacing*{\subsection}{0pt}{1.3ex plus 0.4ex minus 0.2ex}{0.5ex}
-\titlespacing*{\subsubsection}{0pt}{1.1ex plus 0.3ex minus 0.2ex}{0.4ex}
-
-\setstretch{1.04}
-\setlength{\parskip}{0.2em}
-\setlength{\parindent}{1em}
+\hypersetup{hidelinks,pdfencoding=auto,unicode=true,pdftitle={Від локального інциденту до інформаційної хвилі},pdfauthor={Олександр Пилипенко}}
 \emergencystretch=2em
 \setlist{nosep,leftmargin=1.5em}
 \renewcommand{\arraystretch}{1.12}
-\renewcommand{\bibfont}{\footnotesize}
-\setlength{\bibsep}{1.5pt}
-\renewenvironment{abstract}{%
-  \begin{center}\bfseries Анотація\end{center}%
-  \begin{quote}\small\setlength{\parindent}{0pt}%
-}{%
-  \end{quote}\vspace{0.2em}%
-}
-
+\renewcommand{\bibfont}{\small}
+\setlength{\bibsep}{2pt}
 \begin{document}
 \input{sections/article_uk.tex}
 \bibliographystyle{unsrtnat}

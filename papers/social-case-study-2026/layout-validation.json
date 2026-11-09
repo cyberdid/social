@@ -1,0 +1,37 @@
+{
+  "generated_at_utc": "2026-11-09T15:27:10.929072+00:00",
+  "scope": "Typesetting, embedded fonts, figure captions and PDF extraction; not independent scientific peer review.",
+  "reference_audit": "style-reference-audit.md",
+  "outputs": [
+    {
+      "language": "en",
+      "file": "social_preprint_en_2026-11-09.pdf",
+      "pages": 15,
+      "sha256": "b21f9275cb006c9165e79521de060e0d3bba2569b8b7928c4ba380e2cc85cd37",
+      "required_fonts_embedded": [
+        "CMUSerif-Roman",
+        "CMUSerif-Bold",
+        "CMUSerif-Italic",
+        "CMUTypewriter-Regular"
+      ],
+      "noto_font_present": false,
+      "replacement_characters": 0,
+      "numbered_figures": 5
+    },
+    {
+      "language": "uk",
+      "file": "social_preprint_uk_2026-11-09.pdf",
+      "pages": 16,
+      "sha256": "6ed7df6971f08fce5ac1c31ba3c016b55a2875713ee7344a476a8ca99f0a10c2",
+      "required_fonts_embedded": [
+        "CMUSerif-Roman",
+        "CMUSerif-Bold",
+        "CMUSerif-Italic",
+        "CMUTypewriter-Regular"
+      ],
+      "noto_font_present": false,
+      "replacement_characters": 0,
+      "numbered_figures": 5
+    }
+  ]
+}
