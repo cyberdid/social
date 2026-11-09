@@ -3,7 +3,7 @@ set -euo pipefail
 HERE="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 ROOT="$(cd -- "$HERE/../.." && pwd)"
 BUILD="$ROOT/tmp/social-case-study-2026-build"
-FINAL="$ROOT/output/pdf"
+FINAL="$ROOT"
 mkdir -p "$BUILD" "$FINAL"
 cd "$HERE"
 tectonic -X compile --keep-logs --keep-intermediates -r 2 -o "$BUILD" main.tex

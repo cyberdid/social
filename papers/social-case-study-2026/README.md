@@ -14,7 +14,7 @@ From this directory:
 ./build.sh
 ```
 
-The script compiles both documents with Tectonic, stores temporary build files under the repository's ignored `tmp/` directory, and copies the final PDFs to `../../output/pdf/`. It requires Tectonic plus the Noto Serif and Noto Sans fonts. Run `tectonic -X compile --help` for engine details. This keeps build artifacts out of version control while preserving the release PDFs.
+The script compiles both documents with Tectonic, stores temporary build files under the repository's ignored `tmp/` directory, and copies the final PDFs to the repository root. It requires Tectonic plus the Noto Serif and Noto Sans fonts. Run `tectonic -X compile --help` for engine details. This keeps build artifacts out of version control while making the release PDFs immediately visible at the top level.
 
 ## Scope and release status
 
