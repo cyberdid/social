@@ -1,0 +1,31 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setmainlanguage{ukrainian}
+\setotherlanguage{english}
+\setmainfont{Noto Serif}
+\newfontfamily\englishfont{Noto Serif}
+\newfontfamily\cyrillicfont[Script=Cyrillic]{Noto Serif}
+\usepackage[a4paper,margin=25mm,headheight=14pt]{geometry}
+\usepackage{microtype}
+\usepackage{booktabs,longtable,tabularx,array,multirow}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage[round,authoryear]{natbib}
+\usepackage{xcolor}
+\usepackage{xurl}
+\usepackage{hyperref}
+\urlstyle{same}
+\hypersetup{colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,urlcolor=blue!55!black,pdftitle={Відстеження інформаційної хвилі довкола суперечливого локального інциденту},pdfauthor={Дослідницький проєкт Social}}
+\setlength{\parskip}{0.45em}
+\emergencystretch=3em
+\setlength{\parindent}{1.2em}
+\setlist{nosep,leftmargin=1.5em}
+\renewcommand{\arraystretch}{1.17}
+\renewcommand{\bibfont}{\footnotesize}
+\setlength{\bibsep}{1pt}
+\begin{document}
+\input{sections/article_uk.tex}
+\bibliographystyle{plainnat}
+\bibliography{references}
+\end{document}

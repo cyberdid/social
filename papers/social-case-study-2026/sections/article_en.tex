@@ -1,0 +1,207 @@
+\title{Tracing an Information Wave Around a Contested Local Incident: A Bounded Computational Case Study of Petropavlivska Borshchahivka, Ukraine, 2--9 November 2026}
+\author{Social Research Project\\\small Independent computational social science and OSINT case study}
+\date{9 November 2026\\\small Draft for analytical review; not peer reviewed}
+\maketitle
+
+\begin{abstract}
+A local confrontation in Petropavlivska Borshchahivka, Kyiv Oblast, became the subject of rapidly changing claims about people held inside a building, injuries, police conduct, protest mobilization, and later a separate warehouse fire associated online with the incident. This article reconstructs what can and cannot be established from an intentionally bounded, multi-platform digital trace. We combine a purposive Telegram channel panel, targeted comment threads, user-supplied TikTok links, YouTube metadata and subtitle samples, selected official statements, source-attributed media reports, a curated claim--evidence assessment, conditional randomization tests for repeated language, and a small acoustic transcription benchmark. The baseline Telegram corpus contains 23,350 posts, of which 1,408 were coded as relevant in 159 of 241 monitored channels during the primary 2--5 November window. A separate later snapshot contains 1,438 relevant posts; we retain its denominator separately. The sum of current view counters in the baseline is 115.93 million, which is neither unique reach nor event-time exposure. A 25-claim assessment marks 19 claims supported within a specified scope, six as insufficiently evidenced, and none as physically refuted. In particular, the claims of 40 unlawfully detained people and a death remain unresolved in the available corpus; official denials are recorded as institutional positions, not independent physical proof. Repeated comment templates and near-identical posts are statistically unusual under the tested conditional null models, but do not identify bots, an organizer, state direction, or intent. A TikTok fire clip visually overlaps with a supplied local video copy, yet neither the recording location nor an intentional link to the earlier confrontation is established. We argue that rigorous incident analysis requires versioned denominators, explicit separation of publication time from event time, evidence lineage, scope-qualified claim states, and calibrated refusal to infer beyond the observed record. The study describes selected online traces; it does not estimate Ukrainian public opinion or adjudicate the underlying criminal proceedings.
+\end{abstract}
+
+\noindent\textbf{Keywords:} computational social science; crisis informatics; digital trace data; Telegram; TikTok; claim verification; coordination; uncertainty; Ukraine
+
+\section{Introduction}
+
+Social platforms make local events visible through fast, fragmented traces: short posts, reposts, comments, video fragments, and official announcements. These traces can help analysts document how public claims appeared and moved. They also create a measurement problem. A widely repeated account may have originated in one eyewitness statement; a post timestamp is not necessarily the time of the event shown; and a statement by an authority is evidence of that authority's position, not automatically independent confirmation of every physical fact it describes. The distinction between information diffusion and event verification is central to crisis informatics and research on online misinformation \citep{lazer2018science,vosoughi2018spread,han2019rumour}.
+
+This paper reports a bounded case study of the information wave surrounding events in Petropavlivska Borshchahivka, Kyiv Oblast, on 2 November 2026, and subsequent discussion through 9 November. The case is analytically useful because several kinds of uncertainty overlap: early reports about people inside a building; institutional denials and ongoing inquiries; contested accounts of injuries and conditions; public mobilization and property damage; and a later warehouse-fire video labeled with a nearby settlement name. The question is not whether a single platform or institution tells the whole story. It is what a carefully documented digital-trace study can infer from incomplete and unevenly accessible material.
+
+The study makes three practical contributions. First, it describes the information environment using separate snapshots and denominators rather than presenting one number as a complete platform census. Second, it examines repeated text using exact-pair audits and conditional randomization while distinguishing atypical coordination signals from attribution. Third, it demonstrates an evidence-scoping approach in which a proposition can be supported as a statement, a procedural development, or a bounded observation without thereby establishing the underlying physical claim. These choices follow broader warnings that social data are shaped by collection, access, and platform mechanisms, and that automated bot labels can yield consequential false positives \citep{olteanu2019social,rauchfleisch2020false,vicente2023sampling}.
+
+\section{Case definition and research questions}
+
+The event of interest is the public confrontation around a building in Petropavlivska Borshchahivka on 2 November. The associated information episode includes posts and comments that discuss the building, the presence and treatment of servicemembers, the response of police and other institutions, allegations of unlawful detention or death, and later narratives that connect a separate warehouse fire to the earlier confrontation. The analytical window differs by source: the primary Telegram post window ends at 12:10:13 Kyiv time on 5 November; comment and platform snapshots were collected later; and the case report was frozen on 9 November. These are not interchangeable windows.
+
+We ask:
+\begin{enumerate}
+\item What volume and temporal pattern of relevant posts are visible in the monitored Telegram panel, and what does the panel leave outside observation?
+\item Which public claims can be tied to identifiable sources and evidence passages, and which remain disputed or under-evidenced?
+\item Do repeated posts or comments show patterns that depart from specified conditional null models?
+\item What can be established about the cross-platform fire-video confusion, and what remains unverified about the video itself?
+\item What methodological limits arise when automated outputs are used to reconstruct a real-world incident from partial public traces?
+\end{enumerate}
+
+The estimand is the distribution of records in the collected, defined snapshots. It is not the distribution of beliefs among all platform users, residents of Ukraine, or the public. This distinction is essential because platform commenters are self-selected, platform visibility is ranked and moderated, and collection methods do not create probability samples \citep{olteanu2019social,vicente2023sampling,pfeffer2023sample}.
+
+\section{Institutional context and evidentiary scope}
+
+The Kyiv Region Police published a statement at 17:27 on 2 November. It said that police received a call from private ambulance staff, found National Guard servicemembers and local residents near a private residence, and that reports of unlawful detention and a death did not correspond to reality while circumstances were being clarified \citep{npu2026statement}. The Ministry of Internal Affairs announced an internal inquiry later that evening. On 3 November, the State Bureau of Investigation announced criminal proceedings concerning the events and the circumstances surrounding servicemembers' stay at the premises \citep{dbr2026proceeding}. At a briefing on 3 November, the National Guard commander, as reported by the Ministry, said that 26 servicemembers had been at the premises, four had returned after unauthorized absence, and the others were awaiting basic training; he also described the conditions as appropriate \citep{mvs2026briefing}.
+
+These are important source statements. They establish what the named institutions publicly said at the respective times. They do not, on their own, amount to a final independent inspection, a medical record, a complete headcount, or a judicial finding. The project corpus did not contain a completed public investigation report that independently resolves all contested physical conditions. On 5 November the National Police said that 130 people had been identified in connection with the disturbances; identification and suspicion are procedural stages, not convictions \citep{npu2026identified}. The study therefore avoids assigning guilt or private motives to named individuals.
+
+A later warehouse fire is a distinct but related information episode. Interfax-Ukraine reported at 00:05 on 5 November that a warehouse in Bucha district had caught fire following an attack, attributing the statement to the head of Kyiv Regional Military Administration; the article noted that the specific Sofiaivska Borshchahivka location was not officially confirmed at that point \citep{interfax2026fire}. A village-council Telegram post at approximately 00:17 named Sofiaivska Borshchahivka and warehouse premises \citep{village2026fire}. The original post bodies are not preserved in the project repository; this chain is documented through source-audit records, not a complete local capture. Neither source geolocates the TikTok clip supplied to the project.
+
+\section{Data, sampling, and versioned snapshots}
+
+\subsection{Telegram publications}
+
+The primary baseline contains 23,350 collected posts and 1,408 relevant posts from 159 channels among 241 monitored channel identifiers. The primary window is 2 November 00:00 through 5 November 12:10:13, Kyiv time, with an inclusive start and exclusive end. Relevant posts were identified in a targeted monitoring panel assembled from an initial channel list and expanded through visible forwards and links. The panel is not a random sample of Telegram, and it excludes private or inaccessible spaces. Of the 1,408 relevant records, 49 had no view counter and 459 lacked text; coverage is therefore not uniform.
+
+A separate expanded snapshot contains 1,438 relevant posts in 158 channels and was used by a later offline case run. Its collection and analysis receipt is dated 8 November. It is not a correction to be silently merged into the baseline: each result in this article identifies its snapshot. The extended snapshot's current counter sum is 119,515,745; the baseline sum is 115,931,014. Both are sums of counters observed at collection time. They may include repeated views and overlapping audiences; neither measures unique people, actual exposure at the time of posting, or persuasion.
+
+\begin{table}[ht]
+\centering
+\small
+\caption{Observed datasets and what their denominators mean.}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.22\textwidth}>{\raggedright\arraybackslash}p{0.23\textwidth}>{\raggedright\arraybackslash}X}
+\toprule
+Dataset & Observed size & Interpretation and boundary \\
+\midrule
+Telegram baseline publications & 23,350 total; 1,408 relevant; 159/241 monitored channels & Targeted panel, primary window 2--5 Nov; not all Telegram and not a probability sample. \\
+Telegram expanded snapshot & 1,438 relevant; 158 channels & Separate 8 Nov snapshot used for selected automated summaries; retain its own denominator. \\
+Telegram discussion comments & 39,598 comment records; 533 selected threads; 12,797 pseudonymized authors with available identifiers & Thread selection was purposive and active-thread oriented; commenter totals do not estimate the platform audience. \\
+TikTok user-supplied links & 42 URLs: 21 video and 21 photo posts & Metadata captured for 21 videos; photo images were not collected. Selected links, not a platform search frame. \\
+TikTok fire-video discussion & 883 comment records on the target video; 724 pseudonymized authors & 69 candidates were manually read; the other 814 were not coded, so the reviewed subset is not a prevalence estimate. \\
+YouTube & 617 candidate metadata records; 444 lexical matches; 25,933 comments on 30 most popular videos & Candidate search and lexical selection; full video content was not reviewed. \\
+Instagram, X, Threads, Facebook & Incomplete or unavailable collection & No inference from missing data to absence of discussion. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The Telegram comment corpus comprises 39,598 records, of which 39,459 have an available author identifier and 139 do not. The project pseudonymized 12,797 author identifiers. The 533 threads were chosen for investigation, including on activity; completeness within a thread does not make the thread set representative. The median author contribution is one comment, while a small number of accounts contribute repeatedly. The 1\% most active authors account for 18.9\% of comments in the available corpus. Author-weighted and comment-weighted summaries would therefore answer different questions.
+
+\subsection{Other platforms and media}
+
+The project collected 42 TikTok URLs supplied during the research: 21 video posts and 21 photo posts. It obtained metadata for the 21 videos, including 20 captions. The photo assets were not captured. For a separate TikTok fire clip, the available snapshot contained 883 comments (345 top-level comments and 538 replies) from 724 pseudonymized authors. A rule-selected set of 69 comments was manually read by one annotator; this set was designed to inspect candidate interpretations, not to estimate the fraction of all commenters who held a view.
+
+The YouTube search yielded 617 candidate metadata records. A lexical rule produced a narrower 444-video subset across 190 channels, with 34.6 million current views and 44 livestream records. The report also describes 25,933 comments from the 30 most popular videos. A separate, purposive subtitle sample included 49 non-empty transcript files and 56 context excerpts from 49 videos. The full video corpus was not reviewed. Instagram collection was blocked by access and rate limits; X access failed because the project had no API credits; Threads and Facebook were not collected. The evidence base is thus strongly platform-asymmetric.
+
+The case's technical media index included 607 unique Telegram video assets that passed full media decode, totaling approximately 14.2 hours of audio. Technical decode establishes that a file could be read; it does not verify the recording date, location, event identity, authenticity, or caption. The separate 18-clip speech benchmark used acoustic reference transcripts across four noise strata. Its aggregate word error rate was 44.58\% (macro 41.61\%) and character error rate was 22.85\% (macro 20.72\%); 10 clips passed a quote-safety gate and eight did not. These results show why raw automatic speech recognition output cannot be quoted as a verified statement, particularly for high-sensitivity allegations \citep{socialasr2026}.
+
+\section{Methods}
+
+\subsection{Version control, collection, and descriptive time series}
+
+The main case report is edition 3.1, dated 9 November 2026. It is accompanied by input hashes and a PDF manifest. The 8 November automated run is an offline deterministic analysis of supplied snapshots, not a fresh platform crawl. It reported 574 candidate communication/event mentions, all with publication-time fields, no merged candidate links, and zero verified physical timeline rows. In contrast, a separate five-row physical-event timeline was curated by analysts from source reports. We treat the two as different objects: automated extraction can preserve mentions and publication chronology; it did not independently discover or validate a physical event sequence.
+
+All timestamps are interpreted with explicit time zones. Publication time, event time, video recording time, capture time, and evaluation cutoff are distinct variables. A publication timestamp can anchor the time a post appeared in the captured feed; it does not establish when an event occurred or a video was recorded. This distinction is particularly important for short clips and retrospective reports.
+
+\subsection{Narrative cues and the claim--evidence assessment}
+
+Rule-based multi-label matching counted mentions of five narrative families: unlawful detention/hostages (N1), death/torture (N2), the phrase "concentration camp TCC" (N3), concealment of evidence (N4), and official account/denial (N0). The labels are not mutually exclusive and are not stance labels. A post may quote or rebut a claim and still trigger a lexical pattern. The available check against a second LLM coder on 40 posts yielded moderate agreement for some labels and very poor agreement for N1, N2, N4, and a medical-claim category. There was no independent double-human gold set. Accordingly, we report counts as exploratory retrieval indicators, not validated prevalence, misinformation frequency, or public attitudes.
+
+The 9 November claim matrix contains 25 propositions assessed against a supplied curated passage corpus using BM25 retrieval and deterministic relation rules. This is bounded evidence assessment; it does not search the open web autonomously. The current statuses are 19 \emph{supported\_within\_scope}, six \emph{insufficient\_evidence}, and zero \emph{refuted\_within\_scope}. "Supported" is scoped: a claim that an official made a statement can be supported by that source, while the underlying event described in the statement may remain unresolved. The matrix records 36 accepted evidence assessments. Source-lineage roots are declared, but their independence has not been independently audited. This is consistent with fact-verification benchmarks that require retrieval and evidence justification, yet it is substantially less comprehensive than a verified independent adjudication; benchmark systems still make significant evidence and verdict errors \citep{thorne2018fever,schlichtkrull2023averitec,schlichtkrull2024averitecshared,rothermel2024infact}.
+
+\subsection{Copying and coordination signals}
+
+The exact cross-channel text audit used 1,384 relevant posts with at least 80 characters. It found 369 cross-channel pairs with Jaccard similarity at least 0.60, connecting 357 posts from 113 channels. The existing MinHash search returned 367 of these pairs, or 99.46\% recall against that finite exact graph; two pairs were missed. This validates candidate retrieval for the stated corpus and threshold, not whether copies were coordinated.
+
+Comment-template analyses were tested against 9,999 conditional randomizations per specification, with fixed seed and a family of 16 tests. Under the author-day model, the largest S7 phrase pool contained 60 phrases versus a null mean of 23.18 (central 95\% null range 17--30); all S7 pools contained 111 phrases versus a null mean of 37.43 (range 24--50). For copy timing, 134 of 369 high-similarity post pairs appeared within ten minutes, versus a 2-hour slot-rotation null mean of 42.87 (95\% null range 32--55). The plus-one estimate is $p=(k+1)/(B+1)$; no simulated exceedance among 9,999 draws gives a minimum empirical $p=0.0001$, not zero. The Holm-adjusted value for the described family is 0.0016 \citep{phipson2010permutation,holm1979simple}.
+
+The nulls preserve selected activity structure and test whether the observed temporal/textual pattern is unusual relative to those models. They do not test every organic explanation, are conditional on a post-selected corpus and analytic choices, and lack a matched control set of ordinary high-attention news events. Statistical atypicality is not the probability of a campaign and does not identify its operator. This cautious behavioral interpretation is consistent with work that treats coordination as observable synchronization or collaborative activity while requiring further evidence for strategic attribution \citep{starbird2019collaborative,pacheco2021uncovering,nizzoli2021coordinated,magelinski2022synchronized,ng2023combined}.
+
+\subsection{TikTok fire-video comparison}
+
+The project compared a user-supplied local MP4 with a TikTok copy using frame-level perceptual similarity. The local file matched 19 of 29 sampled TikTok frames (65.5\%); the TikTok sequence matched 20 of 21 local frames (95.2\%), with 18 of 21 temporally aligned. The thresholds were not calibrated on a benchmark. This supports substantial visual overlap between the files, not proof that they depict the same full recording, that the video was made at the location printed over it, or that it records the warehouse fire reported in Bucha district. EXIF was not treated as authoritative, and no independent geolocation was completed.
+
+\section{Results}
+
+\subsection{A concentrated information wave in the monitored Telegram panel}
+
+The baseline relevant-post counts were 624 on 2 November, 526 on 3 November, 224 on 4 November, and 34 through 12:10:13 on 5 November. Thus 81.7\% of relevant posts in that baseline appeared on the first two dates. The peak hourly bins were 114 posts at 21:00 and 109 at 22:00 on 2 November. These values describe posting within the panel. The first relevant Telegram post located in the panel appeared at 12:41 Kyiv time on 2 November; this is not evidence of the first post anywhere. A retrospective institutional account places an earlier Threads item at 11:34, but that primary post was not captured by this project.
+
+The first police statement at 17:27 preceded the evening Telegram peaks. That ordering is a descriptive fact about two timelines. It does not show that the police statement caused the peak, changed beliefs, or caused mobilization. The 8 November expanded snapshot separately reported 511 posts in the six-hour bin 16:00--22:00 UTC on 2 November. That bin is consistent with an intense publication period but uses another aggregation interval and the 1,438-post snapshot; it must not be substituted for the baseline hourly counts.
+
+\subsection{Claims, narratives, and unresolved physical facts}
+
+The rule-based scan found 301 posts mentioning the hostages/unlawful detention family, 505 mentioning death/torture, 230 mentioning the "concentration camp TCC" phrase, 81 mentioning concealment of evidence, and 307 referring to an official account or denial. Since these categories overlap and stance was not validated, these counts do not measure the number of people who believed each proposition. The most salient methodological finding is therefore not a verdict on narrative prevalence but the gap between retrieval and interpretation.
+
+Within the 25-item evidence matrix, two central physical claims remain unresolved: that 40 civilians were unlawfully held, and that a civilian died. Police and National Guard statements denied these claims; the project records that denial as the institution's position. The available material does not include an independent person-by-person census or a complete source base that would establish either physical proposition. This is not an endorsement of either side. Public reports also described four servicemembers as injured and receiving medical care, but the project did not obtain medical records that independently establish the injuries' nature, timing, and cause. A public report cited a commander's statement about a previously diagnosed vertebral fracture after training elsewhere; that does not establish an injury in this incident.
+
+Procedural updates are similarly scoped. An inquiry, a criminal proceeding, identification of people, a suspicion, or a pre-trial detention decision can be verified as a reported procedural event when supported by its source. None is equivalent to a finding of guilt. The presumption of innocence and the incomplete public case file make person-level causal narratives especially inappropriate.
+
+\subsection{Current view counters and channel-group uncertainty}
+
+The 1,408 baseline posts had 115,931,014 summed current view counters where recorded. This number is not unique reach: views can repeat, audiences overlap, counters were not measured at posting time, and 49 relevant posts lacked a counter. In the separate 1,438-post expanded snapshot, current counters summed to 119,515,745. The change between these sums cannot be interpreted as growth in unique audience because the sample and snapshot differ.
+
+One exploratory cross-tabulation placed 95.7\% of current view-counter sums for N3-labeled posts in a group of Russian/pro-Russian channels; after excluding disputed and automated channel labels, the share was 88.9\% in a smaller subset. This result is fragile in interpretation: narrative labels are not validated stance, group labels combine different evidence dimensions, the channel sample is purposive, and view counters are highly concentrated in a few large channels. We do not use it to infer state coordination or audience persuasion. It remains a sensitivity observation that should be revisited after independent channel and narrative coding.
+
+\subsection{Repeated language and behavioral coordination}
+
+The exact graph audit found near-duplicate posts across many channels, and the permutation tests found some timing/template statistics unusual under the selected conditional models. Separately, a manual review identified a cluster of 438 template-like comments from 367 pseudonymized accounts across four Telegram threads. The stricter S7 coding and null models use a different phrase inventory and denominator; they should not be combined as though they were the same classifier output.
+
+The evidence supports the statement that copying and synchronized timing were present and that selected patterns were more concentrated than expected under the specified nulls. It does not establish that every account was automated, that the accounts were paid, that one operator issued instructions, that an organization controlled them, or that the pattern changed the physical event. A platform bot flag was present for only a small number of accounts; platform labels are not a comprehensive bot detector. False-positive risks in automated bot classification are documented and depend on the target population and base rate \citep{rauchfleisch2020false}. Coordination may arise from common exposure, shared news, public calls to action, community norms, or deliberate orchestration; these alternatives are not resolved by text similarity alone.
+
+\subsection{A separate fire narrative and unresolved video provenance}
+
+In the 883-comment TikTok snapshot, 69 rule-selected comments were manually read. Among those 69, 21 supported or alluded to a "covering tracks" interpretation and 20 corrected the geography. Other sampled comments denied, questioned, joked about, or left the interpretation unclear. The remaining 814 comments were not manually coded. These counts document competing interpretations within a selected subset; they cannot estimate their prevalence across all comments or establish how a narrative originated.
+
+The source chronology distinguishes a warehouse-fire report in Bucha district from the earlier confrontation site. The later village-council post named Sofiaivska Borshchahivka, while the video overlay itself is only an uploader-provided label. The cross-file frame overlap does not establish the scene location or the time the clip was recorded. The evidence is compatible with geographic confusion, deliberate reuse, or another explanation; it does not discriminate among them. A neutral conclusion is that the comments reveal an observable place-association dispute, while the video provenance and transmission pathway remain unresolved.
+
+\subsection{Cross-platform coverage and speech transcription}
+
+The 42 TikTok links yielded comment identifiers and visible counters, but the set is user-selected and photo media were not downloaded. The 9,653 comments collected across those links comprised 3,383 top-level comments and 6,270 replies. The top-level comment IDs represented 28.17\% of the sum of platform counters across 41 items; this ratio describes collection coverage relative to displayed counts, not a sampling probability. For 32 of 41 items, fewer IDs were obtained than the displayed counter. The lack of a collected claim tying the fire to Sofiaivska in that bounded list cannot refute a claim in another video or platform.
+
+The YouTube corpus is likewise candidate-based. Its 444 lexical matches were not full-video fact checks. Subtitle excerpts can show that a phrase was spoken or quoted, but without context they cannot establish the speaker's endorsement. Instagram, X, Threads, and Facebook coverage was incomplete or unavailable, so missing records are treated as missingness rather than silence.
+
+The speech benchmark's high aggregate WER (44.58\%) and only 10 quote-safe clips out of 18 support a conservative policy: ASR output is an indexing aid, not a verbatim source, and high-stakes quotations require interval-level listening or another independent reference. Even a corrected transcript verifies only the words audible in a segment; it does not verify the speaker's identity, truth, legal meaning, or the event described.
+
+\section{Discussion}
+
+\subsection{What this case supports}
+
+The collected evidence supports a bounded description of an information wave in monitored channels: a high publication volume on 2--3 November, repeated public claims, subsequent official and media statements, and measurable copying/synchronization patterns in selected Telegram records. It also supports the existence of a procedural response, because several institutions publicly announced inquiries and investigative steps. The later fire discussion contains a clear geographic association dispute in a targeted comment sample.
+
+The study does not establish the full physical sequence, the truth of all allegations about conditions, the source of every narrative, a state-directed campaign, or the effect of online content on participants. The strongest conclusion is methodological: digital traces can quantify records and preserve attributed claims, but they do not erase the distinction between an event, a report about an event, and a claim about a report.
+
+\subsection{Why source count is not evidence independence}
+
+Many posts may repeat one source. Counting every repost as independent corroboration creates false confidence. Project lineage labels capture some known dependencies, but source-root independence was not independently audited. Future reports should distinguish the number of publications from the number of independent evidence roots and show the dependency path for repeated claims. The evidence-oriented design of FEVER and AVeriTeC reinforces the value of retrieving and presenting supporting passages, while their benchmark results also show that correct labels and adequate evidence remain difficult \citep{thorne2018fever,schlichtkrull2023averitec,schlichtkrull2024averitecshared}. For this case, externally adjudicated physical truth is outside the project's available evidence.
+
+\subsection{Why a significant coordination statistic is not attribution}
+
+A conditional permutation test asks whether a summary statistic is unusual under a specified randomization that preserves chosen features. It cannot evaluate an unmodeled explanation. Because the corpus is purposive, the candidate clusters were identified through exploratory analysis, and no matched organic comparison events were included, p-values should be read as conditional evidence against those null models, not as posterior probabilities of manipulation. Starbird and colleagues describe disinformation work as a participatory process that can involve both organized actors and ordinary users; coordination language should therefore describe observed behavior before asserting command structure \citep{starbird2019collaborative}. Research frameworks for coordinated behavior also require the analyst to consider multiple behavioral dimensions and the data collection frame \citep{pacheco2021uncovering,nizzoli2021coordinated,magelinski2022synchronized,ng2023combined}.
+
+\subsection{The value of explicit unknowns}
+
+A useful case report is not the one that resolves every disputed fact. It is one that specifies which evidence would change an assessment. In this case, independent medical records, a complete roster or custody log, a final signed inquiry report, full primary media captures, a recording-location analysis for the TikTok video, and archived first-post materials could materially update the current assessment. The project's evidence matrix already separates claims supported within a declared scope from claims for which the available record is insufficient. This open-world treatment avoids converting an absent document into evidence that the underlying event did not happen.
+
+\section{Limitations and research ethics}
+
+The channel panel is purposive and incomplete; results are not representative of Telegram, much less of the population. Search and visibility biases may exclude content that uses euphemisms, local references, private groups, or other languages. Collection times differ across platforms, and displayed counters are snapshots. The 1,408 baseline and 1,438 expanded snapshot have distinct collection boundaries and should not be pooled without a record-level reconciliation.
+
+The lexical narrative detector has inadequate validation for several classes. The second LLM coder is not an independent human reference, and agreement alone does not establish construct validity. The coordination tests use conditional nulls that may not capture organic copying after a shared news event; the analysis is exploratory, with 16 tests adjusted by Holm, but is not a confirmatory preregistered study. The manually reviewed TikTok comment subset is small and selected by rules. The visual matching threshold is not calibrated. The 18-clip ASR sample is stratified but small and cannot establish transcription accuracy over all 607 videos. The automated incident engine did not validate semantic accuracy, source authenticity, citation entailment, or event truth; its structural test suite is not a semantic gold standard \citep{socialcaseengine2026}.
+
+The raw data include user-generated comments and pseudonymized identifiers. Pseudonymization does not guarantee anonymity, especially when text is searchable. In line with internet research ethics guidance, the project avoids publishing usernames, unnecessary personal details, or raw comment dumps; any further release requires platform-terms review, a privacy assessment, and minimization of searchable quotations \citep{aoir2019ethics}. The private repository's internal artifacts are the analysis record, not independent evidence and not a publicly accessible replication package.
+
+\section{Implications for incident-analysis systems}
+
+This case suggests a layered architecture for evidence-based monitoring:
+\begin{enumerate}
+\item Preserve records and provenance before interpreting them; store collection, publication, event, and evaluation times separately.
+\item Represent each proposition as a claim linked to exact source passages, source lineage, relation type, and scope-qualified status.
+\item Separate topic mention, author stance, source position, and truth assessment. A keyword hit is a retrieval cue, not a belief label.
+\item Keep communication timelines distinct from physical-event timelines. Merge event mentions only with explicit evidence and retain unresolved alternatives.
+\item Use exact graph audits and sensitivity analyses to characterize repeated language; label a result as behavioral coordination evidence only at the level it supports.
+\item Treat views, likes, replies, and emoji reactions as platform-specific engagement signals, not unique reach or a representative vote.
+\item Require source-backed claims in generated reports and allow \emph{insufficient evidence} or \emph{cannot determine} outputs.
+\end{enumerate}
+
+Automation is most defensible for deterministic tasks—deduplication, timestamp normalization, input hashing, passage retrieval receipts, aggregation with fixed denominators, and report consistency checks. Language classification, source independence, sarcasm, video geolocation, and causal attribution require calibrated models, suitable evidence, and explicit uncertainty. The aim should be an autonomous system that can abstain, not one that always fills every field.
+
+\section{Conclusion}
+
+The Petropavlivska Borshchahivka case shows both the analytical value and the epistemic limits of public digital traces. In a targeted Telegram panel, the information wave was concentrated in the first two days, and some repeated-text patterns were unusually synchronized relative to specified conditional null models. Institutional statements and investigative announcements can be reconstructed as a sequence of public positions. Yet key physical claims remain unresolved in the available record, the available cross-platform data are incomplete, and the specific fire video has not been independently geolocated.
+
+The study therefore does not declare a definitive physical narrative, identify a hidden organizer, or estimate public opinion. It documents what the observed records support, what they contradict, and what they leave unknown. For contested incidents, that boundary is not a weakness to hide; it is part of the result. A report that preserves uncertainty, source dependence, denominators, and correction history is more useful than a confident story built by treating repetition as corroboration or missing data as proof.
+
+\section*{Data and materials statement}
+The Social repository is private at the time of this draft. The article cites internal report artifacts and records their snapshot dates, but the full raw corpus is not publicly deposited. Public release should be accompanied by a lawful, privacy-preserving replication package, a source manifest with hashes, and a clear inventory of unavailable or access-restricted materials. No independent expert adjudication of the physical facts was available for this study.
+
+\section*{Competing interests and funding}
+No external funding or competing-interest information was supplied for this draft. The author should complete these declarations before external submission.
+
+\section*{Author contribution}
+The author identity and formal contribution statement were not supplied. Complete before external submission; do not infer an individual author from local account names.
+
+\section*{Acknowledgements}
+The project used public institutional statements, public platform records, and project-maintained collection and audit artifacts. No person is acknowledged by name without their permission.
