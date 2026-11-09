@@ -15,6 +15,7 @@ from __future__ import annotations
 import hashlib
 import json
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -28,6 +29,24 @@ from src.analysis.claim_verification import (
     infer_claim_passage_relation,
     retrieve_evidence_candidates,
 )
+
+
+def _utc_timestamp(value: str, field_name: str) -> tuple[datetime, str]:
+    """Parse an ISO-8601 UTC timestamp and return its canonical seconds form."""
+    if not isinstance(value, str) or not value.strip():
+        raise ValueError(f"{field_name} must be a non-empty ISO-8601 UTC timestamp")
+    try:
+        parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
+    except ValueError as exc:
+        raise ValueError(f"{field_name} must be a valid ISO-8601 timestamp") from exc
+    if parsed.tzinfo is None or parsed.utcoffset().total_seconds() != 0:
+        raise ValueError(f"{field_name} must use UTC")
+    normalized = parsed.astimezone(timezone.utc)
+    return normalized, normalized.isoformat(timespec="seconds").replace("+00:00", "Z")
+
+
+def _current_utc_timestamp() -> str:
+    return datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
 
 
 def get_artifact_text(artifact_rel_path: str, row_idx: int | None = None) -> tuple[str, str, str]:
@@ -686,13 +705,41 @@ def build_core_claims_spec() -> list[dict]:
     ]
 
 
-def build_verification_package() -> dict[str, Any]:
+def build_verification_package(
+    *,
+    generated_at_utc: str | None = None,
+    evaluation_as_of_utc: str | None = None,
+) -> dict[str, Any]:
     """Retrieve and assess 25 claims against the supplied, curated evidence corpus."""
-    passages, passages_by_id = build_passages_bundle()
+    all_passages, _ = build_passages_bundle()
     claims_spec = build_core_claims_spec()
 
-    as_of_utc = "2026-11-09T13:30:00Z"
-    assessed_at_utc = "2026-11-09T13:25:00Z"
+    generated_at_utc = generated_at_utc or _current_utc_timestamp()
+    generated_dt, generated_at_utc = _utc_timestamp(generated_at_utc, "generated_at_utc")
+    evaluation_as_of_utc = evaluation_as_of_utc or generated_at_utc
+    evaluation_dt, evaluation_as_of_utc = _utc_timestamp(evaluation_as_of_utc, "evaluation_as_of_utc")
+    if evaluation_dt > generated_dt:
+        raise ValueError("evaluation_as_of_utc cannot be later than generated_at_utc")
+
+    passages = [
+        passage for passage in all_passages
+        if _utc_timestamp(passage["captured_at_utc"], "passage.captured_at_utc")[0] <= evaluation_dt
+    ]
+    passages_by_id = {passage["passage_id"]: passage for passage in passages}
+    captured_times = [
+        _utc_timestamp(passage["captured_at_utc"], "passage.captured_at_utc")[0]
+        for passage in passages
+    ]
+    eligible_capture_times = [captured for captured in captured_times if captured <= evaluation_dt]
+    evidence_cutoff_utc = (
+        max(eligible_capture_times).isoformat(timespec="seconds").replace("+00:00", "Z")
+        if eligible_capture_times else None
+    )
+    if evidence_cutoff_utc is None:
+        raise ValueError("no evidence in the supplied corpus is available by evaluation_as_of_utc")
+
+    as_of_utc = evaluation_as_of_utc
+    assessed_at_utc = evaluation_as_of_utc
 
     results_bundle = []
     all_assessments = []
@@ -777,8 +824,10 @@ def build_verification_package() -> dict[str, Any]:
         })
 
     compiled_payload = {
-        "schema_version": "2.2",
-        "generated_at_utc": "2026-11-09T13:30:00Z",
+        "schema_version": "2.3",
+        "generated_at_utc": generated_at_utc,
+        "evaluation_as_of_utc": evaluation_as_of_utc,
+        "evidence_cutoff_utc": evidence_cutoff_utc,
         "track": "Track 1: Core Claims & Evidence Verification",
         "milestone": "M1",
         "owner": "deterministic_claim_verifier",
@@ -816,9 +865,11 @@ def render_markdown_report(payload: dict[str, Any]) -> str:
     bundle = payload["verification_bundle"]
     lines = [
         "# Доказова верифікація ядерних тверджень: Петропавлівська Борщагівка",
-        "## Звіт M1, схема результатів 2.2",
+        "## Звіт M1, схема результатів 2.3",
         "",
-        f"> **Дата формування:** {payload.get('generated_at_utc', 'unknown')}  ",
+        f"> **Час створення артефакту (UTC):** {payload.get('generated_at_utc', 'unknown')}  ",
+        f"> **Оцінювання станом на (UTC):** {payload.get('evaluation_as_of_utc', 'unknown')}  ",
+        f"> **Зріз доказів (UTC):** {payload.get('evidence_cutoff_utc', 'unknown')}  ",
         "> **Метод:** локальний BM25-пошук і детерміновані правила зіставлення твердження з пасажем  ",
         "> **Межа автономності:** система вибирає пасажі лише в наданому курованому корпусі; зовнішній пошук джерел не виконується  ",
         f"> **Тверджень:** {summary['total_claims']} | **Підтримано в межах scope:** {summary.get('supported_within_scope', 0)} | **Спростовано в межах scope:** {summary.get('refuted_within_scope', 0)} | **Недостатньо доказів:** {summary.get('insufficient_evidence', 0)} | **Конфліктні:** {summary.get('conflicting_evidence', 0)}  ",

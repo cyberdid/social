@@ -17,7 +17,7 @@
 - Distinguish an official denial from independent refutation of a physical fact.
 - Keep the verifier deterministic and scoped to its captured evidence corpus; describe that scope accurately.
 - No absolute machine-specific paths in tracked outputs or reusable scripts.
-- Run the requested held-out end-to-end verification and the relevant project checks.
+- Run the held-out claim regression suite against the curated corpus and the relevant project checks; do not describe it as a blind or independent benchmark.
 
 ---
 
@@ -44,7 +44,7 @@
 
 ### Task 3: Remove forced passage selection and validate held-out claims
 
-**Files:** `src/analysis/claim_verification.py`, `scripts/analysis/build_core_claims_verification.py`, `tests/test_blind_claim_verification.py`, and focused verification tests.
+**Files:** `src/analysis/claim_verification.py`, `scripts/analysis/build_core_claims_verification.py`, `tests/test_heldout_claim_regression.py`, and focused verification tests.
 
 - Remove runtime dependence on manually assigned `primary_passage_id` and `counter_passage_ids`; use ranked retrieval over the captured evidence corpus and infer relations only from retrieved candidates.
 - Preserve `expected_relation` and `target_status` only in test fixtures/ground truth, never production inference.

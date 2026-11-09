@@ -1,15 +1,12 @@
-"""Blind end-to-end verification tests on unseen claims.
+"""Held-out claim regression tests against the curated evidence corpus.
 
-Validates that the autonomous claim verification pipeline
+Validates that the deterministic claim-verification pipeline
 (retrieve_evidence_candidates -> infer_claim_passage_relation -> aggregate_verification)
-dynamically infers correct evidentiary relations (supports, contradicts, contextualizes)
-and produces calibrated verification statuses (supported_within_scope, refuted_within_scope,
-insufficient_evidence) purely at runtime without pre-scripted relations or expected statuses.
+infers evidentiary relations (supports, contradicts, contextualizes) for held-out examples
+against the supplied curated corpus. This regression suite is not an independent blind benchmark.
 """
 from __future__ import annotations
 
-import json
-from pathlib import Path
 import pytest
 
 from src.analysis.claim_verification import (
@@ -20,24 +17,20 @@ from src.analysis.claim_verification import (
 )
 from scripts.analysis.build_core_claims_verification import build_core_claims_spec, build_passages_bundle
 
-REPO_ROOT = Path(__file__).resolve().parents[1]
-VERIFICATION_JSON = REPO_ROOT / "reports" / "evidence-verification" / "core_claims_verification_2026-11-09.json"
-
-
 @pytest.fixture(scope="module")
 def verification_passages():
     passages, _ = build_passages_bundle()
     return passages
 
 
-def test_blind_end_to_end_verification_unseen_claims(verification_passages):
-    """Evaluate 6 completely unseen claims across different evidentiary categories."""
+def test_heldout_claim_regression_against_curated_passages(verification_passages):
+    """Exercise six held-out examples; this is not an independent blind benchmark."""
     passages_by_id = {p["passage_id"]: p for p in verification_passages}
 
-    blind_claims = [
+    regression_claims = [
         # 1. SZCh count supported by official briefing
         {
-            "claim_id": "blind_claim_01_szch_count",
+            "claim_id": "regression_claim_01_szch_count",
             "category": "building_circumstances",
             "statement": "Серед осіб у приміщенні четверо самовільно залишили частину",
             "scope": {"incident": "petropavlivska-borshchahivka", "type": "official_statement", "topic": "szch_status"},
@@ -47,7 +40,7 @@ def test_blind_end_to_end_verification_unseen_claims(verification_passages):
         },
         # 2. Bail amount supported by court reporting
         {
-            "claim_id": "blind_claim_02_ladyka_bail_amount",
+            "claim_id": "regression_claim_02_ladyka_bail_amount",
             "category": "procedural_status",
             "statement": "Суд призначив підозрюваній Ладиці заставу розміром 66560 гривень",
             "scope": {"incident": "petropavlivska-borshchahivka", "type": "judicial_proceeding", "topic": "bail_decision"},
@@ -57,7 +50,7 @@ def test_blind_end_to_end_verification_unseen_claims(verification_passages):
         },
         # 3. 40 hostages rumor refuted by police release
         {
-            "claim_id": "blind_claim_03_hostages_40",
+            "claim_id": "regression_claim_03_hostages_40",
             "category": "injuries_and_victims",
             "statement": "У будівлі незаконно утримували 40 заручників",
             "scope": {"incident": "petropavlivska-borshchahivka", "type": "physical_fact", "topic": "hostages_rumor"},
@@ -67,7 +60,7 @@ def test_blind_end_to_end_verification_unseen_claims(verification_passages):
         },
         # 4. Unsubstantiated chemical weapons allegation -> insufficient_evidence
         {
-            "claim_id": "blind_claim_04_chemical_weapons",
+            "claim_id": "regression_claim_04_chemical_weapons",
             "category": "injuries_and_victims",
             "statement": "Під час сутичок у підвалі використовувалися бойові хімічні отруйні речовини",
             "scope": {"incident": "petropavlivska-borshchahivka", "type": "social_media_allegation", "topic": "chemical_weapons"},
@@ -77,7 +70,7 @@ def test_blind_end_to_end_verification_unseen_claims(verification_passages):
         },
         # 5. Uncorroborated TCK storm command -> negative inference rejected -> insufficient_evidence
         {
-            "claim_id": "blind_claim_05_tck_storm",
+            "claim_id": "regression_claim_05_tck_storm",
             "category": "institutional_roles",
             "statement": "Співробітники районного ТЦК брали участь у штурмі будівлі",
             "scope": {"incident": "petropavlivska-borshchahivka", "type": "social_media_allegation", "topic": "tck_participation"},
@@ -87,7 +80,7 @@ def test_blind_end_to_end_verification_unseen_claims(verification_passages):
         },
         # 6. Fatality rumor refuted by police release
         {
-            "claim_id": "blind_claim_06_killed_citizen",
+            "claim_id": "regression_claim_06_killed_citizen",
             "category": "injuries_and_victims",
             "statement": "Під час заворушень біля будівлі загинув цивільний громадянин",
             "scope": {"incident": "petropavlivska-borshchahivka", "type": "physical_fact", "topic": "fatalities"},
@@ -97,8 +90,8 @@ def test_blind_end_to_end_verification_unseen_claims(verification_passages):
         },
     ]
 
-    for bc in blind_claims:
-        s_res = retrieve_evidence_candidates(bc, verification_passages, as_of_utc="2026-11-09T13:30:00Z")
+    for bc in regression_claims:
+        s_res = retrieve_evidence_candidates(bc, verification_passages, as_of_utc="2026-11-09T12:30:00Z")
         assessments = []
         for cand in s_res["candidates"]:
             p = passages_by_id[cand["passage_id"]]
@@ -112,7 +105,7 @@ def test_blind_end_to_end_verification_unseen_claims(verification_passages):
                         relation=inf["relation"],
                         decision=inf["decision"],
                         scope=bc["scope"],
-                            assessed_at_utc="2026-11-09T13:25:00Z",
+                            assessed_at_utc="2026-11-09T12:25:00Z",
                             assessor_id="deterministic_claim_verifier",
                         acceptance_basis="validated_rule",
                         validated_rule_id=inf["rule_id"],
@@ -126,13 +119,13 @@ def test_blind_end_to_end_verification_unseen_claims(verification_passages):
         v_res = aggregate_verification(
             bc,
             assessments,
-            as_of_utc="2026-11-09T13:30:00Z",
+            as_of_utc="2026-11-09T12:30:00Z",
             search_complete=True,
             minimum_independent_roots=1,
         )
 
         assert v_res["status"] == bc["expected_status"], (
-            f"Blind verification failure for {bc['claim_id']}: expected {bc['expected_status']}, got {v_res['status']}"
+            f"Held-out regression failure for {bc['claim_id']}: expected {bc['expected_status']}, got {v_res['status']}"
         )
 
 
@@ -151,7 +144,7 @@ def test_held_out_claim_is_retrieved_without_curated_passage_ids(verification_pa
         "scope": {"incident": "petropavlivska-borshchahivka", "type": "official_statement", "topic": "identified_persons"},
         "key_values": {"identified_persons_count": {"value": 130, "operator": "eq"}},
     }
-    retrieved = retrieve_evidence_candidates(claim, verification_passages, as_of_utc="2026-11-09T13:30:00Z")
+    retrieved = retrieve_evidence_candidates(claim, verification_passages, as_of_utc="2026-11-09T12:30:00Z")
     passages = {row["passage_id"]: row for row in verification_passages}
     assessments = []
     for candidate in retrieved["candidates"]:
@@ -161,7 +154,7 @@ def test_held_out_claim_is_retrieved_without_curated_passage_ids(verification_pa
             assessments.append(create_evidence_assessment(
                 claim, candidate, passage,
                 relation=inferred["relation"], decision=inferred["decision"],
-                scope=claim["scope"], assessed_at_utc="2026-11-09T13:25:00Z",
+                scope=claim["scope"], assessed_at_utc="2026-11-09T12:25:00Z",
                 assessor_id="heldout_test", acceptance_basis="validated_rule",
                 validated_rule_id=inferred["rule_id"],
                 asserted_values=inferred.get("asserted_values") or {},
@@ -169,7 +162,7 @@ def test_held_out_claim_is_retrieved_without_curated_passage_ids(verification_pa
                 independence_status="candidate",
             ))
     result = aggregate_verification(
-        claim, assessments, as_of_utc="2026-11-09T13:30:00Z",
+        claim, assessments, as_of_utc="2026-11-09T12:30:00Z",
         search_complete=True, minimum_independent_roots=1,
     )
     assert retrieved["candidates"]

@@ -6,6 +6,7 @@ exact Unicode character offsets in primary artifacts, and deterministic relation
 from __future__ import annotations
 
 import json
+from datetime import datetime, timezone
 from pathlib import Path
 
 import pytest
@@ -32,9 +33,17 @@ def test_core_claims_verification_schema_and_quantities():
     with open(JSON_REPORT, encoding="utf-8") as f:
         data = json.load(f)
 
-    assert data["schema_version"] == "2.2"
+    assert data["schema_version"] == "2.3"
     assert data["track"] == "Track 1: Core Claims & Evidence Verification"
     assert data["milestone"] == "M1"
+
+    generated_at = datetime.fromisoformat(data["generated_at_utc"].replace("Z", "+00:00"))
+    evaluation_as_of = datetime.fromisoformat(data["evaluation_as_of_utc"].replace("Z", "+00:00"))
+    evidence_cutoff = datetime.fromisoformat(data["evidence_cutoff_utc"].replace("Z", "+00:00"))
+    assert generated_at.tzinfo == timezone.utc
+    assert evaluation_as_of.tzinfo == timezone.utc
+    assert evidence_cutoff.tzinfo == timezone.utc
+    assert evidence_cutoff <= evaluation_as_of <= generated_at
 
     summary = data["summary"]
     # Requirement: 20-30 claims
@@ -196,9 +205,30 @@ def test_markdown_report_matches_json():
 
 
 def test_build_core_claims_verification_deterministic():
-    pkg1 = build_verification_package()
-    pkg2 = build_verification_package()
+    fixed_generation_time = "2026-11-09T12:30:00Z"
+    fixed_evaluation_time = "2026-11-09T12:30:00Z"
+    pkg1 = build_verification_package(
+        generated_at_utc=fixed_generation_time,
+        evaluation_as_of_utc=fixed_evaluation_time,
+    )
+    pkg2 = build_verification_package(
+        generated_at_utc=fixed_generation_time,
+        evaluation_as_of_utc=fixed_evaluation_time,
+    )
     # Ensure exact match
     dump1 = json.dumps(pkg1, sort_keys=True)
     dump2 = json.dumps(pkg2, sort_keys=True)
     assert dump1 == dump2
+
+
+def test_verification_payload_separates_generation_from_evidence_cutoff():
+    payload = build_verification_package(
+        generated_at_utc="2026-11-09T12:30:00Z",
+        evaluation_as_of_utc="2026-11-09T12:30:00Z",
+    )
+
+    assert payload["generated_at_utc"] == "2026-11-09T12:30:00Z"
+    assert payload["evaluation_as_of_utc"] == "2026-11-09T12:30:00Z"
+    assert payload["evidence_cutoff_utc"] == "2026-11-09T12:00:00Z"
+    assert "**Зріз доказів (UTC):** 2026-11-09T12:00:00Z" in render_markdown_report(payload)
+    assert "**Оцінювання станом на (UTC):** 2026-11-09T12:30:00Z" in render_markdown_report(payload)

@@ -1,15 +1,15 @@
 {
   "schema_version": "1.0",
   "edition_date": "09.11.2026",
-  "generated_at_utc": "2026-11-09T12:06:55.617382+00:00",
+  "generated_at_utc": "2026-11-09T12:59:38.909140+00:00",
   "builder": "scripts/reports/build_report.py",
   "builder_sha256": "6fa80f7a645b8e720d7f64fb09d50d1dc35252712ac5ea16403ac560d6ae56b3",
   "renderer": "ReportLab",
   "renderer_version": "5.1.0",
   "visual_review": {
     "status": "passed",
-    "page_sampling": "All 29 A4 pages rendered at 45 dpi and inspected in a contact sheet. Pages 1, 2, 14, 15, 16, and 29 were additionally rendered at 110 dpi and inspected.",
-    "additional_check": "The reaction-parity figure and non-scale event comparison are legible and unclipped. Tables, headings, page transitions, and the final bibliography page were checked. PDF text extraction reports 0 replacement characters."
+    "page_sampling": "All 29 A4 pages were rendered at 45 dpi and inspected in a contact sheet. Pages 1, 2, 14, 15, 16, and 29 were additionally rendered at 110 dpi and inspected.",
+    "additional_check": "The rebuilt PDF has 29 pages and 0 replacement characters. Layout, tables, figures, page transitions, and the final bibliography page were visually checked after the evidence-matrix input hash was refreshed."
   },
   "artifacts": [
     {
@@ -43,7 +43,7 @@
         },
         {
           "path": "reports/evidence-verification/core_claims_verification_2026-11-09.json",
-          "sha256": "2181929db4ff06fea2df0a4d4d250f6d1457faa36cff8d92753353fa4b2dd491"
+          "sha256": "0dea87a77ea444d9ba40970826a89aea0a6f3470d9913043a934329047ef269c"
         },
         {
           "path": "reports/event-reconstruction/physical_event_timeline_2026-11-09.json",
@@ -71,8 +71,8 @@
         }
       ],
       "pdf": "output/pdf/petropavlivska_borshchahivka_report_2026-11-09.pdf",
-      "pdf_sha256": "ebc41af9a18eb2b9414149c66523204a4ad4d6b4deb046647797f2a0534bc3d4",
-      "pdf_bytes": 950248,
+      "pdf_sha256": "bd3764f0cd60f1fbfef72141e92b5475a9cd3c95cf9a4446a0ae6262e4ef19b0",
+      "pdf_bytes": 950246,
       "pages": 29,
       "page_size": "595.276 x 841.89 pts (A4)",
       "visual_sample_pages": [

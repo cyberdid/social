@@ -1,6 +1,8 @@
 {
-  "schema_version": "2.2",
-  "generated_at_utc": "2026-11-09T13:30:00Z",
+  "schema_version": "2.3",
+  "generated_at_utc": "2026-11-09T12:58:00Z",
+  "evaluation_as_of_utc": "2026-11-09T12:58:00Z",
+  "evidence_cutoff_utc": "2026-11-09T12:00:00Z",
   "track": "Track 1: Core Claims & Evidence Verification",
   "milestone": "M1",
   "owner": "deterministic_claim_verifier",
@@ -428,14 +430,14 @@
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:a501844c8e1d19b3adcd13a0",
+        "result_id": "verification:7c1dcb00b3885e220a09ab06",
         "claim_id": "claim_core_01_hostages_40",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
           "type": "physical_fact",
           "topic": "hostages_count"
         },
-        "as_of_utc": "2026-11-09T13:30:00Z",
+        "as_of_utc": "2026-11-09T12:58:00Z",
         "status": "insufficient_evidence",
         "search_complete": true,
         "supporting_evidence_ids": [],
@@ -457,11 +459,11 @@
         "minimum_distinct_lineage_roots": 1,
         "official_position": "officially_disputed",
         "assessment_ids": [
-          "assessment:c5e791d3f6d3b8a132c219e6"
+          "assessment:2167458bc99648db774c2a80"
         ],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:c5e791d3f6d3b8a132c219e6",
+            "assessment_id": "assessment:2167458bc99648db774c2a80",
             "claim_id": "claim_core_01_hostages_40",
             "candidate_id": "candidate:f61deb46c884e96e6af3fe5e",
             "evidence_id": "psg_ngu_hostages_40_refuted",
@@ -481,7 +483,7 @@
             "assessment_source": "validated_rule",
             "assessor_id": "deterministic_claim_verifier",
             "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-            "assessed_at_utc": "2026-11-09T13:25:00Z",
+            "assessed_at_utc": "2026-11-09T12:58:00Z",
             "citation": {
               "passage_id": "psg_ngu_hostages_40_refuted",
               "start_offset": 37,
@@ -532,7 +534,7 @@
           "assessment_source": "validated_rule",
           "assessor_id": "deterministic_claim_verifier",
           "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-          "assessed_at_utc": "2026-11-09T13:25:00Z",
+          "assessed_at_utc": "2026-11-09T12:58:00Z",
           "citation": {
             "passage_id": "psg_ngu_hostages_40_refuted",
             "start_offset": 37,
@@ -553,7 +555,7 @@
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:c5e791d3f6d3b8a132c219e6"
+          "assessment_id": "assessment:2167458bc99648db774c2a80"
         }
       ],
       "search_receipt": {
@@ -837,14 +839,14 @@
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:64aba41cfdef4b8c18cbe6eb",
+        "result_id": "verification:f216e120b796bac20d2db529",
         "claim_id": "claim_core_02_killed_citizen",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
           "type": "physical_fact",
           "topic": "fatalities"
         },
-        "as_of_utc": "2026-11-09T13:30:00Z",
+        "as_of_utc": "2026-11-09T12:58:00Z",
         "status": "insufficient_evidence",
         "search_complete": true,
         "supporting_evidence_ids": [],
@@ -866,11 +868,11 @@
         "minimum_distinct_lineage_roots": 1,
         "official_position": "officially_disputed",
         "assessment_ids": [
-          "assessment:482147a239b50d39a4fb3e37"
+          "assessment:0acc5a08183b01b44ad74e4d"
         ],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:482147a239b50d39a4fb3e37",
+            "assessment_id": "assessment:0acc5a08183b01b44ad74e4d",
             "claim_id": "claim_core_02_killed_citizen",
             "candidate_id": "candidate:d154846092dcbfb27df32996",
             "evidence_id": "psg_ngu_hostages_40_refuted",
@@ -890,7 +892,7 @@
             "assessment_source": "validated_rule",
             "assessor_id": "deterministic_claim_verifier",
             "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-            "assessed_at_utc": "2026-11-09T13:25:00Z",
+            "assessed_at_utc": "2026-11-09T12:58:00Z",
             "citation": {
               "passage_id": "psg_ngu_hostages_40_refuted",
               "start_offset": 0,
@@ -941,7 +943,7 @@
           "assessment_source": "validated_rule",
           "assessor_id": "deterministic_claim_verifier",
           "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-          "assessed_at_utc": "2026-11-09T13:25:00Z",
+          "assessed_at_utc": "2026-11-09T12:58:00Z",
           "citation": {
             "passage_id": "psg_ngu_hostages_40_refuted",
             "start_offset": 0,
@@ -962,7 +964,7 @@
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:482147a239b50d39a4fb3e37"
+          "assessment_id": "assessment:0acc5a08183b01b44ad74e4d"
         }
       ],
       "search_receipt": {
@@ -1248,14 +1250,14 @@
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:c9eb2a0b518a9412d72e1afe",
+        "result_id": "verification:751a8f78a189c7cdcb4a51dc",
         "claim_id": "claim_core_03_broken_spine",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
           "type": "medical_claim",
           "topic": "severe_injuries"
         },
-        "as_of_utc": "2026-11-09T13:30:00Z",
+        "as_of_utc": "2026-11-09T12:58:00Z",
         "status": "insufficient_evidence",
         "search_complete": true,
         "supporting_evidence_ids": [],
@@ -1275,7 +1277,7 @@
         "assessment_ids": [],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:0e82c28b3489f19c2798068e",
+            "assessment_id": "assessment:340de70be21fb072b31c94af",
             "claim_id": "claim_core_03_broken_spine",
             "candidate_id": "candidate:70133f5103a8f020e0be0d5e",
             "evidence_id": "psg_ngu_spine_refuted",
@@ -1295,7 +1297,7 @@
             "assessment_source": "validated_rule",
             "assessor_id": "deterministic_claim_verifier",
             "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-            "assessed_at_utc": "2026-11-09T13:25:00Z",
+            "assessed_at_utc": "2026-11-09T12:58:00Z",
             "citation": {
               "passage_id": "psg_ngu_spine_refuted",
               "start_offset": 0,
@@ -1314,12 +1316,12 @@
         ],
         "excluded_assessments": [
           {
-            "assessment_id": "assessment:0e82c28b3489f19c2798068e",
+            "assessment_id": "assessment:340de70be21fb072b31c94af",
             "reason": "non_verdict_relation"
           }
         ],
         "excluded_assessment_ids": [
-          "assessment:0e82c28b3489f19c2798068e"
+          "assessment:340de70be21fb072b31c94af"
         ],
         "supersedes": null,
         "rationale": "The supplied evidence does not meet the declared source-lineage threshold; absence of evidence is not refutation.",
@@ -1353,7 +1355,7 @@
           "assessment_source": "validated_rule",
           "assessor_id": "deterministic_claim_verifier",
           "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-          "assessed_at_utc": "2026-11-09T13:25:00Z",
+          "assessed_at_utc": "2026-11-09T12:58:00Z",
           "citation": {
             "passage_id": "psg_ngu_spine_refuted",
             "start_offset": 0,
@@ -1374,7 +1376,7 @@
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:0e82c28b3489f19c2798068e"
+          "assessment_id": "assessment:340de70be21fb072b31c94af"
         }
       ],
       "search_receipt": {
@@ -1657,14 +1659,14 @@
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:3f8baca3b03a504ae457ec7f",
+        "result_id": "verification:57a6c20b631057adb5a4d52a",
         "claim_id": "claim_core_04_ngu_four_injured",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
           "type": "official_statement",
           "topic": "ngu_injuries"
         },
-        "as_of_utc": "2026-11-09T13:30:00Z",
+        "as_of_utc": "2026-11-09T12:58:00Z",
         "status": "insufficient_evidence",
         "search_complete": true,
         "supporting_evidence_ids": [],
@@ -1684,118 +1686,7 @@
         "assessment_ids": [],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:1fd9e058f80b2e1fe1e2f993",
-            "claim_id": "claim_core_04_ngu_four_injured",
-            "candidate_id": "candidate:b467e7b93e5d36d3056043e8",
-            "evidence_id": "psg_hromadske_ladyka_art_114_1",
-            "source_id": "src_hromadske_ladyka",
-            "relation": "contextualizes",
-            "decision": "accepted",
-            "scope": {
-              "incident": "petropavlivska-borshchahivka",
-              "type": "official_statement",
-              "topic": "ngu_injuries"
-            },
-            "scope_matches_claim": true,
-            "asserted_values": {},
-            "independent_root_id": "root_hromadske_journalism",
-            "independence_status": "candidate",
-            "evidence_basis": "secondary_reporting",
-            "assessment_source": "validated_rule",
-            "assessor_id": "deterministic_claim_verifier",
-            "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-            "assessed_at_utc": "2026-11-09T13:25:00Z",
-            "citation": {
-              "passage_id": "psg_hromadske_ladyka_art_114_1",
-              "start_offset": 75,
-              "end_offset": 178,
-              "quote": "України та інших військових формувань в особливий період — ч. 1 ст. 114-1 Кримінального кодексу України",
-              "offset_unit": "unicode_codepoint",
-              "artifact_id": "artifact_sw_20261108T080001_1",
-              "artifact_start_offset": 710,
-              "artifact_end_offset": 813,
-              "source_uri": "https://hromadske.ua/kryminal/273906-sud-obyraye-zapobiznyy-zakhid-22-richniy-zintsi-iaka-brala-uchast-u-sutychkakh-u-sofiyivskiy-borshchahivtsi"
-            },
-            "reasons": [],
-            "included_in_verification": false,
-            "exclusion_reason": "non_verdict_relation"
-          },
-          {
-            "assessment_id": "assessment:2ea732084683ff8f54ab6734",
-            "claim_id": "claim_core_04_ngu_four_injured",
-            "candidate_id": "candidate:8ebfc7f7ef8908ecc2c3a804",
-            "evidence_id": "psg_ngu_4_injured",
-            "source_id": "src_ngu_press",
-            "relation": "contextualizes",
-            "decision": "accepted",
-            "scope": {
-              "incident": "petropavlivska-borshchahivka",
-              "type": "official_statement",
-              "topic": "ngu_injuries"
-            },
-            "scope_matches_claim": true,
-            "asserted_values": {},
-            "independent_root_id": "root_ngu_official",
-            "independence_status": "candidate",
-            "evidence_basis": "institutional_statement",
-            "assessment_source": "validated_rule",
-            "assessor_id": "deterministic_claim_verifier",
-            "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-            "assessed_at_utc": "2026-11-09T13:25:00Z",
-            "citation": {
-              "passage_id": "psg_ngu_4_injured",
-              "start_offset": 9,
-              "end_offset": 56,
-              "quote": "четверо військовослужбовців справді мали травми",
-              "offset_unit": "unicode_codepoint",
-              "artifact_id": "artifact_sw_20261108T080001_5",
-              "artifact_start_offset": 5489,
-              "artifact_end_offset": 5536,
-              "source_uri": "https://ngu.gov.ua/shturm-kativni-pid-vybuhy-shahediv-yak-fejk-pro-40-zaruchnykiv-pereris-u-zavorushennya-v-petropavlivskij-borshhagivczi/"
-            },
-            "reasons": [],
-            "included_in_verification": false,
-            "exclusion_reason": "non_verdict_relation"
-          },
-          {
-            "assessment_id": "assessment:572e7d6632a03059b1e61948",
-            "claim_id": "claim_core_04_ngu_four_injured",
-            "candidate_id": "candidate:aaed48ccd6ed961c18c5a536",
-            "evidence_id": "psg_suspilne_parshonkov_hammer",
-            "source_id": "src_suspilne_court",
-            "relation": "contextualizes",
-            "decision": "accepted",
-            "scope": {
-              "incident": "petropavlivska-borshchahivka",
-              "type": "official_statement",
-              "topic": "ngu_injuries"
-            },
-            "scope_matches_claim": true,
-            "asserted_values": {},
-            "independent_root_id": "root_suspilne_court_journalism",
-            "independence_status": "candidate",
-            "evidence_basis": "secondary_reporting",
-            "assessment_source": "validated_rule",
-            "assessor_id": "deterministic_claim_verifier",
-            "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-            "assessed_at_utc": "2026-11-09T13:25:00Z",
-            "citation": {
-              "passage_id": "psg_suspilne_parshonkov_hammer",
-              "start_offset": 313,
-              "end_offset": 331,
-              "quote": "військовослужбовці",
-              "offset_unit": "unicode_codepoint",
-              "artifact_id": "artifact_sw_20261108T080001_7",
-              "artifact_start_offset": 3372,
-              "artifact_end_offset": 3390,
-              "source_uri": "https://suspilne.media/kyiv/1446145-suticki-v-borsanivci-sud-obirae-zapobiznij-cetvertij-pidozruvanij/"
-            },
-            "reasons": [],
-            "included_in_verification": false,
-            "exclusion_reason": "non_verdict_relation"
-          },
-          {
-            "assessment_id": "assessment:6d14ee349e0407e9b2dcd6ec",
+            "assessment_id": "assessment:06d8945b750be7317dfa9e9f",
             "claim_id": "claim_core_04_ngu_four_injured",
             "candidate_id": "candidate:7c0eceaebebd51e5660aaaa3",
             "evidence_id": "psg_mvs_ngu_unit_3121",
@@ -1815,7 +1706,7 @@
             "assessment_source": "validated_rule",
             "assessor_id": "deterministic_claim_verifier",
             "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-            "assessed_at_utc": "2026-11-09T13:25:00Z",
+            "assessed_at_utc": "2026-11-09T12:58:00Z",
             "citation": {
               "passage_id": "psg_mvs_ngu_unit_3121",
               "start_offset": 11,
@@ -1832,7 +1723,81 @@
             "exclusion_reason": "non_verdict_relation"
           },
           {
-            "assessment_id": "assessment:b4c39341bc7e8f5586bf8b78",
+            "assessment_id": "assessment:37a918f8f35904d3d3e440f2",
+            "claim_id": "claim_core_04_ngu_four_injured",
+            "candidate_id": "candidate:8ebfc7f7ef8908ecc2c3a804",
+            "evidence_id": "psg_ngu_4_injured",
+            "source_id": "src_ngu_press",
+            "relation": "contextualizes",
+            "decision": "accepted",
+            "scope": {
+              "incident": "petropavlivska-borshchahivka",
+              "type": "official_statement",
+              "topic": "ngu_injuries"
+            },
+            "scope_matches_claim": true,
+            "asserted_values": {},
+            "independent_root_id": "root_ngu_official",
+            "independence_status": "candidate",
+            "evidence_basis": "institutional_statement",
+            "assessment_source": "validated_rule",
+            "assessor_id": "deterministic_claim_verifier",
+            "validated_rule_id": "rule_autonomous_claim_matcher_v1",
+            "assessed_at_utc": "2026-11-09T12:58:00Z",
+            "citation": {
+              "passage_id": "psg_ngu_4_injured",
+              "start_offset": 9,
+              "end_offset": 56,
+              "quote": "четверо військовослужбовців справді мали травми",
+              "offset_unit": "unicode_codepoint",
+              "artifact_id": "artifact_sw_20261108T080001_5",
+              "artifact_start_offset": 5489,
+              "artifact_end_offset": 5536,
+              "source_uri": "https://ngu.gov.ua/shturm-kativni-pid-vybuhy-shahediv-yak-fejk-pro-40-zaruchnykiv-pereris-u-zavorushennya-v-petropavlivskij-borshhagivczi/"
+            },
+            "reasons": [],
+            "included_in_verification": false,
+            "exclusion_reason": "non_verdict_relation"
+          },
+          {
+            "assessment_id": "assessment:9a3d763e5fdc6160c07a5cb0",
+            "claim_id": "claim_core_04_ngu_four_injured",
+            "candidate_id": "candidate:aaed48ccd6ed961c18c5a536",
+            "evidence_id": "psg_suspilne_parshonkov_hammer",
+            "source_id": "src_suspilne_court",
+            "relation": "contextualizes",
+            "decision": "accepted",
+            "scope": {
+              "incident": "petropavlivska-borshchahivka",
+              "type": "official_statement",
+              "topic": "ngu_injuries"
+            },
+            "scope_matches_claim": true,
+            "asserted_values": {},
+            "independent_root_id": "root_suspilne_court_journalism",
+            "independence_status": "candidate",
+            "evidence_basis": "secondary_reporting",
+            "assessment_source": "validated_rule",
+            "assessor_id": "deterministic_claim_verifier",
+            "validated_rule_id": "rule_autonomous_claim_matcher_v1",
+            "assessed_at_utc": "2026-11-09T12:58:00Z",
+            "citation": {
+              "passage_id": "psg_suspilne_parshonkov_hammer",
+              "start_offset": 313,
+              "end_offset": 331,
+              "quote": "військовослужбовці",
+              "offset_unit": "unicode_codepoint",
+              "artifact_id": "artifact_sw_20261108T080001_7",
+              "artifact_start_offset": 3372,
+              "artifact_end_offset": 3390,
+              "source_uri": "https://suspilne.media/kyiv/1446145-suticki-v-borsanivci-sud-obirae-zapobiznij-cetvertij-pidozruvanij/"
+            },
+            "reasons": [],
+            "included_in_verification": false,
+            "exclusion_reason": "non_verdict_relation"
+          },
+          {
+            "assessment_id": "assessment:b6a7259ed3bd620612c7dac5",
             "claim_id": "claim_core_04_ngu_four_injured",
             "candidate_id": "candidate:b0ad007641b7c15f2a183b51",
             "evidence_id": "psg_dbr_art_426_1",
@@ -1852,7 +1817,7 @@
             "assessment_source": "validated_rule",
             "assessor_id": "deterministic_claim_verifier",
             "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-            "assessed_at_utc": "2026-11-09T13:25:00Z",
+            "assessed_at_utc": "2026-11-09T12:58:00Z",
             "citation": {
               "passage_id": "psg_dbr_art_426_1",
               "start_offset": 121,
@@ -1867,36 +1832,73 @@
             "reasons": [],
             "included_in_verification": false,
             "exclusion_reason": "non_verdict_relation"
+          },
+          {
+            "assessment_id": "assessment:d6ba4c66d4bc8eb744b35461",
+            "claim_id": "claim_core_04_ngu_four_injured",
+            "candidate_id": "candidate:b467e7b93e5d36d3056043e8",
+            "evidence_id": "psg_hromadske_ladyka_art_114_1",
+            "source_id": "src_hromadske_ladyka",
+            "relation": "contextualizes",
+            "decision": "accepted",
+            "scope": {
+              "incident": "petropavlivska-borshchahivka",
+              "type": "official_statement",
+              "topic": "ngu_injuries"
+            },
+            "scope_matches_claim": true,
+            "asserted_values": {},
+            "independent_root_id": "root_hromadske_journalism",
+            "independence_status": "candidate",
+            "evidence_basis": "secondary_reporting",
+            "assessment_source": "validated_rule",
+            "assessor_id": "deterministic_claim_verifier",
+            "validated_rule_id": "rule_autonomous_claim_matcher_v1",
+            "assessed_at_utc": "2026-11-09T12:58:00Z",
+            "citation": {
+              "passage_id": "psg_hromadske_ladyka_art_114_1",
+              "start_offset": 75,
+              "end_offset": 178,
+              "quote": "України та інших військових формувань в особливий період — ч. 1 ст. 114-1 Кримінального кодексу України",
+              "offset_unit": "unicode_codepoint",
+              "artifact_id": "artifact_sw_20261108T080001_1",
+              "artifact_start_offset": 710,
+              "artifact_end_offset": 813,
+              "source_uri": "https://hromadske.ua/kryminal/273906-sud-obyraye-zapobiznyy-zakhid-22-richniy-zintsi-iaka-brala-uchast-u-sutychkakh-u-sofiyivskiy-borshchahivtsi"
+            },
+            "reasons": [],
+            "included_in_verification": false,
+            "exclusion_reason": "non_verdict_relation"
           }
         ],
         "excluded_assessments": [
           {
-            "assessment_id": "assessment:2ea732084683ff8f54ab6734",
+            "assessment_id": "assessment:37a918f8f35904d3d3e440f2",
             "reason": "non_verdict_relation"
           },
           {
-            "assessment_id": "assessment:6d14ee349e0407e9b2dcd6ec",
+            "assessment_id": "assessment:06d8945b750be7317dfa9e9f",
             "reason": "non_verdict_relation"
           },
           {
-            "assessment_id": "assessment:1fd9e058f80b2e1fe1e2f993",
+            "assessment_id": "assessment:d6ba4c66d4bc8eb744b35461",
             "reason": "non_verdict_relation"
           },
           {
-            "assessment_id": "assessment:572e7d6632a03059b1e61948",
+            "assessment_id": "assessment:9a3d763e5fdc6160c07a5cb0",
             "reason": "non_verdict_relation"
           },
           {
-            "assessment_id": "assessment:b4c39341bc7e8f5586bf8b78",
+            "assessment_id": "assessment:b6a7259ed3bd620612c7dac5",
             "reason": "non_verdict_relation"
           }
         ],
         "excluded_assessment_ids": [
-          "assessment:1fd9e058f80b2e1fe1e2f993",
-          "assessment:2ea732084683ff8f54ab6734",
-          "assessment:572e7d6632a03059b1e61948",
-          "assessment:6d14ee349e0407e9b2dcd6ec",
-          "assessment:b4c39341bc7e8f5586bf8b78"
+          "assessment:06d8945b750be7317dfa9e9f",
+          "assessment:37a918f8f35904d3d3e440f2",
+          "assessment:9a3d763e5fdc6160c07a5cb0",
+          "assessment:b6a7259ed3bd620612c7dac5",
+          "assessment:d6ba4c66d4bc8eb744b35461"
         ],
         "supersedes": null,
         "rationale": "The supplied evidence does not meet the declared source-lineage threshold; absence of evidence is not refutation.",
@@ -1930,7 +1932,7 @@
           "assessment_source": "validated_rule",
           "assessor_id": "deterministic_claim_verifier",
           "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-          "assessed_at_utc": "2026-11-09T13:25:00Z",
+          "assessed_at_utc": "2026-11-09T12:58:00Z",
           "citation": {
             "passage_id": "psg_ngu_4_injured",
             "start_offset": 9,
@@ -1951,7 +1953,7 @@
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:2ea732084683ff8f54ab6734"
+          "assessment_id": "assessment:37a918f8f35904d3d3e440f2"
         },
         {
           "schema_version": "1.0",
@@ -1974,7 +1976,7 @@
           "assessment_source": "validated_rule",
           "assessor_id": "deterministic_claim_verifier",
           "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-          "assessed_at_utc": "2026-11-09T13:25:00Z",
+          "assessed_at_utc": "2026-11-09T12:58:00Z",
           "citation": {
             "passage_id": "psg_mvs_ngu_unit_3121",
             "start_offset": 11,
@@ -1995,7 +1997,7 @@
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:6d14ee349e0407e9b2dcd6ec"
+          "assessment_id": "assessment:06d8945b750be7317dfa9e9f"
         },
         {
           "schema_version": "1.0",
@@ -2018,7 +2020,7 @@
           "assessment_source": "validated_rule",
           "assessor_id": "deterministic_claim_verifier",
           "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-          "assessed_at_utc": "2026-11-09T13:25:00Z",
+          "assessed_at_utc": "2026-11-09T12:58:00Z",
           "citation": {
             "passage_id": "psg_hromadske_ladyka_art_114_1",
             "start_offset": 75,
@@ -2039,7 +2041,7 @@
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:1fd9e058f80b2e1fe1e2f993"
+          "assessment_id": "assessment:d6ba4c66d4bc8eb744b35461"
         },
         {
           "schema_version": "1.0",
@@ -2062,7 +2064,7 @@
           "assessment_source": "validated_rule",
           "assessor_id": "deterministic_claim_verifier",
           "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-          "assessed_at_utc": "2026-11-09T13:25:00Z",
+          "assessed_at_utc": "2026-11-09T12:58:00Z",
           "citation": {
             "passage_id": "psg_suspilne_parshonkov_hammer",
             "start_offset": 313,
@@ -2083,7 +2085,7 @@
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:572e7d6632a03059b1e61948"
+          "assessment_id": "assessment:9a3d763e5fdc6160c07a5cb0"
         },
         {
           "schema_version": "1.0",
@@ -2106,7 +2108,7 @@
           "assessment_source": "validated_rule",
           "assessor_id": "deterministic_claim_verifier",
           "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-          "assessed_at_utc": "2026-11-09T13:25:00Z",
+          "assessed_at_utc": "2026-11-09T12:58:00Z",
           "citation": {
             "passage_id": "psg_dbr_art_426_1",
             "start_offset": 121,
@@ -2127,7 +2129,7 @@
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:b4c39341bc7e8f5586bf8b78"
+          "assessment_id": "assessment:b6a7259ed3bd620612c7dac5"
         }
       ],
       "search_receipt": {
@@ -2417,14 +2419,14 @@
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:acc27c25ad7ea85b64f5cc64",
+        "result_id": "verification:1ea3ac02801edd4b37127fbe",
         "claim_id": "claim_core_05_ngu_walked_independently",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
           "type": "official_statement",
           "topic": "medical_evacuation"
         },
-        "as_of_utc": "2026-11-09T13:30:00Z",
+        "as_of_utc": "2026-11-09T12:58:00Z",
         "status": "supported_within_scope",
         "search_complete": true,
         "supporting_evidence_ids": [
@@ -2446,11 +2448,11 @@
         "minimum_distinct_lineage_roots": 1,
         "official_position": null,
         "assessment_ids": [
-          "assessment:b95077e8d782c37f26617d76"
+          "assessment:7e646e380c1fc1db6e89b632"
         ],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:b95077e8d782c37f26617d76",
+            "assessment_id": "assessment:7e646e380c1fc1db6e89b632",
             "claim_id": "claim_core_05_ngu_walked_independently",
             "candidate_id": "candidate:8f671ccffe13794d92f2ad1f",
             "evidence_id": "psg_ngu_spine_refuted",
@@ -2470,7 +2472,7 @@
             "assessment_source": "validated_rule",
             "assessor_id": "deterministic_claim_verifier",
             "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-            "assessed_at_utc": "2026-11-09T13:25:00Z",
+            "assessed_at_utc": "2026-11-09T12:58:00Z",
             "citation": {
               "passage_id": "psg_ngu_spine_refuted",
               "start_offset": 98,
@@ -2521,7 +2523,7 @@
           "assessment_source": "validated_rule",
           "assessor_id": "deterministic_claim_verifier",
           "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-          "assessed_at_utc": "2026-11-09T13:25:00Z",
+          "assessed_at_utc": "2026-11-09T12:58:00Z",
           "citation": {
             "passage_id": "psg_ngu_spine_refuted",
             "start_offset": 98,
@@ -2541,7 +2543,7 @@
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:b95077e8d782c37f26617d76"
+          "assessment_id": "assessment:7e646e380c1fc1db6e89b632"
         }
       ],
       "search_receipt": {
@@ -2834,14 +2836,14 @@
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:295b38aeec2e76c7f3df5849",
+        "result_id": "verification:a48d2927fb32ffd6a609201e",
         "claim_id": "claim_core_06_building_26_persons",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
           "type": "official_statement",
           "topic": "building_occupants"
         },
-        "as_of_utc": "2026-11-09T13:30:00Z",
+        "as_of_utc": "2026-11-09T12:58:00Z",
         "status": "supported_within_scope",
         "search_complete": true,
         "supporting_evidence_ids": [
@@ -2863,11 +2865,11 @@
         "minimum_distinct_lineage_roots": 1,
         "official_position": null,
         "assessment_ids": [
-          "assessment:e2274c2f7aa4ccb2bd68d14d"
+          "assessment:a21864e81a829ec5b078fa02"
         ],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:e2274c2f7aa4ccb2bd68d14d",
+            "assessment_id": "assessment:a21864e81a829ec5b078fa02",
             "claim_id": "claim_core_06_building_26_persons",
             "candidate_id": "candidate:efaeeedfb0b3490fcbca9625",
             "evidence_id": "psg_mvs_26_occupants",
@@ -2892,7 +2894,7 @@
             "assessment_source": "validated_rule",
             "assessor_id": "deterministic_claim_verifier",
             "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-            "assessed_at_utc": "2026-11-09T13:25:00Z",
+            "assessed_at_utc": "2026-11-09T12:58:00Z",
             "citation": {
               "passage_id": "psg_mvs_26_occupants",
               "start_offset": 0,
@@ -2948,7 +2950,7 @@
           "assessment_source": "validated_rule",
           "assessor_id": "deterministic_claim_verifier",
           "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-          "assessed_at_utc": "2026-11-09T13:25:00Z",
+          "assessed_at_utc": "2026-11-09T12:58:00Z",
           "citation": {
             "passage_id": "psg_mvs_26_occupants",
             "start_offset": 0,
@@ -2968,7 +2970,7 @@
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:e2274c2f7aa4ccb2bd68d14d"
+          "assessment_id": "assessment:a21864e81a829ec5b078fa02"
         }
       ],
       "search_receipt": {
@@ -3255,14 +3257,14 @@
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:305140a56443385249ba1deb",
+        "result_id": "verification:ca7d24e327bb07f6b11b58ac",
         "claim_id": "claim_core_07_building_4_szch",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
           "type": "official_statement",
           "topic": "szch_count"
         },
-        "as_of_utc": "2026-11-09T13:30:00Z",
+        "as_of_utc": "2026-11-09T12:58:00Z",
         "status": "supported_within_scope",
         "search_complete": true,
         "supporting_evidence_ids": [
@@ -3287,97 +3289,13 @@
         "minimum_distinct_lineage_roots": 1,
         "official_position": null,
         "assessment_ids": [
-          "assessment:279b7492461d57990b26f1c8",
-          "assessment:37ae3fba5ca11fdea4996fa9",
-          "assessment:c38ba4b992f64eac8085cf9c"
+          "assessment:0a0c6665c946d6ebd8df2a3e",
+          "assessment:4bfbe9b5cfd791b9b5e314c4",
+          "assessment:9f3447ba5f5bc57b76500ccc"
         ],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:279b7492461d57990b26f1c8",
-            "claim_id": "claim_core_07_building_4_szch",
-            "candidate_id": "candidate:b2ebf7f734fdd4f59f4639de",
-            "evidence_id": "psg_ngu_4_injured",
-            "source_id": "src_ngu_press",
-            "relation": "supports",
-            "decision": "accepted",
-            "scope": {
-              "incident": "petropavlivska-borshchahivka",
-              "type": "official_statement",
-              "topic": "szch_count"
-            },
-            "scope_matches_claim": true,
-            "asserted_values": {
-              "szch_count": {
-                "value": 4,
-                "operator": "eq"
-              }
-            },
-            "independent_root_id": "root_ngu_official",
-            "independence_status": "candidate",
-            "evidence_basis": "institutional_statement",
-            "assessment_source": "validated_rule",
-            "assessor_id": "deterministic_claim_verifier",
-            "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-            "assessed_at_utc": "2026-11-09T13:25:00Z",
-            "citation": {
-              "passage_id": "psg_ngu_4_injured",
-              "start_offset": 9,
-              "end_offset": 76,
-              "quote": "четверо військовослужбовців справді мали травми. Цього в «Азові» не",
-              "offset_unit": "unicode_codepoint",
-              "artifact_id": "artifact_sw_20261108T080001_5",
-              "artifact_start_offset": 5489,
-              "artifact_end_offset": 5556,
-              "source_uri": "https://ngu.gov.ua/shturm-kativni-pid-vybuhy-shahediv-yak-fejk-pro-40-zaruchnykiv-pereris-u-zavorushennya-v-petropavlivskij-borshhagivczi/"
-            },
-            "reasons": [],
-            "included_in_verification": true,
-            "exclusion_reason": null
-          },
-          {
-            "assessment_id": "assessment:37ae3fba5ca11fdea4996fa9",
-            "claim_id": "claim_core_07_building_4_szch",
-            "candidate_id": "candidate:cd5f5e82f1eb563037dd40ea",
-            "evidence_id": "psg_ngu_walked_independently",
-            "source_id": "src_ngu_press",
-            "relation": "supports",
-            "decision": "accepted",
-            "scope": {
-              "incident": "petropavlivska-borshchahivka",
-              "type": "official_statement",
-              "topic": "szch_count"
-            },
-            "scope_matches_claim": true,
-            "asserted_values": {
-              "szch_count": {
-                "value": 4,
-                "operator": "eq"
-              }
-            },
-            "independent_root_id": "root_ngu_official",
-            "independence_status": "candidate",
-            "evidence_basis": "institutional_statement",
-            "assessment_source": "validated_rule",
-            "assessor_id": "deterministic_claim_verifier",
-            "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-            "assessed_at_utc": "2026-11-09T13:25:00Z",
-            "citation": {
-              "passage_id": "psg_ngu_walked_independently",
-              "start_offset": 4,
-              "end_offset": 85,
-              "quote": "четверо самостійно дійшли до автомобіля швидкої допомоги. Чи застосовували до них",
-              "offset_unit": "unicode_codepoint",
-              "artifact_id": "artifact_sw_20261108T080001_5",
-              "artifact_start_offset": 5746,
-              "artifact_end_offset": 5827,
-              "source_uri": "https://ngu.gov.ua/shturm-kativni-pid-vybuhy-shahediv-yak-fejk-pro-40-zaruchnykiv-pereris-u-zavorushennya-v-petropavlivskij-borshhagivczi/"
-            },
-            "reasons": [],
-            "included_in_verification": true,
-            "exclusion_reason": null
-          },
-          {
-            "assessment_id": "assessment:c38ba4b992f64eac8085cf9c",
+            "assessment_id": "assessment:0a0c6665c946d6ebd8df2a3e",
             "claim_id": "claim_core_07_building_4_szch",
             "candidate_id": "candidate:9befc687eb31b49dcffa723f",
             "evidence_id": "psg_mvs_4_szch",
@@ -3402,7 +3320,7 @@
             "assessment_source": "validated_rule",
             "assessor_id": "deterministic_claim_verifier",
             "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-            "assessed_at_utc": "2026-11-09T13:25:00Z",
+            "assessed_at_utc": "2026-11-09T12:58:00Z",
             "citation": {
               "passage_id": "psg_mvs_4_szch",
               "start_offset": 24,
@@ -3413,6 +3331,90 @@
               "artifact_start_offset": 3591,
               "artifact_end_offset": 3673,
               "source_uri": "https://mvs.gov.ua/news/u-ministerstvi-vnutrisnix-sprav-ukrayini-vidbuvsia-brifing-shhodo-podii-na-kiyivshhini"
+            },
+            "reasons": [],
+            "included_in_verification": true,
+            "exclusion_reason": null
+          },
+          {
+            "assessment_id": "assessment:4bfbe9b5cfd791b9b5e314c4",
+            "claim_id": "claim_core_07_building_4_szch",
+            "candidate_id": "candidate:b2ebf7f734fdd4f59f4639de",
+            "evidence_id": "psg_ngu_4_injured",
+            "source_id": "src_ngu_press",
+            "relation": "supports",
+            "decision": "accepted",
+            "scope": {
+              "incident": "petropavlivska-borshchahivka",
+              "type": "official_statement",
+              "topic": "szch_count"
+            },
+            "scope_matches_claim": true,
+            "asserted_values": {
+              "szch_count": {
+                "value": 4,
+                "operator": "eq"
+              }
+            },
+            "independent_root_id": "root_ngu_official",
+            "independence_status": "candidate",
+            "evidence_basis": "institutional_statement",
+            "assessment_source": "validated_rule",
+            "assessor_id": "deterministic_claim_verifier",
+            "validated_rule_id": "rule_autonomous_claim_matcher_v1",
+            "assessed_at_utc": "2026-11-09T12:58:00Z",
+            "citation": {
+              "passage_id": "psg_ngu_4_injured",
+              "start_offset": 9,
+              "end_offset": 76,
+              "quote": "четверо військовослужбовців справді мали травми. Цього в «Азові» не",
+              "offset_unit": "unicode_codepoint",
+              "artifact_id": "artifact_sw_20261108T080001_5",
+              "artifact_start_offset": 5489,
+              "artifact_end_offset": 5556,
+              "source_uri": "https://ngu.gov.ua/shturm-kativni-pid-vybuhy-shahediv-yak-fejk-pro-40-zaruchnykiv-pereris-u-zavorushennya-v-petropavlivskij-borshhagivczi/"
+            },
+            "reasons": [],
+            "included_in_verification": true,
+            "exclusion_reason": null
+          },
+          {
+            "assessment_id": "assessment:9f3447ba5f5bc57b76500ccc",
+            "claim_id": "claim_core_07_building_4_szch",
+            "candidate_id": "candidate:cd5f5e82f1eb563037dd40ea",
+            "evidence_id": "psg_ngu_walked_independently",
+            "source_id": "src_ngu_press",
+            "relation": "supports",
+            "decision": "accepted",
+            "scope": {
+              "incident": "petropavlivska-borshchahivka",
+              "type": "official_statement",
+              "topic": "szch_count"
+            },
+            "scope_matches_claim": true,
+            "asserted_values": {
+              "szch_count": {
+                "value": 4,
+                "operator": "eq"
+              }
+            },
+            "independent_root_id": "root_ngu_official",
+            "independence_status": "candidate",
+            "evidence_basis": "institutional_statement",
+            "assessment_source": "validated_rule",
+            "assessor_id": "deterministic_claim_verifier",
+            "validated_rule_id": "rule_autonomous_claim_matcher_v1",
+            "assessed_at_utc": "2026-11-09T12:58:00Z",
+            "citation": {
+              "passage_id": "psg_ngu_walked_independently",
+              "start_offset": 4,
+              "end_offset": 85,
+              "quote": "четверо самостійно дійшли до автомобіля швидкої допомоги. Чи застосовували до них",
+              "offset_unit": "unicode_codepoint",
+              "artifact_id": "artifact_sw_20261108T080001_5",
+              "artifact_start_offset": 5746,
+              "artifact_end_offset": 5827,
+              "source_uri": "https://ngu.gov.ua/shturm-kativni-pid-vybuhy-shahediv-yak-fejk-pro-40-zaruchnykiv-pereris-u-zavorushennya-v-petropavlivskij-borshhagivczi/"
             },
             "reasons": [],
             "included_in_verification": true,
@@ -3458,7 +3460,7 @@
           "assessment_source": "validated_rule",
           "assessor_id": "deterministic_claim_verifier",
           "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-          "assessed_at_utc": "2026-11-09T13:25:00Z",
+          "assessed_at_utc": "2026-11-09T12:58:00Z",
           "citation": {
             "passage_id": "psg_mvs_4_szch",
             "start_offset": 24,
@@ -3478,7 +3480,7 @@
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:c38ba4b992f64eac8085cf9c"
+          "assessment_id": "assessment:0a0c6665c946d6ebd8df2a3e"
         },
         {
           "schema_version": "1.0",
@@ -3506,7 +3508,7 @@
           "assessment_source": "validated_rule",
           "assessor_id": "deterministic_claim_verifier",
           "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-          "assessed_at_utc": "2026-11-09T13:25:00Z",
+          "assessed_at_utc": "2026-11-09T12:58:00Z",
           "citation": {
             "passage_id": "psg_ngu_4_injured",
             "start_offset": 9,
@@ -3526,7 +3528,7 @@
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:279b7492461d57990b26f1c8"
+          "assessment_id": "assessment:4bfbe9b5cfd791b9b5e314c4"
         },
         {
           "schema_version": "1.0",
@@ -3554,7 +3556,7 @@
           "assessment_source": "validated_rule",
           "assessor_id": "deterministic_claim_verifier",
           "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-          "assessed_at_utc": "2026-11-09T13:25:00Z",
+          "assessed_at_utc": "2026-11-09T12:58:00Z",
           "citation": {
             "passage_id": "psg_ngu_walked_independently",
             "start_offset": 4,
@@ -3574,7 +3576,7 @@
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:37ae3fba5ca11fdea4996fa9"
+          "assessment_id": "assessment:9f3447ba5f5bc57b76500ccc"
         }
       ],
       "search_receipt": {
@@ -3865,14 +3867,14 @@
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:a0cbf536d91b4bfb15308d6e",
+        "result_id": "verification:413bcbc91e9369f7a3a2bc67",
         "claim_id": "claim_core_08_building_ngu_lease",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
           "type": "official_statement",
           "topic": "building_legal_status"
         },
-        "as_of_utc": "2026-11-09T13:30:00Z",
+        "as_of_utc": "2026-11-09T12:58:00Z",
         "status": "supported_within_scope",
         "search_complete": true,
         "supporting_evidence_ids": [
@@ -3894,11 +3896,11 @@
         "minimum_distinct_lineage_roots": 1,
         "official_position": null,
         "assessment_ids": [
-          "assessment:eef9810fc2b408eaecc6dce4"
+          "assessment:d4b274c491a037d362344100"
         ],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:eef9810fc2b408eaecc6dce4",
+            "assessment_id": "assessment:d4b274c491a037d362344100",
             "claim_id": "claim_core_08_building_ngu_lease",
             "candidate_id": "candidate:535c520e56a39977cd608aab",
             "evidence_id": "psg_mvs_ngu_lease",
@@ -3918,7 +3920,7 @@
             "assessment_source": "validated_rule",
             "assessor_id": "deterministic_claim_verifier",
             "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-            "assessed_at_utc": "2026-11-09T13:25:00Z",
+            "assessed_at_utc": "2026-11-09T12:58:00Z",
             "citation": {
               "passage_id": "psg_mvs_ngu_lease",
               "start_offset": 0,
@@ -3969,7 +3971,7 @@
           "assessment_source": "validated_rule",
           "assessor_id": "deterministic_claim_verifier",
           "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-          "assessed_at_utc": "2026-11-09T13:25:00Z",
+          "assessed_at_utc": "2026-11-09T12:58:00Z",
           "citation": {
             "passage_id": "psg_mvs_ngu_lease",
             "start_offset": 0,
@@ -3989,7 +3991,7 @@
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:eef9810fc2b408eaecc6dce4"
+          "assessment_id": "assessment:d4b274c491a037d362344100"
         }
       ],
       "search_receipt": {
@@ -4285,14 +4287,14 @@
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:a48da3f4957d5a4621117ad7",
+        "result_id": "verification:b71718e7364943c3fb98e913",
         "claim_id": "claim_core_09_npu_130_identified",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
           "type": "official_statement",
           "topic": "identified_participants"
         },
-        "as_of_utc": "2026-11-09T13:30:00Z",
+        "as_of_utc": "2026-11-09T12:58:00Z",
         "status": "supported_within_scope",
         "search_complete": true,
         "supporting_evidence_ids": [
@@ -4316,54 +4318,12 @@
         "minimum_distinct_lineage_roots": 1,
         "official_position": null,
         "assessment_ids": [
-          "assessment:5b242edfcb7959c02207d1ab",
-          "assessment:66c12d9ddb36329b67daa2e0"
+          "assessment:0e865ac5427ca91c7af461bc",
+          "assessment:742c04597464c208eb195418"
         ],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:5b242edfcb7959c02207d1ab",
-            "claim_id": "claim_core_09_npu_130_identified",
-            "candidate_id": "candidate:93230144ddbc8fbd5aed1733",
-            "evidence_id": "psg_suspilne_130_identified",
-            "source_id": "src_suspilne_court",
-            "relation": "supports",
-            "decision": "accepted",
-            "scope": {
-              "incident": "petropavlivska-borshchahivka",
-              "type": "official_statement",
-              "topic": "identified_participants"
-            },
-            "scope_matches_claim": true,
-            "asserted_values": {
-              "identified_persons_count": {
-                "value": 130,
-                "operator": "eq"
-              }
-            },
-            "independent_root_id": "root_suspilne_court_journalism",
-            "independence_status": "candidate",
-            "evidence_basis": "secondary_reporting",
-            "assessment_source": "validated_rule",
-            "assessor_id": "deterministic_claim_verifier",
-            "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-            "assessed_at_utc": "2026-11-09T13:25:00Z",
-            "citation": {
-              "passage_id": "psg_suspilne_130_identified",
-              "start_offset": 40,
-              "end_offset": 102,
-              "quote": "встановили 130 осіб , які можуть бути причетними до заворушень",
-              "offset_unit": "unicode_codepoint",
-              "artifact_id": "artifact_sw_20261108T080001_7",
-              "artifact_start_offset": 6936,
-              "artifact_end_offset": 6998,
-              "source_uri": "https://suspilne.media/kyiv/1446145-suticki-v-borsanivci-sud-obirae-zapobiznij-cetvertij-pidozruvanij/"
-            },
-            "reasons": [],
-            "included_in_verification": true,
-            "exclusion_reason": null
-          },
-          {
-            "assessment_id": "assessment:66c12d9ddb36329b67daa2e0",
+            "assessment_id": "assessment:0e865ac5427ca91c7af461bc",
             "claim_id": "claim_core_09_npu_130_identified",
             "candidate_id": "candidate:0c17a104c12f6be2a6e0030b",
             "evidence_id": "psg_npu_27_active",
@@ -4388,7 +4348,7 @@
             "assessment_source": "validated_rule",
             "assessor_id": "deterministic_claim_verifier",
             "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-            "assessed_at_utc": "2026-11-09T13:25:00Z",
+            "assessed_at_utc": "2026-11-09T12:58:00Z",
             "citation": {
               "passage_id": "psg_npu_27_active",
               "start_offset": 0,
@@ -4399,6 +4359,48 @@
               "artifact_start_offset": 8463,
               "artifact_end_offset": 8534,
               "source_uri": "https://npu.gov.ua/news/politseiski-natsionalnoi-politsii-ukrainy-razom-z-sbu-vzhe-vstanovyly-130-osib-iaki-mozhut-buty-prychetnymy-do-zavorushen-na-petropavlivskii-borshhagivtsi"
+            },
+            "reasons": [],
+            "included_in_verification": true,
+            "exclusion_reason": null
+          },
+          {
+            "assessment_id": "assessment:742c04597464c208eb195418",
+            "claim_id": "claim_core_09_npu_130_identified",
+            "candidate_id": "candidate:93230144ddbc8fbd5aed1733",
+            "evidence_id": "psg_suspilne_130_identified",
+            "source_id": "src_suspilne_court",
+            "relation": "supports",
+            "decision": "accepted",
+            "scope": {
+              "incident": "petropavlivska-borshchahivka",
+              "type": "official_statement",
+              "topic": "identified_participants"
+            },
+            "scope_matches_claim": true,
+            "asserted_values": {
+              "identified_persons_count": {
+                "value": 130,
+                "operator": "eq"
+              }
+            },
+            "independent_root_id": "root_suspilne_court_journalism",
+            "independence_status": "candidate",
+            "evidence_basis": "secondary_reporting",
+            "assessment_source": "validated_rule",
+            "assessor_id": "deterministic_claim_verifier",
+            "validated_rule_id": "rule_autonomous_claim_matcher_v1",
+            "assessed_at_utc": "2026-11-09T12:58:00Z",
+            "citation": {
+              "passage_id": "psg_suspilne_130_identified",
+              "start_offset": 40,
+              "end_offset": 102,
+              "quote": "встановили 130 осіб , які можуть бути причетними до заворушень",
+              "offset_unit": "unicode_codepoint",
+              "artifact_id": "artifact_sw_20261108T080001_7",
+              "artifact_start_offset": 6936,
+              "artifact_end_offset": 6998,
+              "source_uri": "https://suspilne.media/kyiv/1446145-suticki-v-borsanivci-sud-obirae-zapobiznij-cetvertij-pidozruvanij/"
             },
             "reasons": [],
             "included_in_verification": true,
@@ -4444,7 +4446,7 @@
           "assessment_source": "validated_rule",
           "assessor_id": "deterministic_claim_verifier",
           "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-          "assessed_at_utc": "2026-11-09T13:25:00Z",
+          "assessed_at_utc": "2026-11-09T12:58:00Z",
           "citation": {
             "passage_id": "psg_suspilne_130_identified",
             "start_offset": 40,
@@ -4464,7 +4466,7 @@
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:5b242edfcb7959c02207d1ab"
+          "assessment_id": "assessment:742c04597464c208eb195418"
         },
         {
           "schema_version": "1.0",
@@ -4492,7 +4494,7 @@
           "assessment_source": "validated_rule",
           "assessor_id": "deterministic_claim_verifier",
           "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-          "assessed_at_utc": "2026-11-09T13:25:00Z",
+          "assessed_at_utc": "2026-11-09T12:58:00Z",
           "citation": {
             "passage_id": "psg_npu_27_active",
             "start_offset": 0,
@@ -4512,7 +4514,7 @@
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:66c12d9ddb36329b67daa2e0"
+          "assessment_id": "assessment:0e865ac5427ca91c7af461bc"
         }
       ],
       "search_receipt": {
@@ -4816,14 +4818,14 @@
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:79b41e75c145a91e43e00ee2",
+        "result_id": "verification:2c436cb0a44bc85129f7fed5",
         "claim_id": "claim_core_10_npu_27_active",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
           "type": "official_statement",
           "topic": "active_participants"
         },
-        "as_of_utc": "2026-11-09T13:30:00Z",
+        "as_of_utc": "2026-11-09T12:58:00Z",
         "status": "supported_within_scope",
         "search_complete": true,
         "supporting_evidence_ids": [
@@ -4845,11 +4847,11 @@
         "minimum_distinct_lineage_roots": 1,
         "official_position": null,
         "assessment_ids": [
-          "assessment:9d8afaa719a5aeb98af84e18"
+          "assessment:d19978bdad1274ae466aff2d"
         ],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:9d8afaa719a5aeb98af84e18",
+            "assessment_id": "assessment:d19978bdad1274ae466aff2d",
             "claim_id": "claim_core_10_npu_27_active",
             "candidate_id": "candidate:fa5c8c649bb698302141f910",
             "evidence_id": "psg_npu_27_active",
@@ -4874,7 +4876,7 @@
             "assessment_source": "validated_rule",
             "assessor_id": "deterministic_claim_verifier",
             "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-            "assessed_at_utc": "2026-11-09T13:25:00Z",
+            "assessed_at_utc": "2026-11-09T12:58:00Z",
             "citation": {
               "passage_id": "psg_npu_27_active",
               "start_offset": 0,
@@ -4930,7 +4932,7 @@
           "assessment_source": "validated_rule",
           "assessor_id": "deterministic_claim_verifier",
           "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-          "assessed_at_utc": "2026-11-09T13:25:00Z",
+          "assessed_at_utc": "2026-11-09T12:58:00Z",
           "citation": {
             "passage_id": "psg_npu_27_active",
             "start_offset": 0,
@@ -4950,7 +4952,7 @@
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:9d8afaa719a5aeb98af84e18"
+          "assessment_id": "assessment:d19978bdad1274ae466aff2d"
         }
       ],
       "search_receipt": {
@@ -5248,14 +5250,14 @@
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:a40287dc04b105edc340af2b",
+        "result_id": "verification:d2467da98bcfa849f3317db6",
         "claim_id": "claim_core_11_court_ladyka_custody",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
           "type": "court_reporting",
           "topic": "preventive_measure_ladyka"
         },
-        "as_of_utc": "2026-11-09T13:30:00Z",
+        "as_of_utc": "2026-11-09T12:58:00Z",
         "status": "supported_within_scope",
         "search_complete": true,
         "supporting_evidence_ids": [
@@ -5277,11 +5279,11 @@
         "minimum_distinct_lineage_roots": 1,
         "official_position": null,
         "assessment_ids": [
-          "assessment:e1898be1709a579a2f363f5e"
+          "assessment:4af6b298d603a0b271d8643a"
         ],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:e1898be1709a579a2f363f5e",
+            "assessment_id": "assessment:4af6b298d603a0b271d8643a",
             "claim_id": "claim_core_11_court_ladyka_custody",
             "candidate_id": "candidate:db0fc44944df877e56352b0a",
             "evidence_id": "psg_suspilne_ladyka_59_days",
@@ -5306,7 +5308,7 @@
             "assessment_source": "validated_rule",
             "assessor_id": "deterministic_claim_verifier",
             "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-            "assessed_at_utc": "2026-11-09T13:25:00Z",
+            "assessed_at_utc": "2026-11-09T12:58:00Z",
             "citation": {
               "passage_id": "psg_suspilne_ladyka_59_days",
               "start_offset": 0,
@@ -5362,7 +5364,7 @@
           "assessment_source": "validated_rule",
           "assessor_id": "deterministic_claim_verifier",
           "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-          "assessed_at_utc": "2026-11-09T13:25:00Z",
+          "assessed_at_utc": "2026-11-09T12:58:00Z",
           "citation": {
             "passage_id": "psg_suspilne_ladyka_59_days",
             "start_offset": 0,
@@ -5382,7 +5384,7 @@
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:e1898be1709a579a2f363f5e"
+          "assessment_id": "assessment:4af6b298d603a0b271d8643a"
         }
       ],
       "search_receipt": {
@@ -5683,14 +5685,14 @@
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:d92d11c326d56c5865072897",
+        "result_id": "verification:0daef5cf129883bd02a178f6",
         "claim_id": "claim_core_12_court_ladyka_bail",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
           "type": "court_reporting",
           "topic": "bail_amount_ladyka"
         },
-        "as_of_utc": "2026-11-09T13:30:00Z",
+        "as_of_utc": "2026-11-09T12:58:00Z",
         "status": "supported_within_scope",
         "search_complete": true,
         "supporting_evidence_ids": [
@@ -5712,11 +5714,11 @@
         "minimum_distinct_lineage_roots": 1,
         "official_position": null,
         "assessment_ids": [
-          "assessment:d15ad0559428675138799432"
+          "assessment:3d2b8c3216d7c1b6164c39c2"
         ],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:d15ad0559428675138799432",
+            "assessment_id": "assessment:3d2b8c3216d7c1b6164c39c2",
             "claim_id": "claim_core_12_court_ladyka_bail",
             "candidate_id": "candidate:16e4cd3ff5c1f7d4f97d0d67",
             "evidence_id": "psg_hromadske_ladyka_bail_66560",
@@ -5741,7 +5743,7 @@
             "assessment_source": "validated_rule",
             "assessor_id": "deterministic_claim_verifier",
             "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-            "assessed_at_utc": "2026-11-09T13:25:00Z",
+            "assessed_at_utc": "2026-11-09T12:58:00Z",
             "citation": {
               "passage_id": "psg_hromadske_ladyka_bail_66560",
               "start_offset": 0,
@@ -5797,7 +5799,7 @@
           "assessment_source": "validated_rule",
           "assessor_id": "deterministic_claim_verifier",
           "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-          "assessed_at_utc": "2026-11-09T13:25:00Z",
+          "assessed_at_utc": "2026-11-09T12:58:00Z",
           "citation": {
             "passage_id": "psg_hromadske_ladyka_bail_66560",
             "start_offset": 0,
@@ -5817,7 +5819,7 @@
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:d15ad0559428675138799432"
+          "assessment_id": "assessment:3d2b8c3216d7c1b6164c39c2"
         }
       ],
       "search_receipt": {
@@ -6112,14 +6114,14 @@
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:1c9f1167d85f01947352547d",
+        "result_id": "verification:399add8cb2e82ebdc1df879b",
         "claim_id": "claim_core_13_court_ladyka_art_114_1",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
           "type": "court_reporting",
           "topic": "criminal_code_article_ladyka"
         },
-        "as_of_utc": "2026-11-09T13:30:00Z",
+        "as_of_utc": "2026-11-09T12:58:00Z",
         "status": "supported_within_scope",
         "search_complete": true,
         "supporting_evidence_ids": [
@@ -6141,11 +6143,11 @@
         "minimum_distinct_lineage_roots": 1,
         "official_position": null,
         "assessment_ids": [
-          "assessment:0990baa7189d43cafc7c7f74"
+          "assessment:36b6e9d37a988f7e48d31c0f"
         ],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:0990baa7189d43cafc7c7f74",
+            "assessment_id": "assessment:36b6e9d37a988f7e48d31c0f",
             "claim_id": "claim_core_13_court_ladyka_art_114_1",
             "candidate_id": "candidate:98a12b1bbd1f3bd071cba2a2",
             "evidence_id": "psg_hromadske_ladyka_art_114_1",
@@ -6174,7 +6176,7 @@
             "assessment_source": "validated_rule",
             "assessor_id": "deterministic_claim_verifier",
             "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-            "assessed_at_utc": "2026-11-09T13:25:00Z",
+            "assessed_at_utc": "2026-11-09T12:58:00Z",
             "citation": {
               "passage_id": "psg_hromadske_ladyka_art_114_1",
               "start_offset": 8,
@@ -6234,7 +6236,7 @@
           "assessment_source": "validated_rule",
           "assessor_id": "deterministic_claim_verifier",
           "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-          "assessed_at_utc": "2026-11-09T13:25:00Z",
+          "assessed_at_utc": "2026-11-09T12:58:00Z",
           "citation": {
             "passage_id": "psg_hromadske_ladyka_art_114_1",
             "start_offset": 8,
@@ -6254,7 +6256,7 @@
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:0990baa7189d43cafc7c7f74"
+          "assessment_id": "assessment:36b6e9d37a988f7e48d31c0f"
         }
       ],
       "search_receipt": {
@@ -6545,14 +6547,14 @@
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:34b44e5c7501f181701320f2",
+        "result_id": "verification:76839e224d9bfe35f19dbd5c",
         "claim_id": "claim_core_14_court_moloda_no_bail",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
           "type": "court_reporting",
           "topic": "preventive_measure_moloda"
         },
-        "as_of_utc": "2026-11-09T13:30:00Z",
+        "as_of_utc": "2026-11-09T12:58:00Z",
         "status": "supported_within_scope",
         "search_complete": true,
         "supporting_evidence_ids": [
@@ -6574,11 +6576,11 @@
         "minimum_distinct_lineage_roots": 1,
         "official_position": null,
         "assessment_ids": [
-          "assessment:38f6ec65ee16a021150ae337"
+          "assessment:ff69094ef8806729b5c4bb3a"
         ],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:38f6ec65ee16a021150ae337",
+            "assessment_id": "assessment:ff69094ef8806729b5c4bb3a",
             "claim_id": "claim_core_14_court_moloda_no_bail",
             "candidate_id": "candidate:67a0cd1649d714e352649b6d",
             "evidence_id": "psg_suspilne_moloda_custody",
@@ -6598,7 +6600,7 @@
             "assessment_source": "validated_rule",
             "assessor_id": "deterministic_claim_verifier",
             "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-            "assessed_at_utc": "2026-11-09T13:25:00Z",
+            "assessed_at_utc": "2026-11-09T12:58:00Z",
             "citation": {
               "passage_id": "psg_suspilne_moloda_custody",
               "start_offset": 7,
@@ -6649,7 +6651,7 @@
           "assessment_source": "validated_rule",
           "assessor_id": "deterministic_claim_verifier",
           "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-          "assessed_at_utc": "2026-11-09T13:25:00Z",
+          "assessed_at_utc": "2026-11-09T12:58:00Z",
           "citation": {
             "passage_id": "psg_suspilne_moloda_custody",
             "start_offset": 7,
@@ -6669,7 +6671,7 @@
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:38f6ec65ee16a021150ae337"
+          "assessment_id": "assessment:ff69094ef8806729b5c4bb3a"
         }
       ],
       "search_receipt": {
@@ -6965,14 +6967,14 @@
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:87cc44a023e6c3c7245931e4",
+        "result_id": "verification:2c3636011f3ca755ae7d3292",
         "claim_id": "claim_core_15_court_kireyeva_no_bail",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
           "type": "court_reporting",
           "topic": "preventive_measure_kireyeva"
         },
-        "as_of_utc": "2026-11-09T13:30:00Z",
+        "as_of_utc": "2026-11-09T12:58:00Z",
         "status": "supported_within_scope",
         "search_complete": true,
         "supporting_evidence_ids": [
@@ -6994,11 +6996,11 @@
         "minimum_distinct_lineage_roots": 1,
         "official_position": null,
         "assessment_ids": [
-          "assessment:205598b4e705bcd9aa6276fb"
+          "assessment:a170b5f2c61eb081ce68ad95"
         ],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:205598b4e705bcd9aa6276fb",
+            "assessment_id": "assessment:a170b5f2c61eb081ce68ad95",
             "claim_id": "claim_core_15_court_kireyeva_no_bail",
             "candidate_id": "candidate:5c6a4426402c9bdf2f700e00",
             "evidence_id": "psg_suspilne_moloda_custody",
@@ -7018,7 +7020,7 @@
             "assessment_source": "validated_rule",
             "assessor_id": "deterministic_claim_verifier",
             "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-            "assessed_at_utc": "2026-11-09T13:25:00Z",
+            "assessed_at_utc": "2026-11-09T12:58:00Z",
             "citation": {
               "passage_id": "psg_suspilne_moloda_custody",
               "start_offset": 7,
@@ -7069,7 +7071,7 @@
           "assessment_source": "validated_rule",
           "assessor_id": "deterministic_claim_verifier",
           "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-          "assessed_at_utc": "2026-11-09T13:25:00Z",
+          "assessed_at_utc": "2026-11-09T12:58:00Z",
           "citation": {
             "passage_id": "psg_suspilne_moloda_custody",
             "start_offset": 7,
@@ -7089,7 +7091,7 @@
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:205598b4e705bcd9aa6276fb"
+          "assessment_id": "assessment:a170b5f2c61eb081ce68ad95"
         }
       ],
       "search_receipt": {
@@ -7390,14 +7392,14 @@
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:c370dcab77f290237750360e",
+        "result_id": "verification:3c5de3db3d09ad03ac5ff55a",
         "claim_id": "claim_core_16_court_yena_custody_60",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
           "type": "court_reporting",
           "topic": "preventive_measure_yena"
         },
-        "as_of_utc": "2026-11-09T13:30:00Z",
+        "as_of_utc": "2026-11-09T12:58:00Z",
         "status": "supported_within_scope",
         "search_complete": true,
         "supporting_evidence_ids": [
@@ -7419,11 +7421,11 @@
         "minimum_distinct_lineage_roots": 1,
         "official_position": null,
         "assessment_ids": [
-          "assessment:d3a6d5eac941eac2f5e61a7c"
+          "assessment:a46f1aec5c0562cb09cdbf21"
         ],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:d3a6d5eac941eac2f5e61a7c",
+            "assessment_id": "assessment:a46f1aec5c0562cb09cdbf21",
             "claim_id": "claim_core_16_court_yena_custody_60",
             "candidate_id": "candidate:ab5c8e1e406bc98517f0289f",
             "evidence_id": "psg_suspilne_yena_custody",
@@ -7448,7 +7450,7 @@
             "assessment_source": "validated_rule",
             "assessor_id": "deterministic_claim_verifier",
             "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-            "assessed_at_utc": "2026-11-09T13:25:00Z",
+            "assessed_at_utc": "2026-11-09T12:58:00Z",
             "citation": {
               "passage_id": "psg_suspilne_yena_custody",
               "start_offset": 29,
@@ -7504,7 +7506,7 @@
           "assessment_source": "validated_rule",
           "assessor_id": "deterministic_claim_verifier",
           "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-          "assessed_at_utc": "2026-11-09T13:25:00Z",
+          "assessed_at_utc": "2026-11-09T12:58:00Z",
           "citation": {
             "passage_id": "psg_suspilne_yena_custody",
             "start_offset": 29,
@@ -7524,7 +7526,7 @@
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:d3a6d5eac941eac2f5e61a7c"
+          "assessment_id": "assessment:a46f1aec5c0562cb09cdbf21"
         }
       ],
       "search_receipt": {
@@ -7832,14 +7834,14 @@
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:1b138143e485fa057e5bd732",
+        "result_id": "verification:dac08f699c693dbd2de9b12f",
         "claim_id": "claim_core_17_parshonkov_hammer_suspicion",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
           "type": "court_reporting",
           "topic": "parshonkov_actions"
         },
-        "as_of_utc": "2026-11-09T13:30:00Z",
+        "as_of_utc": "2026-11-09T12:58:00Z",
         "status": "supported_within_scope",
         "search_complete": true,
         "supporting_evidence_ids": [
@@ -7861,11 +7863,11 @@
         "minimum_distinct_lineage_roots": 1,
         "official_position": null,
         "assessment_ids": [
-          "assessment:2a64871c7de5482bcecb36ae"
+          "assessment:14009bc0920c633ee31fadb1"
         ],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:2a64871c7de5482bcecb36ae",
+            "assessment_id": "assessment:14009bc0920c633ee31fadb1",
             "claim_id": "claim_core_17_parshonkov_hammer_suspicion",
             "candidate_id": "candidate:fda858a880c9bec45c566605",
             "evidence_id": "psg_suspilne_parshonkov_hammer",
@@ -7885,7 +7887,7 @@
             "assessment_source": "validated_rule",
             "assessor_id": "deterministic_claim_verifier",
             "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-            "assessed_at_utc": "2026-11-09T13:25:00Z",
+            "assessed_at_utc": "2026-11-09T12:58:00Z",
             "citation": {
               "passage_id": "psg_suspilne_parshonkov_hammer",
               "start_offset": 24,
@@ -7936,7 +7938,7 @@
           "assessment_source": "validated_rule",
           "assessor_id": "deterministic_claim_verifier",
           "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-          "assessed_at_utc": "2026-11-09T13:25:00Z",
+          "assessed_at_utc": "2026-11-09T12:58:00Z",
           "citation": {
             "passage_id": "psg_suspilne_parshonkov_hammer",
             "start_offset": 24,
@@ -7956,7 +7958,7 @@
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:2a64871c7de5482bcecb36ae"
+          "assessment_id": "assessment:14009bc0920c633ee31fadb1"
         }
       ],
       "search_receipt": {
@@ -8255,14 +8257,14 @@
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:3577ab7d7d546bd242acf914",
+        "result_id": "verification:0ffc637a958df7b09ccc2a26",
         "claim_id": "claim_core_18_dbr_proceedings_426_1",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
           "type": "official_statement",
           "topic": "dbr_investigation"
         },
-        "as_of_utc": "2026-11-09T13:30:00Z",
+        "as_of_utc": "2026-11-09T12:58:00Z",
         "status": "supported_within_scope",
         "search_complete": true,
         "supporting_evidence_ids": [
@@ -8284,11 +8286,11 @@
         "minimum_distinct_lineage_roots": 1,
         "official_position": null,
         "assessment_ids": [
-          "assessment:63bb75f7eb32101d428abc40"
+          "assessment:4a176ce4e190fe0e7710899d"
         ],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:63bb75f7eb32101d428abc40",
+            "assessment_id": "assessment:4a176ce4e190fe0e7710899d",
             "claim_id": "claim_core_18_dbr_proceedings_426_1",
             "candidate_id": "candidate:e0924a3078e111fcc0cfdedd",
             "evidence_id": "psg_dbr_art_426_1",
@@ -8321,7 +8323,7 @@
             "assessment_source": "validated_rule",
             "assessor_id": "deterministic_claim_verifier",
             "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-            "assessed_at_utc": "2026-11-09T13:25:00Z",
+            "assessed_at_utc": "2026-11-09T12:58:00Z",
             "citation": {
               "passage_id": "psg_dbr_art_426_1",
               "start_offset": 0,
@@ -8385,7 +8387,7 @@
           "assessment_source": "validated_rule",
           "assessor_id": "deterministic_claim_verifier",
           "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-          "assessed_at_utc": "2026-11-09T13:25:00Z",
+          "assessed_at_utc": "2026-11-09T12:58:00Z",
           "citation": {
             "passage_id": "psg_dbr_art_426_1",
             "start_offset": 0,
@@ -8405,7 +8407,7 @@
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:63bb75f7eb32101d428abc40"
+          "assessment_id": "assessment:4a176ce4e190fe0e7710899d"
         }
       ],
       "search_receipt": {
@@ -8707,14 +8709,14 @@
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:44377c83805d0205ff5113bf",
+        "result_id": "verification:1f8fdc9a754143b43d9ed71c",
         "claim_id": "claim_core_19_ombudsman_inquiry",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
           "type": "official_statement",
           "topic": "ombudsman_inquiry"
         },
-        "as_of_utc": "2026-11-09T13:30:00Z",
+        "as_of_utc": "2026-11-09T12:58:00Z",
         "status": "supported_within_scope",
         "search_complete": true,
         "supporting_evidence_ids": [
@@ -8736,11 +8738,11 @@
         "minimum_distinct_lineage_roots": 1,
         "official_position": null,
         "assessment_ids": [
-          "assessment:d8c7c94f872eb8aaa32a5c75"
+          "assessment:4f0607722f236a1954152388"
         ],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:d8c7c94f872eb8aaa32a5c75",
+            "assessment_id": "assessment:4f0607722f236a1954152388",
             "claim_id": "claim_core_19_ombudsman_inquiry",
             "candidate_id": "candidate:83d83686a25f29ab5ec90652",
             "evidence_id": "psg_ombudsman_inquiries",
@@ -8760,7 +8762,7 @@
             "assessment_source": "validated_rule",
             "assessor_id": "deterministic_claim_verifier",
             "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-            "assessed_at_utc": "2026-11-09T13:25:00Z",
+            "assessed_at_utc": "2026-11-09T12:58:00Z",
             "citation": {
               "passage_id": "psg_ombudsman_inquiries",
               "start_offset": 53,
@@ -8811,7 +8813,7 @@
           "assessment_source": "validated_rule",
           "assessor_id": "deterministic_claim_verifier",
           "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-          "assessed_at_utc": "2026-11-09T13:25:00Z",
+          "assessed_at_utc": "2026-11-09T12:58:00Z",
           "citation": {
             "passage_id": "psg_ombudsman_inquiries",
             "start_offset": 53,
@@ -8831,7 +8833,7 @@
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:d8c7c94f872eb8aaa32a5c75"
+          "assessment_id": "assessment:4f0607722f236a1954152388"
         }
       ],
       "search_receipt": {
@@ -9120,14 +9122,14 @@
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:f9082905b0bd5e53c26fa428",
+        "result_id": "verification:f3372d900758385ca719eb30",
         "claim_id": "claim_core_20_mvs_service_investigation",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
           "type": "official_statement",
           "topic": "mvs_inquiry"
         },
-        "as_of_utc": "2026-11-09T13:30:00Z",
+        "as_of_utc": "2026-11-09T12:58:00Z",
         "status": "supported_within_scope",
         "search_complete": true,
         "supporting_evidence_ids": [
@@ -9149,11 +9151,11 @@
         "minimum_distinct_lineage_roots": 1,
         "official_position": null,
         "assessment_ids": [
-          "assessment:7f6180fa5578ba54ba9e9ae2"
+          "assessment:e7b7984f885ffe4e2f5d9c7c"
         ],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:7f6180fa5578ba54ba9e9ae2",
+            "assessment_id": "assessment:e7b7984f885ffe4e2f5d9c7c",
             "claim_id": "claim_core_20_mvs_service_investigation",
             "candidate_id": "candidate:d702f1470370208fd920f118",
             "evidence_id": "psg_mvs_inquiry_ordered",
@@ -9173,7 +9175,7 @@
             "assessment_source": "validated_rule",
             "assessor_id": "deterministic_claim_verifier",
             "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-            "assessed_at_utc": "2026-11-09T13:25:00Z",
+            "assessed_at_utc": "2026-11-09T12:58:00Z",
             "citation": {
               "passage_id": "psg_mvs_inquiry_ordered",
               "start_offset": 0,
@@ -9224,7 +9226,7 @@
           "assessment_source": "validated_rule",
           "assessor_id": "deterministic_claim_verifier",
           "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-          "assessed_at_utc": "2026-11-09T13:25:00Z",
+          "assessed_at_utc": "2026-11-09T12:58:00Z",
           "citation": {
             "passage_id": "psg_mvs_inquiry_ordered",
             "start_offset": 0,
@@ -9244,7 +9246,7 @@
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:7f6180fa5578ba54ba9e9ae2"
+          "assessment_id": "assessment:e7b7984f885ffe4e2f5d9c7c"
         }
       ],
       "search_receipt": {
@@ -9531,14 +9533,14 @@
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:5e1344198373ae7c9f85a18e",
+        "result_id": "verification:55768c269b7aa5ec1f952aed",
         "claim_id": "claim_core_21_fire_padla_tck_prediction",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
           "type": "social_media_mention",
           "topic": "fire_prediction"
         },
-        "as_of_utc": "2026-11-09T13:30:00Z",
+        "as_of_utc": "2026-11-09T12:58:00Z",
         "status": "supported_within_scope",
         "search_complete": true,
         "supporting_evidence_ids": [
@@ -9560,11 +9562,11 @@
         "minimum_distinct_lineage_roots": 1,
         "official_position": null,
         "assessment_ids": [
-          "assessment:746758ea2c84fd477c1789b5"
+          "assessment:990bc6b81d8d821474c45e6a"
         ],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:746758ea2c84fd477c1789b5",
+            "assessment_id": "assessment:990bc6b81d8d821474c45e6a",
             "claim_id": "claim_core_21_fire_padla_tck_prediction",
             "candidate_id": "candidate:43d6a95cb64274e26de3a608",
             "evidence_id": "psg_padla_tck_fire_prediction",
@@ -9584,7 +9586,7 @@
             "assessment_source": "validated_rule",
             "assessor_id": "deterministic_claim_verifier",
             "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-            "assessed_at_utc": "2026-11-09T13:25:00Z",
+            "assessed_at_utc": "2026-11-09T12:58:00Z",
             "citation": {
               "passage_id": "psg_padla_tck_fire_prediction",
               "start_offset": 42,
@@ -9635,7 +9637,7 @@
           "assessment_source": "validated_rule",
           "assessor_id": "deterministic_claim_verifier",
           "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-          "assessed_at_utc": "2026-11-09T13:25:00Z",
+          "assessed_at_utc": "2026-11-09T12:58:00Z",
           "citation": {
             "passage_id": "psg_padla_tck_fire_prediction",
             "start_offset": 42,
@@ -9655,7 +9657,7 @@
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:746758ea2c84fd477c1789b5"
+          "assessment_id": "assessment:990bc6b81d8d821474c45e6a"
         }
       ],
       "search_receipt": {
@@ -9946,14 +9948,14 @@
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:74987764966bccdd0f9af743",
+        "result_id": "verification:713b1a2c69195e32dea0220c",
         "claim_id": "claim_core_22_fire_bucha_warehouse",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
           "type": "reported_statement",
           "topic": "bucha_warehouse_fire_early_update"
         },
-        "as_of_utc": "2026-11-09T13:30:00Z",
+        "as_of_utc": "2026-11-09T12:58:00Z",
         "status": "supported_within_scope",
         "search_complete": true,
         "supporting_evidence_ids": [
@@ -9975,11 +9977,11 @@
         "minimum_distinct_lineage_roots": 1,
         "official_position": null,
         "assessment_ids": [
-          "assessment:ab646a859a568eedd3573a94"
+          "assessment:04c3df5a99a9171217cc360c"
         ],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:ab646a859a568eedd3573a94",
+            "assessment_id": "assessment:04c3df5a99a9171217cc360c",
             "claim_id": "claim_core_22_fire_bucha_warehouse",
             "candidate_id": "candidate:2b52646c948ef2d77c7434ad",
             "evidence_id": "psg_bucha_warehouse_fire",
@@ -9999,7 +10001,7 @@
             "assessment_source": "validated_rule",
             "assessor_id": "deterministic_claim_verifier",
             "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-            "assessed_at_utc": "2026-11-09T13:25:00Z",
+            "assessed_at_utc": "2026-11-09T12:58:00Z",
             "citation": {
               "passage_id": "psg_bucha_warehouse_fire",
               "start_offset": 2,
@@ -10050,7 +10052,7 @@
           "assessment_source": "validated_rule",
           "assessor_id": "deterministic_claim_verifier",
           "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-          "assessed_at_utc": "2026-11-09T13:25:00Z",
+          "assessed_at_utc": "2026-11-09T12:58:00Z",
           "citation": {
             "passage_id": "psg_bucha_warehouse_fire",
             "start_offset": 2,
@@ -10070,7 +10072,7 @@
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:ab646a859a568eedd3573a94"
+          "assessment_id": "assessment:04c3df5a99a9171217cc360c"
         }
       ],
       "search_receipt": {
@@ -10364,14 +10366,14 @@
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:4a28b68845e352acf9a80023",
+        "result_id": "verification:0cfa5d49b98befb162cf09b5",
         "claim_id": "claim_core_23_fire_video_location_mismatch",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
           "type": "media_verification",
           "topic": "fire_location"
         },
-        "as_of_utc": "2026-11-09T13:30:00Z",
+        "as_of_utc": "2026-11-09T12:58:00Z",
         "status": "insufficient_evidence",
         "search_complete": true,
         "supporting_evidence_ids": [],
@@ -10391,7 +10393,7 @@
         "assessment_ids": [],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:c6e865c76014b08ab8884b50",
+            "assessment_id": "assessment:814a945b7aea77c6c11f36e6",
             "claim_id": "claim_core_23_fire_video_location_mismatch",
             "candidate_id": "candidate:2619b78e26c26d0894735b4d",
             "evidence_id": "psg_tiktok_fire_mismatch",
@@ -10411,7 +10413,7 @@
             "assessment_source": "validated_rule",
             "assessor_id": "deterministic_claim_verifier",
             "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-            "assessed_at_utc": "2026-11-09T13:25:00Z",
+            "assessed_at_utc": "2026-11-09T12:58:00Z",
             "citation": {
               "passage_id": "psg_tiktok_fire_mismatch",
               "start_offset": 0,
@@ -10430,12 +10432,12 @@
         ],
         "excluded_assessments": [
           {
-            "assessment_id": "assessment:c6e865c76014b08ab8884b50",
+            "assessment_id": "assessment:814a945b7aea77c6c11f36e6",
             "reason": "non_verdict_relation"
           }
         ],
         "excluded_assessment_ids": [
-          "assessment:c6e865c76014b08ab8884b50"
+          "assessment:814a945b7aea77c6c11f36e6"
         ],
         "supersedes": null,
         "rationale": "The supplied evidence does not meet the declared source-lineage threshold; absence of evidence is not refutation.",
@@ -10469,7 +10471,7 @@
           "assessment_source": "validated_rule",
           "assessor_id": "deterministic_claim_verifier",
           "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-          "assessed_at_utc": "2026-11-09T13:25:00Z",
+          "assessed_at_utc": "2026-11-09T12:58:00Z",
           "citation": {
             "passage_id": "psg_tiktok_fire_mismatch",
             "start_offset": 0,
@@ -10490,7 +10492,7 @@
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:c6e865c76014b08ab8884b50"
+          "assessment_id": "assessment:814a945b7aea77c6c11f36e6"
         }
       ],
       "search_receipt": {
@@ -10781,14 +10783,14 @@
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:5442aaa8ff1831eee1bcb1b6",
+        "result_id": "verification:d742d9d06e000160af1d3898",
         "claim_id": "claim_core_24_tck_presence_at_scene",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
           "type": "institutional_presence",
           "topic": "tck_presence"
         },
-        "as_of_utc": "2026-11-09T13:30:00Z",
+        "as_of_utc": "2026-11-09T12:58:00Z",
         "status": "insufficient_evidence",
         "search_complete": true,
         "supporting_evidence_ids": [],
@@ -10808,7 +10810,7 @@
         "assessment_ids": [],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:1c1031ff8a8ffe8d504b5663",
+            "assessment_id": "assessment:28951223f7164d3201acc4f9",
             "claim_id": "claim_core_24_tck_presence_at_scene",
             "candidate_id": "candidate:ce6022fe20f251edb2dd343a",
             "evidence_id": "psg_mvs_ngu_unit_3121",
@@ -10828,7 +10830,7 @@
             "assessment_source": "validated_rule",
             "assessor_id": "deterministic_claim_verifier",
             "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-            "assessed_at_utc": "2026-11-09T13:25:00Z",
+            "assessed_at_utc": "2026-11-09T12:58:00Z",
             "citation": {
               "passage_id": "psg_mvs_ngu_unit_3121",
               "start_offset": 11,
@@ -10845,81 +10847,7 @@
             "exclusion_reason": "non_verdict_relation"
           },
           {
-            "assessment_id": "assessment:6150d62fe6e589e6818a8c72",
-            "claim_id": "claim_core_24_tck_presence_at_scene",
-            "candidate_id": "candidate:64d2df53b54ee049ca5a0bb7",
-            "evidence_id": "psg_suspilne_parshonkov_hammer",
-            "source_id": "src_suspilne_court",
-            "relation": "contextualizes",
-            "decision": "accepted",
-            "scope": {
-              "incident": "petropavlivska-borshchahivka",
-              "type": "institutional_presence",
-              "topic": "tck_presence"
-            },
-            "scope_matches_claim": true,
-            "asserted_values": {},
-            "independent_root_id": "root_suspilne_court_journalism",
-            "independence_status": "candidate",
-            "evidence_basis": "secondary_reporting",
-            "assessment_source": "validated_rule",
-            "assessor_id": "deterministic_claim_verifier",
-            "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-            "assessed_at_utc": "2026-11-09T13:25:00Z",
-            "citation": {
-              "passage_id": "psg_suspilne_parshonkov_hammer",
-              "start_offset": 52,
-              "end_offset": 331,
-              "quote": "блокування підрозділу Нацгвардії та вирішив долучитися до нього. Як повідомили у Київській обласній прокуратурі, підозрюваний заздалегідь придбав важкий молот із довгою рукояткою, яким згодом завдавав ударів по службовому автомобілю, всередині якого перебували військовослужбовці",
-              "offset_unit": "unicode_codepoint",
-              "artifact_id": "artifact_sw_20261108T080001_7",
-              "artifact_start_offset": 3111,
-              "artifact_end_offset": 3390,
-              "source_uri": "https://suspilne.media/kyiv/1446145-suticki-v-borsanivci-sud-obirae-zapobiznij-cetvertij-pidozruvanij/"
-            },
-            "reasons": [],
-            "included_in_verification": false,
-            "exclusion_reason": "non_verdict_relation"
-          },
-          {
-            "assessment_id": "assessment:7e0b7eb2ac3195cb9f1ad656",
-            "claim_id": "claim_core_24_tck_presence_at_scene",
-            "candidate_id": "candidate:5f3c96e2c06d4e260de29f42",
-            "evidence_id": "psg_padla_tck_fire_prediction",
-            "source_id": "src_telegram_padla_tck",
-            "relation": "contextualizes",
-            "decision": "accepted",
-            "scope": {
-              "incident": "petropavlivska-borshchahivka",
-              "type": "institutional_presence",
-              "topic": "tck_presence"
-            },
-            "scope_matches_claim": true,
-            "asserted_values": {},
-            "independent_root_id": "root_padla_tck_telegram",
-            "independence_status": "candidate",
-            "evidence_basis": "social_media_post",
-            "assessment_source": "validated_rule",
-            "assessor_id": "deterministic_claim_verifier",
-            "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-            "assessed_at_utc": "2026-11-09T13:25:00Z",
-            "citation": {
-              "passage_id": "psg_padla_tck_fire_prediction",
-              "start_offset": 42,
-              "end_offset": 49,
-              "quote": "будівля",
-              "offset_unit": "unicode_codepoint",
-              "artifact_id": "artifact_data_processed_geographic_fire_candidates_jsonl_line_5",
-              "artifact_start_offset": 11732,
-              "artifact_end_offset": 11739,
-              "source_uri": "https://t.me/padla_tck/38019"
-            },
-            "reasons": [],
-            "included_in_verification": false,
-            "exclusion_reason": "non_verdict_relation"
-          },
-          {
-            "assessment_id": "assessment:84767b66f81e7cad55504b0f",
+            "assessment_id": "assessment:40f4f6229659b2d8abb7808e",
             "claim_id": "claim_core_24_tck_presence_at_scene",
             "candidate_id": "candidate:787896fb57f07d22363d2e91",
             "evidence_id": "psg_dbr_art_426_1",
@@ -10939,7 +10867,7 @@
             "assessment_source": "validated_rule",
             "assessor_id": "deterministic_claim_verifier",
             "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-            "assessed_at_utc": "2026-11-09T13:25:00Z",
+            "assessed_at_utc": "2026-11-09T12:58:00Z",
             "citation": {
               "passage_id": "psg_dbr_art_426_1",
               "start_offset": 121,
@@ -10956,7 +10884,81 @@
             "exclusion_reason": "non_verdict_relation"
           },
           {
-            "assessment_id": "assessment:e48d0757bbe43c698ae2b71d",
+            "assessment_id": "assessment:571c3b9517993217dae75ecf",
+            "claim_id": "claim_core_24_tck_presence_at_scene",
+            "candidate_id": "candidate:64d2df53b54ee049ca5a0bb7",
+            "evidence_id": "psg_suspilne_parshonkov_hammer",
+            "source_id": "src_suspilne_court",
+            "relation": "contextualizes",
+            "decision": "accepted",
+            "scope": {
+              "incident": "petropavlivska-borshchahivka",
+              "type": "institutional_presence",
+              "topic": "tck_presence"
+            },
+            "scope_matches_claim": true,
+            "asserted_values": {},
+            "independent_root_id": "root_suspilne_court_journalism",
+            "independence_status": "candidate",
+            "evidence_basis": "secondary_reporting",
+            "assessment_source": "validated_rule",
+            "assessor_id": "deterministic_claim_verifier",
+            "validated_rule_id": "rule_autonomous_claim_matcher_v1",
+            "assessed_at_utc": "2026-11-09T12:58:00Z",
+            "citation": {
+              "passage_id": "psg_suspilne_parshonkov_hammer",
+              "start_offset": 52,
+              "end_offset": 331,
+              "quote": "блокування підрозділу Нацгвардії та вирішив долучитися до нього. Як повідомили у Київській обласній прокуратурі, підозрюваний заздалегідь придбав важкий молот із довгою рукояткою, яким згодом завдавав ударів по службовому автомобілю, всередині якого перебували військовослужбовці",
+              "offset_unit": "unicode_codepoint",
+              "artifact_id": "artifact_sw_20261108T080001_7",
+              "artifact_start_offset": 3111,
+              "artifact_end_offset": 3390,
+              "source_uri": "https://suspilne.media/kyiv/1446145-suticki-v-borsanivci-sud-obirae-zapobiznij-cetvertij-pidozruvanij/"
+            },
+            "reasons": [],
+            "included_in_verification": false,
+            "exclusion_reason": "non_verdict_relation"
+          },
+          {
+            "assessment_id": "assessment:5730065635a2ff37f8e8b462",
+            "claim_id": "claim_core_24_tck_presence_at_scene",
+            "candidate_id": "candidate:5f3c96e2c06d4e260de29f42",
+            "evidence_id": "psg_padla_tck_fire_prediction",
+            "source_id": "src_telegram_padla_tck",
+            "relation": "contextualizes",
+            "decision": "accepted",
+            "scope": {
+              "incident": "petropavlivska-borshchahivka",
+              "type": "institutional_presence",
+              "topic": "tck_presence"
+            },
+            "scope_matches_claim": true,
+            "asserted_values": {},
+            "independent_root_id": "root_padla_tck_telegram",
+            "independence_status": "candidate",
+            "evidence_basis": "social_media_post",
+            "assessment_source": "validated_rule",
+            "assessor_id": "deterministic_claim_verifier",
+            "validated_rule_id": "rule_autonomous_claim_matcher_v1",
+            "assessed_at_utc": "2026-11-09T12:58:00Z",
+            "citation": {
+              "passage_id": "psg_padla_tck_fire_prediction",
+              "start_offset": 42,
+              "end_offset": 49,
+              "quote": "будівля",
+              "offset_unit": "unicode_codepoint",
+              "artifact_id": "artifact_data_processed_geographic_fire_candidates_jsonl_line_5",
+              "artifact_start_offset": 11732,
+              "artifact_end_offset": 11739,
+              "source_uri": "https://t.me/padla_tck/38019"
+            },
+            "reasons": [],
+            "included_in_verification": false,
+            "exclusion_reason": "non_verdict_relation"
+          },
+          {
+            "assessment_id": "assessment:bdd1aa7fb0572d1de29e6b49",
             "claim_id": "claim_core_24_tck_presence_at_scene",
             "candidate_id": "candidate:4ff9ad7338e5fc40dda20c77",
             "evidence_id": "psg_hromadske_ladyka_art_114_1",
@@ -10976,7 +10978,7 @@
             "assessment_source": "validated_rule",
             "assessor_id": "deterministic_claim_verifier",
             "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-            "assessed_at_utc": "2026-11-09T13:25:00Z",
+            "assessed_at_utc": "2026-11-09T12:58:00Z",
             "citation": {
               "passage_id": "psg_hromadske_ladyka_art_114_1",
               "start_offset": 75,
@@ -10995,32 +10997,32 @@
         ],
         "excluded_assessments": [
           {
-            "assessment_id": "assessment:7e0b7eb2ac3195cb9f1ad656",
+            "assessment_id": "assessment:5730065635a2ff37f8e8b462",
             "reason": "non_verdict_relation"
           },
           {
-            "assessment_id": "assessment:1c1031ff8a8ffe8d504b5663",
+            "assessment_id": "assessment:28951223f7164d3201acc4f9",
             "reason": "non_verdict_relation"
           },
           {
-            "assessment_id": "assessment:6150d62fe6e589e6818a8c72",
+            "assessment_id": "assessment:571c3b9517993217dae75ecf",
             "reason": "non_verdict_relation"
           },
           {
-            "assessment_id": "assessment:e48d0757bbe43c698ae2b71d",
+            "assessment_id": "assessment:bdd1aa7fb0572d1de29e6b49",
             "reason": "non_verdict_relation"
           },
           {
-            "assessment_id": "assessment:84767b66f81e7cad55504b0f",
+            "assessment_id": "assessment:40f4f6229659b2d8abb7808e",
             "reason": "non_verdict_relation"
           }
         ],
         "excluded_assessment_ids": [
-          "assessment:1c1031ff8a8ffe8d504b5663",
-          "assessment:6150d62fe6e589e6818a8c72",
-          "assessment:7e0b7eb2ac3195cb9f1ad656",
-          "assessment:84767b66f81e7cad55504b0f",
-          "assessment:e48d0757bbe43c698ae2b71d"
+          "assessment:28951223f7164d3201acc4f9",
+          "assessment:40f4f6229659b2d8abb7808e",
+          "assessment:571c3b9517993217dae75ecf",
+          "assessment:5730065635a2ff37f8e8b462",
+          "assessment:bdd1aa7fb0572d1de29e6b49"
         ],
         "supersedes": null,
         "rationale": "The supplied evidence does not meet the declared source-lineage threshold; absence of evidence is not refutation.",
@@ -11054,7 +11056,7 @@
           "assessment_source": "validated_rule",
           "assessor_id": "deterministic_claim_verifier",
           "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-          "assessed_at_utc": "2026-11-09T13:25:00Z",
+          "assessed_at_utc": "2026-11-09T12:58:00Z",
           "citation": {
             "passage_id": "psg_padla_tck_fire_prediction",
             "start_offset": 42,
@@ -11075,7 +11077,7 @@
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:7e0b7eb2ac3195cb9f1ad656"
+          "assessment_id": "assessment:5730065635a2ff37f8e8b462"
         },
         {
           "schema_version": "1.0",
@@ -11098,7 +11100,7 @@
           "assessment_source": "validated_rule",
           "assessor_id": "deterministic_claim_verifier",
           "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-          "assessed_at_utc": "2026-11-09T13:25:00Z",
+          "assessed_at_utc": "2026-11-09T12:58:00Z",
           "citation": {
             "passage_id": "psg_mvs_ngu_unit_3121",
             "start_offset": 11,
@@ -11119,7 +11121,7 @@
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:1c1031ff8a8ffe8d504b5663"
+          "assessment_id": "assessment:28951223f7164d3201acc4f9"
         },
         {
           "schema_version": "1.0",
@@ -11142,7 +11144,7 @@
           "assessment_source": "validated_rule",
           "assessor_id": "deterministic_claim_verifier",
           "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-          "assessed_at_utc": "2026-11-09T13:25:00Z",
+          "assessed_at_utc": "2026-11-09T12:58:00Z",
           "citation": {
             "passage_id": "psg_suspilne_parshonkov_hammer",
             "start_offset": 52,
@@ -11163,7 +11165,7 @@
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:6150d62fe6e589e6818a8c72"
+          "assessment_id": "assessment:571c3b9517993217dae75ecf"
         },
         {
           "schema_version": "1.0",
@@ -11186,7 +11188,7 @@
           "assessment_source": "validated_rule",
           "assessor_id": "deterministic_claim_verifier",
           "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-          "assessed_at_utc": "2026-11-09T13:25:00Z",
+          "assessed_at_utc": "2026-11-09T12:58:00Z",
           "citation": {
             "passage_id": "psg_hromadske_ladyka_art_114_1",
             "start_offset": 75,
@@ -11207,7 +11209,7 @@
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:e48d0757bbe43c698ae2b71d"
+          "assessment_id": "assessment:bdd1aa7fb0572d1de29e6b49"
         },
         {
           "schema_version": "1.0",
@@ -11230,7 +11232,7 @@
           "assessment_source": "validated_rule",
           "assessor_id": "deterministic_claim_verifier",
           "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-          "assessed_at_utc": "2026-11-09T13:25:00Z",
+          "assessed_at_utc": "2026-11-09T12:58:00Z",
           "citation": {
             "passage_id": "psg_dbr_art_426_1",
             "start_offset": 121,
@@ -11251,7 +11253,7 @@
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:84767b66f81e7cad55504b0f"
+          "assessment_id": "assessment:40f4f6229659b2d8abb7808e"
         }
       ],
       "search_receipt": {
@@ -11540,14 +11542,14 @@
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:e37c9c7b037d078e898aef06",
+        "result_id": "verification:e17273ca3104b32c72c58734",
         "claim_id": "claim_core_25_police_arrival_ambulance_call",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
           "type": "official_statement",
           "topic": "police_arrival"
         },
-        "as_of_utc": "2026-11-09T13:30:00Z",
+        "as_of_utc": "2026-11-09T12:58:00Z",
         "status": "supported_within_scope",
         "search_complete": true,
         "supporting_evidence_ids": [
@@ -11569,11 +11571,11 @@
         "minimum_distinct_lineage_roots": 1,
         "official_position": null,
         "assessment_ids": [
-          "assessment:de06ca04e0333f9e74b1cc17"
+          "assessment:def5a8ce0e67dab3a5b0881a"
         ],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:de06ca04e0333f9e74b1cc17",
+            "assessment_id": "assessment:def5a8ce0e67dab3a5b0881a",
             "claim_id": "claim_core_25_police_arrival_ambulance_call",
             "candidate_id": "candidate:ce3f5fc80ad0ad6cd20d8a12",
             "evidence_id": "psg_ngu_police_arrival_ambulance_call",
@@ -11593,7 +11595,7 @@
             "assessment_source": "validated_rule",
             "assessor_id": "deterministic_claim_verifier",
             "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-            "assessed_at_utc": "2026-11-09T13:25:00Z",
+            "assessed_at_utc": "2026-11-09T12:58:00Z",
             "citation": {
               "passage_id": "psg_ngu_police_arrival_ambulance_call",
               "start_offset": 5,
@@ -11644,7 +11646,7 @@
           "assessment_source": "validated_rule",
           "assessor_id": "deterministic_claim_verifier",
           "validated_rule_id": "rule_autonomous_claim_matcher_v1",
-          "assessed_at_utc": "2026-11-09T13:25:00Z",
+          "assessed_at_utc": "2026-11-09T12:58:00Z",
           "citation": {
             "passage_id": "psg_ngu_police_arrival_ambulance_call",
             "start_offset": 5,
@@ -11664,7 +11666,7 @@
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:de06ca04e0333f9e74b1cc17"
+          "assessment_id": "assessment:def5a8ce0e67dab3a5b0881a"
         }
       ],
       "search_receipt": {

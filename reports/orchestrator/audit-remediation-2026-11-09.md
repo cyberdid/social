@@ -2,7 +2,7 @@
 
 **Date:** 9 November 2026  
 **Scope:** Corrective response to the independent audit of the Social case report and its supporting repository artifacts.  
-**Status:** Local remediation branch; not published to GitHub.
+**Status:** Published to the private GitHub repository `cyberdid/social` on branch `codex/social-master-plan-audit-remediation`. No pull request has been opened.
 
 ## Current findings
 
@@ -30,3 +30,9 @@ The 6 and 8 November PDFs are preserved as dated historical editions. They are n
 ## Current verification boundary
 
 The remediation improves traceability and removes unsupported claims. It does not independently determine the physical facts for which the only counterevidence is an institutional statement, establish the TikTok video’s location, recover historical platform reactions, or establish the independence of declared source-lineage roots. Those limits remain visible in the report.
+
+## Follow-up review findings
+
+- Renamed the six curated-corpus claim checks as held-out regression tests. They are explicitly not described as a blind or independent benchmark.
+- Updated this report to reflect publication on the private GitHub branch named above; no pull request has been opened.
+- Updated verification artifacts to distinguish artifact generation time, evaluation `as_of`, and the latest eligible evidence capture time. The evaluator excludes passages captured after the declared evaluation time.
