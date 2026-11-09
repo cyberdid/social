@@ -1,4 +1,4 @@
-\documentclass[11pt,a4paper]{article}
+\documentclass[10pt,a4paper]{article}
 \usepackage{fontspec}
 \usepackage{polyglossia}
 \setmainlanguage{english}
@@ -7,22 +7,14 @@
 \setsansfont{Noto Sans}
 \newfontfamily\cyrillicfont[Script=Cyrillic]{Noto Serif}
 \newfontfamily\cyrillicfontsf[Script=Cyrillic]{Noto Sans}
-\usepackage[a4paper,margin=23mm,headheight=22pt,headsep=7mm,footskip=12mm]{geometry}
+\usepackage[a4paper,margin=23mm,footskip=10mm]{geometry}
 \usepackage{microtype}
-\usepackage[table]{xcolor}
-\definecolor{socialNavy}{HTML}{172B4D}
-\definecolor{socialBlue}{HTML}{2B5F91}
-\definecolor{socialOrange}{HTML}{D45D34}
-\definecolor{socialPale}{HTML}{EEF3F8}
-\definecolor{socialGrid}{HTML}{D8E0E8}
-\definecolor{socialText}{HTML}{1E2937}
-\definecolor{socialMuted}{HTML}{66758A}
 \usepackage{booktabs,longtable,tabularx,array,multirow}
 \usepackage{graphicx}
 \graphicspath{{figures/}}
 \usepackage{caption}
-\captionsetup{font=small,labelfont={bf,color=socialNavy},textfont={color=socialText},labelsep=period,justification=justified,singlelinecheck=false,skip=5pt}
-\captionsetup[table]{position=top,skip=6pt}
+\captionsetup{font=small,labelfont=bf,labelsep=colon,justification=justified,singlelinecheck=false,skip=4pt}
+\captionsetup[table]{position=top,skip=5pt}
 \usepackage{enumitem}
 \usepackage{amsmath}
 \usepackage{setspace}
@@ -30,57 +22,43 @@
 \usepackage{placeins}
 \usepackage{titlesec}
 \usepackage{titling}
-\usepackage{fancyhdr}
-\usepackage[round,authoryear]{natbib}
+\usepackage[numbers,sort&compress]{natbib}
 \usepackage{xurl}
 \usepackage{hyperref}
 \urlstyle{same}
-\hypersetup{colorlinks=true,linkcolor=socialBlue,citecolor=socialOrange,urlcolor=socialBlue,pdfencoding=auto,unicode=true,pdftitle={From Local Incident to Information Wave: Petropavlivska Borshchahivka},pdfauthor={Social Research Project}}
+\hypersetup{hidelinks,pdfencoding=auto,unicode=true,pdftitle={From Local Incident to Information Wave: A Digital-Trace Case Study of Petropavlivska Borshchahivka},pdfauthor={Oleksandr Pylypenko}}
 
-\pretitle{\begin{center}\sffamily\color{socialNavy}\LARGE\bfseries}
-\posttitle{\par\end{center}\vspace{0.3em}}
-\preauthor{\begin{center}\small\sffamily\color{socialText}}
-\postauthor{\par\end{center}}
-\predate{\begin{center}\small\color{socialMuted}}
-\postdate{\par\end{center}\vspace{0.9em}\noindent\textcolor{socialOrange}{\rule{\linewidth}{1.4pt}}\par\vspace{1em}}
+\pretitle{\begin{center}\large\bfseries}
+\posttitle{\par\end{center}\vspace{0.5em}}
+\preauthor{\begin{center}\small}
+\postauthor{\par\end{center}\vspace{0.35em}}
+\predate{\begin{center}\small}
+\postdate{\par\end{center}\vspace{0.35em}}
 
-\titleformat{\section}{\Large\sffamily\bfseries\color{socialNavy}}{\thesection}{0.7em}{}[\vspace{0.35em}\color{socialOrange}\titlerule]
-\titleformat{\subsection}{\large\sffamily\bfseries\color{socialBlue}}{\thesubsection}{0.7em}{}
-\titleformat{\subsubsection}{\normalsize\sffamily\bfseries\color{socialNavy}}{\thesubsubsection}{0.7em}{}
-\titlespacing*{\section}{0pt}{2.5ex plus 0.7ex minus 0.2ex}{1.2ex}
-\titlespacing*{\subsection}{0pt}{1.9ex plus 0.5ex minus 0.2ex}{0.8ex}
-\titlespacing*{\subsubsection}{0pt}{1.4ex plus 0.4ex minus 0.2ex}{0.5ex}
+\titleformat{\section}{\normalsize\bfseries}{\thesection}{0.65em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.65em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries}{\thesubsubsection}{0.65em}{}
+\titlespacing*{\section}{0pt}{1.7ex plus 0.5ex minus 0.2ex}{0.7ex}
+\titlespacing*{\subsection}{0pt}{1.3ex plus 0.4ex minus 0.2ex}{0.5ex}
+\titlespacing*{\subsubsection}{0pt}{1.1ex plus 0.3ex minus 0.2ex}{0.4ex}
 
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[L]{\scriptsize\sffamily\bfseries\color{socialNavy}SOCIAL | COMPUTATIONAL CASE STUDY}
-\fancyhead[R]{\scriptsize\sffamily\color{socialBlue}PREPRINT DRAFT | 9 NOVEMBER 2026}
-\fancyfoot[L]{\scriptsize\sffamily\color{socialMuted}Digital traces, not population estimates}
-\fancyfoot[R]{\small\sffamily\color{socialNavy}\thepage}
-\renewcommand{\headrulewidth}{0.55pt}
-\renewcommand{\footrulewidth}{0pt}
-\makeatletter
-\renewcommand{\headrule}{\hbox to\headwidth{\color{socialBlue}\leaders\hrule height \headrulewidth\hfill}}
-\makeatother
-\fancypagestyle{plain}{\fancyhf{}\fancyfoot[R]{\small\sffamily\color{socialNavy}\thepage}\renewcommand{\headrulewidth}{0pt}}
-
-\setstretch{1.08}
-\setlength{\parskip}{0.28em}
-\setlength{\parindent}{1.15em}
-\emergencystretch=3em
+\setstretch{1.04}
+\setlength{\parskip}{0.2em}
+\setlength{\parindent}{1em}
+\emergencystretch=2em
 \setlist{nosep,leftmargin=1.5em}
-\renewcommand{\arraystretch}{1.2}
+\renewcommand{\arraystretch}{1.12}
 \renewcommand{\bibfont}{\footnotesize}
-\setlength{\bibsep}{2pt}
+\setlength{\bibsep}{1.5pt}
 \renewenvironment{abstract}{%
-  \par\noindent\textcolor{socialOrange}{\rule{\linewidth}{1.4pt}}\par\vspace{0.2em}%
-  \begin{quote}\small\noindent\textbf{Abstract.}\enspace
+  \begin{center}\bfseries Abstract\end{center}%
+  \begin{quote}\small\setlength{\parindent}{0pt}%
 }{%
-  \end{quote}\noindent\textcolor{socialOrange}{\rule{\linewidth}{0.5pt}}\par\vspace{0.3em}%
+  \end{quote}\vspace{0.2em}%
 }
 
 \begin{document}
 \input{sections/article_en.tex}
-\bibliographystyle{plainnat}
+\bibliographystyle{unsrtnat}
 \bibliography{references}
 \end{document}

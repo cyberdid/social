@@ -1,13 +1,19 @@
-\title{From Local Incident to Information Wave: A Computational Case Study of Petropavlivska Borshchahivka, Ukraine\\[0.35em]\large Public digital traces, competing claims, and coordination signals (2--9 November 2026)}
-\author{Social Research Project\\\small Independent computational social science and OSINT case study}
-\date{9 November 2026\\\small Preprint draft for analytical review; not peer reviewed}
+\title{From Local Incident to Information Wave: A Digital-Trace Case Study of Petropavlivska Borshchahivka, Ukraine (2--9 November 2026)}
+\author{Oleksandr Pylypenko\\
+Independent Researcher in Artificial Intelligence and Machine Learning\\
+PhD Student, State University of Trade and Economics, Kyiv, Ukraine\\
+ORCID: 0009-0004-9610-9242\\
+O.Pylypenko@knute.edu.ua}
+\date{9 November 2026}
 \maketitle
 
 \begin{abstract}
-\textbf{Objective.} We assess what public digital traces can establish about the information wave around a contested local incident. \textbf{Data and methods.} The study combines a purposive Telegram panel, selected comment threads, user-supplied TikTok links, YouTube metadata and subtitle samples, public statements, a curated claim--evidence matrix, conditional randomization tests, and an 18-clip transcription benchmark. The Telegram baseline contains 23,350 posts, including 1,408 relevant records from 159 of 241 monitored channel identifiers (2--5 November 2026). \textbf{Results.} Selected repetition and timing statistics exceeded all simulated values under specified conditional null models. Of 25 assessed claims, 19 were supported within a defined scope and six had insufficient evidence. Claims of 40 unlawfully detained people and a death remain unresolved; official denials are treated as institutional positions, not independent physical proof. A TikTok fire clip visually overlaps with a supplied local copy, but its location and connection to the earlier confrontation remain unverified. \textbf{Conclusion.} The traces describe activity in observed datasets; they do not establish population opinion, state direction, intent, or a definitive physical reconstruction. Explicit denominators, source lineage, and unresolved claims are central results.
+This case study examines what a bounded set of public digital traces can establish about the information wave surrounding the 2 November 2026 incident in Petropavlivska Borshchahivka, Ukraine. It combines a purposive Telegram panel, selected comment threads, user-supplied TikTok links, YouTube metadata and subtitle samples, public statements, a curated claim--evidence matrix, conditional randomization tests, and an 18-clip speech-transcription benchmark. The Telegram baseline contains 23,350 posts, including 1,408 relevant records from 159 of 241 monitored channel identifiers. In the 25-item claim matrix, 19 propositions are supported within a defined evidentiary scope and six remain insufficiently evidenced; two central physical allegations remain unresolved. Selected repetition and timing statistics exceeded all 9,999 simulated values under specified conditional null models, indicating atypical synchronization without identifying who coordinated it or why. The speech benchmark yielded 44.58\% micro-WER, and only 10 of 18 clips passed the quote-safety gate. A TikTok fire clip overlaps visually with a supplied local copy, but its location and connection to the earlier confrontation remain unverified. The study characterizes observed records, not population opinion, exposure, persuasion, or a definitive physical timeline.
 \end{abstract}
 
 \noindent\textbf{Keywords:} computational social science; crisis informatics; digital trace data; Telegram; claim verification; coordination signals; measurement uncertainty; Ukraine
+
+\noindent\textbf{Evidence scope.} The platform collections are purposive and incomplete. Counts describe only the documented snapshots; they are not platform-wide estimates, measures of public opinion, or independent verification of every physical claim.
 
 \section{Introduction}
 
@@ -54,10 +60,9 @@ A separate expanded snapshot contains 1,438 relevant posts in 158 channels and w
 \centering
 \small
 \caption{Observed datasets and what their denominators mean.}
-\rowcolors{2}{socialPale}{white}
 \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.22\textwidth}>{\raggedright\arraybackslash}p{0.23\textwidth}>{\raggedright\arraybackslash}X}
 \toprule
-\rowcolor{socialNavy}\color{white}\bfseries Dataset & \color{white}\bfseries Observed size & \color{white}\bfseries Interpretation and boundary \\
+\bfseries Dataset & \bfseries Observed size & \bfseries Interpretation and boundary \\
 \midrule
 Telegram baseline publications & 23,350 total; 1,408 relevant; 159/241 monitored channels & Targeted panel, primary window 2--5 Nov; not all Telegram and not a probability sample. \\
 Telegram expanded snapshot & 1,438 relevant; 158 channels & Separate 8 Nov snapshot used for selected automated summaries; retain its own denominator. \\
@@ -68,7 +73,6 @@ YouTube & 617 candidate metadata records; 444 lexical matches; 25,933 comments o
 Instagram, X, Threads, Facebook & Incomplete or unavailable collection & No inference from missing data to absence of discussion. \\
 \bottomrule
 \end{tabularx}
-\rowcolors{2}{}{}
 \caption*{\footnotesize\textit{Note.} Counts refer to different purposive platform snapshots and are not directly comparable estimates of platform-wide volume.}
 \end{table}
 

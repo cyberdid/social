@@ -4,7 +4,7 @@ This project contains English and Ukrainian versions of a detailed computational
 
 ## Manuscript format
 
-The manuscript follows a conventional single-column social-science research-article structure: title and author block, structured abstract, keywords, introduction, case context, data and methods, results, discussion, limitations and ethics, conclusion, and publication declarations. Citations use an author–date style. Tables and figures are numbered, placed near the first discussion in the text, and include denominators, source notes, and interpretive limits. The visual system follows the project reports (navy, blue, and orange), while the section order follows an IMRaD-style article. No journal-specific submission template was supplied, so this is a journal-neutral preprint format.
+The layout follows the conventions shared by the author's five recent Zenodo papers: single-column A4; centered title, author/affiliation/ORCID/contact block and date; an unstructured abstract and keywords on page one; numbered, plain black section headings; numeric citations; restrained tables and figures with captions in `Figure 1:` / `Table 1:` form; and a centered page number without a branded running header. The article uses an introduction, case and research questions, data and methods, results, discussion, limitations, conclusion, data statements and references. Figures retain only a restrained blue/orange data palette. No journal-specific submission template was supplied, so this is a journal-neutral preprint in the author's established article style.
 
 ## Open in Scribe
 

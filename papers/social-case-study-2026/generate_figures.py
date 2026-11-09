@@ -20,23 +20,23 @@ import numpy as np
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 FIGURES = HERE / "figures"
-NAVY = "#172B4D"
-BLUE = "#2B5F91"
-ORANGE = "#D45D34"
-PALE_BLUE = "#EEF3F8"
-PALE_ORANGE = "#FFF2EB"
-GRID = "#D8E0E8"
-TEXT = "#1E2937"
-MUTED = "#66758A"
-GRAY = "#8A98A8"
+NAVY = "#242424"
+BLUE = "#3366A3"
+ORANGE = "#E86E2D"
+PALE_BLUE = "#E9EEF3"
+PALE_ORANGE = "#F6EBE4"
+GRID = "#D8D8D8"
+TEXT = "#242424"
+MUTED = "#555555"
+GRAY = "#888888"
 
 plt.rcParams.update(
     {
         "font.family": "Noto Sans",
         "font.size": 9,
-        "axes.titlesize": 11,
-        "axes.titleweight": "bold",
-        "axes.labelsize": 9,
+        "axes.titlesize": 9.5,
+        "axes.titleweight": "normal",
+        "axes.labelsize": 8.5,
         "xtick.labelsize": 8,
         "ytick.labelsize": 8,
         "text.color": TEXT,
