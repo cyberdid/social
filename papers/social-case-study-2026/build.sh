@@ -6,6 +6,7 @@ BUILD="$ROOT/tmp/social-case-study-2026-build"
 FINAL="$ROOT"
 mkdir -p "$BUILD" "$FINAL"
 cd "$HERE"
+python3 "$HERE/generate_figures.py"
 tectonic -X compile --keep-logs --keep-intermediates -r 2 -o "$BUILD" main.tex
 cp "$BUILD/main.pdf" "$FINAL/social_preprint_en_2026-11-09.pdf"
 tectonic -X compile --keep-logs --keep-intermediates -r 2 -o "$BUILD" main_uk.tex
