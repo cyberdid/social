@@ -1,13 +1,13 @@
 {
-  "generated_at_utc": "2026-11-09T15:27:10.929072+00:00",
-  "scope": "Typesetting, embedded fonts, figure captions and PDF extraction; not independent scientific peer review.",
+  "generated_at_utc": "2026-11-09T15:35:39.613753+00:00",
+  "scope": "Typesetting and extraction checks, not independent scientific peer review or acoustic verification.",
   "reference_audit": "style-reference-audit.md",
   "outputs": [
     {
       "language": "en",
       "file": "social_preprint_en_2026-11-09.pdf",
-      "pages": 15,
-      "sha256": "b21f9275cb006c9165e79521de060e0d3bba2569b8b7928c4ba380e2cc85cd37",
+      "pages": 16,
+      "sha256": "93f035fed0aca02381c0cda9b33daa619dc709820f1a5908ea4a01866e02b68a",
       "required_fonts_embedded": [
         "CMUSerif-Roman",
         "CMUSerif-Bold",
@@ -22,7 +22,7 @@
       "language": "uk",
       "file": "social_preprint_uk_2026-11-09.pdf",
       "pages": 16,
-      "sha256": "6ed7df6971f08fce5ac1c31ba3c016b55a2875713ee7344a476a8ca99f0a10c2",
+      "sha256": "0fe7001df08d5057bc2751ea2a92700cfea520f261af612672a840dc5d90b4f2",
       "required_fonts_embedded": [
         "CMUSerif-Roman",
         "CMUSerif-Bold",

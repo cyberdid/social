@@ -284,11 +284,11 @@ def asr_strata(lang: str) -> None:
     height = 0.32
     bars1 = ax.barh(y - height / 2, macro, height, color=BLUE, edgecolor="none", label=("Macro WER" if en else "Макро WER"), zorder=3)
     bars2 = ax.barh(y + height / 2, micro, height, color=ORANGE, edgecolor="none", label=("Micro WER" if en else "Мікро WER"), zorder=3)
-    ax.set_yticks(y, [f"{label} (n={n}; quote-safe {q}/{n})" if en else f"{label} (n={n}; безпечні {q}/{n})" for label, n, q in zip(labels, counts, safe)])
+    ax.set_yticks(y, [f"{label} (n={n}; flagged {q}/{n})" if en else f"{label} (n={n}; прапорці {q}/{n})" for label, n, q in zip(labels, counts, safe)])
     ax.invert_yaxis()
     ax.set_xlim(0, 70)
     ax.set_xlabel("Word error rate (%)" if en else "Частка помилок слів (%)")
-    ax.set_title("Speech-recognition error in the 18-clip calibration sample" if en else "Помилки розпізнавання мовлення у калібрувальній вибірці з 18 кліпів", loc="left", color=NAVY, pad=10)
+    ax.set_title("Speech-recognition discrepancy against supplied references (18 clips)" if en else "Похибка ASR відносно наданих еталонів (18 кліпів)", loc="left", color=NAVY, pad=10)
     for bars in (bars1, bars2):
         for bar in bars:
             ax.text(bar.get_width() + 1.2, bar.get_y() + bar.get_height() / 2, f"{bar.get_width():.1f}%".replace(".", ",") if not en else f"{bar.get_width():.1f}%", va="center", ha="left", fontsize=7.3, color=NAVY)

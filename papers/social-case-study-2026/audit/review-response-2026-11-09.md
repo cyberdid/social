@@ -1,0 +1,11 @@
+# Response to the scientific preprint review
+
+The review read the earlier 13-page English and 14-page Ukrainian editions. It does not describe the subsequently typeset CMU Serif edition on commit c90047e.
+
+1. **Declarations:** the current editions already name the author, contain funding and competing-interest declarations confirmed by the author, and disclose generative-AI assistance. The former placeholders are absent.
+2. **Bibliography:** all 17 DOI-bearing entries (within 35 total BibTeX entries, including uncited records) were retrieved from Crossref. Paula Vicente is also confirmed on the publisher page. Ten entries needed corrections, including author lists/names, publication year/volume, and title wording. The correction table and full DOI responses are saved beside this note. This is a metadata audit, not a complete validation of non-DOI case sources or substantive claims.
+3. **Quote safety:** both editions now distinguish raw-ASR WER from the release status of corrected wording, explain the media-hash/interval linkage, required listening/review status, absence of a WER threshold, and the difference between transcription and claim truth. Crucially, the saved reviewer identifier is worker_video_semantics. The saved human_acoustic_listening label does not establish independent human-review provenance. The manuscript reports 10 project flags, not 10 independently human-verified quotations, and treats WER as conditional on the supplied reference texts.
+4. **Strata:** the text explains the broadcast/high-noise reversal through the composition of the very small purposive sample; no acoustic-noise effect is inferred. Court clips have saved WER values 68.0% and 62.5%, while a studio clip has 0.0%.
+5. **Supplement:** five aggregate figure CSVs and an input/output SHA-256 manifest contain no comment text or account identifiers. The stored error-count arithmetic gives 185/415 = 44.5783% micro-WER. This is not independent acoustic validation and does not reproduce all private-corpus analyses.
+
+Both PDFs remain language editions of the same study. No upload to Zenodo or publication action was performed. The human-review provenance limitation remains open; wording and schema checks cannot close it.

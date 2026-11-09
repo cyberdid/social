@@ -1,0 +1,46 @@
+{
+  "generated_at_utc": "2026-11-09T15:35:39.613753+00:00",
+  "status": "review_candidate_not_published",
+  "work_id": "social-petropavlivska-2026-preprint",
+  "relationship": "English is the primary language edition; Ukrainian is a parallel edition of the same research.",
+  "outputs": [
+    {
+      "language": "en",
+      "file": "social_preprint_en_2026-11-09.pdf",
+      "pages": 16,
+      "sha256": "93f035fed0aca02381c0cda9b33daa619dc709820f1a5908ea4a01866e02b68a",
+      "required_fonts_embedded": [
+        "CMUSerif-Roman",
+        "CMUSerif-Bold",
+        "CMUSerif-Italic",
+        "CMUTypewriter-Regular"
+      ],
+      "noto_font_present": false,
+      "replacement_characters": 0,
+      "numbered_figures": 5
+    },
+    {
+      "language": "uk",
+      "file": "social_preprint_uk_2026-11-09.pdf",
+      "pages": 16,
+      "sha256": "0fe7001df08d5057bc2751ea2a92700cfea520f261af612672a840dc5d90b4f2",
+      "required_fonts_embedded": [
+        "CMUSerif-Roman",
+        "CMUSerif-Bold",
+        "CMUSerif-Italic",
+        "CMUTypewriter-Regular"
+      ],
+      "noto_font_present": false,
+      "replacement_characters": 0,
+      "numbered_figures": 5
+    }
+  ],
+  "supplement": {
+    "file": "social_preprint_supplement_2026-11-09.zip",
+    "sha256": "c34386013172db6b3596245ec93ca430d1c03fdb028a2598c60f3aaabb5801dc"
+  },
+  "open_limitations": [
+    "Independent human acoustic-review provenance for quote_safe flags is not established.",
+    "DOI metadata resolution does not establish substantive truth or verify non-DOI case sources."
+  ]
+}

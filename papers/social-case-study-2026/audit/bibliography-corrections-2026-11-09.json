@@ -1,0 +1,48 @@
+{
+  "doi_entries_resolved": 17,
+  "bibliography_entries_total": 35,
+  "scope": "All 17 DOI-bearing BibTeX entries checked against Crossref metadata. Non-DOI official sources and private project artifacts are not certified by this check. Publication metadata verification does not validate substantive claims.",
+  "corrections": {
+    "vicente2023sampling": {
+      "author": "Vicente, Paula",
+      "volume": "57",
+      "number": "6",
+      "pages": "5449--5489"
+    },
+    "gig2020village": {
+      "author": "Giglietto, Fabio and Righetti, Nicola and Rossi, Luca and Marino, Giada",
+      "year": "2020",
+      "volume": "23"
+    },
+    "pacheco2021uncovering": {
+      "author": "Pacheco, Diogo and Hui, Pik-Mai and Torres-Lugo, Christopher and Truong, Bao Tran and Flammini, Alessandro and Menczer, Filippo"
+    },
+    "nizzoli2021coordinated": {
+      "author": "Nizzoli, Leonardo and Tardelli, Serena and Avvenuti, Marco and Cresci, Stefano and Tesconi, Maurizio"
+    },
+    "pfeffer2023sample": {
+      "author": "Pfeffer, Jürgen and Mooseder, Angelina and Lasser, Jana and Hammer, Luca and Stritzel, Oliver and Garcia, David"
+    },
+    "schlichtkrull2024averitecshared": {
+      "author": "Schlichtkrull, Michael and Chen, Yulong and Whitehouse, Chenxi and Deng, Zhenyun and Akhtar, Mubashara and Aly, Rami and Guo, Zhijiang and Christodoulopoulos, Christos and Cocarascu, Oana and Mittal, Arpit and Thorne, James and Vlachos, Andreas",
+      "pages": "1--26"
+    },
+    "rothermel2024infact": {
+      "author": "Rothermel, Mark and Braun, Tobias and Rohrbach, Marcus and Rohrbach, Anna"
+    },
+    "magelinski2022synchronized": {
+      "title": "Synchronized Action Framework for Detection of Coordination on Social Media"
+    },
+    "ng2023combined": {
+      "author": "Ng, Lynnette Hui Xian and Carley, Kathleen M.",
+      "title": "A combined synchronization index for evaluating collective action social media",
+      "note": "Article 1"
+    },
+    "starbird2019collaborative": {
+      "journal": "Proceedings of the ACM on Human-Computer Interaction",
+      "number": "CSCW",
+      "pages": "1--26",
+      "note": "Article 127"
+    }
+  }
+}

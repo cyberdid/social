@@ -25,3 +25,7 @@ The script regenerates the bilingual vector figures from the repository's review
 Draft for analytical review; not peer reviewed and not a court or investigative finding. Internal counts are tied to the Social repository's case report, edition 3.1 (9 November 2026), the 8 November automated-case-run snapshot, and individually named supporting artifacts. The private repository contains some data that cannot be republished here; platform data are incomplete and collected under a purposive design. Before public release, confirm the data-sharing/ethics statement, and independently re-check every cited case source and final figure.
 
 No raw usernames, private-channel content, or personal profile data are reproduced. Numerical totals are descriptive of the observed corpora and snapshots, not population estimates or unique reach.
+
+## Scientific review correction record
+
+See `audit/review-response-2026-11-09.md` and the stored Crossref DOI metadata. `supplement/` contains aggregate values for the five figures and input/output hashes; `export_figure_data.py` regenerates them as part of the build. These aggregates do not reconstruct the private corpus. The speech benchmark's quote_safe values are project-recorded flags with reviewer ID `worker_video_semantics`; independent human acoustic-review provenance is not established by those fields.

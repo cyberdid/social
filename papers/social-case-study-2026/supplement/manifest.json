@@ -1,0 +1,23 @@
+{
+  "generated_at_utc": "2026-11-09T15:34:22.118339+00:00",
+  "input_sha256": {
+    "reports/continuation_20261105/timeseries_10min_posts.csv": "54ade37fe311a2e0d9e16c23c54a689bee5a875adfd495c0a81a5cba4484934a",
+    "reports/continuation_20261105/narratives_by_group.csv": "f986fcc580bd2e8edcd9953e05a83fd023a88239b63d8c19a84838f995588b46",
+    "reports/evidence-verification/core_claims_verification_2026-11-09.json": "0dea87a77ea444d9ba40970826a89aea0a6f3470d9913043a934329047ef269c",
+    "reports/coordination-null-models-2026-11-08-lsh-audit/temporal_null_draws.csv": "fb7234792d3a743212fe091fcf5aaaa52223c1c25a4c070e7999a6bc05847af6",
+    "reports/video-pipeline/asr_calibration_benchmark_2026-11-09.json": "fa61cd600333010045e11b93aa950e06eebbe88b6f20a362bae882f6f9495838"
+  },
+  "output_sha256": {
+    "figure1_hourly_posts.csv": "17e4c085023491661335981cbf2264f70335aa71e8b4f623c74ead15bad2ebdc",
+    "figure2_rule_matches.csv": "94da579be7406b7b4bef906223a691b035c419c67bbcdda0a975578f8561f178",
+    "figure3_claim_status.csv": "4859c73c5ce06f8a34fddd18cdf2108a66a57da59efb780467fea86163ae8752",
+    "figure4_null_histogram.csv": "b12e01561f5e394f93c50baf55c874c75f3fb180b45355ca9131f1b0417f8022",
+    "figure5_asr_strata.csv": "a37651afb5c44edaf4456885c7bf4b5bb90edad3ea35a4bb35c794bc9ceb5067"
+  },
+  "asr_arithmetic_check": {
+    "reference_words": 415,
+    "word_errors": 185,
+    "micro_wer": 0.4457831325301205,
+    "scope": "Arithmetic against stored supplied-reference error counts; not acoustic validation."
+  }
+}

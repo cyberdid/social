@@ -1,0 +1,5 @@
+stratum,clips,reference_words,error_words,macro_wer,micro_wer,recorded_quote_safe_flags
+stratum_a,4,97,56,0.4663,0.5773,3
+stratum_b,7,147,62,0.4487,0.4218,4
+stratum_c,4,106,44,0.3558,0.4151,2
+stratum_d,3,65,23,0.3538,0.3538,1
