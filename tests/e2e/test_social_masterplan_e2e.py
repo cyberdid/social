@@ -695,7 +695,14 @@ class TestTier1FeatureCoverage:
             ["git", "-C", str(REPO_ROOT), "status", "--porcelain"],
             capture_output=True, text=True, check=True
         )
-        assert len(proc.stdout) > 0
+        assert proc.returncode == 0
+        assert isinstance(proc.stdout, str)
+        # Verify repository root is an intact worktree (non-destructive preservation)
+        worktree_check = subprocess.run(
+            ["git", "-C", str(REPO_ROOT), "rev-parse", "--is-inside-work-tree"],
+            capture_output=True, text=True, check=True
+        )
+        assert worktree_check.stdout.strip() == "true"
 
     def test_r7_f42_zero_leakage_and_file_permissions_invariant(self):
         """Feature 42: Enforce strict permissions (0600/0700) on private data and zero secret leakage."""

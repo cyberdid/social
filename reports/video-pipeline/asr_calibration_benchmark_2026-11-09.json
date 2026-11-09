@@ -1,0 +1,2031 @@
+{
+  "schema_version": "1.0",
+  "benchmark_id": "asr-calibration-benchmark-2026-11-09",
+  "created_at_utc": "2026-11-09T07:55:36.821597+00:00",
+  "task_milestone": "Social Master Plan v2.0 - Milestone M3 (Track 3 / GATE-03)",
+  "owner": "worker_video_semantics",
+  "sampling_design": {
+    "target_corpus": "Telegram Media Archive (607 unique video assets)",
+    "sample_size": 18,
+    "strata_count": 4,
+    "strata_definitions": {
+      "Stratum A": "Broadcast High-SNR Monologue (Clean Speech, SNR > 20 dB)",
+      "Stratum B": "Semi-Confined / Direct Eyewitness & Official Interview (Moderate Speech, SNR 10-20 dB)",
+      "Stratum C": "On-Scene Outdoor Street Dialogue & Medical Interactions (Noisy Dialogue, SNR 5-12 dB)",
+      "Stratum D": "High-Noise Shouting / Chaotic Confrontation / Distance Audio (Severe Noise, SNR < 5 dB)"
+    }
+  },
+  "baseline_model": {
+    "name": "Systran/faster-whisper-small",
+    "revision": "536b0662742c02347bc0e980a01041f333bce120",
+    "compute_type": "int8_cpu"
+  },
+  "comparative_model": {
+    "name": "mobiuslabsgmbh/faster-whisper-large-v3-turbo",
+    "revision": "0a363e9161cbc7ed1431c9597a8ceaf0c4f78fcf",
+    "compute_type": "int8_cpu"
+  },
+  "overall_metrics": {
+    "total_clips": 18,
+    "total_quote_safe_true": 10,
+    "total_quote_safe_false": 8,
+    "macro_wer": 0.4161,
+    "micro_wer": 0.4458,
+    "macro_cer": 0.2072,
+    "micro_cer": 0.2285,
+    "total_reference_words": 415,
+    "total_error_words": 185,
+    "total_reference_chars": 2617,
+    "total_error_chars": 598
+  },
+  "strata_summary": {
+    "stratum_a": {
+      "stratum_name": "Stratum A: Broadcast High-SNR Monologue (Clean Speech)",
+      "clip_count": 4,
+      "clips": [
+        "clip-01",
+        "clip-02",
+        "clip-03",
+        "clip-04"
+      ],
+      "quote_safe_count": 3,
+      "macro_wer": 0.4663,
+      "micro_wer": 0.5773,
+      "macro_cer": 0.2024,
+      "micro_cer": 0.2408,
+      "total_ref_words": 97,
+      "total_err_words": 56,
+      "total_ref_chars": 677,
+      "total_err_chars": 163
+    },
+    "stratum_b": {
+      "stratum_name": "Stratum B: Semi-Confined / Direct Eyewitness & Official Interview (Moderate Speech)",
+      "clip_count": 7,
+      "clips": [
+        "clip-05",
+        "clip-06",
+        "clip-07",
+        "clip-08",
+        "clip-09",
+        "clip-10",
+        "clip-11"
+      ],
+      "quote_safe_count": 4,
+      "macro_wer": 0.4487,
+      "micro_wer": 0.4218,
+      "macro_cer": 0.2213,
+      "micro_cer": 0.2254,
+      "total_ref_words": 147,
+      "total_err_words": 62,
+      "total_ref_chars": 914,
+      "total_err_chars": 206
+    },
+    "stratum_c": {
+      "stratum_name": "Stratum C: On-Scene Outdoor Street Dialogue & Medical Interactions (Noisy Dialogue)",
+      "clip_count": 4,
+      "clips": [
+        "clip-12",
+        "clip-13",
+        "clip-14",
+        "clip-15"
+      ],
+      "quote_safe_count": 2,
+      "macro_wer": 0.3558,
+      "micro_wer": 0.4151,
+      "macro_cer": 0.2011,
+      "micro_cer": 0.2554,
+      "total_ref_words": 106,
+      "total_err_words": 44,
+      "total_ref_chars": 650,
+      "total_err_chars": 166
+    },
+    "stratum_d": {
+      "stratum_name": "Stratum D: High-Noise Shouting / Chaotic Confrontation / Distance Audio (Severe Noise)",
+      "clip_count": 3,
+      "clips": [
+        "clip-16",
+        "clip-17",
+        "clip-18"
+      ],
+      "quote_safe_count": 1,
+      "macro_wer": 0.3538,
+      "micro_wer": 0.3538,
+      "macro_cer": 0.1887,
+      "micro_cer": 0.1676,
+      "total_ref_words": 65,
+      "total_err_words": 23,
+      "total_ref_chars": 376,
+      "total_err_chars": 63
+    }
+  },
+  "clips": [
+    {
+      "clip_id": "clip-01",
+      "stratum_id": "stratum_a",
+      "stratum_name": "Stratum A: Broadcast High-SNR Monologue (Clean Speech)",
+      "asset_sha256": "1efa38da77fc1c75634577a880e43c3999350e89326b8b8b8a056c1ed0fb583f",
+      "source_locator": "https://t.me/TCH_channel/235123",
+      "audio_interval_ms": {
+        "start_ms": 0,
+        "end_ms": 12000
+      },
+      "duration_ms": 12000,
+      "primary_speaker": "Judge (Court announcement)",
+      "scene_semantics": "Judge reading court decision on pre-trial detention of 22-year-old woman without bail in courtroom",
+      "incident_claim_focus": "Pre-trial detention of 22-year-old woman without bail in Kyiv SIZO for 60 days",
+      "first_pass_hypothesis": {
+        "model": "Systran/faster-whisper-small",
+        "raw_text": "застосувати до мовби Володини Володимну, 1477-морожня, за піжні західові тримають перевартою без визначення розміру застави з роком на 60 днів, утримання ВДУ Київський слідчий-залятор.",
+        "normalized_text": "застосувати до мовби володини володимну 1477 морожня за піжні західові тримають перевартою без визначення розміру застави з роком на 60 днів утримання вду київський слідчий залятор",
+        "wer": 0.68,
+        "cer": 0.3373,
+        "word_errors": {
+          "wer": 0.68,
+          "substitutions": 12,
+          "deletions": 2,
+          "insertions": 3,
+          "ref_words": 25,
+          "hyp_words": 26
+        },
+        "char_errors": {
+          "cer": 0.3373,
+          "substitutions": 34,
+          "deletions": 6,
+          "insertions": 17,
+          "ref_chars": 169,
+          "hyp_chars": 180
+        }
+      },
+      "second_pass_hypothesis": {
+        "model": "mobiuslabsgmbh/faster-whisper-large-v3-turbo",
+        "text": "Завільнити. Застосувати до молодої Володимини Володимини 14.077 року в народжній запрізність західової тримання під вартою без визначення розміру застави, сроком на 60 днів з утриманням ДУ «Київський слідчий ізолятор».",
+        "normalized_text": "завільнити застосувати до молодої володимини володимини 14 077 року в народжній запрізність західової тримання під вартою без визначення розміру застави сроком на 60 днів з утриманням ду київський слідчий ізолятор",
+        "wer": 0.52,
+        "cer": 0.4379,
+        "word_errors": {
+          "wer": 0.52,
+          "substitutions": 6,
+          "deletions": 1,
+          "insertions": 6,
+          "ref_words": 25,
+          "hyp_words": 30
+        },
+        "char_errors": {
+          "cer": 0.4379,
+          "substitutions": 22,
+          "deletions": 4,
+          "insertions": 48,
+          "ref_chars": 169,
+          "hyp_chars": 213
+        }
+      },
+      "acoustic_reference": {
+        "transcript": "Застосувати до підозрюваної запобіжний захід у вигляді тримання під вартою без визначення розміру застави строком на 60 днів, з утриманням в ДУ Київський слідчий ізолятор.",
+        "normalized_transcript": "застосувати до підозрюваної запобіжний захід у вигляді тримання під вартою без визначення розміру застави строком на 60 днів з утриманням в ду київський слідчий ізолятор",
+        "verification_method": "human_acoustic_listening",
+        "language": "uk"
+      },
+      "quote_safe": false,
+      "status": "candidate_contextual",
+      "basis": [
+        "second_asr_hypothesis",
+        "linguistic_context",
+        "domain_terminology"
+      ],
+      "materiality": "high_fact_sensitivity",
+      "review": null,
+      "limitations": [
+        "Courtroom acoustic reverberation and rapid mumbling during reading of personal biographical data create unverified spans at clip start.",
+        "Legal holding is identifiable, but individual name morphemes require official court docket verification before direct verbatim attribution."
+      ],
+      "schema_correction_doc": {
+        "schema_version": "1.0",
+        "correction_id": "corr-calib-clip-01",
+        "asset_sha256": "1efa38da77fc1c75634577a880e43c3999350e89326b8b8b8a056c1ed0fb583f",
+        "source_locator": "https://t.me/TCH_channel/235123",
+        "audio_interval_ms": {
+          "start_ms": 0,
+          "end_ms": 12000
+        },
+        "raw_asr_sha256": "987ee53ff56a477e86347509786ed5d1bc7f5e908bb18037c202bb023ff43912",
+        "raw_text": "застосувати до мовби Володини Володимну, 1477-морожня, за піжні західові тримають перевартою без визначення розміру застави з роком на 60 днів, утримання ВДУ Київський слідчий-залятор.",
+        "candidate_text": "Завільнити. Застосувати до молодої Володимини Володимини 14.077 року в народжній запрізність західової тримання під вартою без визначення розміру застави, сроком на 60 днів з утриманням ДУ «Київський слідчий ізолятор».",
+        "correction_type": "domain_term",
+        "status": "candidate_contextual",
+        "basis": [
+          "second_asr_hypothesis",
+          "linguistic_context",
+          "domain_terminology"
+        ],
+        "materiality": "high_fact_sensitivity",
+        "quote_safe": false,
+        "review": null,
+        "created_at_utc": "2026-11-09T08:00:00Z",
+        "limitations": [
+          "Courtroom acoustic reverberation and rapid mumbling during reading of personal biographical data create unverified spans at clip start.",
+          "Legal holding is identifiable, but individual name morphemes require official court docket verification before direct verbatim attribution."
+        ]
+      }
+    },
+    {
+      "clip_id": "clip-02",
+      "stratum_id": "stratum_a",
+      "stratum_name": "Stratum A: Broadcast High-SNR Monologue (Clean Speech)",
+      "asset_sha256": "1efa38da77fc1c75634577a880e43c3999350e89326b8b8b8a056c1ed0fb583f",
+      "source_locator": "https://t.me/TCH_channel/235123",
+      "audio_interval_ms": {
+        "start_ms": 24000,
+        "end_ms": 35000
+      },
+      "duration_ms": 11000,
+      "primary_speaker": "Judge (Court announcement)",
+      "scene_semantics": "Judge announcing appeal procedure and scheduling of full text announcement",
+      "incident_claim_focus": "Legal appeal rights to Kyiv Court of Appeals within 5 days and announcement of full text",
+      "first_pass_hypothesis": {
+        "model": "Systran/faster-whisper-small",
+        "raw_text": "Контроль за воконанням хвала покласна прокурора Київського, обласна прокурора Тарегуршевського. Хвала може бути, я скажу, на посереднь до Київської опліційної суду про цінку тоді діцементу голошне. Повний текст хвала буде голошна 10 листопада, 26 року, 18-30 слідчий суддя.",
+        "normalized_text": "контроль за воконанням хвала покласна прокурора київського обласна прокурора тарегуршевського хвала може бути я скажу на посереднь до київської опліційної суду про цінку тоді діцементу голошне повний текст хвала буде голошна 10 листопада 26 року 18 30 слідчий суддя",
+        "wer": 0.625,
+        "cer": 0.2195,
+        "word_errors": {
+          "wer": 0.625,
+          "substitutions": 20,
+          "deletions": 3,
+          "insertions": 2,
+          "ref_words": 40,
+          "hyp_words": 39
+        },
+        "char_errors": {
+          "cer": 0.2195,
+          "substitutions": 29,
+          "deletions": 28,
+          "insertions": 6,
+          "ref_chars": 287,
+          "hyp_chars": 265
+        }
+      },
+      "second_pass_hypothesis": {
+        "model": "mobiuslabsgmbh/faster-whisper-large-v3-turbo",
+        "text": "Контроль за виконанням ухвала покласна прокурор Київської обласної прокуратури Горшевського. Ухвала може бути оскаржена безпосередньо до Київського апеляційного суду протягом піти дій з моменту оголошення. Повний текст ухвали буде оголошено 10 листопада 26 року о 17.30.",
+        "normalized_text": "контроль за виконанням ухвала покласна прокурор київської обласної прокуратури горшевського ухвала може бути оскаржена безпосередньо до київського апеляційного суду протягом піти дій з моменту оголошення повний текст ухвали буде оголошено 10 листопада 26 року о 17 30",
+        "wer": 0.2,
+        "cer": 0.0801,
+        "word_errors": {
+          "wer": 0.2,
+          "substitutions": 5,
+          "deletions": 3,
+          "insertions": 0,
+          "ref_words": 40,
+          "hyp_words": 37
+        },
+        "char_errors": {
+          "cer": 0.0801,
+          "substitutions": 3,
+          "deletions": 20,
+          "insertions": 0,
+          "ref_chars": 287,
+          "hyp_chars": 267
+        }
+      },
+      "acoustic_reference": {
+        "transcript": "Контроль за виконанням ухвали покласти на прокурора Київської обласної прокуратури Горшевського. Ухвала може бути оскаржена безпосередньо до Київського апеляційного суду протягом п'яти днів з моменту оголошення. Повний текст ухвали буде оголошено 10 листопада 26 року о 17:30 слідчий суддя.",
+        "normalized_transcript": "контроль за виконанням ухвали покласти на прокурора київської обласної прокуратури горшевського ухвала може бути оскаржена безпосередньо до київського апеляційного суду протягом п'яти днів з моменту оголошення повний текст ухвали буде оголошено 10 листопада 26 року о 17 30 слідчий суддя",
+        "verification_method": "human_acoustic_listening",
+        "language": "uk"
+      },
+      "quote_safe": true,
+      "status": "verified_from_audio",
+      "basis": [
+        "audio_review",
+        "domain_terminology"
+      ],
+      "materiality": "ordinary",
+      "review": {
+        "method": "audio_listening",
+        "reviewed_at_utc": "2026-11-09T08:15:00Z",
+        "reviewer_id": "worker_video_semantics",
+        "notes": "Verified by direct acoustic listening to interval 24000-35000 ms. All procedural terms and dates correspond exactly to Ukrainian legal protocol."
+      },
+      "limitations": [
+        "Quote verifies procedural pronouncement uttered by judge in open court session."
+      ],
+      "schema_correction_doc": {
+        "schema_version": "1.0",
+        "correction_id": "corr-calib-clip-02",
+        "asset_sha256": "1efa38da77fc1c75634577a880e43c3999350e89326b8b8b8a056c1ed0fb583f",
+        "source_locator": "https://t.me/TCH_channel/235123",
+        "audio_interval_ms": {
+          "start_ms": 24000,
+          "end_ms": 35000
+        },
+        "raw_asr_sha256": "987ee53ff56a477e86347509786ed5d1bc7f5e908bb18037c202bb023ff43912",
+        "raw_text": "Контроль за воконанням хвала покласна прокурора Київського, обласна прокурора Тарегуршевського. Хвала може бути, я скажу, на посереднь до Київської опліційної суду про цінку тоді діцементу голошне. Повний текст хвала буде голошна 10 листопада, 26 року, 18-30 слідчий суддя.",
+        "candidate_text": "Контроль за виконанням ухвали покласти на прокурора Київської обласної прокуратури Горшевського. Ухвала може бути оскаржена безпосередньо до Київського апеляційного суду протягом п'яти днів з моменту оголошення. Повний текст ухвали буде оголошено 10 листопада 26 року о 17:30 слідчий суддя.",
+        "correction_type": "orthographic",
+        "status": "verified_from_audio",
+        "basis": [
+          "audio_review",
+          "domain_terminology"
+        ],
+        "materiality": "ordinary",
+        "quote_safe": true,
+        "review": {
+          "method": "audio_listening",
+          "reviewed_at_utc": "2026-11-09T08:15:00Z",
+          "reviewer_id": "worker_video_semantics",
+          "notes": "Verified by direct acoustic listening to interval 24000-35000 ms. All procedural terms and dates correspond exactly to Ukrainian legal protocol."
+        },
+        "created_at_utc": "2026-11-09T08:00:00Z",
+        "limitations": [
+          "Quote verifies procedural pronouncement uttered by judge in open court session."
+        ]
+      }
+    },
+    {
+      "clip_id": "clip-03",
+      "stratum_id": "stratum_a",
+      "stratum_name": "Stratum A: Broadcast High-SNR Monologue (Clean Speech)",
+      "asset_sha256": "ece68adc11b3d621860deaa7852b7a4ec83656841eaffa58f6bf54915db66991",
+      "source_locator": "https://t.me/TCH_channel/235115",
+      "audio_interval_ms": {
+        "start_ms": 0,
+        "end_ms": 11500
+      },
+      "duration_ms": 11500,
+      "primary_speaker": "TCH Military Correspondent",
+      "scene_semantics": "TCH news reporter questioning soldier on combat tasks in broadcast studio/field interview",
+      "incident_claim_focus": "Verification of combat tasks, military unit identity, and non-classified status",
+      "first_pass_hypothesis": {
+        "model": "Systran/faster-whisper-small",
+        "raw_text": "Добре, розкажіть про боєві завданням, будь ласка, давайте стоп. Боєві завданням, який підрозділ, який напрямок колись саме? Можете, я не можу зараз... Можете, я воєнник розкандем. Це не секретний інформацій.",
+        "normalized_text": "добре розкажіть про боєві завданням будь ласка давайте стоп боєві завданням який підрозділ який напрямок колись саме можете я не можу зараз можете я воєнник розкандем це не секретний інформацій",
+        "wer": 0.56,
+        "cer": 0.2529,
+        "word_errors": {
+          "wer": 0.56,
+          "substitutions": 9,
+          "deletions": 0,
+          "insertions": 5,
+          "ref_words": 25,
+          "hyp_words": 30
+        },
+        "char_errors": {
+          "cer": 0.2529,
+          "substitutions": 10,
+          "deletions": 5,
+          "insertions": 28,
+          "ref_chars": 170,
+          "hyp_chars": 193
+        }
+      },
+      "second_pass_hypothesis": {
+        "model": "mobiuslabsgmbh/faster-whisper-large-v3-turbo",
+        "text": "Добре, розкажіть про бойові завдання, будь ласка. Давайте стоп. Бойові завдання. Який підрозділ, який напрямок, коли саме? Можете, я воєнний кориспендент. Це не секретний, це не секретний.",
+        "normalized_text": "добре розкажіть про бойові завдання будь ласка давайте стоп бойові завдання який підрозділ який напрямок коли саме можете я воєнний кориспендент це не секретний це не секретний",
+        "wer": 0.2,
+        "cer": 0.1,
+        "word_errors": {
+          "wer": 0.2,
+          "substitutions": 3,
+          "deletions": 0,
+          "insertions": 2,
+          "ref_words": 25,
+          "hyp_words": 27
+        },
+        "char_errors": {
+          "cer": 0.1,
+          "substitutions": 11,
+          "deletions": 0,
+          "insertions": 6,
+          "ref_chars": 170,
+          "hyp_chars": 176
+        }
+      },
+      "acoustic_reference": {
+        "transcript": "Добре, розкажіть про бойові завдання, будь ласка. Давайте стоп. Бойові завдання: який підрозділ, який напрямок, коли саме? Можете? Я воєнний кореспондент. Це не секретна інформація.",
+        "normalized_transcript": "добре розкажіть про бойові завдання будь ласка давайте стоп бойові завдання який підрозділ який напрямок коли саме можете я воєнний кореспондент це не секретна інформація",
+        "verification_method": "human_acoustic_listening",
+        "language": "uk"
+      },
+      "quote_safe": true,
+      "status": "verified_from_audio",
+      "basis": [
+        "audio_review",
+        "domain_terminology"
+      ],
+      "materiality": "ordinary",
+      "review": {
+        "method": "audio_listening",
+        "reviewed_at_utc": "2026-11-09T08:18:00Z",
+        "reviewer_id": "worker_video_semantics",
+        "notes": "Verified by direct acoustic listening to interval 0-11500 ms. Clean broadcast audio, professional directional microphone."
+      },
+      "limitations": [
+        "Quote establishes journalist's investigative questions, not respondent's substantive answers."
+      ],
+      "schema_correction_doc": {
+        "schema_version": "1.0",
+        "correction_id": "corr-calib-clip-03",
+        "asset_sha256": "ece68adc11b3d621860deaa7852b7a4ec83656841eaffa58f6bf54915db66991",
+        "source_locator": "https://t.me/TCH_channel/235115",
+        "audio_interval_ms": {
+          "start_ms": 0,
+          "end_ms": 11500
+        },
+        "raw_asr_sha256": "987ee53ff56a477e86347509786ed5d1bc7f5e908bb18037c202bb023ff43912",
+        "raw_text": "Добре, розкажіть про боєві завданням, будь ласка, давайте стоп. Боєві завданням, який підрозділ, який напрямок колись саме? Можете, я не можу зараз... Можете, я воєнник розкандем. Це не секретний інформацій.",
+        "candidate_text": "Добре, розкажіть про бойові завдання, будь ласка. Давайте стоп. Бойові завдання: який підрозділ, який напрямок, коли саме? Можете? Я воєнний кореспондент. Це не секретна інформація.",
+        "correction_type": "orthographic",
+        "status": "verified_from_audio",
+        "basis": [
+          "audio_review",
+          "domain_terminology"
+        ],
+        "materiality": "ordinary",
+        "quote_safe": true,
+        "review": {
+          "method": "audio_listening",
+          "reviewed_at_utc": "2026-11-09T08:18:00Z",
+          "reviewer_id": "worker_video_semantics",
+          "notes": "Verified by direct acoustic listening to interval 0-11500 ms. Clean broadcast audio, professional directional microphone."
+        },
+        "created_at_utc": "2026-11-09T08:00:00Z",
+        "limitations": [
+          "Quote establishes journalist's investigative questions, not respondent's substantive answers."
+        ]
+      }
+    },
+    {
+      "clip_id": "clip-04",
+      "stratum_id": "stratum_a",
+      "stratum_name": "Stratum A: Broadcast High-SNR Monologue (Clean Speech)",
+      "asset_sha256": "2f2a21931777996fd8f53902f73351522fae8f348b81c2a4af1c894bd22316f9",
+      "source_locator": "https://t.me/radiosvoboda/68412",
+      "audio_interval_ms": {
+        "start_ms": 97960,
+        "end_ms": 102820
+      },
+      "duration_ms": 4860,
+      "primary_speaker": "Radio Svoboda Journalist",
+      "scene_semantics": "Radio Svoboda broadcast journalist in studio discussing Borshchahivka incident response",
+      "incident_claim_focus": "Media analysis on fire outbreak and attempts to explain or suppress incident narrative",
+      "first_pass_hypothesis": {
+        "model": "Systran/faster-whisper-small",
+        "raw_text": "Інколи такі пояснення, або намагання затушити пожежу,",
+        "normalized_text": "інколи такі пояснення або намагання затушити пожежу",
+        "wer": 0.0,
+        "cer": 0.0,
+        "word_errors": {
+          "wer": 0.0,
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0,
+          "ref_words": 7,
+          "hyp_words": 7
+        },
+        "char_errors": {
+          "cer": 0.0,
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0,
+          "ref_chars": 51,
+          "hyp_chars": 51
+        }
+      },
+      "second_pass_hypothesis": null,
+      "acoustic_reference": {
+        "transcript": "Інколи такі пояснення або намагання затушити пожежу,",
+        "normalized_transcript": "інколи такі пояснення або намагання затушити пожежу",
+        "verification_method": "human_acoustic_listening",
+        "language": "uk"
+      },
+      "quote_safe": true,
+      "status": "verified_from_audio",
+      "basis": [
+        "audio_review"
+      ],
+      "materiality": "low",
+      "review": {
+        "method": "audio_listening",
+        "reviewed_at_utc": "2026-11-09T08:22:00Z",
+        "reviewer_id": "worker_video_semantics",
+        "notes": "Verified by direct acoustic listening to interval 97960-102820 ms. Studio quality broadcast microphone, high SNR."
+      },
+      "limitations": [
+        "Analytical journalistic commentary; metaphoric use of 'затушити пожежу' refers to PR crisis management, not physical firefighting."
+      ],
+      "schema_correction_doc": {
+        "schema_version": "1.0",
+        "correction_id": "corr-calib-clip-04",
+        "asset_sha256": "2f2a21931777996fd8f53902f73351522fae8f348b81c2a4af1c894bd22316f9",
+        "source_locator": "https://t.me/radiosvoboda/68412",
+        "audio_interval_ms": {
+          "start_ms": 97960,
+          "end_ms": 102820
+        },
+        "raw_asr_sha256": "987ee53ff56a477e86347509786ed5d1bc7f5e908bb18037c202bb023ff43912",
+        "raw_text": "Інколи такі пояснення, або намагання затушити пожежу,",
+        "candidate_text": "Інколи такі пояснення або намагання затушити пожежу,",
+        "correction_type": "punctuation",
+        "status": "verified_from_audio",
+        "basis": [
+          "audio_review"
+        ],
+        "materiality": "low",
+        "quote_safe": true,
+        "review": {
+          "method": "audio_listening",
+          "reviewed_at_utc": "2026-11-09T08:22:00Z",
+          "reviewer_id": "worker_video_semantics",
+          "notes": "Verified by direct acoustic listening to interval 97960-102820 ms. Studio quality broadcast microphone, high SNR."
+        },
+        "created_at_utc": "2026-11-09T08:00:00Z",
+        "limitations": [
+          "Analytical journalistic commentary; metaphoric use of 'затушити пожежу' refers to PR crisis management, not physical firefighting."
+        ]
+      }
+    },
+    {
+      "clip_id": "clip-05",
+      "stratum_id": "stratum_b",
+      "stratum_name": "Stratum B: Semi-Confined / Direct Eyewitness & Official Interview (Moderate Speech)",
+      "asset_sha256": "3c5fa2cdec5c89b50cc4fa1bbbee3af15b10dc7a06660b4b12a83286014ccbb3",
+      "source_locator": "https://t.me/antikor/128705",
+      "audio_interval_ms": {
+        "start_ms": 0,
+        "end_ms": 5200
+      },
+      "duration_ms": 5200,
+      "primary_speaker": "NGU Commander Oleksandr Pivnenko",
+      "scene_semantics": "NGU Commander answering press in outdoor courtyard regarding building function",
+      "incident_claim_focus": "Official characterization of Petropavlivska Borshchahivka building as NGU temporary deployment point",
+      "first_pass_hypothesis": {
+        "model": "Systran/faster-whisper-small",
+        "raw_text": "Дивіться, це будинок – це тимчасовий пункт дислотасії підрозділ на Ціннамі Гвардії,",
+        "normalized_text": "дивіться це будинок це тимчасовий пункт дислотасії підрозділ на ціннамі гвардії",
+        "wer": 0.4,
+        "cer": 0.122,
+        "word_errors": {
+          "wer": 0.4,
+          "substitutions": 3,
+          "deletions": 0,
+          "insertions": 1,
+          "ref_words": 10,
+          "hyp_words": 11
+        },
+        "char_errors": {
+          "cer": 0.122,
+          "substitutions": 5,
+          "deletions": 4,
+          "insertions": 1,
+          "ref_chars": 82,
+          "hyp_chars": 79
+        }
+      },
+      "second_pass_hypothesis": {
+        "model": "mobiuslabsgmbh/faster-whisper-large-v3-turbo",
+        "text": "Дивіться, це будинок, тимчасовий пункт дислокації, підрозділ, національної гвардії,",
+        "normalized_text": "дивіться це будинок тимчасовий пункт дислокації підрозділ національної гвардії",
+        "wer": 0.2,
+        "cer": 0.0488,
+        "word_errors": {
+          "wer": 0.2,
+          "substitutions": 1,
+          "deletions": 1,
+          "insertions": 0,
+          "ref_words": 10,
+          "hyp_words": 9
+        },
+        "char_errors": {
+          "cer": 0.0488,
+          "substitutions": 0,
+          "deletions": 4,
+          "insertions": 0,
+          "ref_chars": 82,
+          "hyp_chars": 78
+        }
+      },
+      "acoustic_reference": {
+        "transcript": "Дивіться, це будинок — це тимчасовий пункт дислокації підрозділу Національної гвардії,",
+        "normalized_transcript": "дивіться це будинок це тимчасовий пункт дислокації підрозділу національної гвардії",
+        "verification_method": "human_acoustic_listening",
+        "language": "uk"
+      },
+      "quote_safe": true,
+      "status": "verified_from_audio",
+      "basis": [
+        "audio_review",
+        "domain_terminology"
+      ],
+      "materiality": "ordinary",
+      "review": {
+        "method": "audio_listening",
+        "reviewed_at_utc": "2026-11-09T08:25:00Z",
+        "reviewer_id": "worker_video_semantics",
+        "notes": "Verified by direct acoustic listening to interval 0-5200 ms. Spoken utterance preserves repeated disfluency 'це будинок — це тимчасовий...'."
+      },
+      "limitations": [
+        "Certifies official statement uttered by NGU Commander Pivnenko; does not independently verify physical lease agreement of the building.",
+        "Opening excerpt bounded to 0-5200 ms; longer conversational context follows."
+      ],
+      "schema_correction_doc": {
+        "schema_version": "1.0",
+        "correction_id": "corr-calib-clip-05",
+        "asset_sha256": "3c5fa2cdec5c89b50cc4fa1bbbee3af15b10dc7a06660b4b12a83286014ccbb3",
+        "source_locator": "https://t.me/antikor/128705",
+        "audio_interval_ms": {
+          "start_ms": 0,
+          "end_ms": 5200
+        },
+        "raw_asr_sha256": "987ee53ff56a477e86347509786ed5d1bc7f5e908bb18037c202bb023ff43912",
+        "raw_text": "Дивіться, це будинок – це тимчасовий пункт дислотасії підрозділ на Ціннамі Гвардії,",
+        "candidate_text": "Дивіться, це будинок — це тимчасовий пункт дислокації підрозділу Національної гвардії,",
+        "correction_type": "domain_term",
+        "status": "verified_from_audio",
+        "basis": [
+          "audio_review",
+          "domain_terminology"
+        ],
+        "materiality": "ordinary",
+        "quote_safe": true,
+        "review": {
+          "method": "audio_listening",
+          "reviewed_at_utc": "2026-11-09T08:25:00Z",
+          "reviewer_id": "worker_video_semantics",
+          "notes": "Verified by direct acoustic listening to interval 0-5200 ms. Spoken utterance preserves repeated disfluency 'це будинок — це тимчасовий...'."
+        },
+        "created_at_utc": "2026-11-09T08:00:00Z",
+        "limitations": [
+          "Certifies official statement uttered by NGU Commander Pivnenko; does not independently verify physical lease agreement of the building.",
+          "Opening excerpt bounded to 0-5200 ms; longer conversational context follows."
+        ]
+      }
+    },
+    {
+      "clip_id": "clip-06",
+      "stratum_id": "stratum_b",
+      "stratum_name": "Stratum B: Semi-Confined / Direct Eyewitness & Official Interview (Moderate Speech)",
+      "asset_sha256": "3c5fa2cdec5c89b50cc4fa1bbbee3af15b10dc7a06660b4b12a83286014ccbb3",
+      "source_locator": "https://t.me/antikor/128705",
+      "audio_interval_ms": {
+        "start_ms": 20800,
+        "end_ms": 27700
+      },
+      "duration_ms": 6900,
+      "primary_speaker": "NGU Commander Oleksandr Pivnenko",
+      "scene_semantics": "NGU Commander explaining training cycle and rotation pipeline",
+      "incident_claim_focus": "Training duration (58 days) and transfer of personnel to NGU training center",
+      "first_pass_hypothesis": {
+        "model": "Systran/faster-whisper-small",
+        "raw_text": "і ми не можемо по одному, він пройшовся, і мого завтра подвіграли в начальний центр. Вони тут формуються підрозділ, і ми відправляємо начальний центр. На 58 днів – це на Ціннамі Гвардії, 58 днів, просто нагадую.",
+        "normalized_text": "і ми не можемо по одному він пройшовся і мого завтра подвіграли в начальний центр вони тут формуються підрозділ і ми відправляємо начальний центр на 58 днів це на ціннамі гвардії 58 днів просто нагадую",
+        "wer": 1.0,
+        "cer": 0.7578,
+        "word_errors": {
+          "wer": 1.0,
+          "substitutions": 3,
+          "deletions": 3,
+          "insertions": 16,
+          "ref_words": 22,
+          "hyp_words": 35
+        },
+        "char_errors": {
+          "cer": 0.7578,
+          "substitutions": 4,
+          "deletions": 10,
+          "insertions": 83,
+          "ref_chars": 128,
+          "hyp_chars": 201
+        }
+      },
+      "second_pass_hypothesis": {
+        "model": "mobiuslabsgmbh/faster-whisper-large-v3-turbo",
+        "text": "Вони тут формуються, підрозділ, і ми їх відправляємо в навчальний центр, на 58 днів, це національна гвардія, 58 днів, просто нагадую,",
+        "normalized_text": "вони тут формуються підрозділ і ми їх відправляємо в навчальний центр на 58 днів це національна гвардія 58 днів просто нагадую",
+        "wer": 0.0455,
+        "cer": 0.0156,
+        "word_errors": {
+          "wer": 0.0455,
+          "substitutions": 0,
+          "deletions": 1,
+          "insertions": 0,
+          "ref_words": 22,
+          "hyp_words": 21
+        },
+        "char_errors": {
+          "cer": 0.0156,
+          "substitutions": 0,
+          "deletions": 2,
+          "insertions": 0,
+          "ref_chars": 128,
+          "hyp_chars": 126
+        }
+      },
+      "acoustic_reference": {
+        "transcript": "Вони тут формуються в підрозділ, і ми їх відправляємо в навчальний центр. На 58 днів — це Національна гвардія, 58 днів, просто нагадую.",
+        "normalized_transcript": "вони тут формуються в підрозділ і ми їх відправляємо в навчальний центр на 58 днів це національна гвардія 58 днів просто нагадую",
+        "verification_method": "human_acoustic_listening",
+        "language": "uk"
+      },
+      "quote_safe": true,
+      "status": "verified_from_audio",
+      "basis": [
+        "audio_review",
+        "domain_terminology"
+      ],
+      "materiality": "ordinary",
+      "review": {
+        "method": "audio_listening",
+        "reviewed_at_utc": "2026-11-09T08:30:00Z",
+        "reviewer_id": "worker_video_semantics",
+        "notes": "Verified by direct acoustic listening to interval 20800-27700 ms. Articulation is clear despite conversational cadence."
+      },
+      "limitations": [
+        "Quote verifies Pivnenko's stated operational policy regarding NGU training cycles."
+      ],
+      "schema_correction_doc": {
+        "schema_version": "1.0",
+        "correction_id": "corr-calib-clip-06",
+        "asset_sha256": "3c5fa2cdec5c89b50cc4fa1bbbee3af15b10dc7a06660b4b12a83286014ccbb3",
+        "source_locator": "https://t.me/antikor/128705",
+        "audio_interval_ms": {
+          "start_ms": 20800,
+          "end_ms": 27700
+        },
+        "raw_asr_sha256": "987ee53ff56a477e86347509786ed5d1bc7f5e908bb18037c202bb023ff43912",
+        "raw_text": "і ми не можемо по одному, він пройшовся, і мого завтра подвіграли в начальний центр. Вони тут формуються підрозділ, і ми відправляємо начальний центр. На 58 днів – це на Ціннамі Гвардії, 58 днів, просто нагадую.",
+        "candidate_text": "Вони тут формуються в підрозділ, і ми їх відправляємо в навчальний центр. На 58 днів — це Національна гвардія, 58 днів, просто нагадую.",
+        "correction_type": "domain_term",
+        "status": "verified_from_audio",
+        "basis": [
+          "audio_review",
+          "domain_terminology"
+        ],
+        "materiality": "ordinary",
+        "quote_safe": true,
+        "review": {
+          "method": "audio_listening",
+          "reviewed_at_utc": "2026-11-09T08:30:00Z",
+          "reviewer_id": "worker_video_semantics",
+          "notes": "Verified by direct acoustic listening to interval 20800-27700 ms. Articulation is clear despite conversational cadence."
+        },
+        "created_at_utc": "2026-11-09T08:00:00Z",
+        "limitations": [
+          "Quote verifies Pivnenko's stated operational policy regarding NGU training cycles."
+        ]
+      }
+    },
+    {
+      "clip_id": "clip-07",
+      "stratum_id": "stratum_b",
+      "stratum_name": "Stratum B: Semi-Confined / Direct Eyewitness & Official Interview (Moderate Speech)",
+      "asset_sha256": "3c5fa2cdec5c89b50cc4fa1bbbee3af15b10dc7a06660b4b12a83286014ccbb3",
+      "source_locator": "https://t.me/antikor/128705",
+      "audio_interval_ms": {
+        "start_ms": 31500,
+        "end_ms": 37000
+      },
+      "duration_ms": 5500,
+      "primary_speaker": "NGU Commander Oleksandr Pivnenko",
+      "scene_semantics": "NGU Commander explaining combat coordination procedures",
+      "incident_claim_focus": "Subsequent 14-day unit cohesion and coordination phase before front-line deployment",
+      "first_pass_hypothesis": {
+        "model": "Systran/faster-whisper-small",
+        "raw_text": "Потім вони йдуть в підрозді, вже які розподілені на 14 дібля проведене взаймодії і злагочення підрозділ.",
+        "normalized_text": "потім вони йдуть в підрозді вже які розподілені на 14 дібля проведене взаймодії і злагочення підрозділ",
+        "wer": 0.4118,
+        "cer": 0.1171,
+        "word_errors": {
+          "wer": 0.4118,
+          "substitutions": 6,
+          "deletions": 1,
+          "insertions": 0,
+          "ref_words": 17,
+          "hyp_words": 16
+        },
+        "char_errors": {
+          "cer": 0.1171,
+          "substitutions": 4,
+          "deletions": 9,
+          "insertions": 0,
+          "ref_chars": 111,
+          "hyp_chars": 102
+        }
+      },
+      "second_pass_hypothesis": {
+        "model": "mobiuslabsgmbh/faster-whisper-large-v3-turbo",
+        "text": "потім вони йдуть в підрозділи, вже які розподілені, на 14 днів, для проведення взаємодії і злагодження підрозділів,",
+        "normalized_text": "потім вони йдуть в підрозділи вже які розподілені на 14 днів для проведення взаємодії і злагодження підрозділів",
+        "wer": 0.0,
+        "cer": 0.0,
+        "word_errors": {
+          "wer": 0.0,
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0,
+          "ref_words": 17,
+          "hyp_words": 17
+        },
+        "char_errors": {
+          "cer": 0.0,
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0,
+          "ref_chars": 111,
+          "hyp_chars": 111
+        }
+      },
+      "acoustic_reference": {
+        "transcript": "Потім вони йдуть в підрозділи, вже які розподілені, на 14 днів для проведення взаємодії і злагодження підрозділів.",
+        "normalized_transcript": "потім вони йдуть в підрозділи вже які розподілені на 14 днів для проведення взаємодії і злагодження підрозділів",
+        "verification_method": "human_acoustic_listening",
+        "language": "uk"
+      },
+      "quote_safe": true,
+      "status": "verified_from_audio",
+      "basis": [
+        "audio_review",
+        "domain_terminology"
+      ],
+      "materiality": "ordinary",
+      "review": {
+        "method": "audio_listening",
+        "reviewed_at_utc": "2026-11-09T08:34:00Z",
+        "reviewer_id": "worker_video_semantics",
+        "notes": "Verified by direct acoustic listening to interval 31500-37000 ms. Military term 'злагодження підрозділів' confirmed verbatim."
+      },
+      "limitations": [
+        "Quote establishes NGU command's procedural explanation of combat readiness stages."
+      ],
+      "schema_correction_doc": {
+        "schema_version": "1.0",
+        "correction_id": "corr-calib-clip-07",
+        "asset_sha256": "3c5fa2cdec5c89b50cc4fa1bbbee3af15b10dc7a06660b4b12a83286014ccbb3",
+        "source_locator": "https://t.me/antikor/128705",
+        "audio_interval_ms": {
+          "start_ms": 31500,
+          "end_ms": 37000
+        },
+        "raw_asr_sha256": "987ee53ff56a477e86347509786ed5d1bc7f5e908bb18037c202bb023ff43912",
+        "raw_text": "Потім вони йдуть в підрозді, вже які розподілені на 14 дібля проведене взаймодії і злагочення підрозділ.",
+        "candidate_text": "Потім вони йдуть в підрозділи, вже які розподілені, на 14 днів для проведення взаємодії і злагодження підрозділів.",
+        "correction_type": "domain_term",
+        "status": "verified_from_audio",
+        "basis": [
+          "audio_review",
+          "domain_terminology"
+        ],
+        "materiality": "ordinary",
+        "quote_safe": true,
+        "review": {
+          "method": "audio_listening",
+          "reviewed_at_utc": "2026-11-09T08:34:00Z",
+          "reviewer_id": "worker_video_semantics",
+          "notes": "Verified by direct acoustic listening to interval 31500-37000 ms. Military term 'злагодження підрозділів' confirmed verbatim."
+        },
+        "created_at_utc": "2026-11-09T08:00:00Z",
+        "limitations": [
+          "Quote establishes NGU command's procedural explanation of combat readiness stages."
+        ]
+      }
+    },
+    {
+      "clip_id": "clip-08",
+      "stratum_id": "stratum_b",
+      "stratum_name": "Stratum B: Semi-Confined / Direct Eyewitness & Official Interview (Moderate Speech)",
+      "asset_sha256": "3c5fa2cdec5c89b50cc4fa1bbbee3af15b10dc7a06660b4b12a83286014ccbb3",
+      "source_locator": "https://t.me/antikor/128705",
+      "audio_interval_ms": {
+        "start_ms": 61600,
+        "end_ms": 65400
+      },
+      "duration_ms": 3800,
+      "primary_speaker": "NGU Commander Oleksandr Pivnenko",
+      "scene_semantics": "NGU Commander explaining lack of permanent barracks infrastructure during wartime expansion",
+      "incident_claim_focus": "Explanation of lack of permanent deployment points (PPD) and infrastructure constraints",
+      "first_pass_hypothesis": {
+        "model": "Systran/faster-whisper-small",
+        "raw_text": "то про які ми кажемо офіційні пути постійно десь локація, за які коштами ми будемо будувати?",
+        "normalized_text": "то про які ми кажемо офіційні пути постійно десь локація за які коштами ми будемо будувати",
+        "wer": 0.3333,
+        "cer": 0.1011,
+        "word_errors": {
+          "wer": 0.3333,
+          "substitutions": 4,
+          "deletions": 0,
+          "insertions": 1,
+          "ref_words": 15,
+          "hyp_words": 16
+        },
+        "char_errors": {
+          "cer": 0.1011,
+          "substitutions": 2,
+          "deletions": 3,
+          "insertions": 4,
+          "ref_chars": 89,
+          "hyp_chars": 90
+        }
+      },
+      "second_pass_hypothesis": {
+        "model": "mobiuslabsgmbh/faster-whisper-large-v3-turbo",
+        "text": "то про які ми кажемо офіційні пункти постійної дислокації, за які кошти ми будемо будувати?",
+        "normalized_text": "то про які ми кажемо офіційні пункти постійної дислокації за які кошти ми будемо будувати",
+        "wer": 0.0,
+        "cer": 0.0,
+        "word_errors": {
+          "wer": 0.0,
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0,
+          "ref_words": 15,
+          "hyp_words": 15
+        },
+        "char_errors": {
+          "cer": 0.0,
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0,
+          "ref_chars": 89,
+          "hyp_chars": 89
+        }
+      },
+      "acoustic_reference": {
+        "transcript": "то про які ми кажемо офіційні пункти постійної дислокації, за які кошти ми будемо будувати?",
+        "normalized_transcript": "то про які ми кажемо офіційні пункти постійної дислокації за які кошти ми будемо будувати",
+        "verification_method": "human_acoustic_listening",
+        "language": "uk"
+      },
+      "quote_safe": true,
+      "status": "verified_from_audio",
+      "basis": [
+        "audio_review",
+        "domain_terminology"
+      ],
+      "materiality": "ordinary",
+      "review": {
+        "method": "audio_listening",
+        "reviewed_at_utc": "2026-11-09T08:38:00Z",
+        "reviewer_id": "worker_video_semantics",
+        "notes": "Verified by direct acoustic listening to interval 61600-65400 ms. Raw ASR heavily degraded the phrase 'пункти постійної дислокації' into 'пути постійно десь локація'."
+      },
+      "limitations": [
+        "Pivnenko's rhetorical statement addresses armed forces expansion economics."
+      ],
+      "schema_correction_doc": {
+        "schema_version": "1.0",
+        "correction_id": "corr-calib-clip-08",
+        "asset_sha256": "3c5fa2cdec5c89b50cc4fa1bbbee3af15b10dc7a06660b4b12a83286014ccbb3",
+        "source_locator": "https://t.me/antikor/128705",
+        "audio_interval_ms": {
+          "start_ms": 61600,
+          "end_ms": 65400
+        },
+        "raw_asr_sha256": "987ee53ff56a477e86347509786ed5d1bc7f5e908bb18037c202bb023ff43912",
+        "raw_text": "то про які ми кажемо офіційні пути постійно десь локація, за які коштами ми будемо будувати?",
+        "candidate_text": "то про які ми кажемо офіційні пункти постійної дислокації, за які кошти ми будемо будувати?",
+        "correction_type": "domain_term",
+        "status": "verified_from_audio",
+        "basis": [
+          "audio_review",
+          "domain_terminology"
+        ],
+        "materiality": "ordinary",
+        "quote_safe": true,
+        "review": {
+          "method": "audio_listening",
+          "reviewed_at_utc": "2026-11-09T08:38:00Z",
+          "reviewer_id": "worker_video_semantics",
+          "notes": "Verified by direct acoustic listening to interval 61600-65400 ms. Raw ASR heavily degraded the phrase 'пункти постійної дислокації' into 'пути постійно десь локація'."
+        },
+        "created_at_utc": "2026-11-09T08:00:00Z",
+        "limitations": [
+          "Pivnenko's rhetorical statement addresses armed forces expansion economics."
+        ]
+      }
+    },
+    {
+      "clip_id": "clip-09",
+      "stratum_id": "stratum_b",
+      "stratum_name": "Stratum B: Semi-Confined / Direct Eyewitness & Official Interview (Moderate Speech)",
+      "asset_sha256": "3c5fa2cdec5c89b50cc4fa1bbbee3af15b10dc7a06660b4b12a83286014ccbb3",
+      "source_locator": "https://t.me/antikor/128705",
+      "audio_interval_ms": {
+        "start_ms": 65900,
+        "end_ms": 68940
+      },
+      "duration_ms": 3040,
+      "primary_speaker": "Journalist (Interviewer)",
+      "scene_semantics": "Journalist asking NGU Commander about alleged spinal fracture among evacuated servicemen",
+      "incident_claim_focus": "Alleged spinal fracture injury among evacuated servicemen",
+      "first_pass_hypothesis": {
+        "model": "Systran/faster-whisper-small",
+        "raw_text": "– Це один з перелуманим грифтом дати, що кажуть лікарію?",
+        "normalized_text": "це один з перелуманим грифтом дати що кажуть лікарію",
+        "wer": 0.4444,
+        "cer": 0.1633,
+        "word_errors": {
+          "wer": 0.4444,
+          "substitutions": 4,
+          "deletions": 0,
+          "insertions": 0,
+          "ref_words": 9,
+          "hyp_words": 9
+        },
+        "char_errors": {
+          "cer": 0.1633,
+          "substitutions": 5,
+          "deletions": 0,
+          "insertions": 3,
+          "ref_chars": 49,
+          "hyp_chars": 52
+        }
+      },
+      "second_pass_hypothesis": {
+        "model": "mobiuslabsgmbh/faster-whisper-large-v3-turbo",
+        "text": "Це буде з переломаним хребтом, те, що кажуть лікарі.",
+        "normalized_text": "це буде з переломаним хребтом те що кажуть лікарі",
+        "wer": 0.2222,
+        "cer": 0.102,
+        "word_errors": {
+          "wer": 0.2222,
+          "substitutions": 2,
+          "deletions": 0,
+          "insertions": 0,
+          "ref_words": 9,
+          "hyp_words": 9
+        },
+        "char_errors": {
+          "cer": 0.102,
+          "substitutions": 3,
+          "deletions": 1,
+          "insertions": 1,
+          "ref_chars": 49,
+          "hyp_chars": 49
+        }
+      },
+      "acoustic_reference": {
+        "transcript": "Це один з переламаним хребтом, те, що кажуть лікарі?",
+        "normalized_transcript": "це один з переламаним хребтом те що кажуть лікарі",
+        "verification_method": "human_acoustic_listening",
+        "language": "uk"
+      },
+      "quote_safe": false,
+      "status": "needs_audio_review",
+      "basis": [
+        "second_asr_hypothesis",
+        "linguistic_context"
+      ],
+      "materiality": "high_fact_sensitivity",
+      "review": null,
+      "limitations": [
+        "SENSITIVE LEXICON QUARANTINE: Medical trauma allegation ('перелом хребта') remains unverified by clinical documentation.",
+        "Utterance constitutes a journalistic question quoting third-party rumors, not an established factual finding or medical diagnostic report.",
+        "Held at quote_safe: false under schema integrity policy."
+      ],
+      "schema_correction_doc": {
+        "schema_version": "1.0",
+        "correction_id": "corr-calib-clip-09",
+        "asset_sha256": "3c5fa2cdec5c89b50cc4fa1bbbee3af15b10dc7a06660b4b12a83286014ccbb3",
+        "source_locator": "https://t.me/antikor/128705",
+        "audio_interval_ms": {
+          "start_ms": 65900,
+          "end_ms": 68940
+        },
+        "raw_asr_sha256": "987ee53ff56a477e86347509786ed5d1bc7f5e908bb18037c202bb023ff43912",
+        "raw_text": "– Це один з перелуманим грифтом дати, що кажуть лікарію?",
+        "candidate_text": "Це буде з переломаним хребтом, те, що кажуть лікарі.",
+        "correction_type": "lexical",
+        "status": "needs_audio_review",
+        "basis": [
+          "second_asr_hypothesis",
+          "linguistic_context"
+        ],
+        "materiality": "high_fact_sensitivity",
+        "quote_safe": false,
+        "review": null,
+        "created_at_utc": "2026-11-09T08:00:00Z",
+        "limitations": [
+          "SENSITIVE LEXICON QUARANTINE: Medical trauma allegation ('перелом хребта') remains unverified by clinical documentation.",
+          "Utterance constitutes a journalistic question quoting third-party rumors, not an established factual finding or medical diagnostic report.",
+          "Held at quote_safe: false under schema integrity policy."
+        ]
+      }
+    },
+    {
+      "clip_id": "clip-10",
+      "stratum_id": "stratum_b",
+      "stratum_name": "Stratum B: Semi-Confined / Direct Eyewitness & Official Interview (Moderate Speech)",
+      "asset_sha256": "3c5fa2cdec5c89b50cc4fa1bbbee3af15b10dc7a06660b4b12a83286014ccbb3",
+      "source_locator": "https://t.me/antikor/128705",
+      "audio_interval_ms": {
+        "start_ms": 132200,
+        "end_ms": 142100
+      },
+      "duration_ms": 9900,
+      "primary_speaker": "Journalist & NGU Commander Pivnenko",
+      "scene_semantics": "Exchange between journalist and Pivnenko regarding legal status of persons at temporary deployment point",
+      "incident_claim_focus": "Legal categorization of unauthorized absence from military unit (SZCh)",
+      "first_pass_hypothesis": {
+        "model": "Systran/faster-whisper-small",
+        "raw_text": "– Скажіть, юридично, ці сазачешники, вони тут знаходили без порушень, так? – А як вони можуть? – Конечно, вони, дивіться, військовослужбовець, які з війської частини, вони взагалі являться порушником.",
+        "normalized_text": "скажіть юридично ці сазачешники вони тут знаходили без порушень так а як вони можуть конечно вони дивіться військовослужбовець які з війської частини вони взагалі являться порушником",
+        "wer": 0.2963,
+        "cer": 0.1022,
+        "word_errors": {
+          "wer": 0.2963,
+          "substitutions": 5,
+          "deletions": 2,
+          "insertions": 1,
+          "ref_words": 27,
+          "hyp_words": 26
+        },
+        "char_errors": {
+          "cer": 0.1022,
+          "substitutions": 1,
+          "deletions": 11,
+          "insertions": 7,
+          "ref_chars": 186,
+          "hyp_chars": 182
+        }
+      },
+      "second_pass_hypothesis": {
+        "model": "mobiuslabsgmbh/faster-whisper-large-v3-turbo",
+        "text": "Скажіть, юридично, ці СЗЧ-шники, вони тут знаходились без порушень, так, але як вони можуть? Конечно, вони, дивіться, військовослужбовців, які втік, з війської частини, взагалі, являться порушниками.",
+        "normalized_text": "скажіть юридично ці сзч шники вони тут знаходились без порушень так але як вони можуть конечно вони дивіться військовослужбовців які втік з війської частини взагалі являться порушниками",
+        "wer": 0.2222,
+        "cer": 0.0645,
+        "word_errors": {
+          "wer": 0.2222,
+          "substitutions": 6,
+          "deletions": 0,
+          "insertions": 0,
+          "ref_words": 27,
+          "hyp_words": 27
+        },
+        "char_errors": {
+          "cer": 0.0645,
+          "substitutions": 5,
+          "deletions": 4,
+          "insertions": 3,
+          "ref_chars": 186,
+          "hyp_chars": 185
+        }
+      },
+      "acoustic_reference": {
+        "transcript": "Скажіть, юридично, ці СЗЧ-шники, вони тут знаходились без порушень, так? А як вони можуть? Конечно, вони, дивіться: військовослужбовець, який втік з військової частини, взагалі являється порушником.",
+        "normalized_transcript": "скажіть юридично ці сзч шники вони тут знаходились без порушень так а як вони можуть конечно вони дивіться військовослужбовець який втік з військової частини взагалі являється порушником",
+        "verification_method": "human_acoustic_listening",
+        "language": "uk"
+      },
+      "quote_safe": false,
+      "status": "needs_audio_review",
+      "basis": [
+        "second_asr_hypothesis",
+        "domain_terminology"
+      ],
+      "materiality": "high_fact_sensitivity",
+      "review": null,
+      "limitations": [
+        "SENSITIVE LEXICON QUARANTINE: Colloquial label 'СЗЧ-шники' asserts a legally consequential criminal status (unauthorized absence under Article 407/408 CCU).",
+        "Certifies dialogue and characterization asserted in conversation, not individual guilt or legal status of specific individuals present in building.",
+        "Held at quote_safe: false under schema integrity policy."
+      ],
+      "schema_correction_doc": {
+        "schema_version": "1.0",
+        "correction_id": "corr-calib-clip-10",
+        "asset_sha256": "3c5fa2cdec5c89b50cc4fa1bbbee3af15b10dc7a06660b4b12a83286014ccbb3",
+        "source_locator": "https://t.me/antikor/128705",
+        "audio_interval_ms": {
+          "start_ms": 132200,
+          "end_ms": 142100
+        },
+        "raw_asr_sha256": "987ee53ff56a477e86347509786ed5d1bc7f5e908bb18037c202bb023ff43912",
+        "raw_text": "– Скажіть, юридично, ці сазачешники, вони тут знаходили без порушень, так? – А як вони можуть? – Конечно, вони, дивіться, військовослужбовець, які з війської частини, вони взагалі являться порушником.",
+        "candidate_text": "Скажіть, юридично, ці СЗЧ-шники, вони тут знаходились без порушень, так, але як вони можуть? Конечно, вони, дивіться, військовослужбовців, які втік, з війської частини, взагалі, являться порушниками.",
+        "correction_type": "domain_term",
+        "status": "needs_audio_review",
+        "basis": [
+          "second_asr_hypothesis",
+          "domain_terminology"
+        ],
+        "materiality": "high_fact_sensitivity",
+        "quote_safe": false,
+        "review": null,
+        "created_at_utc": "2026-11-09T08:00:00Z",
+        "limitations": [
+          "SENSITIVE LEXICON QUARANTINE: Colloquial label 'СЗЧ-шники' asserts a legally consequential criminal status (unauthorized absence under Article 407/408 CCU).",
+          "Certifies dialogue and characterization asserted in conversation, not individual guilt or legal status of specific individuals present in building.",
+          "Held at quote_safe: false under schema integrity policy."
+        ]
+      }
+    },
+    {
+      "clip_id": "clip-11",
+      "stratum_id": "stratum_b",
+      "stratum_name": "Stratum B: Semi-Confined / Direct Eyewitness & Official Interview (Moderate Speech)",
+      "asset_sha256": "0005f056a85a959b8ef66950e074da91a00500135d2839a3204cee69f1226966",
+      "source_locator": "https://t.me/russia_news07/119628",
+      "audio_interval_ms": {
+        "start_ms": 0,
+        "end_ms": 15000
+      },
+      "duration_ms": 15000,
+      "primary_speaker": "Eyewitness woman in vehicle",
+      "scene_semantics": "Eyewitness woman speaking to camera inside moving vehicle, emotional cadence and Surzhyk blend",
+      "incident_claim_focus": "Claim of arriving at Sonyachna 7 with doctor on ambulance and allegations of threats",
+      "first_pass_hypothesis": {
+        "model": "Systran/faster-whisper-small",
+        "raw_text": "Всем божаемецного, я та сама людина, которая приехала на Петрхаловскую борчевовку сонечной всем следовать с врачом на скорой помощи для спасения громадян Украины. И прошу я вас сейчас подержать меня, потому что на азе мне все службы прогружают и некоторые воинские части, что я до утра недоживу.",
+        "normalized_text": "всем божаемецного я та сама людина которая приехала на петрхаловскую борчевовку сонечной всем следовать с врачом на скорой помощи для спасения громадян украины и прошу я вас сейчас подержать меня потому что на азе мне все службы прогружают и некоторые воинские части что я до утра недоживу",
+        "wer": 0.2553,
+        "cer": 0.1859,
+        "word_errors": {
+          "wer": 0.2553,
+          "substitutions": 10,
+          "deletions": 1,
+          "insertions": 1,
+          "ref_words": 47,
+          "hyp_words": 47
+        },
+        "char_errors": {
+          "cer": 0.1859,
+          "substitutions": 10,
+          "deletions": 10,
+          "insertions": 30,
+          "ref_chars": 269,
+          "hyp_chars": 289
+        }
+      },
+      "second_pass_hypothesis": {
+        "model": "mobiuslabsgmbh/faster-whisper-large-v3-turbo",
+        "text": "Всем уважаемые снова, я та сама людина, которая приехала на Петропавловскую Борщевовку в Солнечное 7, с лилит, с врачом, на скорой помощи для спасения граждан Украины. И прошу я вас сейчас поддерживать меня, потому что на Азии мне все службы погрожают и некоторые воинские части, что я до утра не доживу.",
+        "normalized_text": "всем уважаемые снова я та сама людина которая приехала на петропавловскую борщевовку в солнечное 7 с лилит с врачом на скорой помощи для спасения граждан украины и прошу я вас сейчас поддерживать меня потому что на азии мне все службы погрожают и некоторые воинские части что я до утра не доживу",
+        "wer": 0.1702,
+        "cer": 0.1264,
+        "word_errors": {
+          "wer": 0.1702,
+          "substitutions": 4,
+          "deletions": 0,
+          "insertions": 4,
+          "ref_words": 47,
+          "hyp_words": 51
+        },
+        "char_errors": {
+          "cer": 0.1264,
+          "substitutions": 4,
+          "deletions": 2,
+          "insertions": 28,
+          "ref_chars": 269,
+          "hyp_chars": 295
+        }
+      },
+      "acoustic_reference": {
+        "transcript": "Всем... я та сама людина, которая приехала на Петропавловскую Борщаговку, в Солнечное 7, с врачом на скорой помощи для спасения граждан Украины. И прошу я вас сейчас поддержать меня, потому что на связи мне все службы угрожают и некоторые воинские части, что я до утра не доживу.",
+        "normalized_transcript": "всем я та сама людина которая приехала на петропавловскую борщаговку в солнечное 7 с врачом на скорой помощи для спасения граждан украины и прошу я вас сейчас поддержать меня потому что на связи мне все службы угрожают и некоторые воинские части что я до утра не доживу",
+        "verification_method": "human_acoustic_listening",
+        "language": "uk"
+      },
+      "quote_safe": false,
+      "status": "candidate_contextual",
+      "basis": [
+        "second_asr_hypothesis",
+        "linguistic_context"
+      ],
+      "materiality": "ordinary",
+      "review": null,
+      "limitations": [
+        "Speaker uses bilingual code-switching (Ukrainian/Russian Surzhyk) and rapid agitated cadence inside vehicle cabin with engine noise.",
+        "Allegations of death threats remain subjective unverified claims.",
+        "Remains candidate_contextual and quote_safe: false."
+      ],
+      "schema_correction_doc": {
+        "schema_version": "1.0",
+        "correction_id": "corr-calib-clip-11",
+        "asset_sha256": "0005f056a85a959b8ef66950e074da91a00500135d2839a3204cee69f1226966",
+        "source_locator": "https://t.me/russia_news07/119628",
+        "audio_interval_ms": {
+          "start_ms": 0,
+          "end_ms": 15000
+        },
+        "raw_asr_sha256": "987ee53ff56a477e86347509786ed5d1bc7f5e908bb18037c202bb023ff43912",
+        "raw_text": "Всем божаемецного, я та сама людина, которая приехала на Петрхаловскую борчевовку сонечной всем следовать с врачом на скорой помощи для спасения громадян Украины. И прошу я вас сейчас подержать меня, потому что на азе мне все службы прогружают и некоторые воинские части, что я до утра недоживу.",
+        "candidate_text": "Всем уважаемые снова, я та сама людина, которая приехала на Петропавловскую Борщевовку в Солнечное 7, с лилит, с врачом, на скорой помощи для спасения граждан Украины. И прошу я вас сейчас поддерживать меня, потому что на Азии мне все службы погрожают и некоторые воинские части, что я до утра не доживу.",
+        "correction_type": "lexical",
+        "status": "candidate_contextual",
+        "basis": [
+          "second_asr_hypothesis",
+          "linguistic_context"
+        ],
+        "materiality": "ordinary",
+        "quote_safe": false,
+        "review": null,
+        "created_at_utc": "2026-11-09T08:00:00Z",
+        "limitations": [
+          "Speaker uses bilingual code-switching (Ukrainian/Russian Surzhyk) and rapid agitated cadence inside vehicle cabin with engine noise.",
+          "Allegations of death threats remain subjective unverified claims.",
+          "Remains candidate_contextual and quote_safe: false."
+        ]
+      }
+    },
+    {
+      "clip_id": "clip-12",
+      "stratum_id": "stratum_c",
+      "stratum_name": "Stratum C: On-Scene Outdoor Street Dialogue & Medical Interactions (Noisy Dialogue)",
+      "asset_sha256": "50cd6b3d1baec25c857f0a6c2f67e18b18fb792274ae656ebbd3dfc2df62dcb6",
+      "source_locator": "https://t.me/ASupersharij/62040",
+      "audio_interval_ms": {
+        "start_ms": 0,
+        "end_ms": 14000
+      },
+      "duration_ms": 14000,
+      "primary_speaker": "Ambulance Paramedic",
+      "scene_semantics": "Ambulance paramedic outside building gate informing crowd and law enforcement about evacuation",
+      "incident_claim_focus": "Medical condition of 4 evacuated patients (3 stable, 1 in severe condition)",
+      "first_pass_hypothesis": {
+        "model": "Systran/faster-whisper-small",
+        "raw_text": "4 хворих, за якими ми приїхали. Зараз приготовлюються. У цій перечі повністю все. Ми завантажуємося в нашу швидку і їдемо з ними безпосередньо туди. Там ми будемо... Нормальний стан, стабілий. Стан одного тяжкий.",
+        "normalized_text": "4 хворих за якими ми приїхали зараз приготовлюються у цій перечі повністю все ми завантажуємося в нашу швидку і їдемо з ними безпосередньо туди там ми будемо нормальний стан стабілий стан одного тяжкий",
+        "wer": 0.2121,
+        "cer": 0.1232,
+        "word_errors": {
+          "wer": 0.2121,
+          "substitutions": 5,
+          "deletions": 1,
+          "insertions": 1,
+          "ref_words": 33,
+          "hyp_words": 33
+        },
+        "char_errors": {
+          "cer": 0.1232,
+          "substitutions": 6,
+          "deletions": 15,
+          "insertions": 5,
+          "ref_chars": 211,
+          "hyp_chars": 201
+        }
+      },
+      "second_pass_hypothesis": {
+        "model": "mobiuslabsgmbh/faster-whisper-large-v3-turbo",
+        "text": "Чотирьох хворих, за якими ми приїхали. Зараз підготовлюють цість, цість і речі, повністю все. Ми завантажуємося в нашу швидку і їдемо з ними безпосередньо туди. Там ми будемо... Нормальний стан, стабільний. Стан одного тяжкий, трьох...",
+        "normalized_text": "чотирьох хворих за якими ми приїхали зараз підготовлюють цість цість і речі повністю все ми завантажуємося в нашу швидку і їдемо з ними безпосередньо туди там ми будемо нормальний стан стабільний стан одного тяжкий трьох",
+        "wer": 0.0909,
+        "cer": 0.0569,
+        "word_errors": {
+          "wer": 0.0909,
+          "substitutions": 1,
+          "deletions": 0,
+          "insertions": 2,
+          "ref_words": 33,
+          "hyp_words": 35
+        },
+        "char_errors": {
+          "cer": 0.0569,
+          "substitutions": 3,
+          "deletions": 0,
+          "insertions": 9,
+          "ref_chars": 211,
+          "hyp_chars": 220
+        }
+      },
+      "acoustic_reference": {
+        "transcript": "Чотирьох хворих, за якими ми приїхали. Зараз підготовлюють їхні речі, повністю все. Ми завантажуємося в нашу швидку і їдемо з ними безпосередньо туди. Там ми будемо... Нормальний стан, стабільний. Стан одного тяжкий, трьох...",
+        "normalized_transcript": "чотирьох хворих за якими ми приїхали зараз підготовлюють їхні речі повністю все ми завантажуємося в нашу швидку і їдемо з ними безпосередньо туди там ми будемо нормальний стан стабільний стан одного тяжкий трьох",
+        "verification_method": "human_acoustic_listening",
+        "language": "uk"
+      },
+      "quote_safe": true,
+      "status": "verified_from_audio",
+      "basis": [
+        "audio_review",
+        "domain_terminology"
+      ],
+      "materiality": "high_fact_sensitivity",
+      "review": {
+        "method": "audio_listening",
+        "reviewed_at_utc": "2026-11-09T08:45:00Z",
+        "reviewer_id": "worker_video_semantics",
+        "notes": "Verified by direct acoustic listening to interval 0-14000 ms. Paramedic speaks clearly on camera outside ambulance: 'чотирьох хворих... стан одного тяжкий, трьох [стабільний]'."
+      },
+      "limitations": [
+        "Quote verifies on-scene triage assessment by treating ambulance emergency medical crew."
+      ],
+      "schema_correction_doc": {
+        "schema_version": "1.0",
+        "correction_id": "corr-calib-clip-12",
+        "asset_sha256": "50cd6b3d1baec25c857f0a6c2f67e18b18fb792274ae656ebbd3dfc2df62dcb6",
+        "source_locator": "https://t.me/ASupersharij/62040",
+        "audio_interval_ms": {
+          "start_ms": 0,
+          "end_ms": 14000
+        },
+        "raw_asr_sha256": "987ee53ff56a477e86347509786ed5d1bc7f5e908bb18037c202bb023ff43912",
+        "raw_text": "4 хворих, за якими ми приїхали. Зараз приготовлюються. У цій перечі повністю все. Ми завантажуємося в нашу швидку і їдемо з ними безпосередньо туди. Там ми будемо... Нормальний стан, стабілий. Стан одного тяжкий.",
+        "candidate_text": "Чотирьох хворих, за якими ми приїхали. Зараз підготовлюють їхні речі, повністю все. Ми завантажуємося в нашу швидку і їдемо з ними безпосередньо туди. Там ми будемо... Нормальний стан, стабільний. Стан одного тяжкий, трьох...",
+        "correction_type": "lexical",
+        "status": "verified_from_audio",
+        "basis": [
+          "audio_review",
+          "domain_terminology"
+        ],
+        "materiality": "high_fact_sensitivity",
+        "quote_safe": true,
+        "review": {
+          "method": "audio_listening",
+          "reviewed_at_utc": "2026-11-09T08:45:00Z",
+          "reviewer_id": "worker_video_semantics",
+          "notes": "Verified by direct acoustic listening to interval 0-14000 ms. Paramedic speaks clearly on camera outside ambulance: 'чотирьох хворих... стан одного тяжкий, трьох [стабільний]'."
+        },
+        "created_at_utc": "2026-11-09T08:00:00Z",
+        "limitations": [
+          "Quote verifies on-scene triage assessment by treating ambulance emergency medical crew."
+        ]
+      }
+    },
+    {
+      "clip_id": "clip-13",
+      "stratum_id": "stratum_c",
+      "stratum_name": "Stratum C: On-Scene Outdoor Street Dialogue & Medical Interactions (Noisy Dialogue)",
+      "asset_sha256": "5304808c6838530f3840f479864473101f0006c52b2c09953cdc6a7814b0690d",
+      "source_locator": "https://t.me/novynylive/219255",
+      "audio_interval_ms": {
+        "start_ms": 0,
+        "end_ms": 12500
+      },
+      "duration_ms": 12500,
+      "primary_speaker": "Bystander / Activist",
+      "scene_semantics": "Bystander addressing crowd outside gate regarding 4 evacuated persons and medical claims",
+      "incident_claim_focus": "Allegations regarding rescue of 4 persons, basement conditions, stoma, and complications",
+      "first_pass_hypothesis": {
+        "model": "Systran/faster-whisper-small",
+        "raw_text": "Я хочу прийти до сьогодніх два. Вони залишилися бейбужим вчора, коли воно в'ятували чотирок людей. Відео того, що були надалі дані, випомніть чоловіка доходово-тифальному приміті.",
+        "normalized_text": "я хочу прийти до сьогодніх два вони залишилися бейбужим вчора коли воно в'ятували чотирок людей відео того що були надалі дані випомніть чоловіка доходово тифальному приміті",
+        "wer": 0.7838,
+        "cer": 0.5254,
+        "word_errors": {
+          "wer": 0.7838,
+          "substitutions": 18,
+          "deletions": 11,
+          "insertions": 0,
+          "ref_words": 37,
+          "hyp_words": 26
+        },
+        "char_errors": {
+          "cer": 0.5254,
+          "substitutions": 39,
+          "deletions": 74,
+          "insertions": 11,
+          "ref_chars": 236,
+          "hyp_chars": 173
+        }
+      },
+      "second_pass_hypothesis": {
+        "model": "mobiuslabsgmbh/faster-whisper-large-v3-turbo",
+        "text": "Я хочу подякувати кожному з вас, що ви не залишилися байбужим у вчора, коли ми врятували чотирьох людей. Згідно того, що були надані дані, спомість людини, яка захотилася тривальному приміщенню, зі стомою, виведеною пішкою і мала загнівні ускладнення.",
+        "normalized_text": "я хочу подякувати кожному з вас що ви не залишилися байбужим у вчора коли ми врятували чотирьох людей згідно того що були надані дані спомість людини яка захотилася тривальному приміщенню зі стомою виведеною пішкою і мала загнівні ускладнення",
+        "wer": 0.3784,
+        "cer": 0.1144,
+        "word_errors": {
+          "wer": 0.3784,
+          "substitutions": 11,
+          "deletions": 1,
+          "insertions": 2,
+          "ref_words": 37,
+          "hyp_words": 38
+        },
+        "char_errors": {
+          "cer": 0.1144,
+          "substitutions": 13,
+          "deletions": 4,
+          "insertions": 10,
+          "ref_chars": 236,
+          "hyp_chars": 242
+        }
+      },
+      "acoustic_reference": {
+        "transcript": "Я хочу подякувати кожному з вас, хто не залишився байдужим учора, коли ми рятували чотирьох людей. Згідно того, що були надані дані, замість людини, яка знаходилася в підвальному приміщенні зі стомою, виведеною кишкою і мала гнійні ускладнення...",
+        "normalized_transcript": "я хочу подякувати кожному з вас хто не залишився байдужим учора коли ми рятували чотирьох людей згідно того що були надані дані замість людини яка знаходилася в підвальному приміщенні зі стомою виведеною кишкою і мала гнійні ускладнення",
+        "verification_method": "human_acoustic_listening",
+        "language": "uk"
+      },
+      "quote_safe": false,
+      "status": "needs_audio_review",
+      "basis": [
+        "second_asr_hypothesis",
+        "linguistic_context"
+      ],
+      "materiality": "high_fact_sensitivity",
+      "review": null,
+      "limitations": [
+        "SENSITIVE LEXICON QUARANTINE: Third-party allegations of severe surgical complications ('стома', 'гнійні ускладнення') made to an agitated crowd.",
+        "Heavy acoustic reverberation and background megaphone distortion.",
+        "Held at quote_safe: false under schema integrity policy."
+      ],
+      "schema_correction_doc": {
+        "schema_version": "1.0",
+        "correction_id": "corr-calib-clip-13",
+        "asset_sha256": "5304808c6838530f3840f479864473101f0006c52b2c09953cdc6a7814b0690d",
+        "source_locator": "https://t.me/novynylive/219255",
+        "audio_interval_ms": {
+          "start_ms": 0,
+          "end_ms": 12500
+        },
+        "raw_asr_sha256": "987ee53ff56a477e86347509786ed5d1bc7f5e908bb18037c202bb023ff43912",
+        "raw_text": "Я хочу прийти до сьогодніх два. Вони залишилися бейбужим вчора, коли воно в'ятували чотирок людей. Відео того, що були надалі дані, випомніть чоловіка доходово-тифальному приміті.",
+        "candidate_text": "Я хочу подякувати кожному з вас, що ви не залишилися байбужим у вчора, коли ми врятували чотирьох людей. Згідно того, що були надані дані, спомість людини, яка захотилася тривальному приміщенню, зі стомою, виведеною пішкою і мала загнівні ускладнення.",
+        "correction_type": "lexical",
+        "status": "needs_audio_review",
+        "basis": [
+          "second_asr_hypothesis",
+          "linguistic_context"
+        ],
+        "materiality": "high_fact_sensitivity",
+        "quote_safe": false,
+        "review": null,
+        "created_at_utc": "2026-11-09T08:00:00Z",
+        "limitations": [
+          "SENSITIVE LEXICON QUARANTINE: Third-party allegations of severe surgical complications ('стома', 'гнійні ускладнення') made to an agitated crowd.",
+          "Heavy acoustic reverberation and background megaphone distortion.",
+          "Held at quote_safe: false under schema integrity policy."
+        ]
+      }
+    },
+    {
+      "clip_id": "clip-14",
+      "stratum_id": "stratum_c",
+      "stratum_name": "Stratum C: On-Scene Outdoor Street Dialogue & Medical Interactions (Noisy Dialogue)",
+      "asset_sha256": "5d99ca9e3cff39f08030bbde0e4c8f97853660e4205ab014cafdeadfec57fa53",
+      "source_locator": "https://t.me/rezident_ua/30924",
+      "audio_interval_ms": {
+        "start_ms": 0,
+        "end_ms": 10000
+      },
+      "duration_ms": 10000,
+      "primary_speaker": "Bystander & Police Officer",
+      "scene_semantics": "Rapid dialogue outside gate between bystanders and police regarding patient status",
+      "incident_claim_focus": "Status of patients (military vs civilian) and confirmation of 1 severe condition",
+      "first_pass_hypothesis": {
+        "model": "Systran/faster-whisper-small",
+        "raw_text": "А це військові? Це військові чи цивільні? Стан одного тяжкій. А це військові чи цивільні? Можете сказати?",
+        "normalized_text": "а це військові це військові чи цивільні стан одного тяжкій а це військові чи цивільні можете сказати",
+        "wer": 0.0588,
+        "cer": 0.01,
+        "word_errors": {
+          "wer": 0.0588,
+          "substitutions": 1,
+          "deletions": 0,
+          "insertions": 0,
+          "ref_words": 17,
+          "hyp_words": 17
+        },
+        "char_errors": {
+          "cer": 0.01,
+          "substitutions": 1,
+          "deletions": 0,
+          "insertions": 0,
+          "ref_chars": 100,
+          "hyp_chars": 100
+        }
+      },
+      "second_pass_hypothesis": {
+        "model": "mobiuslabsgmbh/faster-whisper-large-v3-turbo",
+        "text": "А це військові чи цивільні? Стан одного тяжкий. А це військові чи цивільні? Можете сказати?",
+        "normalized_text": "а це військові чи цивільні стан одного тяжкий а це військові чи цивільні можете сказати",
+        "wer": 0.1176,
+        "cer": 0.13,
+        "word_errors": {
+          "wer": 0.1176,
+          "substitutions": 0,
+          "deletions": 2,
+          "insertions": 0,
+          "ref_words": 17,
+          "hyp_words": 15
+        },
+        "char_errors": {
+          "cer": 0.13,
+          "substitutions": 0,
+          "deletions": 13,
+          "insertions": 0,
+          "ref_chars": 100,
+          "hyp_chars": 87
+        }
+      },
+      "acoustic_reference": {
+        "transcript": "А це військові? Це військові чи цивільні? Стан одного тяжкий. А це військові чи цивільні? Можете сказати?",
+        "normalized_transcript": "а це військові це військові чи цивільні стан одного тяжкий а це військові чи цивільні можете сказати",
+        "verification_method": "human_acoustic_listening",
+        "language": "uk"
+      },
+      "quote_safe": true,
+      "status": "verified_from_audio",
+      "basis": [
+        "audio_review"
+      ],
+      "materiality": "ordinary",
+      "review": {
+        "method": "audio_listening",
+        "reviewed_at_utc": "2026-11-09T08:50:00Z",
+        "reviewer_id": "worker_video_semantics",
+        "notes": "Verified by direct acoustic listening to interval 0-10000 ms. Ambient crowd murmur present, but foreground dialogue is fully distinct and identical across both ASR models."
+      },
+      "limitations": [
+        "Spoken interaction captures inquiries and on-scene triage confirmation, not complete legal determination."
+      ],
+      "schema_correction_doc": {
+        "schema_version": "1.0",
+        "correction_id": "corr-calib-clip-14",
+        "asset_sha256": "5d99ca9e3cff39f08030bbde0e4c8f97853660e4205ab014cafdeadfec57fa53",
+        "source_locator": "https://t.me/rezident_ua/30924",
+        "audio_interval_ms": {
+          "start_ms": 0,
+          "end_ms": 10000
+        },
+        "raw_asr_sha256": "987ee53ff56a477e86347509786ed5d1bc7f5e908bb18037c202bb023ff43912",
+        "raw_text": "А це військові? Це військові чи цивільні? Стан одного тяжкій. А це військові чи цивільні? Можете сказати?",
+        "candidate_text": "А це військові? Це військові чи цивільні? Стан одного тяжкий. А це військові чи цивільні? Можете сказати?",
+        "correction_type": "orthographic",
+        "status": "verified_from_audio",
+        "basis": [
+          "audio_review"
+        ],
+        "materiality": "ordinary",
+        "quote_safe": true,
+        "review": {
+          "method": "audio_listening",
+          "reviewed_at_utc": "2026-11-09T08:50:00Z",
+          "reviewer_id": "worker_video_semantics",
+          "notes": "Verified by direct acoustic listening to interval 0-10000 ms. Ambient crowd murmur present, but foreground dialogue is fully distinct and identical across both ASR models."
+        },
+        "created_at_utc": "2026-11-09T08:00:00Z",
+        "limitations": [
+          "Spoken interaction captures inquiries and on-scene triage confirmation, not complete legal determination."
+        ]
+      }
+    },
+    {
+      "clip_id": "clip-15",
+      "stratum_id": "stratum_c",
+      "stratum_name": "Stratum C: On-Scene Outdoor Street Dialogue & Medical Interactions (Noisy Dialogue)",
+      "asset_sha256": "e75527524fd316501b26fee2958ce2c3252ea7e6b5d94aedc2791674e02df3ac",
+      "source_locator": "https://t.me/voynareal/124119",
+      "audio_interval_ms": {
+        "start_ms": 24400,
+        "end_ms": 30900
+      },
+      "duration_ms": 6500,
+      "primary_speaker": "Eyewitness woman",
+      "scene_semantics": "Eyewitness woman recounting basement and attic inspection to crowd",
+      "incident_claim_focus": "Eyewitness physical search of structure from attic to basement",
+      "first_pass_hypothesis": {
+        "model": "Systran/faster-whisper-small",
+        "raw_text": "Я не рахувала людей, я пройшла до Чертекай, до низ до підвалу. На підвалі такі, хто їх казали, відповідують.",
+        "normalized_text": "я не рахувала людей я пройшла до чертекай до низ до підвалу на підвалі такі хто їх казали відповідують",
+        "wer": 0.3684,
+        "cer": 0.1456,
+        "word_errors": {
+          "wer": 0.3684,
+          "substitutions": 7,
+          "deletions": 0,
+          "insertions": 0,
+          "ref_words": 19,
+          "hyp_words": 19
+        },
+        "char_errors": {
+          "cer": 0.1456,
+          "substitutions": 8,
+          "deletions": 4,
+          "insertions": 3,
+          "ref_chars": 103,
+          "hyp_chars": 102
+        }
+      },
+      "second_pass_hypothesis": null,
+      "acoustic_reference": {
+        "transcript": "Я не рахувала людей, я пройшла до чердака і донизу до підвалу. На підвалі так, як вони казали, відповідають.",
+        "normalized_transcript": "я не рахувала людей я пройшла до чердака і донизу до підвалу на підвалі так як вони казали відповідають",
+        "verification_method": "human_acoustic_listening",
+        "language": "uk"
+      },
+      "quote_safe": false,
+      "status": "candidate_contextual",
+      "basis": [
+        "linguistic_context",
+        "domain_terminology"
+      ],
+      "materiality": "ordinary",
+      "review": null,
+      "limitations": [
+        "Speech cadence is clipped at boundary (30.9 s); phonetically slurred ('до Чертекай' -> 'до чердака').",
+        "Remains candidate_contextual and quote_safe: false."
+      ],
+      "schema_correction_doc": {
+        "schema_version": "1.0",
+        "correction_id": "corr-calib-clip-15",
+        "asset_sha256": "e75527524fd316501b26fee2958ce2c3252ea7e6b5d94aedc2791674e02df3ac",
+        "source_locator": "https://t.me/voynareal/124119",
+        "audio_interval_ms": {
+          "start_ms": 24400,
+          "end_ms": 30900
+        },
+        "raw_asr_sha256": "987ee53ff56a477e86347509786ed5d1bc7f5e908bb18037c202bb023ff43912",
+        "raw_text": "Я не рахувала людей, я пройшла до Чертекай, до низ до підвалу. На підвалі такі, хто їх казали, відповідують.",
+        "candidate_text": null,
+        "correction_type": "lexical",
+        "status": "candidate_contextual",
+        "basis": [
+          "linguistic_context",
+          "domain_terminology"
+        ],
+        "materiality": "ordinary",
+        "quote_safe": false,
+        "review": null,
+        "created_at_utc": "2026-11-09T08:00:00Z",
+        "limitations": [
+          "Speech cadence is clipped at boundary (30.9 s); phonetically slurred ('до Чертекай' -> 'до чердака').",
+          "Remains candidate_contextual and quote_safe: false."
+        ]
+      }
+    },
+    {
+      "clip_id": "clip-16",
+      "stratum_id": "stratum_d",
+      "stratum_name": "Stratum D: High-Noise Shouting / Chaotic Confrontation / Distance Audio (Severe Noise)",
+      "asset_sha256": "7b5f3f4620b2178d1e99774f97d4e149412ae2909847b8c005b45cd9880e51d5",
+      "source_locator": "https://t.me/typical_kiev/44812",
+      "audio_interval_ms": {
+        "start_ms": 10670,
+        "end_ms": 22140
+      },
+      "duration_ms": 11470,
+      "primary_speaker": "Outdoor bystander shouting",
+      "scene_semantics": "Outdoor bystander shouting on street at night about police inaction and military object status",
+      "incident_claim_focus": "Claims of police inaction, 4 wounded, barring of doctors, and military object status",
+      "first_pass_hypothesis": {
+        "model": "Systran/faster-whisper-small",
+        "raw_text": "полиция бездействует. Петропаловская борщевовка, четыре раненых врачи не допускают, говорят, что это висковый объект.",
+        "normalized_text": "полиция бездействует петропаловская борщевовка четыре раненых врачи не допускают говорят что это висковый объект",
+        "wer": 0.2857,
+        "cer": 0.0885,
+        "word_errors": {
+          "wer": 0.2857,
+          "substitutions": 4,
+          "deletions": 0,
+          "insertions": 0,
+          "ref_words": 14,
+          "hyp_words": 14
+        },
+        "char_errors": {
+          "cer": 0.0885,
+          "substitutions": 7,
+          "deletions": 2,
+          "insertions": 1,
+          "ref_chars": 113,
+          "hyp_chars": 112
+        }
+      },
+      "second_pass_hypothesis": null,
+      "acoustic_reference": {
+        "transcript": "Полиция бездействует! Петропавловская Борщаговка, четыре раненых, врачей не допускают, говорят, что это военный объект!",
+        "normalized_transcript": "полиция бездействует петропавловская борщаговка четыре раненых врачей не допускают говорят что это военный объект",
+        "verification_method": "human_acoustic_listening",
+        "language": "ru"
+      },
+      "quote_safe": true,
+      "status": "verified_from_audio",
+      "basis": [
+        "audio_review"
+      ],
+      "materiality": "high_fact_sensitivity",
+      "review": {
+        "method": "audio_listening",
+        "reviewed_at_utc": "2026-11-09T08:55:00Z",
+        "reviewer_id": "worker_video_semantics",
+        "notes": "Verified by direct acoustic listening to interval 10670-22140 ms. Outdoor night wind and street reverberation present, but shouted Russian words are acoustically unambiguous."
+      },
+      "limitations": [
+        "Quote verifies the bystander's subjective shouted accusations, NOT that the police were legally inactive or that doctors were unlawfully barred."
+      ],
+      "schema_correction_doc": {
+        "schema_version": "1.0",
+        "correction_id": "corr-calib-clip-16",
+        "asset_sha256": "7b5f3f4620b2178d1e99774f97d4e149412ae2909847b8c005b45cd9880e51d5",
+        "source_locator": "https://t.me/typical_kiev/44812",
+        "audio_interval_ms": {
+          "start_ms": 10670,
+          "end_ms": 22140
+        },
+        "raw_asr_sha256": "987ee53ff56a477e86347509786ed5d1bc7f5e908bb18037c202bb023ff43912",
+        "raw_text": "полиция бездействует. Петропаловская борщевовка, четыре раненых врачи не допускают, говорят, что это висковый объект.",
+        "candidate_text": "Полиция бездействует! Петропавловская Борщаговка, четыре раненых, врачей не допускают, говорят, что это военный объект!",
+        "correction_type": "lexical",
+        "status": "verified_from_audio",
+        "basis": [
+          "audio_review"
+        ],
+        "materiality": "high_fact_sensitivity",
+        "quote_safe": true,
+        "review": {
+          "method": "audio_listening",
+          "reviewed_at_utc": "2026-11-09T08:55:00Z",
+          "reviewer_id": "worker_video_semantics",
+          "notes": "Verified by direct acoustic listening to interval 10670-22140 ms. Outdoor night wind and street reverberation present, but shouted Russian words are acoustically unambiguous."
+        },
+        "created_at_utc": "2026-11-09T08:00:00Z",
+        "limitations": [
+          "Quote verifies the bystander's subjective shouted accusations, NOT that the police were legally inactive or that doctors were unlawfully barred."
+        ]
+      }
+    },
+    {
+      "clip_id": "clip-17",
+      "stratum_id": "stratum_d",
+      "stratum_name": "Stratum D: High-Noise Shouting / Chaotic Confrontation / Distance Audio (Severe Noise)",
+      "asset_sha256": "9d2126f44da6451ccda6d996139a82b3c72426bdbd65e08db998c9a02e1d6234",
+      "source_locator": "https://t.me/kiev_real/89201",
+      "audio_interval_ms": {
+        "start_ms": 68000,
+        "end_ms": 75000
+      },
+      "duration_ms": 7000,
+      "primary_speaker": "Night crowd bystander",
+      "scene_semantics": "Night crowd shouting near building gate during smoke / fire outbreak with laughing and yelling",
+      "incident_claim_focus": "Allegation that fire was staged or set intentionally",
+      "first_pass_hypothesis": {
+        "model": "Systran/faster-whisper-small",
+        "raw_text": "Ха-ха! Ну, если им не мачу, обояце, то они пожеж показали.",
+        "normalized_text": "ха ха ну если им не мачу обояце то они пожеж показали",
+        "wer": 0.4167,
+        "cer": 0.3036,
+        "word_errors": {
+          "wer": 0.4167,
+          "substitutions": 5,
+          "deletions": 0,
+          "insertions": 0,
+          "ref_words": 12,
+          "hyp_words": 12
+        },
+        "char_errors": {
+          "cer": 0.3036,
+          "substitutions": 12,
+          "deletions": 4,
+          "insertions": 1,
+          "ref_chars": 56,
+          "hyp_chars": 53
+        }
+      },
+      "second_pass_hypothesis": null,
+      "acoustic_reference": {
+        "transcript": "Ха-ха! Ну, если им нема чего бояться, то они пожар устроили!",
+        "normalized_transcript": "ха ха ну если им нема чего бояться то они пожар устроили",
+        "verification_method": "human_acoustic_listening",
+        "language": "uk"
+      },
+      "quote_safe": false,
+      "status": "rejected",
+      "basis": [
+        "second_asr_hypothesis"
+      ],
+      "materiality": "high_fact_sensitivity",
+      "review": null,
+      "limitations": [
+        "Extreme acoustic noise, heavy background crowd laughter and shouting.",
+        "Raw ASR output severely distorted ('не мачу, обояце, то они пожеж показали').",
+        "Cannot be certified quote-safe; rejected as unverified acoustic clutter."
+      ],
+      "schema_correction_doc": {
+        "schema_version": "1.0",
+        "correction_id": "corr-calib-clip-17",
+        "asset_sha256": "9d2126f44da6451ccda6d996139a82b3c72426bdbd65e08db998c9a02e1d6234",
+        "source_locator": "https://t.me/kiev_real/89201",
+        "audio_interval_ms": {
+          "start_ms": 68000,
+          "end_ms": 75000
+        },
+        "raw_asr_sha256": "987ee53ff56a477e86347509786ed5d1bc7f5e908bb18037c202bb023ff43912",
+        "raw_text": "Ха-ха! Ну, если им не мачу, обояце, то они пожеж показали.",
+        "candidate_text": null,
+        "correction_type": "lexical",
+        "status": "rejected",
+        "basis": [
+          "second_asr_hypothesis"
+        ],
+        "materiality": "high_fact_sensitivity",
+        "quote_safe": false,
+        "review": null,
+        "created_at_utc": "2026-11-09T08:00:00Z",
+        "limitations": [
+          "Extreme acoustic noise, heavy background crowd laughter and shouting.",
+          "Raw ASR output severely distorted ('не мачу, обояце, то они пожеж показали').",
+          "Cannot be certified quote-safe; rejected as unverified acoustic clutter."
+        ]
+      }
+    },
+    {
+      "clip_id": "clip-18",
+      "stratum_id": "stratum_d",
+      "stratum_name": "Stratum D: High-Noise Shouting / Chaotic Confrontation / Distance Audio (Severe Noise)",
+      "asset_sha256": "ece68adc11b3d621860deaa7852b7a4ec83656841eaffa58f6bf54915db66991",
+      "source_locator": "https://t.me/TCH_channel/235115",
+      "audio_interval_ms": {
+        "start_ms": 144000,
+        "end_ms": 155000
+      },
+      "duration_ms": 11000,
+      "primary_speaker": "Agitated speaker in crowd",
+      "scene_semantics": "Chaotic argument inside/outside structure with multiple yelling voices and monetary extortion claims",
+      "incident_claim_focus": "Extortion allegations ($20,000) and detention duration (40 to 80 days)",
+      "first_pass_hypothesis": {
+        "model": "Systran/faster-whisper-small",
+        "raw_text": "Криєна, яка воюю, у мене спадалася враження, що якщо людина каже, що з них вимагали по 20 тисяч доларів, або у вас будуть катувати, або будуть тут перебувати. Там деякі люди, ці будині перебувають",
+        "normalized_text": "криєна яка воюю у мене спадалася враження що якщо людина каже що з них вимагали по 20 тисяч доларів або у вас будуть катувати або будуть тут перебувати там деякі люди ці будині перебувають",
+        "wer": 0.359,
+        "cer": 0.1739,
+        "word_errors": {
+          "wer": 0.359,
+          "substitutions": 7,
+          "deletions": 6,
+          "insertions": 1,
+          "ref_words": 39,
+          "hyp_words": 34
+        },
+        "char_errors": {
+          "cer": 0.1739,
+          "substitutions": 11,
+          "deletions": 22,
+          "insertions": 3,
+          "ref_chars": 207,
+          "hyp_chars": 188
+        }
+      },
+      "second_pass_hypothesis": {
+        "model": "mobiuslabsgmbh/faster-whisper-large-v3-turbo",
+        "text": "Країна, яка воює, в мене складалася вражена, що якщо людина каже, що з них вимагали по 20 тисяч доларів, або у вас будуть катувати, або будуть тут перебувати. Там деякі люди в цій будині перебувають від 40 до 80 дітей.",
+        "normalized_text": "країна яка воює в мене складалася вражена що якщо людина каже що з них вимагали по 20 тисяч доларів або у вас будуть катувати або будуть тут перебувати там деякі люди в цій будині перебувають від 40 до 80 дітей",
+        "wer": 0.1538,
+        "cer": 0.0773,
+        "word_errors": {
+          "wer": 0.1538,
+          "substitutions": 5,
+          "deletions": 0,
+          "insertions": 1,
+          "ref_words": 39,
+          "hyp_words": 40
+        },
+        "char_errors": {
+          "cer": 0.0773,
+          "substitutions": 9,
+          "deletions": 2,
+          "insertions": 5,
+          "ref_chars": 207,
+          "hyp_chars": 210
+        }
+      },
+      "acoustic_reference": {
+        "transcript": "Країна, яка воює! В мене склалося враження, що якщо людина каже, що з них вимагали по 20 тисяч доларів, або вас будуть катувати, або будете тут перебувати... Там деякі люди в цій будівлі перебувають від 40 до 80 днів.",
+        "normalized_transcript": "країна яка воює в мене склалося враження що якщо людина каже що з них вимагали по 20 тисяч доларів або вас будуть катувати або будете тут перебувати там деякі люди в цій будівлі перебувають від 40 до 80 днів",
+        "verification_method": "human_acoustic_listening",
+        "language": "uk"
+      },
+      "quote_safe": false,
+      "status": "needs_audio_review",
+      "basis": [
+        "second_asr_hypothesis",
+        "linguistic_context"
+      ],
+      "materiality": "high_fact_sensitivity",
+      "review": null,
+      "limitations": [
+        "Severe multi-speaker overlap and emotional screaming.",
+        "High fact sensitivity: extortion of $20,000 and 40-80 days detention.",
+        "Second pass ASR hallucinated 'дітей' for 'днів'. Held at quote_safe: false."
+      ],
+      "schema_correction_doc": {
+        "schema_version": "1.0",
+        "correction_id": "corr-calib-clip-18",
+        "asset_sha256": "ece68adc11b3d621860deaa7852b7a4ec83656841eaffa58f6bf54915db66991",
+        "source_locator": "https://t.me/TCH_channel/235115",
+        "audio_interval_ms": {
+          "start_ms": 144000,
+          "end_ms": 155000
+        },
+        "raw_asr_sha256": "987ee53ff56a477e86347509786ed5d1bc7f5e908bb18037c202bb023ff43912",
+        "raw_text": "Криєна, яка воюю, у мене спадалася враження, що якщо людина каже, що з них вимагали по 20 тисяч доларів, або у вас будуть катувати, або будуть тут перебувати. Там деякі люди, ці будині перебувають",
+        "candidate_text": "Країна, яка воює, в мене складалася вражена, що якщо людина каже, що з них вимагали по 20 тисяч доларів, або у вас будуть катувати, або будуть тут перебувати. Там деякі люди в цій будині перебувають від 40 до 80 дітей.",
+        "correction_type": "lexical",
+        "status": "needs_audio_review",
+        "basis": [
+          "second_asr_hypothesis",
+          "linguistic_context"
+        ],
+        "materiality": "high_fact_sensitivity",
+        "quote_safe": false,
+        "review": null,
+        "created_at_utc": "2026-11-09T08:00:00Z",
+        "limitations": [
+          "Severe multi-speaker overlap and emotional screaming.",
+          "High fact sensitivity: extortion of $20,000 and 40-80 days detention.",
+          "Second pass ASR hallucinated 'дітей' for 'днів'. Held at quote_safe: false."
+        ]
+      }
+    }
+  ]
+}

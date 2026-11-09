@@ -1,0 +1,995 @@
+{
+  "as_of_utc": "2026-11-09T08:00:00Z",
+  "candidate_links": [],
+  "events": [
+    {
+      "actor_entity_ids": [
+        "person:valentyna_moloda",
+        "person:viktor_yena"
+      ],
+      "attributed_relations": [
+        {
+          "confidence": "high",
+          "entity_ids": [
+            "person:valentyna_moloda",
+            "person:viktor_yena",
+            "vehicle:ambulance_med_prestige"
+          ],
+          "spatial_zone": "outside_street",
+          "type": "participant_position"
+        },
+        {
+          "confidence": "high",
+          "entity_ids": [
+            "group:ngu_servicemembers_26"
+          ],
+          "spatial_zone": "inside_building",
+          "type": "participant_position"
+        },
+        {
+          "basis": "Офіційне повідомлення ГУНП в Київській області (дзвінок медиків приватної швидкої) та судові матеріали",
+          "confidence_level": "high",
+          "confidence_score": 0.92,
+          "type": "confidence_assessment"
+        }
+      ],
+      "cannot_link_event_mention_ids": [
+        "phys_ev_05_containment_and_detention",
+        "phys_ev_bucha_warehouse_fire_0511"
+      ],
+      "event_id": "event:phys_ev_01_ambulance_arrival_street",
+      "event_kind": "physical",
+      "event_mention_id": "phys_ev_01_ambulance_arrival_street",
+      "event_time": {
+        "anchor_evidence_ids": [
+          "passage_kv_npu_20261102_1727"
+        ],
+        "earliest_utc": "2026-11-02T09:00:00Z",
+        "kind": "physical_interval",
+        "latest_utc": "2026-11-02T10:40:00Z",
+        "precision": "hour",
+        "raw_value": "Ранок 2 листопада 2026 року, орієнтовно 11:00–12:40 за київським часом (до появи перших повідомлень у соцмережах)",
+        "status": "bounded",
+        "timezone_basis": "Europe/Kyiv"
+      },
+      "evidence_ids": [
+        "passage_kv_npu_20261102_1727",
+        "passage_suspilne_court_20261106"
+      ],
+      "incident_id": "petropavlivska-borshchahivka",
+      "limitations": [
+        "An event mention records what a source reports; it does not by itself establish that the real-world event occurred.",
+        "Publication time is not substituted for physical event time.",
+        "Temporal order does not establish causation."
+      ],
+      "merge_status": "unresolved_event_mention",
+      "object_entity_ids": [
+        "vehicle:ambulance_med_prestige"
+      ],
+      "place_id": "place:petropavlivska_borshchahivka_street",
+      "predicate": "Прибуття автомобіля з логотипом екстреної допомоги на вулицю Сонячна біля орендованої будівлі та початок публічного зібрання",
+      "producer": "social.analysis.event_reconstruction@1.0",
+      "publication_time_utc": null,
+      "run_id": "run-m2-event-reconstruction-2026-11-09",
+      "schema_version": "1.0",
+      "source_refs": [
+        "https://kv.npu.gov.ua/news/shchodo-podii-u-seli-petropavlivska-borshchahivka-na-kyivshchyni",
+        "https://suspilne.media/kyiv/1446145-suticki-v-borsanivci-sud-obirae-zapobiznij-cetvertij-pidozruvanij/"
+      ],
+      "timeline_time_kind": "event_time"
+    },
+    {
+      "actor_entity_ids": [
+        "group:protesters_crowd",
+        "person:ivan_parshonkov"
+      ],
+      "attributed_relations": [
+        {
+          "confidence": "high",
+          "entity_ids": [
+            "group:protesters_crowd",
+            "person:ivan_parshonkov"
+          ],
+          "spatial_zone": "perimeter_fence",
+          "type": "participant_position"
+        },
+        {
+          "confidence": "high",
+          "entity_ids": [
+            "group:ngu_servicemembers_26"
+          ],
+          "spatial_zone": "inside_building",
+          "type": "participant_position"
+        },
+        {
+          "basis": "Брифінг керівництва МВС / командувача НГУ Півненка та матеріали судового засідання щодо Паршонкова",
+          "confidence_level": "high",
+          "confidence_score": 0.94,
+          "type": "confidence_assessment"
+        }
+      ],
+      "cannot_link_event_mention_ids": [
+        "phys_ev_bucha_warehouse_fire_0511"
+      ],
+      "event_id": "event:phys_ev_02_building_perimeter_clash",
+      "event_kind": "physical",
+      "event_mention_id": "phys_ev_02_building_perimeter_clash",
+      "event_time": {
+        "anchor_evidence_ids": [
+          "passage_b1befbee74f5d623e709a2c4c2b36f723c1d6bd107411b2884e94812acfa3374"
+        ],
+        "earliest_utc": "2026-11-02T11:00:00Z",
+        "kind": "physical_interval",
+        "latest_utc": "2026-11-02T15:30:00Z",
+        "precision": "hour",
+        "raw_value": "День 2 листопада 2026 року, 13:00–17:30 за київським часом",
+        "status": "bounded",
+        "timezone_basis": "Europe/Kyiv"
+      },
+      "evidence_ids": [
+        "passage_b1befbee74f5d623e709a2c4c2b36f723c1d6bd107411b2884e94812acfa3374",
+        "passage_suspilne_parshonkov_20261106"
+      ],
+      "incident_id": "petropavlivska-borshchahivka",
+      "limitations": [
+        "An event mention records what a source reports; it does not by itself establish that the real-world event occurred.",
+        "Publication time is not substituted for physical event time.",
+        "Temporal order does not establish causation."
+      ],
+      "merge_status": "unresolved_event_mention",
+      "object_entity_ids": [
+        "structure:ngu_leased_building_fence"
+      ],
+      "place_id": "place:petropavlivska_borshchahivka_building",
+      "predicate": "Сутички біля огорожі та приміщення тимчасового пункту розміщення НГУ, спроби силового проникнення та пошкодження майна",
+      "producer": "social.analysis.event_reconstruction@1.0",
+      "publication_time_utc": null,
+      "run_id": "run-m2-event-reconstruction-2026-11-09",
+      "schema_version": "1.0",
+      "source_refs": [
+        "https://mvs.gov.ua/news/u-ministerstvi-vnutrisnix-sprav-ukrayini-vidbuvsia-brifing-shhodo-podii-na-kiyivshhini",
+        "https://suspilne.media/kyiv/1446145-suticki-v-borsanivci-sud-obirae-zapobiznij-cetvertij-pidozruvanij/"
+      ],
+      "timeline_time_kind": "event_time"
+    },
+    {
+      "actor_entity_ids": [
+        "org:national_guard_ukraine",
+        "org:national_police_kyiv",
+        "person:valeria_ladyka"
+      ],
+      "attributed_relations": [
+        {
+          "confidence": "high",
+          "entity_ids": [
+            "org:national_police_kyiv",
+            "org:national_guard_ukraine"
+          ],
+          "spatial_zone": "street_cordon",
+          "type": "participant_position"
+        },
+        {
+          "confidence": "high",
+          "entity_ids": [
+            "person:valeria_ladyka",
+            "group:protesters_crowd"
+          ],
+          "spatial_zone": "around_service_bus",
+          "type": "participant_position"
+        },
+        {
+          "confidence": "high",
+          "entity_ids": [
+            "group:ngu_servicemembers_26"
+          ],
+          "spatial_zone": "inside_bus",
+          "type": "participant_position"
+        },
+        {
+          "basis": "Судова ухвала Солом'янського райсуду м. Києва щодо Ладики (ч. 1 ст. 114-1 ККУ), трансляція 24 каналу",
+          "confidence_level": "high",
+          "confidence_score": 0.96,
+          "type": "confidence_assessment"
+        }
+      ],
+      "cannot_link_event_mention_ids": [
+        "phys_ev_bucha_warehouse_fire_0511"
+      ],
+      "event_id": "event:phys_ev_03_law_enforcement_arrival_bus_block",
+      "event_kind": "physical",
+      "event_mention_id": "phys_ev_03_law_enforcement_arrival_bus_block",
+      "event_time": {
+        "anchor_evidence_ids": [
+          "passage_hromadske_ladyka_20261106"
+        ],
+        "earliest_utc": "2026-11-02T14:30:00Z",
+        "kind": "physical_interval",
+        "latest_utc": "2026-11-02T18:00:00Z",
+        "precision": "hour",
+        "raw_value": "Друга половина дня 2 листопада 2026 року, 16:30–20:00 за київським часом",
+        "status": "bounded",
+        "timezone_basis": "Europe/Kyiv"
+      },
+      "evidence_ids": [
+        "passage_24tv_broadcast_20261102",
+        "passage_hromadske_ladyka_20261106",
+        "passage_npu_130_persons_20261105"
+      ],
+      "incident_id": "petropavlivska-borshchahivka",
+      "limitations": [
+        "An event mention records what a source reports; it does not by itself establish that the real-world event occurred.",
+        "Publication time is not substituted for physical event time.",
+        "Temporal order does not establish causation."
+      ],
+      "merge_status": "unresolved_event_mention",
+      "object_entity_ids": [
+        "vehicle:ngu_service_bus"
+      ],
+      "place_id": "place:petropavlivska_borshchahivka_building",
+      "predicate": "Прибуття підрозділів поліції та Нацгвардії на місце події, оточення території та блокування натовпом службового автобуса з військовослужбовцями",
+      "producer": "social.analysis.event_reconstruction@1.0",
+      "publication_time_utc": null,
+      "run_id": "run-m2-event-reconstruction-2026-11-09",
+      "schema_version": "1.0",
+      "source_refs": [
+        "https://hromadske.ua/kryminal/273906-sud-obyraye-zapobiznyy-zakhid-22-richniy-zintsi-iaka-brala-uchast-u-sutychkakh-u-sofiyivskiy-borshchahivtsi",
+        "https://kv.npu.gov.ua/news/politseiski-kyivshchyny-vstanovyly-ponad-130-osib"
+      ],
+      "timeline_time_kind": "event_time"
+    },
+    {
+      "actor_entity_ids": [
+        "group:protesters_crowd"
+      ],
+      "attributed_relations": [
+        {
+          "confidence": "high",
+          "entity_ids": [
+            "group:protesters_crowd"
+          ],
+          "spatial_zone": "perimeter_and_street",
+          "type": "participant_position"
+        },
+        {
+          "confidence": "high",
+          "entity_ids": [
+            "org:national_police_kyiv",
+            "org:national_guard_ukraine"
+          ],
+          "spatial_zone": "defensive_line",
+          "type": "participant_position"
+        },
+        {
+          "confidence": "high",
+          "entity_ids": [
+            "group:ngu_servicemembers_26"
+          ],
+          "spatial_zone": "inside_building",
+          "type": "participant_position"
+        },
+        {
+          "basis": "Синхронізовані Telegram-відеозаписи фаєрів о 18:08 UTC та офіційне повідомлення НГУ про отруєння чадним димом 4 бійців",
+          "confidence_level": "high",
+          "confidence_score": 0.91,
+          "type": "confidence_assessment"
+        }
+      ],
+      "cannot_link_event_mention_ids": [
+        "phys_ev_bucha_warehouse_fire_0511"
+      ],
+      "event_id": "event:phys_ev_04_pyrotechnics_and_flares_escalation",
+      "event_kind": "physical",
+      "event_mention_id": "phys_ev_04_pyrotechnics_and_flares_escalation",
+      "event_time": {
+        "anchor_evidence_ids": [
+          "passage_borshchagovka_news_21859"
+        ],
+        "earliest_utc": "2026-11-02T18:00:00Z",
+        "kind": "physical_interval",
+        "latest_utc": "2026-11-02T20:30:00Z",
+        "precision": "hour",
+        "raw_value": "Вечір 2 листопада 2026 року, 20:00–22:30 за київським часом",
+        "status": "bounded",
+        "timezone_basis": "Europe/Kyiv"
+      },
+      "evidence_ids": [
+        "passage_borshchagovka_news_21859",
+        "passage_ngu_injuries_20261103"
+      ],
+      "incident_id": "petropavlivska-borshchahivka",
+      "limitations": [
+        "An event mention records what a source reports; it does not by itself establish that the real-world event occurred.",
+        "Publication time is not substituted for physical event time.",
+        "Temporal order does not establish causation."
+      ],
+      "merge_status": "unresolved_event_mention",
+      "object_entity_ids": [
+        "item:pyrotechnic_flares"
+      ],
+      "place_id": "place:petropavlivska_borshchahivka_building",
+      "predicate": "Застосування піротехнічних засобів, запалювання фаєрів та задимлення біля будівлі під час вечірньої ескалації конфлікту",
+      "producer": "social.analysis.event_reconstruction@1.0",
+      "publication_time_utc": null,
+      "run_id": "run-m2-event-reconstruction-2026-11-09",
+      "schema_version": "1.0",
+      "source_refs": [
+        "https://ngu.gov.ua/shturm-kativni-pid-vybuhy-shahediv-yak-fejk-pro-40-zaruchnykiv-pereris-u-zavorushennya-v-petropavlivskij-borshhagivczi/",
+        "https://t.me/BorshchagovkaNews/21859"
+      ],
+      "timeline_time_kind": "event_time"
+    },
+    {
+      "actor_entity_ids": [
+        "org:national_guard_ukraine",
+        "org:national_police_kyiv"
+      ],
+      "attributed_relations": [
+        {
+          "confidence": "high",
+          "entity_ids": [
+            "group:ngu_servicemembers_26",
+            "org:national_guard_ukraine"
+          ],
+          "spatial_zone": "building_exit_corridor",
+          "type": "participant_position"
+        },
+        {
+          "confidence": "high",
+          "entity_ids": [
+            "org:national_police_kyiv",
+            "person:valentyna_moloda"
+          ],
+          "spatial_zone": "street_detention_sector",
+          "type": "participant_position"
+        },
+        {
+          "basis": "Офіційний пресреліз НГУ, брифінг МВС та судові рішення про затримання",
+          "confidence_level": "high",
+          "confidence_score": 0.95,
+          "type": "confidence_assessment"
+        }
+      ],
+      "cannot_link_event_mention_ids": [
+        "phys_ev_01_ambulance_arrival_street",
+        "phys_ev_bucha_warehouse_fire_0511"
+      ],
+      "event_id": "event:phys_ev_05_containment_and_detention",
+      "event_kind": "physical",
+      "event_mention_id": "phys_ev_05_containment_and_detention",
+      "event_time": {
+        "anchor_evidence_ids": [
+          "passage_8c536c4bdffbe59705f39e03a13ca169104a6c2bbc88bb1178ea745cdb792e24"
+        ],
+        "earliest_utc": "2026-11-02T20:30:00Z",
+        "kind": "physical_interval",
+        "latest_utc": "2026-11-02T23:59:59Z",
+        "precision": "hour",
+        "raw_value": "Ніч з 2 на 3 листопада 2026 року, 22:30–02:00 за київським часом",
+        "status": "bounded",
+        "timezone_basis": "Europe/Kyiv"
+      },
+      "evidence_ids": [
+        "passage_8c536c4bdffbe59705f39e03a13ca169104a6c2bbc88bb1178ea745cdb792e24",
+        "passage_b1befbee74f5d623e709a2c4c2b36f723c1d6bd107411b2884e94812acfa3374"
+      ],
+      "incident_id": "petropavlivska-borshchahivka",
+      "limitations": [
+        "An event mention records what a source reports; it does not by itself establish that the real-world event occurred.",
+        "Publication time is not substituted for physical event time.",
+        "Temporal order does not establish causation."
+      ],
+      "merge_status": "unresolved_event_mention",
+      "object_entity_ids": [
+        "group:ngu_servicemembers_26",
+        "person:valentyna_moloda"
+      ],
+      "place_id": "place:petropavlivska_borshchahivka_building",
+      "predicate": "Локалізація конфлікту зведеними силами правоохоронців, розблокування проїзду, евакуація військовослужбовців та затримання активних правопорушників",
+      "producer": "social.analysis.event_reconstruction@1.0",
+      "publication_time_utc": null,
+      "run_id": "run-m2-event-reconstruction-2026-11-09",
+      "schema_version": "1.0",
+      "source_refs": [
+        "https://mvs.gov.ua/news/u-ministerstvi-vnutrisnix-sprav-ukrayini-vidbuvsia-brifing-shhodo-podii-na-kiyivshhini",
+        "https://ngu.gov.ua/shturm-kativni-pid-vybuhy-shahediv-yak-fejk-pro-40-zaruchnykiv-pereris-u-zavorushennya-v-petropavlivskij-borshhagivczi/"
+      ],
+      "timeline_time_kind": "event_time"
+    },
+    {
+      "actor_entity_ids": [
+        "org:national_police_kyiv"
+      ],
+      "attributed_relations": [
+        {
+          "channel": "official_portal_and_telegram",
+          "source": "kv.npu.gov.ua",
+          "type": "communication_metadata"
+        }
+      ],
+      "cannot_link_event_mention_ids": [],
+      "event_id": "event:comm_ev_01_npu_kyiv_initial_release",
+      "event_kind": "communication",
+      "event_mention_id": "comm_ev_01_npu_kyiv_initial_release",
+      "event_time": null,
+      "evidence_ids": [
+        "passage_kv_npu_20261102_1727"
+      ],
+      "incident_id": "petropavlivska-borshchahivka",
+      "limitations": [
+        "An event mention records what a source reports; it does not by itself establish that the real-world event occurred.",
+        "Publication time is not substituted for physical event time.",
+        "Temporal order does not establish causation."
+      ],
+      "merge_status": "unresolved_event_mention",
+      "object_entity_ids": [],
+      "place_id": null,
+      "predicate": "Поліція Київщини оприлюднила перше офіційне спростування фейку про «заручників» та повідомила про виклик швидкої допомоги",
+      "producer": "social.analysis.event_reconstruction@1.0",
+      "publication_time_utc": "2026-11-02T15:27:00Z",
+      "run_id": "run-m2-event-reconstruction-2026-11-09",
+      "schema_version": "1.0",
+      "source_refs": [
+        "https://kv.npu.gov.ua/news/shchodo-podii-u-seli-petropavlivska-borshchahivka-na-kyivshchyni"
+      ],
+      "timeline_time_kind": "publication_time"
+    },
+    {
+      "actor_entity_ids": [
+        "channel:borshchagovka_news"
+      ],
+      "attributed_relations": [
+        {
+          "channel": "telegram",
+          "post_id": "21859",
+          "type": "communication_metadata"
+        }
+      ],
+      "cannot_link_event_mention_ids": [],
+      "event_id": "event:comm_ev_02_telegram_borshchagovka_news_flares",
+      "event_kind": "communication",
+      "event_mention_id": "comm_ev_02_telegram_borshchagovka_news_flares",
+      "event_time": null,
+      "evidence_ids": [
+        "passage_borshchagovka_news_21859"
+      ],
+      "incident_id": "petropavlivska-borshchahivka",
+      "limitations": [
+        "An event mention records what a source reports; it does not by itself establish that the real-world event occurred.",
+        "Publication time is not substituted for physical event time.",
+        "Temporal order does not establish causation."
+      ],
+      "merge_status": "unresolved_event_mention",
+      "object_entity_ids": [
+        "video:flares_smoke_evening"
+      ],
+      "place_id": null,
+      "predicate": "Публікація у Telegram-каналі BorshchagovkaNews відеозапису вечірнього задимлення та фаєрів біля будівлі",
+      "producer": "social.analysis.event_reconstruction@1.0",
+      "publication_time_utc": "2026-11-02T18:08:44Z",
+      "run_id": "run-m2-event-reconstruction-2026-11-09",
+      "schema_version": "1.0",
+      "source_refs": [
+        "https://t.me/BorshchagovkaNews/21859"
+      ],
+      "timeline_time_kind": "publication_time"
+    },
+    {
+      "actor_entity_ids": [
+        "org:state_bureau_investigation"
+      ],
+      "attributed_relations": [
+        {
+          "article": "criminal_proceeding_art426_1",
+          "channel": "official_portal",
+          "type": "communication_metadata"
+        }
+      ],
+      "cannot_link_event_mention_ids": [],
+      "event_id": "event:comm_ev_03_dbr_criminal_proceeding_announcement",
+      "event_kind": "communication",
+      "event_mention_id": "comm_ev_03_dbr_criminal_proceeding_announcement",
+      "event_time": null,
+      "evidence_ids": [
+        "passage_dbr_investigation_20261103"
+      ],
+      "incident_id": "petropavlivska-borshchahivka",
+      "limitations": [
+        "An event mention records what a source reports; it does not by itself establish that the real-world event occurred.",
+        "Publication time is not substituted for physical event time.",
+        "Temporal order does not establish causation."
+      ],
+      "merge_status": "unresolved_event_mention",
+      "object_entity_ids": [],
+      "place_id": null,
+      "predicate": "Державне бюро розслідувань повідомило про відкриття кримінального провадження за ч. 5 ст. 426-1 КК України",
+      "producer": "social.analysis.event_reconstruction@1.0",
+      "publication_time_utc": "2026-11-03T11:00:00Z",
+      "run_id": "run-m2-event-reconstruction-2026-11-09",
+      "schema_version": "1.0",
+      "source_refs": [
+        "https://dbr.gov.ua/news/dbr-rozpochalo-kriminalne-provadzhennya-za-faktom-podij-u-petropavlivskij-borshhagivci-na-kiivshhini"
+      ],
+      "timeline_time_kind": "publication_time"
+    },
+    {
+      "actor_entity_ids": [
+        "org:ministry_internal_affairs",
+        "org:national_guard_ukraine"
+      ],
+      "attributed_relations": [
+        {
+          "channel": "official_briefing",
+          "speaker": "Oleksandr_Pivnenko",
+          "type": "communication_metadata"
+        }
+      ],
+      "cannot_link_event_mention_ids": [],
+      "event_id": "event:comm_ev_04_mvs_ngu_official_briefing",
+      "event_kind": "communication",
+      "event_mention_id": "comm_ev_04_mvs_ngu_official_briefing",
+      "event_time": null,
+      "evidence_ids": [
+        "passage_b1befbee74f5d623e709a2c4c2b36f723c1d6bd107411b2884e94812acfa3374"
+      ],
+      "incident_id": "petropavlivska-borshchahivka",
+      "limitations": [
+        "An event mention records what a source reports; it does not by itself establish that the real-world event occurred.",
+        "Publication time is not substituted for physical event time.",
+        "Temporal order does not establish causation."
+      ],
+      "merge_status": "unresolved_event_mention",
+      "object_entity_ids": [],
+      "place_id": null,
+      "predicate": "Керівництво МВС та командувач НГУ провели брифінг, на якому повідомили про 26 осіб у приміщенні та оренду будівлі",
+      "producer": "social.analysis.event_reconstruction@1.0",
+      "publication_time_utc": "2026-11-04T10:35:00Z",
+      "run_id": "run-m2-event-reconstruction-2026-11-09",
+      "schema_version": "1.0",
+      "source_refs": [
+        "https://mvs.gov.ua/news/u-ministerstvi-vnutrisnix-sprav-ukrayini-vidbuvsia-brifing-shhodo-podii-na-kiyivshhini"
+      ],
+      "timeline_time_kind": "publication_time"
+    },
+    {
+      "actor_entity_ids": [
+        "org:kyiv_regional_military_administration"
+      ],
+      "attributed_relations": [
+        {
+          "channel": "telegram",
+          "topic": "bucha_district_warehouse_fire",
+          "type": "communication_metadata"
+        }
+      ],
+      "cannot_link_event_mention_ids": [],
+      "event_id": "event:comm_ev_05_kyiv_ova_bucha_warehouse_fire_post",
+      "event_kind": "communication",
+      "event_mention_id": "comm_ev_05_kyiv_ova_bucha_warehouse_fire_post",
+      "event_time": null,
+      "evidence_ids": [
+        "passage_kyiv_ova_20261105_0003"
+      ],
+      "incident_id": "petropavlivska-borshchahivka",
+      "limitations": [
+        "An event mention records what a source reports; it does not by itself establish that the real-world event occurred.",
+        "Publication time is not substituted for physical event time.",
+        "Temporal order does not establish causation."
+      ],
+      "merge_status": "unresolved_event_mention",
+      "object_entity_ids": [
+        "structure:warehouse_bucha_district"
+      ],
+      "place_id": null,
+      "predicate": "Київська ОВА повідомила про ворожу дронову атаку та пожежу складського приміщення в Бучанському районі",
+      "producer": "social.analysis.event_reconstruction@1.0",
+      "publication_time_utc": "2026-11-04T22:03:00Z",
+      "run_id": "run-m2-event-reconstruction-2026-11-09",
+      "schema_version": "1.0",
+      "source_refs": [
+        "https://t.me/KBRgovua/28192"
+      ],
+      "timeline_time_kind": "publication_time"
+    }
+  ],
+  "limitations": [
+    "This deterministic module organizes supplied event mentions; it does not extract events from raw text.",
+    "Exact entity identifiers, not names or fuzzy similarity, are required for candidate matching.",
+    "No causal relation is inferred from temporal order."
+  ],
+  "provenance": {
+    "git_commit": "9019afd896e57729acf5f20e07151b4e1437ad0a",
+    "incident_id": "petropavlivska-borshchahivka",
+    "parameters_sha256": null,
+    "producer": "social.analysis.event_reconstruction@1.0",
+    "run_id": "run-m2-event-reconstruction-2026-11-09"
+  },
+  "schema_version": "1.0",
+  "temporal_relations": [
+    {
+      "basis": "non_overlapping_time_intervals",
+      "causal": false,
+      "event_ids": [
+        "event:comm_ev_01_npu_kyiv_initial_release",
+        "event:comm_ev_02_telegram_borshchagovka_news_flares"
+      ],
+      "relation": "before",
+      "time_kind": "publication_time"
+    },
+    {
+      "basis": "non_overlapping_time_intervals",
+      "causal": false,
+      "event_ids": [
+        "event:comm_ev_01_npu_kyiv_initial_release",
+        "event:comm_ev_03_dbr_criminal_proceeding_announcement"
+      ],
+      "relation": "before",
+      "time_kind": "publication_time"
+    },
+    {
+      "basis": "non_overlapping_time_intervals",
+      "causal": false,
+      "event_ids": [
+        "event:comm_ev_01_npu_kyiv_initial_release",
+        "event:comm_ev_04_mvs_ngu_official_briefing"
+      ],
+      "relation": "before",
+      "time_kind": "publication_time"
+    },
+    {
+      "basis": "non_overlapping_time_intervals",
+      "causal": false,
+      "event_ids": [
+        "event:comm_ev_01_npu_kyiv_initial_release",
+        "event:comm_ev_05_kyiv_ova_bucha_warehouse_fire_post"
+      ],
+      "relation": "before",
+      "time_kind": "publication_time"
+    },
+    {
+      "basis": "non_overlapping_time_intervals",
+      "causal": false,
+      "event_ids": [
+        "event:comm_ev_02_telegram_borshchagovka_news_flares",
+        "event:comm_ev_03_dbr_criminal_proceeding_announcement"
+      ],
+      "relation": "before",
+      "time_kind": "publication_time"
+    },
+    {
+      "basis": "non_overlapping_time_intervals",
+      "causal": false,
+      "event_ids": [
+        "event:comm_ev_02_telegram_borshchagovka_news_flares",
+        "event:comm_ev_04_mvs_ngu_official_briefing"
+      ],
+      "relation": "before",
+      "time_kind": "publication_time"
+    },
+    {
+      "basis": "non_overlapping_time_intervals",
+      "causal": false,
+      "event_ids": [
+        "event:comm_ev_02_telegram_borshchagovka_news_flares",
+        "event:comm_ev_05_kyiv_ova_bucha_warehouse_fire_post"
+      ],
+      "relation": "before",
+      "time_kind": "publication_time"
+    },
+    {
+      "basis": "non_overlapping_time_intervals",
+      "causal": false,
+      "event_ids": [
+        "event:comm_ev_03_dbr_criminal_proceeding_announcement",
+        "event:comm_ev_04_mvs_ngu_official_briefing"
+      ],
+      "relation": "before",
+      "time_kind": "publication_time"
+    },
+    {
+      "basis": "non_overlapping_time_intervals",
+      "causal": false,
+      "event_ids": [
+        "event:comm_ev_03_dbr_criminal_proceeding_announcement",
+        "event:comm_ev_05_kyiv_ova_bucha_warehouse_fire_post"
+      ],
+      "relation": "before",
+      "time_kind": "publication_time"
+    },
+    {
+      "basis": "non_overlapping_time_intervals",
+      "causal": false,
+      "event_ids": [
+        "event:comm_ev_04_mvs_ngu_official_briefing",
+        "event:comm_ev_05_kyiv_ova_bucha_warehouse_fire_post"
+      ],
+      "relation": "before",
+      "time_kind": "publication_time"
+    },
+    {
+      "basis": "non_overlapping_time_intervals",
+      "causal": false,
+      "event_ids": [
+        "event:phys_ev_01_ambulance_arrival_street",
+        "event:phys_ev_02_building_perimeter_clash"
+      ],
+      "relation": "before",
+      "time_kind": "event_time"
+    },
+    {
+      "basis": "non_overlapping_time_intervals",
+      "causal": false,
+      "event_ids": [
+        "event:phys_ev_01_ambulance_arrival_street",
+        "event:phys_ev_03_law_enforcement_arrival_bus_block"
+      ],
+      "relation": "before",
+      "time_kind": "event_time"
+    },
+    {
+      "basis": "non_overlapping_time_intervals",
+      "causal": false,
+      "event_ids": [
+        "event:phys_ev_01_ambulance_arrival_street",
+        "event:phys_ev_04_pyrotechnics_and_flares_escalation"
+      ],
+      "relation": "before",
+      "time_kind": "event_time"
+    },
+    {
+      "basis": "non_overlapping_time_intervals",
+      "causal": false,
+      "event_ids": [
+        "event:phys_ev_01_ambulance_arrival_street",
+        "event:phys_ev_05_containment_and_detention"
+      ],
+      "relation": "before",
+      "time_kind": "event_time"
+    },
+    {
+      "basis": "overlapping_time_intervals",
+      "causal": false,
+      "event_ids": [
+        "event:phys_ev_02_building_perimeter_clash",
+        "event:phys_ev_03_law_enforcement_arrival_bus_block"
+      ],
+      "relation": "overlaps",
+      "time_kind": "event_time"
+    },
+    {
+      "basis": "non_overlapping_time_intervals",
+      "causal": false,
+      "event_ids": [
+        "event:phys_ev_02_building_perimeter_clash",
+        "event:phys_ev_04_pyrotechnics_and_flares_escalation"
+      ],
+      "relation": "before",
+      "time_kind": "event_time"
+    },
+    {
+      "basis": "non_overlapping_time_intervals",
+      "causal": false,
+      "event_ids": [
+        "event:phys_ev_02_building_perimeter_clash",
+        "event:phys_ev_05_containment_and_detention"
+      ],
+      "relation": "before",
+      "time_kind": "event_time"
+    },
+    {
+      "basis": "overlapping_time_intervals",
+      "causal": false,
+      "event_ids": [
+        "event:phys_ev_03_law_enforcement_arrival_bus_block",
+        "event:phys_ev_04_pyrotechnics_and_flares_escalation"
+      ],
+      "relation": "overlaps",
+      "time_kind": "event_time"
+    },
+    {
+      "basis": "non_overlapping_time_intervals",
+      "causal": false,
+      "event_ids": [
+        "event:phys_ev_03_law_enforcement_arrival_bus_block",
+        "event:phys_ev_05_containment_and_detention"
+      ],
+      "relation": "before",
+      "time_kind": "event_time"
+    },
+    {
+      "basis": "overlapping_time_intervals",
+      "causal": false,
+      "event_ids": [
+        "event:phys_ev_04_pyrotechnics_and_flares_escalation",
+        "event:phys_ev_05_containment_and_detention"
+      ],
+      "relation": "overlaps",
+      "time_kind": "event_time"
+    }
+  ],
+  "timelines": {
+    "communication": [
+      {
+        "earliest_utc": "2026-11-02T15:27:00Z",
+        "event_id": "event:comm_ev_01_npu_kyiv_initial_release",
+        "event_mention_id": "comm_ev_01_npu_kyiv_initial_release",
+        "evidence_ids": [
+          "passage_kv_npu_20261102_1727"
+        ],
+        "latest_utc": "2026-11-02T15:27:00Z",
+        "time_kind": "publication_time"
+      },
+      {
+        "earliest_utc": "2026-11-02T18:08:44Z",
+        "event_id": "event:comm_ev_02_telegram_borshchagovka_news_flares",
+        "event_mention_id": "comm_ev_02_telegram_borshchagovka_news_flares",
+        "evidence_ids": [
+          "passage_borshchagovka_news_21859"
+        ],
+        "latest_utc": "2026-11-02T18:08:44Z",
+        "time_kind": "publication_time"
+      },
+      {
+        "earliest_utc": "2026-11-03T11:00:00Z",
+        "event_id": "event:comm_ev_03_dbr_criminal_proceeding_announcement",
+        "event_mention_id": "comm_ev_03_dbr_criminal_proceeding_announcement",
+        "evidence_ids": [
+          "passage_dbr_investigation_20261103"
+        ],
+        "latest_utc": "2026-11-03T11:00:00Z",
+        "time_kind": "publication_time"
+      },
+      {
+        "earliest_utc": "2026-11-04T10:35:00Z",
+        "event_id": "event:comm_ev_04_mvs_ngu_official_briefing",
+        "event_mention_id": "comm_ev_04_mvs_ngu_official_briefing",
+        "evidence_ids": [
+          "passage_b1befbee74f5d623e709a2c4c2b36f723c1d6bd107411b2884e94812acfa3374"
+        ],
+        "latest_utc": "2026-11-04T10:35:00Z",
+        "time_kind": "publication_time"
+      },
+      {
+        "earliest_utc": "2026-11-04T22:03:00Z",
+        "event_id": "event:comm_ev_05_kyiv_ova_bucha_warehouse_fire_post",
+        "event_mention_id": "comm_ev_05_kyiv_ova_bucha_warehouse_fire_post",
+        "evidence_ids": [
+          "passage_kyiv_ova_20261105_0003"
+        ],
+        "latest_utc": "2026-11-04T22:03:00Z",
+        "time_kind": "publication_time"
+      }
+    ],
+    "physical": [
+      {
+        "earliest_utc": "2026-11-02T09:00:00Z",
+        "event_id": "event:phys_ev_01_ambulance_arrival_street",
+        "event_mention_id": "phys_ev_01_ambulance_arrival_street",
+        "evidence_ids": [
+          "passage_kv_npu_20261102_1727",
+          "passage_suspilne_court_20261106"
+        ],
+        "latest_utc": "2026-11-02T10:40:00Z",
+        "time_kind": "event_time"
+      },
+      {
+        "earliest_utc": "2026-11-02T11:00:00Z",
+        "event_id": "event:phys_ev_02_building_perimeter_clash",
+        "event_mention_id": "phys_ev_02_building_perimeter_clash",
+        "evidence_ids": [
+          "passage_b1befbee74f5d623e709a2c4c2b36f723c1d6bd107411b2884e94812acfa3374",
+          "passage_suspilne_parshonkov_20261106"
+        ],
+        "latest_utc": "2026-11-02T15:30:00Z",
+        "time_kind": "event_time"
+      },
+      {
+        "earliest_utc": "2026-11-02T14:30:00Z",
+        "event_id": "event:phys_ev_03_law_enforcement_arrival_bus_block",
+        "event_mention_id": "phys_ev_03_law_enforcement_arrival_bus_block",
+        "evidence_ids": [
+          "passage_24tv_broadcast_20261102",
+          "passage_hromadske_ladyka_20261106",
+          "passage_npu_130_persons_20261105"
+        ],
+        "latest_utc": "2026-11-02T18:00:00Z",
+        "time_kind": "event_time"
+      },
+      {
+        "earliest_utc": "2026-11-02T18:00:00Z",
+        "event_id": "event:phys_ev_04_pyrotechnics_and_flares_escalation",
+        "event_mention_id": "phys_ev_04_pyrotechnics_and_flares_escalation",
+        "evidence_ids": [
+          "passage_borshchagovka_news_21859",
+          "passage_ngu_injuries_20261103"
+        ],
+        "latest_utc": "2026-11-02T20:30:00Z",
+        "time_kind": "event_time"
+      },
+      {
+        "earliest_utc": "2026-11-02T20:30:00Z",
+        "event_id": "event:phys_ev_05_containment_and_detention",
+        "event_mention_id": "phys_ev_05_containment_and_detention",
+        "evidence_ids": [
+          "passage_8c536c4bdffbe59705f39e03a13ca169104a6c2bbc88bb1178ea745cdb792e24",
+          "passage_b1befbee74f5d623e709a2c4c2b36f723c1d6bd107411b2884e94812acfa3374"
+        ],
+        "latest_utc": "2026-11-02T23:59:59Z",
+        "time_kind": "event_time"
+      }
+    ]
+  },
+  "unresolved": [
+    {
+      "event_id": "event:phys_ev_01_ambulance_arrival_street",
+      "reason": "event mention is preserved without real-world verification or merge"
+    },
+    {
+      "event_id": "event:phys_ev_02_building_perimeter_clash",
+      "reason": "event mention is preserved without real-world verification or merge"
+    },
+    {
+      "event_id": "event:phys_ev_03_law_enforcement_arrival_bus_block",
+      "reason": "event mention is preserved without real-world verification or merge"
+    },
+    {
+      "event_id": "event:phys_ev_04_pyrotechnics_and_flares_escalation",
+      "reason": "event mention is preserved without real-world verification or merge"
+    },
+    {
+      "event_id": "event:phys_ev_05_containment_and_detention",
+      "reason": "event mention is preserved without real-world verification or merge"
+    },
+    {
+      "event_id": "event:comm_ev_01_npu_kyiv_initial_release",
+      "reason": "event mention is preserved without real-world verification or merge"
+    },
+    {
+      "event_id": "event:comm_ev_02_telegram_borshchagovka_news_flares",
+      "reason": "event mention is preserved without real-world verification or merge"
+    },
+    {
+      "event_id": "event:comm_ev_03_dbr_criminal_proceeding_announcement",
+      "reason": "event mention is preserved without real-world verification or merge"
+    },
+    {
+      "event_id": "event:comm_ev_04_mvs_ngu_official_briefing",
+      "reason": "event mention is preserved without real-world verification or merge"
+    },
+    {
+      "event_id": "event:comm_ev_05_kyiv_ova_bucha_warehouse_fire_post",
+      "reason": "event mention is preserved without real-world verification or merge"
+    }
+  ],
+  "unresolved_constraints": [
+    {
+      "event_mention_id": "phys_ev_01_ambulance_arrival_street",
+      "relation": "cannot_link",
+      "status": "target_not_in_input",
+      "target_event_mention_id": "phys_ev_bucha_warehouse_fire_0511"
+    },
+    {
+      "event_mention_id": "phys_ev_02_building_perimeter_clash",
+      "relation": "cannot_link",
+      "status": "target_not_in_input",
+      "target_event_mention_id": "phys_ev_bucha_warehouse_fire_0511"
+    },
+    {
+      "event_mention_id": "phys_ev_03_law_enforcement_arrival_bus_block",
+      "relation": "cannot_link",
+      "status": "target_not_in_input",
+      "target_event_mention_id": "phys_ev_bucha_warehouse_fire_0511"
+    },
+    {
+      "event_mention_id": "phys_ev_04_pyrotechnics_and_flares_escalation",
+      "relation": "cannot_link",
+      "status": "target_not_in_input",
+      "target_event_mention_id": "phys_ev_bucha_warehouse_fire_0511"
+    },
+    {
+      "event_mention_id": "phys_ev_05_containment_and_detention",
+      "relation": "cannot_link",
+      "status": "target_not_in_input",
+      "target_event_mention_id": "phys_ev_bucha_warehouse_fire_0511"
+    }
+  ]
+}

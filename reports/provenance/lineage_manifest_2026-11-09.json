@@ -1,0 +1,344 @@
+{
+  "schema_version": "social_lineage_manifest_v1",
+  "manifest_id": "corpus_and_sourcewatch_lineage_2026-11-09",
+  "generated_at_utc": "2026-11-09T07:52:20Z",
+  "milestone": "M4",
+  "provenance_rule": {
+    "rule_statement": "Every quantitative metric, denominator, channel panel count, view total, and factual assertion reported across Social analyses must explicitly bind to an exact tuple (corpus_version, run_id, timestamp) accompanied by the cryptographic SHA-256 digest of the underlying source artifact.",
+    "invariants": [
+      {
+        "name": "prohibition_of_denominator_bleed",
+        "description": "Historical baseline metrics (1,408 posts, 159 channels, 115,931,014 views from telegram_historical_v1) must never be juxtaposed or combined with merged corpus figures (1,438 posts, 158 channels, 119,515,745 views from telegram_merged_v2) without explicit dual-corpus labeling."
+      },
+      {
+        "name": "immutable_content_addressing",
+        "description": "All input files and derived manifests must be verifiable via 64-character hexadecimal SHA-256 digests."
+      },
+      {
+        "name": "separation_of_transport_error_from_factual_absence",
+        "description": "Transport-level network failures (such as local OS TLS certificate verification errors on dbr.gov.ua) must be classified strictly as technical crawler limitations and must never be interpreted as absence of news or corroboration of factual claims."
+      },
+      {
+        "name": "complete_delta_accounting",
+        "description": "Any variation between dataset snapshots must be accounted for by exact difference attribution (e.g., +36 raw posts, +30 net relevant posts, exclusion of channel kiber_boroshno, and 475 URL casing mutations)."
+      }
+    ]
+  },
+  "corpus_reconciliation": {
+    "historical": {
+      "corpus_version": "telegram_historical_v1",
+      "run_id": "continuation_20261105",
+      "as_of_utc": "2026-11-05T10:29:14Z",
+      "artifact_path": "data/processed/continuation_20261105/posts_clean.jsonl",
+      "sha256": "4e859d407aef52c72a8e690dc5716d7d92d11ff7d7a164760db5a4c0ad334350",
+      "total_posts": 23350,
+      "relevant_posts": 1408,
+      "relevant_channels_count": 159,
+      "total_views_relevant": 115931014,
+      "minhash_lsh_verified_pairs_ge_0_6": 367
+    },
+    "merged": {
+      "corpus_version": "telegram_merged_v2",
+      "run_id": "masterplan-run-2026-11-08",
+      "as_of_utc": "2026-11-08T01:14:07Z",
+      "artifact_path": "data/processed/20261105T101013Z+20261105T102914Z/posts_clean.jsonl",
+      "sha256": "d229d8618021cf285f24c712eb9cd37ca85eb0e8bee2d8a7f74b6e7c574cda3f",
+      "total_posts": 23386,
+      "relevant_posts": 1438,
+      "relevant_channels_count": 158,
+      "total_views_relevant": 119515745,
+      "exact_cross_channel_pairs_ge_0_6": 369
+    },
+    "deltas": {
+      "total_posts_delta": 36,
+      "relevant_posts_delta": 30,
+      "relevant_channels_delta": -1,
+      "total_views_relevant_delta": 3584731,
+      "excluded_channels": [
+        "kiber_boroshno"
+      ],
+      "added_channels": [],
+      "channel_exclusion_details": {
+        "channel": "kiber_boroshno",
+        "msg_id": 13675,
+        "url": "https://t.me/kiber_boroshno/13675",
+        "date_utc": "2026-11-03T14:05:40+00:00",
+        "t_kyiv": "2026-11-03T16:05:40+02:00",
+        "views": 39012,
+        "forwards": 1109,
+        "replies": 103,
+        "source_snapshot": "20261105T104050Z",
+        "text_clean_prefix": "Минула доба довкола Петропавлівської Борщагівки пройшла в інформаційному просторі дуже гучно. Нацгвардія тримала людей у пункті для повернутих із СЗЧ, а за 22 години з цього зробили «концтабір ТЦК».\n\n",
+        "reason_for_exclusion": "Captured under snapshot 20261105T104050Z, which was appended to continuation_20261105 but was not included in the earlier dual-sweep merge 20261105T101013Z+20261105T102914Z."
+      },
+      "raw_url_string_diff_hist_only": 475,
+      "raw_url_string_diff_curr_only": 505,
+      "direct_casing_mutations_common_count": 354,
+      "normalized_url_diff_hist_only": 121,
+      "normalized_url_diff_curr_only": 151,
+      "sample_casing_mutations": [
+        {
+          "historical_url": "https://t.me/anoncinews/84608",
+          "merged_url": "https://t.me/Anoncinews/84608"
+        },
+        {
+          "historical_url": "https://t.me/anoncinews/84610",
+          "merged_url": "https://t.me/Anoncinews/84610"
+        },
+        {
+          "historical_url": "https://t.me/anoncinews/84613",
+          "merged_url": "https://t.me/Anoncinews/84613"
+        },
+        {
+          "historical_url": "https://t.me/anoncinews/84615",
+          "merged_url": "https://t.me/Anoncinews/84615"
+        },
+        {
+          "historical_url": "https://t.me/anoncinews/84620",
+          "merged_url": "https://t.me/Anoncinews/84620"
+        }
+      ]
+    }
+  },
+  "sourcewatch_reconciliation": {
+    "watchlist_targets_total": 12,
+    "target_types": {
+      "listing_targets": 4,
+      "article_targets": 8
+    },
+    "runs": {
+      "automated_case_run": {
+        "run_id": "automated-case-run-2026-11-08",
+        "as_of_utc": "2026-11-08T01:14:07Z",
+        "artifact_path": "reports/automated-case-run-2026-11-08/source_watch_summary.json",
+        "sha256": "b78ba070ccf0690cb828051e73379582e02b69718022745bea26229f46f92735",
+        "reported_success": 9,
+        "reported_errors": 3,
+        "ratio": "9/12",
+        "error_breakdown": {
+          "dbr_tls_cert_failures": 2,
+          "transient_network_timeouts": 1
+        }
+      },
+      "dedicated_snapshot_run": {
+        "run_id": "20261108T080550.329799Z",
+        "as_of_utc": "2026-11-08T08:05:50Z",
+        "artifact_path": "reports/source-watch/20261108/latest.json",
+        "sha256": "aa3acaafaaadf532c0f58ef537f938d63bab420527e8ccd63c8412909c0389f6",
+        "reported_success": 10,
+        "reported_errors": 2,
+        "ratio": "10/12",
+        "error_breakdown": {
+          "dbr_tls_cert_failures": 2,
+          "transient_network_timeouts": 0
+        }
+      }
+    },
+    "root_cause_analysis": {
+      "dbr_tls_verification_failure": {
+        "affected_urls": [
+          "https://dbr.gov.ua/news/dbr-rozpochalo-kriminalne-provadzhennya-za-faktom-podij-u-petropavlivskij-borshhagivci-na-kiivshhini",
+          "https://dbr.gov.ua/news"
+        ],
+        "error_type": "SSLCertVerificationError",
+        "error_message": "SSLError: HTTPSConnectionPool(host='dbr.gov.ua', port=443): Max retries exceeded with url: ... (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)')))",
+        "classification": "Permanent transport infrastructure failure caused by missing Ukrainian state CA certificates in local OS trust store. This technical transport blocker must not be interpreted as absence of news or lack of official action."
+      },
+      "transient_timeout": {
+        "classification": "Transient HTTP request timeout occurring during automated batch crawl, successfully resolving in isolated snapshot."
+      }
+    }
+  },
+  "lineage_matrix": [
+    {
+      "metric_id": "hist_relevant_posts",
+      "metric_name": "Historical Relevant Posts",
+      "reported_value": 1408,
+      "corpus_version": "telegram_historical_v1",
+      "run_id": "continuation_20261105",
+      "timestamp_utc": "2026-11-05T10:29:14Z",
+      "source_locator": "data/processed/continuation_20261105/posts_clean.jsonl",
+      "sha256": "4e859d407aef52c72a8e690dc5716d7d92d11ff7d7a164760db5a4c0ad334350",
+      "notes": "Relevant posts identified in historical continuation run of Nov 5, 2026"
+    },
+    {
+      "metric_id": "hist_total_publications",
+      "metric_name": "Historical Total Publications",
+      "reported_value": 23350,
+      "corpus_version": "telegram_historical_v1",
+      "run_id": "continuation_20261105",
+      "timestamp_utc": "2026-11-05T10:29:14Z",
+      "source_locator": "data/processed/continuation_20261105/posts_clean.jsonl",
+      "sha256": "4e859d407aef52c72a8e690dc5716d7d92d11ff7d7a164760db5a4c0ad334350",
+      "notes": "Total crawl lines in historical clean JSONL"
+    },
+    {
+      "metric_id": "hist_relevant_channels",
+      "metric_name": "Historical Relevant Channels",
+      "reported_value": 159,
+      "corpus_version": "telegram_historical_v1",
+      "run_id": "continuation_20261105",
+      "timestamp_utc": "2026-11-05T10:29:14Z",
+      "source_locator": "reports/continuation_20261105/relevant_posts.csv",
+      "sha256": "8b69539801a385bee8f5ea05c5315d18a6d518f96393ff5bf5cd6f57529f8b37",
+      "notes": "Includes channel 'kiber_boroshno'"
+    },
+    {
+      "metric_id": "hist_view_counter_sum",
+      "metric_name": "Historical View Counter Sum",
+      "reported_value": 115931014,
+      "corpus_version": "telegram_historical_v1",
+      "run_id": "continuation_20261105",
+      "timestamp_utc": "2026-11-05T10:29:14Z",
+      "source_locator": "reports/continuation_20261105/audit_results.json",
+      "sha256": "e9051b3ba98e3676f0589d33eae99e12ea4241e7e94cf9dd1dfc91c649975f8c",
+      "notes": "Aggregated view count across 1,408 historical relevant posts"
+    },
+    {
+      "metric_id": "hist_similarity_edges",
+      "metric_name": "Historical MinHash-LSH Verified Pairs (Threshold 0.6)",
+      "reported_value": 367,
+      "corpus_version": "telegram_historical_v1",
+      "run_id": "coordination_null_models",
+      "timestamp_utc": "2026-11-06T12:00:00Z",
+      "source_locator": "reports/continuation_20261105/verified_similarity_edges.csv",
+      "sha256": "6d559f3a1d553c6015e30e664f53d0d0d623fa88b6c72808d020908303578a58",
+      "notes": "MinHash-LSH candidate pair verification count reported in audit_results.json"
+    },
+    {
+      "metric_id": "merged_relevant_posts",
+      "metric_name": "Merged Relevant Posts",
+      "reported_value": 1438,
+      "corpus_version": "telegram_merged_v2",
+      "run_id": "masterplan-run-2026-11-08",
+      "timestamp_utc": "2026-11-08T01:14:07Z",
+      "source_locator": "data/processed/20261105T101013Z+20261105T102914Z/posts_clean.jsonl",
+      "sha256": "d229d8618021cf285f24c712eb9cd37ca85eb0e8bee2d8a7f74b6e7c574cda3f",
+      "notes": "Current expanded panel after dual-crawl sweep integration"
+    },
+    {
+      "metric_id": "merged_total_publications",
+      "metric_name": "Merged Total Publications",
+      "reported_value": 23386,
+      "corpus_version": "telegram_merged_v2",
+      "run_id": "masterplan-run-2026-11-08",
+      "timestamp_utc": "2026-11-08T01:14:07Z",
+      "source_locator": "data/processed/20261105T101013Z+20261105T102914Z/posts_clean.jsonl",
+      "sha256": "d229d8618021cf285f24c712eb9cd37ca85eb0e8bee2d8a7f74b6e7c574cda3f",
+      "notes": "Total lines in merged clean JSONL (+36 posts over historical baseline)"
+    },
+    {
+      "metric_id": "merged_relevant_channels",
+      "metric_name": "Merged Relevant Channels",
+      "reported_value": 158,
+      "corpus_version": "telegram_merged_v2",
+      "run_id": "masterplan-run-2026-11-08",
+      "timestamp_utc": "2026-11-08T01:14:07Z",
+      "source_locator": "reports/20261105T101013Z+20261105T102914Z/audit_results.json",
+      "sha256": "cea8ea91b856fc68a19ca9f3bd4a45bac1d89de0d0121eb327e641014afa476f",
+      "notes": "158 relevant channels (exactly 159 minus channel 'kiber_boroshno')"
+    },
+    {
+      "metric_id": "merged_view_counter_sum",
+      "metric_name": "Merged View Counter Sum",
+      "reported_value": 119515745,
+      "corpus_version": "telegram_merged_v2",
+      "run_id": "masterplan-run-2026-11-08",
+      "timestamp_utc": "2026-11-08T01:14:07Z",
+      "source_locator": "reports/20261105T101013Z+20261105T102914Z/audit_results.json",
+      "sha256": "cea8ea91b856fc68a19ca9f3bd4a45bac1d89de0d0121eb327e641014afa476f",
+      "notes": "Aggregated view count across 1,438 merged relevant posts (+3,584,731 views)"
+    },
+    {
+      "metric_id": "merged_exact_jaccard_pairs",
+      "metric_name": "Exact Cross-Channel Jaccard Pairs (Threshold >= 0.6)",
+      "reported_value": 369,
+      "corpus_version": "telegram_merged_v2",
+      "run_id": "lsh-audit-20261108",
+      "timestamp_utc": "2026-11-08T18:00:00Z",
+      "source_locator": "reports/coordination-null-models-2026-11-08-lsh-audit/exact_cross_channel_edges_ge_0.6.csv",
+      "sha256": "9e1d07c77cba556d1da414ab1d7a8952f09f220c29a71a33066b5f3ccf340e2b",
+      "notes": "Exact all-pairs cross-channel Jaccard verification on merged 1,438 corpus"
+    },
+    {
+      "metric_id": "sourcewatch_automated_run",
+      "metric_name": "Source Watch Automated Case Run",
+      "reported_value": "9/12 OK (3 errors)",
+      "corpus_version": "source_watch_v1",
+      "run_id": "automated-case-run-2026-11-08",
+      "timestamp_utc": "2026-11-08T01:14:07Z",
+      "source_locator": "reports/automated-case-run-2026-11-08/source_watch_summary.json",
+      "sha256": "b78ba070ccf0690cb828051e73379582e02b69718022745bea26229f46f92735",
+      "notes": "9 new first baseline pages + 3 errors (2 DBR TLS cert errors + 1 transient network timeout)"
+    },
+    {
+      "metric_id": "sourcewatch_snapshot_run",
+      "metric_name": "Source Watch Dedicated Snapshot Run",
+      "reported_value": "10/12 OK (2 errors)",
+      "corpus_version": "source_watch_v2",
+      "run_id": "20261108T080550.329799Z",
+      "timestamp_utc": "2026-11-08T08:05:50Z",
+      "source_locator": "reports/source-watch/20261108/latest.json",
+      "sha256": "aa3acaafaaadf532c0f58ef537f938d63bab420527e8ccd63c8412909c0389f6",
+      "notes": "10 HTTP 200 pages + 2 errors (2 DBR TLS cert errors only)"
+    },
+    {
+      "metric_id": "telegram_video_unique_assets",
+      "metric_name": "Telegram Video Assets",
+      "reported_value": 607,
+      "corpus_version": "telegram_video_v1",
+      "run_id": "asr-bulk-20261108",
+      "timestamp_utc": "2026-11-08T08:00:00Z",
+      "source_locator": "reports/video-pipeline/telegram-full-decode-2026-11-08.md",
+      "sha256": "6e6977eb373158f7e9618d362cf9a77930174c4c99d9adca40e60390496b91c3",
+      "notes": "607 unique video files deduplicated by byte SHA-256 (from 724 downloaded media MP4s)"
+    },
+    {
+      "metric_id": "telegram_asr_candidate_segments",
+      "metric_name": "Telegram Candidate ASR Segments",
+      "reported_value": 10872,
+      "corpus_version": "telegram_video_v1",
+      "run_id": "asr-bulk-20261108",
+      "timestamp_utc": "2026-11-08T08:00:00Z",
+      "source_locator": "external/asr-bulk-20261108/telegram_text_observations.jsonl",
+      "sha256": "987ee53ff56a477e86347509786ed5d1bc7f5e908bb18037c202bb023ff43912",
+      "notes": "Raw first-pass Faster-Whisper candidate segments across 607 video assets"
+    },
+    {
+      "metric_id": "tiktok_video_assets",
+      "metric_name": "TikTok Video Assets",
+      "reported_value": 20,
+      "corpus_version": "tiktok_video_v1",
+      "run_id": "tiktok-runner-2026-11-08",
+      "timestamp_utc": "2026-11-08T09:00:00Z",
+      "source_locator": "reports/video-pipeline/tiktok-runner-2026-11-08.md",
+      "sha256": "bd7752226eae60a87f1f94708e6b8b546b0d10bae8559a460a5436890618cb3f",
+      "notes": "20 locally downloaded TikTok video assets"
+    },
+    {
+      "metric_id": "release_package_artifacts",
+      "metric_name": "Release Package Frozen Artifacts",
+      "reported_value": 65,
+      "corpus_version": "release_package_v1",
+      "run_id": "case-release-2026-11-08",
+      "timestamp_utc": "2026-11-08T22:06:20Z",
+      "source_locator": "reports/case-release-manifest-2026-11-08.json",
+      "sha256": "219bb362eafa6c726bb7e6729b5de16bf5793d85a4d5cfe391711131b1830fdf",
+      "notes": "Inventory of frozen release artifacts in case-release-manifest-2026-11-08"
+    }
+  ],
+  "verified_artifact_checksums": {
+    "data/processed/continuation_20261105/posts_clean.jsonl": "4e859d407aef52c72a8e690dc5716d7d92d11ff7d7a164760db5a4c0ad334350",
+    "data/processed/20261105T101013Z+20261105T102914Z/posts_clean.jsonl": "d229d8618021cf285f24c712eb9cd37ca85eb0e8bee2d8a7f74b6e7c574cda3f",
+    "reports/continuation_20261105/audit_results.json": "e9051b3ba98e3676f0589d33eae99e12ea4241e7e94cf9dd1dfc91c649975f8c",
+    "reports/20261105T101013Z+20261105T102914Z/audit_results.json": "cea8ea91b856fc68a19ca9f3bd4a45bac1d89de0d0121eb327e641014afa476f",
+    "reports/automated-case-run-2026-11-08/source_watch_summary.json": "b78ba070ccf0690cb828051e73379582e02b69718022745bea26229f46f92735",
+    "reports/source-watch/20261108/latest.json": "aa3acaafaaadf532c0f58ef537f938d63bab420527e8ccd63c8412909c0389f6",
+    "reports/continuation_20261105/verified_similarity_edges.csv": "6d559f3a1d553c6015e30e664f53d0d0d623fa88b6c72808d020908303578a58",
+    "reports/coordination-null-models-2026-11-08-lsh-audit/exact_cross_channel_edges_ge_0.6.csv": "9e1d07c77cba556d1da414ab1d7a8952f09f220c29a71a33066b5f3ccf340e2b",
+    "reports/case-release-manifest-2026-11-08.json": "219bb362eafa6c726bb7e6729b5de16bf5793d85a4d5cfe391711131b1830fdf",
+    "reports/video-pipeline/telegram-full-decode-2026-11-08.md": "6e6977eb373158f7e9618d362cf9a77930174c4c99d9adca40e60390496b91c3",
+    "reports/video-pipeline/tiktok-runner-2026-11-08.md": "bd7752226eae60a87f1f94708e6b8b546b0d10bae8559a460a5436890618cb3f",
+    "external/asr-bulk-20261108/telegram_text_observations.jsonl": "987ee53ff56a477e86347509786ed5d1bc7f5e908bb18037c202bb023ff43912"
+  }
+}

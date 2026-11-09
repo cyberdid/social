@@ -1,23 +1,24 @@
 {
   "scope": "Manual verification queue; no automatic factual or legal conclusions.",
-  "snapshot": "20261108T080550.329799Z",
-  "manifest": "/home/cyberdid/Projects/Social/.worktrees/social-master-plan/data/raw/source_watch/20261108T080550.329799Z/manifest.json",
+  "snapshot": "20261109T080002.024778Z",
+  "manifest": "/home/cyberdid/Projects/Social/data/raw/source_watch/20261109T080002.024778Z/manifest.json",
   "counts": {
     "error": 2,
-    "new_page": 10
+    "unchanged": 6,
+    "filtered_change": 4
   },
   "rows": [
     {
       "url": "https://dbr.gov.ua/news/dbr-rozpochalo-kriminalne-provadzhennya-za-faktom-podij-u-petropavlivskij-borshhagivci-na-kiivshhini",
       "kind": "known_article",
-      "source": "/home/cyberdid/Projects/Social/.worktrees/social-master-plan/reports/source-refresh-url-audit-2026-11-06.json",
-      "requested_at": "2026-11-08T08:05:50.329910+00:00",
+      "source": "/home/cyberdid/Projects/Social/reports/source-refresh-url-audit-2026-11-06.json",
+      "requested_at": "2026-11-09T08:00:02.024836+00:00",
       "request_timeout_seconds": 20.0,
       "status": null,
       "final_url": "https://dbr.gov.ua/news/dbr-rozpochalo-kriminalne-provadzhennya-za-faktom-podij-u-petropavlivskij-borshhagivci-na-kiivshhini",
       "sha256": null,
-      "error": "SSLError: HTTPSConnectionPool(host='dbr.gov.ua', port=443): Max retries exceeded with url: /news/dbr-rozpochalo-kriminalne-provadzhennya-za-faktom-podij-u-petropavlivskij-borshhagivci-na-kiivshhini (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)')))",
-      "elapsed_seconds": 0.085,
+      "error": "SSLError: HTTPSConnectionPool(host='dbr.gov.ua', port=443): Max retries exceeded with url: /news/dbr-rozpochalo-kriminalne-provadzhennya-za-faktom-podij-u-petropavlivskij-borshhagivci-na-kiivshhini (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')))",
+      "elapsed_seconds": 0.241,
       "previous_snapshot": null,
       "previous_sha256": null,
       "new_news_links": [],
@@ -26,19 +27,19 @@
     {
       "url": "https://hromadske.ua/kryminal/273906-sud-obyraye-zapobiznyy-zakhid-22-richniy-zintsi-iaka-brala-uchast-u-sutychkakh-u-sofiyivskiy-borshchahivtsi",
       "kind": "known_article",
-      "source": "/home/cyberdid/Projects/Social/.worktrees/social-master-plan/reports/source-refresh-url-audit-2026-11-06.json",
-      "requested_at": "2026-11-08T08:05:51.414855+00:00",
+      "source": "/home/cyberdid/Projects/Social/reports/source-refresh-url-audit-2026-11-06.json",
+      "requested_at": "2026-11-09T08:00:03.265995+00:00",
       "request_timeout_seconds": 20.0,
       "status": 200,
       "final_url": "https://hromadske.ua/kryminal/273906-sud-obyraye-zapobiznyy-zakhid-22-richniy-zintsi-iaka-brala-uchast-u-sutychkakh-u-sofiyivskiy-borshchahivtsi",
-      "sha256": "fe17fb29f7e3dceb4a4bab3dd3bdaf5dc24ad7d6ffb3e9b51c1d24b802de49c3",
+      "sha256": "c56485c0ca82c1490a165b8879729bafee4f42834c885cb5ebee627060b7d6ba",
       "content_type": "text/html; charset=UTF-8",
       "truncated": false,
       "headers": {
         "Content-Type": "text/html; charset=UTF-8"
       },
       "body_file": "04c05c33c1fc106440cc.html",
-      "bytes": 201312,
+      "bytes": 203310,
       "extracted": {
         "extractor_version": 2,
         "mode": "article_text",
@@ -49,53 +50,53 @@
         "keyword_match": true,
         "warning": "Filtered content or links are a review signal, not a verified new fact."
       },
-      "elapsed_seconds": 0.386,
-      "previous_snapshot": null,
-      "previous_sha256": null,
+      "elapsed_seconds": 0.36,
+      "previous_snapshot": "/home/cyberdid/Projects/Social/data/raw/source_watch/20261108T080001.749114Z",
+      "previous_sha256": "343db9164658428659717f292c2a9a502aa0b3c8af9137ee37d502f8e50a4f01",
       "new_news_links": [],
-      "event": "new_page"
+      "event": "unchanged"
     },
     {
       "url": "https://mvs.gov.ua/news/mvs-ziasovuje-obstavini-podii-na-kiyivshhini-rozpocato-sluzbove-rozsliduvannia",
       "kind": "known_article",
-      "source": "/home/cyberdid/Projects/Social/.worktrees/social-master-plan/reports/source-refresh-url-audit-2026-11-06.json",
-      "requested_at": "2026-11-08T08:05:52.801270+00:00",
+      "source": "/home/cyberdid/Projects/Social/reports/source-refresh-url-audit-2026-11-06.json",
+      "requested_at": "2026-11-09T08:00:04.626076+00:00",
       "request_timeout_seconds": 20.0,
       "status": 200,
       "final_url": "https://mvs.gov.ua/news/mvs-ziasovuje-obstavini-podii-na-kiyivshhini-rozpocato-sluzbove-rozsliduvannia",
-      "sha256": "50ccf2614439e2497c35feecab32ab5c38f219f7614ebdee32d4dee1a4bfec1f",
+      "sha256": "f517ec23a716858776270ec6af56b6ec01f645d0718db766077287f920c9f67f",
       "content_type": "text/html; charset=utf-8",
       "truncated": false,
       "headers": {
         "Content-Type": "text/html; charset=utf-8"
       },
       "body_file": "b9592acacb64718e4564.html",
-      "bytes": 140910,
+      "bytes": 141180,
       "extracted": {
         "extractor_version": 2,
         "mode": "article_text",
         "page_title": "МВС з’ясовує обставини подій на Київщині: розпочато службове розслідування",
-        "filtered_text": "Міністр МВС з’ясовує обставини подій на Київщині: розпочато службове розслідування 02.11.2026 22:30 Міністр внутрішніх справ України Іван Вигівський повідомив у своєму офіційному Телеграм-каналі про ситуацію на Київщині, пов’язану з перебуванням військовослужбовців Національної гвардії України в одній із будівель. За його дорученням розпочато службове розслідування для встановлення всіх обставин події, зокрема перевірки умов перебування військових. За словами очільника МВС, упродовж дня він отримує регулярні доповіді від Командувача Національної гвардії України, тимчасового виконувача обовʼязків Голови Національної поліції України та командування 1-го корпусу НГУ «Азов». Будівля, навколо якої виникла ситуація, використовувалася військовослужбовцями одного з підрозділів Національної гвардії України. Для з’ясування обставин на місце події прибули Командувач НГУ генерал-майор Олександр Півненко та його заступники. «Ще вдень доручив розпочати службове розслідування, в межах якого буде перевірено всю інформацію, зокрема щодо умов перебування військових», - зазначив Міністр. Також було забезпечено можливість спілкування рідних із військовослужбовцями Національної гвардії України, які перебували всередині будівлі. До приміщення запросили медиків і кількох представників громадськості. Наразі на місці події працюють представники Державного бюро розслідувань та Офісу Військового омбудсмана. Командування Національної гвардії України надає повне сприяння їхній роботі. «Національна гвардія України - одна з ключових складових Сил безпеки та оборони України. Закликаємо громадян утриматися від поширення неправдивої інформації та вчинення неправомірних дій», - наголосив Іван Вигівський. Департамент комунікації МВС 07.11.2026 16:00 Іван Вигівський: Від початку цього тижня рятувальники та поліцейські понад 700 разів виїжджали на ліквідацію наслідків російських обстрілів 05.11.2026 20:00 ДСНС розгортатиме мобільні пункти допомоги населенню, – Іван Вигівський 03.11.2026 19:15 У Міністерстві внутрішніх справ України відбувся брифінг щодо подій на Київщині",
-        "content_sha256": "c0834e0ea65bb0cdbef9cb2267af22c5a45baaa6536a999f1f340e3d7a07c679",
+        "filtered_text": "Міністр МВС з’ясовує обставини подій на Київщині: розпочато службове розслідування 02.11.2026 22:30 Міністр внутрішніх справ України Іван Вигівський повідомив у своєму офіційному Телеграм-каналі про ситуацію на Київщині, пов’язану з перебуванням військовослужбовців Національної гвардії України в одній із будівель. За його дорученням розпочато службове розслідування для встановлення всіх обставин події, зокрема перевірки умов перебування військових. За словами очільника МВС, упродовж дня він отримує регулярні доповіді від Командувача Національної гвардії України, тимчасового виконувача обовʼязків Голови Національної поліції України та командування 1-го корпусу НГУ «Азов». Будівля, навколо якої виникла ситуація, використовувалася військовослужбовцями одного з підрозділів Національної гвардії України. Для з’ясування обставин на місце події прибули Командувач НГУ генерал-майор Олександр Півненко та його заступники. «Ще вдень доручив розпочати службове розслідування, в межах якого буде перевірено всю інформацію, зокрема щодо умов перебування військових», - зазначив Міністр. Також було забезпечено можливість спілкування рідних із військовослужбовцями Національної гвардії України, які перебували всередині будівлі. До приміщення запросили медиків і кількох представників громадськості. Наразі на місці події працюють представники Державного бюро розслідувань та Офісу Військового омбудсмана. Командування Національної гвардії України надає повне сприяння їхній роботі. «Національна гвардія України - одна з ключових складових Сил безпеки та оборони України. Закликаємо громадян утриматися від поширення неправдивої інформації та вчинення неправомірних дій», - наголосив Іван Вигівський. Департамент комунікації МВС 08.11.2026 18:40 Іван Вигівський: Вже завтра у Києві будуть запроваджені резервні схеми транспортного сполучення між лівим та правим берегом 07.11.2026 16:00 Іван Вигівський: Від початку цього тижня рятувальники та поліцейські понад 700 разів виїжджали на ліквідацію наслідків російських обстрілів 05.11.2026 20:00 ДСНС розгортатиме мобільні пункти допомоги населенню, – Іван Вигівський",
+        "content_sha256": "9bfeb2edf075e562426cf1267b98eda04e47cda988737ee405e2773d49adf205",
         "news_links": [],
         "keyword_match": false,
         "warning": "Filtered content or links are a review signal, not a verified new fact."
       },
-      "elapsed_seconds": 0.4,
-      "previous_snapshot": null,
-      "previous_sha256": null,
+      "elapsed_seconds": 0.62,
+      "previous_snapshot": "/home/cyberdid/Projects/Social/data/raw/source_watch/20261108T080001.749114Z",
+      "previous_sha256": "0f63feae748e25d860a32bfaa8353147c9f570aa35c254423db6c39a9d157c33",
       "new_news_links": [],
-      "event": "new_page"
+      "event": "filtered_change"
     },
     {
       "url": "https://mvs.gov.ua/news/oleksandr-pivnenko-proviv-selektornu-naradu-z-kerivnictvom-nacionalnoyi-gvardiyi-ukrayini",
       "kind": "known_article",
-      "source": "/home/cyberdid/Projects/Social/.worktrees/social-master-plan/reports/source-refresh-url-audit-2026-11-06.json",
-      "requested_at": "2026-11-08T08:05:54.201862+00:00",
+      "source": "/home/cyberdid/Projects/Social/reports/source-refresh-url-audit-2026-11-06.json",
+      "requested_at": "2026-11-09T08:00:06.246369+00:00",
       "request_timeout_seconds": 20.0,
       "status": 200,
       "final_url": "https://mvs.gov.ua/news/oleksandr-pivnenko-proviv-selektornu-naradu-z-kerivnictvom-nacionalnoyi-gvardiyi-ukrayini",
-      "sha256": "1798fe012be341a2aa45654352e857b4a863f11b502a926c774f840ea658f9f2",
+      "sha256": "2e2a0c7fcaa44c439b8b372670838ae667cbaf5a3d8c6800cf538483c7fc68e3",
       "content_type": "text/html; charset=utf-8",
       "truncated": false,
       "headers": {
@@ -113,53 +114,53 @@
         "keyword_match": true,
         "warning": "Filtered content or links are a review signal, not a verified new fact."
       },
-      "elapsed_seconds": 0.593,
-      "previous_snapshot": null,
-      "previous_sha256": null,
+      "elapsed_seconds": 0.424,
+      "previous_snapshot": "/home/cyberdid/Projects/Social/data/raw/source_watch/20261108T080001.749114Z",
+      "previous_sha256": "9fe99873f06d15f87cee7f7e1c36ce347bb88b5507cb54bb53f4ed8aacfcfdff",
       "new_news_links": [],
-      "event": "new_page"
+      "event": "unchanged"
     },
     {
       "url": "https://mvs.gov.ua/news/u-ministerstvi-vnutrisnix-sprav-ukrayini-vidbuvsia-brifing-shhodo-podii-na-kiyivshhini",
       "kind": "known_article",
-      "source": "/home/cyberdid/Projects/Social/.worktrees/social-master-plan/reports/source-refresh-url-audit-2026-11-06.json",
-      "requested_at": "2026-11-08T08:05:55.795375+00:00",
+      "source": "/home/cyberdid/Projects/Social/reports/source-refresh-url-audit-2026-11-06.json",
+      "requested_at": "2026-11-09T08:00:07.671030+00:00",
       "request_timeout_seconds": 20.0,
       "status": 200,
       "final_url": "https://mvs.gov.ua/news/u-ministerstvi-vnutrisnix-sprav-ukrayini-vidbuvsia-brifing-shhodo-podii-na-kiyivshhini",
-      "sha256": "3aaf8cb5f02ab6b1228635d3a49ab9699c97cde2d49db993c84e84f3caef4f49",
+      "sha256": "afaa25b3ed36914c858ea574e153467fb2e2cba9cdc0fd7e8e4ab526a5e6c004",
       "content_type": "text/html; charset=utf-8",
       "truncated": false,
       "headers": {
         "Content-Type": "text/html; charset=utf-8"
       },
       "body_file": "de200b5539c20847398e.html",
-      "bytes": 149816,
+      "bytes": 150112,
       "extracted": {
         "extractor_version": 2,
         "mode": "article_text",
         "page_title": "У Міністерстві внутрішніх справ України відбувся брифінг щодо подій на Київщині",
-        "filtered_text": "Міністр Національна гвардія України День Національної поліції України У Міністерстві внутрішніх справ України відбувся брифінг щодо подій на Київщині 03.11.2026 19:15 Детально про перебіг подій та про реагування підрозділів Національної гвардії України та Національної поліції України журналістам розповів Міністр Іван Вигівський, командувач Національної гвардії України генерал-майор Олександр Півненко, т.в.о. Голови Національної поліції України Максим Цуцкірідзе. Також до спілкування з медіа долучився заступник Голови Служби безпеки України Іван Рудницький. Коментуючи події у селі Петропавлівська Борщагівка, Іван Вигівський наголосив, що навколо інциденту поширювалися маніпулятивні повідомлення, які спотворювали реальний перебіг подій та створювали додаткову напругу в суспільстві. «Ми бачили розвиток негативних подій. Бачили і те, що відбувалося дуже багато маніпуляцій, які стосувалися Міністерства внутрішніх справ, Національної поліції України й Національної гвардії України», - зазначив Міністр. Іван Вигівський розповів про передумови протесту та активну участь деяких з учасників, зокрема жінки, яка була вдягнута в однострій працівника екстреної медичної допомоги. Міністр підкреслив, що всі дії необхідно оцінювати в межах закону, а обставини інциденту та поведінку його учасників мають перевірити правоохоронні органи. «Ми діяли максимально зважено для того, щоб не допустити будь-яких жертв», - зауважив Міністр. Він також закликав не допускати дій, які можуть паплюжити честь військовослужбовців та правоохоронців. Т.в.о. Голови Національної поліції України Максим Цуцкірідзе детально відтворив хронологію подій. За його словами, спершу у соціальній мережі почали з’являтися відеозвернення жінки із заявами про нібито незаконне утримання людей в одній із будівель. Водночас вона закликала громадян зібратися на акцію протесту. До державних органів заяв про злочини, які нібито відбувалися у приміщенні, не надходило. За інформацією Нацполіції, згодом правоохоронці зафіксували перші сутички між присутніми та поліцейськими, а вже за кілька хвилин почалися спроби силового проникнення до будівлі. Після узгодження з командуванням Національної гвардії України до приміщення допустили представників поліції та громадськості. Максим Цуцкірідзе також повідомив про агресивні дії окремих учасників зібрання: кидання предметів у поліцейських, пошкодження майна та спроби перекинути автобус. Попри це, за його словами, правоохоронці не допустили ескалації. Очільник Нацполіції прокоментував обставини щодо так званої медичної бригади, яка перебувала на місці події. За результатами перевірки встановлено, що медичний заклад, від імені якого діяли ці особи, припинив діяльність ще у 2024 році, а використання його бренду на зазначеному автомобілі було заборонено. «Наразі Національна поліція розслідує кримінальні провадження за фактами протиправних дій під час групового протистояння, зокрема опору правоохоронцям. Крім того, Служба безпеки України розпочала провадження за фактом перешкоджання законній діяльності Збройних сил України та інших військових формувань. Слідство встановлює осіб, які могли бути причетними до організації та загострення протистояння. Наразі поліція вже встановила 16 осіб, які брали активну участь у протиправних діях», - зазначив Максим Цуцкірідзе. Командувач Національної гвардії України генерал-майор Олександр Півненко пояснив, що будівля, навколо якої виник конфлікт, перебувала в офіційній оренді Нацгвардії та використовувалася для тимчасового розміщення військовослужбовців. Загалом у приміщенні перебували 26 осіб. За словами командувача, четверо з них були військовослужбовцями, які самовільно залишили військову частину, решта готувалися до направлення на базову загальновійськову підготовку. Олександр Півненко наголосив, що військові перебували в належних умовах, а саме розміщення особового складу в окремих орендованих приміщеннях зумовлене вимогами безпеки. Під час війни важливо розосереджувати місця перебування військовослужбовців, щоб не створювати скупчення особового складу в одній локації. Після прибуття на місце командувач НГУ особисто поспілкувався з військовослужбовцями та перевірив обставини їхнього перебування. До приміщення також допустили представників правоохоронних органів та інших уповноважених осіб. «Наша задача була деблокувати будівлю, надати допомогу тим, хто її потребував, а тих, хто залишався на місці, - убезпечити. Це була головна задача. Чотирьох військовослужбовців вивели, надали можливість отримати необхідну допомогу. Іншим була надана можливість залишити будівлю», - пояснив Олександр Півненко. Заступник Голови Служби безпеки України Іван Рудницький повідомив, що СБУ розслідує кримінальні провадження за фактами перешкоджання законній діяльності Збройних сил України та несанкціонованого поширення інформації про їхнє розташування. За словами Івана Рудницького, правоохоронці встановлюють осіб, які перебували на місці події та брали активну участь у її організації. Щодо окремих фігурантів - проводять обшуки та вирішують питання про повідомлення їм про підозру. Окремо Рудницький заявив, що, за даними СБУ, акцію планували заздалегідь, а її метою було використати ситуацію з одним із військовослужбовців Нацгвардії для маніпуляцій і привернення суспільної уваги. «Служба безпеки та Національна поліція провели комплексні заходи, щоб встановити: хто брав участь у вчорашньому інциденті, яку роль виконував і на яких підставах перебував. Наразі ідентифіковано понад 100 таких осіб. У тих, хто був активно залучений до організації заворушень, зараз проводяться обшуки. Вирішується питання про їхнє затримання і оголошення про підозру», - підкреслив заступник Голови Служби безпеки України Іван Рудницький. За підсумками брифінгу Міністр внутрішніх справ України Іван Вигівський повідомив, що разом із командувачем Національної гвардії України переглянуть алгоритми вибору місць розміщення військовослужбовців, які готуються до проходження базової загальновійськової підготовки. Департамент комунікації МВС 07.11.2026 16:00 Іван Вигівський: Від початку цього тижня рятувальники та поліцейські понад 700 разів виїжджали на ліквідацію наслідків російських обстрілів 05.11.2026 20:00 ДСНС розгортатиме мобільні пункти допомоги населенню, – Іван Вигівський 05.11.2026 09:00 Загинув прикриваючи побратима: памʼяті гвардійця Сергія Матвієвського",
-        "content_sha256": "69c5d2e3d195be84dcdd4da81b85cec09849a6605987ba5dc1b9709e55de27e0",
+        "filtered_text": "Міністр Національна гвардія України День Національної поліції України У Міністерстві внутрішніх справ України відбувся брифінг щодо подій на Київщині 03.11.2026 19:15 Детально про перебіг подій та про реагування підрозділів Національної гвардії України та Національної поліції України журналістам розповів Міністр Іван Вигівський, командувач Національної гвардії України генерал-майор Олександр Півненко, т.в.о. Голови Національної поліції України Максим Цуцкірідзе. Також до спілкування з медіа долучився заступник Голови Служби безпеки України Іван Рудницький. Коментуючи події у селі Петропавлівська Борщагівка, Іван Вигівський наголосив, що навколо інциденту поширювалися маніпулятивні повідомлення, які спотворювали реальний перебіг подій та створювали додаткову напругу в суспільстві. «Ми бачили розвиток негативних подій. Бачили і те, що відбувалося дуже багато маніпуляцій, які стосувалися Міністерства внутрішніх справ, Національної поліції України й Національної гвардії України», - зазначив Міністр. Іван Вигівський розповів про передумови протесту та активну участь деяких з учасників, зокрема жінки, яка була вдягнута в однострій працівника екстреної медичної допомоги. Міністр підкреслив, що всі дії необхідно оцінювати в межах закону, а обставини інциденту та поведінку його учасників мають перевірити правоохоронні органи. «Ми діяли максимально зважено для того, щоб не допустити будь-яких жертв», - зауважив Міністр. Він також закликав не допускати дій, які можуть паплюжити честь військовослужбовців та правоохоронців. Т.в.о. Голови Національної поліції України Максим Цуцкірідзе детально відтворив хронологію подій. За його словами, спершу у соціальній мережі почали з’являтися відеозвернення жінки із заявами про нібито незаконне утримання людей в одній із будівель. Водночас вона закликала громадян зібратися на акцію протесту. До державних органів заяв про злочини, які нібито відбувалися у приміщенні, не надходило. За інформацією Нацполіції, згодом правоохоронці зафіксували перші сутички між присутніми та поліцейськими, а вже за кілька хвилин почалися спроби силового проникнення до будівлі. Після узгодження з командуванням Національної гвардії України до приміщення допустили представників поліції та громадськості. Максим Цуцкірідзе також повідомив про агресивні дії окремих учасників зібрання: кидання предметів у поліцейських, пошкодження майна та спроби перекинути автобус. Попри це, за його словами, правоохоронці не допустили ескалації. Очільник Нацполіції прокоментував обставини щодо так званої медичної бригади, яка перебувала на місці події. За результатами перевірки встановлено, що медичний заклад, від імені якого діяли ці особи, припинив діяльність ще у 2024 році, а використання його бренду на зазначеному автомобілі було заборонено. «Наразі Національна поліція розслідує кримінальні провадження за фактами протиправних дій під час групового протистояння, зокрема опору правоохоронцям. Крім того, Служба безпеки України розпочала провадження за фактом перешкоджання законній діяльності Збройних сил України та інших військових формувань. Слідство встановлює осіб, які могли бути причетними до організації та загострення протистояння. Наразі поліція вже встановила 16 осіб, які брали активну участь у протиправних діях», - зазначив Максим Цуцкірідзе. Командувач Національної гвардії України генерал-майор Олександр Півненко пояснив, що будівля, навколо якої виник конфлікт, перебувала в офіційній оренді Нацгвардії та використовувалася для тимчасового розміщення військовослужбовців. Загалом у приміщенні перебували 26 осіб. За словами командувача, четверо з них були військовослужбовцями, які самовільно залишили військову частину, решта готувалися до направлення на базову загальновійськову підготовку. Олександр Півненко наголосив, що військові перебували в належних умовах, а саме розміщення особового складу в окремих орендованих приміщеннях зумовлене вимогами безпеки. Під час війни важливо розосереджувати місця перебування військовослужбовців, щоб не створювати скупчення особового складу в одній локації. Після прибуття на місце командувач НГУ особисто поспілкувався з військовослужбовцями та перевірив обставини їхнього перебування. До приміщення також допустили представників правоохоронних органів та інших уповноважених осіб. «Наша задача була деблокувати будівлю, надати допомогу тим, хто її потребував, а тих, хто залишався на місці, - убезпечити. Це була головна задача. Чотирьох військовослужбовців вивели, надали можливість отримати необхідну допомогу. Іншим була надана можливість залишити будівлю», - пояснив Олександр Півненко. Заступник Голови Служби безпеки України Іван Рудницький повідомив, що СБУ розслідує кримінальні провадження за фактами перешкоджання законній діяльності Збройних сил України та несанкціонованого поширення інформації про їхнє розташування. За словами Івана Рудницького, правоохоронці встановлюють осіб, які перебували на місці події та брали активну участь у її організації. Щодо окремих фігурантів - проводять обшуки та вирішують питання про повідомлення їм про підозру. Окремо Рудницький заявив, що, за даними СБУ, акцію планували заздалегідь, а її метою було використати ситуацію з одним із військовослужбовців Нацгвардії для маніпуляцій і привернення суспільної уваги. «Служба безпеки та Національна поліція провели комплексні заходи, щоб встановити: хто брав участь у вчорашньому інциденті, яку роль виконував і на яких підставах перебував. Наразі ідентифіковано понад 100 таких осіб. У тих, хто був активно залучений до організації заворушень, зараз проводяться обшуки. Вирішується питання про їхнє затримання і оголошення про підозру», - підкреслив заступник Голови Служби безпеки України Іван Рудницький. За підсумками брифінгу Міністр внутрішніх справ України Іван Вигівський повідомив, що разом із командувачем Національної гвардії України переглянуть алгоритми вибору місць розміщення військовослужбовців, які готуються до проходження базової загальновійськової підготовки. Департамент комунікації МВС 08.11.2026 18:40 Іван Вигівський: Вже завтра у Києві будуть запроваджені резервні схеми транспортного сполучення між лівим та правим берегом 07.11.2026 16:00 Іван Вигівський: Від початку цього тижня рятувальники та поліцейські понад 700 разів виїжджали на ліквідацію наслідків російських обстрілів 05.11.2026 20:00 ДСНС розгортатиме мобільні пункти допомоги населенню, – Іван Вигівський",
+        "content_sha256": "47f847a24d1fca600b74b863e821e86b309cebed3259ec970b1b423a14b91793",
         "news_links": [],
         "keyword_match": true,
         "warning": "Filtered content or links are a review signal, not a verified new fact."
       },
-      "elapsed_seconds": 0.446,
-      "previous_snapshot": null,
-      "previous_sha256": null,
+      "elapsed_seconds": 0.441,
+      "previous_snapshot": "/home/cyberdid/Projects/Social/data/raw/source_watch/20261108T080001.749114Z",
+      "previous_sha256": "4a7c8e79ffc11d06eddb05204c7467dd5d84c552c05c4ab9f1f91a26a8d2050e",
       "new_news_links": [],
-      "event": "new_page"
+      "event": "filtered_change"
     },
     {
       "url": "https://ngu.gov.ua/shturm-kativni-pid-vybuhy-shahediv-yak-fejk-pro-40-zaruchnykiv-pereris-u-zavorushennya-v-petropavlivskij-borshhagivczi/",
       "kind": "known_article",
-      "source": "/home/cyberdid/Projects/Social/.worktrees/social-master-plan/reports/source-refresh-url-audit-2026-11-06.json",
-      "requested_at": "2026-11-08T08:05:57.241682+00:00",
+      "source": "/home/cyberdid/Projects/Social/reports/source-refresh-url-audit-2026-11-06.json",
+      "requested_at": "2026-11-09T08:00:09.112268+00:00",
       "request_timeout_seconds": 20.0,
       "status": 200,
       "final_url": "https://ngu.gov.ua/shturm-kativni-pid-vybuhy-shahediv-yak-fejk-pro-40-zaruchnykiv-pereris-u-zavorushennya-v-petropavlivskij-borshhagivczi/",
-      "sha256": "d2f922c811ec6ec8b4333d3d1307403f0e2113b8c0655722390f9de5bdf1e773",
+      "sha256": "6f6dc8f45d3dbe8df9cfea357fab62bdfefd33c5916de353935e4d81e0942e09",
       "content_type": "text/html; charset=UTF-8",
       "truncated": false,
       "headers": {
@@ -177,21 +178,21 @@
         "keyword_match": true,
         "warning": "Filtered content or links are a review signal, not a verified new fact."
       },
-      "elapsed_seconds": 0.264,
-      "previous_snapshot": null,
-      "previous_sha256": null,
+      "elapsed_seconds": 0.324,
+      "previous_snapshot": "/home/cyberdid/Projects/Social/data/raw/source_watch/20261108T080001.749114Z",
+      "previous_sha256": "8f49add65d36e4740b40735d36cb9e8665a6f5af3e7a856f658de839841fa634",
       "new_news_links": [],
-      "event": "new_page"
+      "event": "unchanged"
     },
     {
       "url": "https://ombudsman.gov.ua/news_details/zhodnih-podvijnih-standartiv-ne-maye-buti-ombudsman-vimagaye-perevirki-situaciyi-na-petropavlivskij-borshchagivci",
       "kind": "known_article",
-      "source": "/home/cyberdid/Projects/Social/.worktrees/social-master-plan/reports/source-refresh-url-audit-2026-11-06.json",
-      "requested_at": "2026-11-08T08:05:58.505748+00:00",
+      "source": "/home/cyberdid/Projects/Social/reports/source-refresh-url-audit-2026-11-06.json",
+      "requested_at": "2026-11-09T08:00:10.436875+00:00",
       "request_timeout_seconds": 20.0,
       "status": 200,
       "final_url": "https://ombudsman.gov.ua/news_details/zhodnih-podvijnih-standartiv-ne-maye-buti-ombudsman-vimagaye-perevirki-situaciyi-na-petropavlivskij-borshchagivci",
-      "sha256": "d6668c0f336649e9081be1b017f3abbea98c3a7400de9deca6277bb9f1092562",
+      "sha256": "2ef6e3b1d079c0f783ccf20174161769b8710880a9ad17b64fd19ff4537b443e",
       "content_type": "text/html; charset=UTF-8",
       "truncated": false,
       "headers": {
@@ -209,28 +210,28 @@
         "keyword_match": true,
         "warning": "Filtered content or links are a review signal, not a verified new fact."
       },
-      "elapsed_seconds": 0.541,
-      "previous_snapshot": null,
-      "previous_sha256": null,
+      "elapsed_seconds": 0.826,
+      "previous_snapshot": "/home/cyberdid/Projects/Social/data/raw/source_watch/20261108T080001.749114Z",
+      "previous_sha256": "a6387bb2785fd0c1a8b21badaab3d2a3ced7187874b234407422b6aa5bf38525",
       "new_news_links": [],
-      "event": "new_page"
+      "event": "unchanged"
     },
     {
       "url": "https://suspilne.media/kyiv/1446145-suticki-v-borsanivci-sud-obirae-zapobiznij-cetvertij-pidozruvanij/",
       "kind": "known_article",
-      "source": "/home/cyberdid/Projects/Social/.worktrees/social-master-plan/reports/source-refresh-url-audit-2026-11-06.json",
-      "requested_at": "2026-11-08T08:06:00.047334+00:00",
+      "source": "/home/cyberdid/Projects/Social/reports/source-refresh-url-audit-2026-11-06.json",
+      "requested_at": "2026-11-09T08:00:12.263183+00:00",
       "request_timeout_seconds": 20.0,
       "status": 200,
       "final_url": "https://suspilne.media/kyiv/1446145-suticki-v-petropavlivskij-borsagivci-sud-obirav-zapobiznij-se-dvom/",
-      "sha256": "b29a2137bc96cb20f75ad0e22b3135d99aea76254fd149eaaf43366b17bbed9c",
+      "sha256": "2fd29bbe355dbb8bbf59913ba27b0fb5cb677b14871d5a7bc08f89631c2a696a",
       "content_type": "text/html; charset=UTF-8",
       "truncated": false,
       "headers": {
         "Content-Type": "text/html; charset=UTF-8"
       },
       "body_file": "bcd3af0aa7de3c82f54f.html",
-      "bytes": 124941,
+      "bytes": 124202,
       "extracted": {
         "extractor_version": 2,
         "mode": "article_text",
@@ -241,24 +242,24 @@
         "keyword_match": true,
         "warning": "Filtered content or links are a review signal, not a verified new fact."
       },
-      "elapsed_seconds": 0.381,
-      "previous_snapshot": null,
-      "previous_sha256": null,
+      "elapsed_seconds": 0.428,
+      "previous_snapshot": "/home/cyberdid/Projects/Social/data/raw/source_watch/20261108T080001.749114Z",
+      "previous_sha256": "274b9c62eb82dd0c39ac03827c80c7bb76356b32ae53cf07f17a4918193cfb23",
       "new_news_links": [],
-      "event": "new_page"
+      "event": "unchanged"
     },
     {
       "url": "https://dbr.gov.ua/news",
       "kind": "news_listing",
       "source": "fixed_official_listing",
       "rationale": "Офіційна стрічка повідомлень ДБР.",
-      "requested_at": "2026-11-08T08:06:01.428525+00:00",
+      "requested_at": "2026-11-09T08:00:13.691351+00:00",
       "request_timeout_seconds": 20.0,
       "status": null,
       "final_url": "https://dbr.gov.ua/news",
       "sha256": null,
-      "error": "SSLError: HTTPSConnectionPool(host='dbr.gov.ua', port=443): Max retries exceeded with url: /news (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)')))",
-      "elapsed_seconds": 0.055,
+      "error": "SSLError: HTTPSConnectionPool(host='dbr.gov.ua', port=443): Max retries exceeded with url: /news (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')))",
+      "elapsed_seconds": 0.065,
       "previous_snapshot": null,
       "previous_sha256": null,
       "new_news_links": [],
@@ -269,40 +270,52 @@
       "kind": "news_listing",
       "source": "fixed_official_listing",
       "rationale": "Офіційна загальна стрічка МВС; /news є префіксом статей, не стрічкою.",
-      "requested_at": "2026-11-08T08:06:02.483485+00:00",
+      "requested_at": "2026-11-09T08:00:14.756342+00:00",
       "request_timeout_seconds": 20.0,
       "status": 200,
       "final_url": "https://mvs.gov.ua/press-center/news",
-      "sha256": "ee460eaadea6b3a1ad3efb2a0602f177234a515e7c2ffddcc939d583668eb84f",
+      "sha256": "35c937d1a330905dae7ef11f649683c8f0db6618f81348f3113b7fd59c105d01",
       "content_type": "text/html; charset=utf-8",
       "truncated": false,
       "headers": {
         "Content-Type": "text/html; charset=utf-8"
       },
       "body_file": "bd73ebbae51ff4158491.html",
-      "bytes": 163074,
+      "bytes": 162889,
       "extracted": {
         "extractor_version": 2,
         "mode": "news_links",
         "page_title": "Новини",
-        "filtered_text": "https://mvs.gov.ua/news/istoriia-sluzbovoyi-sobaki-iorni-povernulasia-tudi-de-pocalasia-yiyi-istoriia\tІсторія службової собаки Йорни: повернулася туди, де почалася її історія\nhttps://mvs.gov.ua/news/ivan-vigivskii-vid-pocatku-cyogo-tiznia-riatuvalniki-ta-policeiski-ponad-700-raziv-viyizdzali-na-likvidaciiu-naslidkiv-rosiiskix-obstriliv\tІван Вигівський: Від початку цього тижня рятувальники та поліцейські понад 700 разів виїжджали на ліквідацію наслідків російських обстрілів\nhttps://mvs.gov.ua/news/kompensaciia-za-poskodzene-ci-znishhene-zitlo-shho-potribno-znati-vpo\tКомпенсація за пошкоджене чи знищене житло: що потрібно знати ВПО\nhttps://mvs.gov.ua/news/medicna-pidtrimka-z-povagoiu-blizko-1000-pracivnikiv-zakladiv-oxoroni-zdorovia-mvs-proisli-navcannia-z-pitan-etiki-spilkuvannia-z-veteranami\tМедична підтримка з повагою: близько 1000 працівників закладів охорони здоров’я МВС пройшли навчання з питань етики спілкування з ветеранами\nhttps://mvs.gov.ua/news/pamiati-sergiia-barancuka-prikrivav-pobratimiv-i-vtrimuvav-poziciiu\tПамʼяті Сергія Баранчука: прикривав побратимів і втримував позицію\nhttps://mvs.gov.ua/news/povernuvsia-bo-tiagnulo-do-pobratimiv-istoriia-prikordonnika-z-pozivnim-bater\t«Повернувся, бо тягнуло до побратимів»: історія прикордонника з позивним Батер\nhttps://mvs.gov.ua/news/riatuvalniki-proisli-navcannia-z-ekspluataciyi-novoyi-inzenernoyi-texniki\tРятувальники пройшли навчання з експлуатації нової інженерної техніки\nhttps://mvs.gov.ua/news/sergii-koreckii-pidvishhujemo-svidkist-ta-iakist-procedur-identifikaciyi-til-zagiblix-geroyiv\tСергій Корецький: Підвищуємо швидкість та якість процедур ідентифікації тіл загиблих Героїв\nhttps://mvs.gov.ua/news/treti-rokovini-zagibeli-prikordonnika-ivana-prislupskogo\tТреті роковини загибелі прикордонника Івана Прислупського\nhttps://mvs.gov.ua/news/ukrayina-ta-konsultativna-misiia-jes-viznacili-napriami-spivpraci-u-sferi-upravlinnia-kordonom\tУкраїна та Консультативна місія ЄС визначили напрями співпраці у сфері управління кордоном\nhttps://mvs.gov.ua/news/v-ukrayini-vidnovliuiut-aeromedicnu-evakuaciiu-pacijentiv-povitrianimi-sudnami-dsns-uriad-zatverdiv-poriadok\tВ Україні відновлюють аеромедичну евакуацію пацієнтів повітряними суднами ДСНС – Уряд затвердив порядок\nhttps://mvs.gov.ua/news/z-dnem-stvorennia-patrulnoyi-policiyi\tЗ Днем створення патрульної поліції!",
-        "content_sha256": "bef2969b53ad6f8026d38a7d59586855ec0acda8c16e397d9eb2328adf0f5486",
+        "filtered_text": "https://mvs.gov.ua/news/do-ostannyogo-dopomagav-kolegam-pamiati-policeiskogo-oleksandra-kovtuna\tДо останнього допомагав колегам: пам’яті поліцейського Олександра Ковтуна\nhttps://mvs.gov.ua/news/istoriia-sluzbovoyi-sobaki-iorni-povernulasia-tudi-de-pocalasia-yiyi-istoriia\tІсторія службової собаки Йорни: повернулася туди, де почалася її історія\nhttps://mvs.gov.ua/news/iukko-na-sluzbi-nimecka-vivcarka-z-xarakterom-spravznyogo-prikordonnika\tЮкко на службі: німецька вівчарка з характером справжнього прикордонника\nhttps://mvs.gov.ua/news/ivan-vigivskii-vid-pocatku-cyogo-tiznia-riatuvalniki-ta-policeiski-ponad-700-raziv-viyizdzali-na-likvidaciiu-naslidkiv-rosiiskix-obstriliv\tІван Вигівський: Від початку цього тижня рятувальники та поліцейські понад 700 разів виїжджали на ліквідацію наслідків російських обстрілів\nhttps://mvs.gov.ua/news/ivan-vigivskii-vze-zavtra-u-kijevi-budut-zaprovadzeni-rezervni-sxemi-transportnogo-spolucennia-miz-livim-ta-pravim-beregom\tІван Вигівський: Вже завтра у Києві будуть запроваджені резервні схеми транспортного сполучення між лівим та правим берегом\nhttps://mvs.gov.ua/news/komisuvaxa-tragediia-iaka-ne-zalisaje-baiduzim-riatuvalniki-dsns-prodovzuiut-borotbu-za-kozne-zittia\tКомишуваха: трагедія, яка не залишає байдужим. Рятувальники продовжують боротьбу за кожне життя\nhttps://mvs.gov.ua/news/kompensaciia-za-poskodzene-ci-znishhene-zitlo-shho-potribno-znati-vpo\tКомпенсація за пошкоджене чи знищене житло: що потрібно знати ВПО\nhttps://mvs.gov.ua/news/pamiati-sergiia-barancuka-prikrivav-pobratimiv-i-vtrimuvav-poziciiu\tПамʼяті Сергія Баранчука: прикривав побратимів і втримував позицію\nhttps://mvs.gov.ua/news/povernuvsia-bo-tiagnulo-do-pobratimiv-istoriia-prikordonnika-z-pozivnim-bater\t«Повернувся, бо тягнуло до побратимів»: історія прикордонника з позивним Батер\nhttps://mvs.gov.ua/news/riatuvalniki-proisli-navcannia-z-ekspluataciyi-novoyi-inzenernoyi-texniki\tРятувальники пройшли навчання з експлуатації нової інженерної техніки\nhttps://mvs.gov.ua/news/treti-rokovini-zagibeli-prikordonnika-ivana-prislupskogo\tТреті роковини загибелі прикордонника Івана Прислупського\nhttps://mvs.gov.ua/news/z-dnem-stvorennia-patrulnoyi-policiyi\tЗ Днем створення патрульної поліції!",
+        "content_sha256": "b905345c5ba880f6f83f2fc350c518f7563e9d7735f0aa4fe5d9100ec22f0203",
         "news_links": [
+          {
+            "url": "https://mvs.gov.ua/news/do-ostannyogo-dopomagav-kolegam-pamiati-policeiskogo-oleksandra-kovtuna",
+            "title": "До останнього допомагав колегам: пам’яті поліцейського Олександра Ковтуна"
+          },
           {
             "url": "https://mvs.gov.ua/news/istoriia-sluzbovoyi-sobaki-iorni-povernulasia-tudi-de-pocalasia-yiyi-istoriia",
             "title": "Історія службової собаки Йорни: повернулася туди, де почалася її історія"
+          },
+          {
+            "url": "https://mvs.gov.ua/news/iukko-na-sluzbi-nimecka-vivcarka-z-xarakterom-spravznyogo-prikordonnika",
+            "title": "Юкко на службі: німецька вівчарка з характером справжнього прикордонника"
           },
           {
             "url": "https://mvs.gov.ua/news/ivan-vigivskii-vid-pocatku-cyogo-tiznia-riatuvalniki-ta-policeiski-ponad-700-raziv-viyizdzali-na-likvidaciiu-naslidkiv-rosiiskix-obstriliv",
             "title": "Іван Вигівський: Від початку цього тижня рятувальники та поліцейські понад 700 разів виїжджали на ліквідацію наслідків російських обстрілів"
           },
           {
-            "url": "https://mvs.gov.ua/news/kompensaciia-za-poskodzene-ci-znishhene-zitlo-shho-potribno-znati-vpo",
-            "title": "Компенсація за пошкоджене чи знищене житло: що потрібно знати ВПО"
+            "url": "https://mvs.gov.ua/news/ivan-vigivskii-vze-zavtra-u-kijevi-budut-zaprovadzeni-rezervni-sxemi-transportnogo-spolucennia-miz-livim-ta-pravim-beregom",
+            "title": "Іван Вигівський: Вже завтра у Києві будуть запроваджені резервні схеми транспортного сполучення між лівим та правим берегом"
           },
           {
-            "url": "https://mvs.gov.ua/news/medicna-pidtrimka-z-povagoiu-blizko-1000-pracivnikiv-zakladiv-oxoroni-zdorovia-mvs-proisli-navcannia-z-pitan-etiki-spilkuvannia-z-veteranami",
-            "title": "Медична підтримка з повагою: близько 1000 працівників закладів охорони здоров’я МВС пройшли навчання з питань етики спілкування з ветеранами"
+            "url": "https://mvs.gov.ua/news/komisuvaxa-tragediia-iaka-ne-zalisaje-baiduzim-riatuvalniki-dsns-prodovzuiut-borotbu-za-kozne-zittia",
+            "title": "Комишуваха: трагедія, яка не залишає байдужим. Рятувальники продовжують боротьбу за кожне життя"
+          },
+          {
+            "url": "https://mvs.gov.ua/news/kompensaciia-za-poskodzene-ci-znishhene-zitlo-shho-potribno-znati-vpo",
+            "title": "Компенсація за пошкоджене чи знищене житло: що потрібно знати ВПО"
           },
           {
             "url": "https://mvs.gov.ua/news/pamiati-sergiia-barancuka-prikrivav-pobratimiv-i-vtrimuvav-poziciiu",
@@ -317,20 +330,8 @@
             "title": "Рятувальники пройшли навчання з експлуатації нової інженерної техніки"
           },
           {
-            "url": "https://mvs.gov.ua/news/sergii-koreckii-pidvishhujemo-svidkist-ta-iakist-procedur-identifikaciyi-til-zagiblix-geroyiv",
-            "title": "Сергій Корецький: Підвищуємо швидкість та якість процедур ідентифікації тіл загиблих Героїв"
-          },
-          {
             "url": "https://mvs.gov.ua/news/treti-rokovini-zagibeli-prikordonnika-ivana-prislupskogo",
             "title": "Треті роковини загибелі прикордонника Івана Прислупського"
-          },
-          {
-            "url": "https://mvs.gov.ua/news/ukrayina-ta-konsultativna-misiia-jes-viznacili-napriami-spivpraci-u-sferi-upravlinnia-kordonom",
-            "title": "Україна та Консультативна місія ЄС визначили напрями співпраці у сфері управління кордоном"
-          },
-          {
-            "url": "https://mvs.gov.ua/news/v-ukrayini-vidnovliuiut-aeromedicnu-evakuaciiu-pacijentiv-povitrianimi-sudnami-dsns-uriad-zatverdiv-poriadok",
-            "title": "В Україні відновлюють аеромедичну евакуацію пацієнтів повітряними суднами ДСНС – Уряд затвердив порядок"
           },
           {
             "url": "https://mvs.gov.ua/news/z-dnem-stvorennia-patrulnoyi-policiyi",
@@ -340,39 +341,60 @@
         "keyword_match": false,
         "warning": "Filtered content or links are a review signal, not a verified new fact."
       },
-      "elapsed_seconds": 0.731,
-      "previous_snapshot": null,
-      "previous_sha256": null,
-      "new_news_links": [],
-      "event": "new_page"
+      "elapsed_seconds": 1.092,
+      "previous_snapshot": "/home/cyberdid/Projects/Social/data/raw/source_watch/20261108T080001.749114Z",
+      "previous_sha256": "0d0829f63f3d10e4d56d97443ed287d3696f43fe1e3aaf5c2d7d2a774ac05d55",
+      "new_news_links": [
+        {
+          "url": "https://mvs.gov.ua/news/do-ostannyogo-dopomagav-kolegam-pamiati-policeiskogo-oleksandra-kovtuna",
+          "title": "До останнього допомагав колегам: пам’яті поліцейського Олександра Ковтуна"
+        },
+        {
+          "url": "https://mvs.gov.ua/news/iukko-na-sluzbi-nimecka-vivcarka-z-xarakterom-spravznyogo-prikordonnika",
+          "title": "Юкко на службі: німецька вівчарка з характером справжнього прикордонника"
+        },
+        {
+          "url": "https://mvs.gov.ua/news/ivan-vigivskii-vze-zavtra-u-kijevi-budut-zaprovadzeni-rezervni-sxemi-transportnogo-spolucennia-miz-livim-ta-pravim-beregom",
+          "title": "Іван Вигівський: Вже завтра у Києві будуть запроваджені резервні схеми транспортного сполучення між лівим та правим берегом"
+        },
+        {
+          "url": "https://mvs.gov.ua/news/komisuvaxa-tragediia-iaka-ne-zalisaje-baiduzim-riatuvalniki-dsns-prodovzuiut-borotbu-za-kozne-zittia",
+          "title": "Комишуваха: трагедія, яка не залишає байдужим. Рятувальники продовжують боротьбу за кожне життя"
+        }
+      ],
+      "event": "filtered_change"
     },
     {
       "url": "https://ngu.gov.ua/",
       "kind": "news_listing",
       "source": "fixed_official_listing",
       "rationale": "Офіційна головна НГУ містить пагіновану стрічку новин.",
-      "requested_at": "2026-11-08T08:06:04.214647+00:00",
+      "requested_at": "2026-11-09T08:00:16.848806+00:00",
       "request_timeout_seconds": 20.0,
       "status": 200,
       "final_url": "https://ngu.gov.ua/",
-      "sha256": "ebde6c99944b468ae7dc142a307066e9cab28a6719060706a478f7c6cf044fe6",
+      "sha256": "3ead9ab9be56f59b051095ef93db173c50449b36523a7c7d9b93539630cc370d",
       "content_type": "text/html; charset=UTF-8",
       "truncated": false,
       "headers": {
         "Content-Type": "text/html; charset=UTF-8"
       },
       "body_file": "6d41b0dab11ed702443f.html",
-      "bytes": 235161,
+      "bytes": 234827,
       "extracted": {
         "extractor_version": 2,
         "mode": "news_links",
         "page_title": "НАЦІОНАЛЬНА ГВАРДІЯ УКРАЇНИ - ЧЕСТЬ*МУЖНІСТЬ*ЗАКОН",
-        "filtered_text": "https://ngu.gov.ua/chergovyj-obmin-polonenymy-dodomu-povernulys-270-ukrayinskyh-vijskovyh/\tОбмін військовополоненими: додому повернулись 270 українських військових\nhttps://ngu.gov.ua/drony-bojove-bagi-ta-sluzhbovi-sobaky-gvardijczi-24-go-polku-doluchylysya-do-blagodijnogo-yarmarku-v-chernivczyah/\tДрони, бойове багі та службові собаки: гвардійці 24-го полку долучилися до благодійного ярмарку в Чернівцях\nhttps://ngu.gov.ua/govoryty-pro-vijsko-profesijno-majbutni-oficzery-ngu-vyvchayut-osnovy-mediakomunikacziyi-sogodni-oficzeru-nedostatno-lyshe-dobre-znaty-svoyu-spravu-vazhlyvo-takozh-umity-poyasnyuvaty-rishennya-dono/\tГоворити про військо професійно: майбутні офіцери НГУ вивчають основи медіакомунікації\nhttps://ngu.gov.ua/komanduvach-ngu-v-intervyu-novyny-live-pro-sytuacziyu-na-fronti-rozshyrennya-kilzony-ta-tehnologiyi-vijny-majbutnogo/\tКомандувач НГУ в інтерв’ю Новини.LIVE: про ситуацію на фронті, розширення кілзони та технології війни майбутнього\nhttps://ngu.gov.ua/naczionalna-gvardiya-ukrayiny-uklala-kontrakt-z-nimechchynoyu-na-postachannya-bpla-ta-nazemnyh-stanczij/\tНаціональна гвардія України уклала контракт з Німеччиною на постачання БпЛА та наземних станцій\nhttps://ngu.gov.ua/prezydent-vruchyv-sertyfikaty-na-otrymannya-kvartyr-gvardijczyam-geroyam-ukrayiny-ta-rodynam-poleglyh-udostoyenyh-najvyshhogo-zvannya/\tПрезидент України вручив сертифікати на отримання квартир Героям України та рідним загиблих Героїв\nhttps://ngu.gov.ua/u-ministerstvi-vnutrishnih-sprav-ukrayiny-vidbuvsya-bryfing-shhodo-podij-na-kyyivshhyni/\tУ Міністерстві внутрішніх справ України відбувся брифінг щодо подій на Київщині\nhttps://ngu.gov.ua/valentyn-ostryzhnyj-vidvidav-gvardijcziv-na-mykolayivshhyni-ta-hersonshhyni/\tВалентин Острижний відвідав гвардійців на Миколаївщині та Херсонщині\nhttps://ngu.gov.ua/valentyn-ostryzhnyj-vidvidav-poranenyh-gvardijcziv-yaki-prohodyat-likuvannya-na-odeshhyni-2/\tВалентин Острижний відвідав поранених гвардійців, які проходять лікування на Одещині\nhttps://ngu.gov.ua/varaski-gvardijczi-provely-navchalni-strilby-z-minometnoyi-systemy-alakran/\tВараські гвардійці провели навчальні стрільби з мінометної системи Alakran\nhttps://ngu.gov.ua/vid-matrosa-do-pilota-bpla-istoriya-gvardijczya-z-pozyvnym-moryak/\tВід матроса – до пілота БпЛА: історія гвардійця з позивним Моряк",
-        "content_sha256": "74be8b0320c37625462094193acf2c64a6bbb536ae2f82e48c5fc2e8d1ac75c7",
+        "filtered_text": "https://ngu.gov.ua/chergovyj-obmin-polonenymy-dodomu-povernulys-270-ukrayinskyh-vijskovyh/\tОбмін військовополоненими: додому повернулись 270 українських військових\nhttps://ngu.gov.ua/dorogamy-zhyttya-i-polyamy-smerti/\tДорогами життя і полями смерті\nhttps://ngu.gov.ua/drony-bojove-bagi-ta-sluzhbovi-sobaky-gvardijczi-24-go-polku-doluchylysya-do-blagodijnogo-yarmarku-v-chernivczyah/\tДрони, бойове багі та службові собаки: гвардійці 24-го полку долучилися до благодійного ярмарку в Чернівцях\nhttps://ngu.gov.ua/govoryty-pro-vijsko-profesijno-majbutni-oficzery-ngu-vyvchayut-osnovy-mediakomunikacziyi-sogodni-oficzeru-nedostatno-lyshe-dobre-znaty-svoyu-spravu-vazhlyvo-takozh-umity-poyasnyuvaty-rishennya-dono/\tГоворити про військо професійно: майбутні офіцери НГУ вивчають основи медіакомунікації\nhttps://ngu.gov.ua/komanduvach-ngu-v-intervyu-novyny-live-pro-sytuacziyu-na-fronti-rozshyrennya-kilzony-ta-tehnologiyi-vijny-majbutnogo/\tКомандувач НГУ в інтерв’ю Новини.LIVE: про ситуацію на фронті, розширення кілзони та технології війни майбутнього\nhttps://ngu.gov.ua/naczionalna-gvardiya-ukrayiny-uklala-kontrakt-z-nimechchynoyu-na-postachannya-bpla-ta-nazemnyh-stanczij/\tНаціональна гвардія України уклала контракт з Німеччиною на постачання БпЛА та наземних станцій\nhttps://ngu.gov.ua/prezydent-vruchyv-sertyfikaty-na-otrymannya-kvartyr-gvardijczyam-geroyam-ukrayiny-ta-rodynam-poleglyh-udostoyenyh-najvyshhogo-zvannya/\tПрезидент України вручив сертифікати на отримання квартир Героям України та рідним загиблих Героїв\nhttps://ngu.gov.ua/tvoya-krov-mozhe-ryatuvaty-zhyttya-gvardijczi-31-go-polku-doluchylysya-do-donorstva/\tТвоя кров може рятувати життя: гвардійці 31-го полку долучилися до донорства\nhttps://ngu.gov.ua/u-ministerstvi-vnutrishnih-sprav-ukrayiny-vidbuvsya-bryfing-shhodo-podij-na-kyyivshhyni/\tУ Міністерстві внутрішніх справ України відбувся брифінг щодо подій на Київщині\nhttps://ngu.gov.ua/valentyn-ostryzhnyj-vidvidav-gvardijcziv-na-mykolayivshhyni-ta-hersonshhyni/\tВалентин Острижний відвідав гвардійців на Миколаївщині та Херсонщині\nhttps://ngu.gov.ua/vid-matrosa-do-pilota-bpla-istoriya-gvardijczya-z-pozyvnym-moryak/\tВід матроса – до пілота БпЛА: історія гвардійця з позивним Моряк",
+        "content_sha256": "d6b63542718d21a4127ff8734672c78f63f58adf89006def13cde27ffac7fb2c",
         "news_links": [
           {
             "url": "https://ngu.gov.ua/chergovyj-obmin-polonenymy-dodomu-povernulys-270-ukrayinskyh-vijskovyh/",
             "title": "Обмін військовополоненими: додому повернулись 270 українських військових"
+          },
+          {
+            "url": "https://ngu.gov.ua/dorogamy-zhyttya-i-polyamy-smerti/",
+            "title": "Дорогами життя і полями смерті"
           },
           {
             "url": "https://ngu.gov.ua/drony-bojove-bagi-ta-sluzhbovi-sobaky-gvardijczi-24-go-polku-doluchylysya-do-blagodijnogo-yarmarku-v-chernivczyah/",
@@ -395,20 +417,16 @@
             "title": "Президент України вручив сертифікати на отримання квартир Героям України та рідним загиблих Героїв"
           },
           {
+            "url": "https://ngu.gov.ua/tvoya-krov-mozhe-ryatuvaty-zhyttya-gvardijczi-31-go-polku-doluchylysya-do-donorstva/",
+            "title": "Твоя кров може рятувати життя: гвардійці 31-го полку долучилися до донорства"
+          },
+          {
             "url": "https://ngu.gov.ua/u-ministerstvi-vnutrishnih-sprav-ukrayiny-vidbuvsya-bryfing-shhodo-podij-na-kyyivshhyni/",
             "title": "У Міністерстві внутрішніх справ України відбувся брифінг щодо подій на Київщині"
           },
           {
             "url": "https://ngu.gov.ua/valentyn-ostryzhnyj-vidvidav-gvardijcziv-na-mykolayivshhyni-ta-hersonshhyni/",
             "title": "Валентин Острижний відвідав гвардійців на Миколаївщині та Херсонщині"
-          },
-          {
-            "url": "https://ngu.gov.ua/valentyn-ostryzhnyj-vidvidav-poranenyh-gvardijcziv-yaki-prohodyat-likuvannya-na-odeshhyni-2/",
-            "title": "Валентин Острижний відвідав поранених гвардійців, які проходять лікування на Одещині"
-          },
-          {
-            "url": "https://ngu.gov.ua/varaski-gvardijczi-provely-navchalni-strilby-z-minometnoyi-systemy-alakran/",
-            "title": "Вараські гвардійці провели навчальні стрільби з мінометної системи Alakran"
           },
           {
             "url": "https://ngu.gov.ua/vid-matrosa-do-pilota-bpla-istoriya-gvardijczya-z-pozyvnym-moryak/",
@@ -418,22 +436,31 @@
         "keyword_match": false,
         "warning": "Filtered content or links are a review signal, not a verified new fact."
       },
-      "elapsed_seconds": 0.165,
-      "previous_snapshot": null,
-      "previous_sha256": null,
-      "new_news_links": [],
-      "event": "new_page"
+      "elapsed_seconds": 0.239,
+      "previous_snapshot": "/home/cyberdid/Projects/Social/data/raw/source_watch/20261108T080001.749114Z",
+      "previous_sha256": "ebde6c99944b468ae7dc142a307066e9cab28a6719060706a478f7c6cf044fe6",
+      "new_news_links": [
+        {
+          "url": "https://ngu.gov.ua/dorogamy-zhyttya-i-polyamy-smerti/",
+          "title": "Дорогами життя і полями смерті"
+        },
+        {
+          "url": "https://ngu.gov.ua/tvoya-krov-mozhe-ryatuvaty-zhyttya-gvardijczi-31-go-polku-doluchylysya-do-donorstva/",
+          "title": "Твоя кров може рятувати життя: гвардійці 31-го полку долучилися до донорства"
+        }
+      ],
+      "event": "filtered_change"
     },
     {
       "url": "https://ombudsman.gov.ua/news",
       "kind": "news_listing",
       "source": "fixed_official_listing",
       "rationale": "Офіційна стрічка «Новини та події» Омбудсмана.",
-      "requested_at": "2026-11-08T08:06:05.380183+00:00",
+      "requested_at": "2026-11-09T08:00:18.087609+00:00",
       "request_timeout_seconds": 20.0,
       "status": 200,
       "final_url": "https://ombudsman.gov.ua/news",
-      "sha256": "b41c786b1bc07ddb91497e576c44cc22abc75c7501a457d7df6c1f2a76ce5bd6",
+      "sha256": "0a3a33ec66a59b8b53216fb1510354d9d6bc55bba62951faa37d5bed3f092e5f",
       "content_type": "text/html; charset=UTF-8",
       "truncated": false,
       "headers": {
@@ -548,11 +575,11 @@
         "keyword_match": false,
         "warning": "Filtered content or links are a review signal, not a verified new fact."
       },
-      "elapsed_seconds": 0.549,
-      "previous_snapshot": null,
-      "previous_sha256": null,
+      "elapsed_seconds": 0.705,
+      "previous_snapshot": "/home/cyberdid/Projects/Social/data/raw/source_watch/20261108T080001.749114Z",
+      "previous_sha256": "469afab457362dfdb5caa6fdb4b51f39657947924a96f48b7b12ff168bc0c2ea",
       "new_news_links": [],
-      "event": "new_page"
+      "event": "unchanged"
     }
   ]
 }

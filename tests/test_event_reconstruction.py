@@ -300,3 +300,78 @@ def test_reconstruction_result_satisfies_versioned_schema():
     ])
     errors = list(Draft202012Validator(schema, format_checker=FormatChecker()).iter_errors(result))
     assert errors == []
+
+
+def test_physical_event_timeline_2026_11_09_artifact_verification():
+    root = Path(__file__).resolve().parents[1]
+    json_path = root / "reports/event-reconstruction/physical_event_timeline_2026-11-09.json"
+    md_path = root / "reports/event-reconstruction/physical_event_timeline_2026-11-09.md"
+    schema_path = root / "schemas/event_reconstruction.schema.json"
+
+    assert json_path.exists(), f"Missing required artifact: {json_path}"
+    assert md_path.exists(), f"Missing required artifact: {md_path}"
+
+    data = json.loads(json_path.read_text(encoding="utf-8"))
+    schema = json.loads(schema_path.read_text(encoding="utf-8"))
+
+    # Schema validity
+    errors = list(Draft202012Validator(schema, format_checker=FormatChecker()).iter_errors(data))
+    assert errors == [], f"Schema errors: {errors}"
+
+    # Physical timeline contains >= 5 events
+    physical_timeline = data["timelines"]["physical"]
+    assert len(physical_timeline) >= 5, f"Expected at least 5 physical events, got {len(physical_timeline)}"
+
+    # Required 5 episode categories verified
+    mention_ids = {row["event_mention_id"] for row in physical_timeline}
+    expected_categories = {
+        "phys_ev_01_ambulance_arrival_street",           # street confrontation
+        "phys_ev_02_building_perimeter_clash",           # building confrontation
+        "phys_ev_03_law_enforcement_arrival_bus_block",  # law enforcement arrival
+        "phys_ev_04_pyrotechnics_and_flares_escalation", # fire ignition/flares
+        "phys_ev_05_containment_and_detention",          # detention/containment
+    }
+    assert expected_categories.issubset(mention_ids), f"Missing categories from {mention_ids}"
+
+    # Verify each physical event has valid bounds and participant positions
+    physical_events = {ev["event_mention_id"]: ev for ev in data["events"] if ev["event_kind"] == "physical"}
+    for cid in expected_categories:
+        ev = physical_events[cid]
+        assert ev["event_time"]["earliest_utc"] is not None
+        assert ev["event_time"]["latest_utc"] is not None
+        assert ev["publication_time_utc"] is None, "Physical event must not use publication time"
+        assert ev["timeline_time_kind"] == "event_time"
+        assert len(ev["evidence_ids"]) >= 1
+
+        # Check participant positions in attributed_relations
+        relations = ev.get("attributed_relations", [])
+        position_relations = [r for r in relations if r.get("type") == "participant_position"]
+        assert len(position_relations) >= 1, f"Missing participant positions for {cid}"
+        confidence_relations = [r for r in relations if r.get("type") == "confidence_assessment"]
+        assert len(confidence_relations) >= 1, f"Missing confidence assessment for {cid}"
+
+    # Negative constraints (cannot_link) isolating Bucha warehouse fire
+    unresolved_constraints = data["unresolved_constraints"]
+    assert len(unresolved_constraints) >= 5
+    bucha_targets = {
+        uc["event_mention_id"]
+        for uc in unresolved_constraints
+        if uc.get("target_event_mention_id") == "phys_ev_bucha_warehouse_fire_0511"
+        and uc.get("relation") == "cannot_link"
+        and uc.get("status") == "target_not_in_input"
+    }
+    assert expected_categories.issubset(bucha_targets), f"Missing bucha isolation for {expected_categories - bucha_targets}"
+
+    # Communication timeline separation
+    communication_timeline = data["timelines"]["communication"]
+    assert len(communication_timeline) >= 1
+    for row in communication_timeline:
+        assert row["time_kind"] == "publication_time"
+        assert row["event_mention_id"] not in physical_events
+
+    # Verify Markdown report content
+    md_text = md_path.read_text(encoding="utf-8")
+    assert "# Реконструкція фізичного інциденту" in md_text
+    assert "phys_ev_01_ambulance_arrival_street" in md_text
+    assert "phys_ev_bucha_warehouse_fire_0511" in md_text
+    assert "cannot_link" in md_text

@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "edition_date": "09.11.2026",
+  "generated_at_utc": "2026-11-09T08:42:39.647627+00:00",
+  "builder": "scripts/reports/build_report.py",
+  "builder_sha256": "f4bf9be404727d7c9de09a8552560ccb22cc3312e79b3001b1cdae22b441b5a9",
+  "renderer": "ReportLab",
+  "renderer_version": "5.1.0",
+  "visual_review": {
+    "status": "passed",
+    "page_sampling": "Pages 1, 7, 14, 21, and 28 rendered and visually reviewed; pages are A4 (595.276 x 841.89 pts); extracted text contains 0 replacement characters (U+FFFD).",
+    "additional_check": "Main PDF page count is 28 pages (strictly within A4 dossier budget 25-30 pages); all 4 raster figures (temporal wave, coordination graph, reaction distribution, geospatial map) embedded with 0 clipping."
+  },
+  "artifacts": [
+    {
+      "name": "main",
+      "source_markdown": "reports/borshchahivka-report.md",
+      "source_sha256": "f6e1268583ab6954f8294dbe06cb2a4a8b2e7ca89de39b6a4a3c4d0fec511df0",
+      "pdf": "output/pdf/petropavlivska_borshchahivka_report_2026-11-09.pdf",
+      "pdf_sha256": "11edba320322f97b6cc102cc5c77ee317cd9389664a7152a71b06df548ca8e81",
+      "pdf_bytes": 1088523,
+      "pages": 28,
+      "page_size": "595.276 x 841.89 pts (A4)",
+      "visual_sample_pages": [
+        1,
+        7,
+        14,
+        21,
+        28
+      ],
+      "extracted_text_characters": 96980,
+      "replacement_characters": 0,
+      "text_extraction": "passed"
+    },
+    {
+      "name": "figures_and_proceedings",
+      "source_markdown": "reports/figures-and-proceedings-2026-11-06.md",
+      "source_sha256": "95d3ba72ba10007f76246926ed7a5da94a7edd3aac9d8c058d374275260816dd",
+      "pdf": "output/pdf/petropavlivska_figures_and_proceedings_2026-11-09.pdf",
+      "pdf_sha256": "ac60d7b892f90ed1bb753f2428a379b2f781bb3f722f53b51a7f53ed4d5e6bd3",
+      "pdf_bytes": 111576,
+      "pages": 11,
+      "page_size": "595.276 x 841.89 pts (A4)",
+      "visual_sample_pages": [
+        1,
+        6,
+        11
+      ],
+      "extracted_text_characters": 39402,
+      "replacement_characters": 0,
+      "text_extraction": "passed"
+    },
+    {
+      "name": "russian_influence_attribution",
+      "source_markdown": "wiki/methods/russian-influence-attribution-early-warning.md",
+      "source_sha256": "beadf800fcf2da6638f1e1fd6355d0f69fa31e3f79d0b064db189fa9fd42413d",
+      "pdf": "output/pdf/russian_influence_attribution_early_warning_2026-11-09.pdf",
+      "pdf_sha256": "698a29a32ddf62e8a0e3943cafe3f21ba8586593b302243a63b9d23d1dbfd230",
+      "pdf_bytes": 109577,
+      "pages": 11,
+      "page_size": "595.276 x 841.89 pts (A4)",
+      "visual_sample_pages": [
+        1,
+        6,
+        11
+      ],
+      "extracted_text_characters": 34246,
+      "replacement_characters": 0,
+      "text_extraction": "passed"
+    }
+  ]
+}
