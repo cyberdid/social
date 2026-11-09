@@ -254,7 +254,7 @@ SOURCES = {
 "D11":("Telegram: граф видимих форвардів, betweenness, міжгрупові переходи та шестигодинні тематичні мітки.","#local-data"),
 "D12":("Instagram: 199 shortcode, 119 оцінених часів у вікні; технічна помилка нового браузерного доступу.","#local-data"),
 "D13":("Щоденний моніторинг джерел: manifest стабільного baseline extractor v2 для 12 адрес.","#local-data"),
-"M1":("Матриця верифікації 25 ядерних тверджень: 21 підтверджено, 4 спростовано, точні посимвольні діапазони цитат (Track 1, GATE-01).","reports/evidence-verification/core_claims_verification_2026-11-09.json"),
+"M1":("Матриця верифікації 25 ядерних тверджень: 19 підтверджено, 2 спростовано, 4 недостатньо доказів, точні посимвольні діапазони цитат (Track 1, GATE-01).","reports/evidence-verification/core_claims_verification_2026-11-09.json"),
 "M2":("Реконструкція фізичного інциденту: 5 фізичних епізодів, локація A vs B та негативні обмеження cannot_link (Track 2, GATE-02).","reports/event-reconstruction/physical_event_timeline_2026-11-09.json"),
 "M3":("Калібрувальний бенчмарк ASR: 18 аудіокліпів у 4 стратах, метрики WER 41.6% / CER 20.7% та 607 розкодованих відео (Track 3, GATE-03).","reports/video-pipeline/asr_calibration_benchmark_2026-11-09.json"),
 "M4":("Матриця версіонування корпусів: 1408 vs 1438, виключення kiber_boroshno та аудит Source Watch (Track 4, GATE-04).","reports/provenance/lineage_manifest_2026-11-09.json"),

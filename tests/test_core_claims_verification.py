@@ -32,7 +32,7 @@ def test_core_claims_verification_schema_and_quantities():
     with open(JSON_REPORT, encoding="utf-8") as f:
         data = json.load(f)
 
-    assert data["schema_version"] == "2.0"
+    assert data["schema_version"] == "2.1"
     assert data["track"] == "Track 1: Core Claims & Evidence Verification"
     assert data["milestone"] == "M1"
 
@@ -40,18 +40,21 @@ def test_core_claims_verification_schema_and_quantities():
     # Requirement: 20-30 claims
     assert 20 <= summary["total_claims"] <= 30
     assert summary["total_claims"] == 25
-    assert summary["supported_within_scope"] == 21
-    assert summary["refuted_within_scope"] == 4
+    assert summary["supported_within_scope"] == 19
+    assert summary["refuted_within_scope"] == 2
+    assert summary["insufficient_evidence"] == 4
     assert summary["unverified"] == 0
     assert summary["total_accepted_assessments"] >= 25
     assert summary["exact_character_offsets_verified"] is True
+    assert summary["acceptance_basis"] == "validated_rule"
+    assert summary["assessor_id"] == "autonomous_claims_verifier"
 
     # 4 distinct deterministic relations present
     relations = summary["relations_distribution"]
-    assert relations["supports"] >= 20
-    assert relations["contradicts"] >= 4
+    assert relations["supports"] >= 19
+    assert relations["contradicts"] >= 2
     assert relations["rebuts"] >= 1
-    assert relations["contextualizes"] >= 1
+    assert relations["contextualizes"] >= 4
 
 
 def test_core_claims_locators_and_exact_passage_offsets():
@@ -65,15 +68,17 @@ def test_core_claims_locators_and_exact_passage_offsets():
         cid = claim["claim_id"]
         vr = item["verification_result"]
 
-        assert vr["status"] in {"supported_within_scope", "refuted_within_scope"}
+        assert vr["status"] in {"supported_within_scope", "refuted_within_scope", "insufficient_evidence"}
         assert vr["search_complete"] is True
         assert vr["minimum_independent_roots"] == 1
-        assert len(vr["assessment_ids"]) >= 1
+        if vr["status"] in {"supported_within_scope", "refuted_within_scope"}:
+            assert len(vr["assessment_ids"]) >= 1
+        assert len(item["assessments"]) >= 1
 
         for ass in item["assessments"]:
             assert ass["decision"] == "accepted"
-            assert ass["assessor_id"] == "worker_claims_evidence"
-            assert ass["assessment_source"] == "human_adjudication"
+            assert ass["assessor_id"] == "autonomous_claims_verifier"
+            assert ass["assessment_source"] == "validated_rule"
             assert ass["independence_status"] == "confirmed_independent"
 
             cit = ass["citation"]
@@ -120,10 +125,9 @@ def test_core_claims_numeric_consistency():
     assert claims_by_id["claim_core_10_npu_27_active"]["key_values"] == {
         "active_participants_count": {"value": 27, "operator": "eq"}
     }
-    # Ladyka 59 days custody, 22 years old
+    # Ladyka 59 days custody
     assert claims_by_id["claim_core_11_court_ladyka_custody"]["key_values"] == {
-        "custody_days_count": {"value": 59, "operator": "eq"},
-        "person_age_years": {"value": 22, "operator": "eq"},
+        "custody_days_count": {"value": 59, "operator": "eq"}
     }
     # Ladyka 66560 bail
     assert claims_by_id["claim_core_12_court_ladyka_bail"]["key_values"] == {

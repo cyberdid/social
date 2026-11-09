@@ -65,8 +65,9 @@ def get_raw_event_mentions() -> list[dict]:
                 },
                 {
                     "type": "confidence_assessment",
-                    "confidence_level": "high",
-                    "confidence_score": 0.92,
+                    "confidence_tier": "corroborated_multi_source",
+                    "confidence_level": "corroborated_multi_source",
+                    "confidence_score": 0.80,
                     "basis": "Офіційне повідомлення ГУНП в Київській області (дзвінок медиків приватної швидкої) та судові матеріали",
                 },
             ],
@@ -114,8 +115,9 @@ def get_raw_event_mentions() -> list[dict]:
                 },
                 {
                     "type": "confidence_assessment",
-                    "confidence_level": "high",
-                    "confidence_score": 0.94,
+                    "confidence_tier": "corroborated_multi_source",
+                    "confidence_level": "corroborated_multi_source",
+                    "confidence_score": 0.80,
                     "basis": "Брифінг керівництва МВС / командувача НГУ Півненка та матеріали судового засідання щодо Паршонкова",
                 },
             ],
@@ -170,8 +172,9 @@ def get_raw_event_mentions() -> list[dict]:
                 },
                 {
                     "type": "confidence_assessment",
-                    "confidence_level": "high",
-                    "confidence_score": 0.96,
+                    "confidence_tier": "official_proceedings",
+                    "confidence_level": "official_proceedings",
+                    "confidence_score": 0.90,
                     "basis": "Судова ухвала Солом'янського райсуду м. Києва щодо Ладики (ч. 1 ст. 114-1 ККУ), трансляція 24 каналу",
                 },
             ],
@@ -225,8 +228,9 @@ def get_raw_event_mentions() -> list[dict]:
                 },
                 {
                     "type": "confidence_assessment",
-                    "confidence_level": "high",
-                    "confidence_score": 0.91,
+                    "confidence_tier": "corroborated_multi_source",
+                    "confidence_level": "corroborated_multi_source",
+                    "confidence_score": 0.80,
                     "basis": "Синхронізовані Telegram-відеозаписи фаєрів о 18:08 UTC та офіційне повідомлення НГУ про отруєння чадним димом 4 бійців",
                 },
             ],
@@ -241,11 +245,11 @@ def get_raw_event_mentions() -> list[dict]:
             "time": {
                 "kind": "physical_interval",
                 "earliest_utc": "2026-11-02T20:30:00Z",
-                "latest_utc": "2026-11-02T23:59:59Z",
-                "precision": "hour",
+                "latest_utc": "2026-11-03T00:30:00Z",
+                "precision": "approximate_window",
                 "anchor_evidence_ids": ["passage_8c536c4bdffbe59705f39e03a13ca169104a6c2bbc88bb1178ea745cdb792e24"],
                 "timezone_basis": "Europe/Kyiv",
-                "raw_value": "Ніч з 2 на 3 листопада 2026 року, 22:30–02:00 за київським часом",
+                "raw_value": "Ніч з 2 на 3 листопада 2026 року, 22:30–02:30 за київським часом (приблизне часове вікно)",
             },
             "publication_time_utc": None,
             "evidence_ids": [
@@ -275,8 +279,9 @@ def get_raw_event_mentions() -> list[dict]:
                 },
                 {
                     "type": "confidence_assessment",
-                    "confidence_level": "high",
-                    "confidence_score": 0.95,
+                    "confidence_tier": "official_proceedings",
+                    "confidence_level": "official_proceedings",
+                    "confidence_score": 0.90,
                     "basis": "Офіційний пресреліз НГУ, брифінг МВС та судові рішення про затримання",
                 },
             ],
@@ -416,7 +421,7 @@ def generate_markdown_report(result: dict) -> str:
         conf = "high (0.90+)"
         for rel in ev.get("attributed_relations", []):
             if rel.get("type") == "confidence_assessment":
-                conf = f"{rel.get('confidence_level')} ({rel.get('confidence_score')})"
+                conf = f"{rel.get('confidence_tier', rel.get('confidence_level'))} ({rel.get('confidence_score')})"
         lines.append(
             f"| **Епізод {idx}** | `{row['event_mention_id']}` | `{row['earliest_utc']}` … `{row['latest_utc']}` | {time_info.get('raw_value')} | `{ev.get('place_id')}` | **{conf}** |"
         )
@@ -456,7 +461,8 @@ def generate_markdown_report(result: dict) -> str:
 
         for rel in ev.get("attributed_relations", []):
             if rel.get("type") == "confidence_assessment":
-                lines.append(f"- **Оцінка достовірності:** `{rel.get('confidence_level')}` (бал: `{rel.get('confidence_score')}`) — *{rel.get('basis')}*")
+                tier_str = rel.get("confidence_tier", rel.get("confidence_level"))
+                lines.append(f"- **Оцінка достовірності:** `{tier_str}` (бал: `{rel.get('confidence_score')}`) — *{rel.get('basis')}*")
 
         lines.append(f"- **Негативні обмеження (`cannot_link`):** {', '.join(f'`{c}`' for c in ev['cannot_link_event_mention_ids'])}")
         lines.append("")

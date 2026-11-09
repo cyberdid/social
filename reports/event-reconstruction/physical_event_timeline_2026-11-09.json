@@ -28,8 +28,9 @@
         },
         {
           "basis": "Офіційне повідомлення ГУНП в Київській області (дзвінок медиків приватної швидкої) та судові матеріали",
-          "confidence_level": "high",
-          "confidence_score": 0.92,
+          "confidence_level": "corroborated_multi_source",
+          "confidence_score": 0.8,
+          "confidence_tier": "corroborated_multi_source",
           "type": "confidence_assessment"
         }
       ],
@@ -103,8 +104,9 @@
         },
         {
           "basis": "Брифінг керівництва МВС / командувача НГУ Півненка та матеріали судового засідання щодо Паршонкова",
-          "confidence_level": "high",
-          "confidence_score": 0.94,
+          "confidence_level": "corroborated_multi_source",
+          "confidence_score": 0.8,
+          "confidence_tier": "corroborated_multi_source",
           "type": "confidence_assessment"
         }
       ],
@@ -187,8 +189,9 @@
         },
         {
           "basis": "Судова ухвала Солом'янського райсуду м. Києва щодо Ладики (ч. 1 ст. 114-1 ККУ), трансляція 24 каналу",
-          "confidence_level": "high",
-          "confidence_score": 0.96,
+          "confidence_level": "official_proceedings",
+          "confidence_score": 0.9,
+          "confidence_tier": "official_proceedings",
           "type": "confidence_assessment"
         }
       ],
@@ -269,8 +272,9 @@
         },
         {
           "basis": "Синхронізовані Telegram-відеозаписи фаєрів о 18:08 UTC та офіційне повідомлення НГУ про отруєння чадним димом 4 бійців",
-          "confidence_level": "high",
-          "confidence_score": 0.91,
+          "confidence_level": "corroborated_multi_source",
+          "confidence_score": 0.8,
+          "confidence_tier": "corroborated_multi_source",
           "type": "confidence_assessment"
         }
       ],
@@ -344,8 +348,9 @@
         },
         {
           "basis": "Офіційний пресреліз НГУ, брифінг МВС та судові рішення про затримання",
-          "confidence_level": "high",
-          "confidence_score": 0.95,
+          "confidence_level": "official_proceedings",
+          "confidence_score": 0.9,
+          "confidence_tier": "official_proceedings",
           "type": "confidence_assessment"
         }
       ],
@@ -362,9 +367,9 @@
         ],
         "earliest_utc": "2026-11-02T20:30:00Z",
         "kind": "physical_interval",
-        "latest_utc": "2026-11-02T23:59:59Z",
-        "precision": "hour",
-        "raw_value": "Ніч з 2 на 3 листопада 2026 року, 22:30–02:00 за київським часом",
+        "latest_utc": "2026-11-03T00:30:00Z",
+        "precision": "approximate_window",
+        "raw_value": "Ніч з 2 на 3 листопада 2026 року, 22:30–02:30 за київським часом (приблизне часове вікно)",
         "status": "bounded",
         "timezone_basis": "Europe/Kyiv"
       },
@@ -913,7 +918,7 @@
           "passage_8c536c4bdffbe59705f39e03a13ca169104a6c2bbc88bb1178ea745cdb792e24",
           "passage_b1befbee74f5d623e709a2c4c2b36f723c1d6bd107411b2884e94812acfa3374"
         ],
-        "latest_utc": "2026-11-02T23:59:59Z",
+        "latest_utc": "2026-11-03T00:30:00Z",
         "time_kind": "event_time"
       }
     ]

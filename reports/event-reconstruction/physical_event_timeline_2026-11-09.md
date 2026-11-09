@@ -27,11 +27,11 @@
 
 | № | Ідентифікатор | Часовий інтервал (UTC) | Київський час | Локація | Рівень впевненості |
 |---|---|---|---|---|---|
-| **Епізод 1** | `phys_ev_01_ambulance_arrival_street` | `2026-11-02T09:00:00Z` … `2026-11-02T10:40:00Z` | Ранок 2 листопада 2026 року, орієнтовно 11:00–12:40 за київським часом (до появи перших повідомлень у соцмережах) | `place:petropavlivska_borshchahivka_street` | **high (0.92)** |
-| **Епізод 2** | `phys_ev_02_building_perimeter_clash` | `2026-11-02T11:00:00Z` … `2026-11-02T15:30:00Z` | День 2 листопада 2026 року, 13:00–17:30 за київським часом | `place:petropavlivska_borshchahivka_building` | **high (0.94)** |
-| **Епізод 3** | `phys_ev_03_law_enforcement_arrival_bus_block` | `2026-11-02T14:30:00Z` … `2026-11-02T18:00:00Z` | Друга половина дня 2 листопада 2026 року, 16:30–20:00 за київським часом | `place:petropavlivska_borshchahivka_building` | **high (0.96)** |
-| **Епізод 4** | `phys_ev_04_pyrotechnics_and_flares_escalation` | `2026-11-02T18:00:00Z` … `2026-11-02T20:30:00Z` | Вечір 2 листопада 2026 року, 20:00–22:30 за київським часом | `place:petropavlivska_borshchahivka_building` | **high (0.91)** |
-| **Епізод 5** | `phys_ev_05_containment_and_detention` | `2026-11-02T20:30:00Z` … `2026-11-02T23:59:59Z` | Ніч з 2 на 3 листопада 2026 року, 22:30–02:00 за київським часом | `place:petropavlivska_borshchahivka_building` | **high (0.95)** |
+| **Епізод 1** | `phys_ev_01_ambulance_arrival_street` | `2026-11-02T09:00:00Z` … `2026-11-02T10:40:00Z` | Ранок 2 листопада 2026 року, орієнтовно 11:00–12:40 за київським часом (до появи перших повідомлень у соцмережах) | `place:petropavlivska_borshchahivka_street` | **corroborated_multi_source (0.8)** |
+| **Епізод 2** | `phys_ev_02_building_perimeter_clash` | `2026-11-02T11:00:00Z` … `2026-11-02T15:30:00Z` | День 2 листопада 2026 року, 13:00–17:30 за київським часом | `place:petropavlivska_borshchahivka_building` | **corroborated_multi_source (0.8)** |
+| **Епізод 3** | `phys_ev_03_law_enforcement_arrival_bus_block` | `2026-11-02T14:30:00Z` … `2026-11-02T18:00:00Z` | Друга половина дня 2 листопада 2026 року, 16:30–20:00 за київським часом | `place:petropavlivska_borshchahivka_building` | **official_proceedings (0.9)** |
+| **Епізод 4** | `phys_ev_04_pyrotechnics_and_flares_escalation` | `2026-11-02T18:00:00Z` … `2026-11-02T20:30:00Z` | Вечір 2 листопада 2026 року, 20:00–22:30 за київським часом | `place:petropavlivska_borshchahivka_building` | **corroborated_multi_source (0.8)** |
+| **Епізод 5** | `phys_ev_05_containment_and_detention` | `2026-11-02T20:30:00Z` … `2026-11-03T00:30:00Z` | Ніч з 2 на 3 листопада 2026 року, 22:30–02:30 за київським часом (приблизне часове вікно) | `place:petropavlivska_borshchahivka_building` | **official_proceedings (0.9)** |
 
 ---
 
@@ -53,7 +53,7 @@
 - **Просторові позиції учасників (Participant Positions):**
   - *Зона `outside_street`:* `person:valentyna_moloda`, `person:viktor_yena`, `vehicle:ambulance_med_prestige` (впевненість: `high`)
   - *Зона `inside_building`:* `group:ngu_servicemembers_26` (впевненість: `high`)
-- **Оцінка достовірності:** `high` (бал: `0.92`) — *Офіційне повідомлення ГУНП в Київській області (дзвінок медиків приватної швидкої) та судові матеріали*
+- **Оцінка достовірності:** `corroborated_multi_source` (бал: `0.8`) — *Офіційне повідомлення ГУНП в Київській області (дзвінок медиків приватної швидкої) та судові матеріали*
 - **Негативні обмеження (`cannot_link`):** `phys_ev_05_containment_and_detention`, `phys_ev_bucha_warehouse_fire_0511`
 
 ### 3.2. Епізод 2: Сутички біля огорожі та приміщення тимчасового пункту розміщення НГУ, спроби силового проникнення та пошкодження майна
@@ -72,7 +72,7 @@
 - **Просторові позиції учасників (Participant Positions):**
   - *Зона `perimeter_fence`:* `group:protesters_crowd`, `person:ivan_parshonkov` (впевненість: `high`)
   - *Зона `inside_building`:* `group:ngu_servicemembers_26` (впевненість: `high`)
-- **Оцінка достовірності:** `high` (бал: `0.94`) — *Брифінг керівництва МВС / командувача НГУ Півненка та матеріали судового засідання щодо Паршонкова*
+- **Оцінка достовірності:** `corroborated_multi_source` (бал: `0.8`) — *Брифінг керівництва МВС / командувача НГУ Півненка та матеріали судового засідання щодо Паршонкова*
 - **Негативні обмеження (`cannot_link`):** `phys_ev_bucha_warehouse_fire_0511`
 
 ### 3.3. Епізод 3: Прибуття підрозділів поліції та Нацгвардії на місце події, оточення території та блокування натовпом службового автобуса з військовослужбовцями
@@ -92,7 +92,7 @@
   - *Зона `street_cordon`:* `org:national_police_kyiv`, `org:national_guard_ukraine` (впевненість: `high`)
   - *Зона `around_service_bus`:* `person:valeria_ladyka`, `group:protesters_crowd` (впевненість: `high`)
   - *Зона `inside_bus`:* `group:ngu_servicemembers_26` (впевненість: `high`)
-- **Оцінка достовірності:** `high` (бал: `0.96`) — *Судова ухвала Солом'янського райсуду м. Києва щодо Ладики (ч. 1 ст. 114-1 ККУ), трансляція 24 каналу*
+- **Оцінка достовірності:** `official_proceedings` (бал: `0.9`) — *Судова ухвала Солом'янського райсуду м. Києва щодо Ладики (ч. 1 ст. 114-1 ККУ), трансляція 24 каналу*
 - **Негативні обмеження (`cannot_link`):** `phys_ev_bucha_warehouse_fire_0511`
 
 ### 3.4. Епізод 4: Застосування піротехнічних засобів, запалювання фаєрів та задимлення біля будівлі під час вечірньої ескалації конфлікту
@@ -112,15 +112,15 @@
   - *Зона `perimeter_and_street`:* `group:protesters_crowd` (впевненість: `high`)
   - *Зона `defensive_line`:* `org:national_police_kyiv`, `org:national_guard_ukraine` (впевненість: `high`)
   - *Зона `inside_building`:* `group:ngu_servicemembers_26` (впевненість: `high`)
-- **Оцінка достовірності:** `high` (бал: `0.91`) — *Синхронізовані Telegram-відеозаписи фаєрів о 18:08 UTC та офіційне повідомлення НГУ про отруєння чадним димом 4 бійців*
+- **Оцінка достовірності:** `corroborated_multi_source` (бал: `0.8`) — *Синхронізовані Telegram-відеозаписи фаєрів о 18:08 UTC та офіційне повідомлення НГУ про отруєння чадним димом 4 бійців*
 - **Негативні обмеження (`cannot_link`):** `phys_ev_bucha_warehouse_fire_0511`
 
 ### 3.5. Епізод 5: Локалізація конфлікту зведеними силами правоохоронців, розблокування проїзду, евакуація військовослужбовців та затримання активних правопорушників
 
 - **Event Mention ID:** `phys_ev_05_containment_and_detention` (Event ID: `event:phys_ev_05_containment_and_detention`)
 - **Тип події:** `physical`
-- **Часовий інтервал (UTC):** `2026-11-02T20:30:00Z` — `2026-11-02T23:59:59Z` (точність: `hour`)
-- **Локальний час (Europe/Kyiv):** Ніч з 2 на 3 листопада 2026 року, 22:30–02:00 за київським часом
+- **Часовий інтервал (UTC):** `2026-11-02T20:30:00Z` — `2026-11-03T00:30:00Z` (точність: `approximate_window`)
+- **Локальний час (Europe/Kyiv):** Ніч з 2 на 3 листопада 2026 року, 22:30–02:30 за київським часом (приблизне часове вікно)
 - **Локація:** `place:petropavlivska_borshchahivka_building`
 - **Дійові особи (Actors):** `org:national_guard_ukraine`, `org:national_police_kyiv`
 - **Об'єкти (Objects):** `group:ngu_servicemembers_26`, `person:valentyna_moloda`
@@ -131,7 +131,7 @@
 - **Просторові позиції учасників (Participant Positions):**
   - *Зона `building_exit_corridor`:* `group:ngu_servicemembers_26`, `org:national_guard_ukraine` (впевненість: `high`)
   - *Зона `street_detention_sector`:* `org:national_police_kyiv`, `person:valentyna_moloda` (впевненість: `high`)
-- **Оцінка достовірності:** `high` (бал: `0.95`) — *Офіційний пресреліз НГУ, брифінг МВС та судові рішення про затримання*
+- **Оцінка достовірності:** `official_proceedings` (бал: `0.9`) — *Офіційний пресреліз НГУ, брифінг МВС та судові рішення про затримання*
 - **Негативні обмеження (`cannot_link`):** `phys_ev_01_ambulance_arrival_street`, `phys_ev_bucha_warehouse_fire_0511`
 
 ---

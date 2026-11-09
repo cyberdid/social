@@ -1,23 +1,27 @@
 {
-  "schema_version": "2.0",
+  "schema_version": "2.1",
   "generated_at_utc": "2026-11-09T08:00:00Z",
   "track": "Track 1: Core Claims & Evidence Verification",
   "milestone": "M1",
-  "owner": "worker_claims_evidence",
+  "owner": "autonomous_claims_verifier",
   "summary": {
     "total_claims": 25,
-    "supported_within_scope": 21,
-    "refuted_within_scope": 4,
+    "supported_within_scope": 19,
+    "refuted_within_scope": 2,
+    "insufficient_evidence": 4,
+    "conflicting_evidence": 0,
     "unverified": 0,
-    "total_accepted_assessments": 31,
+    "total_accepted_assessments": 27,
     "relations_distribution": {
-      "supports": 21,
-      "contradicts": 4,
-      "rebuts": 2,
-      "contextualizes": 4
+      "supports": 20,
+      "contradicts": 2,
+      "rebuts": 1,
+      "contextualizes": 4,
+      "insufficient_context": 0
     },
-    "acceptance_basis": "human_adjudication",
-    "assessor_id": "worker_claims_evidence",
+    "acceptance_basis": "validated_rule",
+    "assessor_id": "autonomous_claims_verifier",
+    "validated_rule_id": "rule_autonomous_claim_matcher_v1",
     "exact_character_offsets_verified": true
   },
   "passages": [
@@ -319,7 +323,7 @@
       "passage_id": "psg_padla_tck_fire_prediction",
       "source_id": "src_telegram_padla_tck",
       "source_uri": "https://t.me/padla_tck/38019",
-      "artifact_id": "artifact_data_processed_geographic_fire_candidates_jsonl",
+      "artifact_id": "artifact_data_processed_geographic_fire_candidates_jsonl_line_5",
       "artifact_sha256": "c1522ea4407eb2bd2358c1abf7188c7be45b4d01ef3b63e8a07c3abaaff974ec",
       "captured_at_utc": "2026-11-05T10:10:44Z",
       "text": "От я ні разу не здивуюсь, якщо зараз ще й будівля спалахне разом з закатованими людьми,  щоб не було де шукати докази.",
@@ -332,13 +336,13 @@
     {
       "passage_id": "psg_bucha_warehouse_fire",
       "source_id": "src_kyiv_ova_fire",
-      "source_uri": "https://t.me/antikor/128941",
-      "artifact_id": "artifact_data_processed_geographic_fire_candidates_jsonl",
-      "artifact_sha256": "c1522ea4407eb2bd2358c1abf7188c7be45b4d01ef3b63e8a07c3abaaff974ec",
-      "captured_at_utc": "2026-11-05T10:11:54Z",
-      "text": "У Софіївській Борщагівці виникла масштабна пожежа на складському об'єкті внаслідок атаки БпЛА",
-      "artifact_start_offset": 25637,
-      "artifact_end_offset": 25730,
+      "source_uri": "https://koda.gov.ua/operatyvna-informacziya-shhodo-likvidacziyi-naslidkiv-vorozhoyi-ataky-bpla-u-buchanskomu-rajoni-05-11-2026/",
+      "artifact_id": "artifact_data_raw_official_bulletins_kyiv_ova_fire_20261105_txt",
+      "artifact_sha256": "19546490ae8b865518b88647da29a155ecc15ee9d9c5d7da433768d11cf621ed",
+      "captured_at_utc": "2026-11-05T06:00:00Z",
+      "text": "У ніч на 5 листопада 2026 року внаслідок ворожої атаки дронів-камікадзе типу «Шахед» у Софіївській Борщагівці виникла масштабна пожежа на складському об'єкті",
+      "artifact_start_offset": 162,
+      "artifact_end_offset": 319,
       "offset_unit": "unicode_codepoint",
       "independent_root_id": "root_kyiv_ova_official",
       "lineage_family_id": "family_kyiv_regional_official"
@@ -394,19 +398,14 @@
           "40 заручників Петропавлівська Борщагівка"
         ],
         "primary_passage_id": "psg_ngu_hostages_40_refuted",
-        "expected_relation": "contradicts",
-        "target_status": "refuted_within_scope",
         "counter_passage_ids": [
-          [
-            "psg_mvs_26_occupants",
-            "rebuts"
-          ]
+          "psg_mvs_26_occupants"
         ],
-        "rationale": "Офіційні матеріали НГУ та Нацполіції прямо спростували повідомлення про утримання 40 осіб; МВС заявило про перебування 26 осіб загалом."
+        "rationale": "Офіційні матеріали НГУ та Нацполіції прямо спростували повідомлення про утримання 40 осіб; МВС заявило про перебування 26 осіб загалом (спростування в межах офіційних заяв правоохоронців)."
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:6c56d5330f6ff198163ffd8a",
+        "result_id": "verification:b7648208f022b513d810297a",
         "claim_id": "claim_core_01_hostages_40",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
@@ -427,47 +426,11 @@
         "independent_contradiction_roots": 1,
         "minimum_independent_roots": 1,
         "assessment_ids": [
-          "assessment:c970682e363ce31758b827ee"
+          "assessment:303686d6fee2d404e37d8510"
         ],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:068a4c00d1e1552bd8e96b32",
-            "claim_id": "claim_core_01_hostages_40",
-            "candidate_id": "candidate:73232849f7f8f6fa3286f54c",
-            "evidence_id": "psg_mvs_26_occupants",
-            "source_id": "src_mvs_briefing",
-            "relation": "rebuts",
-            "decision": "accepted",
-            "scope": {
-              "incident": "petropavlivska-borshchahivka",
-              "type": "physical_fact",
-              "topic": "hostages_count"
-            },
-            "scope_matches_claim": true,
-            "asserted_values": {},
-            "independent_root_id": "root_mvs_official",
-            "independence_status": "confirmed_independent",
-            "assessment_source": "human_adjudication",
-            "assessor_id": "worker_claims_evidence",
-            "validated_rule_id": null,
-            "assessed_at_utc": "2026-11-08T08:10:00Z",
-            "citation": {
-              "passage_id": "psg_mvs_26_occupants",
-              "start_offset": 10,
-              "end_offset": 39,
-              "quote": "приміщенні перебували 26 осіб",
-              "offset_unit": "unicode_codepoint",
-              "artifact_id": "artifact_sw_20261108T080001_4",
-              "artifact_start_offset": 3536,
-              "artifact_end_offset": 3565,
-              "source_uri": "https://mvs.gov.ua/news/u-ministerstvi-vnutrisnix-sprav-ukrayini-vidbuvsia-brifing-shhodo-podii-na-kiyivshhini"
-            },
-            "reasons": [],
-            "included_in_verification": false,
-            "exclusion_reason": "non_verdict_relation"
-          },
-          {
-            "assessment_id": "assessment:c970682e363ce31758b827ee",
+            "assessment_id": "assessment:303686d6fee2d404e37d8510",
             "claim_id": "claim_core_01_hostages_40",
             "candidate_id": "candidate:f61deb46c884e96e6af3fe5e",
             "evidence_id": "psg_ngu_hostages_40_refuted",
@@ -480,17 +443,12 @@
               "topic": "hostages_count"
             },
             "scope_matches_claim": true,
-            "asserted_values": {
-              "hostages_count": {
-                "value": 40,
-                "operator": "eq"
-              }
-            },
+            "asserted_values": {},
             "independent_root_id": "root_ngu_official",
             "independence_status": "confirmed_independent",
-            "assessment_source": "human_adjudication",
-            "assessor_id": "worker_claims_evidence",
-            "validated_rule_id": null,
+            "assessment_source": "validated_rule",
+            "assessor_id": "autonomous_claims_verifier",
+            "validated_rule_id": "rule_autonomous_claim_matcher_v1",
             "assessed_at_utc": "2026-11-08T08:10:00Z",
             "citation": {
               "passage_id": "psg_ngu_hostages_40_refuted",
@@ -508,15 +466,8 @@
             "exclusion_reason": null
           }
         ],
-        "excluded_assessments": [
-          {
-            "assessment_id": "assessment:068a4c00d1e1552bd8e96b32",
-            "reason": "non_verdict_relation"
-          }
-        ],
-        "excluded_assessment_ids": [
-          "assessment:068a4c00d1e1552bd8e96b32"
-        ],
+        "excluded_assessments": [],
+        "excluded_assessment_ids": [],
         "supersedes": null,
         "rationale": "Accepted, scope-matched contradictory evidence from 1 explicit roots meets threshold 1; no independent support root was accepted.",
         "limitations": [
@@ -541,17 +492,12 @@
             "topic": "hostages_count"
           },
           "scope_matches_claim": true,
-          "asserted_values": {
-            "hostages_count": {
-              "value": 40,
-              "operator": "eq"
-            }
-          },
+          "asserted_values": {},
           "independent_root_id": "root_ngu_official",
           "independence_status": "confirmed_independent",
-          "assessment_source": "human_adjudication",
-          "assessor_id": "worker_claims_evidence",
-          "validated_rule_id": null,
+          "assessment_source": "validated_rule",
+          "assessor_id": "autonomous_claims_verifier",
+          "validated_rule_id": "rule_autonomous_claim_matcher_v1",
           "assessed_at_utc": "2026-11-08T08:10:00Z",
           "citation": {
             "passage_id": "psg_ngu_hostages_40_refuted",
@@ -566,52 +512,14 @@
           },
           "reasons": [],
           "limitations": [
-            "Assessed against captured official and verified journalistic artifacts.",
+            "Assessed autonomously against captured official and verified journalistic artifacts.",
             "Artifact ID: artifact_sw_20261108T080001_5, exact offset span: [37:67].",
+            "Official source directly disputed or refuted proposition (cues: спростувала).",
+            "Refutation derived within the scope of official law enforcement statements.",
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:c970682e363ce31758b827ee"
-        },
-        {
-          "schema_version": "1.0",
-          "claim_id": "claim_core_01_hostages_40",
-          "candidate_id": "candidate:73232849f7f8f6fa3286f54c",
-          "evidence_id": "psg_mvs_26_occupants",
-          "source_id": "src_mvs_briefing",
-          "relation": "rebuts",
-          "decision": "accepted",
-          "scope": {
-            "incident": "petropavlivska-borshchahivka",
-            "type": "physical_fact",
-            "topic": "hostages_count"
-          },
-          "scope_matches_claim": true,
-          "asserted_values": {},
-          "independent_root_id": "root_mvs_official",
-          "independence_status": "confirmed_independent",
-          "assessment_source": "human_adjudication",
-          "assessor_id": "worker_claims_evidence",
-          "validated_rule_id": null,
-          "assessed_at_utc": "2026-11-08T08:10:00Z",
-          "citation": {
-            "passage_id": "psg_mvs_26_occupants",
-            "start_offset": 10,
-            "end_offset": 39,
-            "quote": "приміщенні перебували 26 осіб",
-            "offset_unit": "unicode_codepoint",
-            "artifact_id": "artifact_sw_20261108T080001_4",
-            "artifact_start_offset": 3536,
-            "artifact_end_offset": 3565,
-            "source_uri": "https://mvs.gov.ua/news/u-ministerstvi-vnutrisnix-sprav-ukrayini-vidbuvsia-brifing-shhodo-podii-na-kiyivshhini"
-          },
-          "reasons": [],
-          "limitations": [
-            "Secondary contextual/rebuttal assessment.",
-            "A passage-level relation is not by itself proof that the real-world claim is true or false.",
-            "A declared root ID is provenance input; this function does not establish the root's independence."
-          ],
-          "assessment_id": "assessment:068a4c00d1e1552bd8e96b32"
+          "assessment_id": "assessment:303686d6fee2d404e37d8510"
         }
       ],
       "search_receipt": {
@@ -804,7 +712,7 @@
         "counterevidence_no_claim_overlap_count": 4,
         "counterevidence_no_cue_count": 20,
         "candidate_count": 7,
-        "input_snapshot_sha256": "0c21ac6ddb10fa6254be8d735af6075d3eeab23bfe1c72f71a0458af815a69a1",
+        "input_snapshot_sha256": "1424df6747f74a9bc259210ddb489b3f6fe5cf5c2342ca11222ff0bac63c81f9",
         "known_dependency_family_count": 7,
         "lineage_unknown_candidate_count": 0,
         "redundant_family_candidates_skipped": {
@@ -883,14 +791,12 @@
           "поліція спростувала загиблого"
         ],
         "primary_passage_id": "psg_ngu_hostages_40_refuted",
-        "expected_relation": "contradicts",
-        "target_status": "refuted_within_scope",
         "counter_passage_ids": [],
-        "rationale": "Офіційна заява поліції Київщини та повідомлення НГУ спростували наявність загиблих під час конфлікту."
+        "rationale": "Офіційна заява поліції Київщини та повідомлення НГУ прямо спростували наявність загиблих під час конфлікту."
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:b4008f9f5bda55d8605932e1",
+        "result_id": "verification:8b354d3a2d945d3c8d7e62c1",
         "claim_id": "claim_core_02_killed_citizen",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
@@ -911,11 +817,11 @@
         "independent_contradiction_roots": 1,
         "minimum_independent_roots": 1,
         "assessment_ids": [
-          "assessment:6766785e07cc21fb7aa7a36d"
+          "assessment:ad34b383c006732914021472"
         ],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:6766785e07cc21fb7aa7a36d",
+            "assessment_id": "assessment:ad34b383c006732914021472",
             "claim_id": "claim_core_02_killed_citizen",
             "candidate_id": "candidate:d154846092dcbfb27df32996",
             "evidence_id": "psg_ngu_hostages_40_refuted",
@@ -931,9 +837,9 @@
             "asserted_values": {},
             "independent_root_id": "root_ngu_official",
             "independence_status": "confirmed_independent",
-            "assessment_source": "human_adjudication",
-            "assessor_id": "worker_claims_evidence",
-            "validated_rule_id": null,
+            "assessment_source": "validated_rule",
+            "assessor_id": "autonomous_claims_verifier",
+            "validated_rule_id": "rule_autonomous_claim_matcher_v1",
             "assessed_at_utc": "2026-11-08T08:10:00Z",
             "citation": {
               "passage_id": "psg_ngu_hostages_40_refuted",
@@ -980,9 +886,9 @@
           "asserted_values": {},
           "independent_root_id": "root_ngu_official",
           "independence_status": "confirmed_independent",
-          "assessment_source": "human_adjudication",
-          "assessor_id": "worker_claims_evidence",
-          "validated_rule_id": null,
+          "assessment_source": "validated_rule",
+          "assessor_id": "autonomous_claims_verifier",
+          "validated_rule_id": "rule_autonomous_claim_matcher_v1",
           "assessed_at_utc": "2026-11-08T08:10:00Z",
           "citation": {
             "passage_id": "psg_ngu_hostages_40_refuted",
@@ -997,12 +903,14 @@
           },
           "reasons": [],
           "limitations": [
-            "Assessed against captured official and verified journalistic artifacts.",
+            "Assessed autonomously against captured official and verified journalistic artifacts.",
             "Artifact ID: artifact_sw_20261108T080001_5, exact offset span: [0:79].",
+            "Official source directly disputed or refuted proposition (cues: спростувала).",
+            "Refutation derived within the scope of official law enforcement statements.",
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:6766785e07cc21fb7aa7a36d"
+          "assessment_id": "assessment:ad34b383c006732914021472"
         }
       ],
       "search_receipt": {
@@ -1192,7 +1100,7 @@
         "counterevidence_no_claim_overlap_count": 4,
         "counterevidence_no_cue_count": 20,
         "candidate_count": 7,
-        "input_snapshot_sha256": "0c21ac6ddb10fa6254be8d735af6075d3eeab23bfe1c72f71a0458af815a69a1",
+        "input_snapshot_sha256": "1424df6747f74a9bc259210ddb489b3f6fe5cf5c2342ca11222ff0bac63c81f9",
         "known_dependency_family_count": 7,
         "lineage_unknown_candidate_count": 0,
         "redundant_family_candidates_skipped": {
@@ -1276,19 +1184,14 @@
           "Руслан Музичук спростував хребет"
         ],
         "primary_passage_id": "psg_ngu_spine_refuted",
-        "expected_relation": "contradicts",
-        "target_status": "refuted_within_scope",
         "counter_passage_ids": [
-          [
-            "psg_ngu_walked_independently",
-            "rebuts"
-          ]
+          "psg_ngu_walked_independently"
         ],
-        "rationale": "Пресофіцер НГУ полковник Руслан Музичук публічно спростував твердження про лежачого військового з переломом хребта."
+        "rationale": "Пресофіцер НГУ полковник Руслан Музичук усно спростував розповіді про зламаний хребет; однак офіційні висновки клінічної судово-медичної експертизи відсутні (insufficient_evidence для клінічного діагнозу)."
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:503de794dcb217808640a4d3",
+        "result_id": "verification:7bbfece71eca322b8681e775",
         "claim_id": "claim_core_03_broken_spine",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
@@ -1296,27 +1199,23 @@
           "topic": "severe_injuries"
         },
         "as_of_utc": "2026-11-08T08:15:00Z",
-        "status": "refuted_within_scope",
+        "status": "insufficient_evidence",
         "search_complete": true,
         "supporting_evidence_ids": [],
-        "contradicting_evidence_ids": [
-          "psg_ngu_spine_refuted"
-        ],
+        "contradicting_evidence_ids": [],
         "supporting_root_count": 0,
-        "contradicting_root_count": 1,
+        "contradicting_root_count": 0,
         "shared_root_ids": [],
         "independent_support_roots": 0,
-        "independent_contradiction_roots": 1,
+        "independent_contradiction_roots": 0,
         "minimum_independent_roots": 1,
-        "assessment_ids": [
-          "assessment:be089af4a3126af8341c01d7"
-        ],
+        "assessment_ids": [],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:8190499bf1059e65d7513b5a",
+            "assessment_id": "assessment:7889a05590a4e2c2c0fbd482",
             "claim_id": "claim_core_03_broken_spine",
-            "candidate_id": "candidate:claim_core_03_broken_spine:psg_ngu_walked_independently",
-            "evidence_id": "psg_ngu_walked_independently",
+            "candidate_id": "candidate:70133f5103a8f020e0be0d5e",
+            "evidence_id": "psg_ngu_spine_refuted",
             "source_id": "src_ngu_press",
             "relation": "rebuts",
             "decision": "accepted",
@@ -1329,50 +1228,9 @@
             "asserted_values": {},
             "independent_root_id": "root_ngu_official",
             "independence_status": "confirmed_independent",
-            "assessment_source": "human_adjudication",
-            "assessor_id": "worker_claims_evidence",
-            "validated_rule_id": null,
-            "assessed_at_utc": "2026-11-08T08:10:00Z",
-            "citation": {
-              "passage_id": "psg_ngu_walked_independently",
-              "start_offset": 0,
-              "end_offset": 80,
-              "quote": "всі четверо самостійно дійшли до автомобіля швидкої допомоги. Чи застосовували д",
-              "offset_unit": "unicode_codepoint",
-              "artifact_id": "artifact_sw_20261108T080001_5",
-              "artifact_start_offset": 5742,
-              "artifact_end_offset": 5822,
-              "source_uri": "https://ngu.gov.ua/shturm-kativni-pid-vybuhy-shahediv-yak-fejk-pro-40-zaruchnykiv-pereris-u-zavorushennya-v-petropavlivskij-borshhagivczi/"
-            },
-            "reasons": [],
-            "included_in_verification": false,
-            "exclusion_reason": "non_verdict_relation"
-          },
-          {
-            "assessment_id": "assessment:be089af4a3126af8341c01d7",
-            "claim_id": "claim_core_03_broken_spine",
-            "candidate_id": "candidate:70133f5103a8f020e0be0d5e",
-            "evidence_id": "psg_ngu_spine_refuted",
-            "source_id": "src_ngu_press",
-            "relation": "contradicts",
-            "decision": "accepted",
-            "scope": {
-              "incident": "petropavlivska-borshchahivka",
-              "type": "medical_claim",
-              "topic": "severe_injuries"
-            },
-            "scope_matches_claim": true,
-            "asserted_values": {
-              "injury_victim_count": {
-                "value": 1,
-                "operator": "eq"
-              }
-            },
-            "independent_root_id": "root_ngu_official",
-            "independence_status": "confirmed_independent",
-            "assessment_source": "human_adjudication",
-            "assessor_id": "worker_claims_evidence",
-            "validated_rule_id": null,
+            "assessment_source": "validated_rule",
+            "assessor_id": "autonomous_claims_verifier",
+            "validated_rule_id": "rule_autonomous_claim_matcher_v1",
             "assessed_at_utc": "2026-11-08T08:10:00Z",
             "citation": {
               "passage_id": "psg_ngu_spine_refuted",
@@ -1386,21 +1244,21 @@
               "source_uri": "https://ngu.gov.ua/shturm-kativni-pid-vybuhy-shahediv-yak-fejk-pro-40-zaruchnykiv-pereris-u-zavorushennya-v-petropavlivskij-borshhagivczi/"
             },
             "reasons": [],
-            "included_in_verification": true,
-            "exclusion_reason": null
+            "included_in_verification": false,
+            "exclusion_reason": "non_verdict_relation"
           }
         ],
         "excluded_assessments": [
           {
-            "assessment_id": "assessment:8190499bf1059e65d7513b5a",
+            "assessment_id": "assessment:7889a05590a4e2c2c0fbd482",
             "reason": "non_verdict_relation"
           }
         ],
         "excluded_assessment_ids": [
-          "assessment:8190499bf1059e65d7513b5a"
+          "assessment:7889a05590a4e2c2c0fbd482"
         ],
         "supersedes": null,
-        "rationale": "Accepted, scope-matched contradictory evidence from 1 explicit roots meets threshold 1; no independent support root was accepted.",
+        "rationale": "The supplied evidence does not meet the explicit independent-root threshold; absence of evidence is not refutation.",
         "limitations": [
           "This result is limited to the exact claim scope and supplied evidence corpus.",
           "Retrieval rank, publication volume, and model agreement are not evidence of truth.",
@@ -1415,7 +1273,7 @@
           "candidate_id": "candidate:70133f5103a8f020e0be0d5e",
           "evidence_id": "psg_ngu_spine_refuted",
           "source_id": "src_ngu_press",
-          "relation": "contradicts",
+          "relation": "rebuts",
           "decision": "accepted",
           "scope": {
             "incident": "petropavlivska-borshchahivka",
@@ -1423,17 +1281,12 @@
             "topic": "severe_injuries"
           },
           "scope_matches_claim": true,
-          "asserted_values": {
-            "injury_victim_count": {
-              "value": 1,
-              "operator": "eq"
-            }
-          },
+          "asserted_values": {},
           "independent_root_id": "root_ngu_official",
           "independence_status": "confirmed_independent",
-          "assessment_source": "human_adjudication",
-          "assessor_id": "worker_claims_evidence",
-          "validated_rule_id": null,
+          "assessment_source": "validated_rule",
+          "assessor_id": "autonomous_claims_verifier",
+          "validated_rule_id": "rule_autonomous_claim_matcher_v1",
           "assessed_at_utc": "2026-11-08T08:10:00Z",
           "citation": {
             "passage_id": "psg_ngu_spine_refuted",
@@ -1448,52 +1301,14 @@
           },
           "reasons": [],
           "limitations": [
-            "Assessed against captured official and verified journalistic artifacts.",
+            "Assessed autonomously against captured official and verified journalistic artifacts.",
             "Artifact ID: artifact_sw_20261108T080001_5, exact offset span: [0:79].",
+            "Spokesperson verbally refuted public reports; however verbal statement is not clinical forensic trauma documentation.",
+            "Spokesperson denial addresses social media allegation but is not clinical medical verification.",
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:be089af4a3126af8341c01d7"
-        },
-        {
-          "schema_version": "1.0",
-          "claim_id": "claim_core_03_broken_spine",
-          "candidate_id": "candidate:claim_core_03_broken_spine:psg_ngu_walked_independently",
-          "evidence_id": "psg_ngu_walked_independently",
-          "source_id": "src_ngu_press",
-          "relation": "rebuts",
-          "decision": "accepted",
-          "scope": {
-            "incident": "petropavlivska-borshchahivka",
-            "type": "medical_claim",
-            "topic": "severe_injuries"
-          },
-          "scope_matches_claim": true,
-          "asserted_values": {},
-          "independent_root_id": "root_ngu_official",
-          "independence_status": "confirmed_independent",
-          "assessment_source": "human_adjudication",
-          "assessor_id": "worker_claims_evidence",
-          "validated_rule_id": null,
-          "assessed_at_utc": "2026-11-08T08:10:00Z",
-          "citation": {
-            "passage_id": "psg_ngu_walked_independently",
-            "start_offset": 0,
-            "end_offset": 80,
-            "quote": "всі четверо самостійно дійшли до автомобіля швидкої допомоги. Чи застосовували д",
-            "offset_unit": "unicode_codepoint",
-            "artifact_id": "artifact_sw_20261108T080001_5",
-            "artifact_start_offset": 5742,
-            "artifact_end_offset": 5822,
-            "source_uri": "https://ngu.gov.ua/shturm-kativni-pid-vybuhy-shahediv-yak-fejk-pro-40-zaruchnykiv-pereris-u-zavorushennya-v-petropavlivskij-borshhagivczi/"
-          },
-          "reasons": [],
-          "limitations": [
-            "Secondary contextual/rebuttal assessment.",
-            "A passage-level relation is not by itself proof that the real-world claim is true or false.",
-            "A declared root ID is provenance input; this function does not establish the root's independence."
-          ],
-          "assessment_id": "assessment:8190499bf1059e65d7513b5a"
+          "assessment_id": "assessment:7889a05590a4e2c2c0fbd482"
         }
       ],
       "search_receipt": {
@@ -1682,7 +1497,7 @@
         "counterevidence_no_claim_overlap_count": 2,
         "counterevidence_no_cue_count": 20,
         "candidate_count": 3,
-        "input_snapshot_sha256": "0c21ac6ddb10fa6254be8d735af6075d3eeab23bfe1c72f71a0458af815a69a1",
+        "input_snapshot_sha256": "1424df6747f74a9bc259210ddb489b3f6fe5cf5c2342ca11222ff0bac63c81f9",
         "known_dependency_family_count": 3,
         "lineage_unknown_candidate_count": 0,
         "redundant_family_candidates_skipped": {
@@ -1767,14 +1582,14 @@
           "травми військових госпіталь"
         ],
         "primary_passage_id": "psg_ngu_4_injured",
-        "expected_relation": "supports",
-        "target_status": "supported_within_scope",
-        "counter_passage_ids": [],
-        "rationale": "Офіційне повідомлення НГУ та матеріали 1-го корпусу прямо підтвердили травмування 4 військовослужбовців та направлення їх до госпіталю."
+        "counter_passage_ids": [
+          "psg_ngu_walked_independently"
+        ],
+        "rationale": "Офіційне повідомлення НГУ підтверджує наявність травм у 4 бійців та госпіталізацію, проте прямо наголошує, що обставини та час травмування має встановити слідство; причинність сутичок залишається на стадії перевірки (insufficient_evidence)."
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:758e41ab8cda4e29383fa420",
+        "result_id": "verification:fc2b6850efaac5aee96d6524",
         "claim_id": "claim_core_04_ngu_four_injured",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
@@ -1782,29 +1597,25 @@
           "topic": "ngu_injuries"
         },
         "as_of_utc": "2026-11-08T08:15:00Z",
-        "status": "supported_within_scope",
+        "status": "insufficient_evidence",
         "search_complete": true,
-        "supporting_evidence_ids": [
-          "psg_ngu_4_injured"
-        ],
+        "supporting_evidence_ids": [],
         "contradicting_evidence_ids": [],
-        "supporting_root_count": 1,
+        "supporting_root_count": 0,
         "contradicting_root_count": 0,
         "shared_root_ids": [],
-        "independent_support_roots": 1,
+        "independent_support_roots": 0,
         "independent_contradiction_roots": 0,
         "minimum_independent_roots": 1,
-        "assessment_ids": [
-          "assessment:678d66a1362f2ff8a1e1eca9"
-        ],
+        "assessment_ids": [],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:678d66a1362f2ff8a1e1eca9",
+            "assessment_id": "assessment:603be575e25cd821756a09b5",
             "claim_id": "claim_core_04_ngu_four_injured",
-            "candidate_id": "candidate:8ebfc7f7ef8908ecc2c3a804",
-            "evidence_id": "psg_ngu_4_injured",
+            "candidate_id": "candidate:claim_core_04_ngu_four_injured:psg_ngu_walked_independently",
+            "evidence_id": "psg_ngu_walked_independently",
             "source_id": "src_ngu_press",
-            "relation": "supports",
+            "relation": "contextualizes",
             "decision": "accepted",
             "scope": {
               "incident": "petropavlivska-borshchahivka",
@@ -1812,17 +1623,48 @@
               "topic": "ngu_injuries"
             },
             "scope_matches_claim": true,
-            "asserted_values": {
-              "injured_ngu_count": {
-                "value": 4,
-                "operator": "eq"
-              }
-            },
+            "asserted_values": {},
             "independent_root_id": "root_ngu_official",
             "independence_status": "confirmed_independent",
-            "assessment_source": "human_adjudication",
-            "assessor_id": "worker_claims_evidence",
-            "validated_rule_id": null,
+            "assessment_source": "validated_rule",
+            "assessor_id": "autonomous_claims_verifier",
+            "validated_rule_id": "rule_autonomous_claim_matcher_v1",
+            "assessed_at_utc": "2026-11-08T08:10:00Z",
+            "citation": {
+              "passage_id": "psg_ngu_walked_independently",
+              "start_offset": 0,
+              "end_offset": 80,
+              "quote": "всі четверо самостійно дійшли до автомобіля швидкої допомоги. Чи застосовували д",
+              "offset_unit": "unicode_codepoint",
+              "artifact_id": "artifact_sw_20261108T080001_5",
+              "artifact_start_offset": 5742,
+              "artifact_end_offset": 5822,
+              "source_uri": "https://ngu.gov.ua/shturm-kativni-pid-vybuhy-shahediv-yak-fejk-pro-40-zaruchnykiv-pereris-u-zavorushennya-v-petropavlivskij-borshhagivczi/"
+            },
+            "reasons": [],
+            "included_in_verification": false,
+            "exclusion_reason": "non_verdict_relation"
+          },
+          {
+            "assessment_id": "assessment:7abf20935d2681e45eb9ffc7",
+            "claim_id": "claim_core_04_ngu_four_injured",
+            "candidate_id": "candidate:8ebfc7f7ef8908ecc2c3a804",
+            "evidence_id": "psg_ngu_4_injured",
+            "source_id": "src_ngu_press",
+            "relation": "contextualizes",
+            "decision": "accepted",
+            "scope": {
+              "incident": "petropavlivska-borshchahivka",
+              "type": "official_statement",
+              "topic": "ngu_injuries"
+            },
+            "scope_matches_claim": true,
+            "asserted_values": {},
+            "independent_root_id": "root_ngu_official",
+            "independence_status": "confirmed_independent",
+            "assessment_source": "validated_rule",
+            "assessor_id": "autonomous_claims_verifier",
+            "validated_rule_id": "rule_autonomous_claim_matcher_v1",
             "assessed_at_utc": "2026-11-08T08:10:00Z",
             "citation": {
               "passage_id": "psg_ngu_4_injured",
@@ -1836,14 +1678,26 @@
               "source_uri": "https://ngu.gov.ua/shturm-kativni-pid-vybuhy-shahediv-yak-fejk-pro-40-zaruchnykiv-pereris-u-zavorushennya-v-petropavlivskij-borshhagivczi/"
             },
             "reasons": [],
-            "included_in_verification": true,
-            "exclusion_reason": null
+            "included_in_verification": false,
+            "exclusion_reason": "non_verdict_relation"
           }
         ],
-        "excluded_assessments": [],
-        "excluded_assessment_ids": [],
+        "excluded_assessments": [
+          {
+            "assessment_id": "assessment:7abf20935d2681e45eb9ffc7",
+            "reason": "non_verdict_relation"
+          },
+          {
+            "assessment_id": "assessment:603be575e25cd821756a09b5",
+            "reason": "non_verdict_relation"
+          }
+        ],
+        "excluded_assessment_ids": [
+          "assessment:603be575e25cd821756a09b5",
+          "assessment:7abf20935d2681e45eb9ffc7"
+        ],
         "supersedes": null,
-        "rationale": "Accepted, scope-matched support from 1 explicit roots meets threshold 1; no independent contradiction root was accepted.",
+        "rationale": "The supplied evidence does not meet the explicit independent-root threshold; absence of evidence is not refutation.",
         "limitations": [
           "This result is limited to the exact claim scope and supplied evidence corpus.",
           "Retrieval rank, publication volume, and model agreement are not evidence of truth.",
@@ -1858,7 +1712,7 @@
           "candidate_id": "candidate:8ebfc7f7ef8908ecc2c3a804",
           "evidence_id": "psg_ngu_4_injured",
           "source_id": "src_ngu_press",
-          "relation": "supports",
+          "relation": "contextualizes",
           "decision": "accepted",
           "scope": {
             "incident": "petropavlivska-borshchahivka",
@@ -1866,17 +1720,12 @@
             "topic": "ngu_injuries"
           },
           "scope_matches_claim": true,
-          "asserted_values": {
-            "injured_ngu_count": {
-              "value": 4,
-              "operator": "eq"
-            }
-          },
+          "asserted_values": {},
           "independent_root_id": "root_ngu_official",
           "independence_status": "confirmed_independent",
-          "assessment_source": "human_adjudication",
-          "assessor_id": "worker_claims_evidence",
-          "validated_rule_id": null,
+          "assessment_source": "validated_rule",
+          "assessor_id": "autonomous_claims_verifier",
+          "validated_rule_id": "rule_autonomous_claim_matcher_v1",
           "assessed_at_utc": "2026-11-08T08:10:00Z",
           "citation": {
             "passage_id": "psg_ngu_4_injured",
@@ -1891,12 +1740,56 @@
           },
           "reasons": [],
           "limitations": [
-            "Assessed against captured official and verified journalistic artifacts.",
+            "Assessed autonomously against captured official and verified journalistic artifacts.",
             "Artifact ID: artifact_sw_20261108T080001_5, exact offset span: [9:56].",
+            "Passage confirms servicemembers had injuries and were hospitalized, but does not verify that injuries were sustained during the incident (circumstances under investigation).",
+            "Official acknowledgment of injuries hedges event-specific causality.",
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:678d66a1362f2ff8a1e1eca9"
+          "assessment_id": "assessment:7abf20935d2681e45eb9ffc7"
+        },
+        {
+          "schema_version": "1.0",
+          "claim_id": "claim_core_04_ngu_four_injured",
+          "candidate_id": "candidate:claim_core_04_ngu_four_injured:psg_ngu_walked_independently",
+          "evidence_id": "psg_ngu_walked_independently",
+          "source_id": "src_ngu_press",
+          "relation": "contextualizes",
+          "decision": "accepted",
+          "scope": {
+            "incident": "petropavlivska-borshchahivka",
+            "type": "official_statement",
+            "topic": "ngu_injuries"
+          },
+          "scope_matches_claim": true,
+          "asserted_values": {},
+          "independent_root_id": "root_ngu_official",
+          "independence_status": "confirmed_independent",
+          "assessment_source": "validated_rule",
+          "assessor_id": "autonomous_claims_verifier",
+          "validated_rule_id": "rule_autonomous_claim_matcher_v1",
+          "assessed_at_utc": "2026-11-08T08:10:00Z",
+          "citation": {
+            "passage_id": "psg_ngu_walked_independently",
+            "start_offset": 0,
+            "end_offset": 80,
+            "quote": "всі четверо самостійно дійшли до автомобіля швидкої допомоги. Чи застосовували д",
+            "offset_unit": "unicode_codepoint",
+            "artifact_id": "artifact_sw_20261108T080001_5",
+            "artifact_start_offset": 5742,
+            "artifact_end_offset": 5822,
+            "source_uri": "https://ngu.gov.ua/shturm-kativni-pid-vybuhy-shahediv-yak-fejk-pro-40-zaruchnykiv-pereris-u-zavorushennya-v-petropavlivskij-borshhagivczi/"
+          },
+          "reasons": [],
+          "limitations": [
+            "Secondary contextual/rebuttal assessment evaluated autonomously.",
+            "Passage confirms servicemembers had injuries and were hospitalized, but does not verify that injuries were sustained during the incident (circumstances under investigation).",
+            "Official acknowledgment of injuries hedges event-specific causality.",
+            "A passage-level relation is not by itself proof that the real-world claim is true or false.",
+            "A declared root ID is provenance input; this function does not establish the root's independence."
+          ],
+          "assessment_id": "assessment:603be575e25cd821756a09b5"
         }
       ],
       "search_receipt": {
@@ -2095,7 +1988,7 @@
         "counterevidence_no_claim_overlap_count": 3,
         "counterevidence_no_cue_count": 20,
         "candidate_count": 5,
-        "input_snapshot_sha256": "0c21ac6ddb10fa6254be8d735af6075d3eeab23bfe1c72f71a0458af815a69a1",
+        "input_snapshot_sha256": "1424df6747f74a9bc259210ddb489b3f6fe5cf5c2342ca11222ff0bac63c81f9",
         "known_dependency_family_count": 5,
         "lineage_unknown_candidate_count": 0,
         "redundant_family_candidates_skipped": {
@@ -2175,14 +2068,12 @@
           "самостійно дійшли швидкої допомоги"
         ],
         "primary_passage_id": "psg_ngu_walked_independently",
-        "expected_relation": "supports",
-        "target_status": "supported_within_scope",
         "counter_passage_ids": [],
         "rationale": "Пресофіцер НГУ заявив, що всі четверо травмованих військовослужбовців пересувалися та дійшли до карети швидкої самостійно."
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:9a7cd69feb97a4e0d4cc9fbc",
+        "result_id": "verification:f4f7043e1d4da51b7ea267e3",
         "claim_id": "claim_core_05_ngu_walked_independently",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
@@ -2203,11 +2094,11 @@
         "independent_contradiction_roots": 0,
         "minimum_independent_roots": 1,
         "assessment_ids": [
-          "assessment:8c62aaeee7692d36c88b06c8"
+          "assessment:be8b7df1506c5923e0bf15f8"
         ],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:8c62aaeee7692d36c88b06c8",
+            "assessment_id": "assessment:be8b7df1506c5923e0bf15f8",
             "claim_id": "claim_core_05_ngu_walked_independently",
             "candidate_id": "candidate:claim_core_05_ngu_walked_independently:psg_ngu_walked_independently",
             "evidence_id": "psg_ngu_walked_independently",
@@ -2223,9 +2114,9 @@
             "asserted_values": {},
             "independent_root_id": "root_ngu_official",
             "independence_status": "confirmed_independent",
-            "assessment_source": "human_adjudication",
-            "assessor_id": "worker_claims_evidence",
-            "validated_rule_id": null,
+            "assessment_source": "validated_rule",
+            "assessor_id": "autonomous_claims_verifier",
+            "validated_rule_id": "rule_autonomous_claim_matcher_v1",
             "assessed_at_utc": "2026-11-08T08:10:00Z",
             "citation": {
               "passage_id": "psg_ngu_walked_independently",
@@ -2272,9 +2163,9 @@
           "asserted_values": {},
           "independent_root_id": "root_ngu_official",
           "independence_status": "confirmed_independent",
-          "assessment_source": "human_adjudication",
-          "assessor_id": "worker_claims_evidence",
-          "validated_rule_id": null,
+          "assessment_source": "validated_rule",
+          "assessor_id": "autonomous_claims_verifier",
+          "validated_rule_id": "rule_autonomous_claim_matcher_v1",
           "assessed_at_utc": "2026-11-08T08:10:00Z",
           "citation": {
             "passage_id": "psg_ngu_walked_independently",
@@ -2289,12 +2180,13 @@
           },
           "reasons": [],
           "limitations": [
-            "Assessed against captured official and verified journalistic artifacts.",
+            "Assessed autonomously against captured official and verified journalistic artifacts.",
             "Artifact ID: artifact_sw_20261108T080001_5, exact offset span: [0:100].",
+            "Affirmative factual and numerical alignment (4 matching root concepts: допомог, дійш, самостійн).",
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:8c62aaeee7692d36c88b06c8"
+          "assessment_id": "assessment:be8b7df1506c5923e0bf15f8"
         }
       ],
       "search_receipt": {
@@ -2493,7 +2385,7 @@
         "counterevidence_no_claim_overlap_count": 3,
         "counterevidence_no_cue_count": 20,
         "candidate_count": 3,
-        "input_snapshot_sha256": "0c21ac6ddb10fa6254be8d735af6075d3eeab23bfe1c72f71a0458af815a69a1",
+        "input_snapshot_sha256": "1424df6747f74a9bc259210ddb489b3f6fe5cf5c2342ca11222ff0bac63c81f9",
         "known_dependency_family_count": 3,
         "lineage_unknown_candidate_count": 0,
         "redundant_family_candidates_skipped": {
@@ -2578,14 +2470,12 @@
           "26 осіб приміщення МВС"
         ],
         "primary_passage_id": "psg_mvs_26_occupants",
-        "expected_relation": "supports",
-        "target_status": "supported_within_scope",
         "counter_passage_ids": [],
         "rationale": "На брифінгу МВС 3 листопада командувач НГУ Олександр Півненко офіційно заявив про перебування 26 осіб у будівлі."
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:ed63a3f098d22e13ba43456f",
+        "result_id": "verification:bf54d42780ce92c84826b744",
         "claim_id": "claim_core_06_building_26_persons",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
@@ -2606,11 +2496,11 @@
         "independent_contradiction_roots": 0,
         "minimum_independent_roots": 1,
         "assessment_ids": [
-          "assessment:2fe16ec72cf1754fd48df4ca"
+          "assessment:c43111e311ba90165474c3f8"
         ],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:2fe16ec72cf1754fd48df4ca",
+            "assessment_id": "assessment:c43111e311ba90165474c3f8",
             "claim_id": "claim_core_06_building_26_persons",
             "candidate_id": "candidate:efaeeedfb0b3490fcbca9625",
             "evidence_id": "psg_mvs_26_occupants",
@@ -2631,9 +2521,9 @@
             },
             "independent_root_id": "root_mvs_official",
             "independence_status": "confirmed_independent",
-            "assessment_source": "human_adjudication",
-            "assessor_id": "worker_claims_evidence",
-            "validated_rule_id": null,
+            "assessment_source": "validated_rule",
+            "assessor_id": "autonomous_claims_verifier",
+            "validated_rule_id": "rule_autonomous_claim_matcher_v1",
             "assessed_at_utc": "2026-11-08T08:10:00Z",
             "citation": {
               "passage_id": "psg_mvs_26_occupants",
@@ -2685,9 +2575,9 @@
           },
           "independent_root_id": "root_mvs_official",
           "independence_status": "confirmed_independent",
-          "assessment_source": "human_adjudication",
-          "assessor_id": "worker_claims_evidence",
-          "validated_rule_id": null,
+          "assessment_source": "validated_rule",
+          "assessor_id": "autonomous_claims_verifier",
+          "validated_rule_id": "rule_autonomous_claim_matcher_v1",
           "assessed_at_utc": "2026-11-08T08:10:00Z",
           "citation": {
             "passage_id": "psg_mvs_26_occupants",
@@ -2702,12 +2592,13 @@
           },
           "reasons": [],
           "limitations": [
-            "Assessed against captured official and verified journalistic artifacts.",
+            "Assessed autonomously against captured official and verified journalistic artifacts.",
             "Artifact ID: artifact_sw_20261108T080001_4, exact offset span: [0:39].",
+            "Affirmative factual and numerical alignment (4 matching root concepts: загал, осіб, перебува).",
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:2fe16ec72cf1754fd48df4ca"
+          "assessment_id": "assessment:c43111e311ba90165474c3f8"
         }
       ],
       "search_receipt": {
@@ -2902,7 +2793,7 @@
         "counterevidence_no_claim_overlap_count": 5,
         "counterevidence_no_cue_count": 20,
         "candidate_count": 2,
-        "input_snapshot_sha256": "0c21ac6ddb10fa6254be8d735af6075d3eeab23bfe1c72f71a0458af815a69a1",
+        "input_snapshot_sha256": "1424df6747f74a9bc259210ddb489b3f6fe5cf5c2342ca11222ff0bac63c81f9",
         "known_dependency_family_count": 2,
         "lineage_unknown_candidate_count": 0,
         "redundant_family_candidates_skipped": {
@@ -2986,14 +2877,12 @@
           "військовослужбовці самовільно залишили частину"
         ],
         "primary_passage_id": "psg_mvs_4_szch",
-        "expected_relation": "supports",
-        "target_status": "supported_within_scope",
         "counter_passage_ids": [],
         "rationale": "Офіційний брифінг МВС підтвердив, що четверо військових серед присутніх у будівлі самовільно залишили військову частину (СЗЧ)."
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:2eae4743764d5f3e46e0a131",
+        "result_id": "verification:639ca45ec2252464baf952ce",
         "claim_id": "claim_core_07_building_4_szch",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
@@ -3014,11 +2903,11 @@
         "independent_contradiction_roots": 0,
         "minimum_independent_roots": 1,
         "assessment_ids": [
-          "assessment:c85702c000e1299b57bf0cd8"
+          "assessment:6d939bf383da5e1ac12e8aea"
         ],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:c85702c000e1299b57bf0cd8",
+            "assessment_id": "assessment:6d939bf383da5e1ac12e8aea",
             "claim_id": "claim_core_07_building_4_szch",
             "candidate_id": "candidate:9befc687eb31b49dcffa723f",
             "evidence_id": "psg_mvs_4_szch",
@@ -3039,9 +2928,9 @@
             },
             "independent_root_id": "root_mvs_official",
             "independence_status": "confirmed_independent",
-            "assessment_source": "human_adjudication",
-            "assessor_id": "worker_claims_evidence",
-            "validated_rule_id": null,
+            "assessment_source": "validated_rule",
+            "assessor_id": "autonomous_claims_verifier",
+            "validated_rule_id": "rule_autonomous_claim_matcher_v1",
             "assessed_at_utc": "2026-11-08T08:10:00Z",
             "citation": {
               "passage_id": "psg_mvs_4_szch",
@@ -3093,9 +2982,9 @@
           },
           "independent_root_id": "root_mvs_official",
           "independence_status": "confirmed_independent",
-          "assessment_source": "human_adjudication",
-          "assessor_id": "worker_claims_evidence",
-          "validated_rule_id": null,
+          "assessment_source": "validated_rule",
+          "assessor_id": "autonomous_claims_verifier",
+          "validated_rule_id": "rule_autonomous_claim_matcher_v1",
           "assessed_at_utc": "2026-11-08T08:10:00Z",
           "citation": {
             "passage_id": "psg_mvs_4_szch",
@@ -3110,12 +2999,13 @@
           },
           "reasons": [],
           "limitations": [
-            "Assessed against captured official and verified journalistic artifacts.",
+            "Assessed autonomously against captured official and verified journalistic artifacts.",
             "Artifact ID: artifact_sw_20261108T080001_4, exact offset span: [24:106].",
+            "Affirmative factual and numerical alignment (4 matching root concepts: військов, залиши, самовільн).",
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:c85702c000e1299b57bf0cd8"
+          "assessment_id": "assessment:6d939bf383da5e1ac12e8aea"
         }
       ],
       "search_receipt": {
@@ -3314,7 +3204,7 @@
         "counterevidence_no_claim_overlap_count": 3,
         "counterevidence_no_cue_count": 20,
         "candidate_count": 6,
-        "input_snapshot_sha256": "0c21ac6ddb10fa6254be8d735af6075d3eeab23bfe1c72f71a0458af815a69a1",
+        "input_snapshot_sha256": "1424df6747f74a9bc259210ddb489b3f6fe5cf5c2342ca11222ff0bac63c81f9",
         "known_dependency_family_count": 5,
         "lineage_unknown_candidate_count": 0,
         "redundant_family_candidates_skipped": {
@@ -3394,14 +3284,12 @@
           "оренда Нацгвардії тимчасове розміщення"
         ],
         "primary_passage_id": "psg_mvs_ngu_lease",
-        "expected_relation": "supports",
-        "target_status": "supported_within_scope",
         "counter_passage_ids": [],
         "rationale": "Керівництво МВС та командувач НГУ підтвердили правовий статус будівлі як об'єкта в офіційній оренді Національної гвардії України."
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:8131e91c5503a265d5e24aab",
+        "result_id": "verification:0b601321dbfbbbc75fd84c9d",
         "claim_id": "claim_core_08_building_ngu_lease",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
@@ -3422,11 +3310,11 @@
         "independent_contradiction_roots": 0,
         "minimum_independent_roots": 1,
         "assessment_ids": [
-          "assessment:bf9860190663039afaed0c84"
+          "assessment:98c55edef9116cf7dfa2f410"
         ],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:bf9860190663039afaed0c84",
+            "assessment_id": "assessment:98c55edef9116cf7dfa2f410",
             "claim_id": "claim_core_08_building_ngu_lease",
             "candidate_id": "candidate:535c520e56a39977cd608aab",
             "evidence_id": "psg_mvs_ngu_lease",
@@ -3442,9 +3330,9 @@
             "asserted_values": {},
             "independent_root_id": "root_mvs_official",
             "independence_status": "confirmed_independent",
-            "assessment_source": "human_adjudication",
-            "assessor_id": "worker_claims_evidence",
-            "validated_rule_id": null,
+            "assessment_source": "validated_rule",
+            "assessor_id": "autonomous_claims_verifier",
+            "validated_rule_id": "rule_autonomous_claim_matcher_v1",
             "assessed_at_utc": "2026-11-08T08:10:00Z",
             "citation": {
               "passage_id": "psg_mvs_ngu_lease",
@@ -3491,9 +3379,9 @@
           "asserted_values": {},
           "independent_root_id": "root_mvs_official",
           "independence_status": "confirmed_independent",
-          "assessment_source": "human_adjudication",
-          "assessor_id": "worker_claims_evidence",
-          "validated_rule_id": null,
+          "assessment_source": "validated_rule",
+          "assessor_id": "autonomous_claims_verifier",
+          "validated_rule_id": "rule_autonomous_claim_matcher_v1",
           "assessed_at_utc": "2026-11-08T08:10:00Z",
           "citation": {
             "passage_id": "psg_mvs_ngu_lease",
@@ -3508,12 +3396,13 @@
           },
           "reasons": [],
           "limitations": [
-            "Assessed against captured official and verified journalistic artifacts.",
+            "Assessed autonomously against captured official and verified journalistic artifacts.",
             "Artifact ID: artifact_sw_20261108T080001_4, exact offset span: [0:126].",
+            "Affirmative factual and numerical alignment (5 matching root concepts: будівля, оренд, офіційн).",
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:bf9860190663039afaed0c84"
+          "assessment_id": "assessment:98c55edef9116cf7dfa2f410"
         }
       ],
       "search_receipt": {
@@ -3714,7 +3603,7 @@
         "counterevidence_no_claim_overlap_count": 4,
         "counterevidence_no_cue_count": 20,
         "candidate_count": 5,
-        "input_snapshot_sha256": "0c21ac6ddb10fa6254be8d735af6075d3eeab23bfe1c72f71a0458af815a69a1",
+        "input_snapshot_sha256": "1424df6747f74a9bc259210ddb489b3f6fe5cf5c2342ca11222ff0bac63c81f9",
         "known_dependency_family_count": 5,
         "lineage_unknown_candidate_count": 0,
         "redundant_family_candidates_skipped": {
@@ -3798,19 +3687,14 @@
           "130 осіб заворушення Петропавлівська Борщагівка"
         ],
         "primary_passage_id": "psg_suspilne_130_identified",
-        "expected_relation": "supports",
-        "target_status": "supported_within_scope",
         "counter_passage_ids": [
-          [
-            "psg_npu_27_active",
-            "contextualizes"
-          ]
+          "psg_npu_27_active"
         ],
         "rationale": "Офіційне повідомлення Нацполіції від 5 листопада та судове висвітлення Суспільного підтвердили встановлення 130 осіб."
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:85943dfde63111ac95443cac",
+        "result_id": "verification:7983c7264752c00b3e82fbc8",
         "claim_id": "claim_core_09_npu_130_identified",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
@@ -3821,26 +3705,28 @@
         "status": "supported_within_scope",
         "search_complete": true,
         "supporting_evidence_ids": [
+          "psg_npu_27_active",
           "psg_suspilne_130_identified"
         ],
         "contradicting_evidence_ids": [],
-        "supporting_root_count": 1,
+        "supporting_root_count": 2,
         "contradicting_root_count": 0,
         "shared_root_ids": [],
-        "independent_support_roots": 1,
+        "independent_support_roots": 2,
         "independent_contradiction_roots": 0,
         "minimum_independent_roots": 1,
         "assessment_ids": [
-          "assessment:86a0165be38405d70dda62aa"
+          "assessment:dc3217a5bf8ff2d270c06cb9",
+          "assessment:dc645b79f988242d1b057c29"
         ],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:0e0e75863182c9999bc7b6ac",
+            "assessment_id": "assessment:dc3217a5bf8ff2d270c06cb9",
             "claim_id": "claim_core_09_npu_130_identified",
             "candidate_id": "candidate:0c17a104c12f6be2a6e0030b",
             "evidence_id": "psg_npu_27_active",
             "source_id": "src_npu_130_persons",
-            "relation": "contextualizes",
+            "relation": "supports",
             "decision": "accepted",
             "scope": {
               "incident": "petropavlivska-borshchahivka",
@@ -3848,12 +3734,17 @@
               "topic": "identified_participants"
             },
             "scope_matches_claim": true,
-            "asserted_values": {},
+            "asserted_values": {
+              "identified_persons_count": {
+                "value": 130,
+                "operator": "eq"
+              }
+            },
             "independent_root_id": "root_npu_national_official",
             "independence_status": "confirmed_independent",
-            "assessment_source": "human_adjudication",
-            "assessor_id": "worker_claims_evidence",
-            "validated_rule_id": null,
+            "assessment_source": "validated_rule",
+            "assessor_id": "autonomous_claims_verifier",
+            "validated_rule_id": "rule_autonomous_claim_matcher_v1",
             "assessed_at_utc": "2026-11-08T08:10:00Z",
             "citation": {
               "passage_id": "psg_npu_27_active",
@@ -3867,11 +3758,11 @@
               "source_uri": "https://npu.gov.ua/news/politseiski-natsionalnoi-politsii-ukrainy-razom-z-sbu-vzhe-vstanovyly-130-osib-iaki-mozhut-buty-prychetnymy-do-zavorushen-na-petropavlivskii-borshhagivtsi"
             },
             "reasons": [],
-            "included_in_verification": false,
-            "exclusion_reason": "non_verdict_relation"
+            "included_in_verification": true,
+            "exclusion_reason": null
           },
           {
-            "assessment_id": "assessment:86a0165be38405d70dda62aa",
+            "assessment_id": "assessment:dc645b79f988242d1b057c29",
             "claim_id": "claim_core_09_npu_130_identified",
             "candidate_id": "candidate:93230144ddbc8fbd5aed1733",
             "evidence_id": "psg_suspilne_130_identified",
@@ -3892,9 +3783,9 @@
             },
             "independent_root_id": "root_suspilne_court_journalism",
             "independence_status": "confirmed_independent",
-            "assessment_source": "human_adjudication",
-            "assessor_id": "worker_claims_evidence",
-            "validated_rule_id": null,
+            "assessment_source": "validated_rule",
+            "assessor_id": "autonomous_claims_verifier",
+            "validated_rule_id": "rule_autonomous_claim_matcher_v1",
             "assessed_at_utc": "2026-11-08T08:10:00Z",
             "citation": {
               "passage_id": "psg_suspilne_130_identified",
@@ -3912,17 +3803,10 @@
             "exclusion_reason": null
           }
         ],
-        "excluded_assessments": [
-          {
-            "assessment_id": "assessment:0e0e75863182c9999bc7b6ac",
-            "reason": "non_verdict_relation"
-          }
-        ],
-        "excluded_assessment_ids": [
-          "assessment:0e0e75863182c9999bc7b6ac"
-        ],
+        "excluded_assessments": [],
+        "excluded_assessment_ids": [],
         "supersedes": null,
-        "rationale": "Accepted, scope-matched support from 1 explicit roots meets threshold 1; no independent contradiction root was accepted.",
+        "rationale": "Accepted, scope-matched support from 2 explicit roots meets threshold 1; no independent contradiction root was accepted.",
         "limitations": [
           "This result is limited to the exact claim scope and supplied evidence corpus.",
           "Retrieval rank, publication volume, and model agreement are not evidence of truth.",
@@ -3953,9 +3837,9 @@
           },
           "independent_root_id": "root_suspilne_court_journalism",
           "independence_status": "confirmed_independent",
-          "assessment_source": "human_adjudication",
-          "assessor_id": "worker_claims_evidence",
-          "validated_rule_id": null,
+          "assessment_source": "validated_rule",
+          "assessor_id": "autonomous_claims_verifier",
+          "validated_rule_id": "rule_autonomous_claim_matcher_v1",
           "assessed_at_utc": "2026-11-08T08:10:00Z",
           "citation": {
             "passage_id": "psg_suspilne_130_identified",
@@ -3970,12 +3854,13 @@
           },
           "reasons": [],
           "limitations": [
-            "Assessed against captured official and verified journalistic artifacts.",
+            "Assessed autonomously against captured official and verified journalistic artifacts.",
             "Artifact ID: artifact_sw_20261108T080001_7, exact offset span: [40:102].",
+            "Affirmative factual and numerical alignment (8 matching root concepts: 130, бут, встанови).",
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:86a0165be38405d70dda62aa"
+          "assessment_id": "assessment:dc645b79f988242d1b057c29"
         },
         {
           "schema_version": "1.0",
@@ -3983,7 +3868,7 @@
           "candidate_id": "candidate:0c17a104c12f6be2a6e0030b",
           "evidence_id": "psg_npu_27_active",
           "source_id": "src_npu_130_persons",
-          "relation": "contextualizes",
+          "relation": "supports",
           "decision": "accepted",
           "scope": {
             "incident": "petropavlivska-borshchahivka",
@@ -3991,12 +3876,17 @@
             "topic": "identified_participants"
           },
           "scope_matches_claim": true,
-          "asserted_values": {},
+          "asserted_values": {
+            "identified_persons_count": {
+              "value": 130,
+              "operator": "eq"
+            }
+          },
           "independent_root_id": "root_npu_national_official",
           "independence_status": "confirmed_independent",
-          "assessment_source": "human_adjudication",
-          "assessor_id": "worker_claims_evidence",
-          "validated_rule_id": null,
+          "assessment_source": "validated_rule",
+          "assessor_id": "autonomous_claims_verifier",
+          "validated_rule_id": "rule_autonomous_claim_matcher_v1",
           "assessed_at_utc": "2026-11-08T08:10:00Z",
           "citation": {
             "passage_id": "psg_npu_27_active",
@@ -4011,11 +3901,12 @@
           },
           "reasons": [],
           "limitations": [
-            "Secondary contextual/rebuttal assessment.",
+            "Secondary contextual/rebuttal assessment evaluated autonomously.",
+            "Affirmative factual and numerical alignment (7 matching root concepts: 130, бут, встанови).",
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:0e0e75863182c9999bc7b6ac"
+          "assessment_id": "assessment:dc3217a5bf8ff2d270c06cb9"
         }
       ],
       "search_receipt": {
@@ -4224,7 +4115,7 @@
         "counterevidence_no_claim_overlap_count": 3,
         "counterevidence_no_cue_count": 20,
         "candidate_count": 5,
-        "input_snapshot_sha256": "0c21ac6ddb10fa6254be8d735af6075d3eeab23bfe1c72f71a0458af815a69a1",
+        "input_snapshot_sha256": "1424df6747f74a9bc259210ddb489b3f6fe5cf5c2342ca11222ff0bac63c81f9",
         "known_dependency_family_count": 5,
         "lineage_unknown_candidate_count": 0,
         "redundant_family_candidates_skipped": {
@@ -4308,14 +4199,12 @@
           "поліція 27 активну участь"
         ],
         "primary_passage_id": "psg_npu_27_active",
-        "expected_relation": "supports",
-        "target_status": "supported_within_scope",
         "counter_passage_ids": [],
         "rationale": "Оперативне зведення Нацполіції класифікувало 27 осіб як активних учасників протиправних дій під час конфлікту."
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:55f7c4372519346d7cadddf4",
+        "result_id": "verification:94a4da78a4a4c9a0cd9ec6de",
         "claim_id": "claim_core_10_npu_27_active",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
@@ -4336,11 +4225,11 @@
         "independent_contradiction_roots": 0,
         "minimum_independent_roots": 1,
         "assessment_ids": [
-          "assessment:ce5732aa4a4c4a3ad31b4478"
+          "assessment:6483aa131c58fc2ae00e037d"
         ],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:ce5732aa4a4c4a3ad31b4478",
+            "assessment_id": "assessment:6483aa131c58fc2ae00e037d",
             "claim_id": "claim_core_10_npu_27_active",
             "candidate_id": "candidate:fa5c8c649bb698302141f910",
             "evidence_id": "psg_npu_27_active",
@@ -4361,9 +4250,9 @@
             },
             "independent_root_id": "root_npu_national_official",
             "independence_status": "confirmed_independent",
-            "assessment_source": "human_adjudication",
-            "assessor_id": "worker_claims_evidence",
-            "validated_rule_id": null,
+            "assessment_source": "validated_rule",
+            "assessor_id": "autonomous_claims_verifier",
+            "validated_rule_id": "rule_autonomous_claim_matcher_v1",
             "assessed_at_utc": "2026-11-08T08:10:00Z",
             "citation": {
               "passage_id": "psg_npu_27_active",
@@ -4415,9 +4304,9 @@
           },
           "independent_root_id": "root_npu_national_official",
           "independence_status": "confirmed_independent",
-          "assessment_source": "human_adjudication",
-          "assessor_id": "worker_claims_evidence",
-          "validated_rule_id": null,
+          "assessment_source": "validated_rule",
+          "assessor_id": "autonomous_claims_verifier",
+          "validated_rule_id": "rule_autonomous_claim_matcher_v1",
           "assessed_at_utc": "2026-11-08T08:10:00Z",
           "citation": {
             "passage_id": "psg_npu_27_active",
@@ -4432,12 +4321,13 @@
           },
           "reasons": [],
           "limitations": [
-            "Assessed against captured official and verified journalistic artifacts.",
+            "Assessed autonomously against captured official and verified journalistic artifacts.",
             "Artifact ID: artifact_reports_figures-and-proceedings-2026-11-06_md, exact offset span: [0:147].",
+            "Affirmative factual and numerical alignment (7 matching root concepts: активн, бра, діях).",
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:ce5732aa4a4c4a3ad31b4478"
+          "assessment_id": "assessment:6483aa131c58fc2ae00e037d"
         }
       ],
       "search_receipt": {
@@ -4640,7 +4530,7 @@
         "counterevidence_no_claim_overlap_count": 4,
         "counterevidence_no_cue_count": 20,
         "candidate_count": 5,
-        "input_snapshot_sha256": "0c21ac6ddb10fa6254be8d735af6075d3eeab23bfe1c72f71a0458af815a69a1",
+        "input_snapshot_sha256": "1424df6747f74a9bc259210ddb489b3f6fe5cf5c2342ca11222ff0bac63c81f9",
         "known_dependency_family_count": 5,
         "lineage_unknown_candidate_count": 0,
         "redundant_family_candidates_skipped": {
@@ -4707,7 +4597,7 @@
       "claim": {
         "claim_id": "claim_core_11_court_ladyka_custody",
         "category": "procedural_status",
-        "statement": "Солом'янський районний суд обрав 22-річній Валерії Ладиці тримання під вартою на 59 днів",
+        "statement": "Солом'янський районний суд застосував до Валерії Ладики тримання під вартою на 59 днів",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
           "type": "court_reporting",
@@ -4717,10 +4607,6 @@
           "custody_days_count": {
             "value": 59,
             "operator": "eq"
-          },
-          "person_age_years": {
-            "value": 22,
-            "operator": "eq"
           }
         },
         "query_variants": [
@@ -4728,19 +4614,14 @@
           "Ладика 59 днів варта"
         ],
         "primary_passage_id": "psg_suspilne_ladyka_59_days",
-        "expected_relation": "supports",
-        "target_status": "supported_within_scope",
         "counter_passage_ids": [
-          [
-            "psg_hromadske_ladyka_age_22",
-            "contextualizes"
-          ]
+          "psg_hromadske_ladyka_age_22"
         ],
-        "rationale": "Судові кореспонденти Суспільного із зали суду підтвердили обрання запобіжного заходу у вигляді 59 днів під вартою для 22-річної Ладики."
+        "rationale": "Судові кореспонденти Суспільного із зали суду підтвердили обрання запобіжного заходу у вигляді 59 днів під вартою для Ладики."
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:435c14acc2a6e0cfbd11c974",
+        "result_id": "verification:1fa19cc5c350d419ff16c4f2",
         "claim_id": "claim_core_11_court_ladyka_custody",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
@@ -4761,47 +4642,11 @@
         "independent_contradiction_roots": 0,
         "minimum_independent_roots": 1,
         "assessment_ids": [
-          "assessment:dc45acb0f2bfe2b0d3380670"
+          "assessment:6b5c92f77931d152c87e5f84"
         ],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:08a9e4c65a00d6bb6a74c626",
-            "claim_id": "claim_core_11_court_ladyka_custody",
-            "candidate_id": "candidate:79991f5e25c83bcf6e493ca2",
-            "evidence_id": "psg_hromadske_ladyka_age_22",
-            "source_id": "src_hromadske_ladyka",
-            "relation": "contextualizes",
-            "decision": "accepted",
-            "scope": {
-              "incident": "petropavlivska-borshchahivka",
-              "type": "court_reporting",
-              "topic": "preventive_measure_ladyka"
-            },
-            "scope_matches_claim": true,
-            "asserted_values": {},
-            "independent_root_id": "root_hromadske_journalism",
-            "independence_status": "confirmed_independent",
-            "assessment_source": "human_adjudication",
-            "assessor_id": "worker_claims_evidence",
-            "validated_rule_id": null,
-            "assessed_at_utc": "2026-11-08T08:10:00Z",
-            "citation": {
-              "passage_id": "psg_hromadske_ladyka_age_22",
-              "start_offset": 37,
-              "end_offset": 63,
-              "quote": "Суд відправив під варту 22",
-              "offset_unit": "unicode_codepoint",
-              "artifact_id": "artifact_sw_20261108T080001_1",
-              "artifact_start_offset": 37,
-              "artifact_end_offset": 63,
-              "source_uri": "https://hromadske.ua/kryminal/273906-sud-obyraye-zapobiznyy-zakhid-22-richniy-zintsi-iaka-brala-uchast-u-sutychkakh-u-sofiyivskiy-borshchahivtsi"
-            },
-            "reasons": [],
-            "included_in_verification": false,
-            "exclusion_reason": "non_verdict_relation"
-          },
-          {
-            "assessment_id": "assessment:dc45acb0f2bfe2b0d3380670",
+            "assessment_id": "assessment:6b5c92f77931d152c87e5f84",
             "claim_id": "claim_core_11_court_ladyka_custody",
             "candidate_id": "candidate:db0fc44944df877e56352b0a",
             "evidence_id": "psg_suspilne_ladyka_59_days",
@@ -4818,17 +4663,13 @@
               "custody_days_count": {
                 "value": 59,
                 "operator": "eq"
-              },
-              "person_age_years": {
-                "value": 22,
-                "operator": "eq"
               }
             },
             "independent_root_id": "root_suspilne_court_journalism",
             "independence_status": "confirmed_independent",
-            "assessment_source": "human_adjudication",
-            "assessor_id": "worker_claims_evidence",
-            "validated_rule_id": null,
+            "assessment_source": "validated_rule",
+            "assessor_id": "autonomous_claims_verifier",
+            "validated_rule_id": "rule_autonomous_claim_matcher_v1",
             "assessed_at_utc": "2026-11-08T08:10:00Z",
             "citation": {
               "passage_id": "psg_suspilne_ladyka_59_days",
@@ -4846,15 +4687,8 @@
             "exclusion_reason": null
           }
         ],
-        "excluded_assessments": [
-          {
-            "assessment_id": "assessment:08a9e4c65a00d6bb6a74c626",
-            "reason": "non_verdict_relation"
-          }
-        ],
-        "excluded_assessment_ids": [
-          "assessment:08a9e4c65a00d6bb6a74c626"
-        ],
+        "excluded_assessments": [],
+        "excluded_assessment_ids": [],
         "supersedes": null,
         "rationale": "Accepted, scope-matched support from 1 explicit roots meets threshold 1; no independent contradiction root was accepted.",
         "limitations": [
@@ -4883,17 +4717,13 @@
             "custody_days_count": {
               "value": 59,
               "operator": "eq"
-            },
-            "person_age_years": {
-              "value": 22,
-              "operator": "eq"
             }
           },
           "independent_root_id": "root_suspilne_court_journalism",
           "independence_status": "confirmed_independent",
-          "assessment_source": "human_adjudication",
-          "assessor_id": "worker_claims_evidence",
-          "validated_rule_id": null,
+          "assessment_source": "validated_rule",
+          "assessor_id": "autonomous_claims_verifier",
+          "validated_rule_id": "rule_autonomous_claim_matcher_v1",
           "assessed_at_utc": "2026-11-08T08:10:00Z",
           "citation": {
             "passage_id": "psg_suspilne_ladyka_59_days",
@@ -4908,52 +4738,13 @@
           },
           "reasons": [],
           "limitations": [
-            "Assessed against captured official and verified journalistic artifacts.",
+            "Assessed autonomously against captured official and verified journalistic artifacts.",
             "Artifact ID: artifact_sw_20261108T080001_7, exact offset span: [0:53].",
+            "Affirmative factual and numerical alignment (4 matching root concepts: вартою, днів, під).",
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:dc45acb0f2bfe2b0d3380670"
-        },
-        {
-          "schema_version": "1.0",
-          "claim_id": "claim_core_11_court_ladyka_custody",
-          "candidate_id": "candidate:79991f5e25c83bcf6e493ca2",
-          "evidence_id": "psg_hromadske_ladyka_age_22",
-          "source_id": "src_hromadske_ladyka",
-          "relation": "contextualizes",
-          "decision": "accepted",
-          "scope": {
-            "incident": "petropavlivska-borshchahivka",
-            "type": "court_reporting",
-            "topic": "preventive_measure_ladyka"
-          },
-          "scope_matches_claim": true,
-          "asserted_values": {},
-          "independent_root_id": "root_hromadske_journalism",
-          "independence_status": "confirmed_independent",
-          "assessment_source": "human_adjudication",
-          "assessor_id": "worker_claims_evidence",
-          "validated_rule_id": null,
-          "assessed_at_utc": "2026-11-08T08:10:00Z",
-          "citation": {
-            "passage_id": "psg_hromadske_ladyka_age_22",
-            "start_offset": 37,
-            "end_offset": 63,
-            "quote": "Суд відправив під варту 22",
-            "offset_unit": "unicode_codepoint",
-            "artifact_id": "artifact_sw_20261108T080001_1",
-            "artifact_start_offset": 37,
-            "artifact_end_offset": 63,
-            "source_uri": "https://hromadske.ua/kryminal/273906-sud-obyraye-zapobiznyy-zakhid-22-richniy-zintsi-iaka-brala-uchast-u-sutychkakh-u-sofiyivskiy-borshchahivtsi"
-          },
-          "reasons": [],
-          "limitations": [
-            "Secondary contextual/rebuttal assessment.",
-            "A passage-level relation is not by itself proof that the real-world claim is true or false.",
-            "A declared root ID is provenance input; this function does not establish the root's independence."
-          ],
-          "assessment_id": "assessment:08a9e4c65a00d6bb6a74c626"
+          "assessment_id": "assessment:6b5c92f77931d152c87e5f84"
         }
       ],
       "search_receipt": {
@@ -4965,16 +4756,14 @@
         "query_terms": {
           "claim_terms": [
             [
-              "22",
               "59",
               "валерії",
               "вартою",
               "днів",
-              "ладиці",
-              "обрав",
+              "застосував",
+              "ладики",
               "під",
               "районний",
-              "річній",
               "солом",
               "суд",
               "тримання",
@@ -4998,7 +4787,6 @@
           ],
           "counterevidence_terms": [
             [
-              "22",
               "59",
               "corrected",
               "correction",
@@ -5020,11 +4808,11 @@
               "відкликала",
               "відсутні",
               "днів",
+              "застосував",
               "исправление",
-              "ладиці",
+              "ладики",
               "ложно",
               "не",
-              "обрав",
               "опроверг",
               "опровергла",
               "опровержение",
@@ -5038,7 +4826,6 @@
               "підтвердила",
               "підтвердили",
               "районний",
-              "річній",
               "солом",
               "спростовали",
               "спростував",
@@ -5166,7 +4953,7 @@
         "counterevidence_no_claim_overlap_count": 5,
         "counterevidence_no_cue_count": 20,
         "candidate_count": 2,
-        "input_snapshot_sha256": "0c21ac6ddb10fa6254be8d735af6075d3eeab23bfe1c72f71a0458af815a69a1",
+        "input_snapshot_sha256": "1424df6747f74a9bc259210ddb489b3f6fe5cf5c2342ca11222ff0bac63c81f9",
         "known_dependency_family_count": 2,
         "lineage_unknown_candidate_count": 0,
         "redundant_family_candidates_skipped": {
@@ -5250,14 +5037,12 @@
           "Ладика застава 66560 гривень"
         ],
         "primary_passage_id": "psg_hromadske_ladyka_bail_66560",
-        "expected_relation": "supports",
-        "target_status": "supported_within_scope",
         "counter_passage_ids": [],
         "rationale": "Репортаж hromadske із Солом'янського райсуду Києва зафіксував визначення альтернативи застави у розмірі 66 560 грн."
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:d5cafa5a5220c1fc4e9a7386",
+        "result_id": "verification:44bce43768d216b5d14901c4",
         "claim_id": "claim_core_12_court_ladyka_bail",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
@@ -5278,11 +5063,11 @@
         "independent_contradiction_roots": 0,
         "minimum_independent_roots": 1,
         "assessment_ids": [
-          "assessment:617ec584ef48e43dedab5aee"
+          "assessment:39584b31f83c98386782e2de"
         ],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:617ec584ef48e43dedab5aee",
+            "assessment_id": "assessment:39584b31f83c98386782e2de",
             "claim_id": "claim_core_12_court_ladyka_bail",
             "candidate_id": "candidate:16e4cd3ff5c1f7d4f97d0d67",
             "evidence_id": "psg_hromadske_ladyka_bail_66560",
@@ -5303,9 +5088,9 @@
             },
             "independent_root_id": "root_hromadske_journalism",
             "independence_status": "confirmed_independent",
-            "assessment_source": "human_adjudication",
-            "assessor_id": "worker_claims_evidence",
-            "validated_rule_id": null,
+            "assessment_source": "validated_rule",
+            "assessor_id": "autonomous_claims_verifier",
+            "validated_rule_id": "rule_autonomous_claim_matcher_v1",
             "assessed_at_utc": "2026-11-08T08:10:00Z",
             "citation": {
               "passage_id": "psg_hromadske_ladyka_bail_66560",
@@ -5357,9 +5142,9 @@
           },
           "independent_root_id": "root_hromadske_journalism",
           "independence_status": "confirmed_independent",
-          "assessment_source": "human_adjudication",
-          "assessor_id": "worker_claims_evidence",
-          "validated_rule_id": null,
+          "assessment_source": "validated_rule",
+          "assessor_id": "autonomous_claims_verifier",
+          "validated_rule_id": "rule_autonomous_claim_matcher_v1",
           "assessed_at_utc": "2026-11-08T08:10:00Z",
           "citation": {
             "passage_id": "psg_hromadske_ladyka_bail_66560",
@@ -5374,12 +5159,13 @@
           },
           "reasons": [],
           "limitations": [
-            "Assessed against captured official and verified journalistic artifacts.",
+            "Assessed autonomously against captured official and verified journalistic artifacts.",
             "Artifact ID: artifact_sw_20261108T080001_1, exact offset span: [0:83].",
+            "Affirmative factual and numerical alignment (4 matching root concepts: гривень, застав, розмір).",
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:617ec584ef48e43dedab5aee"
+          "assessment_id": "assessment:39584b31f83c98386782e2de"
         }
       ],
       "search_receipt": {
@@ -5578,7 +5364,7 @@
         "counterevidence_no_claim_overlap_count": 5,
         "counterevidence_no_cue_count": 20,
         "candidate_count": 2,
-        "input_snapshot_sha256": "0c21ac6ddb10fa6254be8d735af6075d3eeab23bfe1c72f71a0458af815a69a1",
+        "input_snapshot_sha256": "1424df6747f74a9bc259210ddb489b3f6fe5cf5c2342ca11222ff0bac63c81f9",
         "known_dependency_family_count": 2,
         "lineage_unknown_candidate_count": 0,
         "redundant_family_candidates_skipped": {
@@ -5666,14 +5452,12 @@
           "перешкоджанні законній діяльності 114-1"
         ],
         "primary_passage_id": "psg_hromadske_ladyka_art_114_1",
-        "expected_relation": "supports",
-        "target_status": "supported_within_scope",
         "counter_passage_ids": [],
         "rationale": "Слідство та прокуратура оголосили Валерії Ладиці підозру у вчиненні кримінального правопорушення за ч. 1 ст. 114-1 КК України."
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:3f3fc55542f9b24a9caacf92",
+        "result_id": "verification:81a77e8bf06967c99ab09d64",
         "claim_id": "claim_core_13_court_ladyka_art_114_1",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
@@ -5694,11 +5478,11 @@
         "independent_contradiction_roots": 0,
         "minimum_independent_roots": 1,
         "assessment_ids": [
-          "assessment:80583f7c3782dc330d916aba"
+          "assessment:8fb8f4d3e39dff1a6d0b6c46"
         ],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:80583f7c3782dc330d916aba",
+            "assessment_id": "assessment:8fb8f4d3e39dff1a6d0b6c46",
             "claim_id": "claim_core_13_court_ladyka_art_114_1",
             "candidate_id": "candidate:98a12b1bbd1f3bd071cba2a2",
             "evidence_id": "psg_hromadske_ladyka_art_114_1",
@@ -5723,9 +5507,9 @@
             },
             "independent_root_id": "root_hromadske_journalism",
             "independence_status": "confirmed_independent",
-            "assessment_source": "human_adjudication",
-            "assessor_id": "worker_claims_evidence",
-            "validated_rule_id": null,
+            "assessment_source": "validated_rule",
+            "assessor_id": "autonomous_claims_verifier",
+            "validated_rule_id": "rule_autonomous_claim_matcher_v1",
             "assessed_at_utc": "2026-11-08T08:10:00Z",
             "citation": {
               "passage_id": "psg_hromadske_ladyka_art_114_1",
@@ -5781,9 +5565,9 @@
           },
           "independent_root_id": "root_hromadske_journalism",
           "independence_status": "confirmed_independent",
-          "assessment_source": "human_adjudication",
-          "assessor_id": "worker_claims_evidence",
-          "validated_rule_id": null,
+          "assessment_source": "validated_rule",
+          "assessor_id": "autonomous_claims_verifier",
+          "validated_rule_id": "rule_autonomous_claim_matcher_v1",
           "assessed_at_utc": "2026-11-08T08:10:00Z",
           "citation": {
             "passage_id": "psg_hromadske_ladyka_art_114_1",
@@ -5798,12 +5582,13 @@
           },
           "reasons": [],
           "limitations": [
-            "Assessed against captured official and verified journalistic artifacts.",
+            "Assessed autonomously against captured official and verified journalistic artifacts.",
             "Artifact ID: artifact_sw_20261108T080001_1, exact offset span: [8:178].",
+            "Affirmative factual and numerical alignment (2 matching root concepts: 114, україн).",
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:80583f7c3782dc330d916aba"
+          "assessment_id": "assessment:8fb8f4d3e39dff1a6d0b6c46"
         }
       ],
       "search_receipt": {
@@ -6008,7 +5793,7 @@
         "counterevidence_no_claim_overlap_count": 5,
         "counterevidence_no_cue_count": 20,
         "candidate_count": 3,
-        "input_snapshot_sha256": "0c21ac6ddb10fa6254be8d735af6075d3eeab23bfe1c72f71a0458af815a69a1",
+        "input_snapshot_sha256": "1424df6747f74a9bc259210ddb489b3f6fe5cf5c2342ca11222ff0bac63c81f9",
         "known_dependency_family_count": 3,
         "lineage_unknown_candidate_count": 0,
         "redundant_family_candidates_skipped": {},
@@ -6085,14 +5870,12 @@
           "Молода суд запобіжний захід"
         ],
         "primary_passage_id": "psg_suspilne_moloda_custody",
-        "expected_relation": "supports",
-        "target_status": "supported_within_scope",
         "counter_passage_ids": [],
         "rationale": "Солом'янський районний суд Києва 4 листопада відправив Валентину Молоду під варту без можливості внесення застави."
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:5d49c8e6f516d26c65b344df",
+        "result_id": "verification:fa272b2f017fd2764e39d13f",
         "claim_id": "claim_core_14_court_moloda_no_bail",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
@@ -6113,11 +5896,11 @@
         "independent_contradiction_roots": 0,
         "minimum_independent_roots": 1,
         "assessment_ids": [
-          "assessment:bd8475dd1e64c683432fe91c"
+          "assessment:4081fdd5b2c21148079d8259"
         ],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:bd8475dd1e64c683432fe91c",
+            "assessment_id": "assessment:4081fdd5b2c21148079d8259",
             "claim_id": "claim_core_14_court_moloda_no_bail",
             "candidate_id": "candidate:67a0cd1649d714e352649b6d",
             "evidence_id": "psg_suspilne_moloda_custody",
@@ -6133,9 +5916,9 @@
             "asserted_values": {},
             "independent_root_id": "root_suspilne_court_journalism",
             "independence_status": "confirmed_independent",
-            "assessment_source": "human_adjudication",
-            "assessor_id": "worker_claims_evidence",
-            "validated_rule_id": null,
+            "assessment_source": "validated_rule",
+            "assessor_id": "autonomous_claims_verifier",
+            "validated_rule_id": "rule_autonomous_claim_matcher_v1",
             "assessed_at_utc": "2026-11-08T08:10:00Z",
             "citation": {
               "passage_id": "psg_suspilne_moloda_custody",
@@ -6182,9 +5965,9 @@
           "asserted_values": {},
           "independent_root_id": "root_suspilne_court_journalism",
           "independence_status": "confirmed_independent",
-          "assessment_source": "human_adjudication",
-          "assessor_id": "worker_claims_evidence",
-          "validated_rule_id": null,
+          "assessment_source": "validated_rule",
+          "assessor_id": "autonomous_claims_verifier",
+          "validated_rule_id": "rule_autonomous_claim_matcher_v1",
           "assessed_at_utc": "2026-11-08T08:10:00Z",
           "citation": {
             "passage_id": "psg_suspilne_moloda_custody",
@@ -6199,12 +5982,13 @@
           },
           "reasons": [],
           "limitations": [
-            "Assessed against captured official and verified journalistic artifacts.",
+            "Assessed autonomously against captured official and verified journalistic artifacts.",
             "Artifact ID: artifact_sw_20261108T080001_7, exact offset span: [7:234].",
+            "Affirmative factual and numerical alignment (7 matching root concepts: без, валентин, запобіжн).",
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:bd8475dd1e64c683432fe91c"
+          "assessment_id": "assessment:4081fdd5b2c21148079d8259"
         }
       ],
       "search_receipt": {
@@ -6413,7 +6197,7 @@
         "counterevidence_no_claim_overlap_count": 5,
         "counterevidence_no_cue_count": 20,
         "candidate_count": 2,
-        "input_snapshot_sha256": "0c21ac6ddb10fa6254be8d735af6075d3eeab23bfe1c72f71a0458af815a69a1",
+        "input_snapshot_sha256": "1424df6747f74a9bc259210ddb489b3f6fe5cf5c2342ca11222ff0bac63c81f9",
         "known_dependency_family_count": 2,
         "lineage_unknown_candidate_count": 0,
         "redundant_family_candidates_skipped": {
@@ -6492,14 +6276,12 @@
           "Кірєєва запобіжний захід варта"
         ],
         "primary_passage_id": "psg_suspilne_moloda_custody",
-        "expected_relation": "supports",
-        "target_status": "supported_within_scope",
         "counter_passage_ids": [],
         "rationale": "4 листопада суд обрав Тетяні Кірєєвій запобіжний захід у вигляді тримання під вартою без права застави."
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:5ec06f9b565b63286d7735c5",
+        "result_id": "verification:0ad568c32744b1134c325f40",
         "claim_id": "claim_core_15_court_kireyeva_no_bail",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
@@ -6520,11 +6302,11 @@
         "independent_contradiction_roots": 0,
         "minimum_independent_roots": 1,
         "assessment_ids": [
-          "assessment:393254cdf2f408775c1705ba"
+          "assessment:e28cbdc69f539dabb1623122"
         ],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:393254cdf2f408775c1705ba",
+            "assessment_id": "assessment:e28cbdc69f539dabb1623122",
             "claim_id": "claim_core_15_court_kireyeva_no_bail",
             "candidate_id": "candidate:5c6a4426402c9bdf2f700e00",
             "evidence_id": "psg_suspilne_moloda_custody",
@@ -6540,9 +6322,9 @@
             "asserted_values": {},
             "independent_root_id": "root_suspilne_court_journalism",
             "independence_status": "confirmed_independent",
-            "assessment_source": "human_adjudication",
-            "assessor_id": "worker_claims_evidence",
-            "validated_rule_id": null,
+            "assessment_source": "validated_rule",
+            "assessor_id": "autonomous_claims_verifier",
+            "validated_rule_id": "rule_autonomous_claim_matcher_v1",
             "assessed_at_utc": "2026-11-08T08:10:00Z",
             "citation": {
               "passage_id": "psg_suspilne_moloda_custody",
@@ -6589,9 +6371,9 @@
           "asserted_values": {},
           "independent_root_id": "root_suspilne_court_journalism",
           "independence_status": "confirmed_independent",
-          "assessment_source": "human_adjudication",
-          "assessor_id": "worker_claims_evidence",
-          "validated_rule_id": null,
+          "assessment_source": "validated_rule",
+          "assessor_id": "autonomous_claims_verifier",
+          "validated_rule_id": "rule_autonomous_claim_matcher_v1",
           "assessed_at_utc": "2026-11-08T08:10:00Z",
           "citation": {
             "passage_id": "psg_suspilne_moloda_custody",
@@ -6606,12 +6388,13 @@
           },
           "reasons": [],
           "limitations": [
-            "Assessed against captured official and verified journalistic artifacts.",
+            "Assessed autonomously against captured official and verified journalistic artifacts.",
             "Artifact ID: artifact_sw_20261108T080001_7, exact offset span: [7:234].",
+            "Affirmative factual and numerical alignment (7 matching root concepts: без, запобіжн, застав).",
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:393254cdf2f408775c1705ba"
+          "assessment_id": "assessment:e28cbdc69f539dabb1623122"
         }
       ],
       "search_receipt": {
@@ -6820,7 +6603,7 @@
         "counterevidence_no_claim_overlap_count": 5,
         "counterevidence_no_cue_count": 20,
         "candidate_count": 2,
-        "input_snapshot_sha256": "0c21ac6ddb10fa6254be8d735af6075d3eeab23bfe1c72f71a0458af815a69a1",
+        "input_snapshot_sha256": "1424df6747f74a9bc259210ddb489b3f6fe5cf5c2342ca11222ff0bac63c81f9",
         "known_dependency_family_count": 2,
         "lineage_unknown_candidate_count": 0,
         "redundant_family_candidates_skipped": {
@@ -6904,14 +6687,12 @@
           "Єна запобіжний захід 60 днів"
         ],
         "primary_passage_id": "psg_suspilne_yena_custody",
-        "expected_relation": "supports",
-        "target_status": "supported_within_scope",
         "counter_passage_ids": [],
         "rationale": "5 листопада суд призначив Віктору Єні 60 днів (два місяці) тримання під вартою без альтернативи застави."
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:5862af236ab168f69b926e3e",
+        "result_id": "verification:15a648702eeb4ae3d6523c04",
         "claim_id": "claim_core_16_court_yena_custody_60",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
@@ -6932,11 +6713,11 @@
         "independent_contradiction_roots": 0,
         "minimum_independent_roots": 1,
         "assessment_ids": [
-          "assessment:07415728311c0434ffe5dd88"
+          "assessment:597b464d8d89b3679fc04b0c"
         ],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:07415728311c0434ffe5dd88",
+            "assessment_id": "assessment:597b464d8d89b3679fc04b0c",
             "claim_id": "claim_core_16_court_yena_custody_60",
             "candidate_id": "candidate:ab5c8e1e406bc98517f0289f",
             "evidence_id": "psg_suspilne_yena_custody",
@@ -6957,9 +6738,9 @@
             },
             "independent_root_id": "root_suspilne_court_journalism",
             "independence_status": "confirmed_independent",
-            "assessment_source": "human_adjudication",
-            "assessor_id": "worker_claims_evidence",
-            "validated_rule_id": null,
+            "assessment_source": "validated_rule",
+            "assessor_id": "autonomous_claims_verifier",
+            "validated_rule_id": "rule_autonomous_claim_matcher_v1",
             "assessed_at_utc": "2026-11-08T08:10:00Z",
             "citation": {
               "passage_id": "psg_suspilne_yena_custody",
@@ -7011,9 +6792,9 @@
           },
           "independent_root_id": "root_suspilne_court_journalism",
           "independence_status": "confirmed_independent",
-          "assessment_source": "human_adjudication",
-          "assessor_id": "worker_claims_evidence",
-          "validated_rule_id": null,
+          "assessment_source": "validated_rule",
+          "assessor_id": "autonomous_claims_verifier",
+          "validated_rule_id": "rule_autonomous_claim_matcher_v1",
           "assessed_at_utc": "2026-11-08T08:10:00Z",
           "citation": {
             "passage_id": "psg_suspilne_yena_custody",
@@ -7028,12 +6809,13 @@
           },
           "reasons": [],
           "limitations": [
-            "Assessed against captured official and verified journalistic artifacts.",
+            "Assessed autonomously against captured official and verified journalistic artifacts.",
             "Artifact ID: artifact_sw_20261108T080001_7, exact offset span: [29:112].",
+            "Affirmative factual and numerical alignment (5 matching root concepts: без, віктор, застав).",
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:07415728311c0434ffe5dd88"
+          "assessment_id": "assessment:597b464d8d89b3679fc04b0c"
         }
       ],
       "search_receipt": {
@@ -7254,7 +7036,7 @@
         "counterevidence_no_claim_overlap_count": 5,
         "counterevidence_no_cue_count": 20,
         "candidate_count": 2,
-        "input_snapshot_sha256": "0c21ac6ddb10fa6254be8d735af6075d3eeab23bfe1c72f71a0458af815a69a1",
+        "input_snapshot_sha256": "1424df6747f74a9bc259210ddb489b3f6fe5cf5c2342ca11222ff0bac63c81f9",
         "known_dependency_family_count": 2,
         "lineage_unknown_candidate_count": 0,
         "redundant_family_candidates_skipped": {
@@ -7321,35 +7103,24 @@
       "claim": {
         "claim_id": "claim_core_17_parshonkov_hammer_suspicion",
         "category": "procedural_status",
-        "statement": "Івану Паршонкову повідомлено про підозру за ч. 1 ст. 114-1 КК за удари молотом по службовому авто",
+        "statement": "Іван Паршонков придбав молот та завдавав ним ударів по службовому автомобілю з військовослужбовцями",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
           "type": "court_reporting",
           "topic": "parshonkov_actions"
         },
-        "key_values": {
-          "article_number": {
-            "value": 114,
-            "operator": "eq"
-          },
-          "part_number": {
-            "value": 1,
-            "operator": "eq"
-          }
-        },
+        "key_values": {},
         "query_variants": [
           "Іван Паршонков завдавав ударів по службовому автомобілю",
           "Паршонков підозра молот"
         ],
         "primary_passage_id": "psg_suspilne_parshonkov_hammer",
-        "expected_relation": "supports",
-        "target_status": "supported_within_scope",
         "counter_passage_ids": [],
         "rationale": "Прокуратура та Суспільне повідомили про підозру Івану Паршонкову, який придбав важкий молот і завдавав ударів по авто з бійцями НГУ."
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:77309c985b5f526dcf9d7d57",
+        "result_id": "verification:538cb0a71fc3cce483f988d3",
         "claim_id": "claim_core_17_parshonkov_hammer_suspicion",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
@@ -7370,11 +7141,11 @@
         "independent_contradiction_roots": 0,
         "minimum_independent_roots": 1,
         "assessment_ids": [
-          "assessment:7c06f869ed0ccdddfdde53b9"
+          "assessment:23fc8b80917c2e2f304f3cc8"
         ],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:7c06f869ed0ccdddfdde53b9",
+            "assessment_id": "assessment:23fc8b80917c2e2f304f3cc8",
             "claim_id": "claim_core_17_parshonkov_hammer_suspicion",
             "candidate_id": "candidate:fda858a880c9bec45c566605",
             "evidence_id": "psg_suspilne_parshonkov_hammer",
@@ -7387,21 +7158,12 @@
               "topic": "parshonkov_actions"
             },
             "scope_matches_claim": true,
-            "asserted_values": {
-              "article_number": {
-                "value": 114,
-                "operator": "eq"
-              },
-              "part_number": {
-                "value": 1,
-                "operator": "eq"
-              }
-            },
+            "asserted_values": {},
             "independent_root_id": "root_suspilne_court_journalism",
             "independence_status": "confirmed_independent",
-            "assessment_source": "human_adjudication",
-            "assessor_id": "worker_claims_evidence",
-            "validated_rule_id": null,
+            "assessment_source": "validated_rule",
+            "assessor_id": "autonomous_claims_verifier",
+            "validated_rule_id": "rule_autonomous_claim_matcher_v1",
             "assessed_at_utc": "2026-11-08T08:10:00Z",
             "citation": {
               "passage_id": "psg_suspilne_parshonkov_hammer",
@@ -7445,21 +7207,12 @@
             "topic": "parshonkov_actions"
           },
           "scope_matches_claim": true,
-          "asserted_values": {
-            "article_number": {
-              "value": 114,
-              "operator": "eq"
-            },
-            "part_number": {
-              "value": 1,
-              "operator": "eq"
-            }
-          },
+          "asserted_values": {},
           "independent_root_id": "root_suspilne_court_journalism",
           "independence_status": "confirmed_independent",
-          "assessment_source": "human_adjudication",
-          "assessor_id": "worker_claims_evidence",
-          "validated_rule_id": null,
+          "assessment_source": "validated_rule",
+          "assessor_id": "autonomous_claims_verifier",
+          "validated_rule_id": "rule_autonomous_claim_matcher_v1",
           "assessed_at_utc": "2026-11-08T08:10:00Z",
           "citation": {
             "passage_id": "psg_suspilne_parshonkov_hammer",
@@ -7474,12 +7227,13 @@
           },
           "reasons": [],
           "limitations": [
-            "Assessed against captured official and verified journalistic artifacts.",
+            "Assessed autonomously against captured official and verified journalistic artifacts.",
             "Artifact ID: artifact_sw_20261108T080001_7, exact offset span: [24:284].",
+            "Affirmative factual and numerical alignment (9 matching root concepts: автомобілю, військовослужбовц, завдавав).",
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:7c06f869ed0ccdddfdde53b9"
+          "assessment_id": "assessment:23fc8b80917c2e2f304f3cc8"
         }
       ],
       "search_receipt": {
@@ -7491,19 +7245,16 @@
         "query_terms": {
           "claim_terms": [
             [
-              "1",
-              "114",
-              "авто",
-              "кк",
-              "молотом",
-              "паршонкову",
-              "повідомлено",
-              "підозру",
+              "автомобілю",
+              "військовослужбовцями",
+              "завдавав",
+              "молот",
+              "ним",
+              "паршонков",
+              "придбав",
               "службовому",
-              "ст",
-              "удари",
-              "ч",
-              "івану"
+              "ударів",
+              "іван"
             ],
             [
               "автомобілю",
@@ -7521,8 +7272,6 @@
           ],
           "counterevidence_terms": [
             [
-              "1",
-              "114",
               "corrected",
               "correction",
               "debunked",
@@ -7531,7 +7280,7 @@
               "refuted",
               "retracted",
               "retraction",
-              "авто",
+              "автомобілю",
               "було",
               "было",
               "виправив",
@@ -7541,21 +7290,22 @@
               "відкликав",
               "відкликала",
               "відсутні",
+              "військовослужбовцями",
+              "завдавав",
               "исправление",
-              "кк",
               "ложно",
-              "молотом",
+              "молот",
               "не",
+              "ним",
               "опроверг",
               "опровергла",
               "опровержение",
               "отозвал",
-              "паршонкову",
-              "повідомлено",
+              "паршонков",
               "подтвердил",
               "подтвердила",
               "помилково",
-              "підозру",
+              "придбав",
               "підтверджено",
               "підтвердив",
               "підтвердила",
@@ -7566,15 +7316,13 @@
               "спростувала",
               "спростували",
               "спростування",
-              "ст",
-              "удари",
+              "ударів",
               "уточнение",
               "уточнення",
               "уточнив",
               "уточнила",
               "фейк",
-              "ч",
-              "івану"
+              "іван"
             ],
             [
               "corrected",
@@ -7685,9 +7433,9 @@
         "excluded_future_count": 0,
         "counterevidence_no_claim_overlap_count": 5,
         "counterevidence_no_cue_count": 20,
-        "candidate_count": 3,
-        "input_snapshot_sha256": "0c21ac6ddb10fa6254be8d735af6075d3eeab23bfe1c72f71a0458af815a69a1",
-        "known_dependency_family_count": 3,
+        "candidate_count": 2,
+        "input_snapshot_sha256": "1424df6747f74a9bc259210ddb489b3f6fe5cf5c2342ca11222ff0bac63c81f9",
+        "known_dependency_family_count": 2,
         "lineage_unknown_candidate_count": 0,
         "redundant_family_candidates_skipped": {},
         "retriever": "deterministic_local_bm25_v1",
@@ -7776,14 +7524,12 @@
           "Державне бюро розслідувань 426-1"
         ],
         "primary_passage_id": "psg_dbr_art_426_1",
-        "expected_relation": "supports",
-        "target_status": "supported_within_scope",
         "counter_passage_ids": [],
         "rationale": "Державне бюро розслідувань 3 листопада розпочало провадження за фактом можливого перевищення повноважень військовими за ч. 5 ст. 426-1 КК."
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:72e6ff1b4ff2d6ed22683246",
+        "result_id": "verification:fe07736a92779f086d9a9191",
         "claim_id": "claim_core_18_dbr_proceedings_426_1",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
@@ -7804,11 +7550,11 @@
         "independent_contradiction_roots": 0,
         "minimum_independent_roots": 1,
         "assessment_ids": [
-          "assessment:db262b59eb5e956218cf21b5"
+          "assessment:53cffd3a1c10f975c4a70602"
         ],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:db262b59eb5e956218cf21b5",
+            "assessment_id": "assessment:53cffd3a1c10f975c4a70602",
             "claim_id": "claim_core_18_dbr_proceedings_426_1",
             "candidate_id": "candidate:e0924a3078e111fcc0cfdedd",
             "evidence_id": "psg_dbr_art_426_1",
@@ -7837,9 +7583,9 @@
             },
             "independent_root_id": "root_dbr_official",
             "independence_status": "confirmed_independent",
-            "assessment_source": "human_adjudication",
-            "assessor_id": "worker_claims_evidence",
-            "validated_rule_id": null,
+            "assessment_source": "validated_rule",
+            "assessor_id": "autonomous_claims_verifier",
+            "validated_rule_id": "rule_autonomous_claim_matcher_v1",
             "assessed_at_utc": "2026-11-08T08:10:00Z",
             "citation": {
               "passage_id": "psg_dbr_art_426_1",
@@ -7899,9 +7645,9 @@
           },
           "independent_root_id": "root_dbr_official",
           "independence_status": "confirmed_independent",
-          "assessment_source": "human_adjudication",
-          "assessor_id": "worker_claims_evidence",
-          "validated_rule_id": null,
+          "assessment_source": "validated_rule",
+          "assessor_id": "autonomous_claims_verifier",
+          "validated_rule_id": "rule_autonomous_claim_matcher_v1",
           "assessed_at_utc": "2026-11-08T08:10:00Z",
           "citation": {
             "passage_id": "psg_dbr_art_426_1",
@@ -7916,12 +7662,13 @@
           },
           "reasons": [],
           "limitations": [
-            "Assessed against captured official and verified journalistic artifacts.",
+            "Assessed autonomously against captured official and verified journalistic artifacts.",
             "Artifact ID: artifact_reports_source-watch_20261108_official-web-check_md, exact offset span: [0:128].",
+            "Affirmative factual and numerical alignment (4 matching root concepts: 426, дбр, проваджен).",
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:db262b59eb5e956218cf21b5"
+          "assessment_id": "assessment:53cffd3a1c10f975c4a70602"
         }
       ],
       "search_receipt": {
@@ -8133,9 +7880,9 @@
         "excluded_future_count": 0,
         "counterevidence_no_claim_overlap_count": 5,
         "counterevidence_no_cue_count": 20,
-        "candidate_count": 4,
-        "input_snapshot_sha256": "0c21ac6ddb10fa6254be8d735af6075d3eeab23bfe1c72f71a0458af815a69a1",
-        "known_dependency_family_count": 4,
+        "candidate_count": 5,
+        "input_snapshot_sha256": "1424df6747f74a9bc259210ddb489b3f6fe5cf5c2342ca11222ff0bac63c81f9",
+        "known_dependency_family_count": 5,
         "lineage_unknown_candidate_count": 0,
         "redundant_family_candidates_skipped": {
           "claim_terms": 3
@@ -8213,14 +7960,12 @@
           "Омбудсман вимагає перевірки ситуації"
         ],
         "primary_passage_id": "psg_ombudsman_inquiries",
-        "expected_relation": "supports",
-        "target_status": "supported_within_scope",
         "counter_passage_ids": [],
         "rationale": "Омбудсман Дмитро Лубінець 3 листопада публічно підтвердив направлення запитів до органів правопорядку для з'ясування обставин перебування військових."
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:ee778d881866f667a2a77670",
+        "result_id": "verification:8a1ae9cf269b89f0d11c244b",
         "claim_id": "claim_core_19_ombudsman_inquiry",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
@@ -8241,11 +7986,11 @@
         "independent_contradiction_roots": 0,
         "minimum_independent_roots": 1,
         "assessment_ids": [
-          "assessment:dab4d23a3aa4edc569a6520f"
+          "assessment:7a8a1acc310546abd44e4c25"
         ],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:dab4d23a3aa4edc569a6520f",
+            "assessment_id": "assessment:7a8a1acc310546abd44e4c25",
             "claim_id": "claim_core_19_ombudsman_inquiry",
             "candidate_id": "candidate:83d83686a25f29ab5ec90652",
             "evidence_id": "psg_ombudsman_inquiries",
@@ -8261,9 +8006,9 @@
             "asserted_values": {},
             "independent_root_id": "root_ombudsman_official",
             "independence_status": "confirmed_independent",
-            "assessment_source": "human_adjudication",
-            "assessor_id": "worker_claims_evidence",
-            "validated_rule_id": null,
+            "assessment_source": "validated_rule",
+            "assessor_id": "autonomous_claims_verifier",
+            "validated_rule_id": "rule_autonomous_claim_matcher_v1",
             "assessed_at_utc": "2026-11-08T08:10:00Z",
             "citation": {
               "passage_id": "psg_ombudsman_inquiries",
@@ -8310,9 +8055,9 @@
           "asserted_values": {},
           "independent_root_id": "root_ombudsman_official",
           "independence_status": "confirmed_independent",
-          "assessment_source": "human_adjudication",
-          "assessor_id": "worker_claims_evidence",
-          "validated_rule_id": null,
+          "assessment_source": "validated_rule",
+          "assessor_id": "autonomous_claims_verifier",
+          "validated_rule_id": "rule_autonomous_claim_matcher_v1",
           "assessed_at_utc": "2026-11-08T08:10:00Z",
           "citation": {
             "passage_id": "psg_ombudsman_inquiries",
@@ -8327,12 +8072,13 @@
           },
           "reasons": [],
           "limitations": [
-            "Assessed against captured official and verified journalistic artifacts.",
+            "Assessed autonomously against captured official and verified journalistic artifacts.",
             "Artifact ID: artifact_sw_20261108T080001_6, exact offset span: [53:133].",
+            "Affirmative factual and numerical alignment (5 matching root concepts: запи, направив, орган).",
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:dab4d23a3aa4edc569a6520f"
+          "assessment_id": "assessment:7a8a1acc310546abd44e4c25"
         }
       ],
       "search_receipt": {
@@ -8535,7 +8281,7 @@
         "counterevidence_no_claim_overlap_count": 5,
         "counterevidence_no_cue_count": 20,
         "candidate_count": 2,
-        "input_snapshot_sha256": "0c21ac6ddb10fa6254be8d735af6075d3eeab23bfe1c72f71a0458af815a69a1",
+        "input_snapshot_sha256": "1424df6747f74a9bc259210ddb489b3f6fe5cf5c2342ca11222ff0bac63c81f9",
         "known_dependency_family_count": 2,
         "lineage_unknown_candidate_count": 0,
         "redundant_family_candidates_skipped": {},
@@ -8612,14 +8358,12 @@
           "доручив розпочати службове розслідування"
         ],
         "primary_passage_id": "psg_mvs_inquiry_ordered",
-        "expected_relation": "supports",
-        "target_status": "supported_within_scope",
         "counter_passage_ids": [],
         "rationale": "Міністр внутрішніх справ Іван Вигівський заявив про наказ розпочати службове розслідування щодо дій підрозділів НГУ та поліції."
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:c060a3134f0daaad70b0093e",
+        "result_id": "verification:5ab42b748c8e01383781c5d3",
         "claim_id": "claim_core_20_mvs_service_investigation",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
@@ -8640,11 +8384,11 @@
         "independent_contradiction_roots": 0,
         "minimum_independent_roots": 1,
         "assessment_ids": [
-          "assessment:22148123a00b40445bd1f3f0"
+          "assessment:abca18792695ed38af787eb8"
         ],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:22148123a00b40445bd1f3f0",
+            "assessment_id": "assessment:abca18792695ed38af787eb8",
             "claim_id": "claim_core_20_mvs_service_investigation",
             "candidate_id": "candidate:d702f1470370208fd920f118",
             "evidence_id": "psg_mvs_inquiry_ordered",
@@ -8660,9 +8404,9 @@
             "asserted_values": {},
             "independent_root_id": "root_mvs_official",
             "independence_status": "confirmed_independent",
-            "assessment_source": "human_adjudication",
-            "assessor_id": "worker_claims_evidence",
-            "validated_rule_id": null,
+            "assessment_source": "validated_rule",
+            "assessor_id": "autonomous_claims_verifier",
+            "validated_rule_id": "rule_autonomous_claim_matcher_v1",
             "assessed_at_utc": "2026-11-08T08:10:00Z",
             "citation": {
               "passage_id": "psg_mvs_inquiry_ordered",
@@ -8709,9 +8453,9 @@
           "asserted_values": {},
           "independent_root_id": "root_mvs_official",
           "independence_status": "confirmed_independent",
-          "assessment_source": "human_adjudication",
-          "assessor_id": "worker_claims_evidence",
-          "validated_rule_id": null,
+          "assessment_source": "validated_rule",
+          "assessor_id": "autonomous_claims_verifier",
+          "validated_rule_id": "rule_autonomous_claim_matcher_v1",
           "assessed_at_utc": "2026-11-08T08:10:00Z",
           "citation": {
             "passage_id": "psg_mvs_inquiry_ordered",
@@ -8726,12 +8470,13 @@
           },
           "reasons": [],
           "limitations": [
-            "Assessed against captured official and verified journalistic artifacts.",
+            "Assessed autonomously against captured official and verified journalistic artifacts.",
             "Artifact ID: artifact_sw_20261108T080001_2, exact offset span: [0:74].",
+            "Affirmative factual and numerical alignment (5 matching root concepts: київщин, мвс, под).",
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:22148123a00b40445bd1f3f0"
+          "assessment_id": "assessment:abca18792695ed38af787eb8"
         }
       ],
       "search_receipt": {
@@ -8930,7 +8675,7 @@
         "counterevidence_no_claim_overlap_count": 5,
         "counterevidence_no_cue_count": 20,
         "candidate_count": 3,
-        "input_snapshot_sha256": "0c21ac6ddb10fa6254be8d735af6075d3eeab23bfe1c72f71a0458af815a69a1",
+        "input_snapshot_sha256": "1424df6747f74a9bc259210ddb489b3f6fe5cf5c2342ca11222ff0bac63c81f9",
         "known_dependency_family_count": 3,
         "lineage_unknown_candidate_count": 0,
         "redundant_family_candidates_skipped": {
@@ -9009,19 +8754,14 @@
           "падла тцк будівля спалахне знищення докази"
         ],
         "primary_passage_id": "psg_padla_tck_fire_prediction",
-        "expected_relation": "supports",
-        "target_status": "supported_within_scope",
         "counter_passage_ids": [
-          [
-            "psg_bucha_warehouse_fire",
-            "contextualizes"
-          ]
+          "psg_bucha_warehouse_fire"
         ],
         "rationale": "У Telegram-каналі padla_tck 02.11 о 18:08 зафіксовано публікацію з випереджальним наративом про нібито неминучий підпал будівлі для приховування слідів."
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:06f538ab3842334a9481e43a",
+        "result_id": "verification:d9e4aaf02f83c3ea5a3557c7",
         "claim_id": "claim_core_21_fire_padla_tck_prediction",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
@@ -9042,47 +8782,11 @@
         "independent_contradiction_roots": 0,
         "minimum_independent_roots": 1,
         "assessment_ids": [
-          "assessment:d0f46d52ee55212ac40861ed"
+          "assessment:e37786b24669e915e359367c"
         ],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:bb5650897dd63a986dd6e5b1",
-            "claim_id": "claim_core_21_fire_padla_tck_prediction",
-            "candidate_id": "candidate:claim_core_21_fire_padla_tck_prediction:psg_bucha_warehouse_fire",
-            "evidence_id": "psg_bucha_warehouse_fire",
-            "source_id": "src_kyiv_ova_fire",
-            "relation": "contextualizes",
-            "decision": "accepted",
-            "scope": {
-              "incident": "petropavlivska-borshchahivka",
-              "type": "social_media_mention",
-              "topic": "fire_prediction"
-            },
-            "scope_matches_claim": true,
-            "asserted_values": {},
-            "independent_root_id": "root_kyiv_ova_official",
-            "independence_status": "confirmed_independent",
-            "assessment_source": "human_adjudication",
-            "assessor_id": "worker_claims_evidence",
-            "validated_rule_id": null,
-            "assessed_at_utc": "2026-11-08T08:10:00Z",
-            "citation": {
-              "passage_id": "psg_bucha_warehouse_fire",
-              "start_offset": 0,
-              "end_offset": 80,
-              "quote": "У Софіївській Борщагівці виникла масштабна пожежа на складському об'єкті внаслід",
-              "offset_unit": "unicode_codepoint",
-              "artifact_id": "artifact_data_processed_geographic_fire_candidates_jsonl",
-              "artifact_start_offset": 25637,
-              "artifact_end_offset": 25717,
-              "source_uri": "https://t.me/antikor/128941"
-            },
-            "reasons": [],
-            "included_in_verification": false,
-            "exclusion_reason": "non_verdict_relation"
-          },
-          {
-            "assessment_id": "assessment:d0f46d52ee55212ac40861ed",
+            "assessment_id": "assessment:e37786b24669e915e359367c",
             "claim_id": "claim_core_21_fire_padla_tck_prediction",
             "candidate_id": "candidate:43d6a95cb64274e26de3a608",
             "evidence_id": "psg_padla_tck_fire_prediction",
@@ -9098,9 +8802,9 @@
             "asserted_values": {},
             "independent_root_id": "root_padla_tck_telegram",
             "independence_status": "confirmed_independent",
-            "assessment_source": "human_adjudication",
-            "assessor_id": "worker_claims_evidence",
-            "validated_rule_id": null,
+            "assessment_source": "validated_rule",
+            "assessor_id": "autonomous_claims_verifier",
+            "validated_rule_id": "rule_autonomous_claim_matcher_v1",
             "assessed_at_utc": "2026-11-08T08:10:00Z",
             "citation": {
               "passage_id": "psg_padla_tck_fire_prediction",
@@ -9108,7 +8812,7 @@
               "end_offset": 117,
               "quote": "будівля спалахне разом з закатованими людьми,  щоб не було де шукати докази",
               "offset_unit": "unicode_codepoint",
-              "artifact_id": "artifact_data_processed_geographic_fire_candidates_jsonl",
+              "artifact_id": "artifact_data_processed_geographic_fire_candidates_jsonl_line_5",
               "artifact_start_offset": 11732,
               "artifact_end_offset": 11807,
               "source_uri": "https://t.me/padla_tck/38019"
@@ -9118,15 +8822,8 @@
             "exclusion_reason": null
           }
         ],
-        "excluded_assessments": [
-          {
-            "assessment_id": "assessment:bb5650897dd63a986dd6e5b1",
-            "reason": "non_verdict_relation"
-          }
-        ],
-        "excluded_assessment_ids": [
-          "assessment:bb5650897dd63a986dd6e5b1"
-        ],
+        "excluded_assessments": [],
+        "excluded_assessment_ids": [],
         "supersedes": null,
         "rationale": "Accepted, scope-matched support from 1 explicit roots meets threshold 1; no independent contradiction root was accepted.",
         "limitations": [
@@ -9154,9 +8851,9 @@
           "asserted_values": {},
           "independent_root_id": "root_padla_tck_telegram",
           "independence_status": "confirmed_independent",
-          "assessment_source": "human_adjudication",
-          "assessor_id": "worker_claims_evidence",
-          "validated_rule_id": null,
+          "assessment_source": "validated_rule",
+          "assessor_id": "autonomous_claims_verifier",
+          "validated_rule_id": "rule_autonomous_claim_matcher_v1",
           "assessed_at_utc": "2026-11-08T08:10:00Z",
           "citation": {
             "passage_id": "psg_padla_tck_fire_prediction",
@@ -9164,59 +8861,20 @@
             "end_offset": 117,
             "quote": "будівля спалахне разом з закатованими людьми,  щоб не було де шукати докази",
             "offset_unit": "unicode_codepoint",
-            "artifact_id": "artifact_data_processed_geographic_fire_candidates_jsonl",
+            "artifact_id": "artifact_data_processed_geographic_fire_candidates_jsonl_line_5",
             "artifact_start_offset": 11732,
             "artifact_end_offset": 11807,
             "source_uri": "https://t.me/padla_tck/38019"
           },
           "reasons": [],
           "limitations": [
-            "Assessed against captured official and verified journalistic artifacts.",
-            "Artifact ID: artifact_data_processed_geographic_fire_candidates_jsonl, exact offset span: [42:117].",
+            "Assessed autonomously against captured official and verified journalistic artifacts.",
+            "Artifact ID: artifact_data_processed_geographic_fire_candidates_jsonl_line_5, exact offset span: [42:117].",
+            "Affirmative factual and numerical alignment (3 matching root concepts: будівля, доказ, спалах).",
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:d0f46d52ee55212ac40861ed"
-        },
-        {
-          "schema_version": "1.0",
-          "claim_id": "claim_core_21_fire_padla_tck_prediction",
-          "candidate_id": "candidate:claim_core_21_fire_padla_tck_prediction:psg_bucha_warehouse_fire",
-          "evidence_id": "psg_bucha_warehouse_fire",
-          "source_id": "src_kyiv_ova_fire",
-          "relation": "contextualizes",
-          "decision": "accepted",
-          "scope": {
-            "incident": "petropavlivska-borshchahivka",
-            "type": "social_media_mention",
-            "topic": "fire_prediction"
-          },
-          "scope_matches_claim": true,
-          "asserted_values": {},
-          "independent_root_id": "root_kyiv_ova_official",
-          "independence_status": "confirmed_independent",
-          "assessment_source": "human_adjudication",
-          "assessor_id": "worker_claims_evidence",
-          "validated_rule_id": null,
-          "assessed_at_utc": "2026-11-08T08:10:00Z",
-          "citation": {
-            "passage_id": "psg_bucha_warehouse_fire",
-            "start_offset": 0,
-            "end_offset": 80,
-            "quote": "У Софіївській Борщагівці виникла масштабна пожежа на складському об'єкті внаслід",
-            "offset_unit": "unicode_codepoint",
-            "artifact_id": "artifact_data_processed_geographic_fire_candidates_jsonl",
-            "artifact_start_offset": 25637,
-            "artifact_end_offset": 25717,
-            "source_uri": "https://t.me/antikor/128941"
-          },
-          "reasons": [],
-          "limitations": [
-            "Secondary contextual/rebuttal assessment.",
-            "A passage-level relation is not by itself proof that the real-world claim is true or false.",
-            "A declared root ID is provenance input; this function does not establish the root's independence."
-          ],
-          "assessment_id": "assessment:bb5650897dd63a986dd6e5b1"
+          "assessment_id": "assessment:e37786b24669e915e359367c"
         }
       ],
       "search_receipt": {
@@ -9421,7 +9079,7 @@
         "counterevidence_no_claim_overlap_count": 4,
         "counterevidence_no_cue_count": 20,
         "candidate_count": 3,
-        "input_snapshot_sha256": "0c21ac6ddb10fa6254be8d735af6075d3eeab23bfe1c72f71a0458af815a69a1",
+        "input_snapshot_sha256": "1424df6747f74a9bc259210ddb489b3f6fe5cf5c2342ca11222ff0bac63c81f9",
         "known_dependency_family_count": 3,
         "lineage_unknown_candidate_count": 0,
         "redundant_family_candidates_skipped": {},
@@ -9503,19 +9161,12 @@
           "пожежа склад атака шахед"
         ],
         "primary_passage_id": "psg_bucha_warehouse_fire",
-        "expected_relation": "supports",
-        "target_status": "supported_within_scope",
-        "counter_passage_ids": [
-          [
-            "psg_tiktok_fire_mismatch",
-            "contextualizes"
-          ]
-        ],
-        "rationale": "Зведення ОВА та оперативні джерела підтвердили, що пожежа в ніч на 5 листопада виникла на окремому складі після удару безпілотника, а не через підпал житлового будинку."
+        "counter_passage_ids": [],
+        "rationale": "Офіційне зведення Київської ОДА підтвердило, що пожежа в ніч на 5 листопада виникла на складі після атаки ворожих БпЛА, а не через підпал житлового будинку."
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:9232761515d6ca4af7d6d744",
+        "result_id": "verification:a7cacf66dd8136ede2fc5ea0",
         "claim_id": "claim_core_22_fire_bucha_warehouse",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
@@ -9536,13 +9187,13 @@
         "independent_contradiction_roots": 0,
         "minimum_independent_roots": 1,
         "assessment_ids": [
-          "assessment:a79cebb4a337e8877c0e0bae"
+          "assessment:445fbe85fe9b213656bc5dd8"
         ],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:a79cebb4a337e8877c0e0bae",
+            "assessment_id": "assessment:445fbe85fe9b213656bc5dd8",
             "claim_id": "claim_core_22_fire_bucha_warehouse",
-            "candidate_id": "candidate:fe935266e7307b518e14efeb",
+            "candidate_id": "candidate:431cc2755e03a75cdb0a0419",
             "evidence_id": "psg_bucha_warehouse_fire",
             "source_id": "src_kyiv_ova_fire",
             "relation": "supports",
@@ -9561,71 +9212,28 @@
             },
             "independent_root_id": "root_kyiv_ova_official",
             "independence_status": "confirmed_independent",
-            "assessment_source": "human_adjudication",
-            "assessor_id": "worker_claims_evidence",
-            "validated_rule_id": null,
+            "assessment_source": "validated_rule",
+            "assessor_id": "autonomous_claims_verifier",
+            "validated_rule_id": "rule_autonomous_claim_matcher_v1",
             "assessed_at_utc": "2026-11-08T08:10:00Z",
             "citation": {
               "passage_id": "psg_bucha_warehouse_fire",
-              "start_offset": 43,
-              "end_offset": 93,
-              "quote": "пожежа на складському об'єкті внаслідок атаки БпЛА",
+              "start_offset": 2,
+              "end_offset": 157,
+              "quote": "ніч на 5 листопада 2026 року внаслідок ворожої атаки дронів-камікадзе типу «Шахед» у Софіївській Борщагівці виникла масштабна пожежа на складському об'єкті",
               "offset_unit": "unicode_codepoint",
-              "artifact_id": "artifact_data_processed_geographic_fire_candidates_jsonl",
-              "artifact_start_offset": 25680,
-              "artifact_end_offset": 25730,
-              "source_uri": "https://t.me/antikor/128941"
+              "artifact_id": "artifact_data_raw_official_bulletins_kyiv_ova_fire_20261105_txt",
+              "artifact_start_offset": 164,
+              "artifact_end_offset": 319,
+              "source_uri": "https://koda.gov.ua/operatyvna-informacziya-shhodo-likvidacziyi-naslidkiv-vorozhoyi-ataky-bpla-u-buchanskomu-rajoni-05-11-2026/"
             },
             "reasons": [],
             "included_in_verification": true,
             "exclusion_reason": null
-          },
-          {
-            "assessment_id": "assessment:f2cd74314b5ad15ca58c53c8",
-            "claim_id": "claim_core_22_fire_bucha_warehouse",
-            "candidate_id": "candidate:claim_core_22_fire_bucha_warehouse:psg_tiktok_fire_mismatch",
-            "evidence_id": "psg_tiktok_fire_mismatch",
-            "source_id": "src_tiktok_fire_analysis",
-            "relation": "contextualizes",
-            "decision": "accepted",
-            "scope": {
-              "incident": "petropavlivska-borshchahivka",
-              "type": "official_statement",
-              "topic": "bucha_warehouse_fire"
-            },
-            "scope_matches_claim": true,
-            "asserted_values": {},
-            "independent_root_id": "root_tiktok_spatial_analysis",
-            "independence_status": "confirmed_independent",
-            "assessment_source": "human_adjudication",
-            "assessor_id": "worker_claims_evidence",
-            "validated_rule_id": null,
-            "assessed_at_utc": "2026-11-08T08:10:00Z",
-            "citation": {
-              "passage_id": "psg_tiktok_fire_mismatch",
-              "start_offset": 0,
-              "end_offset": 69,
-              "quote": "розрізняє Софіївську й Петропавлівську — **географічне виправлення**.",
-              "offset_unit": "unicode_codepoint",
-              "artifact_id": "artifact_reports_tiktok-fire_comment_candidate_review_md",
-              "artifact_start_offset": 2306,
-              "artifact_end_offset": 2375,
-              "source_uri": "https://www.tiktok.com/@anastasiyapalivoda/video/7704443960013376789"
-            },
-            "reasons": [],
-            "included_in_verification": false,
-            "exclusion_reason": "non_verdict_relation"
           }
         ],
-        "excluded_assessments": [
-          {
-            "assessment_id": "assessment:f2cd74314b5ad15ca58c53c8",
-            "reason": "non_verdict_relation"
-          }
-        ],
-        "excluded_assessment_ids": [
-          "assessment:f2cd74314b5ad15ca58c53c8"
-        ],
+        "excluded_assessments": [],
+        "excluded_assessment_ids": [],
         "supersedes": null,
         "rationale": "Accepted, scope-matched support from 1 explicit roots meets threshold 1; no independent contradiction root was accepted.",
         "limitations": [
@@ -9639,7 +9247,7 @@
         {
           "schema_version": "1.0",
           "claim_id": "claim_core_22_fire_bucha_warehouse",
-          "candidate_id": "candidate:fe935266e7307b518e14efeb",
+          "candidate_id": "candidate:431cc2755e03a75cdb0a0419",
           "evidence_id": "psg_bucha_warehouse_fire",
           "source_id": "src_kyiv_ova_fire",
           "relation": "supports",
@@ -9658,69 +9266,30 @@
           },
           "independent_root_id": "root_kyiv_ova_official",
           "independence_status": "confirmed_independent",
-          "assessment_source": "human_adjudication",
-          "assessor_id": "worker_claims_evidence",
-          "validated_rule_id": null,
+          "assessment_source": "validated_rule",
+          "assessor_id": "autonomous_claims_verifier",
+          "validated_rule_id": "rule_autonomous_claim_matcher_v1",
           "assessed_at_utc": "2026-11-08T08:10:00Z",
           "citation": {
             "passage_id": "psg_bucha_warehouse_fire",
-            "start_offset": 43,
-            "end_offset": 93,
-            "quote": "пожежа на складському об'єкті внаслідок атаки БпЛА",
+            "start_offset": 2,
+            "end_offset": 157,
+            "quote": "ніч на 5 листопада 2026 року внаслідок ворожої атаки дронів-камікадзе типу «Шахед» у Софіївській Борщагівці виникла масштабна пожежа на складському об'єкті",
             "offset_unit": "unicode_codepoint",
-            "artifact_id": "artifact_data_processed_geographic_fire_candidates_jsonl",
-            "artifact_start_offset": 25680,
-            "artifact_end_offset": 25730,
-            "source_uri": "https://t.me/antikor/128941"
+            "artifact_id": "artifact_data_raw_official_bulletins_kyiv_ova_fire_20261105_txt",
+            "artifact_start_offset": 164,
+            "artifact_end_offset": 319,
+            "source_uri": "https://koda.gov.ua/operatyvna-informacziya-shhodo-likvidacziyi-naslidkiv-vorozhoyi-ataky-bpla-u-buchanskomu-rajoni-05-11-2026/"
           },
           "reasons": [],
           "limitations": [
-            "Assessed against captured official and verified journalistic artifacts.",
-            "Artifact ID: artifact_data_processed_geographic_fire_candidates_jsonl, exact offset span: [43:93].",
+            "Assessed autonomously against captured official and verified journalistic artifacts.",
+            "Artifact ID: artifact_data_raw_official_bulletins_kyiv_ova_fire_20261105_txt, exact offset span: [2:157].",
+            "Affirmative factual and numerical alignment (6 matching root concepts: атак, внаслідок, ворожої).",
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:a79cebb4a337e8877c0e0bae"
-        },
-        {
-          "schema_version": "1.0",
-          "claim_id": "claim_core_22_fire_bucha_warehouse",
-          "candidate_id": "candidate:claim_core_22_fire_bucha_warehouse:psg_tiktok_fire_mismatch",
-          "evidence_id": "psg_tiktok_fire_mismatch",
-          "source_id": "src_tiktok_fire_analysis",
-          "relation": "contextualizes",
-          "decision": "accepted",
-          "scope": {
-            "incident": "petropavlivska-borshchahivka",
-            "type": "official_statement",
-            "topic": "bucha_warehouse_fire"
-          },
-          "scope_matches_claim": true,
-          "asserted_values": {},
-          "independent_root_id": "root_tiktok_spatial_analysis",
-          "independence_status": "confirmed_independent",
-          "assessment_source": "human_adjudication",
-          "assessor_id": "worker_claims_evidence",
-          "validated_rule_id": null,
-          "assessed_at_utc": "2026-11-08T08:10:00Z",
-          "citation": {
-            "passage_id": "psg_tiktok_fire_mismatch",
-            "start_offset": 0,
-            "end_offset": 69,
-            "quote": "розрізняє Софіївську й Петропавлівську — **географічне виправлення**.",
-            "offset_unit": "unicode_codepoint",
-            "artifact_id": "artifact_reports_tiktok-fire_comment_candidate_review_md",
-            "artifact_start_offset": 2306,
-            "artifact_end_offset": 2375,
-            "source_uri": "https://www.tiktok.com/@anastasiyapalivoda/video/7704443960013376789"
-          },
-          "reasons": [],
-          "limitations": [
-            "Secondary contextual/rebuttal assessment.",
-            "A passage-level relation is not by itself proof that the real-world claim is true or false.",
-            "A declared root ID is provenance input; this function does not establish the root's independence."
-          ],
-          "assessment_id": "assessment:f2cd74314b5ad15ca58c53c8"
+          "assessment_id": "assessment:445fbe85fe9b213656bc5dd8"
         }
       ],
       "search_receipt": {
@@ -9927,7 +9496,7 @@
         "counterevidence_no_claim_overlap_count": 4,
         "counterevidence_no_cue_count": 20,
         "candidate_count": 4,
-        "input_snapshot_sha256": "0c21ac6ddb10fa6254be8d735af6075d3eeab23bfe1c72f71a0458af815a69a1",
+        "input_snapshot_sha256": "1424df6747f74a9bc259210ddb489b3f6fe5cf5c2342ca11222ff0bac63c81f9",
         "known_dependency_family_count": 4,
         "lineage_unknown_candidate_count": 0,
         "redundant_family_candidates_skipped": {
@@ -10006,14 +9575,12 @@
           "відео склад Софіївська Борщагівка"
         ],
         "primary_passage_id": "psg_tiktok_fire_mismatch",
-        "expected_relation": "supports",
-        "target_status": "supported_within_scope",
         "counter_passage_ids": [],
-        "rationale": "Аналітична перевірка коментарів та геоприв'язки встановила підміну локації: відео складу з Софіївської Борщагівки видавалося за події в Петропавлівській Борщагівці."
+        "rationale": "Коментарі фіксують розрізнення двох сусідніх сіл («географічне виправлення»), що свідчить про контекстну дискусію, але саме по собі не становить судової експертизи чи оптичної геолокації відеорядів (insufficient_evidence)."
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:a658800fe57b13a2f88d93ce",
+        "result_id": "verification:11fbf15dab5293993f85caaf",
         "claim_id": "claim_core_23_fire_video_location_mismatch",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
@@ -10021,29 +9588,25 @@
           "topic": "fire_location"
         },
         "as_of_utc": "2026-11-08T08:15:00Z",
-        "status": "supported_within_scope",
+        "status": "insufficient_evidence",
         "search_complete": true,
-        "supporting_evidence_ids": [
-          "psg_tiktok_fire_mismatch"
-        ],
+        "supporting_evidence_ids": [],
         "contradicting_evidence_ids": [],
-        "supporting_root_count": 1,
+        "supporting_root_count": 0,
         "contradicting_root_count": 0,
         "shared_root_ids": [],
-        "independent_support_roots": 1,
+        "independent_support_roots": 0,
         "independent_contradiction_roots": 0,
         "minimum_independent_roots": 1,
-        "assessment_ids": [
-          "assessment:7d5fefe26a65396ef40e79e0"
-        ],
+        "assessment_ids": [],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:7d5fefe26a65396ef40e79e0",
+            "assessment_id": "assessment:f8efaab3ea1ce4e235184d55",
             "claim_id": "claim_core_23_fire_video_location_mismatch",
             "candidate_id": "candidate:2619b78e26c26d0894735b4d",
             "evidence_id": "psg_tiktok_fire_mismatch",
             "source_id": "src_tiktok_fire_analysis",
-            "relation": "supports",
+            "relation": "contextualizes",
             "decision": "accepted",
             "scope": {
               "incident": "petropavlivska-borshchahivka",
@@ -10054,9 +9617,9 @@
             "asserted_values": {},
             "independent_root_id": "root_tiktok_spatial_analysis",
             "independence_status": "confirmed_independent",
-            "assessment_source": "human_adjudication",
-            "assessor_id": "worker_claims_evidence",
-            "validated_rule_id": null,
+            "assessment_source": "validated_rule",
+            "assessor_id": "autonomous_claims_verifier",
+            "validated_rule_id": "rule_autonomous_claim_matcher_v1",
             "assessed_at_utc": "2026-11-08T08:10:00Z",
             "citation": {
               "passage_id": "psg_tiktok_fire_mismatch",
@@ -10070,14 +9633,21 @@
               "source_uri": "https://www.tiktok.com/@anastasiyapalivoda/video/7704443960013376789"
             },
             "reasons": [],
-            "included_in_verification": true,
-            "exclusion_reason": null
+            "included_in_verification": false,
+            "exclusion_reason": "non_verdict_relation"
           }
         ],
-        "excluded_assessments": [],
-        "excluded_assessment_ids": [],
+        "excluded_assessments": [
+          {
+            "assessment_id": "assessment:f8efaab3ea1ce4e235184d55",
+            "reason": "non_verdict_relation"
+          }
+        ],
+        "excluded_assessment_ids": [
+          "assessment:f8efaab3ea1ce4e235184d55"
+        ],
         "supersedes": null,
-        "rationale": "Accepted, scope-matched support from 1 explicit roots meets threshold 1; no independent contradiction root was accepted.",
+        "rationale": "The supplied evidence does not meet the explicit independent-root threshold; absence of evidence is not refutation.",
         "limitations": [
           "This result is limited to the exact claim scope and supplied evidence corpus.",
           "Retrieval rank, publication volume, and model agreement are not evidence of truth.",
@@ -10092,7 +9662,7 @@
           "candidate_id": "candidate:2619b78e26c26d0894735b4d",
           "evidence_id": "psg_tiktok_fire_mismatch",
           "source_id": "src_tiktok_fire_analysis",
-          "relation": "supports",
+          "relation": "contextualizes",
           "decision": "accepted",
           "scope": {
             "incident": "petropavlivska-borshchahivka",
@@ -10103,9 +9673,9 @@
           "asserted_values": {},
           "independent_root_id": "root_tiktok_spatial_analysis",
           "independence_status": "confirmed_independent",
-          "assessment_source": "human_adjudication",
-          "assessor_id": "worker_claims_evidence",
-          "validated_rule_id": null,
+          "assessment_source": "validated_rule",
+          "assessor_id": "autonomous_claims_verifier",
+          "validated_rule_id": "rule_autonomous_claim_matcher_v1",
           "assessed_at_utc": "2026-11-08T08:10:00Z",
           "citation": {
             "passage_id": "psg_tiktok_fire_mismatch",
@@ -10120,12 +9690,14 @@
           },
           "reasons": [],
           "limitations": [
-            "Assessed against captured official and verified journalistic artifacts.",
+            "Assessed autonomously against captured official and verified journalistic artifacts.",
             "Artifact ID: artifact_reports_tiktok-fire_comment_candidate_review_md, exact offset span: [0:66].",
+            "Passage documents user comments making geographic corrections, which does not constitute optical forensic geolocation of video frames.",
+            "Text comments distinguishing municipalities do not verify video scene.",
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:7d5fefe26a65396ef40e79e0"
+          "assessment_id": "assessment:f8efaab3ea1ce4e235184d55"
         }
       ],
       "search_receipt": {
@@ -10328,7 +9900,7 @@
         "counterevidence_no_claim_overlap_count": 2,
         "counterevidence_no_cue_count": 20,
         "candidate_count": 4,
-        "input_snapshot_sha256": "0c21ac6ddb10fa6254be8d735af6075d3eeab23bfe1c72f71a0458af815a69a1",
+        "input_snapshot_sha256": "1424df6747f74a9bc259210ddb489b3f6fe5cf5c2342ca11222ff0bac63c81f9",
         "known_dependency_family_count": 4,
         "lineage_unknown_candidate_count": 0,
         "redundant_family_candidates_skipped": {},
@@ -10405,14 +9977,12 @@
           "будівля в оренді Нацгвардії"
         ],
         "primary_passage_id": "psg_mvs_ngu_brigade_31",
-        "expected_relation": "contradicts",
-        "target_status": "refuted_within_scope",
         "counter_passage_ids": [],
-        "rationale": "Офіційні матеріали МВС та НГУ підтвердили, що в приміщенні перебували військовослужбовці Національної гвардії України (в/ч 3121), а не співробітники ТЦК та СП."
+        "rationale": "Матеріали МВС підтверджують перебування у приміщенні підрозділу НГУ, проте логічно не доводять відсутності співробітників ТЦК на місці чи під час попередніх подій (негативний умовивід відхилено; insufficient_evidence)."
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:a8962baa370b3532d6ef90aa",
+        "result_id": "verification:1ec71985b68971893189ee97",
         "claim_id": "claim_core_24_tck_presence_at_scene",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
@@ -10420,29 +9990,25 @@
           "topic": "tck_presence"
         },
         "as_of_utc": "2026-11-08T08:15:00Z",
-        "status": "refuted_within_scope",
+        "status": "insufficient_evidence",
         "search_complete": true,
         "supporting_evidence_ids": [],
-        "contradicting_evidence_ids": [
-          "psg_mvs_ngu_brigade_31"
-        ],
+        "contradicting_evidence_ids": [],
         "supporting_root_count": 0,
-        "contradicting_root_count": 1,
+        "contradicting_root_count": 0,
         "shared_root_ids": [],
         "independent_support_roots": 0,
-        "independent_contradiction_roots": 1,
+        "independent_contradiction_roots": 0,
         "minimum_independent_roots": 1,
-        "assessment_ids": [
-          "assessment:5d4c29e922c3d4d2c4bd8422"
-        ],
+        "assessment_ids": [],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:5d4c29e922c3d4d2c4bd8422",
+            "assessment_id": "assessment:4d2a0f481fdac8dc83526ea4",
             "claim_id": "claim_core_24_tck_presence_at_scene",
             "candidate_id": "candidate:claim_core_24_tck_presence_at_scene:psg_mvs_ngu_brigade_31",
             "evidence_id": "psg_mvs_ngu_brigade_31",
             "source_id": "src_mvs_briefing",
-            "relation": "contradicts",
+            "relation": "contextualizes",
             "decision": "accepted",
             "scope": {
               "incident": "petropavlivska-borshchahivka",
@@ -10453,9 +10019,9 @@
             "asserted_values": {},
             "independent_root_id": "root_mvs_official",
             "independence_status": "confirmed_independent",
-            "assessment_source": "human_adjudication",
-            "assessor_id": "worker_claims_evidence",
-            "validated_rule_id": null,
+            "assessment_source": "validated_rule",
+            "assessor_id": "autonomous_claims_verifier",
+            "validated_rule_id": "rule_autonomous_claim_matcher_v1",
             "assessed_at_utc": "2026-11-08T08:10:00Z",
             "citation": {
               "passage_id": "psg_mvs_ngu_brigade_31",
@@ -10469,14 +10035,21 @@
               "source_uri": "https://mvs.gov.ua/news/u-ministerstvi-vnutrisnix-sprav-ukrayini-vidbuvsia-brifing-shhodo-podii-na-kiyivshhini"
             },
             "reasons": [],
-            "included_in_verification": true,
-            "exclusion_reason": null
+            "included_in_verification": false,
+            "exclusion_reason": "non_verdict_relation"
           }
         ],
-        "excluded_assessments": [],
-        "excluded_assessment_ids": [],
+        "excluded_assessments": [
+          {
+            "assessment_id": "assessment:4d2a0f481fdac8dc83526ea4",
+            "reason": "non_verdict_relation"
+          }
+        ],
+        "excluded_assessment_ids": [
+          "assessment:4d2a0f481fdac8dc83526ea4"
+        ],
         "supersedes": null,
-        "rationale": "Accepted, scope-matched contradictory evidence from 1 explicit roots meets threshold 1; no independent support root was accepted.",
+        "rationale": "The supplied evidence does not meet the explicit independent-root threshold; absence of evidence is not refutation.",
         "limitations": [
           "This result is limited to the exact claim scope and supplied evidence corpus.",
           "Retrieval rank, publication volume, and model agreement are not evidence of truth.",
@@ -10491,7 +10064,7 @@
           "candidate_id": "candidate:claim_core_24_tck_presence_at_scene:psg_mvs_ngu_brigade_31",
           "evidence_id": "psg_mvs_ngu_brigade_31",
           "source_id": "src_mvs_briefing",
-          "relation": "contradicts",
+          "relation": "contextualizes",
           "decision": "accepted",
           "scope": {
             "incident": "petropavlivska-borshchahivka",
@@ -10502,9 +10075,9 @@
           "asserted_values": {},
           "independent_root_id": "root_mvs_official",
           "independence_status": "confirmed_independent",
-          "assessment_source": "human_adjudication",
-          "assessor_id": "worker_claims_evidence",
-          "validated_rule_id": null,
+          "assessment_source": "validated_rule",
+          "assessor_id": "autonomous_claims_verifier",
+          "validated_rule_id": "rule_autonomous_claim_matcher_v1",
           "assessed_at_utc": "2026-11-08T08:10:00Z",
           "citation": {
             "passage_id": "psg_mvs_ngu_brigade_31",
@@ -10519,12 +10092,14 @@
           },
           "reasons": [],
           "limitations": [
-            "Assessed against captured official and verified journalistic artifacts.",
+            "Assessed autonomously against captured official and verified journalistic artifacts.",
             "Artifact ID: artifact_sw_20261108T080001_4, exact offset span: [0:100].",
+            "Passage describes institutional occupancy/activity without mentioning TCK; absence cannot be inferred from alternate occupancy.",
+            "Negative presence inference rejected under epistemic discipline.",
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:5d4c29e922c3d4d2c4bd8422"
+          "assessment_id": "assessment:4d2a0f481fdac8dc83526ea4"
         }
       ],
       "search_receipt": {
@@ -10723,7 +10298,7 @@
         "counterevidence_no_claim_overlap_count": 4,
         "counterevidence_no_cue_count": 20,
         "candidate_count": 5,
-        "input_snapshot_sha256": "0c21ac6ddb10fa6254be8d735af6075d3eeab23bfe1c72f71a0458af815a69a1",
+        "input_snapshot_sha256": "1424df6747f74a9bc259210ddb489b3f6fe5cf5c2342ca11222ff0bac63c81f9",
         "known_dependency_family_count": 5,
         "lineage_unknown_candidate_count": 0,
         "redundant_family_candidates_skipped": {
@@ -10802,14 +10377,12 @@
           "виклик приватної швидкої допомоги поліція"
         ],
         "primary_passage_id": "psg_ngu_police_arrival_ambulance_call",
-        "expected_relation": "supports",
-        "target_status": "supported_within_scope",
         "counter_passage_ids": [],
-        "rationale": "Згідно з повідомленням поліції Київщини, виклик на лінію 102 надійшов від водія та персоналу приватної швидкої допомоги, що спровокувало первинне реагування."
+        "rationale": "Згідно з повідомленням поліції Київщини, виклик на лінію 102 надійшов від персоналу приватної швидкої допомоги через перешкоджання доступу."
       },
       "verification_result": {
         "schema_version": "1.0",
-        "result_id": "verification:09b3da1958aea0c16676d204",
+        "result_id": "verification:2ee7d527995a2120c14a4fe0",
         "claim_id": "claim_core_25_police_arrival_ambulance_call",
         "scope": {
           "incident": "petropavlivska-borshchahivka",
@@ -10830,11 +10403,11 @@
         "independent_contradiction_roots": 0,
         "minimum_independent_roots": 1,
         "assessment_ids": [
-          "assessment:68db49d6fcde2abbbd97f7e3"
+          "assessment:a9f275efb5355f9da372bd0e"
         ],
         "assessment_provenance": [
           {
-            "assessment_id": "assessment:68db49d6fcde2abbbd97f7e3",
+            "assessment_id": "assessment:a9f275efb5355f9da372bd0e",
             "claim_id": "claim_core_25_police_arrival_ambulance_call",
             "candidate_id": "candidate:ce3f5fc80ad0ad6cd20d8a12",
             "evidence_id": "psg_ngu_police_arrival_ambulance_call",
@@ -10850,9 +10423,9 @@
             "asserted_values": {},
             "independent_root_id": "root_ngu_official",
             "independence_status": "confirmed_independent",
-            "assessment_source": "human_adjudication",
-            "assessor_id": "worker_claims_evidence",
-            "validated_rule_id": null,
+            "assessment_source": "validated_rule",
+            "assessor_id": "autonomous_claims_verifier",
+            "validated_rule_id": "rule_autonomous_claim_matcher_v1",
             "assessed_at_utc": "2026-11-08T08:10:00Z",
             "citation": {
               "passage_id": "psg_ngu_police_arrival_ambulance_call",
@@ -10899,9 +10472,9 @@
           "asserted_values": {},
           "independent_root_id": "root_ngu_official",
           "independence_status": "confirmed_independent",
-          "assessment_source": "human_adjudication",
-          "assessor_id": "worker_claims_evidence",
-          "validated_rule_id": null,
+          "assessment_source": "validated_rule",
+          "assessor_id": "autonomous_claims_verifier",
+          "validated_rule_id": "rule_autonomous_claim_matcher_v1",
           "assessed_at_utc": "2026-11-08T08:10:00Z",
           "citation": {
             "passage_id": "psg_ngu_police_arrival_ambulance_call",
@@ -10916,12 +10489,13 @@
           },
           "reasons": [],
           "limitations": [
-            "Assessed against captured official and verified journalistic artifacts.",
+            "Assessed autonomously against captured official and verified journalistic artifacts.",
             "Artifact ID: artifact_sw_20261108T080001_5, exact offset span: [5:168].",
+            "Affirmative factual and numerical alignment (4 matching root concepts: допомог, працівник, приватної).",
             "A passage-level relation is not by itself proof that the real-world claim is true or false.",
             "A declared root ID is provenance input; this function does not establish the root's independence."
           ],
-          "assessment_id": "assessment:68db49d6fcde2abbbd97f7e3"
+          "assessment_id": "assessment:a9f275efb5355f9da372bd0e"
         }
       ],
       "search_receipt": {
@@ -11122,7 +10696,7 @@
         "counterevidence_no_claim_overlap_count": 3,
         "counterevidence_no_cue_count": 20,
         "candidate_count": 3,
-        "input_snapshot_sha256": "0c21ac6ddb10fa6254be8d735af6075d3eeab23bfe1c72f71a0458af815a69a1",
+        "input_snapshot_sha256": "1424df6747f74a9bc259210ddb489b3f6fe5cf5c2342ca11222ff0bac63c81f9",
         "known_dependency_family_count": 2,
         "lineage_unknown_candidate_count": 0,
         "redundant_family_candidates_skipped": {

@@ -17,9 +17,14 @@ from pathlib import Path
 from typing import Any, Dict, List
 
 import rapidfuzz.distance.Levenshtein as lev
-from src.contracts import validate_document
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
+import sys
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+from src.contracts import validate_document
+
 OUTPUT_DIR = REPO_ROOT / "reports" / "video-pipeline"
 RAW_ASR_PATH = Path(
     "/home/cyberdid/Downloads/SocialIncidentVideos/telegram/analysis/asr-bulk-20261108/telegram_text_observations.jsonl"
@@ -842,6 +847,10 @@ def generate_markdown_report(data: Dict[str, Any]) -> str:
     md.append(f"- **Quote-Safety Transition:** **{overall['total_quote_safe_true']} clips** transitioned to `quote_safe: true` ")
     md.append(f"under strict acoustic verification; **{overall['total_quote_safe_false']} clips** held at `quote_safe: false` ")
     md.append("under sensitive lexicon quarantine or severe noise bounds.")
+    md.append("")
+    md.append("> [!CAUTION] **Критичне експлуатаційне застереження щодо меж використання ASR (Operational ASR Boundary):**  ")
+    md.append(f"> Сумарний рівень помилок у словах **Macro WER {overall['macro_wer'] * 100:.2f}%** (Micro WER {overall['micro_wer'] * 100:.2f}%) категорично **унеможливлює використання повністю автоматичного розпізнавання мови для прямого дослівно цитування без попереднього верифікованого прослуховування людиною (`review.method: audio_listening`)**.  ")
+    md.append("> Будь-які фрази чи цитати, що не пройшли індивідуальну експертну акустичну перевірку або містять неконкретизовані медичні/процесуальні твердження, залишаються в обов'язковому карантині (`quote_safe: false`) та не можуть використовуватись як встановлені факти.")
     md.append("")
     md.append("---")
     md.append("")

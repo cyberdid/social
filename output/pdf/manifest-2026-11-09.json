@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0",
   "edition_date": "09.11.2026",
-  "generated_at_utc": "2026-11-09T08:42:39.647627+00:00",
+  "generated_at_utc": "2026-11-09T10:07:52.287979+00:00",
   "builder": "scripts/reports/build_report.py",
-  "builder_sha256": "f4bf9be404727d7c9de09a8552560ccb22cc3312e79b3001b1cdae22b441b5a9",
+  "builder_sha256": "e16219a416ec112b31db57acce7b7b3e33597ddd47820e346b797f9fab645bfb",
   "renderer": "ReportLab",
   "renderer_version": "5.1.0",
   "visual_review": {
@@ -17,8 +17,8 @@
       "source_markdown": "reports/borshchahivka-report.md",
       "source_sha256": "f6e1268583ab6954f8294dbe06cb2a4a8b2e7ca89de39b6a4a3c4d0fec511df0",
       "pdf": "output/pdf/petropavlivska_borshchahivka_report_2026-11-09.pdf",
-      "pdf_sha256": "11edba320322f97b6cc102cc5c77ee317cd9389664a7152a71b06df548ca8e81",
-      "pdf_bytes": 1088523,
+      "pdf_sha256": "bcc8ac7b3e00029c508a808240720113b0163197954161b9660691015b19440c",
+      "pdf_bytes": 1088561,
       "pages": 28,
       "page_size": "595.276 x 841.89 pts (A4)",
       "visual_sample_pages": [
@@ -28,7 +28,7 @@
         21,
         28
       ],
-      "extracted_text_characters": 96980,
+      "extracted_text_characters": 97003,
       "replacement_characters": 0,
       "text_extraction": "passed"
     },

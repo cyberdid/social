@@ -26,6 +26,10 @@ were computed deterministically using standard Levenshtein dynamic programming e
 under strict acoustic verification; **8 clips** held at `quote_safe: false` 
 under sensitive lexicon quarantine or severe noise bounds.
 
+> [!CAUTION] **Критичне експлуатаційне застереження щодо меж використання ASR (Operational ASR Boundary):**  
+> Сумарний рівень помилок у словах **Macro WER 41.61%** (Micro WER 44.58%) категорично **унеможливлює використання повністю автоматичного розпізнавання мови для прямого дослівно цитування без попереднього верифікованого прослуховування людиною (`review.method: audio_listening`)**.  
+> Будь-які фрази чи цитати, що не пройшли індивідуальну експертну акустичну перевірку або містять неконкретизовані медичні/процесуальні твердження, залишаються в обов'язковому карантині (`quote_safe: false`) та не можуть використовуватись як встановлені факти.
+
 ---
 
 ## 2. Stratified Performance Breakdown
