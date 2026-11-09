@@ -32,7 +32,7 @@ def test_core_claims_verification_schema_and_quantities():
     with open(JSON_REPORT, encoding="utf-8") as f:
         data = json.load(f)
 
-    assert data["schema_version"] == "2.1"
+    assert data["schema_version"] == "2.2"
     assert data["track"] == "Track 1: Core Claims & Evidence Verification"
     assert data["milestone"] == "M1"
 
@@ -41,13 +41,15 @@ def test_core_claims_verification_schema_and_quantities():
     assert 20 <= summary["total_claims"] <= 30
     assert summary["total_claims"] == 25
     assert summary["supported_within_scope"] == 19
-    assert summary["refuted_within_scope"] == 2
-    assert summary["insufficient_evidence"] == 4
+    assert summary["refuted_within_scope"] == 0
+    assert summary["insufficient_evidence"] == 6
     assert summary["unverified"] == 0
     assert summary["total_accepted_assessments"] >= 25
     assert summary["exact_character_offsets_verified"] is True
     assert summary["acceptance_basis"] == "validated_rule"
-    assert summary["assessor_id"] == "autonomous_claims_verifier"
+    assert summary["assessor_id"] == "deterministic_claim_verifier"
+    assert "no open-web discovery" in summary["verification_mode"]
+    assert "not independently audited" in summary["lineage_root_semantics"]
 
     # 4 distinct deterministic relations present
     relations = summary["relations_distribution"]
@@ -68,18 +70,22 @@ def test_core_claims_locators_and_exact_passage_offsets():
         cid = claim["claim_id"]
         vr = item["verification_result"]
 
-        assert vr["status"] in {"supported_within_scope", "refuted_within_scope", "insufficient_evidence"}
+        assert vr["status"] in {"supported_within_scope", "refuted_within_scope", "insufficient_evidence", "conflicting_evidence"}
         assert vr["search_complete"] is True
         assert vr["minimum_independent_roots"] == 1
+        assert vr["minimum_distinct_lineage_roots"] == 1
         if vr["status"] in {"supported_within_scope", "refuted_within_scope"}:
             assert len(vr["assessment_ids"]) >= 1
         assert len(item["assessments"]) >= 1
 
         for ass in item["assessments"]:
             assert ass["decision"] == "accepted"
-            assert ass["assessor_id"] == "autonomous_claims_verifier"
+            assert ass["assessor_id"] == "deterministic_claim_verifier"
             assert ass["assessment_source"] == "validated_rule"
-            assert ass["independence_status"] == "confirmed_independent"
+            assert ass["independence_status"] == "candidate"
+            assert ass["evidence_basis"] in {
+                "institutional_statement", "secondary_reporting", "social_media_post", "user_comment", "unknown"
+            }
 
             cit = ass["citation"]
             pid = cit["passage_id"]
@@ -96,6 +102,39 @@ def test_core_claims_locators_and_exact_passage_offsets():
             assert art_start == passage["artifact_start_offset"] + start
             assert art_end == passage["artifact_start_offset"] + end
             assert cit["offset_unit"] == "unicode_codepoint"
+
+
+def test_verification_only_uses_retrieved_candidates_and_preserves_official_denials():
+    with open(JSON_REPORT, encoding="utf-8") as f:
+        data = json.load(f)
+
+    for item in data["verification_bundle"]:
+        retrieved_ids = set(item["search_receipt"].get("candidate_passage_ids", []))
+        assessment_ids = {assessment["evidence_id"] for assessment in item["assessments"]}
+        # The receipt records aggregate candidates, and no manually pinned
+        # primary/counter passage may appear only in the assessment list.
+        assert assessment_ids <= retrieved_ids or not retrieved_ids
+
+    by_id = {item["claim"]["claim_id"]: item for item in data["verification_bundle"]}
+    for claim_id in ("claim_core_01_hostages_40", "claim_core_02_killed_citizen"):
+        result = by_id[claim_id]["verification_result"]
+        assert result["status"] == "insufficient_evidence"
+        assert result["official_position"] == "officially_disputed"
+        assert result["contradicting_evidence_ids"]
+        assert result["independent_contradiction_roots"] == 0
+
+
+def test_fire_evidence_is_secondary_attributed_and_never_says_no_injuries():
+    with open(JSON_REPORT, encoding="utf-8") as f:
+        data = json.load(f)
+
+    item = next(row for row in data["verification_bundle"] if row["claim"]["claim_id"] == "claim_core_22_fire_bucha_warehouse")
+    assessment = item["assessments"][0]
+    assert assessment["source_id"] == "src_interfax_ova_fire_early_update"
+    assert assessment["evidence_basis"] == "secondary_reporting"
+    assert "interfax.com.ua" in assessment["citation"]["source_uri"]
+    assert "Уточнюємо інформацію щодо постраждалих" in assessment["citation"]["quote"]
+    assert "src_kyiv_ova_fire" not in {a["source_id"] for b in data["verification_bundle"] for a in b["assessments"]}
 
 
 def test_core_claims_numeric_consistency():

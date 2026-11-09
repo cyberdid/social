@@ -256,6 +256,7 @@ def retrieve_evidence_candidates(
             "locator": raw.get("locator"),
             "lineage_family_id": raw.get("lineage_family_id"),
             "independent_root_id": raw.get("independent_root_id"),
+            "evidence_basis": raw.get("evidence_basis", "unknown"),
         })
         if captured > as_of:
             future_count += 1
@@ -479,8 +480,43 @@ def infer_claim_passage_relation(
     p_text_lower = p_text.lower()
     stmt_text_lower = statement.lower()
 
+    denial_clauses = [
+        clause for clause in re.split(r"(?<=[.!?;])\s+", p_text_lower)
+        if any(cue in clause for cue in _COUNTER_CUES)
+    ]
     found_denial_cues = [cue for cue in _COUNTER_CUES if cue in p_text_lower]
     found_hedging_cues = [cue for cue in _INVESTIGATION_HEDGING_CUES if cue in p_text_lower]
+
+    # A denial cue is relevant only when it occurs in a clause about the same
+    # substantive topic. Generic overlap such as "police", "people", or the
+    # presence of an unrelated number must not turn a different rumor into
+    # counterevidence.
+    topic_anchor_groups = (
+        ("заруч", "утрим", "полон"),
+        ("загиб", "загин", "смерт", "помер"),
+        ("хребт", "перелом"),
+        ("травм", "поран", "ушкодж"),
+        ("пожеж", "склад", "займан", "підпал"),
+        ("учасник", "причет", "встанов", "ідентифік"),
+    )
+
+    def denial_applies_to_claim() -> bool:
+        for clause in denial_clauses:
+            clause_tokens = set(_terms(clause))
+            for anchors in topic_anchor_groups:
+                claim_has_anchor = any(anchor in stmt_text_lower for anchor in anchors)
+                clause_has_anchor = any(anchor in clause for anchor in anchors)
+                if claim_has_anchor and clause_has_anchor:
+                    return True
+            meaningful_overlap = {
+                _stem_uk(token) for token in (stmt_tokens_set & clause_tokens)
+                if len(token) >= 4 and token not in {"поліція", "людей", "осіб", "події", "повідомлення", "заворушень"}
+            }
+            if len(meaningful_overlap) >= 2:
+                return True
+        return False
+
+    relevant_denial = denial_applies_to_claim()
 
     # Check for negative inference trap (e.g. claim asserts entity X was present, passage mentions entity Y without mentioning X)
     if "тцк" in stmt_text_lower and "тцк" not in p_text_lower:
@@ -522,7 +558,7 @@ def infer_claim_passage_relation(
             }
 
     # Check for verbal denial of medical diagnosis
-    if "хребт" in stmt_text_lower and ("хребт" in p_text_lower or "перелам" in p_text_lower) and found_denial_cues:
+    if "хребт" in stmt_text_lower and ("хребт" in p_text_lower or "перелам" in p_text_lower) and relevant_denial:
         return {
             "relation": "rebuts",
             "decision": "accepted",
@@ -534,18 +570,16 @@ def infer_claim_passage_relation(
         }
 
     # Direct denial / refutation of rumor / event
-    if found_denial_cues:
-        overlap = stmt_tokens_set & p_tokens_set
-        if len(overlap) >= 2 or any(num in p_text for num in ["40", "загибл"]):
-            return {
-                "relation": "contradicts",
-                "decision": "accepted",
-                "confidence": 0.90,
-                "rationale": f"Official source directly disputed or refuted proposition (cues: {', '.join(found_denial_cues[:2])}).",
-                "asserted_values": {},
-                "rule_id": "rule_autonomous_claim_matcher_v1",
-                "epistemic_limitation": "Refutation derived within the scope of official law enforcement statements.",
-            }
+    if found_denial_cues and relevant_denial:
+        return {
+            "relation": "contradicts",
+            "decision": "accepted",
+            "confidence": 0.90,
+            "rationale": f"Passage contains a denial cue in the same substantive topic (cues: {', '.join(found_denial_cues[:2])}).",
+            "asserted_values": {},
+            "rule_id": "rule_autonomous_claim_matcher_v1",
+            "epistemic_limitation": "The passage records a denial; for physical facts this is an institutional position, not independent physical refutation.",
+        }
 
     # Extract all numbers from passage (digits, spaced thousands, word numbers, legal conversions)
     p_nums = set()
@@ -574,8 +608,7 @@ def infer_claim_passage_relation(
 
         prob = _support_value_problem(claim, {"asserted_values": asserted_values})
         if prob:
-            has_subject_overlap = len(stmt_tokens_set & p_tokens_set) >= 2 or any(num in p_text for num in ["40", "загибл"])
-            if found_denial_cues and has_subject_overlap:
+            if found_denial_cues and relevant_denial:
                 return {
                     "relation": "contradicts",
                     "decision": "accepted",
@@ -642,6 +675,7 @@ def create_evidence_assessment(
     asserted_values: dict | None = None,
     independent_root_id: str | None = None,
     independence_status: str = "unknown",
+    evidence_basis: str | None = None,
     limitations: list[str] | None = None,
 ) -> dict:
     """Create a passage-level assessment after validating exact citation spans.
@@ -678,6 +712,13 @@ def create_evidence_assessment(
         raise ValueError("unsupported independence_status")
     if independence_status == "confirmed_independent" and not independent_root_id:
         raise ValueError("confirmed independent status requires independent_root_id")
+    evidence_basis = evidence_basis or passage.get("evidence_basis", "unknown")
+    if evidence_basis not in {
+        "institutional_statement", "secondary_reporting", "social_media_post",
+        "user_comment", "firsthand_observation", "direct_observation",
+        "primary_physical_record", "forensic_record", "geolocated_media", "unknown",
+    }:
+        raise ValueError("unsupported evidence_basis")
     assessed_dt, assessed_at = _parse_utc(assessed_at_utc, "assessed_at_utc")
     captured_dt, _ = _parse_utc(passage.get("captured_at_utc"), "passage.captured_at_utc")
     if captured_dt > assessed_dt:
@@ -711,6 +752,7 @@ def create_evidence_assessment(
         "asserted_values": asserted_values,
         "independent_root_id": root_id,
         "independence_status": independence_status if root_id else "unknown",
+        "evidence_basis": evidence_basis,
         "assessment_source": acceptance_basis if final_decision == "accepted" else "candidate_only",
         "assessor_id": assessor_id,
         "validated_rule_id": validated_rule_id,
@@ -741,21 +783,27 @@ def aggregate_verification(
     as_of_utc: str,
     search_complete: bool,
     minimum_independent_roots: int = 2,
+    minimum_distinct_lineage_roots: int | None = None,
     supersedes_result_id: str | None = None,
 ) -> dict:
     """Produce an as-of claim status from accepted, scope-matched assessments.
 
-    Independent-root counts use only explicit ``independent_root_id`` values.
-    Repeated passages from a common root do not increase the count. Unknown
-    roots never become independent by default.
+    Explicit root IDs are treated as declared lineage labels, not as proof of
+    source independence. Repeated passages from one declared root count once.
+    A physical-fact claim cannot be resolved by an institutional statement
+    alone; such a statement is retained and surfaced as an official position.
     """
     claim_id = str(claim.get("claim_id") or "").strip()
     if not claim_id or not isinstance(claim.get("scope"), dict) or not claim["scope"]:
         raise ValueError("claim_id and non-empty claim scope are required")
     if type(search_complete) is not bool:
         raise ValueError("search_complete must be boolean")
-    if type(minimum_independent_roots) is not int or minimum_independent_roots < 1:
-        raise ValueError("minimum_independent_roots must be a positive integer")
+    if minimum_distinct_lineage_roots is None:
+        minimum_distinct_lineage_roots = minimum_independent_roots
+    elif minimum_independent_roots != 2:
+        raise ValueError("use either minimum_distinct_lineage_roots or legacy minimum_independent_roots")
+    if type(minimum_distinct_lineage_roots) is not int or minimum_distinct_lineage_roots < 1:
+        raise ValueError("minimum_distinct_lineage_roots must be a positive integer")
     assessment_ids = [row.get("assessment_id") for row in assessments
                       if isinstance(row.get("assessment_id"), str) and row["assessment_id"].strip()]
     if len(assessment_ids) != len(set(assessment_ids)):
@@ -811,16 +859,14 @@ def aggregate_verification(
                 usable.append(assessment)
         support = [row for row in usable if row["relation"] == "supports"]
         contradict = [row for row in usable if row["relation"] == "contradicts"]
-        support_roots = {row["independent_root_id"] for row in support
-                         if row.get("independence_status") == "confirmed_independent" and row.get("independent_root_id")}
-        contradict_roots = {row["independent_root_id"] for row in contradict
-                            if row.get("independence_status") == "confirmed_independent" and row.get("independent_root_id")}
+        support_roots = {row["independent_root_id"] for row in support if row.get("independent_root_id")}
+        contradict_roots = {row["independent_root_id"] for row in contradict if row.get("independent_root_id")}
         shared_roots = support_roots & contradict_roots
         if support_roots and contradict_roots:
             status = "conflicting_evidence"
-        elif len(support_roots) >= minimum_independent_roots:
+        elif len(support_roots) >= minimum_distinct_lineage_roots:
             status = "supported_within_scope"
-        elif len(contradict_roots) >= minimum_independent_roots:
+        elif len(contradict_roots) >= minimum_distinct_lineage_roots:
             status = "refuted_within_scope"
         elif not search_complete:
             status = "unverified"
@@ -831,10 +877,19 @@ def aggregate_verification(
     contradict_rows = [row for row in usable if row["relation"] == "contradicts"] if status != "not_verifiable" else []
     support_ids = sorted({row["evidence_id"] for row in support_rows})
     contradict_ids = sorted({row["evidence_id"] for row in contradict_rows})
-    support_roots = sorted({row["independent_root_id"] for row in support_rows
-                            if row.get("independence_status") == "confirmed_independent" and row.get("independent_root_id")})
-    contradict_roots = sorted({row["independent_root_id"] for row in contradict_rows
-                               if row.get("independence_status") == "confirmed_independent" and row.get("independent_root_id")})
+    support_roots = sorted({row["independent_root_id"] for row in support_rows if row.get("independent_root_id")})
+    contradict_roots = sorted({row["independent_root_id"] for row in contradict_rows if row.get("independent_root_id")})
+    confirmed_support_roots = sorted({row["independent_root_id"] for row in support_rows
+                                      if row.get("independence_status") == "confirmed_independent" and row.get("independent_root_id")})
+    confirmed_contradict_roots = sorted({row["independent_root_id"] for row in contradict_rows
+                                         if row.get("independence_status") == "confirmed_independent" and row.get("independent_root_id")})
+    direct_physical_basis = {"firsthand_observation", "direct_observation", "primary_physical_record", "forensic_record", "geolocated_media"}
+    physical_rows = [row for row in support_rows + contradict_rows if row.get("evidence_basis") in direct_physical_basis]
+    official_denial_rows = [row for row in usable
+                            if row.get("evidence_basis") == "institutional_statement"
+                            and row.get("relation") in {"contradicts", "rebuts"}]
+    if claim.get("scope", {}).get("type") == "physical_fact" and status in {"supported_within_scope", "refuted_within_scope", "conflicting_evidence"} and not physical_rows:
+        status = "insufficient_evidence"
     assessments_used = sorted(row["assessment_id"] for row in usable if row.get("assessment_id"))
     exclusion_by_id = {row.get("assessment_id"): row["reason"] for row in excluded}
     used_id_set = set(assessments_used)
@@ -856,7 +911,7 @@ def aggregate_verification(
         "assessment_ids": sorted(assessments_used),
         "assessment_provenance": assessment_provenance,
         "excluded_assessment_ids": sorted(row["assessment_id"] for row in excluded if row.get("assessment_id")),
-        "minimum_independent_roots": minimum_independent_roots,
+        "minimum_distinct_lineage_roots": minimum_distinct_lineage_roots,
         "search_complete": bool(search_complete),
         "observability": claim.get("observability"),
         "supersedes": supersedes_result_id,
@@ -874,23 +929,30 @@ def aggregate_verification(
         "contradicting_evidence_ids": contradict_ids,
         "supporting_root_count": len(support_roots),
         "contradicting_root_count": len(contradict_roots),
+        "supporting_lineage_root_count": len(support_roots),
+        "contradicting_lineage_root_count": len(contradict_roots),
+        "supporting_lineage_root_ids": support_roots,
+        "contradicting_lineage_root_ids": contradict_roots,
         "shared_root_ids": sorted(set(support_roots) & set(contradict_roots)),
-        "independent_support_roots": len(support_roots),
-        "independent_contradiction_roots": len(contradict_roots),
-        "minimum_independent_roots": minimum_independent_roots,
+        "independent_support_roots": len(confirmed_support_roots),
+        "independent_contradiction_roots": len(confirmed_contradict_roots),
+        "minimum_independent_roots": minimum_distinct_lineage_roots,
+        "minimum_distinct_lineage_roots": minimum_distinct_lineage_roots,
+        "official_position": "officially_disputed" if official_denial_rows else None,
         "assessment_ids": assessments_used,
         "assessment_provenance": assessment_provenance,
         "excluded_assessments": excluded,
         "excluded_assessment_ids": sorted(row["assessment_id"] for row in excluded if row.get("assessment_id")),
         "supersedes": supersedes_result_id,
         "rationale": _status_rationale(
-            status, len(support_roots), len(contradict_roots), minimum_independent_roots,
+            status, len(support_roots), len(contradict_roots), minimum_distinct_lineage_roots,
             search_complete, len(set(support_roots) & set(contradict_roots)),
         ),
         "limitations": [
             "This result is limited to the exact claim scope and supplied evidence corpus.",
             "Retrieval rank, publication volume, and model agreement are not evidence of truth.",
-            "Only explicitly supplied independent_root_id values count toward the root threshold; their independence is not established here.",
+            "Distinct root IDs are declared source-lineage labels, not evidence that sources are independent.",
+            "Physical-fact statuses require direct observation, a primary physical record, forensic evidence, or geolocated media; institutional statements alone remain official positions.",
             "insufficient_evidence and unverified are not refutations.",
         ],
     }
@@ -956,19 +1018,19 @@ def _status_rationale(
     shared_root_count: int = 0,
 ) -> str:
     if status == "supported_within_scope":
-        return f"Accepted, scope-matched support from {support_count} explicit roots meets threshold {minimum}; no independent contradiction root was accepted."
+        return f"Accepted, scope-matched support from {support_count} declared source-lineage root(s) meets threshold {minimum}; no contradiction root was accepted."
     if status == "refuted_within_scope":
-        return f"Accepted, scope-matched contradictory evidence from {contradict_count} explicit roots meets threshold {minimum}; no independent support root was accepted."
+        return f"Accepted, scope-matched contradictory evidence from {contradict_count} declared source-lineage root(s) meets threshold {minimum}; no support root was accepted."
     if status == "conflicting_evidence":
         return (
-            f"Accepted, scope-matched support and contradiction have explicit roots "
+            f"Accepted, scope-matched support and contradiction have declared source-lineage roots "
             f"({support_count} and {contradict_count}); {shared_root_count} root(s) occur on both sides."
         )
     if status == "not_verifiable":
         return "The claim is explicitly marked outside the observable scope of this workflow."
     if not search_complete:
         return "Evidence search is incomplete; no final truth assessment is available."
-    return "The supplied evidence does not meet the explicit independent-root threshold; absence of evidence is not refutation."
+    return "The supplied evidence does not meet the declared source-lineage threshold; absence of evidence is not refutation."
 
 
 def _support_value_problem(claim: dict, assessment: dict) -> str | None:
@@ -1228,7 +1290,7 @@ def _count_role_hint_matches(value: str, hint: str) -> bool:
 def _assessment_audit_record(assessment: dict, included: bool, exclusion_reason: str | None) -> dict:
     fields = (
         "assessment_id", "claim_id", "candidate_id", "evidence_id", "source_id", "relation", "decision",
-        "scope", "scope_matches_claim", "asserted_values", "independent_root_id", "independence_status",
+        "scope", "scope_matches_claim", "asserted_values", "independent_root_id", "independence_status", "evidence_basis",
         "assessment_source", "assessor_id", "validated_rule_id", "assessed_at_utc", "citation", "reasons",
     )
     record = {field: assessment[field] for field in fields if field in assessment}
