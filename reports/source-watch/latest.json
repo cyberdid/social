@@ -1,7 +1,7 @@
 {
   "scope": "Manual verification queue; no automatic factual or legal conclusions.",
   "snapshot": "20261109T080002.024778Z",
-  "manifest": "/home/cyberdid/Projects/Social/data/raw/source_watch/20261109T080002.024778Z/manifest.json",
+  "manifest": "data/raw/source_watch/20261109T080002.024778Z/manifest.json",
   "counts": {
     "error": 2,
     "unchanged": 6,
@@ -11,7 +11,7 @@
     {
       "url": "https://dbr.gov.ua/news/dbr-rozpochalo-kriminalne-provadzhennya-za-faktom-podij-u-petropavlivskij-borshhagivci-na-kiivshhini",
       "kind": "known_article",
-      "source": "/home/cyberdid/Projects/Social/reports/source-refresh-url-audit-2026-11-06.json",
+      "source": "reports/source-refresh-url-audit-2026-11-06.json",
       "requested_at": "2026-11-09T08:00:02.024836+00:00",
       "request_timeout_seconds": 20.0,
       "status": null,
@@ -27,7 +27,7 @@
     {
       "url": "https://hromadske.ua/kryminal/273906-sud-obyraye-zapobiznyy-zakhid-22-richniy-zintsi-iaka-brala-uchast-u-sutychkakh-u-sofiyivskiy-borshchahivtsi",
       "kind": "known_article",
-      "source": "/home/cyberdid/Projects/Social/reports/source-refresh-url-audit-2026-11-06.json",
+      "source": "reports/source-refresh-url-audit-2026-11-06.json",
       "requested_at": "2026-11-09T08:00:03.265995+00:00",
       "request_timeout_seconds": 20.0,
       "status": 200,
@@ -51,7 +51,7 @@
         "warning": "Filtered content or links are a review signal, not a verified new fact."
       },
       "elapsed_seconds": 0.36,
-      "previous_snapshot": "/home/cyberdid/Projects/Social/data/raw/source_watch/20261108T080001.749114Z",
+      "previous_snapshot": "data/raw/source_watch/20261108T080001.749114Z",
       "previous_sha256": "343db9164658428659717f292c2a9a502aa0b3c8af9137ee37d502f8e50a4f01",
       "new_news_links": [],
       "event": "unchanged"
@@ -59,7 +59,7 @@
     {
       "url": "https://mvs.gov.ua/news/mvs-ziasovuje-obstavini-podii-na-kiyivshhini-rozpocato-sluzbove-rozsliduvannia",
       "kind": "known_article",
-      "source": "/home/cyberdid/Projects/Social/reports/source-refresh-url-audit-2026-11-06.json",
+      "source": "reports/source-refresh-url-audit-2026-11-06.json",
       "requested_at": "2026-11-09T08:00:04.626076+00:00",
       "request_timeout_seconds": 20.0,
       "status": 200,
@@ -83,7 +83,7 @@
         "warning": "Filtered content or links are a review signal, not a verified new fact."
       },
       "elapsed_seconds": 0.62,
-      "previous_snapshot": "/home/cyberdid/Projects/Social/data/raw/source_watch/20261108T080001.749114Z",
+      "previous_snapshot": "data/raw/source_watch/20261108T080001.749114Z",
       "previous_sha256": "0f63feae748e25d860a32bfaa8353147c9f570aa35c254423db6c39a9d157c33",
       "new_news_links": [],
       "event": "filtered_change"
@@ -91,7 +91,7 @@
     {
       "url": "https://mvs.gov.ua/news/oleksandr-pivnenko-proviv-selektornu-naradu-z-kerivnictvom-nacionalnoyi-gvardiyi-ukrayini",
       "kind": "known_article",
-      "source": "/home/cyberdid/Projects/Social/reports/source-refresh-url-audit-2026-11-06.json",
+      "source": "reports/source-refresh-url-audit-2026-11-06.json",
       "requested_at": "2026-11-09T08:00:06.246369+00:00",
       "request_timeout_seconds": 20.0,
       "status": 200,
@@ -115,7 +115,7 @@
         "warning": "Filtered content or links are a review signal, not a verified new fact."
       },
       "elapsed_seconds": 0.424,
-      "previous_snapshot": "/home/cyberdid/Projects/Social/data/raw/source_watch/20261108T080001.749114Z",
+      "previous_snapshot": "data/raw/source_watch/20261108T080001.749114Z",
       "previous_sha256": "9fe99873f06d15f87cee7f7e1c36ce347bb88b5507cb54bb53f4ed8aacfcfdff",
       "new_news_links": [],
       "event": "unchanged"
@@ -123,7 +123,7 @@
     {
       "url": "https://mvs.gov.ua/news/u-ministerstvi-vnutrisnix-sprav-ukrayini-vidbuvsia-brifing-shhodo-podii-na-kiyivshhini",
       "kind": "known_article",
-      "source": "/home/cyberdid/Projects/Social/reports/source-refresh-url-audit-2026-11-06.json",
+      "source": "reports/source-refresh-url-audit-2026-11-06.json",
       "requested_at": "2026-11-09T08:00:07.671030+00:00",
       "request_timeout_seconds": 20.0,
       "status": 200,
@@ -147,7 +147,7 @@
         "warning": "Filtered content or links are a review signal, not a verified new fact."
       },
       "elapsed_seconds": 0.441,
-      "previous_snapshot": "/home/cyberdid/Projects/Social/data/raw/source_watch/20261108T080001.749114Z",
+      "previous_snapshot": "data/raw/source_watch/20261108T080001.749114Z",
       "previous_sha256": "4a7c8e79ffc11d06eddb05204c7467dd5d84c552c05c4ab9f1f91a26a8d2050e",
       "new_news_links": [],
       "event": "filtered_change"
@@ -155,7 +155,7 @@
     {
       "url": "https://ngu.gov.ua/shturm-kativni-pid-vybuhy-shahediv-yak-fejk-pro-40-zaruchnykiv-pereris-u-zavorushennya-v-petropavlivskij-borshhagivczi/",
       "kind": "known_article",
-      "source": "/home/cyberdid/Projects/Social/reports/source-refresh-url-audit-2026-11-06.json",
+      "source": "reports/source-refresh-url-audit-2026-11-06.json",
       "requested_at": "2026-11-09T08:00:09.112268+00:00",
       "request_timeout_seconds": 20.0,
       "status": 200,
@@ -179,7 +179,7 @@
         "warning": "Filtered content or links are a review signal, not a verified new fact."
       },
       "elapsed_seconds": 0.324,
-      "previous_snapshot": "/home/cyberdid/Projects/Social/data/raw/source_watch/20261108T080001.749114Z",
+      "previous_snapshot": "data/raw/source_watch/20261108T080001.749114Z",
       "previous_sha256": "8f49add65d36e4740b40735d36cb9e8665a6f5af3e7a856f658de839841fa634",
       "new_news_links": [],
       "event": "unchanged"
@@ -187,7 +187,7 @@
     {
       "url": "https://ombudsman.gov.ua/news_details/zhodnih-podvijnih-standartiv-ne-maye-buti-ombudsman-vimagaye-perevirki-situaciyi-na-petropavlivskij-borshchagivci",
       "kind": "known_article",
-      "source": "/home/cyberdid/Projects/Social/reports/source-refresh-url-audit-2026-11-06.json",
+      "source": "reports/source-refresh-url-audit-2026-11-06.json",
       "requested_at": "2026-11-09T08:00:10.436875+00:00",
       "request_timeout_seconds": 20.0,
       "status": 200,
@@ -211,7 +211,7 @@
         "warning": "Filtered content or links are a review signal, not a verified new fact."
       },
       "elapsed_seconds": 0.826,
-      "previous_snapshot": "/home/cyberdid/Projects/Social/data/raw/source_watch/20261108T080001.749114Z",
+      "previous_snapshot": "data/raw/source_watch/20261108T080001.749114Z",
       "previous_sha256": "a6387bb2785fd0c1a8b21badaab3d2a3ced7187874b234407422b6aa5bf38525",
       "new_news_links": [],
       "event": "unchanged"
@@ -219,7 +219,7 @@
     {
       "url": "https://suspilne.media/kyiv/1446145-suticki-v-borsanivci-sud-obirae-zapobiznij-cetvertij-pidozruvanij/",
       "kind": "known_article",
-      "source": "/home/cyberdid/Projects/Social/reports/source-refresh-url-audit-2026-11-06.json",
+      "source": "reports/source-refresh-url-audit-2026-11-06.json",
       "requested_at": "2026-11-09T08:00:12.263183+00:00",
       "request_timeout_seconds": 20.0,
       "status": 200,
@@ -243,7 +243,7 @@
         "warning": "Filtered content or links are a review signal, not a verified new fact."
       },
       "elapsed_seconds": 0.428,
-      "previous_snapshot": "/home/cyberdid/Projects/Social/data/raw/source_watch/20261108T080001.749114Z",
+      "previous_snapshot": "data/raw/source_watch/20261108T080001.749114Z",
       "previous_sha256": "274b9c62eb82dd0c39ac03827c80c7bb76356b32ae53cf07f17a4918193cfb23",
       "new_news_links": [],
       "event": "unchanged"
@@ -342,7 +342,7 @@
         "warning": "Filtered content or links are a review signal, not a verified new fact."
       },
       "elapsed_seconds": 1.092,
-      "previous_snapshot": "/home/cyberdid/Projects/Social/data/raw/source_watch/20261108T080001.749114Z",
+      "previous_snapshot": "data/raw/source_watch/20261108T080001.749114Z",
       "previous_sha256": "0d0829f63f3d10e4d56d97443ed287d3696f43fe1e3aaf5c2d7d2a774ac05d55",
       "new_news_links": [
         {
@@ -437,7 +437,7 @@
         "warning": "Filtered content or links are a review signal, not a verified new fact."
       },
       "elapsed_seconds": 0.239,
-      "previous_snapshot": "/home/cyberdid/Projects/Social/data/raw/source_watch/20261108T080001.749114Z",
+      "previous_snapshot": "data/raw/source_watch/20261108T080001.749114Z",
       "previous_sha256": "ebde6c99944b468ae7dc142a307066e9cab28a6719060706a478f7c6cf044fe6",
       "new_news_links": [
         {
@@ -576,7 +576,7 @@
         "warning": "Filtered content or links are a review signal, not a verified new fact."
       },
       "elapsed_seconds": 0.705,
-      "previous_snapshot": "/home/cyberdid/Projects/Social/data/raw/source_watch/20261108T080001.749114Z",
+      "previous_snapshot": "data/raw/source_watch/20261108T080001.749114Z",
       "previous_sha256": "469afab457362dfdb5caa6fdb4b51f39657947924a96f48b7b12ff168bc0c2ea",
       "new_news_links": [],
       "event": "unchanged"

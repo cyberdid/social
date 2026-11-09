@@ -12,6 +12,7 @@ from __future__ import annotations
 import json
 import os
 import re
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List
@@ -19,19 +20,61 @@ from typing import Any, Dict, List
 import rapidfuzz.distance.Levenshtein as lev
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
-import sys
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
 from src.contracts import validate_document
 
 OUTPUT_DIR = REPO_ROOT / "reports" / "video-pipeline"
-RAW_ASR_PATH = Path(
-    "/home/cyberdid/Downloads/SocialIncidentVideos/telegram/analysis/asr-bulk-20261108/telegram_text_observations.jsonl"
+
+
+def configured_input_path(env_var: str, default_relative_path: str) -> Path:
+    """Resolve a repo-relative default or an environment-provided input path.
+
+    Relative environment values are interpreted from the repository root;
+    absolute values and ``~`` are supported for private files stored elsewhere.
+    """
+    configured = os.environ.get(env_var)
+    path = Path(configured).expanduser() if configured else REPO_ROOT / default_relative_path
+    if not path.is_absolute():
+        path = REPO_ROOT / path
+    return path.resolve()
+
+
+RAW_ASR_PATH = configured_input_path(
+    "SOCIAL_ASR_RAW_PATH",
+    "external/asr-bulk-20261108/telegram_text_observations.jsonl",
 )
-SECOND_PASS_PATH = Path(
-    "/home/cyberdid/Downloads/SocialIncidentVideos/telegram/analysis/asr-correction-second-pass-20261108/second_pass_candidates.jsonl"
+SECOND_PASS_PATH = configured_input_path(
+    "SOCIAL_ASR_SECOND_PASS_PATH",
+    "external/asr-correction-second-pass-20261108/second_pass_candidates.jsonl",
 )
+
+
+def warn_if_private_inputs_missing() -> None:
+    """Explain that unavailable private files cannot be checked locally.
+
+    The calibration sample itself is embedded in ``CLIPS_SPECIFICATION``;
+    this builder does not read the private JSONL files when computing metrics.
+    """
+    missing = [
+        ("raw ASR observations", RAW_ASR_PATH, "SOCIAL_ASR_RAW_PATH"),
+        ("second-pass ASR candidates", SECOND_PASS_PATH, "SOCIAL_ASR_SECOND_PASS_PATH"),
+    ]
+    missing = [(label, path, env_var) for label, path, env_var in missing if not path.is_file()]
+    if not missing:
+        return
+
+    details = "; ".join(
+        f"{label}: {path} (set {env_var} to the private file location)"
+        for label, path, env_var in missing
+    )
+    print(
+        "WARNING: private ASR input file(s) unavailable: "
+        f"{details}. Metrics will still use the reviewed clip sample embedded in "
+        "this script; the private JSONL sources are not read or checksum-validated.",
+        file=sys.stderr,
+    )
 
 
 def normalize_text(text: str) -> str:
@@ -944,8 +987,11 @@ def generate_markdown_report(data: Dict[str, Any]) -> str:
     md.append("")
     md.append("To independently reproduce and verify this calibration benchmark:")
     md.append("```bash")
-    md.append("/home/cyberdid/Projects/Social/.venv/bin/python3 scripts/analysis/build_asr_calibration_benchmark.py")
-    md.append("/home/cyberdid/Projects/Social/.venv/bin/pytest tests/test_video_asr_calibration.py")
+    md.append("# Private inputs default to external/asr-bulk-20261108/ and external/asr-correction-second-pass-20261108/.")
+    md.append("# Override with SOCIAL_ASR_RAW_PATH and SOCIAL_ASR_SECOND_PASS_PATH when stored elsewhere.")
+    md.append("# Missing files trigger a warning; metrics use the embedded reviewed clip sample, and source files are not read or checksum-validated.")
+    md.append("python3 scripts/analysis/build_asr_calibration_benchmark.py")
+    md.append("python3 -m pytest tests/test_video_asr_calibration.py")
     md.append("```")
     md.append("")
     md.append("### Invalidation Conditions:")
@@ -958,6 +1004,7 @@ def generate_markdown_report(data: Dict[str, Any]) -> str:
 
 def main():
     print("Building ASR Calibration Benchmark...")
+    warn_if_private_inputs_missing()
     benchmark_data = build_benchmark()
 
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)

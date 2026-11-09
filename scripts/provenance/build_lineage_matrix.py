@@ -19,6 +19,19 @@ from typing import Any, Dict, List, Set, Tuple
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 
 
+def configured_asr_observations_path(repo_root: Path) -> Path:
+    """Resolve the private ASR JSONL path from an environment override or repo default."""
+    configured = os.environ.get("SOCIAL_ASR_RAW_PATH")
+    path = (
+        Path(configured).expanduser()
+        if configured
+        else repo_root / "external/asr-bulk-20261108/telegram_text_observations.jsonl"
+    )
+    if not path.is_absolute():
+        path = repo_root / path
+    return path.resolve()
+
+
 def sha256_file(path: Path | str) -> str:
     """Compute hex-encoded SHA-256 digest of a file."""
     h = hashlib.sha256()
@@ -92,7 +105,7 @@ def build_lineage_data(repo_root: Path) -> Dict[str, Any]:
     case_release_manifest_path = repo_root / "reports/case-release-manifest-2026-11-08.json"
     tg_video_summary_path = repo_root / "reports/video-pipeline/telegram-full-decode-2026-11-08.md"
     tiktok_video_summary_path = repo_root / "reports/video-pipeline/tiktok-runner-2026-11-08.md"
-    asr_obs_path = Path("/home/cyberdid/Downloads/SocialIncidentVideos/telegram/analysis/asr-bulk-20261108/telegram_text_observations.jsonl")
+    asr_obs_path = configured_asr_observations_path(repo_root)
 
     # Analyze historical corpus
     (
@@ -188,8 +201,15 @@ def build_lineage_data(repo_root: Path) -> Dict[str, Any]:
         "reports/video-pipeline/tiktok-runner-2026-11-08.md": sha256_file(tiktok_video_summary_path),
     }
 
-    if asr_obs_path.exists():
+    if asr_obs_path.is_file():
         checksums["external/asr-bulk-20261108/telegram_text_observations.jsonl"] = sha256_file(asr_obs_path)
+    else:
+        print(
+            "WARNING: private ASR observations were not found at "
+            f"{asr_obs_path}; the external source checksum was not checked locally. "
+            "Set SOCIAL_ASR_RAW_PATH to the private file location to verify it.",
+            file=sys.stderr,
+        )
 
     # Lineage Matrix Entries
     lineage_matrix = [
@@ -722,16 +742,18 @@ The following master matrix links every published metric and empirical finding a
 
 ### 6.1 Independent Verification Commands
 
+The raw ASR observations are private and are not bundled with the repository. Their default location is `external/asr-bulk-20261108/telegram_text_observations.jsonl`; set `SOCIAL_ASR_RAW_PATH` when the file is stored elsewhere. If it is unavailable, the builder warns that its recorded checksum could not be checked against a local copy.
+
 To verify the integrity of all numbers, file counts, and cryptographic hashes established in this report:
 
 1. **Run Provenance Matrix Verification Script:**
    ```bash
-   /home/cyberdid/Projects/Social/.venv/bin/python3 scripts/provenance/build_lineage_matrix.py --verify
+   python3 scripts/provenance/build_lineage_matrix.py --verify
    ```
 
 2. **Verify Bitwise Hashes of Core Datasets:**
    ```bash
-   /home/cyberdid/Projects/Social/.venv/bin/python3 -c '
+   python3 -c '
    import hashlib, json
    h1 = hashlib.sha256(open("data/processed/continuation_20261105/posts_clean.jsonl", "rb").read()).hexdigest()
    h2 = hashlib.sha256(open("data/processed/20261105T101013Z+20261105T102914Z/posts_clean.jsonl", "rb").read()).hexdigest()
@@ -743,7 +765,7 @@ To verify the integrity of all numbers, file counts, and cryptographic hashes es
 
 3. **Verify Channel Counts and Missing Channel `kiber_boroshno`:**
    ```bash
-   /home/cyberdid/Projects/Social/.venv/bin/python3 -c '
+   python3 -c '
    import json
    hist = [json.loads(l) for l in open("data/processed/continuation_20261105/posts_clean.jsonl") if json.loads(l).get("relevant")]
    curr = [json.loads(l) for l in open("data/processed/20261105T101013Z+20261105T102914Z/posts_clean.jsonl") if json.loads(l).get("relevant")]
@@ -757,7 +779,7 @@ To verify the integrity of all numbers, file counts, and cryptographic hashes es
 
 4. **Verify Automated vs Dedicated Source Watch Counts:**
    ```bash
-   /home/cyberdid/Projects/Social/.venv/bin/python3 -c '
+   python3 -c '
    import json
    sw_auto = json.load(open("reports/automated-case-run-2026-11-08/source_watch_summary.json"))
    sw_snap = json.load(open("reports/source-watch/20261108/latest.json"))
@@ -769,7 +791,7 @@ To verify the integrity of all numbers, file counts, and cryptographic hashes es
 
 5. **Run Pytest Test Suite:**
    ```bash
-   /home/cyberdid/Projects/Social/.venv/bin/pytest tests/test_provenance_lineage.py -v
+   python3 -m pytest tests/test_provenance_lineage.py -v
    ```
 
 ---

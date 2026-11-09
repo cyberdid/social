@@ -462,8 +462,11 @@ Under `schemas/transcript_correction.schema.json` and `src/contracts.py`, `quote
 
 To independently reproduce and verify this calibration benchmark:
 ```bash
-/home/cyberdid/Projects/Social/.venv/bin/python3 scripts/analysis/build_asr_calibration_benchmark.py
-/home/cyberdid/Projects/Social/.venv/bin/pytest tests/test_video_asr_calibration.py
+# Private inputs default to external/asr-bulk-20261108/ and external/asr-correction-second-pass-20261108/.
+# Override with SOCIAL_ASR_RAW_PATH and SOCIAL_ASR_SECOND_PASS_PATH when stored elsewhere.
+# Missing files trigger a warning; metrics use the embedded reviewed clip sample, and source files are not read or checksum-validated.
+python3 scripts/analysis/build_asr_calibration_benchmark.py
+python3 -m pytest tests/test_video_asr_calibration.py
 ```
 
 ### Invalidation Conditions:

@@ -209,16 +209,18 @@ The following master matrix links every published metric and empirical finding a
 
 ### 6.1 Independent Verification Commands
 
+The raw ASR observations are private and are not bundled with the repository. Their default location is `external/asr-bulk-20261108/telegram_text_observations.jsonl`; set `SOCIAL_ASR_RAW_PATH` when the file is stored elsewhere. If it is unavailable, the builder warns that its recorded checksum could not be checked against a local copy.
+
 To verify the integrity of all numbers, file counts, and cryptographic hashes established in this report:
 
 1. **Run Provenance Matrix Verification Script:**
    ```bash
-   /home/cyberdid/Projects/Social/.venv/bin/python3 scripts/provenance/build_lineage_matrix.py --verify
+   python3 scripts/provenance/build_lineage_matrix.py --verify
    ```
 
 2. **Verify Bitwise Hashes of Core Datasets:**
    ```bash
-   /home/cyberdid/Projects/Social/.venv/bin/python3 -c '
+   python3 -c '
    import hashlib, json
    h1 = hashlib.sha256(open("data/processed/continuation_20261105/posts_clean.jsonl", "rb").read()).hexdigest()
    h2 = hashlib.sha256(open("data/processed/20261105T101013Z+20261105T102914Z/posts_clean.jsonl", "rb").read()).hexdigest()
@@ -230,7 +232,7 @@ To verify the integrity of all numbers, file counts, and cryptographic hashes es
 
 3. **Verify Channel Counts and Missing Channel `kiber_boroshno`:**
    ```bash
-   /home/cyberdid/Projects/Social/.venv/bin/python3 -c '
+   python3 -c '
    import json
    hist = [json.loads(l) for l in open("data/processed/continuation_20261105/posts_clean.jsonl") if json.loads(l).get("relevant")]
    curr = [json.loads(l) for l in open("data/processed/20261105T101013Z+20261105T102914Z/posts_clean.jsonl") if json.loads(l).get("relevant")]
@@ -244,7 +246,7 @@ To verify the integrity of all numbers, file counts, and cryptographic hashes es
 
 4. **Verify Automated vs Dedicated Source Watch Counts:**
    ```bash
-   /home/cyberdid/Projects/Social/.venv/bin/python3 -c '
+   python3 -c '
    import json
    sw_auto = json.load(open("reports/automated-case-run-2026-11-08/source_watch_summary.json"))
    sw_snap = json.load(open("reports/source-watch/20261108/latest.json"))
@@ -256,7 +258,7 @@ To verify the integrity of all numbers, file counts, and cryptographic hashes es
 
 5. **Run Pytest Test Suite:**
    ```bash
-   /home/cyberdid/Projects/Social/.venv/bin/pytest tests/test_provenance_lineage.py -v
+   python3 -m pytest tests/test_provenance_lineage.py -v
    ```
 
 ---
