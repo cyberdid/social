@@ -1237,6 +1237,7 @@ Underfull \hbox (badness 7362) in paragraph at lines 17--17
  []
 
 [22]) (sections/15_conclusion.tex [23] [24]) (social_framework_en.bbl [25]
+[26]
 Underfull \hbox (badness 4726) in paragraph at lines 216--224
 []\TU/cmunrm.otf(0)/m/n/10 Andrei Z. Broder.  On the resemblance and containmen
 t of documents.  In \TU/cmunrm.otf(0)/m/it/10 Pro-
@@ -1261,7 +1262,7 @@ Underfull \hbox (badness 2126) in paragraph at lines 216--224
 ce year; publisher page requires JavaScript. Primary text:
  []
 
-[26])
+[27])
 The property list \polyglossia@langsetup contains the pairs (without outer
 braces):
 >  {latex/script}  =>  {latin}
@@ -1312,7 +1313,7 @@ braces):
 >  {ukrainian/babelname}  =>  {ukrainian}
 >  {ukrainian/localnumeral}  =>  {ukrainiannumerals}
 >  {ukrainian/Localnumeral}  =>  {Ukrainiannumerals}.
- [27] (social_framework_en.aux
+ [28] (social_framework_en.aux
 LaTeX Info: Redefining \rmfamily on input line 24.
 LaTeX Info: Redefining \sffamily on input line 24.
 LaTeX Info: Redefining \ttfamily on input line 24.
@@ -1320,4 +1321,4 @@ LaTeX Info: Redefining \ttfamily on input line 24.
 Package rerunfilecheck Info: File `social_framework_en.out' has not changed.
 (rerunfilecheck)             Checksum: ABE921E951D05EA1C41E41677F31FDD2;4010.
  )
-Output written on social_framework_en.xdv (27 pages, 991916 bytes).
+Output written on social_framework_en.xdv (28 pages, 998452 bytes).
