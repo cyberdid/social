@@ -1,0 +1,106 @@
+{
+  "schema_version": "social_information_analysis_figure_v1",
+  "dimensions_inches": [
+    6.3,
+    2.7
+  ],
+  "source_metric_json": "papers/social-framework-2026/data/audited_evaluation_metrics.json",
+  "source_metric_sha256": "3de29093183a930f4d8f846300c8a0fbb6d6c0b20ee7e87679e131c8b10f9387",
+  "generator_sha256": "4056c851dfbb7f3069f18f1a4dd5f1921fd49c7b7da10a9f21cca3d8a7e84159",
+  "source_sha256": {
+    "reports/coordination-null-models-2026-11-08-lsh-audit/results.json": "5d6cd59bd5c31239eff595317a17ec4fd67f6a6329b1475cc10b9557e97a5d74",
+    "data/raw/telegram_comments/20261106T071956Z/comments.jsonl": "a481d50305e50639c555b7a5866045c9b3d8156a5cf9b8cc16b313b2de1e6fb6",
+    "reports/telegram-comments/20261106T071956Z/copypasta_groups.csv": "ee692e523200a4422a7ae31eebde2718dbd23b0693dc6f0e2c04024e977187bc",
+    "reports/telegram-comments/20261106T071956Z/signals.json": "5f361a3affb47bb92a7f27880489fe020b1fb78828a5715068dd7d99aa4b4d77",
+    "reports/coordination-null-models-2026-11-08-lsh-audit/exact_cross_channel_edges_ge_0.6.csv": "9e1d07c77cba556d1da414ab1d7a8952f09f220c29a71a33066b5f3ccf340e2b",
+    "reports/continuation_20261105/relevant_posts.csv": "8b69539801a385bee8f5ea05c5315d18a6d518f96393ff5bf5cd6f57529f8b37",
+    "data/processed/continuation_20261105/posts_clean.jsonl": "4e859d407aef52c72a8e690dc5716d7d92d11ff7d7a164760db5a4c0ad334350"
+  },
+  "corpus": "historical continuation_20261105; relevant full text, length >=80; cross-channel pairs only",
+  "eligible_text_count": 1384,
+  "left": {
+    "rows": [
+      {
+        "jaccard_threshold": 0.6,
+        "exact_pairs_n": 369,
+        "returned_pairs_n": 367,
+        "missed_pairs_n": 2,
+        "candidate_pairs_not_in_exact_universe_n": 0,
+        "recall": 0.994579945799458
+      },
+      {
+        "jaccard_threshold": 0.75,
+        "exact_pairs_n": 288,
+        "returned_pairs_n": 288,
+        "missed_pairs_n": 0,
+        "candidate_pairs_not_in_exact_universe_n": 0,
+        "recall": 1.0
+      },
+      {
+        "jaccard_threshold": 0.9,
+        "exact_pairs_n": 213,
+        "returned_pairs_n": 213,
+        "missed_pairs_n": 0,
+        "candidate_pairs_not_in_exact_universe_n": 0,
+        "recall": 1.0
+      }
+    ],
+    "recall_denominator": "exact eligible cross-channel pairs at each threshold"
+  },
+  "right": {
+    "jaccard_threshold": 0.6,
+    "lag_minutes": 10,
+    "edge_denominator": 369,
+    "observed": 134,
+    "null_rows": [
+      {
+        "family": "copy_timing",
+        "model": "channel_2h_slot_rotation",
+        "statistic": "pairs_jaccard_ge0.6_lag_le10min",
+        "edge_denominator": 369,
+        "observed_share": 0.36314363143631434,
+        "null_share": 0.11617367698829505,
+        "observed": 134,
+        "null_mean": 42.86808680868087,
+        "null_q025": 32.0,
+        "null_q975": 55.0,
+        "null_min": 19,
+        "null_max": 69,
+        "excess": 91.13191319131913,
+        "ratio": 3.125868448434343,
+        "tail_count": 0,
+        "B": 9999,
+        "p_raw": 0.0001,
+        "p_holm_16": 0.0016
+      },
+      {
+        "family": "copy_timing",
+        "model": "channel_24h_slot_rotation",
+        "statistic": "pairs_jaccard_ge0.6_lag_le10min",
+        "edge_denominator": 369,
+        "observed_share": 0.36314363143631434,
+        "null_share": 0.01932605184637705,
+        "observed": 134,
+        "null_mean": 7.1313131313131315,
+        "null_q025": 2.0,
+        "null_q975": 13.0,
+        "null_min": 0,
+        "null_max": 22,
+        "excess": 126.86868686868686,
+        "ratio": 18.790368271954673,
+        "tail_count": 0,
+        "B": 9999,
+        "p_raw": 0.0001,
+        "p_holm_16": 0.0016
+      }
+    ],
+    "interval_semantics": "central 95% of saved randomization draws; not confidence intervals"
+  },
+  "null_replicates": 9999,
+  "null_seed": 20261106,
+  "limits": "Finite observed corpus; no attribution, organic-control specificity, or population inference.",
+  "outputs_sha256": {
+    "papers/social-framework-2026/figures/information_analysis.pdf": "3dd5622e02ed745063b77b41bee033ff85fe2b210c20f3039db4d61614bdb819",
+    "papers/social-framework-2026/figures/information_analysis.svg": "2fd66dd843d623fd225f6c04212ce83229e7deea5fef953a1f1fdc544e93c16e"
+  }
+}

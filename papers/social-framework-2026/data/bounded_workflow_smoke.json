@@ -1,0 +1,207 @@
+{
+  "baseline_commit": "f0e9d0d67422b0c286a2cb9e7d4e935a833a9533",
+  "kind": "synthetic_typed_input_smoke_not_blind_validation",
+  "expected_labels_supplied": false,
+  "network_calls": 0,
+  "model_calls": 0,
+  "trials": [
+    {
+      "trial": 0,
+      "scenario": "retrieval_only_no_supplied_report",
+      "elapsed_seconds": 0.018321156999945742,
+      "analysis_status": "partial",
+      "semantic_accuracy": "not_evaluated",
+      "stage_status": {
+        "claim_retrieval": "complete",
+        "conflict_analysis": "not_run",
+        "evaluation": "complete",
+        "event_reconstruction": "not_run",
+        "information_dynamics": "not_run",
+        "report_generation": "not_run",
+        "source_lineage": "not_run",
+        "uncertainty_scenarios": "not_run"
+      },
+      "claim_statuses": [
+        "unverified"
+      ],
+      "accepted_support_assessments": 0,
+      "candidates": 2,
+      "report_exists": false,
+      "evaluation": {
+        "failed_count": 0,
+        "passed_count": 6,
+        "scenario_count": 6,
+        "scenarios": [
+          {
+            "failures": [],
+            "fixture": "contradictory_testimony.json",
+            "scenario_id": "contradictory_testimony",
+            "status": "passed"
+          },
+          {
+            "failures": [],
+            "fixture": "corrected_statement_as_of.json",
+            "scenario_id": "corrected_statement_as_of",
+            "status": "passed"
+          },
+          {
+            "failures": [],
+            "fixture": "known_microcase.json",
+            "scenario_id": "known_microcase_timeline",
+            "status": "passed"
+          },
+          {
+            "failures": [],
+            "fixture": "mass_copy_fanout.json",
+            "scenario_id": "mass_copy_fanout",
+            "status": "passed"
+          },
+          {
+            "failures": [],
+            "fixture": "missing_corpus.json",
+            "scenario_id": "missing_corpus_abstention",
+            "status": "passed"
+          },
+          {
+            "failures": [],
+            "fixture": "reused_video_mismatch.json",
+            "scenario_id": "reused_video_wrong_event",
+            "status": "passed"
+          }
+        ],
+        "schema_version": "1.0",
+        "semantic_evaluation": "not_evaluated; scenarios verify deterministic invariants only",
+        "status": "passed"
+      }
+    },
+    {
+      "trial": 1,
+      "scenario": "retrieval_only_no_supplied_report",
+      "elapsed_seconds": 0.013524596000024758,
+      "analysis_status": "partial",
+      "semantic_accuracy": "not_evaluated",
+      "stage_status": {
+        "claim_retrieval": "complete",
+        "conflict_analysis": "not_run",
+        "evaluation": "complete",
+        "event_reconstruction": "not_run",
+        "information_dynamics": "not_run",
+        "report_generation": "not_run",
+        "source_lineage": "not_run",
+        "uncertainty_scenarios": "not_run"
+      },
+      "claim_statuses": [
+        "unverified"
+      ],
+      "accepted_support_assessments": 0,
+      "candidates": 2,
+      "report_exists": false,
+      "evaluation": {
+        "failed_count": 0,
+        "passed_count": 6,
+        "scenario_count": 6,
+        "scenarios": [
+          {
+            "failures": [],
+            "fixture": "contradictory_testimony.json",
+            "scenario_id": "contradictory_testimony",
+            "status": "passed"
+          },
+          {
+            "failures": [],
+            "fixture": "corrected_statement_as_of.json",
+            "scenario_id": "corrected_statement_as_of",
+            "status": "passed"
+          },
+          {
+            "failures": [],
+            "fixture": "known_microcase.json",
+            "scenario_id": "known_microcase_timeline",
+            "status": "passed"
+          },
+          {
+            "failures": [],
+            "fixture": "mass_copy_fanout.json",
+            "scenario_id": "mass_copy_fanout",
+            "status": "passed"
+          },
+          {
+            "failures": [],
+            "fixture": "missing_corpus.json",
+            "scenario_id": "missing_corpus_abstention",
+            "status": "passed"
+          },
+          {
+            "failures": [],
+            "fixture": "reused_video_mismatch.json",
+            "scenario_id": "reused_video_wrong_event",
+            "status": "passed"
+          }
+        ],
+        "schema_version": "1.0",
+        "semantic_evaluation": "not_evaluated; scenarios verify deterministic invariants only",
+        "status": "passed"
+      }
+    },
+    {
+      "trial": 2,
+      "scenario": "dangling_event_reference_negative_control",
+      "elapsed_seconds": 0.015330865000009908,
+      "analysis_status": "failed",
+      "semantic_accuracy": "not_evaluated",
+      "stage_status": {
+        "claim_retrieval": "complete",
+        "conflict_analysis": "not_run",
+        "evaluation": "failed",
+        "event_reconstruction": "complete",
+        "information_dynamics": "not_run",
+        "report_generation": "not_run",
+        "source_lineage": "not_run",
+        "uncertainty_scenarios": "not_run"
+      },
+      "claim_statuses": [
+        "unverified"
+      ],
+      "accepted_support_assessments": 0,
+      "candidates": 2,
+      "report_exists": false,
+      "evaluation": {
+        "counts": {
+          "audience_groups": 0,
+          "events": 1,
+          "evidence_records": 0,
+          "findings": 0,
+          "outputs": 7,
+          "source_snapshots": 0,
+          "task_receipts": 7,
+          "verification_results": 0
+        },
+        "hard_gate_failures": [
+          {
+            "gate_id": "events.evidence_refs",
+            "message": "unknown evidence ID smoke-p1",
+            "path": "events[0].evidence_ids"
+          }
+        ],
+        "hard_gate_status": "failed",
+        "report_bundle": null,
+        "schema_version": "1.0",
+        "semantic_evaluation": {
+          "audience_label_accuracy": "not_evaluated",
+          "citation_entailment": "not_evaluated",
+          "event_truth": "not_evaluated",
+          "reason": "Hard gates validate structure, references, provenance and timestamps, not semantic truth or entailment.",
+          "source_authenticity": "not_evaluated",
+          "status": "not_evaluated",
+          "unsupported_assertion_rate": null
+        },
+        "status": "failed",
+        "warnings": []
+      }
+    }
+  ],
+  "semantic_projections_repeat_equal": true,
+  "maximum_rss_kib_process": 26804,
+  "source_sha256": "c86bc6e4009f2bea1ad73aaa4718e3dba8054db31b9a643091354de4950bac52",
+  "limitation": "No source discovery or raw claim extraction; no accepted assessments; report requires separately supplied report bundle. Physical event time remains unknown. Private temp run files intentionally not distributed."
+}

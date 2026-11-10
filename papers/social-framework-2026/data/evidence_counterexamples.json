@@ -1,0 +1,295 @@
+{
+  "schema_version": "1.0",
+  "audit_date": "2026-11-10",
+  "baseline_commit": "f0e9d0d67422b0c286a2cb9e7d4e935a833a9533",
+  "evaluation_kind": "Two hand-designed adversarial challenge tests; not a blind, representative, or accuracy benchmark.",
+  "scope": "Direct relation-inference function calls only; no retrieval, collection, model inference, tuning, or core code modification.",
+  "import": "from src.analysis.claim_verification import infer_claim_passage_relation",
+  "command": "/home/cyberdid/Projects/Social/.venv/bin/python - <<'PY'\nimport json\nfrom pathlib import Path\nfrom src.analysis.claim_verification import infer_claim_passage_relation\npayload = json.loads(Path(\"papers/social-framework-2026/data/evidence_counterexamples.json\").read_text())\nfor case in payload[\"challenge_tests\"]:\n    observed = infer_claim_passage_relation(case[\"claim\"], case[\"passage\"])\n    assert observed == case[\"returned_inference\"]\n    print(json.dumps({\"challenge_id\": case[\"challenge_id\"], \"returned_inference\": observed}, ensure_ascii=False, sort_keys=True))\nPY",
+  "challenge_tests": [
+    {
+      "challenge_id": "numeric_match_wrong_predicate",
+      "claim": {
+        "statement": "У будівлі перебували 26 військовослужбовців",
+        "key_values": {
+          "total_occupants_count": {
+            "value": 26,
+            "operator": "eq"
+          }
+        }
+      },
+      "passage": {
+        "text": "26 дерев ростуть у саду."
+      },
+      "hand_assessed_failure": "Count matches, but the passage concerns trees in a garden and does not support military occupancy.",
+      "returned_inference": {
+        "relation": "supports",
+        "decision": "accepted",
+        "confidence": 0.92,
+        "rationale": "Affirmative factual and numerical alignment (0 matching root concepts: ).",
+        "asserted_values": {
+          "total_occupants_count": {
+            "value": 26,
+            "operator": "eq"
+          }
+        },
+        "rule_id": "rule_autonomous_claim_matcher_v1"
+      },
+      "reproduction_expression": "infer_claim_passage_relation(case[\"claim\"], case[\"passage\"])",
+      "expected_semantic_constraint": "Must not accept a supports relation for this claim/passage pair."
+    },
+    {
+      "challenge_id": "ordinary_negation",
+      "claim": {
+        "statement": "Поліція прибула на місце події",
+        "key_values": {}
+      },
+      "passage": {
+        "text": "Поліція не прибула на місце події."
+      },
+      "hand_assessed_failure": "The passage negates police arrival; lexical overlap is not affirmative support.",
+      "returned_inference": {
+        "relation": "supports",
+        "decision": "accepted",
+        "confidence": 0.92,
+        "rationale": "Affirmative factual and numerical alignment (4 matching root concepts: місц, події, поліція).",
+        "asserted_values": {},
+        "rule_id": "rule_autonomous_claim_matcher_v1"
+      },
+      "reproduction_expression": "infer_claim_passage_relation(case[\"claim\"], case[\"passage\"])",
+      "expected_semantic_constraint": "Must not accept a supports relation for this claim/passage pair."
+    }
+  ],
+  "existing_artifact_finding": {
+    "finding_id": "claim_core_07_wrong_predicate_support",
+    "artifact_path": "reports/evidence-verification/core_claims_verification_2026-11-09.json",
+    "artifact_sha256": "0dea87a77ea444d9ba40970826a89aea0a6f3470d9913043a934329047ef269c",
+    "artifact_schema_version": "2.3",
+    "claim": {
+      "claim_id": "claim_core_07_building_4_szch",
+      "category": "building_circumstances",
+      "statement": "Серед осіб у приміщенні 4 військових самовільно залишили частину",
+      "scope": {
+        "incident": "petropavlivska-borshchahivka",
+        "type": "official_statement",
+        "topic": "szch_count"
+      },
+      "key_values": {
+        "szch_count": {
+          "value": 4,
+          "operator": "eq"
+        }
+      },
+      "query_variants": [
+        "четверо з них самовільно залишили військову частину",
+        "військовослужбовці самовільно залишили частину"
+      ],
+      "rationale": "Офіційний брифінг МВС підтвердив, що четверо військових серед присутніх у будівлі самовільно залишили військову частину (СЗЧ)."
+    },
+    "verification_result_status": "supported_within_scope",
+    "assessment_selection": "All three accepted assessments for claim_core_07; only psg_mvs_4_szch states desertion. The other passages concern injuries and walking.",
+    "assessments": [
+      {
+        "schema_version": "1.0",
+        "claim_id": "claim_core_07_building_4_szch",
+        "candidate_id": "candidate:9befc687eb31b49dcffa723f",
+        "evidence_id": "psg_mvs_4_szch",
+        "source_id": "src_mvs_briefing",
+        "relation": "supports",
+        "decision": "accepted",
+        "scope": {
+          "incident": "petropavlivska-borshchahivka",
+          "type": "official_statement",
+          "topic": "szch_count"
+        },
+        "scope_matches_claim": true,
+        "asserted_values": {
+          "szch_count": {
+            "value": 4,
+            "operator": "eq"
+          }
+        },
+        "independent_root_id": "root_mvs_official",
+        "independence_status": "candidate",
+        "evidence_basis": "institutional_statement",
+        "assessment_source": "validated_rule",
+        "assessor_id": "deterministic_claim_verifier",
+        "validated_rule_id": "rule_autonomous_claim_matcher_v1",
+        "assessed_at_utc": "2026-11-09T12:58:00Z",
+        "citation": {
+          "passage_id": "psg_mvs_4_szch",
+          "start_offset": 24,
+          "end_offset": 106,
+          "quote": "четверо з них були військовослужбовцями, які самовільно залишили військову частину",
+          "offset_unit": "unicode_codepoint",
+          "artifact_id": "artifact_sw_20261108T080001_4",
+          "artifact_start_offset": 3591,
+          "artifact_end_offset": 3673,
+          "source_uri": "https://mvs.gov.ua/news/u-ministerstvi-vnutrisnix-sprav-ukrayini-vidbuvsia-brifing-shhodo-podii-na-kiyivshhini"
+        },
+        "reasons": [],
+        "limitations": [
+          "Relation inferred by deterministic rules from a BM25-retrieved passage in the supplied corpus.",
+          "Artifact ID: artifact_sw_20261108T080001_4, exact offset span: [24:106].",
+          "Affirmative factual and numerical alignment (4 matching root concepts: військов, залиши, самовільн).",
+          "A passage-level relation is not by itself proof that the real-world claim is true or false.",
+          "A declared root ID is provenance input; this function does not establish the root's independence."
+        ],
+        "assessment_id": "assessment:0a0c6665c946d6ebd8df2a3e"
+      },
+      {
+        "schema_version": "1.0",
+        "claim_id": "claim_core_07_building_4_szch",
+        "candidate_id": "candidate:b2ebf7f734fdd4f59f4639de",
+        "evidence_id": "psg_ngu_4_injured",
+        "source_id": "src_ngu_press",
+        "relation": "supports",
+        "decision": "accepted",
+        "scope": {
+          "incident": "petropavlivska-borshchahivka",
+          "type": "official_statement",
+          "topic": "szch_count"
+        },
+        "scope_matches_claim": true,
+        "asserted_values": {
+          "szch_count": {
+            "value": 4,
+            "operator": "eq"
+          }
+        },
+        "independent_root_id": "root_ngu_official",
+        "independence_status": "candidate",
+        "evidence_basis": "institutional_statement",
+        "assessment_source": "validated_rule",
+        "assessor_id": "deterministic_claim_verifier",
+        "validated_rule_id": "rule_autonomous_claim_matcher_v1",
+        "assessed_at_utc": "2026-11-09T12:58:00Z",
+        "citation": {
+          "passage_id": "psg_ngu_4_injured",
+          "start_offset": 9,
+          "end_offset": 76,
+          "quote": "четверо військовослужбовців справді мали травми. Цього в «Азові» не",
+          "offset_unit": "unicode_codepoint",
+          "artifact_id": "artifact_sw_20261108T080001_5",
+          "artifact_start_offset": 5489,
+          "artifact_end_offset": 5556,
+          "source_uri": "https://ngu.gov.ua/shturm-kativni-pid-vybuhy-shahediv-yak-fejk-pro-40-zaruchnykiv-pereris-u-zavorushennya-v-petropavlivskij-borshhagivczi/"
+        },
+        "reasons": [],
+        "limitations": [
+          "Relation inferred by deterministic rules from a BM25-retrieved passage in the supplied corpus.",
+          "Artifact ID: artifact_sw_20261108T080001_5, exact offset span: [9:76].",
+          "Affirmative factual and numerical alignment (0 matching root concepts: ).",
+          "A passage-level relation is not by itself proof that the real-world claim is true or false.",
+          "A declared root ID is provenance input; this function does not establish the root's independence."
+        ],
+        "assessment_id": "assessment:4bfbe9b5cfd791b9b5e314c4"
+      },
+      {
+        "schema_version": "1.0",
+        "claim_id": "claim_core_07_building_4_szch",
+        "candidate_id": "candidate:cd5f5e82f1eb563037dd40ea",
+        "evidence_id": "psg_ngu_walked_independently",
+        "source_id": "src_ngu_press",
+        "relation": "supports",
+        "decision": "accepted",
+        "scope": {
+          "incident": "petropavlivska-borshchahivka",
+          "type": "official_statement",
+          "topic": "szch_count"
+        },
+        "scope_matches_claim": true,
+        "asserted_values": {
+          "szch_count": {
+            "value": 4,
+            "operator": "eq"
+          }
+        },
+        "independent_root_id": "root_ngu_official",
+        "independence_status": "candidate",
+        "evidence_basis": "institutional_statement",
+        "assessment_source": "validated_rule",
+        "assessor_id": "deterministic_claim_verifier",
+        "validated_rule_id": "rule_autonomous_claim_matcher_v1",
+        "assessed_at_utc": "2026-11-09T12:58:00Z",
+        "citation": {
+          "passage_id": "psg_ngu_walked_independently",
+          "start_offset": 4,
+          "end_offset": 85,
+          "quote": "четверо самостійно дійшли до автомобіля швидкої допомоги. Чи застосовували до них",
+          "offset_unit": "unicode_codepoint",
+          "artifact_id": "artifact_sw_20261108T080001_5",
+          "artifact_start_offset": 5746,
+          "artifact_end_offset": 5827,
+          "source_uri": "https://ngu.gov.ua/shturm-kativni-pid-vybuhy-shahediv-yak-fejk-pro-40-zaruchnykiv-pereris-u-zavorushennya-v-petropavlivskij-borshhagivczi/"
+        },
+        "reasons": [],
+        "limitations": [
+          "Relation inferred by deterministic rules from a BM25-retrieved passage in the supplied corpus.",
+          "Artifact ID: artifact_sw_20261108T080001_5, exact offset span: [4:85].",
+          "Affirmative factual and numerical alignment (0 matching root concepts: ).",
+          "A passage-level relation is not by itself proof that the real-world claim is true or false.",
+          "A declared root ID is provenance input; this function does not establish the root's independence."
+        ],
+        "assessment_id": "assessment:9f3447ba5f5bc57b76500ccc"
+      }
+    ],
+    "passages": [
+      {
+        "passage_id": "psg_mvs_4_szch",
+        "source_id": "src_mvs_briefing",
+        "source_uri": "https://mvs.gov.ua/news/u-ministerstvi-vnutrisnix-sprav-ukrayini-vidbuvsia-brifing-shhodo-podii-na-kiyivshhini",
+        "artifact_id": "artifact_sw_20261108T080001_4",
+        "artifact_sha256": "44a252ca36b385bbd20ba64c57dc05a279dd379cdece0a1dcbace79f9b9738c6",
+        "captured_at_utc": "2026-11-08T08:05:55Z",
+        "text": "За словами командувача, четверо з них були військовослужбовцями, які самовільно залишили військову частину, решта готувалися до направлення на базову загальновійськову підготовку.",
+        "artifact_start_offset": 3567,
+        "artifact_end_offset": 3746,
+        "offset_unit": "unicode_codepoint",
+        "independent_root_id": "root_mvs_official",
+        "lineage_family_id": "family_mvs_official",
+        "evidence_basis": "institutional_statement"
+      },
+      {
+        "passage_id": "psg_ngu_4_injured",
+        "source_id": "src_ngu_press",
+        "source_uri": "https://ngu.gov.ua/shturm-kativni-pid-vybuhy-shahediv-yak-fejk-pro-40-zaruchnykiv-pereris-u-zavorushennya-v-petropavlivskij-borshhagivczi/",
+        "artifact_id": "artifact_sw_20261108T080001_5",
+        "artifact_sha256": "44a252ca36b385bbd20ba64c57dc05a279dd379cdece0a1dcbace79f9b9738c6",
+        "captured_at_utc": "2026-11-08T08:05:55Z",
+        "text": "Водночас четверо військовослужбовців справді мали травми. Цього в «Азові» не заперечували – чоловіків направили до госпіталю.",
+        "artifact_start_offset": 5480,
+        "artifact_end_offset": 5605,
+        "offset_unit": "unicode_codepoint",
+        "independent_root_id": "root_ngu_official",
+        "lineage_family_id": "family_ngu_official",
+        "evidence_basis": "institutional_statement"
+      },
+      {
+        "passage_id": "psg_ngu_walked_independently",
+        "source_id": "src_ngu_press",
+        "source_uri": "https://ngu.gov.ua/shturm-kativni-pid-vybuhy-shahediv-yak-fejk-pro-40-zaruchnykiv-pereris-u-zavorushennya-v-petropavlivskij-borshhagivczi/",
+        "artifact_id": "artifact_sw_20261108T080001_5",
+        "artifact_sha256": "44a252ca36b385bbd20ba64c57dc05a279dd379cdece0a1dcbace79f9b9738c6",
+        "captured_at_utc": "2026-11-08T08:05:55Z",
+        "text": "всі четверо самостійно дійшли до автомобіля швидкої допомоги. Чи застосовували до них насильство, за яких обставин вони дістали травми та хто може бути причетний – має встановити слідство.",
+        "artifact_start_offset": 5742,
+        "artifact_end_offset": 5930,
+        "offset_unit": "unicode_codepoint",
+        "independent_root_id": "root_ngu_official",
+        "lineage_family_id": "family_ngu_official",
+        "evidence_basis": "institutional_statement"
+      }
+    ],
+    "source_code_refs": [
+      "src/analysis/claim_verification.py:600-649",
+      "scripts/analysis/build_core_claims_verification.py:765-789"
+    ]
+  },
+  "limitations": [
+    "No general error rate or accuracy estimate follows from these deliberately selected examples.",
+    "The numeric and negation counterexamples demonstrate relation inference, not an end-to-end retrieval failure.",
+    "The claim_core_07 finding is from the existing tracked curated case artifact; it is not independently adjudicated gold data.",
+    "Confidence 0.92 is a fixed rule branch output, not calibrated empirical probability."
+  ]
+}

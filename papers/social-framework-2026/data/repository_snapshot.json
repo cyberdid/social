@@ -1,0 +1,9 @@
+{
+  "audit_started_at_utc": "2026-11-10T06:50:45.420567+00:00",
+  "commit": "f0e9d0d67422b0c286a2cb9e7d4e935a833a9533",
+  "branch": "codex/social-master-plan-audit-remediation",
+  "commit_date": "2026-11-09T17:35:56+02:00",
+  "working_tree_before_publication": "",
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "scope": "Read-only audit of existing system; new publication files only. Existing case-study files and core code must remain unchanged."
+}

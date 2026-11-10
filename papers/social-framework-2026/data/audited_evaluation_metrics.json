@@ -1,0 +1,1186 @@
+{
+  "schema_version": "social_framework_evaluation_audit_v1",
+  "baseline_commit": "f0e9d0d67422b0c286a2cb9e7d4e935a833a9533",
+  "checked_at_utc": "2026-11-10T06:53:33.157785+00:00",
+  "environment": {
+    "python_executable": "/home/cyberdid/Projects/Social/.venv/bin/python",
+    "python": "3.13.14",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "pandas": "3.1.1",
+    "platform": "Linux-7.0.0-42-generic-x86_64-with-glibc2.39",
+    "architecture": "x86_64",
+    "cpu_count": 32,
+    "hostname": "cyberdid-Crosshair",
+    "llm_or_api_calls": 0
+  },
+  "corpora": {
+    "historical": {
+      "input": "data/processed/continuation_20261105/posts_clean.jsonl",
+      "sha256": "4e859d407aef52c72a8e690dc5716d7d92d11ff7d7a164760db5a4c0ad334350",
+      "records": 23350,
+      "relevant_records": 1408,
+      "all_missing_raw_text": 459,
+      "relevant_missing_raw_text": 0,
+      "all_missing_clean_text": 474,
+      "relevant_missing_clean_text": 0,
+      "all_missing_views": 49,
+      "relevant_missing_views": 0,
+      "relevant_channels": 159,
+      "relevant_view_counter_sum": 115931014,
+      "relevant_clean_text_ge80": 1384
+    },
+    "expanded": {
+      "input": "data/processed/20261105T101013Z+20261105T102914Z/posts_clean.jsonl",
+      "sha256": "d229d8618021cf285f24c712eb9cd37ca85eb0e8bee2d8a7f74b6e7c574cda3f",
+      "records": 23386,
+      "relevant_records": 1438,
+      "all_missing_raw_text": 444,
+      "relevant_missing_raw_text": 0,
+      "all_missing_clean_text": 455,
+      "relevant_missing_clean_text": 0,
+      "all_missing_views": 49,
+      "relevant_missing_views": 0,
+      "relevant_channels": 158,
+      "relevant_view_counter_sum": 119515745,
+      "relevant_clean_text_ge80": 1416
+    }
+  },
+  "exact_jaccard": {
+    "source": "reports/coordination-null-models-2026-11-08-lsh-audit/exact_cross_channel_edges_ge_0.6.csv",
+    "full_text_source": "data/processed/continuation_20261105/posts_clean.jsonl",
+    "relevant_selection": "$.relevant == true",
+    "eligible_records": 1384,
+    "excluded_short_records": 24,
+    "eligible_channel_count": 159,
+    "eligible_pair_count_all_channels": 957036,
+    "eligible_cross_channel_pair_count": 942545,
+    "same_channel_pairs_ge_0_6": 18,
+    "exact_edge_count": 369,
+    "legacy_edge_count": 367,
+    "exact_graph_nodes": 357,
+    "exact_graph_channels": 113,
+    "recomputed_saved_edge_set_and_scores_match": true,
+    "recall_by_threshold": [
+      {
+        "jaccard_threshold": 0.6,
+        "exact_pairs_n": 369,
+        "returned_pairs_n": 367,
+        "missed_pairs_n": 2,
+        "candidate_pairs_not_in_exact_universe_n": 0,
+        "recall": 0.994579945799458
+      },
+      {
+        "jaccard_threshold": 0.75,
+        "exact_pairs_n": 288,
+        "returned_pairs_n": 288,
+        "missed_pairs_n": 0,
+        "candidate_pairs_not_in_exact_universe_n": 0,
+        "recall": 1.0
+      },
+      {
+        "jaccard_threshold": 0.9,
+        "exact_pairs_n": 213,
+        "returned_pairs_n": 213,
+        "missed_pairs_n": 0,
+        "candidate_pairs_not_in_exact_universe_n": 0,
+        "recall": 1.0
+      }
+    ],
+    "missed_pairs": [
+      {
+        "earlier_url": "https://t.me/insiderukr/137711",
+        "later_url": "https://t.me/georgeivensiya/54028",
+        "earlier_channel": "insiderukr",
+        "later_channel": "georgeivensiya",
+        "earlier_time": "2026-11-03T14:08:30+00:00",
+        "later_time": "2026-11-03T17:13:06+00:00",
+        "lag_minutes": 184.6,
+        "jaccard": 0.6657142857142857
+      },
+      {
+        "earlier_url": "https://t.me/stranaua/253568",
+        "later_url": "https://t.me/russia_news07/119614",
+        "earlier_channel": "stranaua",
+        "later_channel": "russia_news07",
+        "earlier_time": "2026-11-02T16:43:59+00:00",
+        "later_time": "2026-11-02T17:17:04+00:00",
+        "lag_minutes": 33.083333333333336,
+        "jaccard": 0.6226415094339622
+      }
+    ],
+    "same_channel_count_recomputed": true
+  },
+  "null_model": {
+    "source": "reports/coordination-null-models-2026-11-08-lsh-audit/results.json",
+    "seed": 20261106,
+    "B": 9999,
+    "test_family_size": 16,
+    "tests": [
+      {
+        "family": "S7",
+        "model": "day_activity_script",
+        "statistic": "max_pool_phrases",
+        "observed": 60,
+        "null_mean": 1.0922092209220922,
+        "null_q025": 1.0,
+        "null_q975": 2.0,
+        "null_min": 1,
+        "null_max": 3,
+        "excess": 58.90779077907791,
+        "ratio": 54.93452980496292,
+        "tail_count": 0,
+        "B": 9999,
+        "p_raw": 0.0001,
+        "p_holm_16": 0.0016
+      },
+      {
+        "family": "S7",
+        "model": "day_activity_script",
+        "statistic": "pooled_phrases",
+        "observed": 111,
+        "null_mean": 0.0,
+        "null_q025": 0.0,
+        "null_q975": 0.0,
+        "null_min": 0,
+        "null_max": 0,
+        "excess": 111.0,
+        "ratio": null,
+        "tail_count": 0,
+        "B": 9999,
+        "p_raw": 0.0001,
+        "p_holm_16": 0.0016
+      },
+      {
+        "family": "S7",
+        "model": "author_day",
+        "statistic": "max_pool_phrases",
+        "observed": 60,
+        "null_mean": 23.178217821782177,
+        "null_q025": 17.0,
+        "null_q975": 30.0,
+        "null_min": 13,
+        "null_max": 36,
+        "excess": 36.82178217821782,
+        "ratio": 2.588637334472448,
+        "tail_count": 0,
+        "B": 9999,
+        "p_raw": 0.0001,
+        "p_holm_16": 0.0016
+      },
+      {
+        "family": "S7",
+        "model": "author_day",
+        "statistic": "pooled_phrases",
+        "observed": 111,
+        "null_mean": 37.42874287428743,
+        "null_q025": 24.0,
+        "null_q975": 50.0,
+        "null_min": 13,
+        "null_max": 65,
+        "excess": 73.57125712571258,
+        "ratio": 2.9656352705410822,
+        "tail_count": 0,
+        "B": 9999,
+        "p_raw": 0.0001,
+        "p_holm_16": 0.0016
+      },
+      {
+        "family": "copy_timing",
+        "model": "channel_24h_slot_rotation",
+        "statistic": "pairs_jaccard_ge0.6_lag_le10min",
+        "edge_denominator": 369,
+        "observed_share": 0.36314363143631434,
+        "null_share": 0.01932605184637705,
+        "observed": 134,
+        "null_mean": 7.1313131313131315,
+        "null_q025": 2.0,
+        "null_q975": 13.0,
+        "null_min": 0,
+        "null_max": 22,
+        "excess": 126.86868686868686,
+        "ratio": 18.790368271954673,
+        "tail_count": 0,
+        "B": 9999,
+        "p_raw": 0.0001,
+        "p_holm_16": 0.0016
+      },
+      {
+        "family": "copy_timing",
+        "model": "channel_24h_slot_rotation",
+        "statistic": "pairs_jaccard_ge0.6_lag_le30min",
+        "edge_denominator": 369,
+        "observed_share": 0.5365853658536586,
+        "null_share": 0.054644759868940816,
+        "observed": 198,
+        "null_mean": 20.163916391639162,
+        "null_q025": 12.0,
+        "null_q975": 30.0,
+        "null_min": 5,
+        "null_max": 40,
+        "excess": 177.83608360836084,
+        "ratio": 9.819520977685636,
+        "tail_count": 0,
+        "B": 9999,
+        "p_raw": 0.0001,
+        "p_holm_16": 0.0016
+      },
+      {
+        "family": "copy_timing",
+        "model": "channel_24h_slot_rotation",
+        "statistic": "pairs_jaccard_ge0.75_lag_le10min",
+        "edge_denominator": 288,
+        "observed_share": 0.3263888888888889,
+        "null_share": 0.019590847973686258,
+        "observed": 94,
+        "null_mean": 5.642164216421643,
+        "null_q025": 2.0,
+        "null_q975": 11.0,
+        "null_min": 0,
+        "null_max": 17,
+        "excess": 88.35783578357835,
+        "ratio": 16.660273681225185,
+        "tail_count": 0,
+        "B": 9999,
+        "p_raw": 0.0001,
+        "p_holm_16": 0.0016
+      },
+      {
+        "family": "copy_timing",
+        "model": "channel_24h_slot_rotation",
+        "statistic": "pairs_jaccard_ge0.75_lag_le30min",
+        "edge_denominator": 288,
+        "observed_share": 0.4895833333333333,
+        "null_share": 0.05548193708259715,
+        "observed": 141,
+        "null_mean": 15.97879787978798,
+        "null_q025": 9.0,
+        "null_q975": 24.0,
+        "null_min": 3,
+        "null_max": 34,
+        "excess": 125.02120212021202,
+        "ratio": 8.824193225346118,
+        "tail_count": 0,
+        "B": 9999,
+        "p_raw": 0.0001,
+        "p_holm_16": 0.0016
+      },
+      {
+        "family": "copy_timing",
+        "model": "channel_24h_slot_rotation",
+        "statistic": "pairs_jaccard_ge0.9_lag_le10min",
+        "edge_denominator": 213,
+        "observed_share": 0.24882629107981222,
+        "null_share": 0.01968365850669574,
+        "observed": 53,
+        "null_mean": 4.192619261926192,
+        "null_q025": 1.0,
+        "null_q975": 9.0,
+        "null_min": 0,
+        "null_max": 16,
+        "excess": 48.80738073807381,
+        "ratio": 12.6412623443538,
+        "tail_count": 0,
+        "B": 9999,
+        "p_raw": 0.0001,
+        "p_holm_16": 0.0016
+      },
+      {
+        "family": "copy_timing",
+        "model": "channel_24h_slot_rotation",
+        "statistic": "pairs_jaccard_ge0.9_lag_le30min",
+        "edge_denominator": 213,
+        "observed_share": 0.4131455399061033,
+        "null_share": 0.05559100510990066,
+        "observed": 88,
+        "null_mean": 11.84088408840884,
+        "null_q025": 6.0,
+        "null_q975": 19.0,
+        "null_min": 1,
+        "null_max": 28,
+        "excess": 76.15911591159116,
+        "ratio": 7.431877496896036,
+        "tail_count": 0,
+        "B": 9999,
+        "p_raw": 0.0001,
+        "p_holm_16": 0.0016
+      },
+      {
+        "family": "copy_timing",
+        "model": "channel_2h_slot_rotation",
+        "statistic": "pairs_jaccard_ge0.6_lag_le10min",
+        "edge_denominator": 369,
+        "observed_share": 0.36314363143631434,
+        "null_share": 0.11617367698829505,
+        "observed": 134,
+        "null_mean": 42.86808680868087,
+        "null_q025": 32.0,
+        "null_q975": 55.0,
+        "null_min": 19,
+        "null_max": 69,
+        "excess": 91.13191319131913,
+        "ratio": 3.125868448434343,
+        "tail_count": 0,
+        "B": 9999,
+        "p_raw": 0.0001,
+        "p_holm_16": 0.0016
+      },
+      {
+        "family": "copy_timing",
+        "model": "channel_2h_slot_rotation",
+        "statistic": "pairs_jaccard_ge0.6_lag_le30min",
+        "edge_denominator": 369,
+        "observed_share": 0.5365853658536586,
+        "null_share": 0.2948137632191403,
+        "observed": 198,
+        "null_mean": 108.78627862786279,
+        "null_q025": 93.0,
+        "null_q975": 125.0,
+        "null_min": 81,
+        "null_max": 141,
+        "excess": 89.21372137213721,
+        "ratio": 1.8200824818846908,
+        "tail_count": 0,
+        "B": 9999,
+        "p_raw": 0.0001,
+        "p_holm_16": 0.0016
+      },
+      {
+        "family": "copy_timing",
+        "model": "channel_2h_slot_rotation",
+        "statistic": "pairs_jaccard_ge0.75_lag_le10min",
+        "edge_denominator": 288,
+        "observed_share": 0.3263888888888889,
+        "null_share": 0.10564042515362647,
+        "observed": 94,
+        "null_mean": 30.424442444244423,
+        "null_q025": 21.0,
+        "null_q975": 41.0,
+        "null_min": 14,
+        "null_max": 49,
+        "excess": 63.57555755575558,
+        "ratio": 3.0896211219733476,
+        "tail_count": 0,
+        "B": 9999,
+        "p_raw": 0.0001,
+        "p_holm_16": 0.0016
+      },
+      {
+        "family": "copy_timing",
+        "model": "channel_2h_slot_rotation",
+        "statistic": "pairs_jaccard_ge0.75_lag_le30min",
+        "edge_denominator": 288,
+        "observed_share": 0.4895833333333333,
+        "null_share": 0.2748549160471603,
+        "observed": 141,
+        "null_mean": 79.15821582158216,
+        "null_q025": 66.0,
+        "null_q975": 93.0,
+        "null_min": 56,
+        "null_max": 109,
+        "excess": 61.84178417841784,
+        "ratio": 1.781242774822079,
+        "tail_count": 0,
+        "B": 9999,
+        "p_raw": 0.0001,
+        "p_holm_16": 0.0016
+      },
+      {
+        "family": "copy_timing",
+        "model": "channel_2h_slot_rotation",
+        "statistic": "pairs_jaccard_ge0.9_lag_le10min",
+        "edge_denominator": 213,
+        "observed_share": 0.24882629107981222,
+        "null_share": 0.09257028989283904,
+        "observed": 53,
+        "null_mean": 19.717471747174717,
+        "null_q025": 12.0,
+        "null_q975": 28.0,
+        "null_min": 7,
+        "null_max": 35,
+        "excess": 33.28252825282529,
+        "ratio": 2.6879713930663693,
+        "tail_count": 0,
+        "B": 9999,
+        "p_raw": 0.0001,
+        "p_holm_16": 0.0016
+      },
+      {
+        "family": "copy_timing",
+        "model": "channel_2h_slot_rotation",
+        "statistic": "pairs_jaccard_ge0.9_lag_le30min",
+        "edge_denominator": 213,
+        "observed_share": 0.4131455399061033,
+        "null_share": 0.23914034595947858,
+        "observed": 88,
+        "null_mean": 50.93689368936894,
+        "null_q025": 41.0,
+        "null_q975": 61.0,
+        "null_min": 32,
+        "null_max": 72,
+        "excess": 37.06310631063106,
+        "ratio": 1.7276279259715934,
+        "tail_count": 0,
+        "B": 9999,
+        "p_raw": 0.0001,
+        "p_holm_16": 0.0016
+      }
+    ],
+    "saved_draw_summary_checks": [
+      {
+        "model": "day_activity_script",
+        "statistic": "max_pool_phrases",
+        "saved_json_index": 0,
+        "replicates": 9999,
+        "summary_matches_saved": true
+      },
+      {
+        "model": "day_activity_script",
+        "statistic": "pooled_phrases",
+        "saved_json_index": 1,
+        "replicates": 9999,
+        "summary_matches_saved": true
+      },
+      {
+        "model": "author_day",
+        "statistic": "max_pool_phrases",
+        "saved_json_index": 2,
+        "replicates": 9999,
+        "summary_matches_saved": true
+      },
+      {
+        "model": "author_day",
+        "statistic": "pooled_phrases",
+        "saved_json_index": 3,
+        "replicates": 9999,
+        "summary_matches_saved": true
+      },
+      {
+        "model": "channel_24h_slot_rotation",
+        "statistic": "pairs_jaccard_ge0.6_lag_le10min",
+        "saved_json_index": 4,
+        "replicates": 9999,
+        "summary_matches_saved": true
+      },
+      {
+        "model": "channel_24h_slot_rotation",
+        "statistic": "pairs_jaccard_ge0.6_lag_le30min",
+        "saved_json_index": 5,
+        "replicates": 9999,
+        "summary_matches_saved": true
+      },
+      {
+        "model": "channel_24h_slot_rotation",
+        "statistic": "pairs_jaccard_ge0.75_lag_le10min",
+        "saved_json_index": 6,
+        "replicates": 9999,
+        "summary_matches_saved": true
+      },
+      {
+        "model": "channel_24h_slot_rotation",
+        "statistic": "pairs_jaccard_ge0.75_lag_le30min",
+        "saved_json_index": 7,
+        "replicates": 9999,
+        "summary_matches_saved": true
+      },
+      {
+        "model": "channel_24h_slot_rotation",
+        "statistic": "pairs_jaccard_ge0.9_lag_le10min",
+        "saved_json_index": 8,
+        "replicates": 9999,
+        "summary_matches_saved": true
+      },
+      {
+        "model": "channel_24h_slot_rotation",
+        "statistic": "pairs_jaccard_ge0.9_lag_le30min",
+        "saved_json_index": 9,
+        "replicates": 9999,
+        "summary_matches_saved": true
+      },
+      {
+        "model": "channel_2h_slot_rotation",
+        "statistic": "pairs_jaccard_ge0.6_lag_le10min",
+        "saved_json_index": 10,
+        "replicates": 9999,
+        "summary_matches_saved": true
+      },
+      {
+        "model": "channel_2h_slot_rotation",
+        "statistic": "pairs_jaccard_ge0.6_lag_le30min",
+        "saved_json_index": 11,
+        "replicates": 9999,
+        "summary_matches_saved": true
+      },
+      {
+        "model": "channel_2h_slot_rotation",
+        "statistic": "pairs_jaccard_ge0.75_lag_le10min",
+        "saved_json_index": 12,
+        "replicates": 9999,
+        "summary_matches_saved": true
+      },
+      {
+        "model": "channel_2h_slot_rotation",
+        "statistic": "pairs_jaccard_ge0.75_lag_le30min",
+        "saved_json_index": 13,
+        "replicates": 9999,
+        "summary_matches_saved": true
+      },
+      {
+        "model": "channel_2h_slot_rotation",
+        "statistic": "pairs_jaccard_ge0.9_lag_le10min",
+        "saved_json_index": 14,
+        "replicates": 9999,
+        "summary_matches_saved": true
+      },
+      {
+        "model": "channel_2h_slot_rotation",
+        "statistic": "pairs_jaccard_ge0.9_lag_le30min",
+        "saved_json_index": 15,
+        "replicates": 9999,
+        "summary_matches_saved": true
+      }
+    ],
+    "saved_input_and_script_hashes_match": true,
+    "bounded_prefix_replay": {
+      "replicates_per_model": 25,
+      "seed": 20261106,
+      "four_models_prefix_draws_match_saved": true,
+      "controls_comments": {
+        "raw_comments": 39598,
+        "known_author_comments": 39459,
+        "threads": 533,
+        "authors": 12797,
+        "candidate_phrases_frequency_ge3_length_ge20": 153,
+        "all_copypasta_phrases_ge3_authors": 128,
+        "all_copypasta_comments": 444,
+        "campaign_phrases": 126,
+        "campaign_comments": 438,
+        "campaign_authors": 367,
+        "S7_phrases": 111,
+        "S7_comments": 393,
+        "S7_authors": 334,
+        "excluded_phrases": 15,
+        "excluded_comments": 45,
+        "null_controls": {
+          "day_activity_script": {
+            "strata": 55,
+            "singleton_slot_strata": 3,
+            "fixed_candidate_comment_slots": 0,
+            "all_candidate_comment_slots": 605,
+            "candidate_slot_changed_fraction_mean": 0.9978181818181818,
+            "exact_phrase_frequency_checks": 25,
+            "within_stratum_full_dictionary_checks": 25,
+            "fixed_author_thread_time_slots": 39459
+          },
+          "author_day": {
+            "strata": 15438,
+            "singleton_slot_strata": 9638,
+            "fixed_candidate_comment_slots": 316,
+            "all_candidate_comment_slots": 605,
+            "candidate_slot_changed_fraction_mean": 0.27497520661157027,
+            "exact_phrase_frequency_checks": 25,
+            "within_stratum_full_dictionary_checks": 25,
+            "fixed_author_thread_time_slots": 39459
+          }
+        }
+      },
+      "controls_timing": {
+        "timeline_posts": 23350,
+        "relevant_posts": 1408,
+        "verified_edges": 369,
+        "edge_nodes": 357,
+        "edge_channels": 113,
+        "null_controls": {
+          "channel_24h_slot_rotation": {
+            "blocks_with_copy_nodes": 184,
+            "timeline_slots_in_these_blocks": 9801,
+            "one_slot_blocks": 4,
+            "fixed_nodes_one_slot_blocks": 4,
+            "node_time_changed_fraction_mean": 0.9498039215686274,
+            "rank_order_and_membership_check_replicates": 25
+          },
+          "channel_2h_slot_rotation": {
+            "blocks_with_copy_nodes": 291,
+            "timeline_slots_in_these_blocks": 2501,
+            "one_slot_blocks": 22,
+            "fixed_nodes_one_slot_blocks": 22,
+            "node_time_changed_fraction_mean": 0.7805042016806722,
+            "rank_order_and_membership_check_replicates": 25
+          }
+        }
+      }
+    },
+    "historical_replay_receipt": "reports/coordination-null-models-2026-11-08-lsh-audit/replay_receipt_2026-11-08.json",
+    "full_9999_rerun_this_audit": false,
+    "inputs_sha256": {
+      "data/raw/telegram_comments/20261106T071956Z/comments.jsonl": "a481d50305e50639c555b7a5866045c9b3d8156a5cf9b8cc16b313b2de1e6fb6",
+      "reports/telegram-comments/20261106T071956Z/copypasta_groups.csv": "ee692e523200a4422a7ae31eebde2718dbd23b0693dc6f0e2c04024e977187bc",
+      "reports/telegram-comments/20261106T071956Z/signals.json": "5f361a3affb47bb92a7f27880489fe020b1fb78828a5715068dd7d99aa4b4d77",
+      "reports/coordination-null-models-2026-11-08-lsh-audit/exact_cross_channel_edges_ge_0.6.csv": "9e1d07c77cba556d1da414ab1d7a8952f09f220c29a71a33066b5f3ccf340e2b",
+      "reports/continuation_20261105/relevant_posts.csv": "8b69539801a385bee8f5ea05c5315d18a6d518f96393ff5bf5cd6f57529f8b37",
+      "data/processed/continuation_20261105/posts_clean.jsonl": "4e859d407aef52c72a8e690dc5716d7d92d11ff7d7a164760db5a4c0ad334350"
+    },
+    "script_sha256": "1fc68af8f45c83f54ba6de705c13de5cf35b3da774bbc7a9386db513120d4f8e"
+  },
+  "network": {
+    "input_sha256": {
+      "reports/continuation_20261105/forwards_edges.csv": "a619bc9c9e33005b3c5259860ab5a3e863c0f15b2887e33f0212a8cb1ec3b4c0",
+      "reports/continuation_20261105/relevant_posts.csv": "8b69539801a385bee8f5ea05c5315d18a6d518f96393ff5bf5cd6f57529f8b37",
+      "reports/20261105T101013Z/validation/agreement_test_v2.csv": "07da1eb6f8d8121d02a2c9272b826c5199535df05fd6169326070c765702ed91"
+    },
+    "recomputed_graph_and_bin_table_match_saved": true,
+    "metrics": {
+      "nodes": 69,
+      "edges": 60,
+      "volume": 65,
+      "weak_components": 12,
+      "strong_components": 68,
+      "self_loops": 0,
+      "two_step_paths": 53,
+      "closed_two_step_paths": 2,
+      "two_step_closure_rate": 0.03773584905660377,
+      "cross_group_edges": 20,
+      "cross_group_volume": 24,
+      "relevant_posts": 1408,
+      "narrative_bins": 15,
+      "empty_bins": 2,
+      "unlabelled_posts": 557,
+      "multilabel_posts": 394,
+      "label_counts": {
+        "N0_official": 307,
+        "N1_hostages": 301,
+        "N2_death_torture": 505,
+        "N3_tcc_camp": 230,
+        "N4_cover_up": 81
+      },
+      "label_assignment_sum": 1424,
+      "window_start": "2026-11-02T00:00:00+02:00",
+      "window_end_exclusive": "2026-11-05T12:10:13+02:00",
+      "timezone": "Europe/Kyiv",
+      "final_partial_bin_hours": 0.17027777777777778,
+      "graph_scope": "Only endpoints of visible forwarded edges; excludes isolated channels.",
+      "distance": "Unweighted directed shortest paths; n used only as observed volume.",
+      "labels_scope": "Existing regex thematic labels, not stance; overlap permitted.",
+      "granger": {
+        "run": false,
+        "interpretation": "exploratory only; no p-values",
+        "reasons": [
+          "15 six-hour bins, with first empty bins and final partial bin",
+          "single shared event, nonstationarity and common shocks",
+          "weak validation of N1/N2 and other lexical labels",
+          "panel coverage, copied text and aggregate graph do not identify operators or causal influence"
+        ]
+      },
+      "validation_table": "reports/20261105T101013Z/validation/agreement_test_v2.csv",
+      "input_sha256": {
+        "reports/continuation_20261105/forwards_edges.csv": "a619bc9c9e33005b3c5259860ab5a3e863c0f15b2887e33f0212a8cb1ec3b4c0",
+        "reports/continuation_20261105/relevant_posts.csv": "8b69539801a385bee8f5ea05c5315d18a6d518f96393ff5bf5cd6f57529f8b37",
+        "reports/20261105T101013Z/validation/agreement_test_v2.csv": "07da1eb6f8d8121d02a2c9272b826c5199535df05fd6169326070c765702ed91"
+      },
+      "software": {
+        "python": "3.12.3",
+        "networkx": "3.6.1",
+        "pandas": "3.0.5",
+        "matplotlib": "3.11.1"
+      },
+      "checks": {
+        "unique_post_urls": true,
+        "positive_integer_edge_volumes": true,
+        "consistent_node_groups": true,
+        "in_out_degree_and_volume_reconcile": true,
+        "group_matrix_reconciles": true,
+        "bin_denominators_reconcile": true,
+        "label_totals_reconcile": true,
+        "empty_bin_zero_share_explicit": true,
+        "causality_or_operator_attribution_tested": false
+      }
+    }
+  },
+  "reliability": {
+    "source": "reports/20261105T101013Z/validation/agreement_test_v2.csv",
+    "annotation_source": "reports/20261105T101013Z/validation/manual_labels_claude_test.csv",
+    "comparison_source": "reports/20261105T101013Z/validation/rule_labels_test.csv",
+    "test_sample_seed": 777,
+    "annotation_type": "Claude-coded; not independent human-adjudicated gold",
+    "labels": [
+      {
+        "label": "N1_hostages",
+        "n": 40,
+        "tp": 1,
+        "fp": 4,
+        "fn": 3,
+        "tn": 32,
+        "agreement": 0.825,
+        "cohen_kappa": 0.12500000000000006,
+        "precision_against_claude": 0.2,
+        "recall_against_claude": 0.25,
+        "independent_human_gold": false
+      },
+      {
+        "label": "N2_death_torture",
+        "n": 40,
+        "tp": 2,
+        "fp": 9,
+        "fn": 3,
+        "tn": 26,
+        "agreement": 0.7,
+        "cohen_kappa": 0.09433962264150912,
+        "precision_against_claude": 0.18181818181818182,
+        "recall_against_claude": 0.4,
+        "independent_human_gold": false
+      },
+      {
+        "label": "N3_tcc_camp",
+        "n": 40,
+        "tp": 2,
+        "fp": 0,
+        "fn": 2,
+        "tn": 36,
+        "agreement": 0.95,
+        "cohen_kappa": 0.6428571428571426,
+        "precision_against_claude": 1.0,
+        "recall_against_claude": 0.5,
+        "independent_human_gold": false
+      },
+      {
+        "label": "N4_cover_up",
+        "n": 40,
+        "tp": 0,
+        "fp": 2,
+        "fn": 4,
+        "tn": 34,
+        "agreement": 0.85,
+        "cohen_kappa": -0.07142857142857148,
+        "precision_against_claude": 0.0,
+        "recall_against_claude": 0.0,
+        "independent_human_gold": false
+      },
+      {
+        "label": "N0_official",
+        "n": 40,
+        "tp": 7,
+        "fp": 2,
+        "fn": 4,
+        "tn": 27,
+        "agreement": 0.85,
+        "cohen_kappa": 0.601328903654485,
+        "precision_against_claude": 0.7777777777777778,
+        "recall_against_claude": 0.6363636363636364,
+        "independent_human_gold": false
+      },
+      {
+        "label": "medic_claim",
+        "n": 40,
+        "tp": 0,
+        "fp": 1,
+        "fn": 1,
+        "tn": 38,
+        "agreement": 0.95,
+        "cohen_kappa": -0.025641025641025057,
+        "precision_against_claude": 0.0,
+        "recall_against_claude": 0.0,
+        "independent_human_gold": false
+      },
+      {
+        "label": "debunk",
+        "n": 40,
+        "tp": 2,
+        "fp": 0,
+        "fn": 2,
+        "tn": 36,
+        "agreement": 0.95,
+        "cohen_kappa": 0.6428571428571426,
+        "precision_against_claude": 1.0,
+        "recall_against_claude": 0.5,
+        "independent_human_gold": false
+      },
+      {
+        "label": "counter_debunk",
+        "n": 40,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 40,
+        "agreement": 1.0,
+        "cohen_kappa": null,
+        "precision_against_claude": null,
+        "recall_against_claude": null,
+        "independent_human_gold": false
+      }
+    ]
+  },
+  "evaluation_harness": {
+    "counts": {
+      "events": 574,
+      "evidence_records": 574,
+      "findings": 6,
+      "outputs": 15,
+      "source_snapshots": 0,
+      "task_receipts": 7,
+      "verification_results": 0
+    },
+    "frozen_control_suite": {
+      "failed": 0,
+      "passed": 6,
+      "scenarios": 6,
+      "semantic_scope": "deterministic structural controls only; not incident-truth evaluation",
+      "status": "passed"
+    },
+    "hard_gate_failure_count": 0,
+    "hard_gate_status": "passed",
+    "manifest_output_files_verified": 16,
+    "manifest_schema_validation": "passed",
+    "real_report_diff": "not_run_no_prior_machine_readable_report_receipt_bundle",
+    "report_bundle_files_verified": 3,
+    "report_bundle_status": "passed",
+    "schema_version": "1.0",
+    "semantic_evaluation": {
+      "citation_entailment": "not_evaluated",
+      "event_truth": "not_evaluated",
+      "source_authenticity": "not_evaluated",
+      "status": "not_evaluated"
+    },
+    "status": "passed"
+  },
+  "uncertainty": {
+    "interpretation": "Bounds [0,1] are scenario bounds within this observed corpus because labels/groups are unknown; they are not confidence intervals and do not resolve selection bias.",
+    "observed_channel_group_counts": {
+      "unknown": 1438
+    },
+    "observed_corpus_scenario_bounds": {
+      "interval_type": "unknown_label_scenario_bounds_within_observed_corpus_not_confidence_interval",
+      "target_channel_share_lower": 0.0,
+      "target_channel_share_upper": 1.0,
+      "target_post_share_lower": 0.0,
+      "target_post_share_upper": 1.0,
+      "target_snapshot_view_counter_share_lower": 0.0,
+      "target_snapshot_view_counter_share_upper": 1.0
+    },
+    "observed_label_state_counts": {
+      "unknown": 1438
+    },
+    "record_count": 1438,
+    "schema_version": "1.0",
+    "target_group": null,
+    "target_label": "target"
+  },
+  "artifact_sha256": {
+    "data/processed/continuation_20261105/posts_clean.jsonl": "4e859d407aef52c72a8e690dc5716d7d92d11ff7d7a164760db5a4c0ad334350",
+    "data/processed/20261105T101013Z+20261105T102914Z/posts_clean.jsonl": "d229d8618021cf285f24c712eb9cd37ca85eb0e8bee2d8a7f74b6e7c574cda3f",
+    "reports/continuation_20261105/relevant_posts.csv": "8b69539801a385bee8f5ea05c5315d18a6d518f96393ff5bf5cd6f57529f8b37",
+    "reports/continuation_20261105/verified_similarity_edges.csv": "6d559f3a1d553c6015e30e664f53d0d0d623fa88b6c72808d020908303578a58",
+    "data/processed/continuation_20261105/data_quality.json": "2d94c61de61c6d2287aba75e171c88a6fd58ac1d8a23b9dd99a3a743525b1dec",
+    "reports/coordination-null-models-2026-11-08-lsh-audit/results.json": "5d6cd59bd5c31239eff595317a17ec4fd67f6a6329b1475cc10b9557e97a5d74",
+    "reports/coordination-null-models-2026-11-08-lsh-audit/summary.json": "b549e16be2bee689fb7d98eeaa1b3861a7f24f4260ffce8290f049dd9c1eab47",
+    "reports/coordination-null-models-2026-11-08-lsh-audit/exact_cross_channel_edges_ge_0.6.csv": "9e1d07c77cba556d1da414ab1d7a8952f09f220c29a71a33066b5f3ccf340e2b",
+    "reports/coordination-null-models-2026-11-08-lsh-audit/test_summary.csv": "5ee2eed22e257a10fafba3e6bee7b0ebae1bf01a006f6fe68226b451be35a59b",
+    "reports/coordination-null-models-2026-11-08-lsh-audit/s7_null_draws.csv": "a024fd2f234b3a6c77f3abfa65bbb2b9bcdb333b30779f711a5d89f0892b4b26",
+    "reports/coordination-null-models-2026-11-08-lsh-audit/temporal_null_draws.csv": "fb7234792d3a743212fe091fcf5aaaa52223c1c25a4c070e7999a6bc05847af6",
+    "reports/coordination-null-models-2026-11-08-lsh-audit/temporal_blocks.csv": "2633cd539940598817f5b57c3d56a4db5304cb2251cbf5c9f8bb09190ff656c0",
+    "reports/coordination-null-models-2026-11-08-lsh-audit/replay_receipt_2026-11-08.json": "0a92fe58d31ee1bff135adcb087215cc33da35e5ae8c1c888d2edb3567a934f5",
+    "src/analysis/coordination_lsh_audit.py": "fcc7d1df59b613bad5b6bf7dfc5bb585e1de7122442ffab1031f70df7f4bae08",
+    "src/analysis/coordination_null_models.py": "1fc68af8f45c83f54ba6de705c13de5cf35b3da774bbc7a9386db513120d4f8e",
+    "src/analysis/analyze.py": "a6a4246ff88a42ba8ebf0d67fcd60f17c0d714086f0396f0ed90301eefaa9d94",
+    "src/analysis/build_continuation.py": "9044fd0f2b67c0f28688b5e7b112bf0aa4c7258e058df9d1115a2089e261ff88",
+    "src/analysis/telegram_network_dynamics.py": "4ee3189f5778953f6c333de198da0bfc257df485eb84dd41c66b05e3ffedaa5b",
+    "src/analysis/evaluation_harness.py": "d7a9cf34436cda7076af7db4723987ba0c936c01b421204e6ef2b3e5a5da65e6",
+    "src/analysis/uncertainty_scenarios.py": "a866ee49bbbbd6994e9ab50b9c1314c73cd5204b7fb7d6f8862cdd770929b498",
+    "reports/telegram_network_dynamics_20261106/results.json": "d8ab55cc2050bcb1dea23e4b4c9634a236ca66c9bab83b5e3c2372170ea410c9",
+    "reports/20261105T101013Z/validation/agreement_test_v2.csv": "07da1eb6f8d8121d02a2c9272b826c5199535df05fd6169326070c765702ed91",
+    "reports/20261105T101013Z/validation/manual_labels_claude_test.csv": "6a0ba2f6275a33b751dfe423e7c67043037912a04632ff7966c7ed04a4031237",
+    "reports/20261105T101013Z/validation/rule_labels_test.csv": "fbe015aad5a0131f823ba3db541fa8b5940af51dfa1d353a1b55424d164758c3",
+    "reports/automated-case-run-2026-11-08/evaluation_summary.json": "1b44edc9b66ad90370505adac5897d7ddc4a800ef312d339dbfa9328d47f1143",
+    "reports/automated-case-run-2026-11-08/uncertainty_summary.json": "0874c9218fddf4db65b14d5e31deced6436b9eaae5d931f188f4e7da08716b3a",
+    "reports/provenance/lineage_manifest_2026-11-09.json": "dbbdb93c389453fa25f191a2944ad8f230eccf2bbb3250395e43b2e7f4e33a61",
+    "papers/social-framework-2026/data/pytest_offline.log": "441bffbb202d9efa86e7bb769b1820c6d591dc604a63af248b557e3b8e2ffcd6",
+    "papers/social-framework-2026/data/pytest_timing.txt": "1b6b7cd2cc812dc41a6ffb2ae2a79b816e25ba28bc7bd6b3b8c38077f69cd51f",
+    "data/raw/telegram_comments/20261106T071956Z/comments.jsonl": "a481d50305e50639c555b7a5866045c9b3d8156a5cf9b8cc16b313b2de1e6fb6",
+    "reports/telegram-comments/20261106T071956Z/copypasta_groups.csv": "ee692e523200a4422a7ae31eebde2718dbd23b0693dc6f0e2c04024e977187bc",
+    "reports/telegram-comments/20261106T071956Z/signals.json": "5f361a3affb47bb92a7f27880489fe020b1fb78828a5715068dd7d99aa4b4d77",
+    "papers/social-framework-2026/data/bounded_workflow_smoke.json": "48027c15a3ed30d283cbe1b2341d5552dddb154806bf8464a091b73d030010a7",
+    "reports/video-pipeline/asr_calibration_benchmark_2026-11-09.json": "fa61cd600333010045e11b93aa950e06eebbe88b6f20a362bae882f6f9495838"
+  },
+  "audit_runtime": {
+    "wall_seconds": 4.831725605000031,
+    "max_rss_kib": 1032620
+  },
+  "current_frozen_suite": {
+    "schema_version": "1.0",
+    "status": "passed",
+    "scenario_count": 6,
+    "passed_count": 6,
+    "failed_count": 0,
+    "scenarios": [
+      {
+        "scenario_id": "contradictory_testimony",
+        "status": "passed",
+        "failures": [],
+        "fixture": "contradictory_testimony.json"
+      },
+      {
+        "scenario_id": "corrected_statement_as_of",
+        "status": "passed",
+        "failures": [],
+        "fixture": "corrected_statement_as_of.json"
+      },
+      {
+        "scenario_id": "known_microcase_timeline",
+        "status": "passed",
+        "failures": [],
+        "fixture": "known_microcase.json"
+      },
+      {
+        "scenario_id": "mass_copy_fanout",
+        "status": "passed",
+        "failures": [],
+        "fixture": "mass_copy_fanout.json"
+      },
+      {
+        "scenario_id": "missing_corpus_abstention",
+        "status": "passed",
+        "failures": [],
+        "fixture": "missing_corpus.json"
+      },
+      {
+        "scenario_id": "reused_video_wrong_event",
+        "status": "passed",
+        "failures": [],
+        "fixture": "reused_video_mismatch.json"
+      }
+    ],
+    "semantic_evaluation": "not_evaluated; scenarios verify deterministic invariants only"
+  },
+  "uncertainty_recomputation": {
+    "documented_record_count": 1438,
+    "unknown_label_bound_arithmetic_recomputed": true,
+    "private_channel_mapping_replayed": false,
+    "independent_source_roots": null,
+    "coverage_bounds_supplied": false
+  },
+  "pytest_current": {
+    "command": "/home/cyberdid/Projects/Social/.venv/bin/python -m pytest -q",
+    "cwd": "repository root",
+    "started_at_utc": null,
+    "ended_at_utc_from_log_mtime": "2026-11-10T06:52:18.626487+00:00",
+    "timestamp_note": "Start timestamp was not captured; end timestamp is filesystem modification time, not an invented exact run start.",
+    "python_version": "3.13.14",
+    "passed": 783,
+    "subtests_passed": 16,
+    "failed": 0,
+    "pytest_elapsed_seconds": 7.41,
+    "wall_seconds": 7.84,
+    "max_rss_kib": 328320,
+    "exit_code": 0,
+    "log": "papers/social-framework-2026/data/pytest_offline.log",
+    "timing_log": "papers/social-framework-2026/data/pytest_timing.txt",
+    "semantic_accuracy": null,
+    "scope": "Existing offline tests and deterministic contracts; count of passed tests is not an incident-level accuracy denominator."
+  },
+  "experiment_status_DR4": [
+    {
+      "id": "E1",
+      "name": "Sentiment versus target stance",
+      "status": "not_measured",
+      "evidence": "No independent human-adjudicated stance/sentiment gold or paired classifier comparison."
+    },
+    {
+      "id": "E2",
+      "name": "Emotion models",
+      "status": "not_measured",
+      "evidence": "No local UA/RU/mixed emotion benchmark, per-class F1 or calibration."
+    },
+    {
+      "id": "E3",
+      "name": "Topic discovery",
+      "status": "not_measured",
+      "evidence": "No BERTopic/E5 versus NMF/LDA held-out stability/usefulness benchmark."
+    },
+    {
+      "id": "E4",
+      "name": "Reaction semantics",
+      "status": "not_measured",
+      "evidence": "Reaction ingestion/schema controls do not establish an association to independently coded stance."
+    },
+    {
+      "id": "E5",
+      "name": "Engagement age bias",
+      "status": "not_measured",
+      "evidence": "No repeated equal-age snapshot model comparison; snapshot counters are descriptive."
+    },
+    {
+      "id": "E6",
+      "name": "Author concentration",
+      "status": "partial_descriptive_only",
+      "evidence": "Author/count diagnostics exist; no full comment/author/thread/channel-balanced semantic comparison or thread-bootstrap evaluation."
+    },
+    {
+      "id": "E7",
+      "name": "Coordination sensitivity",
+      "status": "partial_descriptive_only",
+      "evidence": "Exact/MinHash recall, conditional nulls and duplicate controls evaluated; no independently attributed campaign benchmark or full labeled all/capped/deduplicated audience comparison."
+    },
+    {
+      "id": "E8",
+      "name": "Temporal robustness",
+      "status": "partial_descriptive_only",
+      "evidence": "Six-hour thematic count/share bins checked; no fixed1h/6h comparative composition adjustment/change-point robustness evaluation."
+    },
+    {
+      "id": "E9",
+      "name": "Sarcasm and context",
+      "status": "not_measured",
+      "evidence": "Synthetic rule cases are regression controls, not held-out slice F1/calibration/context-ablation measurements."
+    },
+    {
+      "id": "E10",
+      "name": "Cross-platform transfer",
+      "status": "not_measured",
+      "evidence": "No leave-one-platform-out or grouped cross-platform labeled transfer evaluation."
+    }
+  ],
+  "experiment_status_DR1": [
+    {
+      "id": "E1",
+      "name": "Independent construct/codebook",
+      "status": "not_measured",
+      "reason": "40-post Claude comparison is not two independent human coders plus adjudication; rejected-post relevance audit remains unadjudicated."
+    },
+    {
+      "id": "E2",
+      "name": "Classifier comparisons",
+      "status": "not_measured",
+      "reason": "No shared independent gold grouped duplicate/channel/event comparisons."
+    },
+    {
+      "id": "E3",
+      "name": "Channel axes",
+      "status": "partial_structural_only",
+      "reason": "Channel evidence/lineage artifacts exist, independent axis precision/recall not established."
+    },
+    {
+      "id": "E4",
+      "name": "Joint post/channel error",
+      "status": "partial_scenarios_only",
+      "reason": "Deterministic bounds/top-k code exists; no calibrated joint Monte Carlo or human-derived error distributions."
+    },
+    {
+      "id": "E5",
+      "name": "Null specificity",
+      "status": "partial_conditional_null_only",
+      "reason": "Saved nulls reproducible; matched benign organic event controls absent."
+    },
+    {
+      "id": "E6",
+      "name": "Counter comparability",
+      "status": "partial_descriptive_only",
+      "reason": "Snapshot sums/concentration descriptive; no verified equal-age exposure-adjusted metric."
+    }
+  ],
+  "experiment_status_system": [
+    {
+      "id": "E1",
+      "name": "Reproducibility",
+      "status": "evaluated_bounded_offline_replay",
+      "results": [
+        "saved input/script hashes match",
+        "all saved null-draw summaries recompute",
+        "four models first25draws match",
+        "current783tests+16subtests pass"
+      ],
+      "limits": "Full9999draw historical replay receipt checked but full draw generation not repeated; no recrawl."
+    },
+    {
+      "id": "E2",
+      "name": "Data collection",
+      "status": "evaluated_saved_corpus_integrity_and_missingness",
+      "results": [
+        "historical23350/1408;expanded23386/1438",
+        "missingness denominators reconciled;relevanttext/viewmissing0"
+      ],
+      "limits": "No new API calls, completeness gold, platform recall or independent rejected-post labels."
+    },
+    {
+      "id": "E3",
+      "name": "Duplicate detection",
+      "status": "evaluated_exact_finite_corpus_candidate_recall",
+      "results": [
+        "historical1384long texts",
+        "369exact/367retained,2misses,0extras",
+        "conditional recall367/369"
+      ],
+      "limits": "No semantic near-duplicate gold, expanded corpus performance or excluded/short text recall."
+    },
+    {
+      "id": "E4",
+      "name": "Coordination detection",
+      "status": "evaluated_conditional_null_statistics",
+      "results": [
+        "16savedtests B9999 seed20261106",
+        "allpraw.0001/Holm.0016",
+        "25drawprefixeachmodelmatches"
+      ],
+      "limits": "Matched benign organic controls and independently attributed campaigns absent; specificity,botness,organizer and causality unmeasured."
+    },
+    {
+      "id": "E5",
+      "name": "Evidence retrieval",
+      "status": "bounded_captured_corpus_controls_only",
+      "results": [
+        "Current offline suite exercises retrieval contracts"
+      ],
+      "limits": "See separate evidence audit for curated retrieval checks; no independent open-web gold established here."
+    },
+    {
+      "id": "E6",
+      "name": "Claim verification",
+      "status": "bounded_captured_corpus_controls_only",
+      "results": [
+        "Current offline suite exercises abstention/verification controls"
+      ],
+      "limits": "See separate evidence audit; semantic accuracy and evidence entailment not independently established."
+    },
+    {
+      "id": "E7",
+      "name": "Event reconstruction",
+      "status": "evaluated_synthetic_invariants_and_saved_structure",
+      "results": [
+        "sixfrozencontrols pass",
+        "archived574events are record counts"
+      ],
+      "limits": "No independent incident-level event/argument accuracy or physical chronology gold."
+    },
+    {
+      "id": "E8",
+      "name": "Video ASR",
+      "status": "historical_supplied_reference_arithmetic",
+      "results": [
+        "18 selected supplied-reference clips; 185 errors / 415 reference words; micro WER 44.58%.",
+        "Recognition was not rerun by this evaluation audit."
+      ],
+      "limits": "Independent reference listening provenance was not established; not a blind corpus-wide ASR benchmark. See separate media audit.",
+      "source": "reports/video-pipeline/asr_calibration_benchmark_2026-11-09.json"
+    },
+    {
+      "id": "E9",
+      "name": "End-to-end workflow",
+      "status": "evaluated_offline_structural_regression",
+      "results": [
+        "Fresh synthetic typed-input smoke: two clean repeats return partial status, one unverified claim, two retrieval candidates, zero accepted support assessments, no report.",
+        "A third dangling-event-reference negative control correctly fails events.evidence_refs.",
+        "Full existing offline suite: 783 passed, 16 subtests passed."
+      ],
+      "limits": "No independent semantic report benchmark; archivedrealreportdiffnotrun.",
+      "source": "papers/social-framework-2026/data/bounded_workflow_smoke.json"
+    },
+    {
+      "id": "E10",
+      "name": "Runtime and resources",
+      "status": "evaluated_bounded_local_runs",
+      "results": [
+        "pytestwall7.84s,maxRSS328320KiB",
+        "combinedauditwall4.8317s,maxRSS1032620KiB"
+      ],
+      "limits": "Local offline check costs; not fullcollection/LLM/ASRproduction cost or throughput benchmark."
+    }
+  ]
+}

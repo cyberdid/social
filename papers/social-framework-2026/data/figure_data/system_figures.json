@@ -1,0 +1,100 @@
+{
+  "baseline_commit": "f0e9d0d67422b0c286a2cb9e7d4e935a833a9533",
+  "figures": [
+    {
+      "figure": "system_architecture",
+      "kind": "architecture_diagram",
+      "description": "Actual subsystem boundaries; no universal automatic collector-to-finding integration.",
+      "sources": [
+        {
+          "path": "src/analysis/offline_case_runner.py",
+          "sha256": "219ac0f4ca2197d836b106b599f3cdbb4a21b55c64abe54783cdcc001b0923f5"
+        },
+        {
+          "path": "src/analysis/incident_orchestrator.py",
+          "sha256": "f995ab6795160c5f4f38358bd2b61c4e115166029e225e9d9ded41459ef0b8ed"
+        },
+        {
+          "path": "src/analysis/source_ingest_bridge.py",
+          "sha256": "5979b9aff7c90a1aefe50511ae269f6445b914c2cba9f9624e843740262083c5"
+        },
+        {
+          "path": "src/analysis/video_pipeline_runner.py",
+          "sha256": "b7c92fd50717ea26f8d8e7132418528be09ab4a2d7b02b35afe1690389b08ecc"
+        }
+      ]
+    },
+    {
+      "figure": "evidence_provenance",
+      "kind": "architecture_diagram",
+      "description": "Record relationships and limits. Findings are report objects, not a ledger kind.",
+      "sources": [
+        {
+          "path": "src/evidence_ledger.py",
+          "sha256": "8b502e0287b0520b4b3acfba274432019f7519ecb6f8d39b8d15763535966a11"
+        },
+        {
+          "path": "src/analysis/claim_verification.py",
+          "sha256": "960298cd408237b668d280422c6b5d9975b7353b8a07b646846e8edf3874737f"
+        },
+        {
+          "path": "src/analysis/source_lineage.py",
+          "sha256": "17d25057c29214631222789f4715aefcf2623bc06c96b4c612835be30b027c9c"
+        }
+      ]
+    },
+    {
+      "figure": "analysis_workflow",
+      "kind": "architecture_diagram",
+      "description": "Actual orchestrator/controller behavior and descriptive autonomy scale.",
+      "sources": [
+        {
+          "path": "src/analysis/incident_orchestrator.py",
+          "sha256": "f995ab6795160c5f4f38358bd2b61c4e115166029e225e9d9ded41459ef0b8ed"
+        },
+        {
+          "path": "src/analysis/offline_case_runner.py",
+          "sha256": "219ac0f4ca2197d836b106b599f3cdbb4a21b55c64abe54783cdcc001b0923f5"
+        },
+        {
+          "path": "src/analysis/evaluation_harness.py",
+          "sha256": "d7a9cf34436cda7076af7db4723987ba0c936c01b421204e6ef2b3e5a5da65e6"
+        }
+      ]
+    },
+    {
+      "figure": "multimodal_pipeline",
+      "kind": "architecture_diagram",
+      "description": "Local stages and unvalidated semantic handoff.",
+      "sources": [
+        {
+          "path": "src/media_pipeline.py",
+          "sha256": "1ea1a7bb94e9beb37b0351b7d7374beeb266c82ef1452cca83fd99dc4a31f8ca"
+        },
+        {
+          "path": "src/analysis/video_local_extract.py",
+          "sha256": "1f1d268d38ec3b2deafc926b559fe472a5820a836d73dc00c10a6e565e9db5ee"
+        },
+        {
+          "path": "src/analysis/video_text_extract.py",
+          "sha256": "f4e9724b640b4d87e47df5499fac832f9ee96e054dc77c2b7bfc803a392dbafa"
+        },
+        {
+          "path": "src/analysis/media_fingerprints.py",
+          "sha256": "8f7a1d8287ca641508e116ae342f1174bd86045dc0e8972de3cb5dbc975b3750"
+        }
+      ]
+    },
+    {
+      "figure": "dual_timeline",
+      "kind": "curated_typed_timeline",
+      "description": "Direct plot of analyst-supplied intervals/publication times from frozen typed timeline. All10mentions unresolved, no event-truth claim.",
+      "sources": [
+        {
+          "path": "reports/event-reconstruction/physical_event_timeline_2026-11-09.json",
+          "sha256": "32831a565beadfe483d31adb739680b1af19bba3475a1504c85da33d607523ab"
+        }
+      ]
+    }
+  ]
+}

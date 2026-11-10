@@ -1,0 +1,72 @@
+{
+ "schema_version": "1.0",
+ "evaluation_kind": "authored deterministic stress test; not a blind accuracy benchmark",
+ "baseline_rev": "f0e9d0d",
+ "baseline_sha256": "960298cd408237b668d280422c6b5d9975b7353b8a07b646846e8edf3874737f",
+ "current_sha256": "07866cf59a2561cb914fc38e00d9ec4450cc97e6dd41dd69120823deb04e6f5f",
+ "matrix": "reports/evidence-verification/core_claims_verification_2026-11-09.json",
+ "matrix_sha256": "0dea87a77ea444d9ba40970826a89aea0a6f3470d9913043a934329047ef269c",
+ "templates": [
+  "{v} дерев ростуть у саду.",
+  "У місті відкрили {v} нових кав'ярень.",
+  "Книга має {v} сторінок із ілюстраціями."
+ ],
+ "summary": {
+  "cross_claim": {
+   "n": 469,
+   "baseline_accepted_support": 5,
+   "current_accepted_support": 2
+  },
+  "control": {
+   "n": 22,
+   "baseline_accepted_support": 22,
+   "current_accepted_support": 19
+  },
+  "negated_predicate": {
+   "n": 9,
+   "baseline_accepted_support": 9,
+   "current_accepted_support": 0
+  },
+  "altered_number": {
+   "n": 7,
+   "baseline_accepted_support": 0,
+   "current_accepted_support": 0
+  },
+  "wrong_predicate": {
+   "n": 27,
+   "baseline_accepted_support": 27,
+   "current_accepted_support": 0
+  }
+ },
+ "residual_false_accepts": [
+  {
+   "family": "cross_claim",
+   "claim_id": "claim_core_05_ngu_walked_independently",
+   "source": "psg_ngu_walked_independently",
+   "passage": "всі четверо самостійно дійшли до автомобіля швидкої допомоги. Чи застосовували до них насильство, за яких обставин вони дістали травми та хто може бути причетний – має встановити слідство."
+  },
+  {
+   "family": "cross_claim",
+   "claim_id": "claim_core_16_court_yena_custody_60",
+   "source": "psg_suspilne_moloda_custody",
+   "passage": "обрали запобіжний захід для двох фігуранток сутичок у Петропавлівській Борщагівці — Валентини Молодої і Тетяна Кірєєвої , а сьогодні, 5 листопада, для Віктора Єни . Усіх трьох суд відправив під варту на два місяці без права на заставу."
+  }
+ ],
+ "lost_controls": [
+  {
+   "claim_id": "claim_core_07_building_4_szch",
+   "source": "psg_ngu_4_injured",
+   "current": "Support withheld: value not anchored to the claim predicate in one sentence: szch_count"
+  },
+  {
+   "claim_id": "claim_core_07_building_4_szch",
+   "source": "psg_ngu_walked_independently",
+   "current": "Support withheld: value not anchored to the claim predicate in one sentence: szch_count"
+  },
+  {
+   "claim_id": "claim_core_12_court_ladyka_bail",
+   "source": "psg_hromadske_ladyka_bail_66560",
+   "current": "Support withheld: named person absent from passage: Ладики"
+  }
+ ]
+}

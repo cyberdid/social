@@ -1,0 +1,34 @@
+{
+  "src": {
+    "exists": true,
+    "tracked_files": 70
+  },
+  "scripts": {
+    "exists": true,
+    "tracked_files": 8
+  },
+  "tests": {
+    "exists": true,
+    "tracked_files": 67
+  },
+  "schemas": {
+    "exists": true,
+    "tracked_files": 7
+  },
+  "data": {
+    "exists": true,
+    "tracked_files": 1
+  },
+  "reports": {
+    "exists": true,
+    "tracked_files": 235
+  },
+  "docs": {
+    "exists": true,
+    "tracked_files": 47
+  },
+  "output": {
+    "exists": true,
+    "tracked_files": 12
+  }
+}
