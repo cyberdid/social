@@ -1,0 +1,188 @@
+{
+  "imran2015crisis": {
+    "title": [
+      "Processing Social Media Messages in Mass Emergency: A Survey"
+    ],
+    "author": [
+      {
+        "family": "Imran",
+        "given": "Muhammad"
+      },
+      {
+        "family": "Castillo",
+        "given": "Carlos"
+      },
+      {
+        "family": "Diaz",
+        "given": "Fernando"
+      },
+      {
+        "family": "Vieweg",
+        "given": "Sarah"
+      }
+    ],
+    "container-title": [
+      "ACM Computing Surveys"
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2015
+        ]
+      ]
+    },
+    "DOI": "10.1145/2771588",
+    "volume": "47",
+    "issue": "4",
+    "page": "67:1--67:38",
+    "verification": "Primary publisher/author pages; Crossref retry returned429 so manually transcribed verified fields."
+  },
+  "wilkinson2016fair": {
+    "title": [
+      "The FAIR Guiding Principles for Scientific Data Management and Stewardship"
+    ],
+    "author": [
+      {
+        "family": "Wilkinson",
+        "given": "Mark D."
+      },
+      {
+        "family": "Dumontier",
+        "given": "Michel"
+      },
+      {
+        "family": "Aalbersberg",
+        "given": "I. Jsbrand Jan"
+      },
+      {
+        "family": "others",
+        "given": ""
+      }
+    ],
+    "container-title": [
+      "Scientific Data"
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2016
+        ]
+      ]
+    },
+    "DOI": "10.1038/sdata.2016.18",
+    "volume": "3",
+    "issue": "",
+    "page": "160018",
+    "verification": "Primary publisher/author pages; Crossref retry returned429 so manually transcribed verified fields."
+  },
+  "wilson2017practices": {
+    "title": [
+      "Good Enough Practices in Scientific Computing"
+    ],
+    "author": [
+      {
+        "family": "Wilson",
+        "given": "Greg"
+      },
+      {
+        "family": "Bryan",
+        "given": "Jennifer"
+      },
+      {
+        "family": "Cranston",
+        "given": "Karen"
+      },
+      {
+        "family": "Kitzes",
+        "given": "Justin"
+      },
+      {
+        "family": "Nederbragt",
+        "given": "Lex"
+      },
+      {
+        "family": "Teal",
+        "given": "Tracy K."
+      }
+    ],
+    "container-title": [
+      "PLOS Computational Biology"
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2017
+        ]
+      ]
+    },
+    "DOI": "10.1371/journal.pcbi.1005510",
+    "volume": "13",
+    "issue": "6",
+    "page": "e1005510",
+    "verification": "Primary publisher/author pages; Crossref retry returned429 so manually transcribed verified fields."
+  },
+  "sandve2013reproducible": {
+    "title": [
+      "Ten Simple Rules for Reproducible Computational Research"
+    ],
+    "author": [
+      {
+        "family": "Sandve",
+        "given": "Geir Kjetil"
+      },
+      {
+        "family": "Nekrutenko",
+        "given": "Anton"
+      },
+      {
+        "family": "Taylor",
+        "given": "James"
+      },
+      {
+        "family": "Hovig",
+        "given": "Eivind"
+      }
+    ],
+    "container-title": [
+      "PLOS Computational Biology"
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2013
+        ]
+      ]
+    },
+    "DOI": "10.1371/journal.pcbi.1003285",
+    "volume": "9",
+    "issue": "10",
+    "page": "e1003285",
+    "verification": "Primary publisher/author pages; Crossref retry returned429 so manually transcribed verified fields."
+  },
+  "smith2007tesseract": {
+    "title": [
+      "An Overview of the Tesseract OCR Engine"
+    ],
+    "author": [
+      {
+        "family": "Smith",
+        "given": "Ray"
+      }
+    ],
+    "container-title": [
+      "Ninth International Conference on Document Analysis and Recognition"
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2007
+        ]
+      ]
+    },
+    "DOI": "10.1109/ICDAR.2007.4376991",
+    "volume": "",
+    "issue": "",
+    "page": "629--633",
+    "verification": "Primary publisher/author pages; Crossref retry returned429 so manually transcribed verified fields."
+  }
+}

@@ -1,0 +1,74 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setmainlanguage{english}
+\setotherlanguage{ukrainian}
+\setmainfont{cmunrm.otf}[Path=fonts/,BoldFont=cmunbx.otf,ItalicFont=cmunti.otf,BoldItalicFont=cmunbi.otf]
+\setsansfont{cmunss.otf}[Path=fonts/,BoldFont=cmunsx.otf,ItalicFont=cmunsi.otf,BoldItalicFont=cmunso.otf]
+\setmonofont{cmuntt.otf}[Path=fonts/,ItalicFont=cmunit.otf]
+\newfontfamily\cyrillicfont{cmunrm.otf}[Path=fonts/,BoldFont=cmunbx.otf,ItalicFont=cmunti.otf,BoldItalicFont=cmunbi.otf,Script=Cyrillic]
+\newfontfamily\cyrillicfontsf{cmunss.otf}[Path=fonts/,BoldFont=cmunsx.otf,ItalicFont=cmunsi.otf,BoldItalicFont=cmunso.otf,Script=Cyrillic]
+\newfontfamily\cyrillicfonttt{cmuntt.otf}[Path=fonts/,ItalicFont=cmunit.otf,Script=Cyrillic]
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{microtype}
+\usepackage{booktabs,longtable,tabularx,array,multirow}
+\usepackage{graphicx}
+\graphicspath{{../figures/}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\usepackage{caption}
+\captionsetup{font=small,labelfont=bf,labelsep=colon,justification=justified,singlelinecheck=false}
+\captionsetup[table]{position=top}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{placeins}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{xurl}
+\usepackage{hyperref}
+\urlstyle{same}
+\hypersetup{hidelinks,pdfencoding=auto,unicode=true,pdftitle={Social: An Evidence-Grounded Framework for Automated Social Conflict and Information Incident Analysis},pdfauthor={Oleksandr Pylypenko}}
+\emergencystretch=2em
+\setlist{nosep,leftmargin=1.5em}
+\renewcommand{\arraystretch}{1.12}
+\renewcommand{\bibfont}{\small}
+\setlength{\bibsep}{2pt}
+
+\DeclareRobustCommand{\code}[1]{\nolinkurl{#1}}
+\newcommand{\baseline}{\texttt{f0e9d0d}}
+\begin{document}
+\begin{center}
+{\LARGE Social: An Evidence-Grounded Framework for Automated Social Conflict and Information Incident Analysis\par}
+\vspace{0.4em}
+{\large Architecture, Implementation, Evaluation, and Lessons from a Real-World Case\par}
+\vspace{0.8em}
+{\large Oleksandr Pylypenko\par}
+{\small Independent Researcher in Artificial Intelligence and Machine Learning\par}
+{\small PhD Student, State University of Trade and Economics, Kyiv, Ukraine\par}
+{\small ORCID: \href{https://orcid.org/0009-0004-9610-9242}{0009-0004-9610-9242}\par}
+{\small \href{mailto:O.Pylypenko@knute.edu.ua}{\texttt{O.Pylypenko@knute.edu.ua}}\par}
+\vspace{0.4em}
+10 November 2026
+\end{center}
+\begin{abstract}
+Digital traces of social conflicts combine incomplete observations, repeated claims, contradictory accounts, and media whose publication time differs from recording or event time. Integrating these records requires automation that preserves evidentiary boundaries rather than generating a single confident narrative. This paper describes Social, a modular Python research system combining platform-specific collection, versioned snapshots, text-similarity and temporal analysis, evidence accounting, bounded retrieval, typed event organization, local media processing, and report quality gates. We audit a frozen implementation and distinguish implemented functions, structural tests, empirical checks, and unmeasured semantic properties. Evaluation reproduces an exhaustive 369-edge cross-channel text-similarity graph, finds 367 of these edges in the legacy MinHash output, recalculates 16 saved conditional-randomization summaries, and reproduces a 25-draw prefix for each of four null models. A fresh offline suite passes 783 tests and 16 subtests. These results establish bounded computational reproducibility, not factual accuracy. The current curated 25-claim package emits 19 supported-within-scope and six insufficient-evidence states, but targeted challenges expose numeric-predicate and negation errors in its relation heuristics. The general offline workflow conservatively retains retrieved claims as unverified and requires separately supplied report inputs. Historical media receipts document 607 decodable assets; an 18-clip supplied-reference comparison yields 44.58\% micro word error rate without independently established reference-review provenance. A real-world application illustrates integration and coverage limitations. Social's contribution is an inspectable analytical workflow and explicit account of its reliability boundaries, rather than a new inference algorithm or validated autonomous investigator.
+\end{abstract}
+\noindent\textbf{Keywords:} computational social science; crisis informatics; evidence provenance; automated analysis; information dynamics; research software; uncertainty.
+
+\input{sections/01_introduction.tex}
+\input{sections/02_related.tex}
+\input{sections/03_design.tex}
+\input{sections/04_architecture.tex}
+\input{sections/05_data.tex}
+\input{sections/06_information.tex}
+\input{sections/07_evidence.tex}
+\input{sections/08_events.tex}
+\input{sections/09_multimodal.tex}
+\input{sections/10_autonomy.tex}
+\input{sections/11_evaluation.tex}
+\input{sections/12_application.tex}
+\input{sections/13_discussion.tex}
+\input{sections/14_limitations.tex}
+\input{sections/15_conclusion.tex}
+\bibliographystyle{unsrtnat}
+\bibliography{references}
+\end{document}

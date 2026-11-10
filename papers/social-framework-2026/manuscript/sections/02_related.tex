@@ -1,0 +1,108 @@
+\section{Related work}
+\label{sec:related}
+
+Social intersects crisis informatics, news-event databases, automated claim
+verification, retrieval-supported generation, and digital investigation practice.
+These traditions address different units: messages, reported events, claims,
+answers, or preserved media. Their outputs therefore require different validation.
+A retrieved article may be relevant without supporting a claim; several reports
+may share one origin; and a decoded video may remain unverified as to location,
+time, or interpretation. We use this distinction to position the inspected
+software, rather than treating adjacent systems as interchangeable competitors.
+Table~\ref{tab:related} summarizes their documented purposes and comparison limits.
+
+Crisis informatics provides the immediate problem setting. Imran et
+al.~\cite{imran2015crisis} organize emergency-message processing around filtering,
+classification, ranking, aggregation, extraction, and summarization. This framing
+connects heterogeneous collection with the analyst's need to reduce information
+overload. Social adopts a similar workflow perspective but studies a bounded
+incident reconstruction and its inspectable artifacts. Its platform panels and
+case-specific selection rules do not constitute a representative population
+sample. Successful execution of a filter or collector consequently cannot
+establish completeness, situational accuracy, or usefulness to emergency
+responders without a separate evaluation of those outcomes.
+
+News-event infrastructures show that organizing observations into events is an
+established task. GDELT separates CAMEO-coded event records from news mentions and
+provides extraction confidence and geographic attributes; its GKG supplies
+document-level entities, themes, and contextual
+metadata~\cite{gdelt2015events,gdelt2015gkg}. ACLED uses researcher coding and a
+defined political-disorder taxonomy, with explicit date and location precision
+and source information~\cite{acledCodebook}. Event Registry groups multilingual
+news articles, extracts event attributes, and supports event search and
+exploration~\cite{leban2014eventregistry}. These works motivate explicit event
+units and distinctions between reports and occurrences. Social does not claim
+novelty for extraction or clustering. Its narrower research question concerns
+how capture receipts, evidence passages, claim assessments, and event hypotheses
+can remain inspectably connected within a bounded investigation.
+
+Automated fact-checking introduces a complementary requirement: evaluate the
+evidence as well as the predicted judgment. FEVER combines claims derived from
+Wikipedia with evidence selection and supported, refuted, or insufficient-information
+labels~\cite{thorne2018fever}. AVeriTeC addresses real-world claims using web
+evidence, question--answer decompositions, and justifications, explicitly attending
+to temporal leakage and evidence sufficiency~\cite{schlichtkrull2023averitec}.
+InFact implements a staged, retrieval-based LLM fact-checking
+pipeline~\cite{rothermel2024infact}. These are relevant task formulations and
+evaluation precedents. Social's contract checks and incident regressions do not
+amount to a FEVER or AVeriTeC benchmark result, and no accuracy ranking against
+these systems is implied. Claim-level correctness and reconstruction quality
+remain separate from software integration success.
+
+Retrieval-augmented generation combines learned generation with external
+retrieved memory~\cite{lewis2020rag}. ALCE makes citation quality a distinct
+evaluation dimension alongside correctness and
+fluency~\cite{gao2023alce}. This distinction matters for generated investigation
+reports: a syntactically present citation is not necessarily relevant, sufficient,
+or faithful to the associated sentence. Social's source and passage references
+provide objects that can be inspected, while their existence alone supplies no
+guarantee of semantic support. Neither retrieval relevance nor a model's verbal
+confidence should be interpreted as an independently calibrated probability that
+an incident claim is true.
+
+Diffusion observatories and media-verification tools address further parts of
+the workflow. Hoaxy tracks the circulation of URLs from monitored sources and
+their fact-checking counterparts; its 2016 description explicitly distinguishes
+tracking from performing fact checking~\cite{shao2016hoaxy}. InVID and WeVerify
+combine keyframe extraction, reverse-image search, metadata inspection, forensic
+assistance, and guided analyst tools~\cite{invidVerificationPlugin,weverifyVerificationPlugin}.
+They establish substantial prior art for integrated verification assistance.
+Their documented functions do not make every diagnostic result a factual
+verdict. Likewise, Social's local media indexing and candidate transcripts must
+be distinguished from independent authentication and source-context verification.
+
+The Berkeley Protocol separates collection, preservation, verification,
+investigative analysis, and reporting within a professional and ethical
+investigation process~\cite{berkeleyProtocol2022}. It is methodological guidance,
+not a software certification. Research-software practices concerning organized
+data, documented transformations, version control, and reproducible workflows
+provide a complementary engineering frame~\cite{wilson2017practices}. Social's
+contribution is assessed against concrete implemented artifacts and bounded
+checks within these established traditions. Neither adopting a terminology nor
+passing local tests establishes protocol compliance, evidentiary admissibility,
+universal platform coverage, or semantic validity across incidents. Those broader
+claims require additional evidence and an evaluation design matched to them.
+
+\begin{table*}[t]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\caption{Qualitative positioning from the cited primary sources and the present
+code audit. Cells describe documented functions or validation scope, not measured
+superiority. Historical papers and tool pages do not establish current platform
+access.}
+\label{tab:related}
+\begin{tabularx}{\textwidth}{@{}p{20mm}YYYYY@{}}
+\toprule
+System & Primary purpose & Provenance representation & Event reasoning & Uncertainty & Evaluation / comparison \\
+\midrule
+GDELT & News-event and contextual metadata & Event/mention identifiers; document links & CAMEO actions; contextual fields & Extraction confidence; geographic estimates & Codebook describes fields; no shared incident benchmark here \\
+ACLED & Coded political-disorder events & Sources and event notes & Researcher-coded event taxonomy & Date/location precision; coding conventions & Methodology and review process; different observation unit \\
+Event Registry & News-to-event organization & Associated news articles & Multilingual clustering and attributes & Language and clustering scope & 2014 system description; no common test here \\
+Hoaxy & URL-sharing observatory & Monitored URLs and sharing observations & Circulation analysis & Selected sources and platform sample & Preliminary sharing analysis; no truth adjudication \\
+InVID--WeVerify & Analyst media-verification assistance & Context, metadata and search results & Analyst-guided media examination & Diagnostic tools require interpretation & Official tool descriptions; no joint performance test \\
+Social & Bounded incident evidence workflow & Capture hashes, paths, passages and typed links & Claim assessments; event hypotheses & Access states and unresolved evidence & Local regression/integrity checks; limited semantic validation \\
+\bottomrule
+\end{tabularx}
+\end{table*}

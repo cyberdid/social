@@ -1,0 +1,32 @@
+\section{Data Collection, Normalization, and Provenance}
+\subsection{Source-specific acquisition}
+Telegram acquisition uses both authenticated client access and public web pages. Collectors preserve available message identifiers, text or captions, publication times, channel metadata, forward information, and snapshot counters. The comment collector follows available linked discussions, retains thread/reply identifiers, and pseudonymizes author identifiers. Incremental execution and checkpointing reduce repeated acquisition, but do not establish that deleted, private, inaccessible, or unselected material was recovered. A collector's complete flag refers to its pagination procedure and access at that time, not to all possible platform records.
+
+\begin{table}[tbp]
+\caption{Actual source support. Implemented access is distinguished from successful and complete collection.}
+\label{tab:sources}\small
+\begin{tabularx}{\linewidth}{@{}p{24mm}p{45mm}X@{}}\toprule
+Source & Implemented access / data & Principal boundary\\\midrule
+Telegram & Telethon/API and public web; posts, selected discussions, counters; separate media archive & Purposive panel; authentication/access limits; linked-discussion identity differs from channel-post identity\\
+Telegram reactions & MTProto snapshot normalization, ordinary/custom/paid reaction types where returned & Observed snapshot only; current counts cannot reconstruct past reaction history\\
+YouTube & Incident-specific \code{yt-dlp} metadata/comment scripts; separate caption collector & Ranked queries and selected videos; comment limits, access failures and caption availability\\
+TikTok & Public single-video comment collection; manually supplied URL batch & Platform restrictions, selected links; pagination exhaustion is not population completeness\\
+Instagram & Instaloader-based incident-specific script and candidate URL work & Implemented script does not establish successful substantive access\\
+Official/media web & Fixed allowlisted Source Watch; page bytes, metadata, extracted text; archive helpers & Current availability, fixed sources; no exhaustive autonomous discovery\\
+Facebook, Threads, X & Platform vocabulary/manual or generic URL references & No native collector identified in the audited source\\\bottomrule
+\end{tabularx}
+\end{table}
+
+Telegram reaction handling deserves a separate qualification. MTProto exposes typed reaction results and access-dependent additional detail \citep{telegram2026reactions}; Social has snapshot normalization and a ten-comment parity check. The historical comment corpus does not contain a complete emoji breakdown across all selected threads. Post reactions and discussion-message reactions must not be pooled as if they were the same object. Missing data, hidden data, uncollected fields, and a measured zero have different meanings. No current snapshot recovers the sequence of past votes or the number of people exposed to a comment.
+
+Source Watch captures HTTP status, final URL, content type, bounded bytes, hashes, and selected response metadata. It keeps errors distinct from successful page changes and retains the last successful comparison baseline across failures. TLS or HTTP errors therefore describe failed observation, not the absence of an official statement. The saved certificate error does not establish a particular permanent cause in a national certificate infrastructure. Source acquisition is heterogeneous: some older collectors preserve less complete raw-body and normalized-output linkage than the newer web bridge.
+
+\subsection{Normalization and corpus identity}
+Legacy preprocessing strips selected boilerplate, normalizes text, applies simple language heuristics, and evaluates incident-specific relevance rules. These rules are implemented, not independently validated multilingual relevance models. A November-specific fixed UTC offset in a legacy path is not a general daylight-saving-aware time system. Later continuation processing verifies completed snapshot manifests and hashes, retains multiple observations per canonical message, and documents which observation supplies a selected counter or text. The analysis must still identify the exact selected field and corpus version.
+
+The publication audit found a consequential denominator error in earlier narrative reporting. In the historical 23,350-record snapshot, 459 raw texts are absent and 49 view counters are missing; among its 1,408 relevant records, both counts are zero. The similarity workload's 1,384 eligible records exclude 24 short relevant texts, not 459 missing ones. A separate expanded snapshot contains 23,386 total and 1,438 relevant records. These are different files with different hashes, selected channels, and preprocessing outcomes. A net difference is not evidence that one corpus is simply an append-only extension of another. We bind every reported result to its actual input hash.
+
+\subsection{Four different provenance guarantees}
+\emph{Technical provenance} records source URI, capture/publication timestamps, artifact identity, hashes, transformation versions, and locators. \emph{Information provenance} represents how a statement derives from an earlier source. \emph{Evidence independence} asks whether nominally different materials add independent observation. \emph{Semantic validity} asks whether a cited passage actually warrants a conclusion. W3C PROV distinguishes entities, activities, agents, derivation and attribution \citep{lebo2013provo,moreau2013provdm}; Social uses related ideas through typed records, not a demonstrated standards-compliant RDF export.
+
+A hash protects a byte-level comparison, not authenticity or truth. The ledger validates hash syntax; actual byte checks occur in importing components. Its generic passage locator is optional, so universal exact offsets are not a baseline-wide invariant. The Source Watch bridge verifies captured body bytes but trusts the collector-supplied extracted text; it does not independently rerun or semantically validate extraction. Append-only SQLite triggers prevent normal updates/deletes through that database interface, but do not make a local database tamperproof against its owner. These distinctions are necessary for defensible forensic use \citep{berkeleyProtocol2022}.

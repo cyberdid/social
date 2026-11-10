@@ -1,0 +1,41 @@
+\section{Information-Wave Analysis}
+\subsection{Temporal and narrative processing}
+Social produces publication-time summaries, activity bins, visible-forward graphs, and lexical narrative labels. The multilabel codebook includes hostage/detention, death/torture, TCK-camp, concealment, and official-response themes. These are thematic detections, not verified facts or audience beliefs. Later \code{narrative_v3.py} adds structured distinctions and abstention rules, but its unit examples do not constitute a new independently adjudicated accuracy benchmark. On a saved 40-post comparison against Claude labels, legacy N1 precision/recall are .20/.25 and N2 .18/.40; N4 has no true-positive matches. Those comparisons expose disagreement, while the AI reference labels themselves remain uncertain.
+
+Topic, narrative, claim, and stance have different roles. A topic identifies discussion subject matter; a narrative organizes an interpretive account; a claim is a scoped proposition; stance describes a text's relation to a target proposition. Keyword occurrence cannot establish any person's hidden motive or political affiliation. Accordingly, the present evaluation uses narrative counts only as lexical indicators and does not interpret them as calibrated prevalence. Ukrainian emotion benchmarks illustrate the need for language-specific evaluation \citep{dementieva2025emobench}, not automatic validity of Social's supplied audience labels.
+
+\begin{table}[tbp]
+\caption{Algorithms and their demonstrated measurement scope.}
+\label{tab:algorithms}\small
+\begin{tabularx}{\linewidth}{@{}p{31mm}X X@{}}\toprule
+Technique & Implementation/task & Verification boundary\\\midrule
+Regex and normalization & \code{prep.py}, \code{narratives.py}, \code{narrative_v3.py}; relevance/themes & Rules and regressions; limited AI-reference comparison\\
+MinHash/LSH, exact Jaccard & \code{analyze.py}, \code{coordination_lsh_audit.py}; candidate and exact copy graph & Exhaustive finite-corpus graph/recall replay\\
+Conditional randomization & \code{coordination_null_models.py}; template and timing departures & Fixed-input null summaries and seeded prefix replay\\
+Graph statistics & \code{telegram_network_dynamics.py}; visible forwards and temporal bins & Degree/volume/bin reconciliation; no causal network inference\\
+BM25 and relation rules & \code{claim_verification.py}; passage candidates and scoped assessments & Retrieval/locator contracts; demonstrated semantic rule failures\\
+Temporal constraints & \code{event_reconstruction.py}; supplied event mentions & Interval ordering/cannot-links; no physical-event truth score\\
+Perceptual hashes, ASR/OCR & \code{media_fingerprints.py}, \code{video_text_extract.py} & Technical receipts and supplied-reference text comparison; uncalibrated visual thresholds\\\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Text repetition as a bounded retrieval task}
+For normalized texts, the legacy implementation constructs sets of five-character shingles, uses 128 MinHash permutations and LSH candidate retrieval, then computes exact candidate Jaccard similarity. For shingle sets $A,B$,
+\begin{equation}\label{eq:jaccard}
+J(A,B)=\frac{|A\cap B|}{|A\cup B|}.
+\end{equation}
+MinHash is an efficient resemblance approximation \citep{Broder1997}; LSH can omit qualifying pairs. Social's exhaustive audit instead computes sparse integer intersections across the eligible full-text corpus and excludes same-channel pairs. An implementation control prevents overflow of long intersections. The audit's 367/369 recall is conditional on this exact shingle graph and eligibility definition. It is neither semantic paraphrase recall nor information-operation detection accuracy. Reproducing a finite graph is a useful algorithmic result precisely because its denominator is explicit.
+
+\subsection{Behavioral signals and conditional nulls}
+Copying, co-occurrence and synchronized action are established coordination-analysis signals \citep{Pacheco2021,Nizzoli2021,Magelinski2022}. Social tests selected comment-template and copied-post timing statistics under conditional randomization. Comment models preserve specified day/activity/script or author/day strata. Timing models rotate occupied publication slots within channel-local 24-hour or two-hour blocks. One randomized time per node is reused on all incident graph edges, preserving shared-node dependence rather than treating edges as independent trials.
+
+For an upper-tail statistic $T$, $B$ random draws and observed $T_{obs}$, the implementation uses
+\begin{equation}\label{eq:permutation}
+\widehat p=\frac{1+\sum_{b=1}^{B}\mathbf{1}[T_b\geq T_{obs}]}{B+1},
+\end{equation}
+followed by Holm correction for the stated 16-test family \citep{Phipson2010,Holm1979}. A central randomization range is not a population confidence interval. These are exploratory departures from explicit exchangeability models. Common news shocks, syndicated text, legitimate channel administration, and organic copying remain possible explanations. Statistical synchronization does not establish inauthentic behavior, operational coordination, organizational control, or state attribution.
+
+\subsection{Channel classification and audience integration}
+Legacy channel groups remain in some graphs. The newer \code{channel_evidence.py} instead records infrastructure markers and separate attribution axes, defaulting unknown origin/orientation and unverified operational attribution. Russian language, a domain, or a platform link is not evidence of state control. Scenario analysis can expose how assumed group membership changes counts, but cannot calibrate unknown ownership from those markers.
+
+Audience-response contracts support comments, reply links, reaction snapshots, targets, supplied semantic labels, and aggregates. The inspected adapter normalizes labels rather than independently inferring topics, emotions or stance from every comment. Its outputs retain \code{semantic_quality_status=not_evaluated}. Comment-, author-, thread- and channel-weighted summaries have different estimands; no weighting makes purposively observed discussions representative of a national population. The system paper therefore reports audience infrastructure and coverage, without inventing local classifier rankings or emotion prevalence.
