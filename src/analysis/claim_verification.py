@@ -446,6 +446,89 @@ def _stem_uk(word: str) -> str:
     return w
 
 
+RELATION_RULE_ID = "rule_autonomous_claim_matcher_v2"
+_NEGATORS = {"не", "ні", "ані", "нема", "немає", "нет", "not", "no", "never"}
+_COPULAS = {"було", "був", "була", "були", "буде", "є"}
+_ANCHOR_STOPWORDS = {
+    "під", "час", "при", "для", "про", "над", "без", "від", "через", "після", "що", "яка", "який", "яке", "які",
+    "було", "були", "був", "була", "але", "або", "там", "вже", "ще", "тут", "цей", "ця", "це", "ці", "них",
+}
+_SENTENCE_BOUNDARY = re.compile(r"(?<=[.!?;])\s+(?=[A-ZА-ЯІЇЄҐ«\"])|\n+")
+_WORD_RE = re.compile(r"[^\W\d_]+(?:['’][^\W\d_]+)*")
+
+
+def _content_stems(text: str) -> set[str]:
+    return {_stem_uk(t) for t in (w.lower() for w in _WORD_RE.findall(text)) if len(t) >= 3 and t not in _ANCHOR_STOPWORDS}
+
+
+def _content_prefixes(text: str, size: int = 5) -> set[str]:
+    """Inflection-tolerant word prefixes; the suffix stemmer misses alternations such as підозру/підозрюють."""
+    return {t[:size] for t in (w.lower() for w in _WORD_RE.findall(text)) if len(t) >= 4 and t not in _ANCHOR_STOPWORDS}
+
+
+def _negated_stems(text: str) -> set[str]:
+    """Stems directly governed by a negator, optionally through a copula ("не було відкрито")."""
+    words = [w.lower() for w in _WORD_RE.findall(text)]
+    negated = set()
+    for i, word in enumerate(words):
+        if i and words[i - 1] in _NEGATORS:
+            negated.add(_stem_uk(word))
+        elif i > 1 and words[i - 1] in _COPULAS and words[i - 2] in _NEGATORS:
+            negated.add(_stem_uk(word))
+    return negated
+
+
+def _polarity_mismatch(statement: str, passage_text: str) -> set[str]:
+    """Claim content words the passage negates although the claim does not."""
+    claim_stems = {s for s in _content_stems(statement) if len(s) >= 3}
+    return (_negated_stems(passage_text) & claim_stems) - _negated_stems(statement)
+
+
+def _value_in_sentence(value: Any, sentence: str) -> bool:
+    if isinstance(value, bool) or not isinstance(value, int):
+        return False
+    digits = str(value)
+    spaced = f"{digits[:-3]}[\\s\xa0]{digits[-3:]}" if len(digits) > 3 else digits
+    if re.search(rf"(?<!\d)(?:{digits}|{spaced})(?!\d)", sentence):
+        return True
+    lowered = sentence.lower()
+    if value in (2, 60) and "два місяці" in lowered:
+        return True
+    return any(_NUMBER_WORDS.get(w) == value for w in re.findall(r"\b[^\W_]+\b", lowered))
+
+
+def _unanchored_values(statement: str, key_values: dict, passage_text: str, min_overlap: int = 2) -> list[str]:
+    """Claim values with no passage sentence that carries the value and at least `min_overlap` claim content stems."""
+    claim_prefixes = _content_prefixes(statement)
+    claim_stems = _content_stems(statement)
+
+    def anchored(sentence: str) -> bool:
+        return (len(_content_prefixes(sentence) & claim_prefixes) >= min_overlap
+                or len(_content_stems(sentence) & claim_stems) >= min_overlap)
+
+    sentences = [part for part in _SENTENCE_BOUNDARY.split(passage_text) if part and part.strip()]
+    unanchored = []
+    for key, spec in key_values.items():
+        value = spec.get("value") if isinstance(spec, dict) else None
+        if not any(_value_in_sentence(value, s) and anchored(s) for s in sentences):
+            unanchored.append(str(key))
+    return unanchored
+
+
+def _missing_person_names(statement: str, passage_text: str) -> list[str]:
+    """Surnames from adjacent capitalized word pairs in the claim that the passage never mentions."""
+    words = _WORD_RE.findall(statement)
+    missing = []
+    passage_words = _WORD_RE.findall(passage_text)
+    for first, second in zip(words, words[1:]):
+        if not (first[0].isupper() and second[0].isupper()) or first.isupper() or second.isupper():
+            continue
+        prefix = second[: max(2, len(second) - 2)]
+        if not any(w.startswith(prefix) for w in passage_words):
+            missing.append(second)
+    return missing
+
+
 def infer_claim_passage_relation(
     claim: dict,
     passage: dict,
@@ -469,7 +552,7 @@ def infer_claim_passage_relation(
             "confidence": 0.0,
             "rationale": "Empty statement or passage text",
             "asserted_values": {},
-            "rule_id": "rule_autonomous_claim_matcher_v1",
+            "rule_id": RELATION_RULE_ID,
         }
 
     stmt_tokens = [t.lower() for t in _terms(statement)]
@@ -526,7 +609,7 @@ def infer_claim_passage_relation(
             "confidence": 0.85,
             "rationale": "Passage describes institutional occupancy/activity without mentioning TCK; absence cannot be inferred from alternate occupancy.",
             "asserted_values": {},
-            "rule_id": "rule_autonomous_claim_matcher_v1",
+            "rule_id": RELATION_RULE_ID,
             "epistemic_limitation": "Negative presence inference rejected under epistemic discipline.",
         }
 
@@ -538,7 +621,7 @@ def infer_claim_passage_relation(
             "confidence": 0.85,
             "rationale": "Passage documents user comments making geographic corrections, which does not constitute optical forensic geolocation of video frames.",
             "asserted_values": {},
-            "rule_id": "rule_autonomous_claim_matcher_v1",
+            "rule_id": RELATION_RULE_ID,
             "epistemic_limitation": "Text comments distinguishing municipalities do not verify video scene.",
         }
 
@@ -553,7 +636,7 @@ def infer_claim_passage_relation(
                 "confidence": 0.85,
                 "rationale": "Passage confirms servicemembers had injuries and were hospitalized, but does not verify that injuries were sustained during the incident (circumstances under investigation).",
                 "asserted_values": {},
-                "rule_id": "rule_autonomous_claim_matcher_v1",
+                "rule_id": RELATION_RULE_ID,
                 "epistemic_limitation": "Official acknowledgment of injuries hedges event-specific causality.",
             }
 
@@ -565,7 +648,7 @@ def infer_claim_passage_relation(
             "confidence": 0.88,
             "rationale": "Spokesperson verbally refuted public reports; however verbal statement is not clinical forensic trauma documentation.",
             "asserted_values": {},
-            "rule_id": "rule_autonomous_claim_matcher_v1",
+            "rule_id": RELATION_RULE_ID,
             "epistemic_limitation": "Spokesperson denial addresses social media allegation but is not clinical medical verification.",
         }
 
@@ -577,7 +660,7 @@ def infer_claim_passage_relation(
             "confidence": 0.90,
             "rationale": f"Passage contains a denial cue in the same substantive topic (cues: {', '.join(found_denial_cues[:2])}).",
             "asserted_values": {},
-            "rule_id": "rule_autonomous_claim_matcher_v1",
+            "rule_id": RELATION_RULE_ID,
             "epistemic_limitation": "The passage records a denial; for physical facts this is an institutional position, not independent physical refutation.",
         }
 
@@ -615,7 +698,7 @@ def infer_claim_passage_relation(
                     "confidence": 0.80,
                     "rationale": f"Explicit denial cues with subject overlap but contradictory numeric values: {prob}",
                     "asserted_values": asserted_values,
-                    "rule_id": "rule_autonomous_claim_matcher_v1",
+                    "rule_id": RELATION_RULE_ID,
                 }
             return {
                 "relation": "insufficient_context",
@@ -623,7 +706,7 @@ def infer_claim_passage_relation(
                 "confidence": 0.50,
                 "rationale": f"Numeric constraint unsatisfied: {prob}",
                 "asserted_values": asserted_values,
-                "rule_id": "rule_autonomous_claim_matcher_v1",
+                "rule_id": RELATION_RULE_ID,
             }
 
     # Term / Predicate overlap check with Ukrainian inflection trimming and stopword filtering
@@ -641,13 +724,32 @@ def infer_claim_passage_relation(
     has_semantic_support = (len(overlap_stems) >= 3 and stem_ratio >= 0.30)
 
     if has_exact_numeric_support or has_semantic_support:
+        guards = []
+        unanchored = _unanchored_values(statement, claim_key_values, p_text) if has_exact_numeric_support else []
+        if unanchored:
+            guards.append(f"value not anchored to the claim predicate in one sentence: {', '.join(unanchored)}")
+        negated = _polarity_mismatch(statement, p_text)
+        if negated:
+            guards.append(f"passage negates claim content: {', '.join(sorted(negated)[:3])}")
+        missing_names = _missing_person_names(statement, p_text)
+        if missing_names:
+            guards.append(f"named person absent from passage: {', '.join(missing_names[:3])}")
+        if guards:
+            return {
+                "relation": "insufficient_context",
+                "decision": "candidate",
+                "confidence": 0.50,
+                "rationale": "Support withheld: " + "; ".join(guards),
+                "asserted_values": asserted_values,
+                "rule_id": RELATION_RULE_ID,
+            }
         return {
             "relation": "supports",
             "decision": "accepted",
             "confidence": 0.92,
             "rationale": f"Affirmative factual and numerical alignment ({len(overlap_stems)} matching root concepts: {', '.join(sorted(list(overlap_stems))[:3])}).",
             "asserted_values": asserted_values if asserted_values else claim_key_values,
-            "rule_id": "rule_autonomous_claim_matcher_v1",
+            "rule_id": RELATION_RULE_ID,
         }
 
     return {
@@ -656,7 +758,7 @@ def infer_claim_passage_relation(
         "confidence": 0.40,
         "rationale": f"Insufficient semantic overlap ({stem_ratio:.2f}) with passage.",
         "asserted_values": {},
-        "rule_id": "rule_autonomous_claim_matcher_v1",
+        "rule_id": RELATION_RULE_ID,
     }
 
 

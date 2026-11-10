@@ -13,6 +13,7 @@ Outputs:
 from __future__ import annotations
 
 import hashlib
+import argparse
 import json
 import sys
 from datetime import datetime, timezone
@@ -24,6 +25,7 @@ if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
 from src.analysis.claim_verification import (
+    RELATION_RULE_ID,
     aggregate_verification,
     create_evidence_assessment,
     infer_claim_passage_relation,
@@ -848,7 +850,7 @@ def build_verification_package(
             },
             "acceptance_basis": "validated_rule",
             "assessor_id": "deterministic_claim_verifier",
-            "validated_rule_id": "rule_autonomous_claim_matcher_v1",
+            "validated_rule_id": RELATION_RULE_ID,
             "exact_character_offsets_verified": True,
             "verification_mode": "deterministic retrieval and relation inference over supplied curated corpus; no open-web discovery",
             "lineage_root_semantics": "declared source-lineage IDs; independence not independently audited",
@@ -982,8 +984,12 @@ def main():
     out_dir = REPO_ROOT / "reports" / "evidence-verification"
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    json_path = out_dir / "core_claims_verification_2026-11-09.json"
-    md_path = out_dir / "core_claims_verification_2026-11-09.md"
+    # The 2026-11-09 files are the frozen rule-v1 artifact cited by earlier reports; pass --stem to reproduce another run.
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--stem", default="core_claims_verification_2026-11-10_rule_v2")
+    stem = parser.parse_args().stem
+    json_path = out_dir / f"{stem}.json"
+    md_path = out_dir / f"{stem}.md"
 
     # Write JSON
     json_path.write_text(
