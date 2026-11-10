@@ -14,6 +14,8 @@ import matplotlib
 
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+from figure_fonts import register_cmu_serif
+register_cmu_serif()
 import numpy as np
 
 
@@ -50,13 +52,13 @@ def main() -> None:
     assert all(t["observed"] == 134 and t["edge_denominator"] == 369 for t in timing)
 
     plt.rcParams.update({
-        "font.family": "DejaVu Sans", "font.size": 9,
+        "font.family": "CMU Serif", "font.size": 9,
         "axes.labelsize": 9, "axes.titlesize": 9,
         "xtick.labelsize": 8.5, "ytick.labelsize": 8.5,
         "text.color": INK, "axes.labelcolor": INK,
         "axes.edgecolor": "#82909C", "xtick.color": INK, "ytick.color": INK,
         "axes.spines.top": False, "axes.spines.right": False,
-        "axes.linewidth": 0.65, "pdf.fonttype": 42, "ps.fonttype": 42,
+        "axes.linewidth": 0.65, "pdf.fonttype": 42, "ps.fonttype": 42, "mathtext.fontset": "cm",
         "svg.fonttype": "none", "svg.hashsalt": "social-information-analysis-v1",
         "savefig.facecolor": "white",
     })
@@ -79,7 +81,7 @@ def main() -> None:
                       str(int(bar.get_height())), ha="center", va="bottom", fontsize=8.5)
     left.set_ylim(0, 450)
     left.set_yticks([0, 100, 200, 300, 400])
-    left.set_xticks(x, [f"≥ {r['jaccard_threshold']:.2f}\n{100*r['recall']:.2f}%" for r in recall])
+    left.set_xticks(x, [f"$\\geq$ {r['jaccard_threshold']:.2f}\n{100*r['recall']:.2f}%" for r in recall])
     left.set_xlabel("Jaccard threshold / candidate recall", labelpad=5)
     left.set_ylabel("Cross-channel pairs")
     left.set_title("(a) Exact and legacy pairs", loc="left", pad=27)
@@ -102,7 +104,7 @@ def main() -> None:
     right.set_xlim(0, 165)
     right.set_xticks([0, 50, 100, 150])
     right.set_xlabel("Pairs within 10 minutes", labelpad=5)
-    right.set_title("(b) Timing at Jaccard ≥ 0.60", loc="left", pad=27)
+    right.set_title("(b) Timing at Jaccard $\\geq$ 0.60", loc="left", pad=27)
     right.text(0, 1.075, "Means and central 95% of null draws", transform=right.transAxes,
                fontsize=8.2, ha="left", va="bottom")
     right.grid(axis="x", color="#DDE3E8", linewidth=.5)

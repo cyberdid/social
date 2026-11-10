@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
   "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="384.729891pt" height="211.104pt" viewBox="0 0 384.729891 211.104" xmlns="http://www.w3.org/2000/svg" version="1.1">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="374.22pt" height="211.104pt" viewBox="0 0 374.22 211.104" xmlns="http://www.w3.org/2000/svg" version="1.1">
  <metadata>
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-11-10T09:08:06.368296</dc:date>
+    <dc:date>2026-11-10T09:21:28.287995</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
-      <dc:title>Matplotlib v3.11.1, https://matplotlib.org/</dc:title>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
      </cc:Agent>
     </dc:creator>
    </cc:Work>
@@ -22,8 +22,8 @@
  <g id="figure_1">
   <g id="patch_1">
    <path d="M 0 211.104 
-L 384.729891 211.104 
-L 384.729891 0 
+L 374.22 211.104 
+L 374.22 0 
 L 0 0 
 z
 " style="fill: #ffffff"/>
@@ -40,7 +40,7 @@ Q 12.6513 20.529216 12.6513 22.125888
 L 12.6513 51.265152 
 Q 12.6513 52.861824 15.5529 52.861824 
 z
-" clip-path="url(#pb5abcadd2d)" style="fill: #eef3f6; stroke: #315d78; stroke-linejoin: miter"/>
+" clip-path="url(#p1b5bb5f5aa)" style="fill: #eef3f6; stroke: #315d78; stroke-linejoin: miter"/>
    </g>
    <g id="patch_3">
     <path d="M 138.8709 52.861824 
@@ -53,7 +53,7 @@ Q 135.9693 20.529216 135.9693 22.125888
 L 135.9693 51.265152 
 Q 135.9693 52.861824 138.8709 52.861824 
 z
-" clip-path="url(#pb5abcadd2d)" style="fill: #eef3f6; stroke: #315d78; stroke-linejoin: miter"/>
+" clip-path="url(#p1b5bb5f5aa)" style="fill: #eef3f6; stroke: #315d78; stroke-linejoin: miter"/>
    </g>
    <g id="patch_4">
     <path d="M 262.1889 52.861824 
@@ -66,27 +66,27 @@ Q 259.2873 20.529216 259.2873 22.125888
 L 259.2873 51.265152 
 Q 259.2873 52.861824 262.1889 52.861824 
 z
-" clip-path="url(#pb5abcadd2d)" style="fill: #eef3f6; stroke: #315d78; stroke-linejoin: miter"/>
+" clip-path="url(#p1b5bb5f5aa)" style="fill: #eef3f6; stroke: #315d78; stroke-linejoin: miter"/>
    </g>
    <g id="patch_5">
     <path d="M 114.755512 36.69552 
 Q 125.44975 36.69552 135.025955 36.69552 
-" clip-path="url(#pb5abcadd2d)" style="fill: none; stroke: #59636b; stroke-linecap: round"/>
+" clip-path="url(#p1b5bb5f5aa)" style="fill: none; stroke: #59636b; stroke-linecap: round"/>
     <path d="M 131.025955 34.69552 
 L 135.025955 36.69552 
 L 131.025955 38.69552 
 z
-" clip-path="url(#pb5abcadd2d)" style="fill: #59636b; stroke: #59636b; stroke-linecap: round"/>
+" clip-path="url(#p1b5bb5f5aa)" style="fill: #59636b; stroke: #59636b; stroke-linecap: round"/>
    </g>
    <g id="patch_6">
     <path d="M 238.073512 36.69552 
 Q 248.76775 36.69552 258.343955 36.69552 
-" clip-path="url(#pb5abcadd2d)" style="fill: none; stroke: #59636b; stroke-linecap: round"/>
+" clip-path="url(#p1b5bb5f5aa)" style="fill: none; stroke: #59636b; stroke-linecap: round"/>
     <path d="M 254.343955 34.69552 
 L 258.343955 36.69552 
 L 254.343955 38.69552 
 z
-" clip-path="url(#pb5abcadd2d)" style="fill: #59636b; stroke: #59636b; stroke-linecap: round"/>
+" clip-path="url(#p1b5bb5f5aa)" style="fill: #59636b; stroke: #59636b; stroke-linecap: round"/>
    </g>
    <g id="patch_7">
     <path d="M 15.5529 124.712064 
@@ -99,7 +99,7 @@ Q 12.6513 88.387776 12.6513 89.984448
 L 12.6513 123.115392 
 Q 12.6513 124.712064 15.5529 124.712064 
 z
-" clip-path="url(#pb5abcadd2d)" style="fill: #eef3f6; stroke: #315d78; stroke-linejoin: miter"/>
+" clip-path="url(#p1b5bb5f5aa)" style="fill: #eef3f6; stroke: #315d78; stroke-linejoin: miter"/>
    </g>
    <g id="patch_8">
     <path d="M 138.8709 124.712064 
@@ -112,7 +112,7 @@ Q 135.9693 88.387776 135.9693 89.984448
 L 135.9693 123.115392 
 Q 135.9693 124.712064 138.8709 124.712064 
 z
-" clip-path="url(#pb5abcadd2d)" style="fill: #eef3f6; stroke: #315d78; stroke-linejoin: miter"/>
+" clip-path="url(#p1b5bb5f5aa)" style="fill: #eef3f6; stroke: #315d78; stroke-linejoin: miter"/>
    </g>
    <g id="patch_9">
     <path d="M 262.1889 124.712064 
@@ -125,47 +125,47 @@ Q 259.2873 88.387776 259.2873 89.984448
 L 259.2873 123.115392 
 Q 259.2873 124.712064 262.1889 124.712064 
 z
-" clip-path="url(#pb5abcadd2d)" style="fill: #eef3f6; stroke: #315d78; stroke-linejoin: miter"/>
+" clip-path="url(#p1b5bb5f5aa)" style="fill: #eef3f6; stroke: #315d78; stroke-linejoin: miter"/>
    </g>
    <g id="patch_10">
     <path d="M 308.519973 52.251049 
 Q 248.76906 70.624782 190.086796 88.669899 
-" clip-path="url(#pb5abcadd2d)" style="fill: none; stroke: #59636b; stroke-linecap: round"/>
+" clip-path="url(#p1b5bb5f5aa)" style="fill: none; stroke: #59636b; stroke-linecap: round"/>
     <path d="M 194.497958 89.405867 
 L 190.086796 88.669899 
 L 193.322267 85.58255 
 z
-" clip-path="url(#pb5abcadd2d)" style="fill: #59636b; stroke: #59636b; stroke-linecap: round"/>
+" clip-path="url(#p1b5bb5f5aa)" style="fill: #59636b; stroke: #59636b; stroke-linecap: round"/>
    </g>
    <g id="patch_11">
     <path d="M 114.755512 106.54992 
 Q 125.44975 106.54992 135.025955 106.54992 
-" clip-path="url(#pb5abcadd2d)" style="fill: none; stroke: #59636b; stroke-linecap: round"/>
+" clip-path="url(#p1b5bb5f5aa)" style="fill: none; stroke: #59636b; stroke-linecap: round"/>
     <path d="M 131.025955 104.54992 
 L 135.025955 106.54992 
 L 131.025955 108.54992 
 z
-" clip-path="url(#pb5abcadd2d)" style="fill: #59636b; stroke: #59636b; stroke-linecap: round"/>
+" clip-path="url(#p1b5bb5f5aa)" style="fill: #59636b; stroke: #59636b; stroke-linecap: round"/>
    </g>
    <g id="patch_12">
     <path d="M 238.073512 106.54992 
 Q 248.76775 106.54992 258.343955 106.54992 
-" clip-path="url(#pb5abcadd2d)" style="fill: none; stroke: #59636b; stroke-linecap: round"/>
+" clip-path="url(#p1b5bb5f5aa)" style="fill: none; stroke: #59636b; stroke-linecap: round"/>
     <path d="M 254.343955 104.54992 
 L 258.343955 106.54992 
 L 254.343955 108.54992 
 z
-" clip-path="url(#pb5abcadd2d)" style="fill: #59636b; stroke: #59636b; stroke-linecap: round"/>
+" clip-path="url(#p1b5bb5f5aa)" style="fill: #59636b; stroke: #59636b; stroke-linecap: round"/>
    </g>
    <g id="patch_13">
     <path d="M 308.43451 51.502058 
 Q 182.629864 41.486418 66.680991 88.41225 
-" clip-path="url(#pb5abcadd2d)" style="fill: none; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #b87632; stroke-linecap: round"/>
+" clip-path="url(#p1b5bb5f5aa)" style="fill: none; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #b87632; stroke-linecap: round"/>
     <path d="M 71.139148 88.765566 
 L 66.680991 88.41225 
 L 69.638538 85.057714 
 z
-" clip-path="url(#pb5abcadd2d)" style="fill: #b87632; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #b87632; stroke-linecap: round"/>
+" clip-path="url(#p1b5bb5f5aa)" style="fill: #b87632; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #b87632; stroke-linecap: round"/>
    </g>
    <g id="patch_14">
     <path d="M 15.5529 192.570624 
@@ -178,7 +178,7 @@ Q 12.6513 157.244256 12.6513 158.840928
 L 12.6513 190.973952 
 Q 12.6513 192.570624 15.5529 192.570624 
 z
-" clip-path="url(#pb5abcadd2d)" style="fill: #ffffff; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #b87632; stroke-linejoin: miter"/>
+" clip-path="url(#p1b5bb5f5aa)" style="fill: #ffffff; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #b87632; stroke-linejoin: miter"/>
    </g>
    <g id="patch_15">
     <path d="M 204.1569 192.570624 
@@ -191,72 +191,80 @@ Q 201.2553 157.244256 201.2553 158.840928
 L 201.2553 190.973952 
 Q 201.2553 192.570624 204.1569 192.570624 
 z
-" clip-path="url(#pb5abcadd2d)" style="fill: #eef3f6; stroke: #315d78; stroke-linejoin: miter"/>
+" clip-path="url(#p1b5bb5f5aa)" style="fill: #eef3f6; stroke: #315d78; stroke-linejoin: miter"/>
    </g>
    <g id="patch_16">
     <path d="M 94.681492 157.747863 
 Q 139.957865 140.97858 184.185805 124.597612 
-" clip-path="url(#pb5abcadd2d)" style="fill: none; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #b87632; stroke-linecap: round"/>
+" clip-path="url(#p1b5bb5f5aa)" style="fill: none; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #b87632; stroke-linecap: round"/>
     <path d="M 179.740179 124.111394 
 L 184.185805 124.597612 
 L 181.129455 127.862382 
 z
-" clip-path="url(#pb5abcadd2d)" style="fill: #b87632; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #b87632; stroke-linecap: round"/>
+" clip-path="url(#p1b5bb5f5aa)" style="fill: #b87632; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #b87632; stroke-linecap: round"/>
    </g>
    <g id="patch_17">
     <path d="M 309.151112 125.051579 
 Q 295.920686 140.977334 283.4047 156.043103 
-" clip-path="url(#pb5abcadd2d)" style="fill: none; stroke: #59636b; stroke-linecap: round"/>
+" clip-path="url(#p1b5bb5f5aa)" style="fill: none; stroke: #59636b; stroke-linecap: round"/>
     <path d="M 287.499146 154.24435 
 L 283.4047 156.043103 
 L 284.422366 151.688294 
 z
-" clip-path="url(#pb5abcadd2d)" style="fill: #59636b; stroke: #59636b; stroke-linecap: round"/>
+" clip-path="url(#p1b5bb5f5aa)" style="fill: #59636b; stroke: #59636b; stroke-linecap: round"/>
    </g>
    <g id="text_1">
-    <text style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #263844" transform="translate(48.335906 33.896379)">Source</text>
-    <text style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #263844" transform="translate(30.787313 45.253957)">URI / publisher</text>
+    <text style="font-size: 7.2px; font-family: 'CMU Serif'; fill: #263844" transform="translate(53.391375 34.294207)">Source</text>
+    <text style="font-size: 7.2px; font-family: 'CMU Serif'; fill: #263844" transform="translate(38.534625 43.35552)">URI / publisher</text>
    </g>
    <g id="text_2">
-    <text style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #263844" transform="translate(170.587266 33.975832)">Artifact</text>
-    <text style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #263844" transform="translate(128.723906 45.253957)">Captured bytes / SHA-256</text>
+    <text style="font-size: 7.2px; font-family: 'CMU Serif'; fill: #263844" transform="translate(174.715313 34.37352)">Artifact</text>
+    <text style="font-size: 7.2px; font-family: 'CMU Serif'; fill: #263844" transform="translate(144.712688 43.35552)">Captured bytes / SHA-256</text>
    </g>
    <g id="text_3">
-    <text style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #263844" transform="translate(292.086984 32.965442)">Passage</text>
-    <text style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #263844" transform="translate(281.34675 45.772161)">Text / locator</text>
+    <text style="font-size: 7.2px; font-family: 'CMU Serif'; fill: #263844" transform="translate(298.244813 33.552832)">Passage</text>
+    <text style="font-size: 7.2px; font-family: 'CMU Serif'; fill: #263844" transform="translate(288.136688 43.35552)">Text / locator</text>
    </g>
    <g id="text_4">
-    <text style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #263844" transform="translate(28.008563 97.401561)">Claim / mention</text>
-    <text style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #263844" transform="translate(20.283328 108.953904)">Statement + scope</text>
-    <text style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #263844" transform="translate(23.338406 122.055232)">Assertion ≠ event</text>
+    <text style="font-size: 7.2px; font-family: 'CMU Serif'; fill: #263844" transform="translate(37.515375 98.62992)">Claim / mention</text>
+    <text style="font-size: 7.2px; font-family: 'CMU Serif'; fill: #263844" transform="translate(33.998063 108.389295)">Statement + scope</text>
+    <text style="font-size: 7.2px; font-family: 'CMU Serif'; fill: #263844" transform="translate(35.570813 118.06992)">Assertion ≠ event</text>
    </g>
    <g id="text_5">
-    <text style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #263844" transform="translate(138.530391 97.755232)">Evidence assessment</text>
-    <text style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #263844" transform="translate(142.153594 109.905232)">Relation + rationale</text>
-    <text style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #263844" transform="translate(132.991172 121.044842)">Acceptance provenance</text>
+    <text style="font-size: 7.2px; font-family: 'CMU Serif'; fill: #263844" transform="translate(154.812375 99.28917)">Evidence assessment</text>
+    <text style="font-size: 7.2px; font-family: 'CMU Serif'; fill: #263844" transform="translate(154.879313 108.75717)">Relation + rationale</text>
+    <text style="font-size: 7.2px; font-family: 'CMU Serif'; fill: #263844" transform="translate(150.633 118.14867)">Acceptance provenance</text>
    </g>
    <g id="text_6">
-    <text style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #263844" transform="translate(270.984094 97.755232)">Verification result</text>
-    <text style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #263844" transform="translate(259.112531 109.033357)">Scope + cutoff + state</text>
-    <text style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #263844" transform="translate(256.314797 121.701561)">Retain unknown/conflict</text>
+    <text style="font-size: 7.2px; font-family: 'CMU Serif'; fill: #263844" transform="translate(282.419438 99.288607)">Verification result</text>
+    <text style="font-size: 7.2px; font-family: 'CMU Serif'; fill: #263844" transform="translate(274.435313 108.389295)">Scope + cutoff + state</text>
+    <text style="font-size: 7.2px; font-family: 'CMU Serif'; fill: #263844" transform="translate(271.414125 118.06992)">Retain unknown/conflict</text>
    </g>
    <g id="text_7">
-    <text style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #263844" transform="translate(29.184328 165.240877)">Source dependency families</text>
-    <text style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #263844" transform="translate(32.297766 177.390877)">Copies may share one root</text>
-    <text style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #263844" transform="translate(15.669562 189.540877)">Unknown linkage ≠ independence</text>
+    <text style="font-size: 7.2px; font-family: 'CMU Serif'; fill: #263844" transform="translate(49.721625 166.98744)">Source dependency families</text>
+    <text style="font-size: 7.2px; font-family: 'CMU Serif'; fill: #263844" transform="translate(50.882062 176.70744)">Copies may share one root</text>
+    <text style="font-size: 7.2px; font-family: 'CMU Serif'; fill: #263844" transform="translate(39.454312 186.42744)">Unknown linkage ≠ independence</text>
    </g>
    <g id="text_8">
-    <text style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #263844" transform="translate(205.319109 165.240877)">Superseding assessment / finding</text>
-    <text style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #263844" transform="translate(183.854109 177.803612)">Preserve earlier record; validate references</text>
-    <text style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #263844" transform="translate(189.347625 189.540877)">No physical truth inferred from a valid ID</text>
+    <text style="font-size: 7.2px; font-family: 'CMU Serif'; fill: #263844" transform="translate(229.350937 166.98744)">Superseding assessment / finding</text>
+    <text style="font-size: 7.2px; font-family: 'CMU Serif'; fill: #263844" transform="translate(215.019 176.750752)">Preserve earlier record; validate references</text>
+    <text style="font-size: 7.2px; font-family: 'CMU Serif'; fill: #263844" transform="translate(214.87725 186.42744)">No physical truth inferred from a valid ID</text>
    </g>
    <g id="text_9">
-    <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #59636b" x="14.8275" y="73.61856" transform="rotate(-0 14.8275 73.61856)">Information lineage is supplied or inferred separately from byte identity.</text>
+    <g id="patch_18">
+     <path d="M 13.2975 76.899029 
+L 284.790156 76.899029 
+L 284.790156 65.28856 
+L 13.2975 65.28856 
+z
+" style="fill: #ffffff"/>
+    </g>
+    <text style="font-size: 8.5px; font-family: 'CMU Serif'; text-anchor: start; fill: #59636b" x="14.8275" y="73.61856" transform="rotate(-0 14.8275 73.61856)">Information lineage is supplied or inferred separately from byte identity.</text>
    </g>
   </g>
  </g>
  <defs>
-  <clipPath id="pb5abcadd2d">
+  <clipPath id="p1b5bb5f5aa">
    <rect x="5.76" y="5.76" width="362.7" height="199.584"/>
   </clipPath>
  </defs>

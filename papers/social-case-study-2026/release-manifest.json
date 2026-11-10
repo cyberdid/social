@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-11-09T15:35:39.613753+00:00",
+  "generated_at_utc": "2026-11-10T07:22:31.949176+00:00",
   "status": "review_candidate_not_published",
   "work_id": "social-petropavlivska-2026-preprint",
   "relationship": "English is the primary language edition; Ukrainian is a parallel edition of the same research.",
@@ -8,7 +8,7 @@
       "language": "en",
       "file": "social_preprint_en_2026-11-09.pdf",
       "pages": 16,
-      "sha256": "93f035fed0aca02381c0cda9b33daa619dc709820f1a5908ea4a01866e02b68a",
+      "sha256": "24488f7a3cb0cc150ce4754c19b06615b95c550790a62e1140c63e12cee50882",
       "required_fonts_embedded": [
         "CMUSerif-Roman",
         "CMUSerif-Bold",
@@ -23,7 +23,7 @@
       "language": "uk",
       "file": "social_preprint_uk_2026-11-09.pdf",
       "pages": 16,
-      "sha256": "0fe7001df08d5057bc2751ea2a92700cfea520f261af612672a840dc5d90b4f2",
+      "sha256": "6e4785d32e99439d8529ec628fd15b469aa89d53c8c06b84a955558122672c5a",
       "required_fonts_embedded": [
         "CMUSerif-Roman",
         "CMUSerif-Bold",
@@ -42,5 +42,8 @@
   "open_limitations": [
     "Independent human acoustic-review provenance for quote_safe flags is not established.",
     "DOI metadata resolution does not establish substantive truth or verify non-DOI case sources."
+  ],
+  "corrections": [
+    "2026-11-10: view-counter and missing-text denominators corrected to all 23,350 posts; note on relation-rule revision added."
   ]
 }

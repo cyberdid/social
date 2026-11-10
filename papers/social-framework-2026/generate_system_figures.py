@@ -8,12 +8,14 @@ from matplotlib.patches import FancyBboxPatch,FancyArrowPatch
 import matplotlib.dates as mdates
 from datetime import datetime,timezone
 P=Path(__file__).resolve().parent; ROOT=P.parents[1]
-plt.rcParams.update({'font.family':'DejaVu Sans','font.size':9,'pdf.fonttype':42,'svg.fonttype':'none','axes.spines.top':False,'axes.spines.right':False})
+from figure_fonts import register_cmu_serif
+register_cmu_serif()
+plt.rcParams.update({'font.family':'CMU Serif','font.size':9,'pdf.fonttype':42,'svg.fonttype':'none','axes.spines.top':False,'axes.spines.right':False})
 blue='#315d78';orange='#b87632';gray='#59636b';light='#eef3f6';dark='#263844'
 meta=[]
 def canvas(h):
  f,a=plt.subplots(figsize=(6.5,h));a.set(xlim=(0,10),ylim=(0,10));a.axis('off');return f,a
-def box(a,x,y,w,h,s,kind='normal',fs=9):
+def box(a,x,y,w,h,s,kind='normal',fs=7.2):
  edge=orange if kind=='manual'else blue
  a.add_patch(FancyBboxPatch((x,y),w,h,boxstyle='round,pad=0.06,rounding_size=0.08',linewidth=1,edgecolor=edge,facecolor='white'if kind=='manual'else light,linestyle='--'if kind=='manual'else'-'))
  a.text(x+w/2,y+h/2,s,ha='center',va='center',fontsize=fs,color=dark,linespacing=1.35)
@@ -34,9 +36,9 @@ box(a,6.9,5.65,2.9,1.5,'Separate local video runner\nIndex / audio / frames\nCan
 box(a,.2,2.8,2.9,1.6,'Typed analytical inputs\nClaims / event mentions\nLineage / supplied labels',kind='manual')
 box(a,3.55,2.8,2.9,1.6,'Offline case runner\nRetrieval / timelines\nConflict / uncertainty')
 box(a,6.9,2.8,2.9,1.6,'Report bundle + gates\nSupplied findings / results\nCitations / hashes / schemas')
-box(a,3.55,.4,6.25,1.15,'Run receipts + unresolved queue + versioned outputs\nStructural checks do not establish semantic truth',fs=9)
+box(a,3.55,.4,6.25,1.15,'Run receipts + unresolved queue + versioned outputs\nStructural checks do not establish semantic truth',fs=7.2)
 for p,q,m in [((1.65,8.2),(1.65,7.15),False),((5,8.2),(5,7.15),False),((8.35,8.2),(8.35,7.15),False),((3.1,6.4),(3.55,6.4),True),((1.65,5.65),(1.65,4.4),True),((5,5.65),(5,4.4),False),((8.35,5.65),(8.35,4.4),True),((3.1,3.6),(3.55,3.6),False),((6.45,3.6),(6.9,3.6),True),((5,2.8),(5,1.55),False),((8.35,2.8),(8.35,1.55),False)]:arrow(a,p,q,m)
-a.text(.2,.6,'Solid: implemented exchange\nDashed: separate / curated handoff',fontsize=8.5,color=gray)
+a.text(.05,.75,'Solid: implemented exchange\nDashed: separate / curated handoff',fontsize=6.6,color=gray)
 save(f,'system_architecture','Actual subsystem boundaries; no universal automatic collector-to-finding integration.',['src/analysis/offline_case_runner.py','src/analysis/incident_orchestrator.py','src/analysis/source_ingest_bridge.py','src/analysis/video_pipeline_runner.py'])
 
 f,a=canvas(3.6)
@@ -50,7 +52,7 @@ arrow(a,(8.4,7.7),(1.6,5.8),manual=True,curve=.12)
 box(a,.25,.7,4.3,1.65,'Source dependency families\nCopies may share one root\nUnknown linkage ≠ independence',kind='manual')
 box(a,5.45,.7,4.3,1.65,'Superseding assessment / finding\nPreserve earlier record; validate references\nNo physical truth inferred from a valid ID')
 arrow(a,(2.4,2.35),(5,4.1),manual=True);arrow(a,(8.4,4.1),(7.6,2.35))
-a.text(.25,6.6,'Information lineage is supplied or inferred separately from byte identity.',fontsize=8.5,color=gray)
+a.text(.25,6.6,'Information lineage is supplied or inferred separately from byte identity.',fontsize=8.5,color=gray,bbox=dict(facecolor='white',edgecolor='none',pad=1.5),zorder=5)
 save(f,'evidence_provenance','Record relationships and limits. Findings are report objects, not a ledger kind.',['src/evidence_ledger.py','src/analysis/claim_verification.py','src/analysis/source_lineage.py'])
 
 f,a=canvas(3.0)
@@ -62,7 +64,7 @@ box(a,.2,4.5,2.7,1.6,'Structural report gates\nReferences / hashes\nCutoffs / fr
 box(a,3.65,4.5,2.7,1.6,'Offline analytical stages\nRetrieve / organize / summarize\nUnknowns remain explicit')
 box(a,7.1,4.5,2.7,1.6,'Report input bundle\nFindings / assessments\nSeparately supplied',kind='manual')
 arrow(a,(5,7.45),(5,6.1));arrow(a,(7.1,5.3),(6.35,5.3),manual=True);arrow(a,(3.65,5.3),(2.9,5.3))
-box(a,.2,1.0,9.6,1.75,'Demonstrated boundary: scripted / integrated bounded workflow (levels 1–2)\nNo independent end-to-end incident benchmark (levels 3–4 unestablished)\nPassing structural gates does not validate retrieval entailment or physical event truth',fs=9)
+box(a,.2,1.0,9.6,1.75,'Demonstrated boundary: scripted / integrated bounded workflow (levels 1–2)\nNo independent end-to-end incident benchmark (levels 3–4 unestablished)\nPassing structural gates does not validate retrieval entailment or physical event truth',fs=7.2)
 arrow(a,(1.55,4.5),(1.55,2.75));arrow(a,(5,4.5),(5,2.75))
 save(f,'analysis_workflow','Actual orchestrator/controller behavior and descriptive autonomy scale.',['src/analysis/incident_orchestrator.py','src/analysis/offline_case_runner.py','src/analysis/evaluation_harness.py'])
 
@@ -73,7 +75,7 @@ box(a,.2,4.1,2.7,1.7,'Perceptual candidates\npHash / dHash / alignment\nUncalibr
 box(a,3.65,4.1,2.7,1.7,'Candidate text\nLocal OCR + ASR\nPreserve original segments')
 box(a,7.1,4.1,2.7,1.7,'Correction sidecars\nAlternatives + uncertainty\nNo contextual word invention')
 arrow(a,(8.45,7.6),(5,5.8));arrow(a,(8.45,7.6),(1.55,5.8),curve=.12);arrow(a,(6.35,4.95),(7.1,4.95))
-box(a,.2,.75,9.6,1.7,'Independent contextual / acoustic / speaker / fact verification remains separate\nHistorical external Gemini pilot: 3 still frames from 1 clip; not integrated continuous video analysis',kind='manual',fs=9)
+box(a,.2,.75,9.6,1.7,'Independent contextual / acoustic / speaker / fact verification remains separate\nHistorical external Gemini pilot: 3 still frames from 1 clip; not integrated continuous video analysis',kind='manual',fs=7.2)
 arrow(a,(1.55,4.1),(1.55,2.45),manual=True);arrow(a,(8.45,4.1),(8.45,2.45),manual=True)
 save(f,'multimodal_pipeline','Local stages and unvalidated semantic handoff.',['src/media_pipeline.py','src/analysis/video_local_extract.py','src/analysis/video_text_extract.py','src/analysis/media_fingerprints.py'])
 

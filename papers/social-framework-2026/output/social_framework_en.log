@@ -1000,12 +1000,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 27--27
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 27--27
-\TU/cmunrm.otf(0)/m/n/10 con-
+\TU/cmunrm.otf(0)/m/n/10 contracts /
  []
 
 
-Overfull \hbox (11.41812pt too wide) in paragraph at lines 27--27
-\TU/cmunrm.otf(0)/m/n/10 tracts/aggregation;
+Underfull \hbox (badness 10000) in paragraph at lines 27--27
+\TU/cmunrm.otf(0)/m/n/10 aggregation;
  []
 
 
@@ -1043,7 +1043,7 @@ Underfull \hbox (badness 5696) in paragraph at lines 27--27
 \TU/cmunrm.otf(0)/m/n/10 vestigation not
  []
 
-) (sections/05_data.tex [5] [6]
+[5] [6]) (sections/05_data.tex
 Underfull \hbox (badness 10000) in paragraph at lines 17--17
 []|\TU/cmunrm.otf(0)/m/n/10 Telethon/API and public
  []
@@ -1143,10 +1143,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 19--19
 []|\TU/cmunrm.otf(0)/m/n/10 Technical receipts and supplied-
  []
 
-[9]) (sections/07_evidence.tex [10]
+[9]) (sections/07_evidence.tex
 File: ../figures//evidence_provenance.pdf Graphic file (type pdf)
 <use ../figures//evidence_provenance.pdf>
- [11]) (sections/08_events.tex
+ [10] [11]) (sections/08_events.tex
 File: ../figures//dual_timeline.pdf Graphic file (type pdf)
 <use ../figures//dual_timeline.pdf>
 )
@@ -1156,8 +1156,8 @@ File: ../figures//multimodal_pipeline.pdf Graphic file (type pdf)
  [13]) (sections/10_autonomy.tex [14]
 File: ../figures//analysis_workflow.pdf Graphic file (type pdf)
 <use ../figures//analysis_workflow.pdf>
-)
-(sections/11_evaluation.tex [15]
+ [15])
+(sections/11_evaluation.tex
 Underfull \hbox (badness 1728) in paragraph at lines 26--26
 \TU/cmunrm.otf(0)/m/n/10 platform completeness and rele-
  []
@@ -1175,6 +1175,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 26--26
 
 Underfull \hbox (badness 10000) in paragraph at lines 26--26
 \TU/cmunrm.otf(0)/m/n/10 organic-control specificity and
+ []
+
+
+Underfull \hbox (badness 2990) in paragraph at lines 26--26
+[]|\TU/cmunrm.otf(0)/m/n/10 No independent semantic accu-
  []
 
 
@@ -1215,13 +1220,13 @@ Underfull \hbox (badness 7486) in paragraph at lines 26--26
 [16]
 File: ../figures//information_analysis.pdf Graphic file (type pdf)
 <use ../figures//information_analysis.pdf>
- [17]) (sections/12_application.tex
+ [17] [18]) (sections/12_application.tex
 Underfull \hbox (badness 1817) in paragraph at lines 3--4
 \TU/cmunrm.otf(0)/m/n/10.95 The Petropavlivska Borshchahivka application illust
 rates how the software handles an
  []
 
-[18] [19]) (sections/13_discussion.tex) (sections/14_limitations.tex [20]
+[19] [20]) (sections/13_discussion.tex [21]) (sections/14_limitations.tex
 Underfull \hbox (badness 3386) in paragraph at lines 17--17
 []|\TU/cmunrm.otf(0)/m/n/10 Replayed exact graph, saved draws,
  []
@@ -1231,32 +1236,32 @@ Underfull \hbox (badness 7362) in paragraph at lines 17--17
 []|\TU/cmunrm.otf(0)/m/n/10 Decode/extraction receipts, supplied-
  []
 
-[21]) (sections/15_conclusion.tex [22]) (social_framework_en.bbl [23] [24]
-Underfull \hbox (badness 4726) in paragraph at lines 217--225
+[22]) (sections/15_conclusion.tex [23] [24]) (social_framework_en.bbl [25]
+Underfull \hbox (badness 4726) in paragraph at lines 216--224
 []\TU/cmunrm.otf(0)/m/n/10 Andrei Z. Broder.  On the resemblance and containmen
 t of documents.  In \TU/cmunrm.otf(0)/m/it/10 Pro-
  []
 
 
-Underfull \hbox (badness 2134) in paragraph at lines 217--225
+Underfull \hbox (badness 2134) in paragraph at lines 216--224
 \TU/cmunrm.otf(0)/m/it/10 ceedings. Compression and Complexity of SEQUENCES 199
 7\TU/cmunrm.otf(0)/m/n/10 , pages 21–29. IEEE, 1997.
  []
 
 
-Underfull \hbox (badness 2418) in paragraph at lines 217--225
+Underfull \hbox (badness 2418) in paragraph at lines 216--224
 \TU/cmunrm.otf(0)/m/n/10 doi: $[] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
 [] [] [] [] [] [] [] [] [][]$.  URL []$[] [] [] [] [] [] [] [] [] [] [] [] [] [
 ] [] [] [] [] [] [] [] [] [] [] [] [] [] []
  []
 
 
-Underfull \hbox (badness 2126) in paragraph at lines 217--225
+Underfull \hbox (badness 2126) in paragraph at lines 216--224
 [] [] [] [] [] [] [] [] [] [] [] [] [][]$[]\TU/cmunrm.otf(0)/m/n/10 .  Conferen
 ce year; publisher page requires JavaScript. Primary text:
  []
 
-[25])
+[26])
 The property list \polyglossia@langsetup contains the pairs (without outer
 braces):
 >  {latex/script}  =>  {latin}
@@ -1307,12 +1312,12 @@ braces):
 >  {ukrainian/babelname}  =>  {ukrainian}
 >  {ukrainian/localnumeral}  =>  {ukrainiannumerals}
 >  {ukrainian/Localnumeral}  =>  {Ukrainiannumerals}.
- [26] (social_framework_en.aux
+ [27] (social_framework_en.aux
 LaTeX Info: Redefining \rmfamily on input line 24.
 LaTeX Info: Redefining \sffamily on input line 24.
 LaTeX Info: Redefining \ttfamily on input line 24.
 )
 Package rerunfilecheck Info: File `social_framework_en.out' has not changed.
-(rerunfilecheck)             Checksum: 4DE05E9EBD46EA2A9A07934B611C0220;3806.
+(rerunfilecheck)             Checksum: ABE921E951D05EA1C41E41677F31FDD2;4010.
  )
-Output written on social_framework_en.xdv (26 pages, 931756 bytes).
+Output written on social_framework_en.xdv (27 pages, 987056 bytes).

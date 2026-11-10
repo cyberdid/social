@@ -52,8 +52,18 @@ L 0 3.5
       </g>
      </g>
      <g id="text_1">
-      <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; fill: #243442" transform="translate(47.890878 155.248838)">≥ 0.60</text>
-      <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; fill: #243442" transform="translate(46.060722 165.450498)">99.46%</text>
+      <!-- $\geq$ 0.60 -->
+      <g style="fill: #243442" transform="translate(48.283339 155.59)">
+       <text>
+        <tspan x="1.700005" y="-0.34375" style="font-size: 8.5px; font-family: 'cmsy10'; fill: #243442">¸</tspan>
+        <tspan x="10.003281" y="-0.34375" style="font-weight: 500; font-size: 8.5px; font-family: 'CMU Serif'; fill: #243442"> </tspan>
+        <tspan x="12.833817" y="-0.34375" style="font-weight: 500; font-size: 8.5px; font-family: 'CMU Serif'; fill: #243442">0</tspan>
+        <tspan x="17.083863" y="-0.34375" style="font-weight: 500; font-size: 8.5px; font-family: 'CMU Serif'; fill: #243442">.</tspan>
+        <tspan x="19.446885" y="-0.34375" style="font-weight: 500; font-size: 8.5px; font-family: 'CMU Serif'; fill: #243442">6</tspan>
+        <tspan x="23.696931" y="-0.34375" style="font-weight: 500; font-size: 8.5px; font-family: 'CMU Serif'; fill: #243442">0</tspan>
+       </text>
+      </g>
+      <text style="font-size: 8.5px; font-family: 'CMU Serif'; fill: #243442" transform="translate(49.044354 165.79)">99.46%</text>
      </g>
     </g>
     <g id="xtick_2">
@@ -63,8 +73,18 @@ L 0 3.5
       </g>
      </g>
      <g id="text_2">
-      <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; fill: #243442" transform="translate(104.740399 155.248838)">≥ 0.75</text>
-      <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; fill: #243442" transform="translate(100.20618 165.450498)">100.00%</text>
+      <!-- $\geq$ 0.75 -->
+      <g style="fill: #243442" transform="translate(105.13286 155.59)">
+       <text>
+        <tspan x="1.700005" y="-0.25" style="font-size: 8.5px; font-family: 'cmsy10'; fill: #243442">¸</tspan>
+        <tspan x="10.003281" y="-0.25" style="font-weight: 500; font-size: 8.5px; font-family: 'CMU Serif'; fill: #243442"> </tspan>
+        <tspan x="12.833817" y="-0.25" style="font-weight: 500; font-size: 8.5px; font-family: 'CMU Serif'; fill: #243442">0</tspan>
+        <tspan x="17.083863" y="-0.25" style="font-weight: 500; font-size: 8.5px; font-family: 'CMU Serif'; fill: #243442">.</tspan>
+        <tspan x="19.446885" y="-0.25" style="font-weight: 500; font-size: 8.5px; font-family: 'CMU Serif'; fill: #243442">7</tspan>
+        <tspan x="23.696931" y="-0.25" style="font-weight: 500; font-size: 8.5px; font-family: 'CMU Serif'; fill: #243442">5</tspan>
+       </text>
+      </g>
+      <text style="font-size: 8.5px; font-family: 'CMU Serif'; fill: #243442" transform="translate(103.768876 165.79)">100.00%</text>
      </g>
     </g>
     <g id="xtick_3">
@@ -74,12 +94,22 @@ L 0 3.5
       </g>
      </g>
      <g id="text_3">
-      <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; fill: #243442" transform="translate(161.58992 155.248838)">≥ 0.90</text>
-      <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; fill: #243442" transform="translate(157.055701 165.450498)">100.00%</text>
+      <!-- $\geq$ 0.90 -->
+      <g style="fill: #243442" transform="translate(161.982381 155.59)">
+       <text>
+        <tspan x="1.700005" y="-0.34375" style="font-size: 8.5px; font-family: 'cmsy10'; fill: #243442">¸</tspan>
+        <tspan x="10.003281" y="-0.34375" style="font-weight: 500; font-size: 8.5px; font-family: 'CMU Serif'; fill: #243442"> </tspan>
+        <tspan x="12.833817" y="-0.34375" style="font-weight: 500; font-size: 8.5px; font-family: 'CMU Serif'; fill: #243442">0</tspan>
+        <tspan x="17.083863" y="-0.34375" style="font-weight: 500; font-size: 8.5px; font-family: 'CMU Serif'; fill: #243442">.</tspan>
+        <tspan x="19.446885" y="-0.34375" style="font-weight: 500; font-size: 8.5px; font-family: 'CMU Serif'; fill: #243442">9</tspan>
+        <tspan x="23.696931" y="-0.34375" style="font-weight: 500; font-size: 8.5px; font-family: 'CMU Serif'; fill: #243442">0</tspan>
+       </text>
+      </g>
+      <text style="font-size: 8.5px; font-family: 'CMU Serif'; fill: #243442" transform="translate(160.618397 165.79)">100.00%</text>
      </g>
     </g>
     <g id="text_4">
-     <text style="font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #243442" x="119.11536" y="180.181914" transform="rotate(-0 119.11536 180.181914)">Jaccard threshold / candidate recall</text>
+     <text style="font-size: 9px; font-family: 'CMU Serif'; text-anchor: middle; fill: #243442" x="119.11536" y="180.54" transform="rotate(-0 119.11536 180.54)">Jaccard threshold / candidate recall</text>
     </g>
    </g>
    <g id="matplotlib.axis_2">
@@ -100,7 +130,7 @@ L -3.5 0
       </g>
      </g>
      <g id="text_5">
-      <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #243442" x="30.1952" y="144.169004" transform="rotate(-0 30.1952 144.169004)">0</text>
+      <text style="font-size: 8.5px; font-family: 'CMU Serif'; text-anchor: end; fill: #243442" x="30.1952" y="144.34" transform="rotate(-0 30.1952 144.34)">0</text>
      </g>
     </g>
     <g id="ytick_2">
@@ -115,7 +145,7 @@ L 201.03552 118.692
       </g>
      </g>
      <g id="text_6">
-      <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #243442" x="30.1952" y="121.921004" transform="rotate(-0 30.1952 121.921004)">100</text>
+      <text style="font-size: 8.5px; font-family: 'CMU Serif'; text-anchor: end; fill: #243442" x="30.1952" y="122.092" transform="rotate(-0 30.1952 122.092)">100</text>
      </g>
     </g>
     <g id="ytick_3">
@@ -130,7 +160,7 @@ L 201.03552 96.444
       </g>
      </g>
      <g id="text_7">
-      <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #243442" x="30.1952" y="99.673004" transform="rotate(-0 30.1952 99.673004)">200</text>
+      <text style="font-size: 8.5px; font-family: 'CMU Serif'; text-anchor: end; fill: #243442" x="30.1952" y="99.844" transform="rotate(-0 30.1952 99.844)">200</text>
      </g>
     </g>
     <g id="ytick_4">
@@ -145,7 +175,7 @@ L 201.03552 74.196
       </g>
      </g>
      <g id="text_8">
-      <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #243442" x="30.1952" y="77.425004" transform="rotate(-0 30.1952 77.425004)">300</text>
+      <text style="font-size: 8.5px; font-family: 'CMU Serif'; text-anchor: end; fill: #243442" x="30.1952" y="77.596" transform="rotate(-0 30.1952 77.596)">300</text>
      </g>
     </g>
     <g id="ytick_5">
@@ -160,11 +190,11 @@ L 201.03552 51.948
       </g>
      </g>
      <g id="text_9">
-      <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #243442" x="30.1952" y="55.177004" transform="rotate(-0 30.1952 55.177004)">400</text>
+      <text style="font-size: 8.5px; font-family: 'CMU Serif'; text-anchor: end; fill: #243442" x="30.1952" y="55.348" transform="rotate(-0 30.1952 55.348)">400</text>
      </g>
     </g>
     <g id="text_10">
-     <text style="font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #243442" x="7.808716" y="90.882" transform="rotate(-90 7.808716 90.882)">Cross-channel pairs</text>
+     <text style="font-size: 9px; font-family: 'CMU Serif'; text-anchor: middle; fill: #243442" x="11.6452" y="90.882" transform="rotate(-90 11.6452 90.882)">Cross-channel pairs</text>
     </g>
    </g>
    <g id="patch_3">
@@ -226,48 +256,48 @@ L 201.03552 140.94
 " style="fill: none; stroke: #82909c; stroke-width: 0.65; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
    <g id="text_11">
-    <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #243442" x="53.454163" y="55.245528" transform="rotate(-0 53.454163 55.245528)">369</text>
+    <text style="font-size: 8.5px; font-family: 'CMU Serif'; text-anchor: middle; fill: #243442" x="53.454163" y="55.58752" transform="rotate(-0 53.454163 55.58752)">369</text>
    </g>
    <g id="text_12">
-    <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #243442" x="110.303684" y="73.266408" transform="rotate(-0 110.303684 73.266408)">288</text>
+    <text style="font-size: 8.5px; font-family: 'CMU Serif'; text-anchor: middle; fill: #243442" x="110.303684" y="73.6084" transform="rotate(-0 110.303684 73.6084)">288</text>
    </g>
    <g id="text_13">
-    <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #243442" x="167.153205" y="89.952408" transform="rotate(-0 167.153205 89.952408)">213</text>
+    <text style="font-size: 8.5px; font-family: 'CMU Serif'; text-anchor: middle; fill: #243442" x="167.153205" y="90.2944" transform="rotate(-0 167.153205 90.2944)">213</text>
    </g>
    <g id="text_14">
-    <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #243442" x="71.077515" y="55.690488" transform="rotate(-0 71.077515 55.690488)">367</text>
+    <text style="font-size: 8.5px; font-family: 'CMU Serif'; text-anchor: middle; fill: #243442" x="71.077515" y="56.03248" transform="rotate(-0 71.077515 56.03248)">367</text>
    </g>
    <g id="text_15">
-    <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #243442" x="127.927036" y="73.266408" transform="rotate(-0 127.927036 73.266408)">288</text>
+    <text style="font-size: 8.5px; font-family: 'CMU Serif'; text-anchor: middle; fill: #243442" x="127.927036" y="73.6084" transform="rotate(-0 127.927036 73.6084)">288</text>
    </g>
    <g id="text_16">
-    <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #243442" x="184.776557" y="89.952408" transform="rotate(-0 184.776557 89.952408)">213</text>
+    <text style="font-size: 8.5px; font-family: 'CMU Serif'; text-anchor: middle; fill: #243442" x="184.776557" y="90.2944" transform="rotate(-0 184.776557 90.2944)">213</text>
    </g>
    <g id="text_17">
-    <text style="font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #243442" x="37.1952" y="13.824" transform="rotate(-0 37.1952 13.824)">(a) Exact and legacy pairs</text>
+    <text style="font-size: 9px; font-family: 'CMU Serif'; text-anchor: start; fill: #243442" x="37.1952" y="13.824" transform="rotate(-0 37.1952 13.824)">(a) Exact and legacy pairs</text>
    </g>
    <g id="legend_1">
     <g id="patch_11">
-     <path d="M 39.65999 42.420799 
-L 49.08999 42.420799 
-L 49.08999 36.680799 
-L 39.65999 36.680799 
+     <path d="M 39.65999 42.75008 
+L 49.08999 42.75008 
+L 49.08999 37.01008 
+L 39.65999 37.01008 
 z
 " style="fill: #25638b"/>
     </g>
     <g id="text_18">
-     <text style="font-size: 8.2px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #243442" x="55.64999" y="42.420799" transform="rotate(-0 55.64999 42.420799)">Exact</text>
+     <text style="font-size: 8.2px; font-family: 'CMU Serif'; text-anchor: start; fill: #243442" x="55.64999" y="42.75008" transform="rotate(-0 55.64999 42.75008)">Exact</text>
     </g>
     <g id="patch_12">
-     <path d="M 85.813178 42.420799 
-L 95.243178 42.420799 
-L 95.243178 36.680799 
-L 85.813178 36.680799 
+     <path d="M 83.850303 42.75008 
+L 93.280303 42.75008 
+L 93.280303 37.01008 
+L 83.850303 37.01008 
 z
 " style="fill: url(#h335ca478c8); stroke: #c86b25; stroke-width: 1.2; stroke-linejoin: miter"/>
     </g>
     <g id="text_19">
-     <text style="font-size: 8.2px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #243442" x="101.803178" y="42.420799" transform="rotate(-0 101.803178 42.420799)">Legacy LSH</text>
+     <text style="font-size: 8.2px; font-family: 'CMU Serif'; text-anchor: start; fill: #243442" x="99.840303" y="42.75008" transform="rotate(-0 99.840303 42.75008)">Legacy LSH</text>
     </g>
    </g>
   </g>
@@ -293,7 +323,7 @@ L 282.95568 40.824
       </g>
      </g>
      <g id="text_20">
-      <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #243442" x="282.95568" y="154.398008" transform="rotate(-0 282.95568 154.398008)">0</text>
+      <text style="font-size: 8.5px; font-family: 'CMU Serif'; text-anchor: middle; fill: #243442" x="282.95568" y="154.74" transform="rotate(-0 282.95568 154.74)">0</text>
      </g>
     </g>
     <g id="xtick_5">
@@ -308,7 +338,7 @@ L 332.604262 40.824
       </g>
      </g>
      <g id="text_21">
-      <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #243442" x="332.604262" y="154.398008" transform="rotate(-0 332.604262 154.398008)">50</text>
+      <text style="font-size: 8.5px; font-family: 'CMU Serif'; text-anchor: middle; fill: #243442" x="332.604262" y="154.74" transform="rotate(-0 332.604262 154.74)">50</text>
      </g>
     </g>
     <g id="xtick_6">
@@ -323,7 +353,7 @@ L 382.252844 40.824
       </g>
      </g>
      <g id="text_22">
-      <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #243442" x="382.252844" y="154.398008" transform="rotate(-0 382.252844 154.398008)">100</text>
+      <text style="font-size: 8.5px; font-family: 'CMU Serif'; text-anchor: middle; fill: #243442" x="382.252844" y="154.74" transform="rotate(-0 382.252844 154.74)">100</text>
      </g>
     </g>
     <g id="xtick_7">
@@ -338,30 +368,30 @@ L 431.901425 40.824
       </g>
      </g>
      <g id="text_23">
-      <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #243442" x="431.901425" y="154.398008" transform="rotate(-0 431.901425 154.398008)">150</text>
+      <text style="font-size: 8.5px; font-family: 'CMU Serif'; text-anchor: middle; fill: #243442" x="431.901425" y="154.74" transform="rotate(-0 431.901425 154.74)">150</text>
      </g>
     </g>
     <g id="text_24">
-     <text style="font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #243442" x="364.87584" y="168.278594" transform="rotate(-0 364.87584 168.278594)">Pairs within 10 minutes</text>
+     <text style="font-size: 9px; font-family: 'CMU Serif'; text-anchor: middle; fill: #243442" x="364.87584" y="168.64" transform="rotate(-0 364.87584 168.64)">Pairs within 10 minutes</text>
     </g>
    </g>
    <g id="matplotlib.axis_4">
     <g id="ytick_6">
      <g id="line2d_22"/>
      <g id="text_25">
-      <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #243442" x="279.45568" y="61.989427" transform="rotate(-0 279.45568 61.989427)">Observed</text>
+      <text style="font-size: 8.5px; font-family: 'CMU Serif'; text-anchor: end; fill: #243442" x="279.45568" y="62.160091" transform="rotate(-0 279.45568 62.160091)">Observed</text>
      </g>
     </g>
     <g id="ytick_7">
      <g id="line2d_23"/>
      <g id="text_26">
-      <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #243442" x="279.45568" y="94.600502" transform="rotate(-0 279.45568 94.600502)">2h null</text>
+      <text style="font-size: 8.5px; font-family: 'CMU Serif'; text-anchor: end; fill: #243442" x="279.45568" y="94.771166" transform="rotate(-0 279.45568 94.771166)">2h null</text>
      </g>
     </g>
     <g id="ytick_8">
      <g id="line2d_24"/>
      <g id="text_27">
-      <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #243442" x="279.45568" y="127.211577" transform="rotate(-0 279.45568 127.211577)">24h null</text>
+      <text style="font-size: 8.5px; font-family: 'CMU Serif'; text-anchor: end; fill: #243442" x="279.45568" y="127.382241" transform="rotate(-0 279.45568 127.382241)">24h null</text>
      </g>
     </g>
    </g>
@@ -442,26 +472,58 @@ L 446.796 140.94
 " style="fill: none; stroke: #82909c; stroke-width: 0.65; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
    <g id="text_28">
-    <text style="font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #243442" x="420.978737" y="61.097982" transform="rotate(-0 420.978737 61.097982)">134</text>
+    <text style="font-size: 9px; font-family: 'CMU Serif'; text-anchor: start; fill: #243442" x="420.978737" y="61.460091" transform="rotate(-0 420.978737 61.460091)">134</text>
    </g>
    <g id="text_29">
-    <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #243442" x="342.533978" y="93.579506" transform="rotate(-0 342.533978 93.579506)">42.868 [32–55]</text>
+    <text style="font-size: 8.5px; font-family: 'CMU Serif'; text-anchor: start; fill: #243442" x="342.533978" y="93.708666" transform="rotate(-0 342.533978 93.708666)">42.868 [32–55]</text>
    </g>
    <g id="text_30">
-    <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #243442" x="300.829169" y="126.190581" transform="rotate(-0 300.829169 126.190581)">7.131 [2–13]</text>
+    <text style="font-size: 8.5px; font-family: 'CMU Serif'; text-anchor: start; fill: #243442" x="300.829169" y="126.319741" transform="rotate(-0 300.829169 126.319741)">7.131 [2–13]</text>
    </g>
    <g id="text_31">
-    <text style="font-size: 8.2px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #243442" x="282.95568" y="31.345378" transform="rotate(-0 282.95568 31.345378)">Means and central 95% of null draws</text>
+    <text style="font-size: 8.2px; font-family: 'CMU Serif'; text-anchor: start; fill: #243442" x="282.95568" y="31.6753" transform="rotate(-0 282.95568 31.6753)">Means and central 95% of null draws</text>
    </g>
    <g id="text_32">
-    <text style="font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #243442" x="282.95568" y="13.824" transform="rotate(-0 282.95568 13.824)">(b) Timing at Jaccard ≥ 0.60</text>
+    <!-- (b) Timing at Jaccard $\geq$ 0.60 -->
+    <g style="fill: #243442" transform="translate(282.95568 13.824)">
+     <text>
+      <tspan x="0" y="-0.25" style="font-weight: 500; font-size: 9px; font-family: 'CMU Serif'; fill: #243442">(</tspan>
+      <tspan x="3.49202" y="-0.25" style="font-weight: 500; font-size: 9px; font-family: 'CMU Serif'; fill: #243442">b</tspan>
+      <tspan x="8.487061" y="-0.25" style="font-weight: 500; font-size: 9px; font-family: 'CMU Serif'; fill: #243442">)</tspan>
+      <tspan x="11.97908" y="-0.25" style="font-weight: 500; font-size: 9px; font-family: 'CMU Serif'; fill: #243442"> </tspan>
+      <tspan x="14.976105" y="-0.25" style="font-weight: 500; font-size: 9px; font-family: 'CMU Serif'; fill: #243442">T</tspan>
+      <tspan x="21.474152" y="-0.25" style="font-weight: 500; font-size: 9px; font-family: 'CMU Serif'; fill: #243442">i</tspan>
+      <tspan x="23.967163" y="-0.25" style="font-weight: 500; font-size: 9px; font-family: 'CMU Serif'; fill: #243442">m</tspan>
+      <tspan x="31.464218" y="-0.25" style="font-weight: 500; font-size: 9px; font-family: 'CMU Serif'; fill: #243442">i</tspan>
+      <tspan x="33.95723" y="-0.25" style="font-weight: 500; font-size: 9px; font-family: 'CMU Serif'; fill: #243442">n</tspan>
+      <tspan x="38.952271" y="-0.25" style="font-weight: 500; font-size: 9px; font-family: 'CMU Serif'; fill: #243442">g</tspan>
+      <tspan x="43.452301" y="-0.25" style="font-weight: 500; font-size: 9px; font-family: 'CMU Serif'; fill: #243442"> </tspan>
+      <tspan x="46.449326" y="-0.25" style="font-weight: 500; font-size: 9px; font-family: 'CMU Serif'; fill: #243442">a</tspan>
+      <tspan x="50.949356" y="-0.25" style="font-weight: 500; font-size: 9px; font-family: 'CMU Serif'; fill: #243442">t</tspan>
+      <tspan x="54.441376" y="-0.25" style="font-weight: 500; font-size: 9px; font-family: 'CMU Serif'; fill: #243442"> </tspan>
+      <tspan x="57.4384" y="-0.25" style="font-weight: 500; font-size: 9px; font-family: 'CMU Serif'; fill: #243442">J</tspan>
+      <tspan x="62.055435" y="-0.25" style="font-weight: 500; font-size: 9px; font-family: 'CMU Serif'; fill: #243442">a</tspan>
+      <tspan x="66.555466" y="-0.25" style="font-weight: 500; font-size: 9px; font-family: 'CMU Serif'; fill: #243442">c</tspan>
+      <tspan x="70.551498" y="-0.25" style="font-weight: 500; font-size: 9px; font-family: 'CMU Serif'; fill: #243442">c</tspan>
+      <tspan x="74.547531" y="-0.25" style="font-weight: 500; font-size: 9px; font-family: 'CMU Serif'; fill: #243442">a</tspan>
+      <tspan x="79.047562" y="-0.25" style="font-weight: 500; font-size: 9px; font-family: 'CMU Serif'; fill: #243442">r</tspan>
+      <tspan x="82.566589" y="-0.25" style="font-weight: 500; font-size: 9px; font-family: 'CMU Serif'; fill: #243442">d</tspan>
+      <tspan x="87.56163" y="-0.25" style="font-weight: 500; font-size: 9px; font-family: 'CMU Serif'; fill: #243442"> </tspan>
+      <tspan x="101.150364" y="-0.25" style="font-weight: 500; font-size: 9px; font-family: 'CMU Serif'; fill: #243442"> </tspan>
+      <tspan x="104.147389" y="-0.25" style="font-weight: 500; font-size: 9px; font-family: 'CMU Serif'; fill: #243442">0</tspan>
+      <tspan x="108.647419" y="-0.25" style="font-weight: 500; font-size: 9px; font-family: 'CMU Serif'; fill: #243442">.</tspan>
+      <tspan x="111.149434" y="-0.25" style="font-weight: 500; font-size: 9px; font-family: 'CMU Serif'; fill: #243442">6</tspan>
+      <tspan x="115.649464" y="-0.25" style="font-weight: 500; font-size: 9px; font-family: 'CMU Serif'; fill: #243442">0</tspan>
+      <tspan x="92.35866" y="-0.25" style="font-size: 9px; font-family: 'cmsy10'; fill: #243442">¸</tspan>
+     </text>
+    </g>
    </g>
   </g>
   <g id="text_33">
-   <text style="font-size: 8.2px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #243442" x="37.1952" y="187.596" transform="rotate(-0 37.1952 187.596)">Historical eligible texts: n = 1,384.</text>
+   <text style="font-size: 8.2px; font-family: 'CMU Serif'; text-anchor: start; fill: #243442" x="37.1952" y="187.596" transform="rotate(-0 37.1952 187.596)">Historical eligible texts: n = 1,384.</text>
   </g>
   <g id="text_34">
-   <text style="font-size: 8.2px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #243442" x="263.9952" y="187.596" transform="rotate(-0 263.9952 187.596)">Null ranges are not confidence intervals.</text>
+   <text style="font-size: 8.2px; font-family: 'CMU Serif'; text-anchor: start; fill: #243442" x="263.9952" y="187.596" transform="rotate(-0 263.9952 187.596)">Null ranges are not confidence intervals.</text>
   </g>
  </g>
  <defs>

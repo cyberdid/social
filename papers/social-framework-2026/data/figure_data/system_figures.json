@@ -35,7 +35,7 @@
         },
         {
           "path": "src/analysis/claim_verification.py",
-          "sha256": "960298cd408237b668d280422c6b5d9975b7353b8a07b646846e8edf3874737f"
+          "sha256": "07866cf59a2561cb914fc38e00d9ec4450cc97e6dd41dd69120823deb04e6f5f"
         },
         {
           "path": "src/analysis/source_lineage.py",

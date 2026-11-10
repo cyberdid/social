@@ -6,7 +6,7 @@
   ],
   "source_metric_json": "papers/social-framework-2026/data/audited_evaluation_metrics.json",
   "source_metric_sha256": "3de29093183a930f4d8f846300c8a0fbb6d6c0b20ee7e87679e131c8b10f9387",
-  "generator_sha256": "4056c851dfbb7f3069f18f1a4dd5f1921fd49c7b7da10a9f21cca3d8a7e84159",
+  "generator_sha256": "5e4f395caa3644a74657c8c227f9ee7e4b05966a5a3bcf4c0c64a49b2fff0f5a",
   "source_sha256": {
     "reports/coordination-null-models-2026-11-08-lsh-audit/results.json": "5d6cd59bd5c31239eff595317a17ec4fd67f6a6329b1475cc10b9557e97a5d74",
     "data/raw/telegram_comments/20261106T071956Z/comments.jsonl": "a481d50305e50639c555b7a5866045c9b3d8156a5cf9b8cc16b313b2de1e6fb6",
@@ -100,7 +100,7 @@
   "null_seed": 20261106,
   "limits": "Finite observed corpus; no attribution, organic-control specificity, or population inference.",
   "outputs_sha256": {
-    "papers/social-framework-2026/figures/information_analysis.pdf": "3dd5622e02ed745063b77b41bee033ff85fe2b210c20f3039db4d61614bdb819",
-    "papers/social-framework-2026/figures/information_analysis.svg": "2fd66dd843d623fd225f6c04212ce83229e7deea5fef953a1f1fdc544e93c16e"
+    "papers/social-framework-2026/figures/information_analysis.pdf": "870c4eeea96a924131ddcf8fef18203b4fa80c535c0d85987f534f21fc930f1f",
+    "papers/social-framework-2026/figures/information_analysis.svg": "95e756e3df26a26c032f178fbf51777836834265f48116eb6b70f772dfec4b33"
   }
 }

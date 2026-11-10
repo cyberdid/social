@@ -17,7 +17,7 @@ E2 & Data collection & Saved historical/expanded counts and missingness independ
 E3 & Duplicate detection & Exact sweep: 369 qualifying pairs; 367 retained by legacy candidates; two misses, zero extras. & Conditional finite-corpus candidate recall; no semantic duplicate gold. \\
 E4 & Coordination detection & Saved 16-test family: raw $p=.0001$, Holm $p=.0016$; bounded prefixes reproduce. & Conditional exploratory nulls; organic-control specificity and attribution unmeasured. \\
 E5 & Evidence retrieval & Captured-corpus retrieval and reference controls exercised by offline tests. & Curated/known inputs; no blind open-web retrieval benchmark. \\
-E6 & Claim verification & Abstention, conflict, cutoff, and lineage contract controls pass. & No independent semantic accuracy or entailment score; counterexamples remain material. \\
+E6 & Claim verification & Abstention, conflict, cutoff, and lineage contract controls pass. & No independent semantic accuracy or entailment score; authored stress test of a later rule revision in Section~\ref{sec:rule-v2}. \\
 E7 & Event reconstruction & Typed event organization and synthetic timeline/reference invariants checked. & No autonomous raw-event discovery or independently adjudicated chronology score. \\
 E8 & Video/ASR & Historical supplied-reference arithmetic: 185 errors/415 words, 44.58\% micro WER. & Selected clips; independent reference listening provenance not established. \\
 E9 & End-to-end workflow & Two clean retrieval-only repeats remain partial/unverified; dangling-event negative control fails. & Two candidates, no accepted support, no generated report; not a blind incident evaluation. \\
@@ -26,7 +26,7 @@ E10 & Runtime/resources & Fresh offline suite: 7.84\,s wall, 328,320\,KiB maximu
 \end{tabularx}
 \end{table*}
 
-The fresh full repository suite returned 783 passed tests and 16 passed subtests, with no failures. Pytest reported 7.41\,s; an external resource measurement recorded 7.84\,s wall time and 328,320\,KiB maximum resident memory, exiting successfully. The interpreter was the repository virtual environment's Python 3.13.14 on Linux/x86-64. These counts describe regression coverage, not an accuracy denominator. Six frozen synthetic controls also passed, covering a known microcase, single-root copy fanout, contradictory testimony, correction cutoffs, incomplete evidence, and reused video. Their expected states are known by construction. They are useful release gates without being blind observations of incident truth.
+The fresh full repository suite at the frozen baseline returned 783 passed tests and 16 passed subtests, with no failures, on the workstation that holds the private corpora. Pytest reported 7.41\,s; an external resource measurement recorded 7.84\,s wall time and 328,320\,KiB maximum resident memory, exiting successfully. The interpreter was the repository virtual environment's Python 3.13.14 on Linux/x86-64. These counts describe regression coverage, not an accuracy denominator. Six frozen synthetic controls also passed, covering a known microcase, single-root copy fanout, contradictory testimony, correction cutoffs, incomplete evidence, and reused video. Their expected states are known by construction. They are useful release gates without being blind observations of incident truth.
 
 For collection accounting, direct parsing reconciled 23,350 historical publications with 1,408 selected relevant records and 1,384 texts eligible for similarity analysis. The historical 459 missing raw texts and 49 absent view counters belong to all publications; neither is missing among the relevant subset. The remaining 24 relevant texts are shorter than the 80-character eligibility threshold. The expanded snapshot contains 23,386 publications and 1,438 relevant records. These versions are distinct analysis frames. The exact graph and conditional timing tests use the historical frame; a lineage document's assignment of that graph to the expanded frame was rejected against its recorded input hashes. Such checks address denominator integrity without establishing sampling representativeness~\cite{Olteanu2019,VicentePaula2023}.
 
@@ -44,3 +44,29 @@ For coordination, every saved draw was reread and all sixteen summary rows were 
 Semantic evaluation remains more limited. The narrative comparison pairs rules with Claude labels on forty selected test posts, rather than independent human adjudication; its agreement statistics cannot validate stance accuracy. Evidence retrieval operates over a captured corpus, and lexical ranking does not establish passage entailment~\cite{RobertsonZaragoza2009BM25}. Curated claim regression checks and synthetic counterexamples are reported as such. Typed event records organize supplied assertions; structural validity does not demonstrate discovery of the underlying physical events. Likewise, the historical ASR error calculation uses supplied reference strings whose independent listening provenance was not established. Its 44.58\% micro WER is descriptive arithmetic for those clips, not a blind corpus-wide recognizer benchmark.
 
 The fresh workflow smoke artifact records two repeat retrieval-only runs with two candidates, an unverified claim, zero accepted support assessments, and no report. A third run deliberately introduces a dangling event evidence reference and correctly fails the evaluation gate. Equal semantic projections across the clean repeats establish bounded repeatability, while their partial status identifies unfinished stages. The combined analytical audit took 4.8317\,s and 1,032,620\,KiB maximum RSS, including corpus loading, exact comparison, saved-draw checking, prefix replay, and graph/bin reconstruction. These resource measurements exclude collection, production ASR, external models, and subsequent auxiliary checks. No current GPU timing or monetary API cost was measured. Independent incident-level evidence, event, and report accuracy therefore remain unmeasured outcomes rather than inferred benefits of a passing software suite.
+
+\subsection{Post-audit revision of the relation rule}\label{sec:rule-v2}
+The results above describe the frozen baseline. Because the counterexamples affect the only path that emits accepted evidence assessments, one disclosed change was made after the audit and evaluated separately. Revision \code{319d205} (rule identifier \code{rule_autonomous_claim_matcher_v2}) withholds support unless three conditions hold: every claimed value occurs in one passage sentence that also shares at least two content word forms with the claim; the passage does not negate a content word that the claim asserts; and the surname of any adjacent capitalized name pair in the claim appears in the passage. Withheld pairs remain unaccepted candidates and are not converted into contradictions. The general offline runner is unchanged and still accepts nothing automatically.
+
+\begin{table}[!t]
+\caption{Deterministic stress test of the relation rule on cases derived from the 25 curated claims. Cells count pairs accepted as support. Expected outcomes hold by construction, except where noted in the text; this is not a blind accuracy benchmark.}\label{tab:rule-v2}
+\centering\small
+\begin{tabularx}{\textwidth}{@{}YrrrY@{}}
+\toprule
+Case family & $n$ & Baseline & Revised & Expected outcome\\
+\midrule
+Unmodified accepted pairs (control) & 22 & 22 & 19 & Retention, not correctness\\
+Wrong predicate, same number & 27 & 27 & 0 & Not support\\
+Negated predicate & 9 & 9 & 0 & Not support\\
+Altered number & 7 & 0 & 0 & Not support\\
+Passage from another claim & 469 & 5 & 2 & Not support; see text\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Table~\ref{tab:rule-v2} compares both rule versions on 534 deterministic cases generated by \code{evaluate_verifier_challenges.py}. The baseline accepted all 27 wrong-predicate and all nine negated cases; the revision accepted none. Reading the two remaining cross-claim acceptances shows that both passages contain the asserted content (four servicemen walking to the ambulance, and the custody of the named suspect), so they are defects of the constructed negative label rather than false support. Of the 22 control pairs, 19 remain accepted. Two of the three withdrawn pairs are the injury and walking passages cited for the deserter claim. The third is a cost of the name guard: the bail passage states the amount correctly but does not name the person.
+
+Rerunning the package writes a new artifact and leaves the 9 November file unchanged. The revised output has 18 supported, seven insufficient-evidence and zero refuted results from 33 accepted assessments; the court-bail claim is the only status change. The repository suite then passes 794 tests and 16 subtests. One AI reading of the 19 remaining support pairs found no clear false support but two weak pairs: one equates ``two months'' with 60 days through a coded rule, and one reports that ambulance staff called the police rather than that police arrived. That reading is not independent adjudication.
+
+These results show that the two documented failure classes are closed on the tested forms. They do not estimate error on real text. The cases were authored after the failures were known, by the same AI system that revised the rule, from three templates and one negation generator. Paraphrase, implicit negation, hedging and predicates spanning sentences are untested, and the fixed 0.92 confidence remains uncalibrated.
+
