@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="374.22pt" height="177.84pt" viewBox="0 0 374.22 177.84" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-10T09:43:32.360907</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 177.84 
+L 374.22 177.84 
+L 374.22 -0 
+L 0 -0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 13.7394 49.16952 
+L 110.2176 49.16952 
+Q 113.1192 49.16952 113.1192 47.83896 
+L 113.1192 24.38784 
+Q 113.1192 23.05728 110.2176 23.05728 
+L 13.7394 23.05728 
+Q 10.8378 23.05728 10.8378 24.38784 
+L 10.8378 47.83896 
+Q 10.8378 49.16952 13.7394 49.16952 
+z
+" clip-path="url(#paa99b523ef)" style="fill: #eef3f6; stroke: #315d78; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 138.8709 49.16952 
+L 235.3491 49.16952 
+Q 238.2507 49.16952 238.2507 47.83896 
+L 238.2507 24.38784 
+Q 238.2507 23.05728 235.3491 23.05728 
+L 138.8709 23.05728 
+Q 135.9693 23.05728 135.9693 24.38784 
+L 135.9693 47.83896 
+Q 135.9693 49.16952 138.8709 49.16952 
+z
+" clip-path="url(#paa99b523ef)" style="fill: #eef3f6; stroke: #315d78; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 264.0024 49.16952 
+L 360.4806 49.16952 
+Q 363.3822 49.16952 363.3822 47.83896 
+L 363.3822 24.38784 
+Q 363.3822 23.05728 360.4806 23.05728 
+L 264.0024 23.05728 
+Q 261.1008 23.05728 261.1008 24.38784 
+L 261.1008 47.83896 
+Q 261.1008 49.16952 264.0024 49.16952 
+z
+" clip-path="url(#paa99b523ef)" style="fill: #ffffff; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #b87632; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 112.945332 36.19656 
+Q 124.544116 36.19656 135.024865 36.19656 
+" clip-path="url(#paa99b523ef)" style="fill: none; stroke: #59636b; stroke-linecap: round"/>
+    <path d="M 131.024865 34.19656 
+L 135.024865 36.19656 
+L 131.024865 38.19656 
+z
+" clip-path="url(#paa99b523ef)" style="fill: #59636b; stroke: #59636b; stroke-linecap: round"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 312.2415 50.169694 
+Q 312.2415 59.395965 312.2415 67.504203 
+" clip-path="url(#paa99b523ef)" style="fill: none; stroke: #59636b; stroke-linecap: round"/>
+    <path d="M 314.2415 63.504203 
+L 312.2415 67.504203 
+L 310.2415 63.504203 
+z
+" clip-path="url(#paa99b523ef)" style="fill: #59636b; stroke: #59636b; stroke-linecap: round"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 13.7394 98.23392 
+L 110.2176 98.23392 
+Q 113.1192 98.23392 113.1192 96.90336 
+L 113.1192 70.95744 
+Q 113.1192 69.62688 110.2176 69.62688 
+L 13.7394 69.62688 
+Q 10.8378 69.62688 10.8378 70.95744 
+L 10.8378 96.90336 
+Q 10.8378 98.23392 13.7394 98.23392 
+z
+" clip-path="url(#paa99b523ef)" style="fill: #eef3f6; stroke: #315d78; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 138.8709 98.23392 
+L 235.3491 98.23392 
+Q 238.2507 98.23392 238.2507 96.90336 
+L 238.2507 70.95744 
+Q 238.2507 69.62688 235.3491 69.62688 
+L 138.8709 69.62688 
+Q 135.9693 69.62688 135.9693 70.95744 
+L 135.9693 96.90336 
+Q 135.9693 98.23392 138.8709 98.23392 
+z
+" clip-path="url(#paa99b523ef)" style="fill: #eef3f6; stroke: #315d78; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 264.0024 98.23392 
+L 360.4806 98.23392 
+Q 363.3822 98.23392 363.3822 96.90336 
+L 363.3822 70.95744 
+Q 363.3822 69.62688 360.4806 69.62688 
+L 264.0024 69.62688 
+Q 261.1008 69.62688 261.1008 70.95744 
+L 261.1008 96.90336 
+Q 261.1008 98.23392 264.0024 98.23392 
+z
+" clip-path="url(#paa99b523ef)" style="fill: #ffffff; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #b87632; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 187.11 50.169694 
+Q 187.11 59.395965 187.11 67.504203 
+" clip-path="url(#paa99b523ef)" style="fill: none; stroke: #59636b; stroke-linecap: round"/>
+    <path d="M 189.11 63.504203 
+L 187.11 67.504203 
+L 185.11 63.504203 
+z
+" clip-path="url(#paa99b523ef)" style="fill: #59636b; stroke: #59636b; stroke-linecap: round"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 261.274668 83.9304 
+Q 249.675884 83.9304 239.195135 83.9304 
+" clip-path="url(#paa99b523ef)" style="fill: none; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #b87632; stroke-linecap: round"/>
+    <path d="M 243.195135 85.9304 
+L 239.195135 83.9304 
+L 243.195135 81.9304 
+z
+" clip-path="url(#paa99b523ef)" style="fill: #b87632; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #b87632; stroke-linecap: round"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 136.143168 83.9304 
+Q 124.544384 83.9304 114.063635 83.9304 
+" clip-path="url(#paa99b523ef)" style="fill: none; stroke: #59636b; stroke-linecap: round"/>
+    <path d="M 118.063635 85.9304 
+L 114.063635 83.9304 
+L 118.063635 81.9304 
+z
+" clip-path="url(#paa99b523ef)" style="fill: #59636b; stroke: #59636b; stroke-linecap: round"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 13.7394 156.44592 
+L 360.4806 156.44592 
+Q 363.3822 156.44592 363.3822 155.11536 
+L 363.3822 126.67464 
+Q 363.3822 125.34408 360.4806 125.34408 
+L 13.7394 125.34408 
+Q 10.8378 125.34408 10.8378 126.67464 
+L 10.8378 155.11536 
+Q 10.8378 156.44592 13.7394 156.44592 
+z
+" clip-path="url(#paa99b523ef)" style="fill: #eef3f6; stroke: #315d78; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 61.9785 99.236327 
+Q 61.9785 111.788252 61.9785 123.222143 
+" clip-path="url(#paa99b523ef)" style="fill: none; stroke: #59636b; stroke-linecap: round"/>
+    <path d="M 63.9785 119.222143 
+L 61.9785 123.222143 
+L 59.9785 119.222143 
+z
+" clip-path="url(#paa99b523ef)" style="fill: #59636b; stroke: #59636b; stroke-linecap: round"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 187.11 99.236327 
+Q 187.11 111.788252 187.11 123.222143 
+" clip-path="url(#paa99b523ef)" style="fill: none; stroke: #59636b; stroke-linecap: round"/>
+    <path d="M 189.11 119.222143 
+L 187.11 123.222143 
+L 185.11 119.222143 
+z
+" clip-path="url(#paa99b523ef)" style="fill: #59636b; stroke: #59636b; stroke-linecap: round"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 7.2px; font-family: 'CMU Serif'; fill: #263844" transform="translate(22.010625 33.092775)">IncidentSpec + бюджети</text>
+    <text style="font-size: 7.2px; font-family: 'CMU Serif'; fill: #263844" transform="translate(28.73925 42.8274)">Необов'язковий збір</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 7.2px; font-family: 'CMU Serif'; fill: #263844" transform="translate(145.331437 33.712087)">Фіксований Source Watch</text>
+    <text style="font-size: 7.2px; font-family: 'CMU Serif'; fill: #263844" transform="translate(150.742688 42.8094)">Збір → міст → реєстр</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 7.2px; font-family: 'CMU Serif'; fill: #263844" transform="translate(268.6635 33.128775)">Типізовані локальні входи</text>
+    <text style="font-size: 7.2px; font-family: 'CMU Serif'; fill: #263844" transform="translate(270.45675 42.734025)">Явні файли + межа часу</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 7.2px; font-family: 'CMU Serif'; fill: #263844" transform="translate(20.312438 76.0284)">Структурні бар'єри звіту</text>
+    <text style="font-size: 7.2px; font-family: 'CMU Serif'; fill: #263844" transform="translate(32.541187 85.7304)">Посилання / хеші</text>
+    <text style="font-size: 7.2px; font-family: 'CMU Serif'; fill: #263844" transform="translate(17.699062 95.4504)">Межі / фіксовані контролі</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 7.2px; font-family: 'CMU Serif'; fill: #263844" transform="translate(150.130688 76.0104)">Офлайн-етапи аналізу</text>
+    <text style="font-size: 7.2px; font-family: 'CMU Serif'; fill: #263844" transform="translate(138.981938 85.7304)">Пошук / порядок / підсумки</text>
+    <text style="font-size: 7.2px; font-family: 'CMU Serif'; fill: #263844" transform="translate(149.392125 95.525775)">«Невідомо» лишається</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 7.2px; font-family: 'CMU Serif'; fill: #263844" transform="translate(279.705375 75.967087)">Вхідний набір звіту</text>
+    <text style="font-size: 7.2px; font-family: 'CMU Serif'; fill: #263844" transform="translate(281.512125 85.7304)">Висновки / оцінки</text>
+    <text style="font-size: 7.2px; font-family: 'CMU Serif'; fill: #263844" transform="translate(281.298937 95.407087)">Надаються окремо</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 7.2px; font-family: 'CMU Serif'; fill: #263844" transform="translate(49.689562 132.975)">Продемонстрована межа: скриптовий / інтегрований обмежений процес (рівні 1–2)</text>
+    <text style="font-size: 7.2px; font-family: 'CMU Serif'; fill: #263844" transform="translate(53.404313 142.695)">Незалежного наскрізного бенчмарка інцидентів немає (рівні 3–4 не встановлено)</text>
+    <text style="font-size: 7.2px; font-family: 'CMU Serif'; fill: #263844" transform="translate(40.525312 152.433)">Проходження структурних бар'єрів не валідує випливання чи істинність фізичних подій</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="paa99b523ef">
+   <rect x="5.76" y="5.76" width="362.7" height="166.32"/>
+  </clipPath>
+ </defs>
+</svg>

@@ -1,0 +1,78 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setmainlanguage{ukrainian}
+\setotherlanguage{english}
+\setmainfont{cmunrm.otf}[Path=fonts/,BoldFont=cmunbx.otf,ItalicFont=cmunti.otf,BoldItalicFont=cmunbi.otf]
+\setsansfont{cmunss.otf}[Path=fonts/,BoldFont=cmunsx.otf,ItalicFont=cmunsi.otf,BoldItalicFont=cmunso.otf]
+\setmonofont{cmuntt.otf}[Path=fonts/,ItalicFont=cmunit.otf]
+\newfontfamily\cyrillicfont{cmunrm.otf}[Path=fonts/,BoldFont=cmunbx.otf,ItalicFont=cmunti.otf,BoldItalicFont=cmunbi.otf,Script=Cyrillic]
+\newfontfamily\cyrillicfontsf{cmunss.otf}[Path=fonts/,BoldFont=cmunsx.otf,ItalicFont=cmunsi.otf,BoldItalicFont=cmunso.otf,Script=Cyrillic]
+\newfontfamily\cyrillicfonttt{cmuntt.otf}[Path=fonts/,ItalicFont=cmunit.otf,Script=Cyrillic]
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{microtype}
+\usepackage{booktabs,longtable,tabularx,array,multirow}
+\usepackage{graphicx}
+\graphicspath{{../figures_uk/}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\usepackage{caption}
+\captionsetup{font=small,labelfont=bf,labelsep=colon,justification=justified,singlelinecheck=false}
+\captionsetup[table]{position=top}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage[section]{placeins}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{xurl}
+\usepackage{hyperref}
+\urlstyle{same}
+\hypersetup{hidelinks,pdfencoding=auto,unicode=true,pdftitle={Social: доказово обґрунтований фреймворк для автоматизованого аналізу соціальних конфліктів та інформаційних інцидентів},pdfauthor={Oleksandr Pylypenko}}
+\emergencystretch=2em
+\setlist{nosep,leftmargin=1.5em}
+\renewcommand{\arraystretch}{1.12}
+\renewcommand{\bibfont}{\small}
+\setlength{\bibsep}{2pt}
+
+\DeclareRobustCommand{\code}[1]{\nolinkurl{#1}}
+\newcommand{\baseline}{\texttt{f0e9d0d}}
+\begin{document}
+\begin{center}
+{\LARGE Social: доказово обґрунтований фреймворк для автоматизованого аналізу соціальних конфліктів та інформаційних інцидентів\par}
+\vspace{0.4em}
+{\large Архітектура, реалізація, оцінювання та уроки реального кейсу\par}
+\vspace{0.8em}
+{\large Олександр Пилипенко\par}
+{\small Незалежний дослідник у галузі штучного інтелекту та машинного навчання\par}
+{\small Аспірант, Державний торговельно-економічний університет, Київ, Україна\par}
+{\small ORCID: \href{https://orcid.org/0009-0004-9610-9242}{0009-0004-9610-9242}\par}
+{\small \href{mailto:O.Pylypenko@knute.edu.ua}{\texttt{O.Pylypenko@knute.edu.ua}}\par}
+\vspace{0.4em}
+10 листопада 2026 р.\par
+{\small Українська редакція. Основною є англомовна редакція того самого дослідження.\par}
+\end{center}
+\begin{abstract}
+Цифрові сліди соціальних конфліктів поєднують неповні спостереження, повторювані твердження, суперечливі свідчення та медіа, час публікації яких відрізняється від часу запису чи події. Інтеграція цих записів потребує автоматизації, яка зберігає межі доказовості, а не генерує єдину впевнену оповідь. У статті описано Social --- модульну дослідницьку систему на Python, що поєднує збір даних окремо за платформами, версіоновані знімки, аналіз схожості текстів і часу, облік доказів, обмежений пошук, типізоване впорядкування подій, локальну обробку медіа та контрольні перевірки звітів. Проведено аудит зафіксованої реалізації та розмежовано реалізовані функції, структурні тести, емпіричні перевірки й невиміряні семантичні властивості. Оцінювання відтворює вичерпний граф текстової схожості між каналами із 369 ребер, знаходить 367 із них у результатах застарілого MinHash, повторно обчислює 16 збережених підсумків умовної рандомізації та відтворює префікс із 25 вибірок для кожної з чотирьох нульових моделей. Свіжий офлайн-набір проходить 783 тести й 16 підтестів. Ці результати встановлюють обмежену обчислювальну відтворюваність, а не фактичну точність. Поточний кураторський пакет із 25 тверджень видає 19 станів «підтримано в межах обсягу» та шість станів «недостатньо доказів», проте цільові випробування виявляють помилки числових присудків і заперечень в евристиках відношень. Оприлюднена післяаудитна ревізія правила усуває всі 36 прийнять хибного присудка й заперечення в авторському стрес-тесті на 534 випадки та змінює результат пакета на 18 підтриманих і сім із недостатніми доказами; цей стрес-тест не є оцінкою точності. Загальний офлайн-процес консервативно зберігає знайдені твердження неперевіреними й потребує окремо наданих входів звіту. Історичні медіаквитанції документують 607 декодованих активів; порівняння 18 кліпів із наданим еталоном дає micro-WER 44,58\% без незалежно встановленого походження перевірки еталона. Реальний кейс ілюструє інтеграцію та обмеження охоплення. Внесок Social --- придатний для перегляду аналітичний процес і явний опис меж його надійності, а не новий алгоритм висновування чи валідований автономний дослідник.
+\end{abstract}
+\noindent\textbf{Ключові слова:} обчислювальна соціальна наука; кризова інформатика; походження доказів; автоматизований аналіз; інформаційна динаміка; дослідницьке програмне забезпечення; невизначеність.
+
+\input{sections_uk/01_introduction.tex}
+\input{sections_uk/02_related.tex}
+\input{sections_uk/03_design.tex}
+\input{sections_uk/04_architecture.tex}
+\input{sections_uk/05_data.tex}
+\input{sections_uk/06_information.tex}
+\input{sections_uk/07_evidence.tex}
+\input{sections_uk/08_events.tex}
+\input{sections_uk/09_multimodal.tex}
+\input{sections_uk/10_autonomy.tex}
+\input{sections_uk/11_evaluation.tex}
+\input{sections_uk/12_application.tex}
+\input{sections_uk/13_discussion.tex}
+\input{sections_uk/14_limitations.tex}
+\input{sections_uk/15_conclusion.tex}
+\begin{otherlanguage}{english}
+\renewcommand{\refname}{Список використаних джерел}
+\bibliographystyle{unsrtnat}
+\bibliography{references}
+\end{otherlanguage}
+\end{document}

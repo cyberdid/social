@@ -1,0 +1,28 @@
+{
+  "edition": "2026-11-10",
+  "renderer": "papers/social-case-reports-2026/render_reports.py",
+  "engine": "tectonic/XeTeX",
+  "artifacts": [
+    {
+      "name": "report_main",
+      "pdf": "output/pdf/petropavlivska_borshchahivka_report_2026-11-10.pdf",
+      "pages": 57,
+      "pdf_sha256": "e104a9175f79c8875883b397839966c1b36879ccc1f92aa136d740ade8ced891",
+      "tex_sha256": "11f341a73678feb6d53c1f1e5a2805e0c3c5344325c5b3f6c11d015a142cb5d8"
+    },
+    {
+      "name": "report_dossier",
+      "pdf": "output/pdf/petropavlivska_figures_and_proceedings_2026-11-10.pdf",
+      "pages": 18,
+      "pdf_sha256": "c08aa37bcf583131be7f41fc0ee4166fd71b11a37558dad67fc28106438e910f",
+      "tex_sha256": "2479e8463f0b2922a94dc7f0427adf92e49d893a01c46d90fa13b32d9a9bc3e5"
+    },
+    {
+      "name": "report_attribution",
+      "pdf": "output/pdf/russian_influence_attribution_early_warning_2026-11-10.pdf",
+      "pages": 17,
+      "pdf_sha256": "cc2e3dee4b95ae047b8485f7a37d585e2e9692c9233eeec4d2bc0c96580bf9c0",
+      "tex_sha256": "e83d428bbae19b8c1dfe94ce2a7c4d69c4dedf2f44f19f0587af722ce5ae14cf"
+    }
+  ]
+}

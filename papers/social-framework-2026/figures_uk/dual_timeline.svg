@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="473.519518pt" height="271.91952pt" viewBox="0 0 473.519518 271.91952" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-10T09:43:32.612902</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 271.91952 
+L 473.519518 271.91952 
+L 473.519518 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 144.715469 114.959497 
+L 456.383752 114.959497 
+L 456.383752 20.36 
+L 144.715469 20.36 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <path d="M 172.805295 114.959497 
+L 172.805295 20.36 
+" clip-path="url(#p4b8ebd40e6)" style="fill: none; stroke: #b0b0b0; stroke-opacity: 0.2; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_2">
+      <defs>
+       <path id="mfffdcaef6f" d="M 0 0 
+L 0 3.5 
+" style="stroke: #000000; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#mfffdcaef6f" x="172.805295" y="114.959497" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_3">
+      <path d="M 228.49764 114.959497 
+L 228.49764 20.36 
+" clip-path="url(#p4b8ebd40e6)" style="fill: none; stroke: #b0b0b0; stroke-opacity: 0.2; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#mfffdcaef6f" x="228.49764" y="114.959497" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_5">
+      <path d="M 284.189984 114.959497 
+L 284.189984 20.36 
+" clip-path="url(#p4b8ebd40e6)" style="fill: none; stroke: #b0b0b0; stroke-opacity: 0.2; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#mfffdcaef6f" x="284.189984" y="114.959497" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_7">
+      <path d="M 339.882329 114.959497 
+L 339.882329 20.36 
+" clip-path="url(#p4b8ebd40e6)" style="fill: none; stroke: #b0b0b0; stroke-opacity: 0.2; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#mfffdcaef6f" x="339.882329" y="114.959497" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_9">
+      <path d="M 395.574673 114.959497 
+L 395.574673 20.36 
+" clip-path="url(#p4b8ebd40e6)" style="fill: none; stroke: #b0b0b0; stroke-opacity: 0.2; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_10">
+      <g>
+       <use xlink:href="#mfffdcaef6f" x="395.574673" y="114.959497" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_11">
+      <path d="M 451.267018 114.959497 
+L 451.267018 20.36 
+" clip-path="url(#p4b8ebd40e6)" style="fill: none; stroke: #b0b0b0; stroke-opacity: 0.2; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_12">
+      <g>
+       <use xlink:href="#mfffdcaef6f" x="451.267018" y="114.959497" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_13"/>
+     <g id="text_1">
+      <text style="font-size: 8.5px; font-family: 'CMU Serif'; text-anchor: end" x="141.215469" y="107.444171" transform="rotate(-0 141.215469 107.444171)">P5 Згадка про завершення</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_14"/>
+     <g id="text_2">
+      <text style="font-size: 8.5px; font-family: 'CMU Serif'; text-anchor: end" x="141.215469" y="89.25196" transform="rotate(-0 141.215469 89.25196)">P4 Згадка про дим / фаєри</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_15"/>
+     <g id="text_3">
+      <text style="font-size: 8.5px; font-family: 'CMU Serif'; text-anchor: end" x="141.215469" y="71.059749" transform="rotate(-0 141.215469 71.059749)">P3 Згадка про прибуття / блокаду</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_16"/>
+     <g id="text_4">
+      <text style="font-size: 8.5px; font-family: 'CMU Serif'; text-anchor: end" x="141.215469" y="52.867538" transform="rotate(-0 141.215469 52.867538)">P2 Згадка про сутички</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_17"/>
+     <g id="text_5">
+      <text style="font-size: 8.5px; font-family: 'CMU Serif'; text-anchor: end" x="141.215469" y="34.675327" transform="rotate(-0 141.215469 34.675327)">P1 Згадка про збір людей</text>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_18">
+    <path d="M 158.882209 31.275327 
+L 166.617257 31.275327 
+" clip-path="url(#p4b8ebd40e6)" style="fill: none; stroke: #b87632; stroke-width: 5"/>
+   </g>
+   <g id="line2d_19">
+    <path d="M 168.164266 49.467538 
+L 189.048896 49.467538 
+" clip-path="url(#p4b8ebd40e6)" style="fill: none; stroke: #b87632; stroke-width: 5"/>
+   </g>
+   <g id="line2d_20">
+    <path d="M 184.407867 67.659749 
+L 200.651467 67.659749 
+" clip-path="url(#p4b8ebd40e6)" style="fill: none; stroke: #b87632; stroke-width: 5"/>
+   </g>
+   <g id="line2d_21">
+    <path d="M 200.651467 85.85196 
+L 212.254039 85.85196 
+" clip-path="url(#p4b8ebd40e6)" style="fill: none; stroke: #b87632; stroke-width: 5"/>
+   </g>
+   <g id="line2d_22">
+    <path d="M 212.254039 104.044171 
+L 230.818154 104.044171 
+" clip-path="url(#p4b8ebd40e6)" style="fill: none; stroke: #b87632; stroke-width: 5"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 144.715469 114.959497 
+L 456.383752 114.959497 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 9.5px; font-family: 'CMU Serif'; text-anchor: start" x="144.715469" y="13.36" transform="rotate(-0 144.715469 13.36)">Надані інтервали фізичних подій (усі нерозв'язані)</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_4">
+    <path d="M 144.715469 225.05952 
+L 456.383752 225.05952 
+L 456.383752 139.059977 
+L 144.715469 139.059977 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="PathCollection_1">
+    <defs>
+     <path id="mee04a680f7" d="M 0 2.397916 
+C 0.635935 2.397916 1.245909 2.145256 1.695582 1.695582 
+C 2.145256 1.245909 2.397916 0.635935 2.397916 0 
+C 2.397916 -0.635935 2.145256 -1.245909 1.695582 -1.695582 
+C 1.245909 -2.145256 0.635935 -2.397916 0 -2.397916 
+C -0.635935 -2.397916 -1.245909 -2.145256 -1.695582 -1.695582 
+C -2.145256 -1.245909 -2.397916 -0.635935 -2.397916 0 
+C -2.397916 0.635935 -2.145256 1.245909 -1.695582 1.695582 
+C -1.245909 2.145256 -0.635935 2.397916 0 2.397916 
+z
+" style="stroke: #315d78"/>
+    </defs>
+    <g clip-path="url(#p5f17f040ce)">
+     <use xlink:href="#mee04a680f7" x="188.816844" y="148.983001" style="fill: #315d78; stroke: #315d78"/>
+    </g>
+   </g>
+   <g id="PathCollection_2">
+    <g clip-path="url(#p5f17f040ce)">
+     <use xlink:href="#mee04a680f7" x="201.326995" y="165.521375" style="fill: #315d78; stroke: #315d78"/>
+    </g>
+   </g>
+   <g id="PathCollection_3">
+    <g clip-path="url(#p5f17f040ce)">
+     <use xlink:href="#mee04a680f7" x="279.548956" y="182.059749" style="fill: #315d78; stroke: #315d78"/>
+    </g>
+   </g>
+   <g id="PathCollection_4">
+    <g clip-path="url(#p5f17f040ce)">
+     <use xlink:href="#mee04a680f7" x="388.999883" y="198.598122" style="fill: #315d78; stroke: #315d78"/>
+    </g>
+   </g>
+   <g id="PathCollection_5">
+    <g clip-path="url(#p5f17f040ce)">
+     <use xlink:href="#mee04a680f7" x="442.217012" y="215.136496" style="fill: #315d78; stroke: #315d78"/>
+    </g>
+   </g>
+   <g id="matplotlib.axis_3">
+    <g id="xtick_7">
+     <g id="line2d_23">
+      <path d="M 172.805295 225.05952 
+L 172.805295 139.059977 
+" clip-path="url(#p5f17f040ce)" style="fill: none; stroke: #b0b0b0; stroke-opacity: 0.2; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_24">
+      <g>
+       <use xlink:href="#mfffdcaef6f" x="172.805295" y="225.05952" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 9px; font-family: 'CMU Serif'" transform="translate(156.312795 240.15952)">02 лист.</text>
+      <text style="font-size: 9px; font-family: 'CMU Serif'" transform="translate(162.558654 250.95952)">12:00</text>
+     </g>
+    </g>
+    <g id="xtick_8">
+     <g id="line2d_25">
+      <path d="M 228.49764 225.05952 
+L 228.49764 139.059977 
+" clip-path="url(#p5f17f040ce)" style="fill: none; stroke: #b0b0b0; stroke-opacity: 0.2; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_26">
+      <g>
+       <use xlink:href="#mfffdcaef6f" x="228.49764" y="225.05952" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 9px; font-family: 'CMU Serif'" transform="translate(212.00514 240.15952)">03 лист.</text>
+      <text style="font-size: 9px; font-family: 'CMU Serif'" transform="translate(218.250999 250.95952)">00:00</text>
+     </g>
+    </g>
+    <g id="xtick_9">
+     <g id="line2d_27">
+      <path d="M 284.189984 225.05952 
+L 284.189984 139.059977 
+" clip-path="url(#p5f17f040ce)" style="fill: none; stroke: #b0b0b0; stroke-opacity: 0.2; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_28">
+      <g>
+       <use xlink:href="#mfffdcaef6f" x="284.189984" y="225.05952" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 9px; font-family: 'CMU Serif'" transform="translate(267.697484 240.15952)">03 лист.</text>
+      <text style="font-size: 9px; font-family: 'CMU Serif'" transform="translate(273.943344 250.95952)">12:00</text>
+     </g>
+    </g>
+    <g id="xtick_10">
+     <g id="line2d_29">
+      <path d="M 339.882329 225.05952 
+L 339.882329 139.059977 
+" clip-path="url(#p5f17f040ce)" style="fill: none; stroke: #b0b0b0; stroke-opacity: 0.2; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_30">
+      <g>
+       <use xlink:href="#mfffdcaef6f" x="339.882329" y="225.05952" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <text style="font-size: 9px; font-family: 'CMU Serif'" transform="translate(323.389829 240.15952)">04 лист.</text>
+      <text style="font-size: 9px; font-family: 'CMU Serif'" transform="translate(329.635688 250.95952)">00:00</text>
+     </g>
+    </g>
+    <g id="xtick_11">
+     <g id="line2d_31">
+      <path d="M 395.574673 225.05952 
+L 395.574673 139.059977 
+" clip-path="url(#p5f17f040ce)" style="fill: none; stroke: #b0b0b0; stroke-opacity: 0.2; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_32">
+      <g>
+       <use xlink:href="#mfffdcaef6f" x="395.574673" y="225.05952" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <text style="font-size: 9px; font-family: 'CMU Serif'" transform="translate(379.082173 240.15952)">04 лист.</text>
+      <text style="font-size: 9px; font-family: 'CMU Serif'" transform="translate(385.328033 250.95952)">12:00</text>
+     </g>
+    </g>
+    <g id="xtick_12">
+     <g id="line2d_33">
+      <path d="M 451.267018 225.05952 
+L 451.267018 139.059977 
+" clip-path="url(#p5f17f040ce)" style="fill: none; stroke: #b0b0b0; stroke-opacity: 0.2; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_34">
+      <g>
+       <use xlink:href="#mfffdcaef6f" x="451.267018" y="225.05952" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_12">
+      <text style="font-size: 9px; font-family: 'CMU Serif'" transform="translate(434.774518 240.15952)">05 лист.</text>
+      <text style="font-size: 9px; font-family: 'CMU Serif'" transform="translate(441.020377 250.95952)">00:00</text>
+     </g>
+    </g>
+    <g id="text_13">
+     <text style="font-size: 8.5px; font-family: 'CMU Serif'; text-anchor: middle" x="300.54961" y="264.45952" transform="rotate(-0 300.54961 264.45952)">2026, UTC; призначені інтервали не є незалежно валідованими межами</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_4">
+    <g id="ytick_6">
+     <g id="line2d_35"/>
+     <g id="text_14">
+      <text style="font-size: 8.5px; font-family: 'CMU Serif'; text-anchor: end" x="141.215469" y="218.536496" transform="rotate(-0 141.215469 218.536496)">C5 Заява про пожежу</text>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_36"/>
+     <g id="text_15">
+      <text style="font-size: 8.5px; font-family: 'CMU Serif'; text-anchor: end" x="141.215469" y="201.998122" transform="rotate(-0 141.215469 201.998122)">C4 Публікація брифінгу</text>
+     </g>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_37"/>
+     <g id="text_16">
+      <text style="font-size: 8.5px; font-family: 'CMU Serif'; text-anchor: end" x="141.215469" y="185.459749" transform="rotate(-0 141.215469 185.459749)">C3 Оголошення розслідування</text>
+     </g>
+    </g>
+    <g id="ytick_9">
+     <g id="line2d_38"/>
+     <g id="text_17">
+      <text style="font-size: 8.5px; font-family: 'CMU Serif'; text-anchor: end" x="141.215469" y="168.921375" transform="rotate(-0 141.215469 168.921375)">C2 Публікація в Telegram</text>
+     </g>
+    </g>
+    <g id="ytick_10">
+     <g id="line2d_39"/>
+     <g id="text_18">
+      <text style="font-size: 8.5px; font-family: 'CMU Serif'; text-anchor: end" x="141.215469" y="152.383001" transform="rotate(-0 141.215469 152.383001)">C1 Заява поліції</text>
+     </g>
+    </g>
+   </g>
+   <g id="patch_5">
+    <path d="M 144.715469 225.05952 
+L 456.383752 225.05952 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 9.5px; font-family: 'CMU Serif'; text-anchor: start" x="144.715469" y="132.059977" transform="rotate(-0 144.715469 132.059977)">Час публікації комунікацій (не час запису)</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p4b8ebd40e6">
+   <rect x="144.715469" y="20.36" width="311.668283" height="94.599497"/>
+  </clipPath>
+  <clipPath id="p5f17f040ce">
+   <rect x="144.715469" y="139.059977" width="311.668283" height="85.999543"/>
+  </clipPath>
+ </defs>
+</svg>
